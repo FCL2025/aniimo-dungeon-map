@@ -1,0 +1,7279 @@
+[
+  {
+    "path": "Assets/Res/XGUI/Panel/HUD_Quest/Atlas/UI_Img_Hud_GameplayTrack_Chest.png",
+    "bundle_id": 79,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_Grabegg_CacophonicRhapsody_Treasure.png",
+    "bundle_id": 79,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_Grabegg_FlamesBreathHorn.png",
+    "bundle_id": 79,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_Grabegg_FlamesBreathHorn_Red.png",
+    "bundle_id": 79,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_Grabegg_SilkenFoam_Treasure.png",
+    "bundle_id": 79,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_Grabegg_ThornStrike_Treasure.png",
+    "bundle_id": 79,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/UI_Icon_MarkPoint_GreatPortal.png",
+    "bundle_id": 79,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Hud_Frame/UI_LeftTop/MiniMap/Atlas/UI_HUD_minimap_light.png",
+    "bundle_id": 84,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Hud_Frame/UI_MidBottom/GrabEggs_Robot/Atlas/UI_Img_GrabEggs_Robot_HUD_Weapon.png",
+    "bundle_id": 84,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/MapRes/Atlas/UI_Img_MapLayer_TaskMain.png",
+    "bundle_id": 84,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Chat_Frame/UI_Img_ChatFrame_Egg.png",
+    "bundle_id": 84,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Inventory/UI_Img_Inventory_TabIcon_GrabEgg.png",
+    "bundle_id": 84,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/QuestInteraction/UI_Icon_InteractionTitle_Chat.png",
+    "bundle_id": 84,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Hud_Frame/UI_LeftTop/MiniMap/Atlas/UI_HUD_minimap_Warning2.png",
+    "bundle_id": 86,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Hud_Frame/UI_MidBottom/GrabEggs_Robot/Atlas/UI_Img_GrabEggs_Robot_HUD_Armor.png",
+    "bundle_id": 86,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/UI_Hud_Icon_BranchLine_Receive.png",
+    "bundle_id": 86,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Common/CommonTexture/Atlas/UI_HUD_minimap_arrow_3.png",
+    "bundle_id": 87,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Hud_Frame/UI_LeftTop/MiniMap/Atlas/UI_HUD_minimap_BigRoundBg.png",
+    "bundle_id": 87,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Hud_Frame/UI_LeftTop/MiniMap/Atlas/UI_HUD_minimap_Warning.png",
+    "bundle_id": 87,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/UI_Hud_Icon_SpecialTraining_Receive.png",
+    "bundle_id": 87,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/UI_Img_Quest_BigMapPopup_TaskIcon.png",
+    "bundle_id": 87,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/MenuButton/UI_Icon_FunMenu_GrabEgg.png",
+    "bundle_id": 87,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_Grabegg_DiamondEgg_Pink.png",
+    "bundle_id": 88,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_Grabegg_SleepWellStayWell_Treasure.png",
+    "bundle_id": 88,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_Grabegg_SoulReturningGemBottle.png",
+    "bundle_id": 88,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_Grabegg_SoulReturningGemBottle_Treasure.png",
+    "bundle_id": 88,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_Rainbow_DiamondEgg.png",
+    "bundle_id": 88,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Hud_Frame/UI_LeftTop/MiniMap/Atlas/UI_HUD_minimap_WeatherBg.png",
+    "bundle_id": 89,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Hud_Frame/UI_MidBottom/GrabEggs_Robot/Atlas/UI_Img_GrabEggs_Robot_HUD_Bg.png",
+    "bundle_id": 89,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Hud_Frame/UI_MidBottom/GrabEggs_Robot/Atlas/UI_Img_GrabEggs_Robot_HUD_Progress.png",
+    "bundle_id": 89,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/UI_Hud_Icon_Course_Receive.png",
+    "bundle_id": 89,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/UI_Hud_Icon_MainLine_Receive.png",
+    "bundle_id": 89,
+    "dependencies": [
+      2
+    ],
+    "metadata": 2
+  },
+  {
+    "path": "Assets/Res/XGUI/Common/CommonTexture/Atlas/UI_Img_GrabEggs_Bag_Weight.png",
+    "bundle_id": 559,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Common/CommonTexture/Atlas/UI_Map_WeatherSystemEntry.png",
+    "bundle_id": 559,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Common/Tab/Image/UI_Icon_Tab_Map_H.png",
+    "bundle_id": 559,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Common/Widget/Atlas/UI_Img_Map_PetArea_Gather_Schedule_Icon.png",
+    "bundle_id": 559,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Event/Atlas/UI_Event_WaterArea_eggBg.png",
+    "bundle_id": 559,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Event/Atlas/UI_Img_Prayers_Egg.png",
+    "bundle_id": 559,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_Dungen/Atlas/UI_GameDungeonInfoimg_Bg2.png",
+    "bundle_id": 559,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_Dungen/Atlas/UI_GameDungeonInfoimg_shadow_box.png",
+    "bundle_id": 559,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Atlas/UI_Icon_GrabEggs_PlayerBag_Soulstone01.png",
+    "bundle_id": 559,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Atlas/UI_Icon_GrabEggs_TalentTree.png",
+    "bundle_id": 559,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Atlas/UI_Img_GrabEggs_Bag_DropState_Bg2.png",
+    "bundle_id": 559,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Atlas/UI_Img_GrabEggs_Bag_DropState_Iconff9594.png",
+    "bundle_id": 559,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Atlas/UI_Img_GrabEggs_Bag_EggIcon.png",
+    "bundle_id": 559,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Atlas/UI_Img_GrabEggs_Bag_ProgressOuter.png",
+    "bundle_id": 559,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Atlas/UI_Img_GrabEggs_Bag_SearchEye2.png",
+    "bundle_id": 559,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Atlas/UI_Img_GrabEggs_Info_ExtractBtn.png",
+    "bundle_id": 559,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Atlas/UI_Img_GrabEggs_Robot_Icon_Empty.png",
+    "bundle_id": 559,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Atlas/UI_Img_Season_Rank_Main_Deco_Bg6.png",
+    "bundle_id": 559,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Atlas/UI_Img_Season_Rank_Settlement_Egg_Empty_Small.png",
+    "bundle_id": 559,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Atlas/UI_Img_Season_Rank_Settlement_Mask.png",
+    "bundle_id": 559,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Image/UI_Img_GarbEggs_Collection_Show_Rainbow_Icon.png",
+    "bundle_id": 559,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Image/UI_Img_GarbEggs_TalentTree_Tab_Icon_05.png",
+    "bundle_id": 559,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Home/Atlas/UI_Img_Home_EggMachine_BgTxt.png",
+    "bundle_id": 559,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Home/Atlas/UI_Img_Home_SyntheticEgg_DashedDecoration.png",
+    "bundle_id": 559,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Hud/Atlas/UI_Icon_HUD_GrabEggs_TeammateState_IconBg.png",
+    "bundle_id": 559,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Hud/Atlas/UI_Icon_HUD_GrabEggs_TeammateState_ProgressBg.png",
+    "bundle_id": 559,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/MapRes/Atlas/UI_Icon_MapGrabEggs_EggState3.png",
+    "bundle_id": 559,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/MapRes/Atlas/UI_Img_GrabEggs_StatrtPoint_BgTips.png",
+    "bundle_id": 559,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/MapRes/Atlas/UI_Img_GrabEggs_TrackPoint_Arrow.png",
+    "bundle_id": 559,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/MapRes/Atlas/UI_Img_MapLayer_Enemy_Icon.png",
+    "bundle_id": 559,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/MapRes/Atlas/UI_Img_MapMisc_Plenty_Quality01.png",
+    "bundle_id": 559,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/MapRes/Atlas/UI_Img_MapMisc_Plenty_QualityS01.png",
+    "bundle_id": 559,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/MapRes/Atlas/UI_Img_Weather_Rainy_02.png",
+    "bundle_id": 559,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/MapRes/Atlas/UI_Img_Weather_RinBow_02.png",
+    "bundle_id": 559,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/MapRes/Atlas/UI_Img_Weather_Sun_01.png",
+    "bundle_id": 559,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/MapRes/Atlas/UI_Map_Icon_Weather3.png",
+    "bundle_id": 559,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/MapRes/Atlas/UI_MapResPoint_FieldBoss_Screening_icon.png",
+    "bundle_id": 559,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/MapRes/Atlas/UI_MapResPoint_WildBoss_Screening_icon.png",
+    "bundle_id": 559,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/RPanel/Popup/Image/UI_Img_CrabEgg_HugeEgg_icon_DungeonExit.png",
+    "bundle_id": 559,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/RPanel/Tips/Atlas/UI_Img_GrabEggs_CenterItem_Mask1.png",
+    "bundle_id": 559,
+    "dependencies": [
+      2
+    ],
+    "metadata": 12
+  },
+  {
+    "path": "Assets/Res/XGUI/Vfx/Material/Graph/VX_Mat_RacingDungeon_IconRghit_Flow.mat",
+    "bundle_id": 559,
+    "dependencies": [
+      57,
+      86,
+      561,
+      657,
+      2
+    ],
+    "metadata": 2
+  },
+  {
+    "path": "Assets/Res/XGUI/Common/CommonTexture/Atlas/UI_Icon_MapGrabEggs_EggState1.png",
+    "bundle_id": 560,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Common/CommonTexture/Atlas/UI_Img_GrabEggs_Bag_WeightBg.png",
+    "bundle_id": 560,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Common/CommonTexture/Atlas/UI_Img_GrabEggs_BgWaiting.png",
+    "bundle_id": 560,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Common/CommonTexture/Atlas/UI_Img_MapLayerSys_ActiveLower.png",
+    "bundle_id": 560,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Common/PetHead/Atlas/UI_Map_QuestionMark.png",
+    "bundle_id": 560,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Event/Atlas/UI_Img_Event_LeylinesTree_bgMap.png",
+    "bundle_id": 560,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_Dungen/Atlas/UI_GameDungeonInfoimg_shadow_title.png",
+    "bundle_id": 560,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_Dungen/Atlas/UI_Img_RacingDungeon_Access_Light2.png",
+    "bundle_id": 560,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_Dungen/Atlas/UI_Img_RacingDungeon_Access_Light4.png",
+    "bundle_id": 560,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_Dungen/Atlas/UI_Img_RacingDungeon_Evaluate_BgA.png",
+    "bundle_id": 560,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Atlas/UI_GameMod_GrabEggs_SwitchIcon.png",
+    "bundle_id": 560,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Atlas/UI_Img_GrabEggs_Bag_ArrowWeight.png",
+    "bundle_id": 560,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Atlas/UI_Img_GrabEggs_Bag_BgProp.png",
+    "bundle_id": 560,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Atlas/UI_Img_GrabEggs_Bag_DropState_Bg.png",
+    "bundle_id": 560,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Atlas/UI_Img_GrabEggs_Bag_FinishIcon.png",
+    "bundle_id": 560,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Atlas/UI_Img_GrabEggs_Bag_PropIcon.png",
+    "bundle_id": 560,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Atlas/UI_Img_GrabEggs_Bag_SoltIcon.png",
+    "bundle_id": 560,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Atlas/UI_Img_GrabEggs_Bag_SpriritIcon30p.png",
+    "bundle_id": 560,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Atlas/UI_Img_GrabEggs_Info_LeftBgBtn.png",
+    "bundle_id": 560,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Atlas/UI_Img_GrabEggs_Robot_Deco2.png",
+    "bundle_id": 560,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Atlas/UI_Img_GrabEggs_Robot_Skill_Bg.png",
+    "bundle_id": 560,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Atlas/UI_Img_GrabEggs_Room_TopPoint.png",
+    "bundle_id": 560,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Atlas/UI_Img_Season_Rank_Settlement_Bg2.png",
+    "bundle_id": 560,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Atlas/UI_Img_Season_Rank_Settlement_Level_Deco.png",
+    "bundle_id": 560,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Atlas/UI_Img_Season_Rank_Settlement_Mid.png",
+    "bundle_id": 560,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Atlas/UI_Img_Season_Rank_Settlement_Treasure_Chest_Bg4.png",
+    "bundle_id": 560,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Image/UI_Common_Icon_Light.png",
+    "bundle_id": 560,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Image/UI_Img_GarbEggs_Collection_Show_Gesture_Icon.png",
+    "bundle_id": 560,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Image/UI_Img_GarbEggs_TalentTree_Tab_Icon_01.png",
+    "bundle_id": 560,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Image/UI_Img_GarbEggs_TalentTree_Tab_Icon_03.png",
+    "bundle_id": 560,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Home/Atlas/UI_Img_Home_SyntheticEgg_Icon_SyntheticEgg.png",
+    "bundle_id": 560,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Hud/Atlas/UI_HUD_GrabEggs_Waiting_Info_Icon.png",
+    "bundle_id": 560,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Hud/Atlas/UI_Icon_HUD_GrabEggs_TeammateState003.png",
+    "bundle_id": 560,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Hud_Frame/UI_LeftTop/MiniMap/Atlas/UI_Icon_Hud_Day.png",
+    "bundle_id": 560,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Hud_Frame/UI_LeftTop/MiniMap/Atlas/UI_Img_Bg_Map_Switch_SeverBg.png",
+    "bundle_id": 560,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/MapRes/Atlas/UI_Icon_MapMisc_Plenty_Flower.png",
+    "bundle_id": 560,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/MapRes/Atlas/UI_Img_MapLayerSys_Inactive.png",
+    "bundle_id": 560,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/MapRes/Atlas/UI_Img_Weather_Sun_02.png",
+    "bundle_id": 560,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/RPanel/Popup/Atlas/UI_Img_ShiftingEgg_TipsRingOuter.png",
+    "bundle_id": 560,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Vfx/Material/UI/VX_Mat_ShiftingEgg_Icon_Add.mat",
+    "bundle_id": 560,
+    "dependencies": [
+      57,
+      77,
+      2
+    ],
+    "metadata": 1
+  },
+  {
+    "path": "Assets/Res/XGUI/Common/CommonTexture/Atlas/UI_Img_Map_PetArea_PicGlow.png",
+    "bundle_id": 561,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Common/CommonTexture/Atlas/UI_Map_Icon_Weather5.png",
+    "bundle_id": 561,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Common/Item/Atlas/UI_Img_GrabEggs_Safe_Box_Bg.png",
+    "bundle_id": 561,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Event/Atlas/UI_Img_Prayers_BgEgg.png",
+    "bundle_id": 561,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/FunMenu/Atlas/UI_Mmenu_Map1.png",
+    "bundle_id": 561,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_Dungen/Atlas/UI_GameDungeon_SelectedFrame.png",
+    "bundle_id": 561,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_Dungen/Atlas/UI_GameDungeonInfoimg_progress.png",
+    "bundle_id": 561,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_Dungen/Atlas/UI_GameMod_GrabEggs_TeamIcon_01.png",
+    "bundle_id": 561,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_Dungen/Atlas/UI_Img_RacingDungeon_Access_Light3.png",
+    "bundle_id": 561,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Atlas/UI_GameMod_GrabEggs_Drag_Bg_Nml.png",
+    "bundle_id": 561,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Atlas/UI_Icon_Common_EmptyDesc.png",
+    "bundle_id": 561,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Atlas/UI_Icon_Release.png",
+    "bundle_id": 561,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Atlas/UI_Img_GrabEggs_Bag_BgWeightRound.png",
+    "bundle_id": 561,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Atlas/UI_Img_GrabEggs_Bag_Desc01.png",
+    "bundle_id": 561,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Atlas/UI_Img_GrabEggs_Bag_Desc03.png",
+    "bundle_id": 561,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Atlas/UI_Img_GrabEggs_Bag_Progress.png",
+    "bundle_id": 561,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Atlas/UI_Img_GrabEggs_Bag_SearchBg1.png",
+    "bundle_id": 561,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Atlas/UI_Img_GrabEggs_Bag_SearchBody.png",
+    "bundle_id": 561,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Atlas/UI_Img_GrabEggs_Bag_SpriritIconEmpty03.png",
+    "bundle_id": 561,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Atlas/UI_Img_GrabEggs_KillDetail_HorizontalDecoration20.png",
+    "bundle_id": 561,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Atlas/UI_Img_GrabEggs_MapNameDecoration10_GenericDark.png",
+    "bundle_id": 561,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Atlas/UI_Img_GrabEggs_Robot_Deco1.png",
+    "bundle_id": 561,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Atlas/UI_Img_GrabEggs_Robot_Progress.png",
+    "bundle_id": 561,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Atlas/UI_Img_GrabEggs_Robot_Progress_Cancel.png",
+    "bundle_id": 561,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Atlas/UI_Img_GrabEggs_Safe_Box_Icon.png",
+    "bundle_id": 561,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Atlas/UI_Img_GrabEggs_Shop.png",
+    "bundle_id": 561,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Atlas/UI_Img_LineSegment2.png",
+    "bundle_id": 561,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Atlas/UI_Img_Season_Rank_Main_Deco_Dot.png",
+    "bundle_id": 561,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Home/Atlas/UI_Img_Home_SyntheticEgg_Triangle_30Percent.png",
+    "bundle_id": 561,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Hud_Frame/UI_LeftTop/MiniMap/Atlas/UI_Map_FrameArrow.png",
+    "bundle_id": 561,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/MapRes/Atlas/UI_Img_MapMisc_Plenty_Quality.png",
+    "bundle_id": 561,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/MapRes/Atlas/UI_Img_MapMisc_Plenty_Quality02.png",
+    "bundle_id": 561,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/MapRes/Atlas/UI_Img_MapMisc_Plenty_QualityS03.png",
+    "bundle_id": 561,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/MapRes/Atlas/UI_Img_Weather_Rainy_01.png",
+    "bundle_id": 561,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/RPanel/Popup/Atlas/UI_Img_Map_Tips_Bg.png",
+    "bundle_id": 561,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/RPanel/Popup/Atlas/UI_Img_ShiftingEgg_TipsBgGlow.png",
+    "bundle_id": 561,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Common/CommonTexture/Atlas/UI_Img_Map_Bubble_Track_Arrow.png",
+    "bundle_id": 562,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Common/CommonTexture/Atlas/UI_Img_Map_PetArea_Item_Empty.png",
+    "bundle_id": 562,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Common/CommonTexture/Atlas/UI_Img_Map_SortFilter_TagSel.png",
+    "bundle_id": 562,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Common/Item/Atlas/UI_Img_GrabEggs_Robot_Vertical_Glow.png",
+    "bundle_id": 562,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Common/Item/Atlas/UI_Img_GrabEggs_Safe_Box_Lock.png",
+    "bundle_id": 562,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Common/Widget/Atlas/Img_Map_Mark_Unknown.png",
+    "bundle_id": 562,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Chat/Atlas/UI_Img_Bg_TeamTravel_EggSnatchingTeam.png",
+    "bundle_id": 562,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Event/Atlas/UI_Event_Prayers_Eggshell_3.png",
+    "bundle_id": 562,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Event/Atlas/UI_Event_WaterArea_egg.png",
+    "bundle_id": 562,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Event/Atlas/UI_Img_Event_Season_Overview_Btn_Newmap.png",
+    "bundle_id": 562,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/FunMenu/Atlas/UI_Mmenu_Map5.png",
+    "bundle_id": 562,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_Dungen/Atlas/UI_GameDungeon_OwnBase.png",
+    "bundle_id": 562,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_Dungen/Atlas/UI_GameDungeonInfoimg_Warrior.png",
+    "bundle_id": 562,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Atlas/UI_GameMod_GrabEggs_ModeSelect_SingleTeam.png",
+    "bundle_id": 562,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Atlas/UI_GameMod_GrabEggs_ModeSelect_Small.png",
+    "bundle_id": 562,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Atlas/UI_Icon_GrabEggs_Backpack_White.png",
+    "bundle_id": 562,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Atlas/UI_Icon_GrabEggs_Collection.png",
+    "bundle_id": 562,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Atlas/UI_Img_GrabEggs_Bag_Desc02.png",
+    "bundle_id": 562,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Atlas/UI_Img_GrabEggs_Bag_Desc04.png",
+    "bundle_id": 562,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Atlas/UI_Img_GrabEggs_Bag_FigureTitle.png",
+    "bundle_id": 562,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Atlas/UI_Img_GrabEggs_Bag_SearchEye2_Glow.png",
+    "bundle_id": 562,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Atlas/UI_Img_GrabEggs_Bag_SpriritIcon.png",
+    "bundle_id": 562,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Atlas/UI_Img_GrabEggs_HorizontalLineDecoration.png",
+    "bundle_id": 562,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Atlas/UI_Img_GrabEggs_Line.png",
+    "bundle_id": 562,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Atlas/UI_Img_GrabEggs_lock.png",
+    "bundle_id": 562,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Atlas/UI_Img_GrabEggs_MapLoadingGlow.png",
+    "bundle_id": 562,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Atlas/UI_Img_GrabEggs_Reward_Icon.png",
+    "bundle_id": 562,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Atlas/UI_Img_GrabEggs_Season_Rank_Settlement_Glow.png",
+    "bundle_id": 562,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Atlas/UI_Img_GrabEggs_Settlement_ActionBg.png",
+    "bundle_id": 562,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Atlas/UI_Img_GrabEggs_Settlement_FinishPoint.png",
+    "bundle_id": 562,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Atlas/UI_Img_GrabEggs_Spectate_Figure.png",
+    "bundle_id": 562,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Atlas/UI_Img_GrabEggs_Spectate_FrameName.png",
+    "bundle_id": 562,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Atlas/UI_Img_GrabEggs_Tab_Sel2.png",
+    "bundle_id": 562,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Atlas/UI_Img_Season_Rank_Settlement_Empty_Icon.png",
+    "bundle_id": 562,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Atlas/UI_Img_Season_Rank_Settlement_Level_Bg1.png",
+    "bundle_id": 562,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Atlas/UI_Img_Season_Rank_Settlement_Treasure_Reward_Bg2.png",
+    "bundle_id": 562,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Image/UI_Img_GarbEggs_Collection_Show_Reward_Icon01.png",
+    "bundle_id": 562,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Image/UI_Img_GarbEggs_TalentTree_Tab_Icon_02.png",
+    "bundle_id": 562,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Image/UI_Img_GarbEggs_TalentTree_Tab_Icon_04.png",
+    "bundle_id": 562,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Image/VX_GameMod_GrabEggs_ModeSelect_Chaos_Icon_Small_Mask.png",
+    "bundle_id": 562,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Hud/Atlas/UI_Icon_HUD_GrabEggs_TeammateState002.png",
+    "bundle_id": 562,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/MapRes/Atlas/UI_Icon_MapGrabEggs_EggState2.png",
+    "bundle_id": 562,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/MapRes/Atlas/UI_Img_GrabEggs_TrackPoint_Frame1.png",
+    "bundle_id": 562,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/MapRes/Atlas/UI_Img_MapMisc_Plenty_Quality04.png",
+    "bundle_id": 562,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/MapRes/Atlas/UI_Img_MapMisc_Plenty_Quality05.png",
+    "bundle_id": 562,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/MapRes/Atlas/UI_Img_MapMisc_Plenty_QualityS04.png",
+    "bundle_id": 562,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/MapRes/Atlas/UI_Img_Weather_Snowy_01.png",
+    "bundle_id": 562,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/MapRes/Atlas/UI_Img_Weather_Thunderstorm_01.png",
+    "bundle_id": 562,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/MapRes/Atlas/UI_Map_Icon_Weather2.png",
+    "bundle_id": 562,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Quest_Knowledge/Atlas/UI_Img_Knowledge_HeroBgDecor.png",
+    "bundle_id": 562,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/RPanel/Popup/Atlas/UI_Img_ShiftingEgg_TipsIconBg.png",
+    "bundle_id": 562,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/RPanel/Popup/Image/UI_Img_ShiftingEgg_IconEgg.png",
+    "bundle_id": 562,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Vfx/Material/Graph/VX_Mat_RacingDungeon_IconLeft_Flow.mat",
+    "bundle_id": 562,
+    "dependencies": [
+      57,
+      86,
+      561,
+      657,
+      2
+    ],
+    "metadata": 2
+  },
+  {
+    "path": "Assets/Res/XGUI/Common/CommonTexture/Atlas/UI_Img_Map_LeylinesTree_Progress_Scale_Light.png",
+    "bundle_id": 563,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Common/Item/Atlas/UI_Img_GrabEggs_Robot_Vertical_Progress.png",
+    "bundle_id": 563,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Event/Atlas/UI_Event_Prayers_Eggshell_1.png",
+    "bundle_id": 563,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/FunMenu/Atlas/UI_Mmenu_Map2.png",
+    "bundle_id": 563,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_Dungen/Atlas/UI_GameDungeon_TeammateBase.png",
+    "bundle_id": 563,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_Dungen/Atlas/UI_GameDungeonInfoimg_Bg.png",
+    "bundle_id": 563,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_Dungen/Atlas/UI_GameMod_GrabEggs_ExclamationMark.png",
+    "bundle_id": 563,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_Dungen/Atlas/UI_Icon_RacingDungeon_Clock.png",
+    "bundle_id": 563,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_Dungen/Atlas/UI_Img_RacingDungeon_Bg_Access.png",
+    "bundle_id": 563,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_Dungen/Atlas/UI_Img_RacingDungeon_Bg_Tips.png",
+    "bundle_id": 563,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_Dungen/Atlas/UI_Img_RacingDungeon_Evaluate_FrameS.png",
+    "bundle_id": 563,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Atlas/UI_GameMod_GrabEggs_Drag_Bg_Dis.png",
+    "bundle_id": 563,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Atlas/UI_GameMod_GrabEggs_ModeSelect_Chaos_Icon_Small.png",
+    "bundle_id": 563,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Atlas/UI_Icon_GrabEggs_Bg.png",
+    "bundle_id": 563,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Atlas/UI_Icon_GrabEggs_Shop.png",
+    "bundle_id": 563,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Atlas/UI_Img_GrabEggs_Bag_ProgressGlow.png",
+    "bundle_id": 563,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Atlas/UI_Img_GrabEggs_Bag_Put.png",
+    "bundle_id": 563,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Atlas/UI_Img_GrabEggs_Bag_SearchEye1.png",
+    "bundle_id": 563,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Atlas/UI_Img_GrabEggs_Icon_Detail.png",
+    "bundle_id": 563,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Atlas/UI_Img_GrabEggs_Tab_Sel1.png",
+    "bundle_id": 563,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Atlas/UI_Img_Season_Rank_Settlement_Egg_Empty.png",
+    "bundle_id": 563,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Atlas/UI_Img_Season_Rank_Settlement_Treasure_Chest_Add.png",
+    "bundle_id": 563,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Atlas/UI_Img_Season_Rank_Settlement_Treasure_Chest_Bg2.png",
+    "bundle_id": 563,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Atlas/UI_Img_Season_Rank_Settlement_Treasure_Chest_Glow.png",
+    "bundle_id": 563,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Atlas/UI_Img_Season_Rank_Settlement_Treasure_Chest_Max.png",
+    "bundle_id": 563,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Atlas/UI_Img_Season_Rank_Tag_Bg_Deco.png",
+    "bundle_id": 563,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Image/UI_Img_GarbEggs_Collection_Show_Question_Icon.png",
+    "bundle_id": 563,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Home/Image/UI_Icon_Home_SyntheticEgg_Bg_Mask.png",
+    "bundle_id": 563,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Hud/Atlas/UI_HUD_GrabEggs_Waiting_Info_Bg.png",
+    "bundle_id": 563,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Hud/Atlas/UI_Img_Hud_Bg_EggSnatchingTeam.png",
+    "bundle_id": 563,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/MapRes/Atlas/Img_Map_PointBg_HugeEgg.png",
+    "bundle_id": 563,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/MapRes/Atlas/UI_Icon_MapMisc_Plenty_Tree.png",
+    "bundle_id": 563,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/MapRes/Atlas/UI_Img_GrabEggs_TrackPoint_Glow.png",
+    "bundle_id": 563,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/MapRes/Atlas/UI_Img_MapLayer_Journey.png",
+    "bundle_id": 563,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/MapRes/Atlas/UI_Img_MapMisc_Plenty_Quality03.png",
+    "bundle_id": 563,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/MapRes/Atlas/UI_Img_MapMisc_Plenty_QualityS05.png",
+    "bundle_id": 563,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/MapRes/Atlas/UI_Img_Weather_Bg.png",
+    "bundle_id": 563,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/RPanel/Popup/Atlas/UI_Img_ShiftingEgg_Tips_Icon_Violent.png",
+    "bundle_id": 563,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Vfx/Material/UI/VX_Mat_ShiftingEgg_Icon.mat",
+    "bundle_id": 563,
+    "dependencies": [
+      57,
+      77,
+      86,
+      2
+    ],
+    "metadata": 1
+  },
+  {
+    "path": "Assets/Res/XGUI/Common/CommonTexture/Atlas/UI_Img_Map_SortFilter_ScrollNml.png",
+    "bundle_id": 564,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Common/Tab/Image/UI_Icon_Tab_Map_N.png",
+    "bundle_id": 564,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Common/Widget/Atlas/UI_Img_Map_Mask_BossPoint.png",
+    "bundle_id": 564,
+    "dependencies": [
+      2
+    ],
+    "metadata": 2
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Event/Atlas/UI_Event_EnergyUp_MapBg.png",
+    "bundle_id": 564,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Event/Atlas/UI_Icon_Event_BossCatch_GameDungeonInfo_BallIfnoBg.png",
+    "bundle_id": 564,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_Dungen/Atlas/UI_GameDungeonInfoimg_frame_1.png",
+    "bundle_id": 564,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_Dungen/Atlas/UI_GameDungeonInfoimg_frame_2.png",
+    "bundle_id": 564,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_Dungen/Atlas/UI_GameMod_GrabEggs_Dot.png",
+    "bundle_id": 564,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_Dungen/Atlas/UI_GameMod_GrabEggs_Triangle.png",
+    "bundle_id": 564,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_Dungen/Atlas/UI_Img_RacingDungeon_Evaluate_BgB.png",
+    "bundle_id": 564,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_Dungen/Atlas/UI_Img_RacingDungeon_Evaluate_FrameA.png",
+    "bundle_id": 564,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Atlas/UI_GameMod_GrabEggs_ModeSelect_MultipleTeams.png",
+    "bundle_id": 564,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Atlas/UI_Icon_GrabEggs_Backpack.png",
+    "bundle_id": 564,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Atlas/UI_Icon_GrabEggs_PlayerBag_Soulstone05.png",
+    "bundle_id": 564,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Atlas/UI_Img_GrabEggs_Bag_DropState_Icon.png",
+    "bundle_id": 564,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Atlas/UI_Img_GrabEggs_Bag_SearchBg2.png",
+    "bundle_id": 564,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Atlas/UI_Img_GrabEggs_Bag_SpriritIconEmpty02.png",
+    "bundle_id": 564,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Atlas/UI_Img_GrabEggs_Info_DailyBtn.png",
+    "bundle_id": 564,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Atlas/UI_Img_GrabEggs_ListDecoration.png",
+    "bundle_id": 564,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Atlas/UI_Img_GrabEggs_Own_Icon.png",
+    "bundle_id": 564,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Atlas/UI_Img_GrabEggs_Player_Bg.png",
+    "bundle_id": 564,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Atlas/UI_Img_GrabEggs_Settlement_EndSuccessRole.png",
+    "bundle_id": 564,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Atlas/UI_Img_GrabEggs_Spectate_BtnArrow.png",
+    "bundle_id": 564,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Atlas/UI_Img_LineSegment.png",
+    "bundle_id": 564,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Atlas/UI_Img_Season_Rank_Settlement_Egg_Small.png",
+    "bundle_id": 564,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Atlas/UI_Img_Season_Rank_Settlement_Treasure_Chest_Bg3.png",
+    "bundle_id": 564,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Atlas/UI_Img_Season_Rank_Settlement_Treasure_Chest_Lock.png",
+    "bundle_id": 564,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Atlas/UI_Img_Season_Rank_Settlement_Treasure_Reward_Bg.png",
+    "bundle_id": 564,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Image/UI_Img_Season_Rank_Main_Icon_Done.png",
+    "bundle_id": 564,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Image/VX_GameMod_GrabEggs_ModeSelect_Chaos_Iconl_Mask.png",
+    "bundle_id": 564,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Mat/UI_Mat_GrabEggs_Season_Rank_Icon_SweepLight.mat",
+    "bundle_id": 564,
+    "dependencies": [
+      57,
+      77,
+      84,
+      600,
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Home/Atlas/UI_Icon_Home_SyntheticEgg_SynthesisSlot_Light.png",
+    "bundle_id": 564,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Hud/Atlas/UI_HUD_GrabEggs_Waiting_Info_Round.png",
+    "bundle_id": 564,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/MapRes/Atlas/UI_Img_MapLayer_TaskBranch.png",
+    "bundle_id": 564,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/MapRes/Atlas/UI_Img_MapLayerSys_Active.png",
+    "bundle_id": 564,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/MapRes/Atlas/UI_Img_MarkPoint_Selected01.png",
+    "bundle_id": 564,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/MapRes/Atlas/UI_MapResPoint_FieldBoss_Border.png",
+    "bundle_id": 564,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/MapRes/Atlas/UI_MapResPoint_FieldBoss_Unknown.png",
+    "bundle_id": 564,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/RPanel/Popup/Atlas/UI_Img_ShiftingEgg_Tips_IconAppear.png",
+    "bundle_id": 564,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/RPanel/Popup/Image/UI_Img_CrabEgg_HugeEgg_icon_DungeonEntrance2.png",
+    "bundle_id": 564,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Common/Button/Atlas/UI_Icon_GrabEggs_Organize.png",
+    "bundle_id": 565,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Common/CommonTexture/Atlas/UI_Img_GrabEggs_Bag_WeightProgress.png",
+    "bundle_id": 565,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Common/CommonTexture/Atlas/UI_Img_PetEgg_Progress.png",
+    "bundle_id": 565,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Common/Item/Atlas/UI_Img_GrabEggs_Robot_Vertical_Bg.png",
+    "bundle_id": 565,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Common/Widget/Atlas/UI_Img_Bg_Map_Mark_Pet_Unknown.png",
+    "bundle_id": 565,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Event/Atlas/UI_Event_EnergyUp_Map.png",
+    "bundle_id": 565,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Event/Atlas/UI_Event_Prayers_Eggshell_2.png",
+    "bundle_id": 565,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Event/Atlas/UI_Event_SchoolGuide_TreasureChest.png",
+    "bundle_id": 565,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Event/Atlas/UI_Img_Event_Season_Overview_Btn_Egg.png",
+    "bundle_id": 565,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/FunMenu/Atlas/UI_Mmenu_Map3.png",
+    "bundle_id": 565,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_Dungen/Atlas/UI_GameDungeon_OwnBase2.png",
+    "bundle_id": 565,
+    "dependencies": [
+      2
+    ],
+    "metadata": 5
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_Dungen/Atlas/UI_GameDungeonInfoicon_Ununlocked.png",
+    "bundle_id": 565,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_Dungen/Atlas/UI_GameDungeonInfoimg_mask.png",
+    "bundle_id": 565,
+    "dependencies": [
+      2
+    ],
+    "metadata": 2
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_Dungen/Atlas/UI_GameMod_GrabEggs_TeamIcon_01_Line.png",
+    "bundle_id": 565,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_Dungen/Atlas/UI_Img_RacingDungeon_Bg_Access_Mask.png",
+    "bundle_id": 565,
+    "dependencies": [
+      2
+    ],
+    "metadata": 3
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_Dungen/Atlas/UI_Img_RacingDungeon_Evaluate_BgS.png",
+    "bundle_id": 565,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_Dungen/Atlas/UI_Img_RacingDungeon_Evaluate_FrameB.png",
+    "bundle_id": 565,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Atlas/UI_GameMod_GrabEggs_ModeSelect_Chaos_Icon_Big.png",
+    "bundle_id": 565,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Atlas/UI_GameMod_GrabEggs_TeamIcon_02.png",
+    "bundle_id": 565,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Atlas/UI_Icon_GrabEggs_Lock.png",
+    "bundle_id": 565,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Atlas/UI_Img_GrabEggs_Bag_FigureLeft2.png",
+    "bundle_id": 565,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Atlas/UI_Img_GrabEggs_Robot_Progress_Bg.png",
+    "bundle_id": 565,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Atlas/UI_Img_GrabEggs_Settlement_Deco_01.png",
+    "bundle_id": 565,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Atlas/UI_Img_Season_Rank_Settlement_Bg4.png",
+    "bundle_id": 565,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Atlas/UI_Img_Season_Rank_Settlement_Egg.png",
+    "bundle_id": 565,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Atlas/UI_Img_Season_Rank_Settlement_Level_Bg2.png",
+    "bundle_id": 565,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Atlas/UI_Img_Season_Rank_Settlement_Treasure_Chest_Bg1.png",
+    "bundle_id": 565,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Atlas/UI_Img_Season_Rank_Settlement_Treasure_Chest_Fill1.png",
+    "bundle_id": 565,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Atlas/UI_Img_Season_Rank_Settlement_Treasure_Chest_Fill2.png",
+    "bundle_id": 565,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Help/Atlas/UI_Img_GuideSettings_Map.png",
+    "bundle_id": 565,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Home/Atlas/UI_Img_Home_EggMachine_Handle.png",
+    "bundle_id": 565,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Home/Atlas/UI_Img_Home_Incubator_EmptyEgg.png",
+    "bundle_id": 565,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Hud/Atlas/UI_Icon_HUD_GrabEggs_TeammateState001.png",
+    "bundle_id": 565,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Hud_Frame/UI_MidBottom/GrabEggs_Robot/Atlas/UI_Img_GrabEggs_Robot_HUD_Glow.png",
+    "bundle_id": 565,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/HUD_Quest/Atlas/UI_Img_Hud_GameplayTrack_Chest_Yellow.png",
+    "bundle_id": 565,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/MapRes/Atlas/Img_Map_Mark_Completed.png",
+    "bundle_id": 565,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/MapRes/Atlas/UI_Img_GrabEggs_StatrtPoint_Arrow.png",
+    "bundle_id": 565,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/MapRes/Atlas/UI_Img_GrabEggs_TrackPoint_Frame.png",
+    "bundle_id": 565,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/MapRes/Atlas/UI_Img_MapLayer_Receive.png",
+    "bundle_id": 565,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/MapRes/Atlas/UI_Img_MapMisc_Plenty_QualityS02.png",
+    "bundle_id": 565,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/MapRes/Atlas/UI_MapResPoint_FieldElite_Unknown.png",
+    "bundle_id": 565,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/MapRes/Atlas/UI_MapResPoint_Habitat.png",
+    "bundle_id": 565,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/RPanel/Popup/Atlas/UI_Img_CommonInterobject_Border.png",
+    "bundle_id": 565,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/RPanel/Popup/Atlas/UI_Img_ShiftingEgg_TipsLine.png",
+    "bundle_id": 565,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/RPanel/Popup/Atlas/UI_Img_ShiftingEgg_TipsRingIn.png",
+    "bundle_id": 565,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/RPanel/Popup/Image/UI_Img_CrabEgg_HugeEgg_icon_DungeonEntrance1.png",
+    "bundle_id": 565,
+    "dependencies": [
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/RPanel/Tips/Atlas/UI_Img_GrabEggs_CenterItem_Mask2.png",
+    "bundle_id": 565,
+    "dependencies": [
+      2
+    ],
+    "metadata": 12
+  },
+  {
+    "path": "Assets/Res/XGUI/Vfx/Material/UI/VX_Mat_GrabEgg_Rank_Icon_Glow.mat",
+    "bundle_id": 565,
+    "dependencies": [
+      57,
+      77,
+      85,
+      89,
+      438,
+      2
+    ],
+    "metadata": 1
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Node/UI_Node_Map_Ark_Icon.prefab",
+    "bundle_id": 570,
+    "dependencies": [
+      2,
+      57,
+      71,
+      77,
+      85,
+      86,
+      89,
+      90,
+      438,
+      455,
+      562,
+      565,
+      567
+    ],
+    "metadata": 1
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Node/UI_Node_Map_Ark_Icon_Tips.prefab",
+    "bundle_id": 570,
+    "dependencies": [
+      2,
+      57,
+      77,
+      85,
+      562,
+      563,
+      567,
+      591,
+      600,
+      610,
+      656
+    ],
+    "metadata": 1
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Node/UI_Node_Map_Global_Icon.prefab",
+    "bundle_id": 570,
+    "dependencies": [
+      2,
+      57,
+      71,
+      77,
+      84,
+      85,
+      86,
+      90,
+      413,
+      450,
+      565,
+      567,
+      591,
+      657
+    ],
+    "metadata": 1
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Node/UI_Node_MapMark_Icon.prefab",
+    "bundle_id": 570,
+    "dependencies": [
+      71,
+      77,
+      85,
+      2
+    ],
+    "metadata": 2
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Node/VXMapIconParticle.prefab",
+    "bundle_id": 570,
+    "dependencies": [
+      57,
+      87,
+      89,
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Node/VXPbMapLeylineTreePopupLeftIcon.prefab",
+    "bundle_id": 570,
+    "dependencies": [
+      57,
+      77,
+      78,
+      84,
+      85,
+      86,
+      89,
+      90,
+      563,
+      2
+    ],
+    "metadata": 2
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/MapRes/Node/Misc/UI_MapMisc_MarkPet_IconActive.prefab",
+    "bundle_id": 570,
+    "dependencies": [
+      71,
+      77,
+      85,
+      86,
+      560,
+      565,
+      2
+    ],
+    "metadata": 3
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/MapRes/Node/Misc/UI_MapMisc_MarkPet_IconNoActive.prefab",
+    "bundle_id": 570,
+    "dependencies": [
+      85,
+      86,
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/MapRes/Node/Misc/UI_MapMisc_LayerIcon.prefab",
+    "bundle_id": 572,
+    "dependencies": [
+      85,
+      2
+    ],
+    "metadata": 4
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/MapRes/Node/Misc/UI_MapMisc_MarkCommonIcon.prefab",
+    "bundle_id": 572,
+    "dependencies": [
+      85,
+      86,
+      2
+    ],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Event_BossCatch/Atlas/UI_Img_Event_GameDungeonInfo_BossCatch_Cube.png",
+    "bundle_id": 585,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Event_BP/Atlas/UI_Img_BP_Icon_Egg.png",
+    "bundle_id": 586,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Event_BP/Atlas/UI_Img_BP_Icon_Egg_New.png",
+    "bundle_id": 586,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_Tower/Atlas/UI_GameMod_Tower_EggBase.png",
+    "bundle_id": 587,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_Tower/Atlas/UI_Img_Tower_DailyRewards_Robot_Round1.png",
+    "bundle_id": 587,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_Tower/Atlas/UI_Img_Tower_DailyRewards_Robot_Round2.png",
+    "bundle_id": 587,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_Tower/Atlas/UI_Img_Tower_DailyRewards_Robot_Round3.png",
+    "bundle_id": 587,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_Tower/Atlas/UI_Img_Tower_DailyRewards_Robot_Round4.png",
+    "bundle_id": 587,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_Tower/Atlas/UI_Img_Tower_DailyRewards_Robot_Round5.png",
+    "bundle_id": 587,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/GameMod_Tower/Image/UI_Img_Tower_Event_Dialogue_Icon_Robot.png",
+    "bundle_id": 587,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Anim/VX_Node_Map_Ark_Icon_In.anim",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 1
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Anim/VX_Node_Map_Ark_Icon_Loop.anim",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Anim/VX_Node_Map_Ark_Icon_Tips_In.anim",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 2
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Anim/VX_Node_Map_Global_Icon_In.anim",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 1
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Anim/VX_Node_Map_Global_Icon_Loop.anim",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 2
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_bg_head01.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_bg_head01Bg.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_bg_head02.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 1
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_bg_head02Bg.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Btn_Map_LeylinesTree_Disable.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Event_EnergyUp_Bgup.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Event_EnergyUp_Icon_up.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Icon_GameMod_Chest.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Icon_General.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 1
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Icon_Many_Bg.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Icon_Map_PointDelete.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Icon_Map_Switch_Close.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Icon_Map_Switch_Open.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Icon_Mark_ManyDelete.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Icon_Task01.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 1
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Bg_Map_Effect.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Bg_Map_Float.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Bg_Map_Float_Skill.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Bg_Map_Float_Title.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Bg_Map_LeylinesTree_Center_Light.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Bg_Map_LeylinesTree_Center_Line1.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Bg_Map_LeylinesTree_Center_Line2.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Bg_Map_LeylinesTree_Center_Line3.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Bg_Map_LeylinesTree_Center_NoLight.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Bg_Map_LeylinesTree_Center_Pop.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Bg_Map_LeylinesTree_CenterLight.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Bg_Map_LeylinesTree_Figure.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Bg_Map_LeylinesTree_Level.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Bg_Map_LeylinesTree_Point_NotActive.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Bg_Map_LeylinesTree_Point1.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Bg_Map_LeylinesTree_Point2.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Bg_Map_LeylinesTree_Point3.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Bg_Map_LeylinesTree_Point4.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Bg_Map_LeylinesTree_Point5.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Bg_Map_LeylinesTree_PointItem.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Bg_Map_LeylinesTree_PointStroke1.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Bg_Map_LeylinesTree_PointStroke3.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 2
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Bg_Map_LeylinesTree_PointStroke4.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 2
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Bg_Map_LeylinesTree_PointStroke5.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 2
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Bg_Map_mask.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 3
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Bg_Map_Nourish_Progress.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Bg_Map_Switch_Close.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Bg_Map_Switch_Open.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Bg_MapFloat_QuestBg.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Bg_MapFloat_QuestPoint.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_ExploreName_Line.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Map_ark_CityLand.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Map_ark_CityVision3.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Map_Ark_Tips.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Map_Ark_Voxel.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Map_bgRound.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Map_Bubble_Track.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Map_Coil.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Map_Coil2.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Map_ControlAll.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Map_Cultivate_ItemPoint_Large.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Map_Cultivate_ItemPoint_Mid.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Map_Cultivate_ItemPoint_Small.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Map_Cultivate_ItemPoint_SmallNor.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Map_Cultivate_Petal1.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Map_Cultivate_Petal2.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Map_Cultivate_Petal3.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Map_Cultivate_Petal4.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Map_Cultivate_Probability_ProgressBg.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Map_Cultivate_Probability_ProgressFill.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Map_Cultivate_Probability_ProgressFill01.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Map_Cultivate_Probability_ProgressFill02.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Map_Cultivate_Probability_ProgressFill03.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Map_Cultivate_Probability_ProgressFill04.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Map_Cultivate_Probability_ProgressFill05.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Map_Cultivate_Probability_ProgressFill06.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Map_Cultivate_Probability_ProgressFillBg.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Map_Cultivate_Probability_ProgressFillGlow01.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Map_Cultivate_Probability_ProgressFillGlow02.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Map_Cultivate_Probability_ProgressFillGlow03.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Map_Cultivate_Probability_ProgressFillGlow04.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Map_Cultivate_Probability_ProgressFillGlow05.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Map_Cultivate_Probability_ProgressFillGlow06.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Map_Cultivate_WeatherSel.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Map_Cultive_AddProp_Bg.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Map_Cultive_AddProp_Bg1.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Map_Cultive_BgMap.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Map_Cultive_GlowCenter.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Map_Cultive_Item_Dis.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Map_Cultive_Item_Nml.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Map_Cultive_Item_Point.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Map_Cultive_Item_Sel.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Map_Cultive_ItemLine_Sel.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Map_Cultive_Pop_ItemBg.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Map_Distributionbg.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Map_Distributionicon.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Map_Filter_Boss.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Map_Filter_Item_Focus.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Map_Filter_Point.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Map_Float_Cultivate_Frame.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Map_Float_CultivateIcon_Dis.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Map_Float_CultivateIcon_Nml.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Map_Float_LeylineTree_GoPoint.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Map_HomeDelegation_BgFinishItem.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Map_HomeDelegation_RoundFinishItem.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Map_Land_Point1.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Map_Land_Point2.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Map_Land1.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Map_LeylinesTree_Buff_Line.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Map_LeylinesTree_Buff_Small.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Map_LeylinesTree_Buff_Small1.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Map_LeylinesTree_Buff_Smallbg.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Map_LeylinesTree_BuffGet_Circle2.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Map_LeylinesTree_BuffGet_Round.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Map_LeylinesTree_Cultivate_BgFill.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Map_LeylinesTree_Cultivate_CountDown.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Map_LeylinesTree_Cultivate_FullPoint.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Map_LeylinesTree_Cultivate_TxtBg.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Map_LeylinesTree_Cultivate_Unlock.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Map_LeylinesTree_CultivateBg1.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Map_LeylinesTree_CultivateBg2.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Map_LeylinesTree_LeftButton_Ring.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Map_LeylinesTree_Progress_FilPointL.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Map_LeylinesTree_Progress_FilPointR.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Map_LeylinesTree_SmallBuff_Sel.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Map_LeylinesTree_WeatherBg1.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Map_LeylinesTree_WeatherBg2.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Map_MarkFloat_Restrain.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Map_MarkFloat_Restrained.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Map_PetArea_CatchTips.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Map_PetArea_DetailsBg.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Map_PetArea_FloatTab_Bg_Nml.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Map_PetArea_FloatTab_Bg_Sel.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Map_PetArea_FloatTab_Pet_Nml.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Map_PetArea_FloatTab_Style.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Map_PetArea_FloatTab_Weather_Nml.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Map_PetArea_FloatTab_Weather_Sel.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Map_PetArea_Gather_Schedule.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Map_PetArea_Gather_Schedule2.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Map_PetArea_Gather_Schedule3.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Map_PetArea_Gather_ScheduleBg.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Map_PetArea_Gather_ScheduleBg1.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Map_PetArea_Gather_ScheduleBg2.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Map_PetArea_Gather_ScheduleBg3.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Map_PetArea_GatherBadge_Bg.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Map_PetArea_GatherBadge_Frame.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Map_PetArea_GlobalBg.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Map_PetArea_MarkGlow.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Map_PetArea_MarkGlow_W.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Map_PetArea_MarkPet.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Map_PetArea_Pet_Bg.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Map_PetArea_PetIcon.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Map_Round2.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Map_RoundbgToggle.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Map_Roundicon.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Map_Roundicon2.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Map_RoundToggleicon.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Map_Scale_Bg_Silder.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Map_Scale_Bg_Silder2.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Map_Search.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Map_SortFilter_TagNml.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Map_SortFilter_Unknow.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Map_SortFilter_View_Bg.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Map_SortFilter_View_Check.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Map_Weather_Item_Dis.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Map_Weather_Item_Nml.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Map_Weather_Item_Sel.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Map_Weather_Unknow.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_MapLayerSys_TextFieldCutout.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Personal_Main_Icon2.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Probability_ProgressFill01_Glow.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Probability_ProgressFill02_Glow.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Probability_ProgressFill03_Glow.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Probability_ProgressFill04_Glow.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Probability_ProgressFill05_Glow.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_Probability_ProgressFill06_Glow.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_WorldMap_Bg_Nourish.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_WorldMap_Bg1.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Img_WorldMap_Ring_Nourish.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_Map_MultiSelect_Checked.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Atlas/UI_MarkPoint_Mine.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Image/UI_Icon_Map_Tips_Doce01.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Image/UI_Icon_Map_Tips_Doce01_Glow.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Image/UI_Icon_Map_Tips_Doce03.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Image/UI_Icon_Map_Tips_Doce04.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/Map/Texture/UI_Img_MapPet_FixedICON.png",
+    "bundle_id": 591,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/PetFertility/Atlas/UI_Icon_PetFertility_Egg01.png",
+    "bundle_id": 597,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/PetFertility/Atlas/UI_Icon_PetFertility_Egg02.png",
+    "bundle_id": 597,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/PetFertility/Atlas/UI_Icon_PetFertility_Egg03.png",
+    "bundle_id": 597,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/PetFertility/Atlas/UI_Icon_PetFertility_EggBg.png",
+    "bundle_id": 597,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/PetFertility/Atlas/UI_Icon_PetFertility_EggIcon00.png",
+    "bundle_id": 597,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/PetFertility/Atlas/UI_Icon_PetFertility_IconEggBlast.png",
+    "bundle_id": 597,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/PetFertility/Atlas/UI_Icon_PetFertility_IconEggFrame.png",
+    "bundle_id": 597,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/PetFertility/Atlas/ui_img_doubleeggBG.png",
+    "bundle_id": 597,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/PetFertility/Atlas/ui_img_doubleeggLight.png",
+    "bundle_id": 597,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/PetFertility/Atlas/UI_Img_PetHatchPerform_Egg_Bg.png",
+    "bundle_id": 597,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/PetFertility/Atlas/UI_Img_PetHatchPerform_Egg_Sel.png",
+    "bundle_id": 597,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/PetFertility/Atlas/UI_Img_PetHatchPerform_Egg_Set1.png",
+    "bundle_id": 597,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/PetFertility/Atlas/UI_Img_PetHatchPerform_Egg_Set2.png",
+    "bundle_id": 597,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/PetFertility/Atlas/UI_Img_PetHatchPerform_Egg_Set3.png",
+    "bundle_id": 597,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/PetFertility/Atlas/UI_Img_PetHatchPerform_Egg_Set4.png",
+    "bundle_id": 597,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/PetFertility/Image/UI_Icon_PetFertility_EggPlayRoundBg1.png",
+    "bundle_id": 597,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/PetFertility/Image/UI_Icon_PetFertility_EggPlayRoundBgLine.png",
+    "bundle_id": 597,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/PetFertility/Image/UI_Icon_PetFertility_FuyuEgg.png",
+    "bundle_id": 597,
+    "dependencies": [],
+    "metadata": 2
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/PetManual/Atlas/UI_Img_Distribution_MapIcon2.png",
+    "bundle_id": 598,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/PetManual/Atlas/UI_Img_Distribution_MapIocn.png",
+    "bundle_id": 598,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/PetManual/Atlas/UI_PetManual_MapIcon.png",
+    "bundle_id": 598,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Panel/PetManual/Atlas/ui_petmanual_tab_map.png",
+    "bundle_id": 598,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Event/UI_Img_Event_EggGrabTab.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Event/UI_Img_Event_TabDungen_1001200.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/EventIcon/UI_Event_Icon_MedalDetail_PetEggIcon.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/EventIcon/UI_Event_Icon_SchoolGuide_DungeonBattleIcon.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/EventIcon/UI_Event_Icon_SchoolGuide_DungeonBattleIcon2.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/FunctionButton/UI_HUD_Entry_Map.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GameAnnouncement/UI_Img_Announcement_Microblog.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEgg/UI_Img_GrabEgg_Dark_BEgg.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEgg/UI_Img_GrabEgg_Dark_BEggShine.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEgg/UI_Img_GrabEgg_Dark_SEgg.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEgg/UI_Img_GrabEgg_Dark_SEggShine.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEgg/UI_Img_GrabEgg_Electric_BEgg.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEgg/UI_Img_GrabEgg_Electric_BEggShine.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEgg/UI_Img_GrabEgg_Electric_SEgg.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEgg/UI_Img_GrabEgg_Electric_SEggShine.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEgg/UI_Img_GrabEgg_Fire_BEgg.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEgg/UI_Img_GrabEgg_Fire_BEggShine.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEgg/UI_Img_GrabEgg_Fire_SEgg.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEgg/UI_Img_GrabEgg_Fire_SEggShine.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEgg/UI_Img_GrabEgg_Grass_BEgg.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEgg/UI_Img_GrabEgg_Grass_BEggShine.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEgg/UI_Img_GrabEgg_Grass_SEgg.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEgg/UI_Img_GrabEgg_Grass_SEggShine.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEgg/UI_Img_GrabEgg_Ice_BEgg.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEgg/UI_Img_GrabEgg_Ice_BEggShine.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEgg/UI_Img_GrabEgg_Ice_SEgg.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEgg/UI_Img_GrabEgg_Ice_SEggShine.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEgg/UI_Img_GrabEgg_Light_BEgg.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEgg/UI_Img_GrabEgg_Light_BEggShine.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEgg/UI_Img_GrabEgg_Light_SEgg.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEgg/UI_Img_GrabEgg_Light_SEggShine.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEgg/UI_Img_GrabEgg_Rock_BEgg.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEgg/UI_Img_GrabEgg_Rock_BEggShine.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEgg/UI_Img_GrabEgg_Rock_SEgg.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEgg/UI_Img_GrabEgg_Rock_SEggShine.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEgg/UI_Img_GrabEgg_Water_BEgg.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEgg/UI_Img_GrabEgg_Water_BEggShine.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEgg/UI_Img_GrabEgg_Water_SEgg.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEgg/UI_Img_GrabEgg_Water_SEggShine.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEgg/UI_Img_GrabEgg_Wind_BEgg.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEgg/UI_Img_GrabEgg_Wind_BEggShine.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEgg/UI_Img_GrabEgg_Wind_SEgg.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEgg/UI_Img_GrabEgg_Wind_SEggShine.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEgg_Calcination_Collectibles/UI_Img_Calcination_Collectibles_Rating_Icon_FFF.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEgg_Calcination_Collectibles/UI_Img_Calcination_Collectibles_Tag_Bg_Bar_Negative.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEgg_Calcination_Collectibles/UI_Img_Calcination_Collectibles_Tag_Bg_Negative.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEgg_Calcination_Collectibles/UI_Img_Calcination_Collectibles_Tag_Icon_ds.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEgg_Calcination_Collectibles/UI_Img_Calcination_Collectibles_Tag_Icon_lw.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEgg_Calcination_Collectibles/UI_Img_Calcination_Collectibles_Tag_Icon_ms.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEgg_Calcination_Collectibles/UI_Img_Calcination_Collectibles_Tag_Icon_rs.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEgg_Calcination_Collectibles/UI_Img_Calcination_Collectibles_Tag_Icon_sh.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEgg_Calcination_Collectibles/UI_Img_Calcination_Collectibles_Tag_Icon_yp.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEgg_Calcination_Collectibles/UI_Img_Calcination_Collectibles_Tag_Icon_zzcl.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEgg_Collection/ui_item_GrabEgg_Collection_Icon_AAmber.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEgg_Collection/ui_item_GrabEgg_Collection_Icon_AGoldenShield.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEgg_Collection/ui_item_GrabEgg_Collection_Icon_AHeart.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEgg_Collection/ui_item_GrabEgg_Collection_Icon_AHorn.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEgg_Collection/ui_item_GrabEgg_Collection_Icon_AHorn_Treasure.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEgg_Collection/ui_item_GrabEgg_Collection_Icon_APrism.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEgg_Collection/ui_item_GrabEgg_Collection_Icon_ARose.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEgg_Collection/ui_item_GrabEgg_Collection_Icon_AScepter.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEgg_Collection/ui_item_GrabEgg_Collection_Icon_ASoulLantern.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEgg_Collection/ui_item_GrabEgg_Collection_Icon_ASoulLantern_Treasure.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEgg_Collection/ui_item_GrabEgg_Collection_Icon_CacophonicRhapsody.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEgg_Collection/ui_item_GrabEgg_Collection_Icon_CacophonicRhapsody_Treasure.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEgg_Collection/ui_item_GrabEgg_Collection_Icon_DiamondEgg.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEgg_Collection/ui_item_GrabEgg_Collection_Icon_DiamondEgg_Treasure.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEgg_Collection/ui_item_GrabEgg_Collection_Icon_SilkenFoam.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEgg_Collection/ui_item_GrabEgg_Collection_Icon_SilkenFoam_Treasure.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEgg_Collection/ui_item_GrabEgg_Collection_Icon_SleepWellStayWell.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEgg_Collection/ui_item_GrabEgg_Collection_Icon_SleepWellStayWell_Treasure.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEgg_Collection/ui_item_GrabEgg_Collection_Icon_ThornStrike.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEgg_Collection/ui_item_GrabEgg_Collection_Icon_ThornStrike2.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEgg_SoulStone/ui_item_SoulCrystal_DarkOri_Blue.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEgg_SoulStone/ui_item_SoulCrystal_DarkOri_Gold.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEgg_SoulStone/ui_item_SoulCrystal_DarkOri_Purple.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEgg_SoulStone/ui_item_SoulCrystal_DemR_Blue.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEgg_SoulStone/ui_item_SoulCrystal_DemR_Gold.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEgg_SoulStone/ui_item_SoulCrystal_DemR_Purple.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEgg_SoulStone/ui_item_SoulCrystal_FireOri_Blue.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEgg_SoulStone/ui_item_SoulCrystal_FireOri_Gold.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEgg_SoulStone/ui_item_SoulCrystal_FireOri_Purple.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEgg_SoulStone/ui_item_SoulCrystal_GressOri_Blue.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEgg_SoulStone/ui_item_SoulCrystal_GressOri_Gold.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEgg_SoulStone/ui_item_SoulCrystal_GressOri_Purple.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEgg_SoulStone/ui_item_SoulCrystal_IceOri_Blue.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEgg_SoulStone/ui_item_SoulCrystal_IceOri_Gold.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEgg_SoulStone/ui_item_SoulCrystal_IceOri_Purple.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEgg_SoulStone/ui_item_SoulCrystal_LightOri_Blue.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEgg_SoulStone/ui_item_SoulCrystal_LightOri_Gold.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEgg_SoulStone/ui_item_SoulCrystal_LightOri_Purple.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEgg_SoulStone/ui_item_SoulCrystal_Phy_Blue.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEgg_SoulStone/ui_item_SoulCrystal_Phy_Gold.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEgg_SoulStone/ui_item_SoulCrystal_Phy_Purple.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEgg_SoulStone/ui_item_SoulCrystal_RockOri_Blue.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEgg_SoulStone/ui_item_SoulCrystal_RockOri_Gold.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEgg_SoulStone/ui_item_SoulCrystal_RockOri_Purple.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEgg_SoulStone/ui_item_SoulCrystal_ThunderOri_Blue.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEgg_SoulStone/ui_item_SoulCrystal_ThunderOri_Gold.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEgg_SoulStone/ui_item_SoulCrystal_ThunderOri_Purple.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEgg_SoulStone/ui_item_SoulCrystal_WaterOri_Blue.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEgg_SoulStone/ui_item_SoulCrystal_WaterOri_Gold.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEgg_SoulStone/ui_item_SoulCrystal_WaterOri_Purple.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEgg_SoulStone/ui_item_SoulCrystal_WindOri_Blue.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEgg_SoulStone/ui_item_SoulCrystal_WindOri_Gold.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEgg_SoulStone/ui_item_SoulCrystal_WindOri_Purple.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEggsRobot/UI_Img_GrabEggs_Robot_Armor.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEggsRobot/UI_Img_GrabEggs_Robot_Armor_Blue.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEggsRobot/UI_Img_GrabEggs_Robot_Armor_Chip1.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEggsRobot/UI_Img_GrabEggs_Robot_Armor_Chip2.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEggsRobot/UI_Img_GrabEggs_Robot_Armor_Chip3.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEggsRobot/UI_Img_GrabEggs_Robot_Armor_God.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEggsRobot/UI_Img_GrabEggs_Robot_Armor_Green.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEggsRobot/UI_Img_GrabEggs_Robot_Armor_Purple.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEggsRobot/UI_Img_GrabEggs_Robot_Skill_01.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEggsRobot/UI_Img_GrabEggs_Robot_Skill_02.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEggsRobot/UI_Img_GrabEggs_Robot_Skill_03.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEggsRobot/UI_Img_GrabEggs_Robot_Skill_04.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEggsRobot/UI_Img_GrabEggs_Robot_Skill_05.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEggsRobot/UI_Img_GrabEggs_Robot_Skill_Smp_01.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEggsRobot/UI_Img_GrabEggs_Robot_Skill_Smp_02.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEggsRobot/UI_Img_GrabEggs_Robot_Skill_Smp_03.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEggsRobot/UI_Img_GrabEggs_Robot_Skill_Smp_04.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEggsRobot/UI_Img_GrabEggs_Robot_Skill_Smp_05.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEggsRobot/UI_Img_GrabEggs_Robot_Weapon.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEggsRobot/UI_Img_GrabEggs_Robot_Weapon_Blue.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEggsRobot/UI_Img_GrabEggs_Robot_Weapon_Chip1.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEggsRobot/UI_Img_GrabEggs_Robot_Weapon_Chip2.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEggsRobot/UI_Img_GrabEggs_Robot_Weapon_Chip3.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEggsRobot/UI_Img_GrabEggs_Robot_Weapon_God.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEggsRobot/UI_Img_GrabEggs_Robot_Weapon_Green.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEggsRobot/UI_Img_GrabEggs_Robot_Weapon_Purple.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEggsSeasonRank/UI_Img_Season_Rank_Level_Bg_A.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEggsSeasonRank/UI_Img_Season_Rank_Level_Bg_B.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEggsSeasonRank/UI_Img_Season_Rank_Level_Bg_S.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEggsSeasonRank/UI_Img_Season_Rank_Level_Bg_SSS.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEggsSeasonRank/UI_Img_Season_Rank_Level1.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEggsSeasonRank/UI_Img_Season_Rank_Level1_Small.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEggsSeasonRank/UI_Img_Season_Rank_Level2.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEggsSeasonRank/UI_Img_Season_Rank_Level2_Small.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEggsSeasonRank/UI_Img_Season_Rank_Level3.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEggsSeasonRank/UI_Img_Season_Rank_Level3_Small.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEggsSeasonRank/UI_Img_Season_Rank_Level4.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEggsSeasonRank/UI_Img_Season_Rank_Level4_Small.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEggsSeasonRank/UI_Img_Season_Rank_Level5.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 1
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEggsSeasonRank/UI_Img_Season_Rank_Level5_Small.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEggsSeasonRank/UI_Img_Season_Rank_Level6.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEggsSeasonRank/UI_Img_Season_Rank_Level6_Small.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEggsSeasonRank/UI_Img_Season_Rank_Level7.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEggsSeasonRank/UI_Img_Season_Rank_Level7_Small.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEggsSeasonRank/UI_Img_Season_Rank_Settlement_Bg_S1.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEggsSeasonRank/UI_Img_Season_Rank_Settlement_Entrance_Bg_S1.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEggsSeasonRank/UI_Img_Season_Rank_Settlement_Icon_S1.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEggsSeasonRank/UI_Img_Season_Rank_Settlement_Pop_Bg_S1.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEggsSeasonRank/UI_Img_Season_Rank_Sub_Level1.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEggsSeasonRank/UI_Img_Season_Rank_Sub_Level2.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEggsSeasonRank/UI_Img_Season_Rank_Sub_Level3.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEggsSeasonRank/UI_Img_Season_Rank_Sub_Level4.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEggsSeasonRank/UI_Img_Season_Rank_Sub_Level5.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEggsSeasonRank/UI_Img_Season_Rank_Sub_Level6.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEggsSeasonRank/UI_Img_Season_Rank_Sub_Level7.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEggsSeasonRank/UI_Img_Season_Rank_Tag_Bg_Copper.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEggsSeasonRank/UI_Img_Season_Rank_Tag_Bg_Gold.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEggsSeasonRank/UI_Img_Season_Rank_Tag_Bg_Rainbow.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEggsSeasonRank/UI_Img_Season_Rank_Tag_Bg_Silver.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEggsSeasonRank/UI_Img_Season_Rank_Tag_Skill_01.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEggsSeasonRank/UI_Img_Season_Rank_Tag_Skill_02.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEggsSeasonRank/UI_Img_Season_Rank_Tag_Skill_03.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEggsSeasonRank/UI_Img_Season_Rank_Tag_Skill_04.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEggsSeasonRank/UI_Img_Season_Rank_Tag_Skill_05.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEggsSeasonRank/UI_Img_Season_Rank_Tag_Skill_06.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEggsSeasonRank/UI_Img_Season_Rank_Treasure_Chest_Bg_Blue.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEggsSeasonRank/UI_Img_Season_Rank_Treasure_Chest_Bg_Gray.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEggsSeasonRank/UI_Img_Season_Rank_Treasure_Chest_Bg_Green.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEggsSeasonRank/UI_Img_Season_Rank_Treasure_Chest_Bg_Orange.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEggsSeasonRank/UI_Img_Season_Rank_Treasure_Chest_Bg_Purple.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEggsSeasonRank/UI_Img_Season_Rank_Treasure_Chest_Bg_Rainbow.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEggsSeasonRank/UI_ImgCalcination_Collectibles_Season_Bg_S1.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEggsTalentTree/UI_SkillIcon_GrabEgg_AccuBlow1.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEggsTalentTree/UI_SkillIcon_GrabEgg_AccuBlow2.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEggsTalentTree/UI_SkillIcon_GrabEgg_AgileEgg1.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEggsTalentTree/UI_SkillIcon_GrabEgg_AgileEgg2.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEggsTalentTree/UI_SkillIcon_GrabEgg_DiscItem1.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEggsTalentTree/UI_SkillIcon_GrabEgg_DiscItem2.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEggsTalentTree/UI_SkillIcon_GrabEgg_DiscItem3.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEggsTalentTree/UI_SkillIcon_GrabEgg_DmgCush1.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEggsTalentTree/UI_SkillIcon_GrabEgg_DmgCush2.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEggsTalentTree/UI_SkillIcon_GrabEgg_EggSafe.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEggsTalentTree/UI_SkillIcon_GrabEgg_ExpertScav1.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEggsTalentTree/UI_SkillIcon_GrabEgg_ExpertScav2.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEggsTalentTree/UI_SkillIcon_GrabEgg_ExpertScav3.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEggsTalentTree/UI_SkillIcon_GrabEgg_FirmWill.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEggsTalentTree/UI_SkillIcon_GrabEgg_FullLaden1.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEggsTalentTree/UI_SkillIcon_GrabEgg_FullLaden2.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEggsTalentTree/UI_SkillIcon_GrabEgg_FullLaden3.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEggsTalentTree/UI_SkillIcon_GrabEgg_HardyEgg1.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEggsTalentTree/UI_SkillIcon_GrabEgg_HardyEgg2.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEggsTalentTree/UI_SkillIcon_GrabEgg_RobustBody1.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEggsTalentTree/UI_SkillIcon_GrabEgg_RobustBody2.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEggsTalentTree/UI_SkillIcon_GrabEgg_SafeExpand1.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEggsTalentTree/UI_SkillIcon_GrabEgg_SafeExpand2.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEggsTalentTree/UI_SkillIcon_GrabEgg_SafeRein.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEggsTalentTree/UI_SkillIcon_GrabEgg_SelfSurv.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEggsTalentTree/UI_SkillIcon_GrabEgg_SwiftEscape.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEggsTalentTree/UI_SkillIcon_GrabEgg_SwiftRecover1.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/GrabEggsTalentTree/UI_SkillIcon_GrabEgg_SwiftRecover2.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Home/UI_Home_TabGrabEgg.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Home_Item/UI_Img_CampingCar_Levelup_EggMachine_Nml.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Home_Item/UI_Img_CampingCar_Levelup_EggMachine_Sel.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Home_SyntheticEgg/UI_Icon_Home_SyntheticEgg_SynthesisSlot_BlueQuality.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Home_SyntheticEgg/UI_Icon_Home_SyntheticEgg_SynthesisSlot_OrangeQuality.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Home_SyntheticEgg/UI_Icon_Home_SyntheticEgg_SynthesisSlot_PurpleQuality.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Icon_Simple/UI_Icon_GrabEggs__Enemy_Icon.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Icon_Simple/ui_item_Coupon_EggChip_small.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Icon_Simple/ui_item_GrabEgg_Badge_1_small.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Icon_Simple/ui_item_GrabEgg_Badge_2_small.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Icon_Simple/ui_item_GrabEgg_Badge_3_small.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Icon_Simple/ui_item_GrabeggTicket_small.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Interaction/UI_Icon_InteractionTitle_EggBoat.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Interaction/UI_Icon_InteractionTitle_EggMachine.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Interaction/UI_Icon_InteractionTitle_OpenEgg.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Interaction/UI_Icon_InteractionTitle_PutEgg.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Inventory/UI_Img_Backpack_TheGreatEggHeist.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Inventory/UI_Img_GrabEgg_TabIcon_Rank.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Inventory/UI_Img_GrabEgg_TabIcon_Shop.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_Badge/UI_Img_Personal_ExploreLevelCopper.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_Badge/UI_Img_Personal_ExploreLevelGold.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_Badge/UI_Img_Personal_ExploreLevelNone.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_Badge/UI_Img_Personal_ExploreLevelNone1.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_Badge/UI_Img_Personal_ExploreLevelRainbo.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_Badge/UI_Img_Personal_ExploreLevelRainbow.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_Badge/UI_Img_Personal_ExploreLevelSilver.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_BadgeRequire/UI_Icon_Map_BadgeRequire_Amber.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_BadgeRequire/UI_Icon_Map_BadgeRequire_Leader.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_BadgeRequire/UI_Icon_Map_BadgeRequire_Pet.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_LeylineTree/UI_Icon_Map_LeylinesTree_Cultivate.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_LeylineTree/UI_Icon_Map_LeylinesTree_Weather.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_LeylineTree/UI_Img_Map_LeylinesTree_Buff1.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_LeylineTree/UI_Img_Map_LeylinesTree_Buff2.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_LeylineTree/UI_Img_Map_LeylinesTree_Buff3.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_LeylineTree/UI_Img_Map_LeylinesTree_Buff4.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_LeylineTree/UI_Img_Map_LeylinesTree_Buff5.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_LeylineTree/UI_Img_Map_LeylinesTree_Buff6.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_LeylineTree/UI_Img_Map_LeylinesTree_Buff7.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/Img_Map_Mark_BattleRoom_Icon.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/Img_Map_Mark_BattleRoom_Icon_Dis.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/Img_Map_Mark_BattleRoom_Icon_Twice.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/Img_Map_Mark_BattleRoom_Npc_Normal.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/Img_Map_Mark_GrabEgg_Double_Monster.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/Img_Map_Mark_GrabEgg_EggBoat.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/Img_Map_Mark_GrabEgg_Extraction.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/Img_Map_Mark_GrabEgg_Extraction_Gray.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/Img_Map_Mark_GrabEgg_Extraction_Red.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/Img_Map_Mark_GrabEgg_HugeEgg_Finish.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/Img_Map_Mark_GrabEgg_HugeEgg_Hatching.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/Img_Map_Mark_GrabEgg_HugeEgg_HEggShine.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/Img_Map_Mark_GrabEgg_HugeEgg_HEggShine_Dis.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/Img_Map_Mark_GrabEgg_HugeEgg_Inactive.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/Img_Map_Mark_GrabEgg_Icon_Fade.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/Img_Map_Mark_GrabEgg_Icon_Intrigue.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/Img_Map_Mark_GrabEgg_Icon_Rainbow.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/Img_Map_Mark_GrabEgg_Lair.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/Img_Map_Mark_GrabEgg_Poi_Double_Monster.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/Img_Map_Mark_GrabEgg_Poi_Icon_Rainbow.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/Img_Map_Mark_GrabEgg_Position1.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/Img_Map_Mark_GrabEgg_Position2.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/Img_Map_Mark_GrabEgg_Position3.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/Img_Map_Mark_GrabEgg_Position4.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/Img_Map_Mark_GrabEgg_PositionAi.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/Img_Map_Mark_GrabEgg_PositionEmpty.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/Img_Map_Mark_GrabEgg_Sign1.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/Img_Map_Mark_GrabEgg_Sign2.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/Img_Map_Mark_GrabEgg_Sign3.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/Img_Map_Mark_GrabEgg_Sign4.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/Img_Map_Mark_GrabEgg_Spawn.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/Img_Map_Mark_GrabEgg_Transformation_Egg.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/Img_Map_Mark_GrabEgg_Transmitter_Active.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/Img_Map_Mark_GrabEgg_Transmitter_NotActive.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/Img_Map_Mark_Uderground_Begin.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/Img_Map_Mark_Uderground_End.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/Img_Map_Mark_Uderground_End_Unlocked.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/Img_Map_Mark_Uderground_Front_Door.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/Img_Map_Mark_Uderground_Key.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/Img_Map_Mark_Uderground_Key_Blue.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/Img_Map_Mark_Uderground_Key_Orange.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/Img_Map_Mark_Uderground_Key_Purple.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/Img_Map_MarkPoint_TikTok.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/QuestInteraction/UI_Icon_InteractionTitle_Exit.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/QuestInteraction/UI_Icon_InteractionTitle_General.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/UI_Hud_Icon_Clue_Blue.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/UI_Hud_Icon_Clue_Gray.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/UI_Hud_Icon_Clue_Green.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/UI_Hud_Icon_Clue_Yellow.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/UI_Hud_Icon_HomeLine_Receive.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/UI_Hud_Icon_MainLine_Grayed.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/UI_Hud_Icon_MainLine_Grayed_Unknow.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/UI_Hud_Icon_TaskManual_Clue.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/UI_Icon_Map_Ally.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/UI_Icon_Map_Enemy.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/UI_Icon_Mark01.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/UI_Icon_Mark02.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/UI_Icon_Mark03.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/UI_Icon_Mark04.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/UI_Icon_Mark05.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/UI_Icon_Mark06.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/UI_Icon_Mark07.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/UI_Icon_MarkFilter_Boss.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/UI_Icon_MarkFilter_Chief.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/UI_Icon_MarkFilter_Pet.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/UI_Icon_MarkPoint_ArkPartyTask.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/UI_icon_MarkPoint_beautyspecialist.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/UI_icon_MarkPoint_beautyspecialist_Unknown.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/UI_Icon_MarkPoint_BossCatch.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/UI_Icon_MarkPoint_Camp.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/UI_Icon_MarkPoint_Camp_Unknown.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/UI_Icon_MarkPoint_CampingCar.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/UI_Icon_MarkPoint_CampingCar_Unknown.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/UI_Icon_MarkPoint_CaptureBallShop.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/UI_Icon_MarkPoint_CarnivalEggShop.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/UI_Icon_MarkPoint_Cave.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/UI_Icon_MarkPoint_Challenge_TimeLimited.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/UI_Icon_MarkPoint_Challenge_TimeLimited_Unknown.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/UI_Icon_MarkPoint_Chest.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/UI_Icon_MarkPoint_City.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/UI_Icon_MarkPoint_ClothesShop.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/UI_Icon_MarkPoint_CoffeeShop.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/UI_Icon_MarkPoint_DailySurvey.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/UI_Icon_MarkPoint_DecorationShop.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/UI_icon_MarkPoint_doctor.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/UI_icon_MarkPoint_doctor_Unknown.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/UI_Icon_MarkPoint_EcologyLimit.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/UI_Icon_MarkPoint_EggNestChest.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/UI_icon_MarkPoint_fashionista.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/UI_icon_MarkPoint_fashionista_Unknown.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/UI_Icon_MarkPoint_FindFriends.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/UI_Icon_MarkPoint_FindFriends_Unknown.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/UI_Icon_MarkPoint_HelpAniimo.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/UI_icon_MarkPoint_homekeeper.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/UI_icon_MarkPoint_homekeeper_Unknown.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/UI_Icon_MarkPoint_Leyline_Flower.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/UI_Icon_MarkPoint_Leyline_Flower_Bloming.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/UI_Icon_MarkPoint_Leyline_Flower_Budding.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/UI_Icon_MarkPoint_Leyline_Flower_Fruiting.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/UI_Icon_MarkPoint_Leyline_Flower_Unknown.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/UI_Icon_MarkPoint_LeylineTree.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/UI_Icon_MarkPoint_LeylineTree_Unknown.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/UI_Icon_MarkPoint_MarkShare.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/UI_icon_MarkPoint_mentor.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/UI_icon_MarkPoint_mentor_Unknown.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/UI_Icon_MarkPoint_MythicalAnimals.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/UI_icon_MarkPoint_mythlingkeeper.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/UI_icon_MarkPoint_mythlingkeeper_Unknown.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/UI_Icon_MarkPoint_Particulars.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/UI_Icon_MarkPoint_Particulars_1.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/UI_Icon_MarkPoint_PetCoordinates.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/UI_Icon_MarkPoint_photo.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/UI_Icon_MarkPoint_photo_Unknown.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/UI_icon_MarkPoint_Player_doNotDisturb.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/UI_icon_MarkPoint_pvp.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/UI_icon_MarkPoint_pvp_Unknown.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/UI_Icon_MarkPoint_Report.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/UI_Icon_MarkPoint_Restaurant.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/UI_Icon_MarkPoint_RuinsGroup.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/UI_Icon_MarkPoint_RuneDecryption.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/UI_Icon_MarkPoint_RuneDecryption_Unknown.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/UI_Icon_MarkPoint_Shop.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/UI_Icon_MarkPoint_skateboardseller.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/UI_Icon_MarkPoint_skateboardseller_Unknown.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/UI_icon_MarkPoint_store.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/UI_icon_MarkPoint_store_Unknown.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/UI_Icon_MarkPoint_Temple.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/UI_Icon_MarkPoint_Temple_Unknown.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/UI_Icon_MarkPoint_ThemeDecryption.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/UI_Icon_MarkPoint_ThemeDecryption_Unknown.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/UI_Icon_MarkPoint_ToyShop.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/UI_Icon_MarkPoint_Transmit.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/UI_Icon_MarkPoint_Transmit_Unknown.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/UI_Icon_MarkPoint_TreasureChest.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/UI_Icon_MarkPoint_Tree1.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/UI_Icon_MarkPoint_Tree2.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/UI_Icon_MarkPoint_Tree3.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/UI_Icon_MarkPoint_Tree3.png.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/UI_Icon_MarkPoint_Tree4.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/UI_Icon_MarkPoint_Tree4.png.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/UI_Icon_MarkPoint_Tree5.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/UI_Icon_MarkPoint_Tree5.png.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/UI_icon_MarkPoint_ugcguide.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/UI_icon_MarkPoint_ugcguide_Unknown.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/UI_Icon_MarkPoint_Uncomplete.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/UI_Icon_MarkPoint_VersatileDecryption.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/UI_Icon_MarkPoint_VersatileDecryption_Unknown.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/UI_Icon_MarkPoint_Village.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/UI_icon_TopLogo_Dizi.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/UI_Icon_TransPoint_01.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/UI_Icon_TransPoint_02.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/UI_Icon_TransPoint_03.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/MapLayer/UI_Img_MapLayerSys_FloorSelected.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/MapLayer/UI_Img_MapLayerSys_FloorUnselected.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/MapLayer/UI_Img_MapLayerSys_GroundSelected.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/MapLayer/UI_Img_MapLayerSys_GroundUnselected.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/MapLayer/UI_Img_MapLayerSys_LowerSelected.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/MapLayer/UI_Img_MapLayerSys_LowerUnselected.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/MapLayer/UI_Img_MapLayerSys_UpperSelected.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/MapLayer/UI_Img_MapLayerSys_UpperUnselected.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/MenuButton/UI_Icon_FunMenu_Map.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/MenuButton_Mini/UI_Icon_FunMenuMini_Map.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Pet_Belong/UI_Icon_PetBelong_MapPeo.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/POIIcon/UI_Icon_POI_Decrypt_GrabEgg_Evacuate.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/POIIcon/UI_Icon_POI_Decrypt_GrabEgg_Transmitter.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/POIIcon/UI_Icon_POI_Decrypt_GrabEggQuest01.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/POIIcon/UI_Icon_POI_Decrypt_GrabEggQuest02.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/POIIcon/UI_Icon_POI_Decrypt_GrabEggRiddle.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Skill_Buff_Icon/UI_GameMod_GrabEggs_DifficultyIcon_Hard.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Skill_Buff_Icon/UI_GameMod_GrabEggs_DifficultyIcon_Nightmare.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Skill_Buff_Icon/UI_GameMod_GrabEggs_DifficultyIcon_Normal.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/SkillIcon_Pet/UI_Skillicon_Fire_MagmaPunch.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Weather/UI_Img_Map_Global.png",
+    "bundle_id": 600,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_Grabegg_All_HEgg.png",
+    "bundle_id": 602,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_Grabegg_All_SEgg.png",
+    "bundle_id": 602,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_GrabEgg_ArmChip_Red_Gold.png",
+    "bundle_id": 602,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_Grabegg_DiamondEgg_Blue_large.png",
+    "bundle_id": 602,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_Grabegg_DreamMemoryAmber_FireAmber_large.png",
+    "bundle_id": 602,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_GrabEgg_EquWeapon_Blue.png",
+    "bundle_id": 602,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_Grabegg_StarFruit_small.png",
+    "bundle_id": 602,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_GrabEgg_TreasureChest_Rainbow.png",
+    "bundle_id": 602,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_Chest_01.png",
+    "bundle_id": 603,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_GrabEgg_ArmChip_Pat_Gold.png",
+    "bundle_id": 603,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_Grabegg_Bullet_Fast.png",
+    "bundle_id": 603,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_Grabegg_CacophonicRhapsody_Treasure_large.png",
+    "bundle_id": 603,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_GrabEgg_Def_RepairPackt_Purple.png",
+    "bundle_id": 603,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_Grabegg_EternalVowMusicBox_large.png",
+    "bundle_id": 603,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_GrabEgg_Icon_Intrigue_Gold.png",
+    "bundle_id": 603,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_Grabegg_RainbowPrismCore_Sun.png",
+    "bundle_id": 603,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_GrabEgg_WeaChip_Pat_Gold.png",
+    "bundle_id": 603,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_GrabEgg_WeaChip_Ski_Purple.png",
+    "bundle_id": 603,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_greater_relic_egg.png",
+    "bundle_id": 603,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_Chest_02.png",
+    "bundle_id": 604,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_Chest_05.png",
+    "bundle_id": 604,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_Coupon_EggChip.png",
+    "bundle_id": 604,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_GrabEgg_ArmChip_Pat_Purple.png",
+    "bundle_id": 604,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_GrabEgg_Atk_RepairPackt_Purple.png",
+    "bundle_id": 604,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_Grabegg_Bullet_Att.png",
+    "bundle_id": 604,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_Grabegg_Coupon_HugeEgg.png",
+    "bundle_id": 604,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_GrabEgg_Def_RepairPack_Green.png",
+    "bundle_id": 604,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_Grabegg_DreamMemoryAmber_FireAmber.png",
+    "bundle_id": 604,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_Grabegg_RainbowPrismCore_Moon_large.png",
+    "bundle_id": 604,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_GrabEgg_TreasureChest_White.png",
+    "bundle_id": 604,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_Grabegg_All_HEggShine.png",
+    "bundle_id": 605,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_GrabEgg_ArmChip_Str_Gold.png",
+    "bundle_id": 605,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_Grabegg_DreamMemoryAmber.png",
+    "bundle_id": 605,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_Grabegg_FlamesBreathHorn_large.png",
+    "bundle_id": 605,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_GrabEgg_Icon_Intrigue_Blue.png",
+    "bundle_id": 605,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_Grabegg_StarFruit.png",
+    "bundle_id": 605,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_GrabEgg_WeaChip_Dem_Purple.png",
+    "bundle_id": 605,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_GrabEgg_WeaChip_Pat_Blue.png",
+    "bundle_id": 605,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_GrabEgg_WeaChip_Ski_Blue.png",
+    "bundle_id": 605,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_Chest_04.png",
+    "bundle_id": 606,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_GrabEgg_ArmChip_Red_Purple.png",
+    "bundle_id": 606,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_Grabegg_BurningHeartVulcan.png",
+    "bundle_id": 606,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_Grabegg_DiamondEgg_Red.png",
+    "bundle_id": 606,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_Grabegg_DreamMemoryAmber_large.png",
+    "bundle_id": 606,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_Grabegg_EternalVowMusicBox.png",
+    "bundle_id": 606,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_Grabegg_FlamesBreathHorn_Red_large.png",
+    "bundle_id": 606,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_Grabegg_RainbowPrismCore.png",
+    "bundle_id": 606,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_Grabegg_RainbowPrismCore_Black.png",
+    "bundle_id": 606,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_Grabegg_RainbowPrismCore_Black_large.png",
+    "bundle_id": 606,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_Grabegg_SoulReturningGemBottle_large.png",
+    "bundle_id": 606,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_GrabEgg_WeaChip_Dem_Gold.png",
+    "bundle_id": 606,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_greater_gloom_egg.png",
+    "bundle_id": 606,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_gloom_egg.png",
+    "bundle_id": 607,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_GrabEgg_EquWeapon_Gold.png",
+    "bundle_id": 607,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_Grabegg_GoldenShield.png",
+    "bundle_id": 607,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_Grabegg_RainbowPrismCore_Sun_large.png",
+    "bundle_id": 607,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_Grabegg_RootofLifeScepter_large.png",
+    "bundle_id": 607,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_GrabEgg_TreasureChest_Gold.png",
+    "bundle_id": 607,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_GrabEgg_TreasureChest_Purple.png",
+    "bundle_id": 607,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_GrabEgg_WeaChip_Pat_Purple.png",
+    "bundle_id": 607,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_iris_egg.png",
+    "bundle_id": 607,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_Grabegg_All_BEgg.png",
+    "bundle_id": 608,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_Grabegg_All_SEggShine.png",
+    "bundle_id": 608,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_GrabEgg_Atk_RepairPack_Blue.png",
+    "bundle_id": 608,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_GrabEgg_Atk_RepairPack_Gold.png",
+    "bundle_id": 608,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_GrabEgg_Badge_1.png",
+    "bundle_id": 608,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_Grabegg_DiamondEgg_Pink_large.png",
+    "bundle_id": 608,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_GrabEgg_EquArmor_Pruple.png",
+    "bundle_id": 608,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_GrabEgg_EquWeapon_Green.png",
+    "bundle_id": 608,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_Grabegg_RootofLifeScepter.png",
+    "bundle_id": 608,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_GrabEgg_TreasureChest_Blue.png",
+    "bundle_id": 608,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_GrabEgg_WeaChip_Dem_Blue.png",
+    "bundle_id": 608,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_relic_egg.png",
+    "bundle_id": 608,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_Grabegg_All_BEggShine.png",
+    "bundle_id": 609,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_Grabegg_All_UnlockGiantEgg.png",
+    "bundle_id": 609,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_GrabEgg_ArmChip_Pat_Blue.png",
+    "bundle_id": 609,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_GrabEgg_ArmChip_Red_Blue.png",
+    "bundle_id": 609,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_GrabEgg_Badge_3.png",
+    "bundle_id": 609,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_Grabegg_Coupon_BigEgg.png",
+    "bundle_id": 609,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_GrabEgg_Def_RepairPack_Blue.png",
+    "bundle_id": 609,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_GrabEgg_EquArmor_Green.png",
+    "bundle_id": 609,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_Grabegg_SilkenFoam_Treasure_large.png",
+    "bundle_id": 609,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_Grabegg_SoulReturningGemBottle_Treasure_large.png",
+    "bundle_id": 609,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_Grabegg_ThornStrike_Treasure_large.png",
+    "bundle_id": 609,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_GrabEgg_WeaChip_Ski_Gold.png",
+    "bundle_id": 609,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_Chest_06.png",
+    "bundle_id": 610,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_GrabEgg_ArmChip_Str_Blue.png",
+    "bundle_id": 610,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_GrabEgg_ArmChip_Str_Purple.png",
+    "bundle_id": 610,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_GrabEgg_Atk_RepairPack_Green.png",
+    "bundle_id": 610,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_Grabegg_Bullet_Break.png",
+    "bundle_id": 610,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_Grabegg_Coupon_HugeEgg_Small.png",
+    "bundle_id": 610,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_GrabEgg_Def_RepairPack_Gold.png",
+    "bundle_id": 610,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_Grabegg_EnergyEssence.png",
+    "bundle_id": 610,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_GrabEgg_EquArmor_Gold.png",
+    "bundle_id": 610,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_GrabEgg_EquWeapon_Pruple.png",
+    "bundle_id": 610,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_Grabegg_GoldenShield_large.png",
+    "bundle_id": 610,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_GrabEgg_Icon_Intrigue_Purple.png",
+    "bundle_id": 610,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_Grabegg_RainbowPrismCore_large.png",
+    "bundle_id": 610,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_Grabegg_RainbowPrismCore_Moon.png",
+    "bundle_id": 610,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_Grabegg_SleepWellStayWell_Treasure_large.png",
+    "bundle_id": 610,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_GrabEgg_TreasureChest_Green.png",
+    "bundle_id": 610,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_Grabegg_All_BLowEgg.png",
+    "bundle_id": 611,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_Grabegg_All_SLowEgg.png",
+    "bundle_id": 611,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_GrabEgg_Badge_2.png",
+    "bundle_id": 611,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_Grabegg_BurningHeartVulcan_large.png",
+    "bundle_id": 611,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_Grabegg_Coupon_BigEgg_Small.png",
+    "bundle_id": 611,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_Grabegg_DiamondEgg_Blue.png",
+    "bundle_id": 611,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_Grabegg_DiamondEgg_Red_large.png",
+    "bundle_id": 611,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_GrabEgg_EquArmor_Blue.png",
+    "bundle_id": 611,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_Grabegg_shadowgleamEgg.png",
+    "bundle_id": 611,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_GrabeggTicket.png",
+    "bundle_id": 611,
+    "dependencies": [],
+    "metadata": 0
+  },
+  {
+    "path": "Packages/com.unity.probuilder/Content/Icons/Scripts/MeshFilter Icon.asset",
+    "bundle_id": 2070,
+    "dependencies": [],
+    "metadata": 2
+  }
+]

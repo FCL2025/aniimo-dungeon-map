@@ -1,0 +1,2193 @@
+{
+  "missingReferences": [
+    [
+      20032,
+      6,
+      "sandbox",
+      91327625
+    ],
+    [
+      20032,
+      12,
+      "sandbox",
+      91144958
+    ],
+    [
+      20032,
+      12,
+      "sandbox",
+      91145818
+    ],
+    [
+      20032,
+      12,
+      "sandbox",
+      91145853
+    ],
+    [
+      20033,
+      5,
+      "sandbox",
+      91327625
+    ],
+    [
+      20034,
+      16,
+      "sandbox",
+      91144958
+    ],
+    [
+      20034,
+      16,
+      "sandbox",
+      91145818
+    ],
+    [
+      20034,
+      16,
+      "sandbox",
+      91145853
+    ],
+    [
+      20037,
+      31,
+      "sandbox",
+      91327625
+    ],
+    [
+      20037,
+      41,
+      "sandbox",
+      91144958
+    ],
+    [
+      20037,
+      41,
+      "sandbox",
+      91145818
+    ],
+    [
+      20037,
+      41,
+      "sandbox",
+      91145853
+    ],
+    [
+      20040,
+      16,
+      "sandbox",
+      91144958
+    ],
+    [
+      20040,
+      16,
+      "sandbox",
+      91145818
+    ],
+    [
+      20040,
+      16,
+      "sandbox",
+      91145853
+    ],
+    [
+      20042,
+      4,
+      "sandbox",
+      91144958
+    ],
+    [
+      20042,
+      4,
+      "sandbox",
+      91145818
+    ],
+    [
+      20042,
+      4,
+      "sandbox",
+      91145853
+    ],
+    [
+      20043,
+      36,
+      "sandbox",
+      91327625
+    ],
+    [
+      20045,
+      4,
+      "sandbox",
+      91144958
+    ],
+    [
+      20045,
+      4,
+      "sandbox",
+      91145818
+    ],
+    [
+      20045,
+      4,
+      "sandbox",
+      91145853
+    ],
+    [
+      20048,
+      19,
+      "sandbox",
+      91144958
+    ],
+    [
+      20048,
+      19,
+      "sandbox",
+      91145818
+    ],
+    [
+      20048,
+      19,
+      "sandbox",
+      91145853
+    ],
+    [
+      20052,
+      8,
+      "sandbox",
+      91327625
+    ],
+    [
+      20053,
+      46,
+      "sandbox",
+      91327625
+    ]
+  ],
+  "outsideImage": [],
+  "mapChecks": [
+    {
+      "mapId": 20031,
+      "rooms": 37,
+      "pins": 489,
+      "portals": [
+        {
+          "kind": "entrance",
+          "instanceId": 9104289001,
+          "roomId": 1,
+          "valid": true
+        },
+        {
+          "kind": "exit",
+          "instanceId": 9104293429,
+          "roomId": 29,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "mapId": 20032,
+      "rooms": 55,
+      "pins": 567,
+      "portals": [
+        {
+          "kind": "entrance",
+          "instanceId": 9104289001,
+          "roomId": 1,
+          "valid": true
+        },
+        {
+          "kind": "exit",
+          "instanceId": 9104293402,
+          "roomId": 2,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "mapId": 20033,
+      "rooms": 35,
+      "pins": 586,
+      "portals": [
+        {
+          "kind": "entrance",
+          "instanceId": 9104289002,
+          "roomId": 2,
+          "valid": true
+        },
+        {
+          "kind": "exit",
+          "instanceId": 9104293401,
+          "roomId": 1,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "mapId": 20034,
+      "rooms": 96,
+      "pins": 622,
+      "portals": [
+        {
+          "kind": "entrance",
+          "instanceId": 9104289020,
+          "roomId": 20,
+          "valid": true
+        },
+        {
+          "kind": "exit",
+          "instanceId": 9104293401,
+          "roomId": 1,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "mapId": 20035,
+      "rooms": 67,
+      "pins": 659,
+      "portals": [
+        {
+          "kind": "entrance",
+          "instanceId": 9104289001,
+          "roomId": 1,
+          "valid": true
+        },
+        {
+          "kind": "exit",
+          "instanceId": 9104293402,
+          "roomId": 2,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "mapId": 20036,
+      "rooms": 55,
+      "pins": 502,
+      "portals": [
+        {
+          "kind": "entrance",
+          "instanceId": 9104289001,
+          "roomId": 1,
+          "valid": true
+        },
+        {
+          "kind": "exit",
+          "instanceId": 9104293422,
+          "roomId": 22,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "mapId": 20037,
+      "rooms": 66,
+      "pins": 584,
+      "portals": [
+        {
+          "kind": "entrance",
+          "instanceId": 9104289001,
+          "roomId": 1,
+          "valid": true
+        },
+        {
+          "kind": "exit",
+          "instanceId": 9104293450,
+          "roomId": 50,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "mapId": 20038,
+      "rooms": 59,
+      "pins": 683,
+      "portals": [
+        {
+          "kind": "entrance",
+          "instanceId": 9104289016,
+          "roomId": 16,
+          "valid": true
+        },
+        {
+          "kind": "exit",
+          "instanceId": 9104293445,
+          "roomId": 45,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "mapId": 20039,
+      "rooms": 60,
+      "pins": 683,
+      "portals": [
+        {
+          "kind": "entrance",
+          "instanceId": 9104289016,
+          "roomId": 16,
+          "valid": true
+        },
+        {
+          "kind": "exit",
+          "instanceId": 9104293445,
+          "roomId": 45,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "mapId": 20040,
+      "rooms": 99,
+      "pins": 665,
+      "portals": [
+        {
+          "kind": "entrance",
+          "instanceId": 9104289020,
+          "roomId": 20,
+          "valid": true
+        },
+        {
+          "kind": "exit",
+          "instanceId": 9104293401,
+          "roomId": 1,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "mapId": 20041,
+      "rooms": 58,
+      "pins": 404,
+      "portals": [
+        {
+          "kind": "entrance",
+          "instanceId": 9104289001,
+          "roomId": 1,
+          "valid": true
+        },
+        {
+          "kind": "exit",
+          "instanceId": 9104293402,
+          "roomId": 2,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "mapId": 20042,
+      "rooms": 52,
+      "pins": 390,
+      "portals": [
+        {
+          "kind": "entrance",
+          "instanceId": 9104289002,
+          "roomId": 2,
+          "valid": true
+        },
+        {
+          "kind": "exit",
+          "instanceId": 9104293401,
+          "roomId": 1,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "mapId": 20043,
+      "rooms": 45,
+      "pins": 363,
+      "portals": [
+        {
+          "kind": "entrance",
+          "instanceId": 9104289002,
+          "roomId": 2,
+          "valid": true
+        },
+        {
+          "kind": "exit",
+          "instanceId": 9104293401,
+          "roomId": 1,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "mapId": 20044,
+      "rooms": 77,
+      "pins": 441,
+      "portals": [
+        {
+          "kind": "entrance",
+          "instanceId": 9104289001,
+          "roomId": 1,
+          "valid": true
+        },
+        {
+          "kind": "exit",
+          "instanceId": 9104293402,
+          "roomId": 2,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "mapId": 20045,
+      "rooms": 54,
+      "pins": 375,
+      "portals": [
+        {
+          "kind": "entrance",
+          "instanceId": 9104289002,
+          "roomId": 2,
+          "valid": true
+        },
+        {
+          "kind": "exit",
+          "instanceId": 9104293401,
+          "roomId": 1,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "mapId": 20046,
+      "rooms": 49,
+      "pins": 347,
+      "portals": [
+        {
+          "kind": "entrance",
+          "instanceId": 9104289001,
+          "roomId": 1,
+          "valid": true
+        },
+        {
+          "kind": "exit",
+          "instanceId": 9104293402,
+          "roomId": 2,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "mapId": 20047,
+      "rooms": 46,
+      "pins": 363,
+      "portals": [
+        {
+          "kind": "entrance",
+          "instanceId": 9104289002,
+          "roomId": 2,
+          "valid": true
+        },
+        {
+          "kind": "exit",
+          "instanceId": 9104293401,
+          "roomId": 1,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "mapId": 20048,
+      "rooms": 47,
+      "pins": 386,
+      "portals": [
+        {
+          "kind": "entrance",
+          "instanceId": 9104289001,
+          "roomId": 1,
+          "valid": true
+        },
+        {
+          "kind": "exit",
+          "instanceId": 9104293402,
+          "roomId": 2,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "mapId": 20049,
+      "rooms": 49,
+      "pins": 411,
+      "portals": [
+        {
+          "kind": "entrance",
+          "instanceId": 9104289001,
+          "roomId": 1,
+          "valid": true
+        },
+        {
+          "kind": "exit",
+          "instanceId": 9104293402,
+          "roomId": 2,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "mapId": 20050,
+      "rooms": 39,
+      "pins": 481,
+      "portals": [
+        {
+          "kind": "entrance",
+          "instanceId": 9104289002,
+          "roomId": 2,
+          "valid": true
+        },
+        {
+          "kind": "exit",
+          "instanceId": 9104293403,
+          "roomId": 3,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "mapId": 20051,
+      "rooms": 38,
+      "pins": 247,
+      "portals": [
+        {
+          "kind": "entrance",
+          "instanceId": 9104289002,
+          "roomId": 2,
+          "valid": true
+        },
+        {
+          "kind": "exit",
+          "instanceId": 9104293401,
+          "roomId": 1,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "mapId": 20052,
+      "rooms": 53,
+      "pins": 210,
+      "portals": [
+        {
+          "kind": "entrance",
+          "instanceId": 9104289001,
+          "roomId": 1,
+          "valid": true
+        },
+        {
+          "kind": "exit",
+          "instanceId": 9104293402,
+          "roomId": 2,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "mapId": 20053,
+      "rooms": 45,
+      "pins": 294,
+      "portals": [
+        {
+          "kind": "entrance",
+          "instanceId": 9104289003,
+          "roomId": 3,
+          "valid": true
+        },
+        {
+          "kind": "exit",
+          "instanceId": 9104293404,
+          "roomId": 4,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "mapId": 20054,
+      "rooms": 37,
+      "pins": 297,
+      "portals": [
+        {
+          "kind": "entrance",
+          "instanceId": 9104289005,
+          "roomId": 5,
+          "valid": true
+        },
+        {
+          "kind": "exit",
+          "instanceId": 9104293406,
+          "roomId": 6,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "mapId": 20055,
+      "rooms": 38,
+      "pins": 223,
+      "portals": [
+        {
+          "kind": "entrance",
+          "instanceId": 9104289002,
+          "roomId": 2,
+          "valid": true
+        },
+        {
+          "kind": "exit",
+          "instanceId": 9104293401,
+          "roomId": 1,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "mapId": 20056,
+      "rooms": 32,
+      "pins": 185,
+      "portals": [
+        {
+          "kind": "entrance",
+          "instanceId": 9104289001,
+          "roomId": 1,
+          "valid": true
+        },
+        {
+          "kind": "exit",
+          "instanceId": 9104293402,
+          "roomId": 2,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "mapId": 20057,
+      "rooms": 41,
+      "pins": 255,
+      "portals": [
+        {
+          "kind": "entrance",
+          "instanceId": 9104289003,
+          "roomId": 3,
+          "valid": true
+        },
+        {
+          "kind": "exit",
+          "instanceId": 9104293404,
+          "roomId": 4,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "mapId": 20058,
+      "rooms": 59,
+      "pins": 395,
+      "portals": [
+        {
+          "kind": "entrance",
+          "instanceId": 9104289001,
+          "roomId": 1,
+          "valid": true
+        },
+        {
+          "kind": "exit",
+          "instanceId": 9104293402,
+          "roomId": 2,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "mapId": 20059,
+      "rooms": 39,
+      "pins": 250,
+      "portals": [
+        {
+          "kind": "entrance",
+          "instanceId": 9104289002,
+          "roomId": 2,
+          "valid": true
+        },
+        {
+          "kind": "exit",
+          "instanceId": 9104293401,
+          "roomId": 1,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "mapId": 20060,
+      "rooms": 16,
+      "pins": 195,
+      "portals": [
+        {
+          "kind": "entrance",
+          "instanceId": 9104289001,
+          "roomId": 1,
+          "valid": true
+        },
+        {
+          "kind": "exit",
+          "instanceId": 9104293402,
+          "roomId": 2,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "mapId": 29999,
+      "rooms": 9,
+      "pins": 249,
+      "portals": [
+        {
+          "kind": "entrance",
+          "instanceId": 9104289001,
+          "roomId": 1,
+          "valid": true
+        },
+        {
+          "kind": "exit",
+          "instanceId": 9104293402,
+          "roomId": 2,
+          "valid": true
+        }
+      ]
+    }
+  ],
+  "templateMatches": [
+    {
+      "mapId": 20031,
+      "roomId": 2,
+      "templateId": 91062057,
+      "jaccard": 0.9642857142857143,
+      "addedSandboxIds": [
+        91389627
+      ]
+    },
+    {
+      "mapId": 20031,
+      "roomId": 5,
+      "templateId": 91291249,
+      "jaccard": 0.8181818181818182,
+      "addedSandboxIds": [
+        91375990,
+        91375997,
+        91376002,
+        91389646
+      ]
+    },
+    {
+      "mapId": 20031,
+      "roomId": 6,
+      "templateId": 91062053,
+      "jaccard": 0.9375,
+      "addedSandboxIds": [
+        91406864
+      ]
+    },
+    {
+      "mapId": 20031,
+      "roomId": 7,
+      "templateId": 91051617,
+      "jaccard": 0.8947368421052632,
+      "addedSandboxIds": [
+        91389608,
+        91407026
+      ]
+    },
+    {
+      "mapId": 20031,
+      "roomId": 10,
+      "templateId": 91051617,
+      "jaccard": 0.8947368421052632,
+      "addedSandboxIds": [
+        91389608,
+        91407026
+      ]
+    },
+    {
+      "mapId": 20031,
+      "roomId": 14,
+      "templateId": 91051617,
+      "jaccard": 0.8947368421052632,
+      "addedSandboxIds": [
+        91389608,
+        91407026
+      ]
+    },
+    {
+      "mapId": 20031,
+      "roomId": 25,
+      "templateId": 91043247,
+      "jaccard": 0.9333333333333333,
+      "addedSandboxIds": [
+        91406514
+      ]
+    },
+    {
+      "mapId": 20031,
+      "roomId": 27,
+      "templateId": 91051617,
+      "jaccard": 0.8947368421052632,
+      "addedSandboxIds": [
+        91389608,
+        91407026
+      ]
+    },
+    {
+      "mapId": 20031,
+      "roomId": 34,
+      "templateId": 91062037,
+      "jaccard": 0.9642857142857143,
+      "addedSandboxIds": [
+        91389306
+      ]
+    },
+    {
+      "mapId": 20031,
+      "roomId": 37,
+      "templateId": 91293249,
+      "jaccard": 0.95,
+      "addedSandboxIds": [
+        91380848
+      ]
+    },
+    {
+      "mapId": 20032,
+      "roomId": 3,
+      "templateId": 91062053,
+      "jaccard": 0.9375,
+      "addedSandboxIds": [
+        91406864
+      ]
+    },
+    {
+      "mapId": 20032,
+      "roomId": 8,
+      "templateId": 91062057,
+      "jaccard": 0.9642857142857143,
+      "addedSandboxIds": [
+        91389627
+      ]
+    },
+    {
+      "mapId": 20032,
+      "roomId": 9,
+      "templateId": 91062053,
+      "jaccard": 0.9375,
+      "addedSandboxIds": [
+        91406864
+      ]
+    },
+    {
+      "mapId": 20032,
+      "roomId": 10,
+      "templateId": 91058907,
+      "jaccard": 0.9666666666666667,
+      "addedSandboxIds": [
+        91389330
+      ]
+    },
+    {
+      "mapId": 20032,
+      "roomId": 28,
+      "templateId": 91051617,
+      "jaccard": 0.8947368421052632,
+      "addedSandboxIds": [
+        91389608,
+        91407026
+      ]
+    },
+    {
+      "mapId": 20032,
+      "roomId": 50,
+      "templateId": 91043247,
+      "jaccard": 0.9333333333333333,
+      "addedSandboxIds": [
+        91406514
+      ]
+    },
+    {
+      "mapId": 20033,
+      "roomId": 17,
+      "templateId": 91043276,
+      "jaccard": 0.9333333333333333,
+      "addedSandboxIds": [
+        91406455
+      ]
+    },
+    {
+      "mapId": 20033,
+      "roomId": 18,
+      "templateId": 91305276,
+      "jaccard": 0.9411764705882353,
+      "addedSandboxIds": [
+        91380988
+      ]
+    },
+    {
+      "mapId": 20033,
+      "roomId": 27,
+      "templateId": 91043247,
+      "jaccard": 0.9333333333333333,
+      "addedSandboxIds": [
+        91406514
+      ]
+    },
+    {
+      "mapId": 20033,
+      "roomId": 29,
+      "templateId": 91043276,
+      "jaccard": 0.9333333333333333,
+      "addedSandboxIds": [
+        91406455
+      ]
+    },
+    {
+      "mapId": 20033,
+      "roomId": 30,
+      "templateId": 91062053,
+      "jaccard": 0.9375,
+      "addedSandboxIds": [
+        91406864
+      ]
+    },
+    {
+      "mapId": 20033,
+      "roomId": 31,
+      "templateId": 91062053,
+      "jaccard": 0.9375,
+      "addedSandboxIds": [
+        91406864
+      ]
+    },
+    {
+      "mapId": 20033,
+      "roomId": 32,
+      "templateId": 91043276,
+      "jaccard": 0.9333333333333333,
+      "addedSandboxIds": [
+        91406455
+      ]
+    },
+    {
+      "mapId": 20033,
+      "roomId": 36,
+      "templateId": 91062053,
+      "jaccard": 0.9375,
+      "addedSandboxIds": [
+        91406864
+      ]
+    },
+    {
+      "mapId": 20034,
+      "roomId": 3,
+      "templateId": 91058959,
+      "jaccard": 0.9666666666666667,
+      "addedSandboxIds": [
+        91389320
+      ]
+    },
+    {
+      "mapId": 20034,
+      "roomId": 4,
+      "templateId": 91062037,
+      "jaccard": 0.9642857142857143,
+      "addedSandboxIds": [
+        91389306
+      ]
+    },
+    {
+      "mapId": 20034,
+      "roomId": 13,
+      "templateId": 91051617,
+      "jaccard": 0.8947368421052632,
+      "addedSandboxIds": [
+        91389608,
+        91407026
+      ]
+    },
+    {
+      "mapId": 20034,
+      "roomId": 14,
+      "templateId": 91043276,
+      "jaccard": 0.9333333333333333,
+      "addedSandboxIds": [
+        91406455
+      ]
+    },
+    {
+      "mapId": 20034,
+      "roomId": 53,
+      "templateId": 91062053,
+      "jaccard": 0.9375,
+      "addedSandboxIds": [
+        91406864
+      ]
+    },
+    {
+      "mapId": 20034,
+      "roomId": 69,
+      "templateId": 91305276,
+      "jaccard": 0.9411764705882353,
+      "addedSandboxIds": [
+        91380988
+      ]
+    },
+    {
+      "mapId": 20034,
+      "roomId": 92,
+      "templateId": 91043276,
+      "jaccard": 0.9333333333333333,
+      "addedSandboxIds": [
+        91406455
+      ]
+    },
+    {
+      "mapId": 20034,
+      "roomId": 96,
+      "templateId": 91043276,
+      "jaccard": 0.9333333333333333,
+      "addedSandboxIds": [
+        91406455
+      ]
+    },
+    {
+      "mapId": 20035,
+      "roomId": 3,
+      "templateId": 91058907,
+      "jaccard": 0.9666666666666667,
+      "addedSandboxIds": [
+        91389330
+      ]
+    },
+    {
+      "mapId": 20035,
+      "roomId": 6,
+      "templateId": 91051617,
+      "jaccard": 0.8947368421052632,
+      "addedSandboxIds": [
+        91389608,
+        91407026
+      ]
+    },
+    {
+      "mapId": 20035,
+      "roomId": 17,
+      "templateId": 91051617,
+      "jaccard": 0.8947368421052632,
+      "addedSandboxIds": [
+        91389608,
+        91407026
+      ]
+    },
+    {
+      "mapId": 20035,
+      "roomId": 29,
+      "templateId": 91043247,
+      "jaccard": 0.9333333333333333,
+      "addedSandboxIds": [
+        91406514
+      ]
+    },
+    {
+      "mapId": 20035,
+      "roomId": 40,
+      "templateId": 91305276,
+      "jaccard": 0.9411764705882353,
+      "addedSandboxIds": [
+        91380988
+      ]
+    },
+    {
+      "mapId": 20035,
+      "roomId": 79,
+      "templateId": 91062053,
+      "jaccard": 0.9375,
+      "addedSandboxIds": [
+        91406864
+      ]
+    },
+    {
+      "mapId": 20035,
+      "roomId": 80,
+      "templateId": 91062057,
+      "jaccard": 0.9642857142857143,
+      "addedSandboxIds": [
+        91389627
+      ]
+    },
+    {
+      "mapId": 20036,
+      "roomId": 2,
+      "templateId": 91051617,
+      "jaccard": 0.8947368421052632,
+      "addedSandboxIds": [
+        91389608,
+        91407026
+      ]
+    },
+    {
+      "mapId": 20036,
+      "roomId": 4,
+      "templateId": 91291249,
+      "jaccard": 0.8181818181818182,
+      "addedSandboxIds": [
+        91375990,
+        91375997,
+        91376002,
+        91389646
+      ]
+    },
+    {
+      "mapId": 20036,
+      "roomId": 5,
+      "templateId": 91043276,
+      "jaccard": 0.9333333333333333,
+      "addedSandboxIds": [
+        91406455
+      ]
+    },
+    {
+      "mapId": 20036,
+      "roomId": 6,
+      "templateId": 91043247,
+      "jaccard": 0.9333333333333333,
+      "addedSandboxIds": [
+        91406514
+      ]
+    },
+    {
+      "mapId": 20036,
+      "roomId": 23,
+      "templateId": 91043276,
+      "jaccard": 0.9333333333333333,
+      "addedSandboxIds": [
+        91406455
+      ]
+    },
+    {
+      "mapId": 20036,
+      "roomId": 25,
+      "templateId": 91062053,
+      "jaccard": 0.9375,
+      "addedSandboxIds": [
+        91406864
+      ]
+    },
+    {
+      "mapId": 20036,
+      "roomId": 26,
+      "templateId": 91051617,
+      "jaccard": 0.8947368421052632,
+      "addedSandboxIds": [
+        91389608,
+        91407026
+      ]
+    },
+    {
+      "mapId": 20036,
+      "roomId": 27,
+      "templateId": 91051617,
+      "jaccard": 0.8947368421052632,
+      "addedSandboxIds": [
+        91389608,
+        91407026
+      ]
+    },
+    {
+      "mapId": 20036,
+      "roomId": 53,
+      "templateId": 91293249,
+      "jaccard": 0.95,
+      "addedSandboxIds": [
+        91380848
+      ]
+    },
+    {
+      "mapId": 20037,
+      "roomId": 6,
+      "templateId": 91062053,
+      "jaccard": 0.9375,
+      "addedSandboxIds": [
+        91406864
+      ]
+    },
+    {
+      "mapId": 20037,
+      "roomId": 24,
+      "templateId": 91291249,
+      "jaccard": 0.8181818181818182,
+      "addedSandboxIds": [
+        91375990,
+        91375997,
+        91376002,
+        91389646
+      ]
+    },
+    {
+      "mapId": 20037,
+      "roomId": 45,
+      "templateId": 91051617,
+      "jaccard": 0.8947368421052632,
+      "addedSandboxIds": [
+        91389608,
+        91407026
+      ]
+    },
+    {
+      "mapId": 20037,
+      "roomId": 61,
+      "templateId": 91062057,
+      "jaccard": 0.9642857142857143,
+      "addedSandboxIds": [
+        91389627
+      ]
+    },
+    {
+      "mapId": 20037,
+      "roomId": 62,
+      "templateId": 91051617,
+      "jaccard": 0.8947368421052632,
+      "addedSandboxIds": [
+        91389608,
+        91407026
+      ]
+    },
+    {
+      "mapId": 20037,
+      "roomId": 64,
+      "templateId": 91043276,
+      "jaccard": 0.9333333333333333,
+      "addedSandboxIds": [
+        91406455
+      ]
+    },
+    {
+      "mapId": 20038,
+      "roomId": 1,
+      "templateId": 91058959,
+      "jaccard": 0.9666666666666667,
+      "addedSandboxIds": [
+        91389320
+      ]
+    },
+    {
+      "mapId": 20038,
+      "roomId": 24,
+      "templateId": 91062037,
+      "jaccard": 0.9642857142857143,
+      "addedSandboxIds": [
+        91389306
+      ]
+    },
+    {
+      "mapId": 20038,
+      "roomId": 55,
+      "templateId": 91062057,
+      "jaccard": 0.9642857142857143,
+      "addedSandboxIds": [
+        91389627
+      ]
+    },
+    {
+      "mapId": 20038,
+      "roomId": 56,
+      "templateId": 91293249,
+      "jaccard": 0.95,
+      "addedSandboxIds": [
+        91380848
+      ]
+    },
+    {
+      "mapId": 20038,
+      "roomId": 57,
+      "templateId": 91062037,
+      "jaccard": 0.9642857142857143,
+      "addedSandboxIds": [
+        91389306
+      ]
+    },
+    {
+      "mapId": 20039,
+      "roomId": 1,
+      "templateId": 91058959,
+      "jaccard": 0.9666666666666667,
+      "addedSandboxIds": [
+        91389320
+      ]
+    },
+    {
+      "mapId": 20039,
+      "roomId": 24,
+      "templateId": 91062037,
+      "jaccard": 0.9642857142857143,
+      "addedSandboxIds": [
+        91389306
+      ]
+    },
+    {
+      "mapId": 20039,
+      "roomId": 49,
+      "templateId": 91293249,
+      "jaccard": 0.95,
+      "addedSandboxIds": [
+        91380848
+      ]
+    },
+    {
+      "mapId": 20039,
+      "roomId": 55,
+      "templateId": 91062057,
+      "jaccard": 0.9642857142857143,
+      "addedSandboxIds": [
+        91389627
+      ]
+    },
+    {
+      "mapId": 20039,
+      "roomId": 58,
+      "templateId": 91062037,
+      "jaccard": 0.9642857142857143,
+      "addedSandboxIds": [
+        91389306
+      ]
+    },
+    {
+      "mapId": 20040,
+      "roomId": 3,
+      "templateId": 91058959,
+      "jaccard": 0.9666666666666667,
+      "addedSandboxIds": [
+        91389320
+      ]
+    },
+    {
+      "mapId": 20040,
+      "roomId": 4,
+      "templateId": 91062037,
+      "jaccard": 0.9642857142857143,
+      "addedSandboxIds": [
+        91389306
+      ]
+    },
+    {
+      "mapId": 20040,
+      "roomId": 13,
+      "templateId": 91051617,
+      "jaccard": 0.8947368421052632,
+      "addedSandboxIds": [
+        91389608,
+        91407026
+      ]
+    },
+    {
+      "mapId": 20040,
+      "roomId": 14,
+      "templateId": 91043276,
+      "jaccard": 0.9333333333333333,
+      "addedSandboxIds": [
+        91406455
+      ]
+    },
+    {
+      "mapId": 20040,
+      "roomId": 53,
+      "templateId": 91062053,
+      "jaccard": 0.9375,
+      "addedSandboxIds": [
+        91406864
+      ]
+    },
+    {
+      "mapId": 20040,
+      "roomId": 92,
+      "templateId": 91043276,
+      "jaccard": 0.9333333333333333,
+      "addedSandboxIds": [
+        91406455
+      ]
+    },
+    {
+      "mapId": 20040,
+      "roomId": 97,
+      "templateId": 91293249,
+      "jaccard": 0.95,
+      "addedSandboxIds": [
+        91380848
+      ]
+    },
+    {
+      "mapId": 20040,
+      "roomId": 112,
+      "templateId": 91043276,
+      "jaccard": 0.9333333333333333,
+      "addedSandboxIds": [
+        91406455
+      ]
+    },
+    {
+      "mapId": 20041,
+      "roomId": 3,
+      "templateId": 91058907,
+      "jaccard": 0.9666666666666667,
+      "addedSandboxIds": [
+        91389330
+      ]
+    },
+    {
+      "mapId": 20041,
+      "roomId": 4,
+      "templateId": 91291249,
+      "jaccard": 0.8181818181818182,
+      "addedSandboxIds": [
+        91375990,
+        91375997,
+        91376002,
+        91389646
+      ]
+    },
+    {
+      "mapId": 20041,
+      "roomId": 5,
+      "templateId": 91062057,
+      "jaccard": 0.9642857142857143,
+      "addedSandboxIds": [
+        91389627
+      ]
+    },
+    {
+      "mapId": 20042,
+      "roomId": 5,
+      "templateId": 91043276,
+      "jaccard": 0.9333333333333333,
+      "addedSandboxIds": [
+        91406455
+      ]
+    },
+    {
+      "mapId": 20042,
+      "roomId": 8,
+      "templateId": 91062053,
+      "jaccard": 0.9375,
+      "addedSandboxIds": [
+        91406864
+      ]
+    },
+    {
+      "mapId": 20042,
+      "roomId": 9,
+      "templateId": 91051617,
+      "jaccard": 0.8947368421052632,
+      "addedSandboxIds": [
+        91389608,
+        91407026
+      ]
+    },
+    {
+      "mapId": 20042,
+      "roomId": 25,
+      "templateId": 91043247,
+      "jaccard": 0.9333333333333333,
+      "addedSandboxIds": [
+        91406514
+      ]
+    },
+    {
+      "mapId": 20043,
+      "roomId": 20,
+      "templateId": 91043276,
+      "jaccard": 0.9333333333333333,
+      "addedSandboxIds": [
+        91406455
+      ]
+    },
+    {
+      "mapId": 20043,
+      "roomId": 37,
+      "templateId": 91062053,
+      "jaccard": 0.9375,
+      "addedSandboxIds": [
+        91406864
+      ]
+    },
+    {
+      "mapId": 20044,
+      "roomId": 3,
+      "templateId": 91058907,
+      "jaccard": 0.9666666666666667,
+      "addedSandboxIds": [
+        91389330
+      ]
+    },
+    {
+      "mapId": 20044,
+      "roomId": 5,
+      "templateId": 91062057,
+      "jaccard": 0.9642857142857143,
+      "addedSandboxIds": [
+        91389627
+      ]
+    },
+    {
+      "mapId": 20044,
+      "roomId": 6,
+      "templateId": 91291249,
+      "jaccard": 0.8181818181818182,
+      "addedSandboxIds": [
+        91375990,
+        91375997,
+        91376002,
+        91389646
+      ]
+    },
+    {
+      "mapId": 20044,
+      "roomId": 71,
+      "templateId": 91043276,
+      "jaccard": 0.9333333333333333,
+      "addedSandboxIds": [
+        91406455
+      ]
+    },
+    {
+      "mapId": 20044,
+      "roomId": 72,
+      "templateId": 91062053,
+      "jaccard": 0.9375,
+      "addedSandboxIds": [
+        91406864
+      ]
+    },
+    {
+      "mapId": 20045,
+      "roomId": 5,
+      "templateId": 91043276,
+      "jaccard": 0.9333333333333333,
+      "addedSandboxIds": [
+        91406455
+      ]
+    },
+    {
+      "mapId": 20045,
+      "roomId": 6,
+      "templateId": 91062037,
+      "jaccard": 0.9642857142857143,
+      "addedSandboxIds": [
+        91389306
+      ]
+    },
+    {
+      "mapId": 20045,
+      "roomId": 8,
+      "templateId": 91062053,
+      "jaccard": 0.9375,
+      "addedSandboxIds": [
+        91406864
+      ]
+    },
+    {
+      "mapId": 20045,
+      "roomId": 9,
+      "templateId": 91051617,
+      "jaccard": 0.8947368421052632,
+      "addedSandboxIds": [
+        91389608,
+        91407026
+      ]
+    },
+    {
+      "mapId": 20045,
+      "roomId": 11,
+      "templateId": 91305276,
+      "jaccard": 0.9411764705882353,
+      "addedSandboxIds": [
+        91380988
+      ]
+    },
+    {
+      "mapId": 20045,
+      "roomId": 25,
+      "templateId": 91043247,
+      "jaccard": 0.9333333333333333,
+      "addedSandboxIds": [
+        91406514
+      ]
+    },
+    {
+      "mapId": 20046,
+      "roomId": 16,
+      "templateId": 91043276,
+      "jaccard": 0.9333333333333333,
+      "addedSandboxIds": [
+        91406455
+      ]
+    },
+    {
+      "mapId": 20046,
+      "roomId": 25,
+      "templateId": 91062053,
+      "jaccard": 0.9375,
+      "addedSandboxIds": [
+        91406864
+      ]
+    },
+    {
+      "mapId": 20046,
+      "roomId": 26,
+      "templateId": 91062053,
+      "jaccard": 0.9375,
+      "addedSandboxIds": [
+        91406864
+      ]
+    },
+    {
+      "mapId": 20046,
+      "roomId": 41,
+      "templateId": 91062053,
+      "jaccard": 0.9375,
+      "addedSandboxIds": [
+        91406864
+      ]
+    },
+    {
+      "mapId": 20046,
+      "roomId": 46,
+      "templateId": 91043247,
+      "jaccard": 0.9333333333333333,
+      "addedSandboxIds": [
+        91406514
+      ]
+    },
+    {
+      "mapId": 20047,
+      "roomId": 20,
+      "templateId": 91043276,
+      "jaccard": 0.9333333333333333,
+      "addedSandboxIds": [
+        91406455
+      ]
+    },
+    {
+      "mapId": 20047,
+      "roomId": 36,
+      "templateId": 91293249,
+      "jaccard": 0.95,
+      "addedSandboxIds": [
+        91380848
+      ]
+    },
+    {
+      "mapId": 20047,
+      "roomId": 37,
+      "templateId": 91062053,
+      "jaccard": 0.9375,
+      "addedSandboxIds": [
+        91406864
+      ]
+    },
+    {
+      "mapId": 20048,
+      "roomId": 16,
+      "templateId": 91062057,
+      "jaccard": 0.9642857142857143,
+      "addedSandboxIds": [
+        91389627
+      ]
+    },
+    {
+      "mapId": 20048,
+      "roomId": 18,
+      "templateId": 91043247,
+      "jaccard": 0.9333333333333333,
+      "addedSandboxIds": [
+        91406514
+      ]
+    },
+    {
+      "mapId": 20048,
+      "roomId": 31,
+      "templateId": 91043276,
+      "jaccard": 0.9333333333333333,
+      "addedSandboxIds": [
+        91406455
+      ]
+    },
+    {
+      "mapId": 20048,
+      "roomId": 33,
+      "templateId": 91058907,
+      "jaccard": 0.9666666666666667,
+      "addedSandboxIds": [
+        91389330
+      ]
+    },
+    {
+      "mapId": 20048,
+      "roomId": 35,
+      "templateId": 91062037,
+      "jaccard": 0.9642857142857143,
+      "addedSandboxIds": [
+        91389306
+      ]
+    },
+    {
+      "mapId": 20048,
+      "roomId": 40,
+      "templateId": 91293249,
+      "jaccard": 0.95,
+      "addedSandboxIds": [
+        91380848
+      ]
+    },
+    {
+      "mapId": 20048,
+      "roomId": 41,
+      "templateId": 91062053,
+      "jaccard": 0.9375,
+      "addedSandboxIds": [
+        91406864
+      ]
+    },
+    {
+      "mapId": 20049,
+      "roomId": 16,
+      "templateId": 91062057,
+      "jaccard": 0.9642857142857143,
+      "addedSandboxIds": [
+        91389627
+      ]
+    },
+    {
+      "mapId": 20049,
+      "roomId": 18,
+      "templateId": 91043247,
+      "jaccard": 0.9333333333333333,
+      "addedSandboxIds": [
+        91406514
+      ]
+    },
+    {
+      "mapId": 20049,
+      "roomId": 19,
+      "templateId": 91291249,
+      "jaccard": 0.8181818181818182,
+      "addedSandboxIds": [
+        91375990,
+        91375997,
+        91376002,
+        91389646
+      ]
+    },
+    {
+      "mapId": 20049,
+      "roomId": 31,
+      "templateId": 91043276,
+      "jaccard": 0.9333333333333333,
+      "addedSandboxIds": [
+        91406455
+      ]
+    },
+    {
+      "mapId": 20049,
+      "roomId": 33,
+      "templateId": 91058907,
+      "jaccard": 0.9666666666666667,
+      "addedSandboxIds": [
+        91389330
+      ]
+    },
+    {
+      "mapId": 20049,
+      "roomId": 35,
+      "templateId": 91062037,
+      "jaccard": 0.9642857142857143,
+      "addedSandboxIds": [
+        91389306
+      ]
+    },
+    {
+      "mapId": 20049,
+      "roomId": 41,
+      "templateId": 91062053,
+      "jaccard": 0.9375,
+      "addedSandboxIds": [
+        91406864
+      ]
+    },
+    {
+      "mapId": 20050,
+      "roomId": 15,
+      "templateId": 91043247,
+      "jaccard": 0.9333333333333333,
+      "addedSandboxIds": [
+        91406514
+      ]
+    },
+    {
+      "mapId": 20050,
+      "roomId": 24,
+      "templateId": 91062037,
+      "jaccard": 0.9642857142857143,
+      "addedSandboxIds": [
+        91389306
+      ]
+    },
+    {
+      "mapId": 20050,
+      "roomId": 37,
+      "templateId": 91043247,
+      "jaccard": 0.9333333333333333,
+      "addedSandboxIds": [
+        91406514
+      ]
+    },
+    {
+      "mapId": 20050,
+      "roomId": 38,
+      "templateId": 91043276,
+      "jaccard": 0.9333333333333333,
+      "addedSandboxIds": [
+        91406455
+      ]
+    },
+    {
+      "mapId": 20051,
+      "roomId": 4,
+      "templateId": 91291249,
+      "jaccard": 0.8181818181818182,
+      "addedSandboxIds": [
+        91375990,
+        91375997,
+        91376002,
+        91389646
+      ]
+    },
+    {
+      "mapId": 20051,
+      "roomId": 5,
+      "templateId": 91062057,
+      "jaccard": 0.9642857142857143,
+      "addedSandboxIds": [
+        91389627
+      ]
+    },
+    {
+      "mapId": 20052,
+      "roomId": 4,
+      "templateId": 91062057,
+      "jaccard": 0.9642857142857143,
+      "addedSandboxIds": [
+        91389627
+      ]
+    },
+    {
+      "mapId": 20052,
+      "roomId": 5,
+      "templateId": 91062057,
+      "jaccard": 0.9642857142857143,
+      "addedSandboxIds": [
+        91389627
+      ]
+    },
+    {
+      "mapId": 20052,
+      "roomId": 6,
+      "templateId": 91051617,
+      "jaccard": 0.8947368421052632,
+      "addedSandboxIds": [
+        91389608,
+        91407026
+      ]
+    },
+    {
+      "mapId": 20053,
+      "roomId": 1,
+      "templateId": 91062037,
+      "jaccard": 0.9642857142857143,
+      "addedSandboxIds": [
+        91389306
+      ]
+    },
+    {
+      "mapId": 20053,
+      "roomId": 2,
+      "templateId": 91062037,
+      "jaccard": 0.9642857142857143,
+      "addedSandboxIds": [
+        91389306
+      ]
+    },
+    {
+      "mapId": 20054,
+      "roomId": 1,
+      "templateId": 91062057,
+      "jaccard": 0.9642857142857143,
+      "addedSandboxIds": [
+        91389627
+      ]
+    },
+    {
+      "mapId": 20054,
+      "roomId": 2,
+      "templateId": 91062057,
+      "jaccard": 0.9642857142857143,
+      "addedSandboxIds": [
+        91389627
+      ]
+    },
+    {
+      "mapId": 20054,
+      "roomId": 20,
+      "templateId": 91051617,
+      "jaccard": 0.8947368421052632,
+      "addedSandboxIds": [
+        91389608,
+        91407026
+      ]
+    },
+    {
+      "mapId": 20054,
+      "roomId": 43,
+      "templateId": 91043276,
+      "jaccard": 0.9333333333333333,
+      "addedSandboxIds": [
+        91406455
+      ]
+    },
+    {
+      "mapId": 20054,
+      "roomId": 50,
+      "templateId": 91062053,
+      "jaccard": 0.9375,
+      "addedSandboxIds": [
+        91406864
+      ]
+    },
+    {
+      "mapId": 20055,
+      "roomId": 5,
+      "templateId": 91062057,
+      "jaccard": 0.9642857142857143,
+      "addedSandboxIds": [
+        91389627
+      ]
+    },
+    {
+      "mapId": 20055,
+      "roomId": 6,
+      "templateId": 91305276,
+      "jaccard": 0.9411764705882353,
+      "addedSandboxIds": [
+        91380988
+      ]
+    },
+    {
+      "mapId": 20056,
+      "roomId": 4,
+      "templateId": 91062057,
+      "jaccard": 0.9642857142857143,
+      "addedSandboxIds": [
+        91389627
+      ]
+    },
+    {
+      "mapId": 20056,
+      "roomId": 5,
+      "templateId": 91062057,
+      "jaccard": 0.9642857142857143,
+      "addedSandboxIds": [
+        91389627
+      ]
+    },
+    {
+      "mapId": 20056,
+      "roomId": 6,
+      "templateId": 91051617,
+      "jaccard": 0.8947368421052632,
+      "addedSandboxIds": [
+        91389608,
+        91407026
+      ]
+    },
+    {
+      "mapId": 20056,
+      "roomId": 8,
+      "templateId": 91305276,
+      "jaccard": 0.9411764705882353,
+      "addedSandboxIds": [
+        91380988
+      ]
+    },
+    {
+      "mapId": 20057,
+      "roomId": 1,
+      "templateId": 91062037,
+      "jaccard": 0.9642857142857143,
+      "addedSandboxIds": [
+        91389306
+      ]
+    },
+    {
+      "mapId": 20057,
+      "roomId": 2,
+      "templateId": 91062037,
+      "jaccard": 0.9642857142857143,
+      "addedSandboxIds": [
+        91389306
+      ]
+    },
+    {
+      "mapId": 20057,
+      "roomId": 30,
+      "templateId": 91293249,
+      "jaccard": 0.95,
+      "addedSandboxIds": [
+        91380848
+      ]
+    },
+    {
+      "mapId": 20057,
+      "roomId": 44,
+      "templateId": 91062053,
+      "jaccard": 0.9375,
+      "addedSandboxIds": [
+        91406864
+      ]
+    },
+    {
+      "mapId": 20058,
+      "roomId": 29,
+      "templateId": 91291249,
+      "jaccard": 0.8181818181818182,
+      "addedSandboxIds": [
+        91375990,
+        91375997,
+        91376002,
+        91389646
+      ]
+    },
+    {
+      "mapId": 20058,
+      "roomId": 35,
+      "templateId": 91043247,
+      "jaccard": 0.9333333333333333,
+      "addedSandboxIds": [
+        91406514
+      ]
+    },
+    {
+      "mapId": 20058,
+      "roomId": 36,
+      "templateId": 91051617,
+      "jaccard": 0.8947368421052632,
+      "addedSandboxIds": [
+        91389608,
+        91407026
+      ]
+    },
+    {
+      "mapId": 20059,
+      "roomId": 5,
+      "templateId": 91062057,
+      "jaccard": 0.9642857142857143,
+      "addedSandboxIds": [
+        91389627
+      ]
+    },
+    {
+      "mapId": 20059,
+      "roomId": 39,
+      "templateId": 91291249,
+      "jaccard": 0.8181818181818182,
+      "addedSandboxIds": [
+        91375990,
+        91375997,
+        91376002,
+        91389646
+      ]
+    },
+    {
+      "mapId": 20060,
+      "roomId": 4,
+      "templateId": 91043247,
+      "jaccard": 0.9333333333333333,
+      "addedSandboxIds": [
+        91406514
+      ]
+    },
+    {
+      "mapId": 20060,
+      "roomId": 5,
+      "templateId": 91051617,
+      "jaccard": 0.8947368421052632,
+      "addedSandboxIds": [
+        91389608,
+        91407026
+      ]
+    },
+    {
+      "mapId": 20060,
+      "roomId": 6,
+      "templateId": 91062053,
+      "jaccard": 0.9375,
+      "addedSandboxIds": [
+        91406864
+      ]
+    },
+    {
+      "mapId": 20060,
+      "roomId": 14,
+      "templateId": 91062057,
+      "jaccard": 0.9642857142857143,
+      "addedSandboxIds": [
+        91389627
+      ]
+    },
+    {
+      "mapId": 20060,
+      "roomId": 16,
+      "templateId": 91293249,
+      "jaccard": 0.95,
+      "addedSandboxIds": [
+        91380848
+      ]
+    }
+  ],
+  "coordinateMethod": "room yaw/translation -> scene two-point calibration -> negate UI y",
+  "mapCount": 31,
+  "counts": {
+    "entrance": 31,
+    "chest": 10917,
+    "egg": 221,
+    "stellarys_boss": 108,
+    "pot": 275,
+    "cache": 1139,
+    "challenge": 29,
+    "exit": 31,
+    "key_orange": 27,
+    "key_purple": 12,
+    "key_blue": 11
+  },
+  "monsterTypeIds": [
+    11001200090
+  ],
+  "bossCandidatesByDifficulty": {
+    "5": 54,
+    "6": 54
+  },
+  "candidateCount": 12801,
+  "provenanceCounts": {
+    "scene_reference": 12543,
+    "template_supplement": 258
+  },
+  "missingSandboxIds": [
+    91144958,
+    91145818,
+    91145853,
+    91327625
+  ],
+  "status": "complete_with_source_gaps",
+  "uniqueCandidateIds": 12801
+}

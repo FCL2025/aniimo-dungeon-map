@@ -1,0 +1,273 @@
+{
+  "11001200090": {
+    "name": "首領級幽黯星法師",
+    "englishName": "Umbral Omega Stellarys",
+    "config": {
+      "BMI": 25,
+      "BossShowName": 1694666437,
+      "BrackerWidth": {
+        "1": -70,
+        "2": 70
+      },
+      "ElitePropId": 10021,
+      "EliteShowName": 2125776465,
+      "Param_ST_Alert": "PBT_Vision_Alert",
+      "Param_ST_Combat_Prepare": "PBT_Noop",
+      "Param_ST_Monster_AutoCombat": "ST_Monster_AutoCombat_Boss_10012_GrabEgg",
+      "Param_ST_Sensed": "PBT_ReadyToFight",
+      "aggressiveness": 1,
+      "animController": "Map_Parmon_10012",
+      "animScaleInLowGravity": 2.2,
+      "atkCdInterval": 1.5,
+      "attackType": 0,
+      "attackWeight": 80,
+      "bTree": "SM_Monster_Root",
+      "babyCatchedBrotherEnterCombatType": 0,
+      "babySensedBrotherEnterCombatType": 0,
+      "baseFormPet": 1001200,
+      "beFollowFormationList": {
+        "1": 1
+      },
+      "beFollowMode": 2,
+      "behavGroupId": "BG_Wild_GrabEggs_Guard",
+      "bodyHeight": 1.3,
+      "bodyMatType": "flesh",
+      "bodySize": 0.4,
+      "brotherSensedEnterCombatType": 0,
+      "callFriendsMaxRange": 30,
+      "cameraDistModeId": 2,
+      "canBeCallFriends": 1,
+      "canBeLookAt": true,
+      "canFly": 1,
+      "canGlide": 1,
+      "canJumpBack": true,
+      "canKnockFly": 1,
+      "canLookAt": true,
+      "canWalkBack": true,
+      "canWalkLeftOrRight": true,
+      "capturedBossModelScale": 1.2,
+      "catchOwnerCondInfo": {
+        "1": "Shiny",
+        "2": "Demonic",
+        "3": "TE_Wild_OneTime"
+      },
+      "catchOwnerType": 2,
+      "catchProbGroup": 103,
+      "catchProbRadio": 0.6,
+      "combatBgm": "BGM_HitAndRun_Boss_Starmage",
+      "commonMountKey": "M_Parmon_10012Avatar",
+      "dangerousValue": 10,
+      "defaultPet": 1001200,
+      "default_addprop": 8,
+      "delayDestroy": 2,
+      "destroyEffect": "Eff_Parmon_Die",
+      "disengageNoHitTime": 5,
+      "disengageView": 40,
+      "ecsBodyMaterialId": 69783666,
+      "editorDisplayPriority": 1,
+      "editorName": "抢蛋-星魔师（幽黯）",
+      "effectOffsetDemonic": {
+        "1": 0,
+        "2": 0,
+        "3": 0
+      },
+      "effectOffsetShiny": {
+        "1": 0,
+        "2": 0,
+        "3": 0
+      },
+      "effectResIDDemonic": "Eff_Pamon_Demonic_Mid",
+      "effectResIDShiny": "Eff_Parmon_Shine_Mid",
+      "effectScaleDemonic": 1,
+      "effectScaleShiny": 1,
+      "elementLevel": 3,
+      "elementLevels": {
+        "Dark": 3
+      },
+      "elementType": {
+        "12": true
+      },
+      "engageView": 30,
+      "enterClimbMinHeight": 1.5,
+      "entityTag": {
+        "1": "TE_Wild_Demonic"
+      },
+      "ethnicGroup": 1001,
+      "ethnicGroupVisionType": 0,
+      "fightCdInterval": 1,
+      "followRadius": 50,
+      "followWarnRadius": 30,
+      "footprintSfxLevel": 1,
+      "formId": 1,
+      "functionId": "DPS",
+      "genderRatio": {
+        "1": 0.5,
+        "2": 0.5
+      },
+      "goBackCd": 8,
+      "hateCoefficient": 2,
+      "height": 1.4,
+      "hitPosYByAttackBox": true,
+      "homeAbility": {
+        "1007": 3,
+        "1102": 3
+      },
+      "homeFoodCostSpeed": 10,
+      "iconName": "10012",
+      "isCombatPrepareTrigger": false,
+      "isServerAI": 1,
+      "label": 18,
+      "lvType": 1,
+      "mainElementType": 12,
+      "mass": 25,
+      "maxAttackHeight": 6,
+      "maxKeepBoxDist": 10,
+      "modelHeight": 1.4,
+      "modelInfoRef": "$Parmon_10012.bytes",
+      "modelScaleRange": {
+        "1": 0.874,
+        "2": 1.026,
+        "3": 1
+      },
+      "monsterType": 2,
+      "moveLevel": 2,
+      "name": 1809768499,
+      "natureRatio": {
+        "4": 0.5,
+        "6": 0.5
+      },
+      "noRecoverHpOnLeaveCombat": 1,
+      "nolmpPerceptGroupId": "PG_Simple_Circle_10",
+      "normalAtkAbilityId": 10121001,
+      "npcType": 1,
+      "partnerEnterCombatDis": 10,
+      "partnerEnterCombatType": 0,
+      "patrolRange": 5,
+      "perceptGroupId": "PG_GrabEggs_BirdGuardSense",
+      "petPrototypeId": 1001200,
+      "photoIdentifyIds": {},
+      "prefabResID": "$P_Parmon_10012.prefab",
+      "preloadMatEffs": {
+        "1": "10012_Fenshen"
+      },
+      "propId": 20005,
+      "propId2": 20005,
+      "propId3": 200053,
+      "propId4": 20005,
+      "propId5": 200055,
+      "propId6": 200055,
+      "puppetDmgIncModifier": -0.25,
+      "randomFormula": 105,
+      "recommendEquipment": {
+        "1": 551002,
+        "2": 552002,
+        "3": 553002
+      },
+      "recommendGemId": {
+        "1": 554001,
+        "2": 554013,
+        "3": 554025,
+        "4": 554037
+      },
+      "recommendGemType": {
+        "1": 1,
+        "2": 1,
+        "3": 1,
+        "4": 1,
+        "5": 2,
+        "6": 3
+      },
+      "recommendPartners": {
+        "1": 1020300,
+        "2": 1035200
+      },
+      "recommend_addprop": {
+        "1": 8,
+        "2": 1,
+        "3": 7
+      },
+      "recommend_attr": {
+        "1": 2,
+        "2": 4
+      },
+      "recommend_userpercent": {
+        "1": 80,
+        "2": 15,
+        "3": 5
+      },
+      "refId": 11001200,
+      "resId": 10012,
+      "rigidbody": "Parmon_10012",
+      "robeggCatchDropId": 5050023,
+      "runspeedRange": {
+        "1": 4,
+        "2": 8
+      },
+      "runspeed_v": 4.7,
+      "scaleBoss": 1.5,
+      "scaleElite": 2,
+      "scanPetPosition": {
+        "1": 2100120001
+      },
+      "shinyStyleColorId": "P_Parmon_1001202",
+      "shiny_rate": 5e-05,
+      "sideWalkWeight": 20,
+      "sidewalkspeedRange": {
+        "1": 1,
+        "2": 2.5
+      },
+      "sidewalkspeed_v": 0.84,
+      "sizeLevel": 1002,
+      "skillCdInterval": 3,
+      "skillList": {
+        "1": 10120211,
+        "2": 10120302,
+        "3": 10121500,
+        "4": 10121001,
+        "5": 10121002,
+        "6": 10121003,
+        "7": 10121004,
+        "8": 10121300,
+        "9": 10121320,
+        "10": 10121805,
+        "11": 10121410,
+        "12": 10121200,
+        "13": 10121802,
+        "14": 10121400,
+        "15": 10121100,
+        "16": 10121508,
+        "17": 10121806,
+        "18": 10121810
+      },
+      "sleepDayTime": 2,
+      "species": 1,
+      "species_atk_mag_v": 125,
+      "species_atk_v": 125,
+      "species_bp_atk_v": 54,
+      "species_def_mag_v": 69,
+      "species_def_v": 68,
+      "species_ep_regen_force_v": 94,
+      "species_hp_max_v": 95,
+      "spriteIdAfterCatch": 1001200,
+      "stage": 3,
+      "stepHeightDown": 0.6,
+      "stepHeightUp": 0.6,
+      "topLogoOffset": 1.3,
+      "turnSpeed": 300,
+      "uiName": "STELLARYS",
+      "useShinyModel": 1,
+      "use_randomtxt": 0,
+      "walkbackspeedRange": {
+        "1": 1,
+        "2": 2.5
+      },
+      "walkbackspeed_v": 1.2,
+      "walkspeedRange": {
+        "1": 1,
+        "2": 2.5
+      },
+      "walkspeed_v": 1.44,
+      "weight": 7
+    }
+  }
+}

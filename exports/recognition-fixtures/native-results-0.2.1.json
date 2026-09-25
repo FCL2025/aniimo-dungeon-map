@@ -1,0 +1,25 @@
+[
+  {
+    "best": 20040,
+    "locked": null,
+    "matches": 10,
+    "name": "real-initial",
+    "observations": 1
+  },
+  {
+    "locked": 20040,
+    "matches": 184,
+    "name": "real-explored",
+    "observations": 2,
+    "selected": "20040"
+  },
+  {
+    "locked": 20040,
+    "manual": false,
+    "matches": 639,
+    "message": "地宮 20040 · 639 個地形吻合點，已採用最高候選。",
+    "name": "strong-overrides-manual",
+    "selected": "20040",
+    "strong": true
+  }
+]

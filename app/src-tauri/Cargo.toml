@@ -1,0 +1,27 @@
+[package]
+name = "aniimo-dungeon-map"
+version = "0.2.2"
+description = "Portable Aniimo dungeon map companion"
+edition = "2021"
+
+[build-dependencies]
+tauri-build = { version = "=2.5.6", features = [] }
+
+[dependencies]
+tauri = { version = "=2.10.3", features = [] }
+serde = { version = "1", features = ["derive"] }
+windows-sys = { version = "0.61", features = ["Win32_UI_WindowsAndMessaging", "Win32_System_Threading", "Win32_UI_Input_KeyboardAndMouse"] }
+windows-capture = "=2.0.1"
+image = { version = "=0.25.10", default-features = false, features = ["jpeg"] }
+base64 = "=0.22.1"
+
+[features]
+default = ["custom-protocol"]
+custom-protocol = ["tauri/custom-protocol"]
+
+[profile.release]
+strip = true
+lto = "thin"
+codegen-units = 1
+opt-level = "s"
+panic = "abort"

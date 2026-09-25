@@ -1,0 +1,7 @@
+{
+  "name": "OpenCV.js",
+  "version": "4.13.0",
+  "downloadUrl": "https://docs.opencv.org/4.x/opencv.js",
+  "sha256": "63366510248adf3a7eddf3e793dd825404efb7df3749f4d6f8557c7fa4ca8aa0",
+  "license": "Apache-2.0"
+}

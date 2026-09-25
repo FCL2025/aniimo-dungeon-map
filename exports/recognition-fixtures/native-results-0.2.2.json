@@ -1,0 +1,94 @@
+[
+  {
+    "burstUntil": 0,
+    "dialogs": 0,
+    "frame": {
+      "h": 1079,
+      "sequence": 34,
+      "w": 1920
+    },
+    "mapKeyAt": 0,
+    "name": "one-click-start",
+    "running": true,
+    "settingsOpened": false,
+    "stats": {
+      "analyzed": 3,
+      "captured": 34,
+      "duplicates": 1,
+      "queuePeak": 3
+    }
+  },
+  {
+    "backendRunning": false,
+    "name": "one-click-stop",
+    "queue": 0,
+    "running": false
+  },
+  {
+    "locked": null,
+    "matches": 10,
+    "name": "initial-fog-preview",
+    "selected": 20040
+  },
+  {
+    "locked": null,
+    "matches": 129,
+    "name": "preview-rank-change",
+    "selected": 20059
+  },
+  {
+    "locked": 20040,
+    "matches": 639,
+    "name": "threshold-lock"
+  },
+  {
+    "locked": 20040,
+    "name": "other-map-keeps-lock",
+    "selected": 20040
+  },
+  {
+    "locked": 20040,
+    "name": "resume-preserves-lock",
+    "running": true
+  },
+  {
+    "locked": 20040,
+    "name": "pause-preserves-lock"
+  },
+  {
+    "buttons": [
+      {
+        "bottom": 47,
+        "id": "recognition-button",
+        "right": 202.78125,
+        "x": 108.78125,
+        "y": 17
+      },
+      {
+        "bottom": 47,
+        "id": "new-session",
+        "right": 261.78125,
+        "x": 207.78125,
+        "y": 17
+      },
+      {
+        "bottom": 47,
+        "id": "compact",
+        "right": 403.78125,
+        "x": 337.78125,
+        "y": 17
+      }
+    ],
+    "name": "compact-controls",
+    "size": [
+      600,
+      560
+    ]
+  },
+  {
+    "locked": null,
+    "name": "new-session-reset",
+    "queue": 0,
+    "selected": null
+  }
+]

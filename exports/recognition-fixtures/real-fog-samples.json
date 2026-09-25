@@ -1,0 +1,20 @@
+{
+  "providedBy": "user",
+  "sameSession": true,
+  "files": [
+    {
+      "fixture": "real-20040-initial.png",
+      "source": "Aniimo_5EZquhuAQm.png",
+      "sha256": "ea7f3fd8864554c1d03e58ae0f9f8cb5d4af944e4e63e13b558aa6f712350d4f",
+      "modified": false,
+      "expectedMap": 20040
+    },
+    {
+      "fixture": "real-20040-explored.png",
+      "source": "Aniimo_urSGCOjmCx.png",
+      "sha256": "b000cc49b71dd5d19970bd69ca42e060a0e15fd450fc51b06c39e2ac1de0181b",
+      "modified": false,
+      "expectedMap": 20040
+    }
+  ]
+}

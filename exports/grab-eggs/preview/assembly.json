@@ -1,0 +1,499 @@
+[
+  {
+    "label": "UI_Img_Map_3004",
+    "tiles": 384,
+    "full_size": [
+      6144,
+      4096
+    ],
+    "content_bbox": [
+      0,
+      0,
+      6144,
+      4096
+    ],
+    "swap_axes": false,
+    "x_direction": 1,
+    "y_direction": 1,
+    "seam_error": 1.0922086946256868,
+    "orientation_candidates": [
+      [
+        1.0922086946256868,
+        false,
+        1,
+        1
+      ],
+      [
+        10.057319389594781,
+        false,
+        -1,
+        1
+      ],
+      [
+        12.067724877661401,
+        false,
+        1,
+        -1
+      ],
+      [
+        19.54687231713599,
+        true,
+        -1,
+        -1
+      ],
+      [
+        19.596434205442993,
+        true,
+        1,
+        -1
+      ],
+      [
+        19.749344039749314,
+        true,
+        -1,
+        1
+      ],
+      [
+        19.798905928056318,
+        true,
+        1,
+        1
+      ],
+      [
+        21.032835572630493,
+        false,
+        -1,
+        -1
+      ]
+    ],
+    "png": "preview/UI_Img_Map_3004.png",
+    "cropped": "preview/UI_Img_Map_3004_cropped.png",
+    "preview": "preview/UI_Img_Map_3004_preview.jpg"
+  },
+  {
+    "label": "UI_Img_Map_Layer_3004_1_1_1",
+    "tiles": 4,
+    "full_size": [
+      512,
+      512
+    ],
+    "content_bbox": [
+      136,
+      140,
+      296,
+      408
+    ],
+    "swap_axes": false,
+    "x_direction": 1,
+    "y_direction": 1,
+    "seam_error": 0.11044776119402985,
+    "orientation_candidates": [
+      [
+        0.0,
+        false,
+        -1,
+        1
+      ],
+      [
+        0.11044776119402985,
+        false,
+        1,
+        1
+      ],
+      [
+        0.1778846153846154,
+        false,
+        1,
+        -1
+      ],
+      [
+        179.65522388059702,
+        true,
+        -1,
+        -1
+      ],
+      [
+        179.65522388059702,
+        true,
+        -1,
+        1
+      ],
+      [
+        179.65820895522387,
+        true,
+        1,
+        -1
+      ],
+      [
+        179.65820895522387,
+        true,
+        1,
+        1
+      ],
+      [
+        null,
+        false,
+        -1,
+        -1
+      ]
+    ],
+    "png": "preview/UI_Img_Map_Layer_3004_1_1_1.png",
+    "cropped": "preview/UI_Img_Map_Layer_3004_1_1_1_cropped.png",
+    "preview": "preview/UI_Img_Map_Layer_3004_1_1_1_preview.jpg"
+  },
+  {
+    "label": "UI_Img_Map_Layer_3004_1_1_2",
+    "tiles": 4,
+    "full_size": [
+      512,
+      512
+    ],
+    "content_bbox": [
+      120,
+      92,
+      480,
+      468
+    ],
+    "swap_axes": false,
+    "x_direction": 1,
+    "y_direction": 1,
+    "seam_error": 0.3973634651600753,
+    "orientation_candidates": [
+      [
+        0.014317180616740088,
+        false,
+        1,
+        -1
+      ],
+      [
+        0.3973634651600753,
+        false,
+        1,
+        1
+      ],
+      [
+        0.6833881578947368,
+        false,
+        -1,
+        1
+      ],
+      [
+        178.0365275142315,
+        true,
+        1,
+        1
+      ],
+      [
+        178.24528301886792,
+        true,
+        -1,
+        1
+      ],
+      [
+        178.43346007604563,
+        true,
+        1,
+        -1
+      ],
+      [
+        178.64035916824196,
+        true,
+        -1,
+        -1
+      ],
+      [
+        null,
+        false,
+        -1,
+        -1
+      ]
+    ],
+    "png": "preview/UI_Img_Map_Layer_3004_1_1_2.png",
+    "cropped": "preview/UI_Img_Map_Layer_3004_1_1_2_cropped.png",
+    "preview": "preview/UI_Img_Map_Layer_3004_1_1_2_preview.jpg"
+  },
+  {
+    "label": "UI_Img_Map_Layer_3004_1_2_0",
+    "tiles": 6,
+    "full_size": [
+      768,
+      512
+    ],
+    "content_bbox": [
+      136,
+      80,
+      736,
+      468
+    ],
+    "swap_axes": false,
+    "x_direction": 1,
+    "y_direction": 1,
+    "seam_error": 3.8468934911242605,
+    "orientation_candidates": [
+      [
+        3.8468934911242605,
+        false,
+        1,
+        1
+      ],
+      [
+        5.764547413793103,
+        false,
+        1,
+        -1
+      ],
+      [
+        83.65695952615992,
+        false,
+        -1,
+        1
+      ],
+      [
+        169.71760731319554,
+        true,
+        1,
+        -1
+      ],
+      [
+        169.73729150119144,
+        true,
+        1,
+        1
+      ],
+      [
+        170.1467908082409,
+        true,
+        -1,
+        -1
+      ],
+      [
+        170.16607284243864,
+        true,
+        -1,
+        1
+      ],
+      [
+        180.38552915766738,
+        false,
+        -1,
+        -1
+      ]
+    ],
+    "png": "preview/UI_Img_Map_Layer_3004_1_2_0.png",
+    "cropped": "preview/UI_Img_Map_Layer_3004_1_2_0_cropped.png",
+    "preview": "preview/UI_Img_Map_Layer_3004_1_2_0_preview.jpg"
+  },
+  {
+    "label": "UI_Img_Map_Layer_3004_2_1_0",
+    "tiles": 4,
+    "full_size": [
+      768,
+      512
+    ],
+    "content_bbox": [
+      0,
+      0,
+      640,
+      512
+    ],
+    "swap_axes": false,
+    "x_direction": 1,
+    "y_direction": 1,
+    "seam_error": 0.013054830287206266,
+    "orientation_candidates": [
+      [
+        0.013054830287206266,
+        false,
+        1,
+        1
+      ],
+      [
+        31.11465892597968,
+        false,
+        1,
+        -1
+      ],
+      [
+        84.197454308094,
+        false,
+        -1,
+        1
+      ],
+      [
+        101.25689127105666,
+        true,
+        -1,
+        -1
+      ],
+      [
+        103.91845329249617,
+        true,
+        1,
+        -1
+      ],
+      [
+        109.15007836990596,
+        true,
+        -1,
+        1
+      ],
+      [
+        111.87421630094043,
+        true,
+        1,
+        1
+      ],
+      [
+        124.70718432510886,
+        false,
+        -1,
+        -1
+      ]
+    ],
+    "png": "preview/UI_Img_Map_Layer_3004_2_1_0.png",
+    "cropped": "preview/UI_Img_Map_Layer_3004_2_1_0_cropped.png",
+    "preview": "preview/UI_Img_Map_Layer_3004_2_1_0_preview.jpg"
+  },
+  {
+    "label": "UI_Img_Map_Layer_3004_2_2_0",
+    "tiles": 4,
+    "full_size": [
+      768,
+      512
+    ],
+    "content_bbox": [
+      73,
+      0,
+      664,
+      512
+    ],
+    "swap_axes": false,
+    "x_direction": 1,
+    "y_direction": 1,
+    "seam_error": 0.3368146214099217,
+    "orientation_candidates": [
+      [
+        0.3368146214099217,
+        false,
+        1,
+        1
+      ],
+      [
+        36.010443864229764,
+        false,
+        1,
+        -1
+      ],
+      [
+        70.38488924050633,
+        true,
+        -1,
+        1
+      ],
+      [
+        70.60007911392405,
+        true,
+        1,
+        1
+      ],
+      [
+        79.58044164037855,
+        true,
+        -1,
+        -1
+      ],
+      [
+        79.79495268138801,
+        true,
+        1,
+        -1
+      ],
+      [
+        121.0345953002611,
+        false,
+        -1,
+        1
+      ],
+      [
+        156.70822454308095,
+        false,
+        -1,
+        -1
+      ]
+    ],
+    "png": "preview/UI_Img_Map_Layer_3004_2_2_0.png",
+    "cropped": "preview/UI_Img_Map_Layer_3004_2_2_0_cropped.png",
+    "preview": "preview/UI_Img_Map_Layer_3004_2_2_0_preview.jpg"
+  },
+  {
+    "label": "UI_Img_Map_Layer_3004_2_3_0",
+    "tiles": 8,
+    "full_size": [
+      768,
+      768
+    ],
+    "content_bbox": [
+      44,
+      192,
+      668,
+      768
+    ],
+    "swap_axes": false,
+    "x_direction": 1,
+    "y_direction": 1,
+    "seam_error": 1.3987123115577889,
+    "orientation_candidates": [
+      [
+        1.3987123115577889,
+        false,
+        1,
+        1
+      ],
+      [
+        51.88523778071334,
+        false,
+        1,
+        -1
+      ],
+      [
+        110.22722899294419,
+        false,
+        -1,
+        1
+      ],
+      [
+        124.20757575757575,
+        true,
+        -1,
+        -1
+      ],
+      [
+        125.28012223515717,
+        true,
+        1,
+        -1
+      ],
+      [
+        134.49742686890573,
+        true,
+        -1,
+        1
+      ],
+      [
+        136.12164093767868,
+        true,
+        1,
+        1
+      ],
+      [
+        167.57039162727887,
+        false,
+        -1,
+        -1
+      ]
+    ],
+    "png": "preview/UI_Img_Map_Layer_3004_2_3_0.png",
+    "cropped": "preview/UI_Img_Map_Layer_3004_2_3_0_cropped.png",
+    "preview": "preview/UI_Img_Map_Layer_3004_2_3_0_preview.jpg"
+  }
+]

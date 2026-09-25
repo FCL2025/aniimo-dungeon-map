@@ -1,0 +1,17 @@
+body.desktop-app{height:100vh;grid-template-columns:280px minmax(0,1fr);overflow:hidden}
+.desktop-app aside{overflow-y:auto;padding:22px 18px;border-right:1px solid var(--line)}
+.desktop-app main{min-height:0}.desktop-app .stage{height:auto;flex:1;min-height:140px}
+.desktop-app #filters{display:block}.desktop-app footer{display:block}
+.desktop-app .mapbar{flex-wrap:wrap;padding:15px 20px 12px;gap:8px}
+.desktop-app .mapbar h2{font-size:19px}.desktop-app .tools{gap:5px;flex-wrap:wrap}
+.desktop-app .tools button{font-size:12px;padding:6px 8px}
+.desktop-app .notice{padding:8px 20px}.desktop-app .selection{max-height:28vh;padding:12px 20px}
+.desktop-app.compact{grid-template-columns:minmax(0,1fr)}
+.desktop-app.compact aside{display:none}.desktop-app.compact .selection{display:none}
+.desktop-app.compact .mapbar{padding:9px 12px}.desktop-app.compact .mapbar h2{font-size:16px}
+.desktop-app.compact .notice{font-size:11px;padding:6px 12px}
+.desktop-app.compact .canvas-caption{font-size:10px;bottom:4px;left:6px}
+#app-status:empty{display:none}#app-status{color:var(--gold);margin:0;padding:8px 20px;background:var(--panel);font-size:12px}
+button[aria-pressed=true]{border-color:var(--accent);color:var(--accent)}
+dialog{max-width:min(560px,90vw);max-height:85vh;overflow:auto;color:var(--text);background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:25px;line-height:1.8}
+dialog::backdrop{background:#08151bbf}dialog h2{margin-top:0}dialog p{font-size:13px}dialog button{float:right}

@@ -1,0 +1,435 @@
+{
+  "mapCases": {
+    "done": true,
+    "index": 36,
+    "results": [
+      {
+        "best": 20059,
+        "expected": 20059,
+        "inliers": 129,
+        "kind": "reference",
+        "locked": 20059,
+        "ms": 2008,
+        "name": "reference-20059"
+      },
+      {
+        "best": 20048,
+        "expected": 20048,
+        "inliers": 118,
+        "kind": "reference",
+        "locked": 20048,
+        "ms": 1951,
+        "name": "reference-20048"
+      },
+      {
+        "best": 20046,
+        "expected": 20046,
+        "inliers": 167,
+        "kind": "reference",
+        "locked": 20046,
+        "ms": 1918,
+        "name": "reference-20046"
+      },
+      {
+        "best": 20058,
+        "expected": 20058,
+        "inliers": 131,
+        "kind": "reference",
+        "locked": 20058,
+        "ms": 1995,
+        "name": "reference-20058"
+      },
+      {
+        "best": 20040,
+        "expected": 20034,
+        "inliers": 70,
+        "kind": "reference",
+        "locked": null,
+        "ms": 1948,
+        "name": "reference-20034"
+      },
+      {
+        "best": 20037,
+        "expected": 20037,
+        "inliers": 85,
+        "kind": "reference",
+        "locked": 20037,
+        "ms": 1974,
+        "name": "reference-20037"
+      },
+      {
+        "best": 20049,
+        "expected": 20049,
+        "inliers": 103,
+        "kind": "reference",
+        "locked": 20049,
+        "ms": 1958,
+        "name": "reference-20049"
+      },
+      {
+        "best": 20042,
+        "expected": 20042,
+        "inliers": 125,
+        "kind": "reference",
+        "locked": 20042,
+        "ms": 1961,
+        "name": "reference-20042"
+      },
+      {
+        "best": 20054,
+        "expected": 20054,
+        "inliers": 114,
+        "kind": "reference",
+        "locked": 20054,
+        "ms": 1954,
+        "name": "reference-20054"
+      },
+      {
+        "best": 20053,
+        "expected": 20053,
+        "inliers": 145,
+        "kind": "reference",
+        "locked": 20053,
+        "ms": 1991,
+        "name": "reference-20053"
+      },
+      {
+        "best": 20038,
+        "expected": 20038,
+        "inliers": 69,
+        "kind": "reference",
+        "locked": null,
+        "ms": 1979,
+        "name": "reference-20038"
+      },
+      {
+        "best": 20045,
+        "expected": 20045,
+        "inliers": 179,
+        "kind": "reference",
+        "locked": 20045,
+        "ms": 2013,
+        "name": "reference-20045"
+      },
+      {
+        "best": 20056,
+        "expected": 20056,
+        "inliers": 138,
+        "kind": "reference",
+        "locked": 20056,
+        "ms": 2001,
+        "name": "reference-20056"
+      },
+      {
+        "best": 20043,
+        "expected": 20043,
+        "inliers": 187,
+        "kind": "reference",
+        "locked": null,
+        "ms": 2045,
+        "name": "reference-20043"
+      },
+      {
+        "best": 20060,
+        "expected": 20060,
+        "inliers": 169,
+        "kind": "reference",
+        "locked": 20060,
+        "ms": 1959,
+        "name": "reference-20060"
+      },
+      {
+        "best": 20035,
+        "expected": 20035,
+        "inliers": 85,
+        "kind": "reference",
+        "locked": 20035,
+        "ms": 2013,
+        "name": "reference-20035"
+      },
+      {
+        "best": 20041,
+        "expected": 20041,
+        "inliers": 130,
+        "kind": "reference",
+        "locked": 20041,
+        "ms": 2022,
+        "name": "reference-20041"
+      },
+      {
+        "best": 20050,
+        "expected": 20050,
+        "inliers": 119,
+        "kind": "reference",
+        "locked": 20050,
+        "ms": 1983,
+        "name": "reference-20050"
+      },
+      {
+        "best": 20047,
+        "expected": 20047,
+        "inliers": 174,
+        "kind": "reference",
+        "locked": 20047,
+        "ms": 2120,
+        "name": "reference-20047"
+      },
+      {
+        "best": 20040,
+        "expected": 20040,
+        "inliers": 112,
+        "kind": "reference",
+        "locked": 20040,
+        "ms": 2027,
+        "name": "reference-20040"
+      },
+      {
+        "best": 20033,
+        "expected": 20033,
+        "inliers": 91,
+        "kind": "reference",
+        "locked": 20033,
+        "ms": 2226,
+        "name": "reference-20033"
+      },
+      {
+        "best": 20051,
+        "expected": 20051,
+        "inliers": 128,
+        "kind": "reference",
+        "locked": 20051,
+        "ms": 2055,
+        "name": "reference-20051"
+      },
+      {
+        "best": 20055,
+        "expected": 20055,
+        "inliers": 185,
+        "kind": "reference",
+        "locked": 20055,
+        "ms": 2014,
+        "name": "reference-20055"
+      },
+      {
+        "best": 20039,
+        "expected": 20039,
+        "inliers": 54,
+        "kind": "reference",
+        "locked": null,
+        "ms": 2048,
+        "name": "reference-20039"
+      },
+      {
+        "best": 20057,
+        "expected": 20057,
+        "inliers": 190,
+        "kind": "reference",
+        "locked": 20057,
+        "ms": 2028,
+        "name": "reference-20057"
+      },
+      {
+        "best": 20052,
+        "expected": 20052,
+        "inliers": 122,
+        "kind": "reference",
+        "locked": 20052,
+        "ms": 1988,
+        "name": "reference-20052"
+      },
+      {
+        "best": 20036,
+        "expected": 20036,
+        "inliers": 98,
+        "kind": "reference",
+        "locked": 20036,
+        "ms": 2028,
+        "name": "reference-20036"
+      },
+      {
+        "best": 20044,
+        "expected": 20044,
+        "inliers": 113,
+        "kind": "reference",
+        "locked": 20044,
+        "ms": 2024,
+        "name": "reference-20044"
+      },
+      {
+        "best": 29999,
+        "expected": 29999,
+        "inliers": 75,
+        "kind": "reference",
+        "locked": 29999,
+        "ms": 2015,
+        "name": "reference-29999"
+      },
+      {
+        "best": 20032,
+        "expected": 20032,
+        "inliers": 60,
+        "kind": "reference",
+        "locked": 20032,
+        "ms": 2063,
+        "name": "reference-20032"
+      },
+      {
+        "best": 20031,
+        "expected": 20031,
+        "inliers": 108,
+        "kind": "reference",
+        "locked": 20031,
+        "ms": 1960,
+        "name": "reference-20031"
+      },
+      {
+        "best": 20037,
+        "expected": 20036,
+        "inliers": 31,
+        "kind": "partial",
+        "locked": null,
+        "ms": 1882,
+        "name": "fog-25"
+      },
+      {
+        "best": 20036,
+        "expected": 20036,
+        "inliers": 96,
+        "kind": "partial",
+        "locked": 20036,
+        "ms": 2028,
+        "name": "fog-50"
+      },
+      {
+        "best": 20036,
+        "expected": 20036,
+        "inliers": 103,
+        "kind": "partial",
+        "locked": 20036,
+        "ms": 2189,
+        "name": "fog-75"
+      },
+      {
+        "best": null,
+        "expected": null,
+        "inliers": 0,
+        "kind": "negative",
+        "locked": null,
+        "ms": 22,
+        "name": "blank"
+      },
+      {
+        "best": null,
+        "expected": null,
+        "inliers": 0,
+        "kind": "negative",
+        "locked": null,
+        "ms": 2036,
+        "name": "gameplay"
+      }
+    ],
+    "total": 36
+  },
+  "miniCases": {
+    "done": true,
+    "index": 4,
+    "results": [
+      {
+        "expected": [
+          849,
+          1252
+        ],
+        "isMap": false,
+        "location": {
+          "error": 1.2727853887370644,
+          "estimated": true,
+          "inliers": 56,
+          "mapId": 20036,
+          "pixel": [
+            849.0998152641205,
+            1252.4794350735492
+          ]
+        },
+        "miniScore": {
+          "cells": 4,
+          "error": 1.2727853887370644,
+          "inliers": 56
+        },
+        "ms": 26,
+        "name": "minimap-0"
+      },
+      {
+        "expected": [
+          861,
+          1246
+        ],
+        "isMap": false,
+        "location": {
+          "error": 1.2935796456233786,
+          "estimated": true,
+          "inliers": 54,
+          "mapId": 20036,
+          "pixel": [
+            860.9113385043332,
+            1246.573991998532
+          ]
+        },
+        "miniScore": {
+          "cells": 4,
+          "error": 1.2935796456233786,
+          "inliers": 54
+        },
+        "ms": 20,
+        "name": "minimap-1"
+      },
+      {
+        "expected": [
+          873,
+          1240
+        ],
+        "isMap": false,
+        "location": {
+          "error": 0.8703983122494203,
+          "estimated": true,
+          "inliers": 49,
+          "mapId": 20036,
+          "pixel": [
+            872.6662980778922,
+            1240.2585846348234
+          ]
+        },
+        "miniScore": {
+          "cells": 5,
+          "error": 0.8703983122494203,
+          "inliers": 49
+        },
+        "ms": 20,
+        "name": "minimap-2"
+      },
+      {
+        "expected": [
+          885,
+          1234
+        ],
+        "isMap": false,
+        "location": {
+          "error": 1.1412345354105935,
+          "estimated": true,
+          "inliers": 51,
+          "mapId": 20036,
+          "pixel": [
+            885.4550986267874,
+            1234.3713568775863
+          ]
+        },
+        "miniScore": {
+          "cells": 5,
+          "error": 1.1412345354105935,
+          "inliers": 51
+        },
+        "ms": 18,
+        "name": "minimap-3"
+      }
+    ]
+  }
+}

@@ -1,0 +1,286 @@
+[
+  {
+    "label": "UI_Img_Map_20001",
+    "tiles": 64,
+    "full_size": [
+      2048,
+      2048
+    ],
+    "content_bbox": [
+      274,
+      574,
+      1776,
+      1474
+    ],
+    "swap_axes": false,
+    "x_direction": 1,
+    "y_direction": 1,
+    "seam_error": 4.028215556685308,
+    "orientation_candidates": [
+      [
+        4.028215556685308,
+        false,
+        1,
+        1
+      ],
+      [
+        64.50633474866457,
+        false,
+        -1,
+        1
+      ],
+      [
+        82.55989616715806,
+        false,
+        1,
+        -1
+      ],
+      [
+        118.6001521573742,
+        false,
+        -1,
+        -1
+      ],
+      [
+        133.04054588607596,
+        true,
+        1,
+        1
+      ],
+      [
+        134.20295659052704,
+        true,
+        1,
+        -1
+      ],
+      [
+        134.2853045886076,
+        true,
+        -1,
+        1
+      ],
+      [
+        135.44759220804906,
+        true,
+        -1,
+        -1
+      ]
+    ],
+    "png": "preview/UI_Img_Map_20001.png",
+    "cropped": "preview/UI_Img_Map_20001_cropped.png",
+    "preview": "preview/UI_Img_Map_20001_preview.jpg"
+  },
+  {
+    "label": "UI_Img_Map_20031",
+    "tiles": 64,
+    "full_size": [
+      2048,
+      2048
+    ],
+    "content_bbox": [
+      124,
+      482,
+      1924,
+      1567
+    ],
+    "swap_axes": false,
+    "x_direction": 1,
+    "y_direction": 1,
+    "seam_error": 2.776383710926298,
+    "orientation_candidates": [
+      [
+        2.776383710926298,
+        false,
+        1,
+        1
+      ],
+      [
+        79.4530070754717,
+        false,
+        -1,
+        1
+      ],
+      [
+        98.1219524740253,
+        false,
+        1,
+        -1
+      ],
+      [
+        129.5629993420434,
+        true,
+        -1,
+        -1
+      ],
+      [
+        137.69946241336413,
+        true,
+        1,
+        -1
+      ],
+      [
+        138.94490621388567,
+        true,
+        -1,
+        1
+      ],
+      [
+        143.24775095751315,
+        false,
+        -1,
+        -1
+      ],
+      [
+        146.17668998651382,
+        true,
+        1,
+        1
+      ]
+    ],
+    "png": "preview/UI_Img_Map_20031.png",
+    "cropped": "preview/UI_Img_Map_20031_cropped.png",
+    "preview": "preview/UI_Img_Map_20031_preview.jpg"
+  },
+  {
+    "label": "UI_Img_Map_20100",
+    "tiles": 64,
+    "full_size": [
+      2048,
+      2048
+    ],
+    "content_bbox": [
+      124,
+      237,
+      1924,
+      1812
+    ],
+    "swap_axes": false,
+    "x_direction": 1,
+    "y_direction": 1,
+    "seam_error": 10.89735234215886,
+    "orientation_candidates": [
+      [
+        10.89735234215886,
+        false,
+        1,
+        1
+      ],
+      [
+        64.31140285071268,
+        false,
+        -1,
+        1
+      ],
+      [
+        86.79235783902408,
+        false,
+        1,
+        -1
+      ],
+      [
+        111.1885007709643,
+        true,
+        -1,
+        1
+      ],
+      [
+        115.29217343000819,
+        true,
+        1,
+        1
+      ],
+      [
+        115.68002329644729,
+        true,
+        -1,
+        -1
+      ],
+      [
+        119.64918150488225,
+        true,
+        1,
+        -1
+      ],
+      [
+        124.9806623156877,
+        false,
+        -1,
+        -1
+      ]
+    ],
+    "png": "preview/UI_Img_Map_20100.png",
+    "cropped": "preview/UI_Img_Map_20100_cropped.png",
+    "preview": "preview/UI_Img_Map_20100_preview.jpg"
+  },
+  {
+    "label": "UI_Img_Map_29999",
+    "tiles": 64,
+    "full_size": [
+      2048,
+      2048
+    ],
+    "content_bbox": [
+      252,
+      124,
+      1795,
+      1924
+    ],
+    "swap_axes": false,
+    "x_direction": 1,
+    "y_direction": 1,
+    "seam_error": 2.482179614241061,
+    "orientation_candidates": [
+      [
+        2.482179614241061,
+        false,
+        1,
+        1
+      ],
+      [
+        66.2586167127982,
+        false,
+        1,
+        -1
+      ],
+      [
+        75.29821967992801,
+        false,
+        -1,
+        1
+      ],
+      [
+        97.60850431662742,
+        true,
+        -1,
+        1
+      ],
+      [
+        98.31059593023255,
+        true,
+        1,
+        1
+      ],
+      [
+        100.5661134315234,
+        true,
+        -1,
+        -1
+      ],
+      [
+        101.36135949424764,
+        true,
+        1,
+        -1
+      ],
+      [
+        121.73106834695731,
+        false,
+        -1,
+        -1
+      ]
+    ],
+    "png": "preview/UI_Img_Map_29999.png",
+    "cropped": "preview/UI_Img_Map_29999_cropped.png",
+    "preview": "preview/UI_Img_Map_29999_preview.jpg"
+  }
+]

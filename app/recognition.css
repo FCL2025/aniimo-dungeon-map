@@ -1,0 +1,13 @@
+#recognition-button{display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
+#recognition-button::before{content:"";width:22px;height:12px;border-radius:8px;background:radial-gradient(circle at 6px 6px,#aebfc5 0 4px,transparent 4.5px),#354b59;flex:none}
+#recognition-button[aria-checked=true]{color:var(--accent);border-color:var(--accent)}
+#recognition-button[aria-checked=true]::before{background:radial-gradient(circle at 16px 6px,#122c30 0 4px,transparent 4.5px),var(--accent)}
+#recognition-settings{margin:16px 0;border-top:1px solid var(--line);padding-top:12px}
+#recognition-settings summary{font-size:12px}#recognition-settings button{font-size:12px;padding:6px 8px}
+.recognition-row{display:flex;gap:6px;margin:7px 0}.recognition-row select{min-width:0;font-size:12px}.recognition-row button{white-space:nowrap}
+.recognition-result{border-top:1px solid var(--line);margin-top:12px;padding-top:12px}.recognition-result strong{color:var(--gold);font-size:13px}.recognition-result p{font-size:11px;margin:6px 0}
+#recognition-candidates{padding-left:19px;font-size:11px}#recognition-candidates li{margin:4px 0}#recognition-candidates li:first-child{color:var(--accent)}
+.recognition-preview{position:relative;background:#101f28;height:140px;display:flex;align-items:center;justify-content:center;border:1px solid var(--line);margin:8px 0;overflow:hidden}
+#capture-preview{display:block;width:auto;height:auto;max-width:100%;max-height:100%;touch-action:none}#capture-preview.selecting{cursor:crosshair}#capture-empty{position:absolute;pointer-events:none;font-size:12px;color:var(--muted)}
+#live-status{padding:6px 20px;margin:0;font-size:12px;line-height:1.5;border-bottom:1px solid var(--line);color:var(--muted);background:#203542}#live-status:empty{display:none}#live-status[data-state=locked]{color:var(--accent)}#live-status[data-state=preview]{color:var(--gold)}
+button:disabled{opacity:.55;cursor:wait}

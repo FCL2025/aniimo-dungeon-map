@@ -1,0 +1,381 @@
+{
+  "source": {
+    "version": "3595896",
+    "source": "F:\\Pawprint\\Aniimo\\game\\Aniimo_Data\\cvs\\res\\uab\\win\\DefaultPackage\\ManifestFiles\\PackageManifest_DefaultPackage_3595896.bytes",
+    "sha256": "bab7563fd1c5f87e1ef010063c29626f2c93344f0798c8b0ec36f3f27d2134e6",
+    "asset_count": 252416,
+    "bundle_count": 2077
+  },
+  "assets": {
+    "Img_Map_Mark_GrabEgg_Icon_Intrigue.png": {
+      "image": "icons/Img_Map_Mark_GrabEgg_Icon_Intrigue.png",
+      "size": [
+        100,
+        100
+      ],
+      "resourcePath": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/Img_Map_Mark_GrabEgg_Icon_Intrigue.png",
+      "sourceBundle": "xgui_texture_icon.uab",
+      "sourceBundleHash": "5976f87e6bef08113d6d64dd30279d24",
+      "sha256": "9d8a8b03ae1db7bd7d6c75518bbbb0909fd3d4c548529f10e8b9f64dd3d525a9"
+    },
+    "Img_Map_Mark_GrabEgg_Lair.png": {
+      "image": "icons/Img_Map_Mark_GrabEgg_Lair.png",
+      "size": [
+        100,
+        100
+      ],
+      "resourcePath": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/Img_Map_Mark_GrabEgg_Lair.png",
+      "sourceBundle": "xgui_texture_icon.uab",
+      "sourceBundleHash": "5976f87e6bef08113d6d64dd30279d24",
+      "sha256": "f874e9b16c89d87c1c2d5bb8c914c60b9602362beae8ae4b96613fd50eef0f64"
+    },
+    "Img_Map_Mark_Uderground_Begin.png": {
+      "image": "icons/Img_Map_Mark_Uderground_Begin.png",
+      "size": [
+        100,
+        100
+      ],
+      "resourcePath": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/Img_Map_Mark_Uderground_Begin.png",
+      "sourceBundle": "xgui_texture_icon.uab",
+      "sourceBundleHash": "5976f87e6bef08113d6d64dd30279d24",
+      "sha256": "6d35a7f196cca269f99f72a2032a9a72eae05456bd3baf04b5bdb6d6392987d3"
+    },
+    "Img_Map_Mark_Uderground_Front_Door.png": {
+      "image": "icons/Img_Map_Mark_Uderground_Front_Door.png",
+      "size": [
+        100,
+        100
+      ],
+      "resourcePath": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/Img_Map_Mark_Uderground_Front_Door.png",
+      "sourceBundle": "xgui_texture_icon.uab",
+      "sourceBundleHash": "5976f87e6bef08113d6d64dd30279d24",
+      "sha256": "d7d951fb334761ee4ce7654b1b69f4aa7be27bb1dd4b7aeee33eada5adac2213"
+    },
+    "Img_Map_Mark_Uderground_Key_Blue.png": {
+      "image": "icons/Img_Map_Mark_Uderground_Key_Blue.png",
+      "size": [
+        100,
+        100
+      ],
+      "resourcePath": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/Img_Map_Mark_Uderground_Key_Blue.png",
+      "sourceBundle": "xgui_texture_icon.uab",
+      "sourceBundleHash": "5976f87e6bef08113d6d64dd30279d24",
+      "sha256": "f2cc176ef4b5452a81e2f8ed68f4d424c51baf0ed9dfe40c1612c99d523cf5ad"
+    },
+    "Img_Map_Mark_Uderground_Key_Orange.png": {
+      "image": "icons/Img_Map_Mark_Uderground_Key_Orange.png",
+      "size": [
+        100,
+        100
+      ],
+      "resourcePath": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/Img_Map_Mark_Uderground_Key_Orange.png",
+      "sourceBundle": "xgui_texture_icon.uab",
+      "sourceBundleHash": "5976f87e6bef08113d6d64dd30279d24",
+      "sha256": "6154cb59ea285aa7d9ccc56c7bee8a10dcee4cda099370c50ca24b8805151456"
+    },
+    "Img_Map_Mark_Uderground_Key_Purple.png": {
+      "image": "icons/Img_Map_Mark_Uderground_Key_Purple.png",
+      "size": [
+        100,
+        100
+      ],
+      "resourcePath": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/Img_Map_Mark_Uderground_Key_Purple.png",
+      "sourceBundle": "xgui_texture_icon.uab",
+      "sourceBundleHash": "5976f87e6bef08113d6d64dd30279d24",
+      "sha256": "ae73eb03813f2c80611204446e8298b763f6934fe4042b67deb80549f0c9c8a2"
+    },
+    "UI_Icon_MarkPoint_Chest.png": {
+      "image": "icons/UI_Icon_MarkPoint_Chest.png",
+      "size": [
+        100,
+        100
+      ],
+      "resourcePath": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/UI_Icon_MarkPoint_Chest.png",
+      "sourceBundle": "xgui_texture_icon.uab",
+      "sourceBundleHash": "5976f87e6bef08113d6d64dd30279d24",
+      "sha256": "a797f3d810f28fce6fb9ac2b6dd0fb6bbab5a3a09b967f3a58c3a283f0be4307"
+    },
+    "UI_Icon_MarkPoint_TreasureChest.png": {
+      "image": "icons/UI_Icon_MarkPoint_TreasureChest.png",
+      "size": [
+        100,
+        100
+      ],
+      "resourcePath": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/UI_Icon_MarkPoint_TreasureChest.png",
+      "sourceBundle": "xgui_texture_icon.uab",
+      "sourceBundleHash": "5976f87e6bef08113d6d64dd30279d24",
+      "sha256": "f69132edbd88d75df7658271a0de3e59f2e781b1060d7c048951dbf6a5b6c84e"
+    },
+    "UI_PetHead_10012.png": {
+      "image": "icons/UI_PetHead_10012.png",
+      "size": [
+        256,
+        256
+      ],
+      "resourcePath": "Assets/Res/XGUI/Texture/Image/Pet_head/UI_PetHead_10012.png",
+      "sourceBundle": "xgui_texture_image_pet_head.uab",
+      "sourceBundleHash": "b3808170a9a9564d142ccda88ed34999",
+      "sha256": "cd8f2ed2b801b2b7ffce58a763a44fb1d5aeeabe51070155d54dabe93c52233e"
+    }
+  },
+  "categories": {
+    "egg": "Img_Map_Mark_GrabEgg_Lair.png",
+    "chest": "UI_Icon_MarkPoint_Chest.png",
+    "pot": "UI_Icon_MarkPoint_Chest.png",
+    "cache": "UI_Icon_MarkPoint_Chest.png",
+    "stellarys_boss": "UI_PetHead_10012.png",
+    "entrance": "Img_Map_Mark_Uderground_Front_Door.png",
+    "exit": "Img_Map_Mark_Uderground_Begin.png",
+    "key_blue": "Img_Map_Mark_Uderground_Key_Blue.png",
+    "key_purple": "Img_Map_Mark_Uderground_Key_Purple.png",
+    "key_orange": "Img_Map_Mark_Uderground_Key_Orange.png",
+    "challenge": "Img_Map_Mark_GrabEgg_Icon_Intrigue.png"
+  },
+  "rewardTypes": {
+    "10": "Img_Map_Mark_GrabEgg_Lair.png",
+    "11": "Img_Map_Mark_GrabEgg_Lair.png",
+    "12": "Img_Map_Mark_GrabEgg_Lair.png",
+    "1000": "UI_Icon_MarkPoint_Chest.png",
+    "1001": "UI_Icon_MarkPoint_Chest.png",
+    "1002": "UI_Icon_MarkPoint_Chest.png",
+    "2001": "UI_Icon_MarkPoint_Chest.png",
+    "2002": "UI_Icon_MarkPoint_Chest.png",
+    "2003": "UI_Icon_MarkPoint_Chest.png",
+    "2004": "UI_Icon_MarkPoint_TreasureChest.png",
+    "2005": "UI_Icon_MarkPoint_Chest.png",
+    "2006": "UI_Icon_MarkPoint_Chest.png",
+    "2007": "UI_Icon_MarkPoint_TreasureChest.png",
+    "2008": "UI_Icon_MarkPoint_Chest.png",
+    "2009": "UI_Icon_MarkPoint_Chest.png",
+    "2010": "UI_Icon_MarkPoint_TreasureChest.png",
+    "2011": "UI_Icon_MarkPoint_TreasureChest.png",
+    "3001": "UI_Icon_MarkPoint_Chest.png",
+    "3002": "UI_Icon_MarkPoint_Chest.png",
+    "3003": "UI_Icon_MarkPoint_Chest.png",
+    "3004": "UI_Icon_MarkPoint_Chest.png",
+    "3005": "UI_Icon_MarkPoint_Chest.png",
+    "100000": "UI_Icon_MarkPoint_Chest.png",
+    "100001": "UI_Icon_MarkPoint_Chest.png",
+    "100002": "UI_Icon_MarkPoint_Chest.png",
+    "100003": "UI_Icon_MarkPoint_Chest.png",
+    "100004": "UI_Icon_MarkPoint_Chest.png",
+    "100005": "UI_Icon_MarkPoint_Chest.png",
+    "100006": "UI_Icon_MarkPoint_Chest.png",
+    "100007": "UI_Icon_MarkPoint_Chest.png",
+    "100016": "UI_Icon_MarkPoint_Chest.png",
+    "100103": "UI_Icon_MarkPoint_Chest.png",
+    "100107": "UI_Icon_MarkPoint_Chest.png",
+    "5020001": "UI_Icon_MarkPoint_Chest.png",
+    "5020002": "UI_Icon_MarkPoint_Chest.png",
+    "5020003": "UI_Icon_MarkPoint_Chest.png",
+    "5020004": "UI_Icon_MarkPoint_Chest.png",
+    "5020005": "UI_Icon_MarkPoint_Chest.png"
+  },
+  "markTypes": {
+    "1009": "Img_Map_Mark_Uderground_Front_Door.png",
+    "1008": "Img_Map_Mark_Uderground_Begin.png",
+    "1996": "Img_Map_Mark_Uderground_Key_Blue.png",
+    "1997": "Img_Map_Mark_Uderground_Key_Purple.png",
+    "1998": "Img_Map_Mark_Uderground_Key_Orange.png",
+    "1999": "Img_Map_Mark_GrabEgg_Icon_Intrigue.png"
+  },
+  "rewardEvidence": {
+    "10": {
+      "icon": "$Img_Map_Mark_GrabEgg_Lair.png",
+      "markConfigId": 1014,
+      "source": "default_map_mark_data.icon"
+    },
+    "11": {
+      "icon": "$Img_Map_Mark_GrabEgg_Lair.png",
+      "markConfigId": 1014,
+      "source": "default_map_mark_data.icon"
+    },
+    "12": {
+      "icon": "$Img_Map_Mark_GrabEgg_Lair.png",
+      "markConfigId": 1014,
+      "source": "default_map_mark_data.icon"
+    },
+    "1000": {
+      "icon": "$UI_Icon_MarkPoint_Chest.png",
+      "markConfigId": null,
+      "source": "rob_egg_chest_data.icon"
+    },
+    "1001": {
+      "icon": "$UI_Icon_MarkPoint_Chest.png",
+      "markConfigId": null,
+      "source": "rob_egg_chest_data.icon"
+    },
+    "1002": {
+      "icon": "$UI_Icon_MarkPoint_Chest.png",
+      "markConfigId": null,
+      "source": "rob_egg_chest_data.icon"
+    },
+    "2001": {
+      "icon": "$UI_Icon_MarkPoint_Chest.png",
+      "markConfigId": null,
+      "source": "rob_egg_chest_data.icon"
+    },
+    "2002": {
+      "icon": "$UI_Icon_MarkPoint_Chest.png",
+      "markConfigId": null,
+      "source": "rob_egg_chest_data.icon"
+    },
+    "2003": {
+      "icon": "$UI_Icon_MarkPoint_Chest.png",
+      "markConfigId": null,
+      "source": "rob_egg_chest_data.icon"
+    },
+    "2004": {
+      "icon": "$UI_Icon_MarkPoint_TreasureChest.png",
+      "markConfigId": 1013,
+      "source": "default_map_mark_data.icon"
+    },
+    "2005": {
+      "icon": "$UI_Icon_MarkPoint_Chest.png",
+      "markConfigId": null,
+      "source": "rob_egg_chest_data.icon"
+    },
+    "2006": {
+      "icon": "$UI_Icon_MarkPoint_Chest.png",
+      "markConfigId": null,
+      "source": "rob_egg_chest_data.icon"
+    },
+    "2007": {
+      "icon": "$UI_Icon_MarkPoint_TreasureChest.png",
+      "markConfigId": 1013,
+      "source": "default_map_mark_data.icon"
+    },
+    "2008": {
+      "icon": "$UI_Icon_MarkPoint_Chest.png",
+      "markConfigId": null,
+      "source": "rob_egg_chest_data.icon"
+    },
+    "2009": {
+      "icon": "$UI_Icon_MarkPoint_Chest.png",
+      "markConfigId": null,
+      "source": "rob_egg_chest_data.icon"
+    },
+    "2010": {
+      "icon": "$UI_Icon_MarkPoint_TreasureChest.png",
+      "markConfigId": 1013,
+      "source": "default_map_mark_data.icon"
+    },
+    "2011": {
+      "icon": "$UI_Icon_MarkPoint_TreasureChest.png",
+      "markConfigId": 1013,
+      "source": "default_map_mark_data.icon"
+    },
+    "3001": {
+      "icon": "$UI_Icon_MarkPoint_Chest.png",
+      "markConfigId": null,
+      "source": "rob_egg_chest_data.icon"
+    },
+    "3002": {
+      "icon": "$UI_Icon_MarkPoint_Chest.png",
+      "markConfigId": null,
+      "source": "rob_egg_chest_data.icon"
+    },
+    "3003": {
+      "icon": "$UI_Icon_MarkPoint_Chest.png",
+      "markConfigId": null,
+      "source": "rob_egg_chest_data.icon"
+    },
+    "3004": {
+      "icon": "$UI_Icon_MarkPoint_Chest.png",
+      "markConfigId": null,
+      "source": "rob_egg_chest_data.icon"
+    },
+    "3005": {
+      "icon": "$UI_Icon_MarkPoint_Chest.png",
+      "markConfigId": null,
+      "source": "rob_egg_chest_data.icon"
+    },
+    "100000": {
+      "icon": "$UI_Icon_MarkPoint_Chest.png",
+      "markConfigId": null,
+      "source": "rob_egg_chest_data.icon"
+    },
+    "100001": {
+      "icon": "$UI_Icon_MarkPoint_Chest.png",
+      "markConfigId": null,
+      "source": "rob_egg_chest_data.icon"
+    },
+    "100002": {
+      "icon": "$UI_Icon_MarkPoint_Chest.png",
+      "markConfigId": null,
+      "source": "rob_egg_chest_data.icon"
+    },
+    "100003": {
+      "icon": "$UI_Icon_MarkPoint_Chest.png",
+      "markConfigId": null,
+      "source": "rob_egg_chest_data.icon"
+    },
+    "100004": {
+      "icon": "$UI_Icon_MarkPoint_Chest.png",
+      "markConfigId": null,
+      "source": "rob_egg_chest_data.icon"
+    },
+    "100005": {
+      "icon": "$UI_Icon_MarkPoint_Chest.png",
+      "markConfigId": null,
+      "source": "rob_egg_chest_data.icon"
+    },
+    "100006": {
+      "icon": "$UI_Icon_MarkPoint_Chest.png",
+      "markConfigId": null,
+      "source": "rob_egg_chest_data.icon"
+    },
+    "100007": {
+      "icon": "$UI_Icon_MarkPoint_Chest.png",
+      "markConfigId": null,
+      "source": "rob_egg_chest_data.icon"
+    },
+    "100016": {
+      "icon": "$UI_Icon_MarkPoint_Chest.png",
+      "markConfigId": null,
+      "source": "rob_egg_chest_data.icon"
+    },
+    "100103": {
+      "icon": "$UI_Icon_MarkPoint_Chest.png",
+      "markConfigId": null,
+      "source": "rob_egg_chest_data.icon"
+    },
+    "100107": {
+      "icon": "$UI_Icon_MarkPoint_Chest.png",
+      "markConfigId": null,
+      "source": "rob_egg_chest_data.icon"
+    },
+    "5020001": {
+      "icon": "$UI_Icon_MarkPoint_Chest.png",
+      "markConfigId": null,
+      "source": "rob_egg_chest_data.icon"
+    },
+    "5020002": {
+      "icon": "$UI_Icon_MarkPoint_Chest.png",
+      "markConfigId": null,
+      "source": "rob_egg_chest_data.icon"
+    },
+    "5020003": {
+      "icon": "$UI_Icon_MarkPoint_Chest.png",
+      "markConfigId": null,
+      "source": "rob_egg_chest_data.icon"
+    },
+    "5020004": {
+      "icon": "$UI_Icon_MarkPoint_Chest.png",
+      "markConfigId": null,
+      "source": "rob_egg_chest_data.icon"
+    },
+    "5020005": {
+      "icon": "$UI_Icon_MarkPoint_Chest.png",
+      "markConfigId": null,
+      "source": "rob_egg_chest_data.icon"
+    }
+  },
+  "boss": {
+    "typeId": 11001200090,
+    "iconName": "10012",
+    "icon": "UI_PetHead_10012.png",
+    "usage": "Game character portrait; not a verified dungeon map boss marker"
+  },
+  "note": "Pot and cache configs share the generic chest icon. Original textures are not recolored."
+}

@@ -1,0 +1,5769 @@
+[
+  {
+    "label": "UI_Img_Map_20020",
+    "tiles": 64,
+    "full_size": [
+      2048,
+      2048
+    ],
+    "content_bbox": [
+      574,
+      574,
+      1474,
+      1474
+    ],
+    "tile_origin": [
+      0,
+      0
+    ],
+    "tile_size": [
+      256,
+      256
+    ],
+    "swap_axes": false,
+    "x_direction": 1,
+    "y_direction": 1,
+    "seam_error": 2.4479347826086957,
+    "orientation_candidates": [
+      [
+        2.4479347826086957,
+        false,
+        1,
+        1
+      ],
+      [
+        83.87677419354839,
+        false,
+        -1,
+        1
+      ],
+      [
+        116.80875,
+        false,
+        1,
+        -1
+      ],
+      [
+        135.26374506903352,
+        true,
+        -1,
+        -1
+      ],
+      [
+        137.36473788328388,
+        true,
+        1,
+        -1
+      ],
+      [
+        137.75878614157529,
+        true,
+        -1,
+        1
+      ],
+      [
+        139.890375,
+        true,
+        1,
+        1
+      ],
+      [
+        153.3861931818182,
+        false,
+        -1,
+        -1
+      ]
+    ],
+    "png": "preview/UI_Img_Map_20020.png",
+    "cropped": "preview/UI_Img_Map_20020_cropped.png",
+    "preview": "preview/UI_Img_Map_20020_preview.jpg"
+  },
+  {
+    "label": "UI_Img_Map_20021",
+    "tiles": 64,
+    "full_size": [
+      2048,
+      2048
+    ],
+    "content_bbox": [
+      474,
+      624,
+      1574,
+      1424
+    ],
+    "tile_origin": [
+      0,
+      0
+    ],
+    "tile_size": [
+      256,
+      256
+    ],
+    "swap_axes": false,
+    "x_direction": 1,
+    "y_direction": 1,
+    "seam_error": 22.765514705882353,
+    "orientation_candidates": [
+      [
+        22.765514705882353,
+        false,
+        1,
+        1
+      ],
+      [
+        99.02114130434782,
+        false,
+        -1,
+        1
+      ],
+      [
+        108.5606914893617,
+        false,
+        1,
+        -1
+      ],
+      [
+        142.7641300496102,
+        true,
+        -1,
+        -1
+      ],
+      [
+        147.20599621472815,
+        true,
+        1,
+        -1
+      ],
+      [
+        147.85423920612814,
+        true,
+        -1,
+        1
+      ],
+      [
+        150.56436440677967,
+        false,
+        -1,
+        -1
+      ],
+      [
+        152.07632780784846,
+        true,
+        1,
+        1
+      ]
+    ],
+    "png": "preview/UI_Img_Map_20021.png",
+    "cropped": "preview/UI_Img_Map_20021_cropped.png",
+    "preview": "preview/UI_Img_Map_20021_preview.jpg"
+  },
+  {
+    "label": "UI_Img_Map_20022",
+    "tiles": 64,
+    "full_size": [
+      2048,
+      2048
+    ],
+    "content_bbox": [
+      624,
+      524,
+      1424,
+      1536
+    ],
+    "tile_origin": [
+      0,
+      0
+    ],
+    "tile_size": [
+      256,
+      256
+    ],
+    "swap_axes": false,
+    "x_direction": 1,
+    "y_direction": 1,
+    "seam_error": 21.684317400812247,
+    "orientation_candidates": [
+      [
+        21.684317400812247,
+        false,
+        1,
+        1
+      ],
+      [
+        83.26481346013168,
+        false,
+        1,
+        -1
+      ],
+      [
+        114.71117529437903,
+        false,
+        -1,
+        1
+      ],
+      [
+        141.84900943396227,
+        true,
+        -1,
+        -1
+      ],
+      [
+        143.95165797317438,
+        true,
+        1,
+        -1
+      ],
+      [
+        145.24381818181817,
+        true,
+        -1,
+        1
+      ],
+      [
+        145.96787631920014,
+        false,
+        -1,
+        -1
+      ],
+      [
+        147.2294809626437,
+        true,
+        1,
+        1
+      ]
+    ],
+    "png": "preview/UI_Img_Map_20022.png",
+    "cropped": "preview/UI_Img_Map_20022_cropped.png",
+    "preview": "preview/UI_Img_Map_20022_preview.jpg"
+  },
+  {
+    "label": "UI_Img_Map_20023",
+    "tiles": 64,
+    "full_size": [
+      2048,
+      2048
+    ],
+    "content_bbox": [
+      524,
+      474,
+      1524,
+      1574
+    ],
+    "tile_origin": [
+      0,
+      0
+    ],
+    "tile_size": [
+      256,
+      256
+    ],
+    "swap_axes": false,
+    "x_direction": 1,
+    "y_direction": 1,
+    "seam_error": 38.62245626561942,
+    "orientation_candidates": [
+      [
+        38.62245626561942,
+        false,
+        1,
+        1
+      ],
+      [
+        115.27400684030518,
+        false,
+        -1,
+        1
+      ],
+      [
+        121.20315303768264,
+        false,
+        1,
+        -1
+      ],
+      [
+        135.48964532254226,
+        true,
+        -1,
+        -1
+      ],
+      [
+        140.4486436355205,
+        true,
+        1,
+        -1
+      ],
+      [
+        149.83970228838035,
+        true,
+        -1,
+        1
+      ],
+      [
+        154.1277910253631,
+        true,
+        1,
+        1
+      ],
+      [
+        163.80095898796165,
+        false,
+        -1,
+        -1
+      ]
+    ],
+    "png": "preview/UI_Img_Map_20023.png",
+    "cropped": "preview/UI_Img_Map_20023_cropped.png",
+    "preview": "preview/UI_Img_Map_20023_preview.jpg"
+  },
+  {
+    "label": "UI_Img_Map_20024",
+    "tiles": 64,
+    "full_size": [
+      2048,
+      2048
+    ],
+    "content_bbox": [
+      624,
+      574,
+      1424,
+      1475
+    ],
+    "tile_origin": [
+      0,
+      0
+    ],
+    "tile_size": [
+      256,
+      256
+    ],
+    "swap_axes": false,
+    "x_direction": 1,
+    "y_direction": 1,
+    "seam_error": 10.6979046520569,
+    "orientation_candidates": [
+      [
+        10.6979046520569,
+        false,
+        1,
+        1
+      ],
+      [
+        77.09850044104675,
+        false,
+        1,
+        -1
+      ],
+      [
+        118.13608405945669,
+        false,
+        -1,
+        1
+      ],
+      [
+        129.77707044264636,
+        true,
+        1,
+        1
+      ],
+      [
+        130.30599387658972,
+        true,
+        1,
+        -1
+      ],
+      [
+        133.14710705083158,
+        true,
+        -1,
+        1
+      ],
+      [
+        133.63343380477625,
+        true,
+        -1,
+        -1
+      ],
+      [
+        147.88467673330499,
+        false,
+        -1,
+        -1
+      ]
+    ],
+    "png": "preview/UI_Img_Map_20024.png",
+    "cropped": "preview/UI_Img_Map_20024_cropped.png",
+    "preview": "preview/UI_Img_Map_20024_preview.jpg"
+  },
+  {
+    "label": "UI_Img_Map_20025",
+    "tiles": 64,
+    "full_size": [
+      2048,
+      2048
+    ],
+    "content_bbox": [
+      543,
+      474,
+      1474,
+      1596
+    ],
+    "tile_origin": [
+      0,
+      0
+    ],
+    "tile_size": [
+      256,
+      256
+    ],
+    "swap_axes": false,
+    "x_direction": 1,
+    "y_direction": 1,
+    "seam_error": 4.4308829404714345,
+    "orientation_candidates": [
+      [
+        4.4308829404714345,
+        false,
+        1,
+        1
+      ],
+      [
+        53.53379953379953,
+        false,
+        -1,
+        1
+      ],
+      [
+        115.57173968741994,
+        false,
+        1,
+        -1
+      ],
+      [
+        132.07575757575756,
+        true,
+        -1,
+        -1
+      ],
+      [
+        133.6126819374851,
+        true,
+        1,
+        -1
+      ],
+      [
+        136.44060867590278,
+        false,
+        -1,
+        -1
+      ],
+      [
+        140.7808833678399,
+        true,
+        -1,
+        1
+      ],
+      [
+        142.26265240395676,
+        true,
+        1,
+        1
+      ]
+    ],
+    "png": "preview/UI_Img_Map_20025.png",
+    "cropped": "preview/UI_Img_Map_20025_cropped.png",
+    "preview": "preview/UI_Img_Map_20025_preview.jpg"
+  },
+  {
+    "label": "UI_Img_Map_20026",
+    "tiles": 64,
+    "full_size": [
+      2048,
+      2048
+    ],
+    "content_bbox": [
+      624,
+      524,
+      1424,
+      1536
+    ],
+    "tile_origin": [
+      0,
+      0
+    ],
+    "tile_size": [
+      256,
+      256
+    ],
+    "swap_axes": false,
+    "x_direction": 1,
+    "y_direction": 1,
+    "seam_error": 14.999375780274656,
+    "orientation_candidates": [
+      [
+        14.999375780274656,
+        false,
+        1,
+        1
+      ],
+      [
+        93.37084398976982,
+        false,
+        1,
+        -1
+      ],
+      [
+        96.55423925667829,
+        false,
+        -1,
+        1
+      ],
+      [
+        139.07813383600376,
+        true,
+        1,
+        1
+      ],
+      [
+        141.48275378575434,
+        true,
+        1,
+        -1
+      ],
+      [
+        141.56618054273582,
+        true,
+        -1,
+        1
+      ],
+      [
+        142.39096630877452,
+        false,
+        -1,
+        -1
+      ],
+      [
+        143.90143746566562,
+        true,
+        -1,
+        -1
+      ]
+    ],
+    "png": "preview/UI_Img_Map_20026.png",
+    "cropped": "preview/UI_Img_Map_20026_cropped.png",
+    "preview": "preview/UI_Img_Map_20026_preview.jpg"
+  },
+  {
+    "label": "UI_Img_Map_20027",
+    "tiles": 64,
+    "full_size": [
+      2048,
+      2048
+    ],
+    "content_bbox": [
+      674,
+      513,
+      1376,
+      1536
+    ],
+    "tile_origin": [
+      0,
+      0
+    ],
+    "tile_size": [
+      256,
+      256
+    ],
+    "swap_axes": false,
+    "x_direction": 1,
+    "y_direction": 1,
+    "seam_error": 1.0167952791647754,
+    "orientation_candidates": [
+      [
+        1.0167952791647754,
+        false,
+        1,
+        1
+      ],
+      [
+        89.33072832742508,
+        false,
+        1,
+        -1
+      ],
+      [
+        101.55024968789014,
+        false,
+        -1,
+        1
+      ],
+      [
+        124.41710013003902,
+        true,
+        -1,
+        -1
+      ],
+      [
+        138.0588009223674,
+        true,
+        -1,
+        1
+      ],
+      [
+        140.94729860106128,
+        true,
+        1,
+        -1
+      ],
+      [
+        146.27686403508773,
+        false,
+        -1,
+        -1
+      ],
+      [
+        153.38421741198857,
+        true,
+        1,
+        1
+      ]
+    ],
+    "png": "preview/UI_Img_Map_20027.png",
+    "cropped": "preview/UI_Img_Map_20027_cropped.png",
+    "preview": "preview/UI_Img_Map_20027_preview.jpg"
+  },
+  {
+    "label": "UI_Img_Map_20028",
+    "tiles": 64,
+    "full_size": [
+      2048,
+      2048
+    ],
+    "content_bbox": [
+      524,
+      624,
+      1524,
+      1425
+    ],
+    "tile_origin": [
+      0,
+      0
+    ],
+    "tile_size": [
+      256,
+      256
+    ],
+    "swap_axes": false,
+    "x_direction": 1,
+    "y_direction": 1,
+    "seam_error": 21.091,
+    "orientation_candidates": [
+      [
+        21.091,
+        false,
+        1,
+        1
+      ],
+      [
+        75.5375,
+        false,
+        -1,
+        1
+      ],
+      [
+        132.75838926174498,
+        true,
+        -1,
+        1
+      ],
+      [
+        133.08720213640098,
+        true,
+        1,
+        1
+      ],
+      [
+        133.37468085106383,
+        false,
+        1,
+        -1
+      ],
+      [
+        142.5085295291301,
+        true,
+        -1,
+        -1
+      ],
+      [
+        142.63091744913928,
+        true,
+        1,
+        -1
+      ],
+      [
+        154.6600909090909,
+        false,
+        -1,
+        -1
+      ]
+    ],
+    "png": "preview/UI_Img_Map_20028.png",
+    "cropped": "preview/UI_Img_Map_20028_cropped.png",
+    "preview": "preview/UI_Img_Map_20028_preview.jpg"
+  },
+  {
+    "label": "UI_Img_Map_20029",
+    "tiles": 64,
+    "full_size": [
+      2048,
+      2048
+    ],
+    "content_bbox": [
+      624,
+      524,
+      1424,
+      1536
+    ],
+    "tile_origin": [
+      0,
+      0
+    ],
+    "tile_size": [
+      256,
+      256
+    ],
+    "swap_axes": false,
+    "x_direction": 1,
+    "y_direction": 1,
+    "seam_error": 8.10116472545757,
+    "orientation_candidates": [
+      [
+        8.10116472545757,
+        false,
+        1,
+        1
+      ],
+      [
+        72.51504599211563,
+        false,
+        1,
+        -1
+      ],
+      [
+        102.01152840503921,
+        false,
+        -1,
+        1
+      ],
+      [
+        135.95730976632714,
+        false,
+        -1,
+        -1
+      ],
+      [
+        142.93945202917524,
+        true,
+        -1,
+        1
+      ],
+      [
+        144.24660401935245,
+        true,
+        -1,
+        -1
+      ],
+      [
+        145.0596253709199,
+        true,
+        1,
+        1
+      ],
+      [
+        146.3453589223104,
+        true,
+        1,
+        -1
+      ]
+    ],
+    "png": "preview/UI_Img_Map_20029.png",
+    "cropped": "preview/UI_Img_Map_20029_cropped.png",
+    "preview": "preview/UI_Img_Map_20029_preview.jpg"
+  },
+  {
+    "label": "UI_Img_Map_20030",
+    "tiles": 64,
+    "full_size": [
+      2048,
+      2048
+    ],
+    "content_bbox": [
+      674,
+      524,
+      1374,
+      1536
+    ],
+    "tile_origin": [
+      0,
+      0
+    ],
+    "tile_size": [
+      256,
+      256
+    ],
+    "swap_axes": false,
+    "x_direction": 1,
+    "y_direction": 1,
+    "seam_error": 7.1206552137435075,
+    "orientation_candidates": [
+      [
+        7.1206552137435075,
+        false,
+        1,
+        1
+      ],
+      [
+        91.87617823479006,
+        false,
+        1,
+        -1
+      ],
+      [
+        106.21065064794817,
+        false,
+        -1,
+        1
+      ],
+      [
+        127.47024525126233,
+        true,
+        -1,
+        1
+      ],
+      [
+        132.38192957411374,
+        true,
+        -1,
+        -1
+      ],
+      [
+        134.6298251589464,
+        true,
+        1,
+        1
+      ],
+      [
+        139.2001461330935,
+        true,
+        1,
+        -1
+      ],
+      [
+        148.2857826456827,
+        false,
+        -1,
+        -1
+      ]
+    ],
+    "png": "preview/UI_Img_Map_20030.png",
+    "cropped": "preview/UI_Img_Map_20030_cropped.png",
+    "preview": "preview/UI_Img_Map_20030_preview.jpg"
+  },
+  {
+    "label": "UI_Img_Map_20031",
+    "tiles": 64,
+    "full_size": [
+      2048,
+      2048
+    ],
+    "content_bbox": [
+      124,
+      482,
+      1924,
+      1567
+    ],
+    "tile_origin": [
+      0,
+      0
+    ],
+    "tile_size": [
+      256,
+      256
+    ],
+    "swap_axes": false,
+    "x_direction": 1,
+    "y_direction": 1,
+    "seam_error": 2.776383710926298,
+    "orientation_candidates": [
+      [
+        2.776383710926298,
+        false,
+        1,
+        1
+      ],
+      [
+        79.4530070754717,
+        false,
+        -1,
+        1
+      ],
+      [
+        98.1219524740253,
+        false,
+        1,
+        -1
+      ],
+      [
+        129.5629993420434,
+        true,
+        -1,
+        -1
+      ],
+      [
+        137.69946241336413,
+        true,
+        1,
+        -1
+      ],
+      [
+        138.94490621388567,
+        true,
+        -1,
+        1
+      ],
+      [
+        143.24775095751315,
+        false,
+        -1,
+        -1
+      ],
+      [
+        146.17668998651382,
+        true,
+        1,
+        1
+      ]
+    ],
+    "png": "preview/UI_Img_Map_20031.png",
+    "cropped": "preview/UI_Img_Map_20031_cropped.png",
+    "preview": "preview/UI_Img_Map_20031_preview.jpg"
+  },
+  {
+    "label": "UI_Img_Map_20032",
+    "tiles": 64,
+    "full_size": [
+      2048,
+      2048
+    ],
+    "content_bbox": [
+      124,
+      501,
+      1924,
+      1576
+    ],
+    "tile_origin": [
+      0,
+      0
+    ],
+    "tile_size": [
+      256,
+      256
+    ],
+    "swap_axes": false,
+    "x_direction": 1,
+    "y_direction": 1,
+    "seam_error": 5.2271983773881185,
+    "orientation_candidates": [
+      [
+        5.2271983773881185,
+        false,
+        1,
+        1
+      ],
+      [
+        65.60056696979903,
+        false,
+        -1,
+        1
+      ],
+      [
+        82.55144161460836,
+        false,
+        1,
+        -1
+      ],
+      [
+        114.58969627555781,
+        true,
+        -1,
+        -1
+      ],
+      [
+        116.32685943215468,
+        true,
+        1,
+        -1
+      ],
+      [
+        120.24899314481577,
+        false,
+        -1,
+        -1
+      ],
+      [
+        121.42734829592685,
+        true,
+        -1,
+        1
+      ],
+      [
+        123.30637526652453,
+        true,
+        1,
+        1
+      ]
+    ],
+    "png": "preview/UI_Img_Map_20032.png",
+    "cropped": "preview/UI_Img_Map_20032_cropped.png",
+    "preview": "preview/UI_Img_Map_20032_preview.jpg"
+  },
+  {
+    "label": "UI_Img_Map_20033",
+    "tiles": 64,
+    "full_size": [
+      2048,
+      2048
+    ],
+    "content_bbox": [
+      124,
+      256,
+      1924,
+      1776
+    ],
+    "tile_origin": [
+      0,
+      0
+    ],
+    "tile_size": [
+      256,
+      256
+    ],
+    "swap_axes": false,
+    "x_direction": 1,
+    "y_direction": 1,
+    "seam_error": 4.139275766016713,
+    "orientation_candidates": [
+      [
+        4.139275766016713,
+        false,
+        1,
+        1
+      ],
+      [
+        78.32637627180233,
+        false,
+        1,
+        -1
+      ],
+      [
+        79.82424546366371,
+        false,
+        -1,
+        1
+      ],
+      [
+        122.14881665668065,
+        true,
+        -1,
+        1
+      ],
+      [
+        123.31855677764565,
+        true,
+        1,
+        1
+      ],
+      [
+        124.57673712615247,
+        true,
+        -1,
+        -1
+      ],
+      [
+        125.72865377463741,
+        true,
+        1,
+        -1
+      ],
+      [
+        127.40364173965118,
+        false,
+        -1,
+        -1
+      ]
+    ],
+    "png": "preview/UI_Img_Map_20033.png",
+    "cropped": "preview/UI_Img_Map_20033_cropped.png",
+    "preview": "preview/UI_Img_Map_20033_preview.jpg"
+  },
+  {
+    "label": "UI_Img_Map_20034",
+    "tiles": 64,
+    "full_size": [
+      2048,
+      2048
+    ],
+    "content_bbox": [
+      124,
+      169,
+      1924,
+      1880
+    ],
+    "tile_origin": [
+      0,
+      0
+    ],
+    "tile_size": [
+      256,
+      256
+    ],
+    "swap_axes": false,
+    "x_direction": 1,
+    "y_direction": 1,
+    "seam_error": 4.886501436017445,
+    "orientation_candidates": [
+      [
+        4.886501436017445,
+        false,
+        1,
+        1
+      ],
+      [
+        62.75869666048237,
+        false,
+        1,
+        -1
+      ],
+      [
+        78.63056186390781,
+        false,
+        -1,
+        1
+      ],
+      [
+        117.98609436237564,
+        false,
+        -1,
+        -1
+      ],
+      [
+        122.35760540578588,
+        true,
+        -1,
+        -1
+      ],
+      [
+        123.02095205003475,
+        true,
+        -1,
+        1
+      ],
+      [
+        125.87478076092822,
+        true,
+        1,
+        -1
+      ],
+      [
+        126.46796494969014,
+        true,
+        1,
+        1
+      ]
+    ],
+    "png": "preview/UI_Img_Map_20034.png",
+    "cropped": "preview/UI_Img_Map_20034_cropped.png",
+    "preview": "preview/UI_Img_Map_20034_preview.jpg"
+  },
+  {
+    "label": "UI_Img_Map_20035",
+    "tiles": 64,
+    "full_size": [
+      2048,
+      2048
+    ],
+    "content_bbox": [
+      124,
+      281,
+      1924,
+      1767
+    ],
+    "tile_origin": [
+      0,
+      0
+    ],
+    "tile_size": [
+      256,
+      256
+    ],
+    "swap_axes": false,
+    "x_direction": 1,
+    "y_direction": 1,
+    "seam_error": 4.664642095283242,
+    "orientation_candidates": [
+      [
+        4.664642095283242,
+        false,
+        1,
+        1
+      ],
+      [
+        75.20699900208655,
+        false,
+        1,
+        -1
+      ],
+      [
+        81.94410937783421,
+        false,
+        -1,
+        1
+      ],
+      [
+        116.67486181483187,
+        true,
+        1,
+        -1
+      ],
+      [
+        117.34168028640362,
+        true,
+        1,
+        1
+      ],
+      [
+        120.81577969377138,
+        true,
+        -1,
+        -1
+      ],
+      [
+        121.51630639451683,
+        true,
+        -1,
+        1
+      ],
+      [
+        124.39660936007641,
+        false,
+        -1,
+        -1
+      ]
+    ],
+    "png": "preview/UI_Img_Map_20035.png",
+    "cropped": "preview/UI_Img_Map_20035_cropped.png",
+    "preview": "preview/UI_Img_Map_20035_preview.jpg"
+  },
+  {
+    "label": "UI_Img_Map_20036",
+    "tiles": 64,
+    "full_size": [
+      2048,
+      2048
+    ],
+    "content_bbox": [
+      93,
+      293,
+      1924,
+      1724
+    ],
+    "tile_origin": [
+      0,
+      0
+    ],
+    "tile_size": [
+      256,
+      256
+    ],
+    "swap_axes": false,
+    "x_direction": 1,
+    "y_direction": 1,
+    "seam_error": 3.189830281972471,
+    "orientation_candidates": [
+      [
+        3.189830281972471,
+        false,
+        1,
+        1
+      ],
+      [
+        61.178203197405004,
+        false,
+        -1,
+        1
+      ],
+      [
+        91.0253669589203,
+        false,
+        1,
+        -1
+      ],
+      [
+        126.39108407079647,
+        false,
+        -1,
+        -1
+      ],
+      [
+        133.33653608247423,
+        true,
+        1,
+        -1
+      ],
+      [
+        133.69501732387394,
+        true,
+        1,
+        1
+      ],
+      [
+        135.63080853134377,
+        true,
+        -1,
+        -1
+      ],
+      [
+        135.9838578844906,
+        true,
+        -1,
+        1
+      ]
+    ],
+    "png": "preview/UI_Img_Map_20036.png",
+    "cropped": "preview/UI_Img_Map_20036_cropped.png",
+    "preview": "preview/UI_Img_Map_20036_preview.jpg"
+  },
+  {
+    "label": "UI_Img_Map_20037",
+    "tiles": 64,
+    "full_size": [
+      2048,
+      2048
+    ],
+    "content_bbox": [
+      124,
+      483,
+      1924,
+      1565
+    ],
+    "tile_origin": [
+      0,
+      0
+    ],
+    "tile_size": [
+      256,
+      256
+    ],
+    "swap_axes": false,
+    "x_direction": 1,
+    "y_direction": 1,
+    "seam_error": 3.733907284768212,
+    "orientation_candidates": [
+      [
+        3.733907284768212,
+        false,
+        1,
+        1
+      ],
+      [
+        63.67822719449225,
+        false,
+        -1,
+        1
+      ],
+      [
+        93.50947821924366,
+        false,
+        1,
+        -1
+      ],
+      [
+        120.49831465592716,
+        true,
+        -1,
+        -1
+      ],
+      [
+        125.29203182166255,
+        true,
+        1,
+        -1
+      ],
+      [
+        125.52097139867458,
+        true,
+        -1,
+        1
+      ],
+      [
+        129.49795434969855,
+        false,
+        -1,
+        -1
+      ],
+      [
+        130.15509788965167,
+        true,
+        1,
+        1
+      ]
+    ],
+    "png": "preview/UI_Img_Map_20037.png",
+    "cropped": "preview/UI_Img_Map_20037_cropped.png",
+    "preview": "preview/UI_Img_Map_20037_preview.jpg"
+  },
+  {
+    "label": "UI_Img_Map_20038",
+    "tiles": 64,
+    "full_size": [
+      2048,
+      2048
+    ],
+    "content_bbox": [
+      124,
+      336,
+      1924,
+      1712
+    ],
+    "tile_origin": [
+      0,
+      0
+    ],
+    "tile_size": [
+      256,
+      256
+    ],
+    "swap_axes": false,
+    "x_direction": 1,
+    "y_direction": 1,
+    "seam_error": 2.7035039144548407,
+    "orientation_candidates": [
+      [
+        2.7035039144548407,
+        false,
+        1,
+        1
+      ],
+      [
+        56.29763202011735,
+        false,
+        -1,
+        1
+      ],
+      [
+        84.10125035929865,
+        false,
+        1,
+        -1
+      ],
+      [
+        109.20995193573874,
+        true,
+        -1,
+        1
+      ],
+      [
+        110.69083261575148,
+        true,
+        1,
+        1
+      ],
+      [
+        114.85320165657853,
+        true,
+        -1,
+        -1
+      ],
+      [
+        116.31887657011023,
+        true,
+        1,
+        -1
+      ],
+      [
+        117.98511904761905,
+        false,
+        -1,
+        -1
+      ]
+    ],
+    "png": "preview/UI_Img_Map_20038.png",
+    "cropped": "preview/UI_Img_Map_20038_cropped.png",
+    "preview": "preview/UI_Img_Map_20038_preview.jpg"
+  },
+  {
+    "label": "UI_Img_Map_20039",
+    "tiles": 64,
+    "full_size": [
+      2048,
+      2048
+    ],
+    "content_bbox": [
+      124,
+      160,
+      1924,
+      1889
+    ],
+    "tile_origin": [
+      0,
+      0
+    ],
+    "tile_size": [
+      256,
+      256
+    ],
+    "swap_axes": false,
+    "x_direction": 1,
+    "y_direction": 1,
+    "seam_error": 2.278372458257563,
+    "orientation_candidates": [
+      [
+        2.278372458257563,
+        false,
+        1,
+        1
+      ],
+      [
+        68.69376482548289,
+        false,
+        1,
+        -1
+      ],
+      [
+        69.47467337385594,
+        false,
+        -1,
+        1
+      ],
+      [
+        114.82316110108303,
+        true,
+        1,
+        1
+      ],
+      [
+        115.4091388010869,
+        true,
+        1,
+        -1
+      ],
+      [
+        116.28268660059354,
+        true,
+        -1,
+        1
+      ],
+      [
+        116.70027990571597,
+        false,
+        -1,
+        -1
+      ],
+      [
+        116.83993063201937,
+        true,
+        -1,
+        -1
+      ]
+    ],
+    "png": "preview/UI_Img_Map_20039.png",
+    "cropped": "preview/UI_Img_Map_20039_cropped.png",
+    "preview": "preview/UI_Img_Map_20039_preview.jpg"
+  },
+  {
+    "label": "UI_Img_Map_20040",
+    "tiles": 64,
+    "full_size": [
+      2048,
+      2048
+    ],
+    "content_bbox": [
+      129,
+      124,
+      1918,
+      1924
+    ],
+    "tile_origin": [
+      0,
+      0
+    ],
+    "tile_size": [
+      256,
+      256
+    ],
+    "swap_axes": false,
+    "x_direction": 1,
+    "y_direction": 1,
+    "seam_error": 5.346342979877911,
+    "orientation_candidates": [
+      [
+        5.346342979877911,
+        false,
+        1,
+        1
+      ],
+      [
+        70.4079830366297,
+        false,
+        1,
+        -1
+      ],
+      [
+        80.98931456867344,
+        false,
+        -1,
+        1
+      ],
+      [
+        120.49537633593572,
+        true,
+        1,
+        -1
+      ],
+      [
+        120.95734289110088,
+        true,
+        -1,
+        -1
+      ],
+      [
+        122.35760159242845,
+        true,
+        1,
+        1
+      ],
+      [
+        122.47136777661639,
+        false,
+        -1,
+        -1
+      ],
+      [
+        122.77860403475188,
+        true,
+        -1,
+        1
+      ]
+    ],
+    "png": "preview/UI_Img_Map_20040.png",
+    "cropped": "preview/UI_Img_Map_20040_cropped.png",
+    "preview": "preview/UI_Img_Map_20040_preview.jpg"
+  },
+  {
+    "label": "UI_Img_Map_20041",
+    "tiles": 64,
+    "full_size": [
+      2048,
+      2048
+    ],
+    "content_bbox": [
+      394,
+      124,
+      1653,
+      1924
+    ],
+    "tile_origin": [
+      0,
+      0
+    ],
+    "tile_size": [
+      256,
+      256
+    ],
+    "swap_axes": false,
+    "x_direction": 1,
+    "y_direction": 1,
+    "seam_error": 3.275973650756963,
+    "orientation_candidates": [
+      [
+        3.275973650756963,
+        false,
+        1,
+        1
+      ],
+      [
+        73.6288703870387,
+        false,
+        1,
+        -1
+      ],
+      [
+        86.36148619406215,
+        false,
+        -1,
+        1
+      ],
+      [
+        113.0866373266864,
+        true,
+        -1,
+        -1
+      ],
+      [
+        116.22447844761466,
+        true,
+        1,
+        -1
+      ],
+      [
+        117.68652083949158,
+        true,
+        -1,
+        1
+      ],
+      [
+        120.59878386251093,
+        true,
+        1,
+        1
+      ],
+      [
+        127.58058529621698,
+        false,
+        -1,
+        -1
+      ]
+    ],
+    "png": "preview/UI_Img_Map_20041.png",
+    "cropped": "preview/UI_Img_Map_20041_cropped.png",
+    "preview": "preview/UI_Img_Map_20041_preview.jpg"
+  },
+  {
+    "label": "UI_Img_Map_20042",
+    "tiles": 64,
+    "full_size": [
+      2048,
+      2048
+    ],
+    "content_bbox": [
+      93,
+      299,
+      1924,
+      1749
+    ],
+    "tile_origin": [
+      0,
+      0
+    ],
+    "tile_size": [
+      256,
+      256
+    ],
+    "swap_axes": false,
+    "x_direction": 1,
+    "y_direction": 1,
+    "seam_error": 3.442619552197549,
+    "orientation_candidates": [
+      [
+        3.442619552197549,
+        false,
+        1,
+        1
+      ],
+      [
+        65.63421216121768,
+        false,
+        -1,
+        1
+      ],
+      [
+        81.1930206431681,
+        false,
+        1,
+        -1
+      ],
+      [
+        111.35201213669754,
+        true,
+        -1,
+        -1
+      ],
+      [
+        115.1477179470993,
+        true,
+        1,
+        -1
+      ],
+      [
+        116.49766545500125,
+        true,
+        -1,
+        1
+      ],
+      [
+        120.16330070623219,
+        true,
+        1,
+        1
+      ],
+      [
+        120.75248985614165,
+        false,
+        -1,
+        -1
+      ]
+    ],
+    "png": "preview/UI_Img_Map_20042.png",
+    "cropped": "preview/UI_Img_Map_20042_cropped.png",
+    "preview": "preview/UI_Img_Map_20042_preview.jpg"
+  },
+  {
+    "label": "UI_Img_Map_20043",
+    "tiles": 64,
+    "full_size": [
+      2048,
+      2048
+    ],
+    "content_bbox": [
+      124,
+      182,
+      1924,
+      1866
+    ],
+    "tile_origin": [
+      0,
+      0
+    ],
+    "tile_size": [
+      256,
+      256
+    ],
+    "swap_axes": false,
+    "x_direction": 1,
+    "y_direction": 1,
+    "seam_error": 2.250044875246814,
+    "orientation_candidates": [
+      [
+        2.250044875246814,
+        false,
+        1,
+        1
+      ],
+      [
+        74.64027878349023,
+        false,
+        -1,
+        1
+      ],
+      [
+        74.9717180990043,
+        false,
+        1,
+        -1
+      ],
+      [
+        116.74809345115604,
+        true,
+        1,
+        -1
+      ],
+      [
+        117.94011768255884,
+        true,
+        1,
+        1
+      ],
+      [
+        118.03303991317979,
+        true,
+        -1,
+        -1
+      ],
+      [
+        119.21676986894313,
+        true,
+        -1,
+        1
+      ],
+      [
+        122.84667835284331,
+        false,
+        -1,
+        -1
+      ]
+    ],
+    "png": "preview/UI_Img_Map_20043.png",
+    "cropped": "preview/UI_Img_Map_20043_cropped.png",
+    "preview": "preview/UI_Img_Map_20043_preview.jpg"
+  },
+  {
+    "label": "UI_Img_Map_20044",
+    "tiles": 64,
+    "full_size": [
+      2048,
+      2048
+    ],
+    "content_bbox": [
+      146,
+      124,
+      1902,
+      1924
+    ],
+    "tile_origin": [
+      0,
+      0
+    ],
+    "tile_size": [
+      256,
+      256
+    ],
+    "swap_axes": false,
+    "x_direction": 1,
+    "y_direction": 1,
+    "seam_error": 19.84710743801653,
+    "orientation_candidates": [
+      [
+        19.84710743801653,
+        false,
+        1,
+        1
+      ],
+      [
+        79.76640235066817,
+        false,
+        1,
+        -1
+      ],
+      [
+        89.36223071577484,
+        false,
+        -1,
+        1
+      ],
+      [
+        122.65816900476443,
+        true,
+        1,
+        -1
+      ],
+      [
+        124.83878841491384,
+        true,
+        -1,
+        -1
+      ],
+      [
+        125.56536787974683,
+        true,
+        1,
+        1
+      ],
+      [
+        127.70973428217013,
+        true,
+        -1,
+        1
+      ],
+      [
+        132.46062722541768,
+        false,
+        -1,
+        -1
+      ]
+    ],
+    "png": "preview/UI_Img_Map_20044.png",
+    "cropped": "preview/UI_Img_Map_20044_cropped.png",
+    "preview": "preview/UI_Img_Map_20044_preview.jpg"
+  },
+  {
+    "label": "UI_Img_Map_20045",
+    "tiles": 64,
+    "full_size": [
+      2048,
+      2048
+    ],
+    "content_bbox": [
+      124,
+      256,
+      1924,
+      1765
+    ],
+    "tile_origin": [
+      0,
+      0
+    ],
+    "tile_size": [
+      256,
+      256
+    ],
+    "swap_axes": false,
+    "x_direction": 1,
+    "y_direction": 1,
+    "seam_error": 2.3869666634269606,
+    "orientation_candidates": [
+      [
+        2.3869666634269606,
+        false,
+        1,
+        1
+      ],
+      [
+        59.99316986254879,
+        false,
+        -1,
+        1
+      ],
+      [
+        88.50754648195407,
+        false,
+        1,
+        -1
+      ],
+      [
+        122.97445860701048,
+        true,
+        1,
+        -1
+      ],
+      [
+        123.10541777575797,
+        true,
+        -1,
+        -1
+      ],
+      [
+        124.66480410202472,
+        false,
+        -1,
+        -1
+      ],
+      [
+        125.51054364122287,
+        true,
+        1,
+        1
+      ],
+      [
+        125.63751870892172,
+        true,
+        -1,
+        1
+      ]
+    ],
+    "png": "preview/UI_Img_Map_20045.png",
+    "cropped": "preview/UI_Img_Map_20045_cropped.png",
+    "preview": "preview/UI_Img_Map_20045_preview.jpg"
+  },
+  {
+    "label": "UI_Img_Map_20046",
+    "tiles": 64,
+    "full_size": [
+      2048,
+      2048
+    ],
+    "content_bbox": [
+      124,
+      309,
+      1924,
+      1740
+    ],
+    "tile_origin": [
+      0,
+      0
+    ],
+    "tile_size": [
+      256,
+      256
+    ],
+    "swap_axes": false,
+    "x_direction": 1,
+    "y_direction": 1,
+    "seam_error": 2.223605640960488,
+    "orientation_candidates": [
+      [
+        2.223605640960488,
+        false,
+        1,
+        1
+      ],
+      [
+        66.18251885864218,
+        false,
+        -1,
+        1
+      ],
+      [
+        88.92222116119174,
+        false,
+        1,
+        -1
+      ],
+      [
+        129.00392092795295,
+        true,
+        1,
+        -1
+      ],
+      [
+        129.3039666326183,
+        false,
+        -1,
+        -1
+      ],
+      [
+        130.8582623997381,
+        true,
+        1,
+        1
+      ],
+      [
+        131.10684881749938,
+        true,
+        -1,
+        -1
+      ],
+      [
+        132.9432268499798,
+        true,
+        -1,
+        1
+      ]
+    ],
+    "png": "preview/UI_Img_Map_20046.png",
+    "cropped": "preview/UI_Img_Map_20046_cropped.png",
+    "preview": "preview/UI_Img_Map_20046_preview.jpg"
+  },
+  {
+    "label": "UI_Img_Map_20047",
+    "tiles": 64,
+    "full_size": [
+      2048,
+      2048
+    ],
+    "content_bbox": [
+      124,
+      225,
+      1924,
+      1849
+    ],
+    "tile_origin": [
+      0,
+      0
+    ],
+    "tile_size": [
+      256,
+      256
+    ],
+    "swap_axes": false,
+    "x_direction": 1,
+    "y_direction": 1,
+    "seam_error": 3.5796599182208038,
+    "orientation_candidates": [
+      [
+        3.5796599182208038,
+        false,
+        1,
+        1
+      ],
+      [
+        79.34487118697645,
+        false,
+        -1,
+        1
+      ],
+      [
+        83.72964796479648,
+        false,
+        1,
+        -1
+      ],
+      [
+        121.64319495533368,
+        true,
+        -1,
+        1
+      ],
+      [
+        123.69127429242207,
+        true,
+        -1,
+        -1
+      ],
+      [
+        126.09800798094871,
+        true,
+        1,
+        1
+      ],
+      [
+        128.07380008947402,
+        true,
+        1,
+        -1
+      ],
+      [
+        132.46142447730085,
+        false,
+        -1,
+        -1
+      ]
+    ],
+    "png": "preview/UI_Img_Map_20047.png",
+    "cropped": "preview/UI_Img_Map_20047_cropped.png",
+    "preview": "preview/UI_Img_Map_20047_preview.jpg"
+  },
+  {
+    "label": "UI_Img_Map_20048",
+    "tiles": 64,
+    "full_size": [
+      2048,
+      2048
+    ],
+    "content_bbox": [
+      366,
+      124,
+      1681,
+      1924
+    ],
+    "tile_origin": [
+      0,
+      0
+    ],
+    "tile_size": [
+      256,
+      256
+    ],
+    "swap_axes": false,
+    "x_direction": 1,
+    "y_direction": 1,
+    "seam_error": 8.072279283216783,
+    "orientation_candidates": [
+      [
+        8.072279283216783,
+        false,
+        1,
+        1
+      ],
+      [
+        76.41838979322482,
+        false,
+        1,
+        -1
+      ],
+      [
+        93.5782256092591,
+        false,
+        -1,
+        1
+      ],
+      [
+        122.25834238146942,
+        true,
+        1,
+        -1
+      ],
+      [
+        123.01548656630412,
+        true,
+        -1,
+        -1
+      ],
+      [
+        128.10773490532333,
+        true,
+        1,
+        1
+      ],
+      [
+        128.82690393230462,
+        true,
+        -1,
+        1
+      ],
+      [
+        134.14782143350365,
+        false,
+        -1,
+        -1
+      ]
+    ],
+    "png": "preview/UI_Img_Map_20048.png",
+    "cropped": "preview/UI_Img_Map_20048_cropped.png",
+    "preview": "preview/UI_Img_Map_20048_preview.jpg"
+  },
+  {
+    "label": "UI_Img_Map_20049",
+    "tiles": 64,
+    "full_size": [
+      2048,
+      2048
+    ],
+    "content_bbox": [
+      401,
+      124,
+      1647,
+      1924
+    ],
+    "tile_origin": [
+      0,
+      0
+    ],
+    "tile_size": [
+      256,
+      256
+    ],
+    "swap_axes": false,
+    "x_direction": 1,
+    "y_direction": 1,
+    "seam_error": 12.282143722733883,
+    "orientation_candidates": [
+      [
+        12.282143722733883,
+        false,
+        1,
+        1
+      ],
+      [
+        79.1499212753395,
+        false,
+        1,
+        -1
+      ],
+      [
+        96.24218326405204,
+        false,
+        -1,
+        1
+      ],
+      [
+        132.40346260387813,
+        true,
+        1,
+        1
+      ],
+      [
+        132.69162266530066,
+        true,
+        1,
+        -1
+      ],
+      [
+        133.23421278588714,
+        true,
+        -1,
+        1
+      ],
+      [
+        133.51494364554995,
+        true,
+        -1,
+        -1
+      ],
+      [
+        136.25040459309494,
+        false,
+        -1,
+        -1
+      ]
+    ],
+    "png": "preview/UI_Img_Map_20049.png",
+    "cropped": "preview/UI_Img_Map_20049_cropped.png",
+    "preview": "preview/UI_Img_Map_20049_preview.jpg"
+  },
+  {
+    "label": "UI_Img_Map_20050",
+    "tiles": 64,
+    "full_size": [
+      2048,
+      2048
+    ],
+    "content_bbox": [
+      124,
+      208,
+      1924,
+      1815
+    ],
+    "tile_origin": [
+      0,
+      0
+    ],
+    "tile_size": [
+      256,
+      256
+    ],
+    "swap_axes": false,
+    "x_direction": 1,
+    "y_direction": 1,
+    "seam_error": 2.2609570661896243,
+    "orientation_candidates": [
+      [
+        2.2609570661896243,
+        false,
+        1,
+        1
+      ],
+      [
+        71.28868633453938,
+        false,
+        -1,
+        1
+      ],
+      [
+        73.53509406657018,
+        false,
+        1,
+        -1
+      ],
+      [
+        121.10796291986658,
+        false,
+        -1,
+        -1
+      ],
+      [
+        127.27602204052613,
+        true,
+        -1,
+        -1
+      ],
+      [
+        128.78805344049633,
+        true,
+        1,
+        -1
+      ],
+      [
+        130.59496934225194,
+        true,
+        -1,
+        1
+      ],
+      [
+        132.04972012991502,
+        true,
+        1,
+        1
+      ]
+    ],
+    "png": "preview/UI_Img_Map_20050.png",
+    "cropped": "preview/UI_Img_Map_20050_cropped.png",
+    "preview": "preview/UI_Img_Map_20050_preview.jpg"
+  },
+  {
+    "label": "UI_Img_Map_20051",
+    "tiles": 64,
+    "full_size": [
+      2048,
+      2048
+    ],
+    "content_bbox": [
+      124,
+      124,
+      1924,
+      1924
+    ],
+    "tile_origin": [
+      0,
+      0
+    ],
+    "tile_size": [
+      256,
+      256
+    ],
+    "swap_axes": false,
+    "x_direction": 1,
+    "y_direction": 1,
+    "seam_error": 6.205181962025317,
+    "orientation_candidates": [
+      [
+        6.205181962025317,
+        false,
+        1,
+        1
+      ],
+      [
+        77.30090151663087,
+        false,
+        1,
+        -1
+      ],
+      [
+        78.51104962998167,
+        false,
+        -1,
+        1
+      ],
+      [
+        112.55051721062956,
+        true,
+        1,
+        1
+      ],
+      [
+        117.9123521567718,
+        true,
+        1,
+        -1
+      ],
+      [
+        118.32365880134834,
+        true,
+        -1,
+        1
+      ],
+      [
+        123.34406023424428,
+        true,
+        -1,
+        -1
+      ],
+      [
+        129.8148922759569,
+        false,
+        -1,
+        -1
+      ]
+    ],
+    "png": "preview/UI_Img_Map_20051.png",
+    "cropped": "preview/UI_Img_Map_20051_cropped.png",
+    "preview": "preview/UI_Img_Map_20051_preview.jpg"
+  },
+  {
+    "label": "UI_Img_Map_20052",
+    "tiles": 64,
+    "full_size": [
+      2048,
+      2048
+    ],
+    "content_bbox": [
+      124,
+      224,
+      1924,
+      1824
+    ],
+    "tile_origin": [
+      0,
+      0
+    ],
+    "tile_size": [
+      256,
+      256
+    ],
+    "swap_axes": false,
+    "x_direction": 1,
+    "y_direction": 1,
+    "seam_error": 10.603229166666667,
+    "orientation_candidates": [
+      [
+        10.603229166666667,
+        false,
+        1,
+        1
+      ],
+      [
+        72.70241935483871,
+        false,
+        -1,
+        1
+      ],
+      [
+        82.38796374367622,
+        false,
+        1,
+        -1
+      ],
+      [
+        121.41849190848214,
+        true,
+        -1,
+        1
+      ],
+      [
+        123.34506766381766,
+        false,
+        -1,
+        -1
+      ],
+      [
+        123.43870159761711,
+        true,
+        1,
+        1
+      ],
+      [
+        124.01623354360943,
+        true,
+        -1,
+        -1
+      ],
+      [
+        125.92767976031958,
+        true,
+        1,
+        -1
+      ]
+    ],
+    "png": "preview/UI_Img_Map_20052.png",
+    "cropped": "preview/UI_Img_Map_20052_cropped.png",
+    "preview": "preview/UI_Img_Map_20052_preview.jpg"
+  },
+  {
+    "label": "UI_Img_Map_20053",
+    "tiles": 64,
+    "full_size": [
+      2048,
+      2048
+    ],
+    "content_bbox": [
+      124,
+      210,
+      1950,
+      1838
+    ],
+    "tile_origin": [
+      0,
+      0
+    ],
+    "tile_size": [
+      256,
+      256
+    ],
+    "swap_axes": false,
+    "x_direction": 1,
+    "y_direction": 1,
+    "seam_error": 2.7803326810176126,
+    "orientation_candidates": [
+      [
+        2.7803326810176126,
+        false,
+        1,
+        1
+      ],
+      [
+        73.38934108527131,
+        false,
+        1,
+        -1
+      ],
+      [
+        84.52555384483792,
+        false,
+        -1,
+        1
+      ],
+      [
+        128.67226831170672,
+        false,
+        -1,
+        -1
+      ],
+      [
+        132.15722237124464,
+        true,
+        -1,
+        1
+      ],
+      [
+        132.23356831151392,
+        true,
+        -1,
+        -1
+      ],
+      [
+        140.83942474744225,
+        true,
+        1,
+        1
+      ],
+      [
+        140.922185003865,
+        true,
+        1,
+        -1
+      ]
+    ],
+    "png": "preview/UI_Img_Map_20053.png",
+    "cropped": "preview/UI_Img_Map_20053_cropped.png",
+    "preview": "preview/UI_Img_Map_20053_preview.jpg"
+  },
+  {
+    "label": "UI_Img_Map_20054",
+    "tiles": 64,
+    "full_size": [
+      2048,
+      2048
+    ],
+    "content_bbox": [
+      124,
+      180,
+      1955,
+      1868
+    ],
+    "tile_origin": [
+      0,
+      0
+    ],
+    "tile_size": [
+      256,
+      256
+    ],
+    "swap_axes": false,
+    "x_direction": 1,
+    "y_direction": 1,
+    "seam_error": 6.035024040727821,
+    "orientation_candidates": [
+      [
+        6.035024040727821,
+        false,
+        1,
+        1
+      ],
+      [
+        74.37199005748019,
+        false,
+        1,
+        -1
+      ],
+      [
+        77.69899368587214,
+        false,
+        -1,
+        1
+      ],
+      [
+        125.72121242552052,
+        false,
+        -1,
+        -1
+      ],
+      [
+        128.25378125,
+        true,
+        1,
+        1
+      ],
+      [
+        128.94390426327598,
+        true,
+        1,
+        -1
+      ],
+      [
+        129.403208689681,
+        true,
+        -1,
+        1
+      ],
+      [
+        130.0893668679574,
+        true,
+        -1,
+        -1
+      ]
+    ],
+    "png": "preview/UI_Img_Map_20054.png",
+    "cropped": "preview/UI_Img_Map_20054_cropped.png",
+    "preview": "preview/UI_Img_Map_20054_preview.jpg"
+  },
+  {
+    "label": "UI_Img_Map_20055",
+    "tiles": 64,
+    "full_size": [
+      2048,
+      2048
+    ],
+    "content_bbox": [
+      283,
+      98,
+      1765,
+      1924
+    ],
+    "tile_origin": [
+      0,
+      0
+    ],
+    "tile_size": [
+      256,
+      256
+    ],
+    "swap_axes": false,
+    "x_direction": 1,
+    "y_direction": 1,
+    "seam_error": 5.0929745657568235,
+    "orientation_candidates": [
+      [
+        5.0929745657568235,
+        false,
+        1,
+        1
+      ],
+      [
+        80.38363181356064,
+        false,
+        -1,
+        1
+      ],
+      [
+        87.38069077037898,
+        false,
+        1,
+        -1
+      ],
+      [
+        117.13512876314834,
+        true,
+        1,
+        1
+      ],
+      [
+        121.22550246887822,
+        true,
+        -1,
+        1
+      ],
+      [
+        123.07915874022406,
+        true,
+        1,
+        -1
+      ],
+      [
+        126.81789747751404,
+        true,
+        -1,
+        -1
+      ],
+      [
+        133.93502042968234,
+        false,
+        -1,
+        -1
+      ]
+    ],
+    "png": "preview/UI_Img_Map_20055.png",
+    "cropped": "preview/UI_Img_Map_20055_cropped.png",
+    "preview": "preview/UI_Img_Map_20055_preview.jpg"
+  },
+  {
+    "label": "UI_Img_Map_20056",
+    "tiles": 64,
+    "full_size": [
+      2048,
+      2048
+    ],
+    "content_bbox": [
+      124,
+      172,
+      1924,
+      1876
+    ],
+    "tile_origin": [
+      0,
+      0
+    ],
+    "tile_size": [
+      256,
+      256
+    ],
+    "swap_axes": false,
+    "x_direction": 1,
+    "y_direction": 1,
+    "seam_error": 2.0224158653846156,
+    "orientation_candidates": [
+      [
+        2.0224158653846156,
+        false,
+        1,
+        1
+      ],
+      [
+        68.04223882606354,
+        false,
+        1,
+        -1
+      ],
+      [
+        82.31078545548654,
+        false,
+        -1,
+        1
+      ],
+      [
+        121.71076178633218,
+        true,
+        -1,
+        -1
+      ],
+      [
+        123.40785875160876,
+        true,
+        -1,
+        1
+      ],
+      [
+        126.61458333333333,
+        false,
+        -1,
+        -1
+      ],
+      [
+        132.35505615135574,
+        true,
+        1,
+        -1
+      ],
+      [
+        133.86256275100402,
+        true,
+        1,
+        1
+      ]
+    ],
+    "png": "preview/UI_Img_Map_20056.png",
+    "cropped": "preview/UI_Img_Map_20056_cropped.png",
+    "preview": "preview/UI_Img_Map_20056_preview.jpg"
+  },
+  {
+    "label": "UI_Img_Map_20057",
+    "tiles": 64,
+    "full_size": [
+      2048,
+      2048
+    ],
+    "content_bbox": [
+      124,
+      178,
+      1924,
+      1871
+    ],
+    "tile_origin": [
+      0,
+      0
+    ],
+    "tile_size": [
+      256,
+      256
+    ],
+    "swap_axes": false,
+    "x_direction": 1,
+    "y_direction": 1,
+    "seam_error": 2.4519986416998156,
+    "orientation_candidates": [
+      [
+        2.4519986416998156,
+        false,
+        1,
+        1
+      ],
+      [
+        76.03407027240426,
+        false,
+        -1,
+        1
+      ],
+      [
+        81.27161639292483,
+        false,
+        1,
+        -1
+      ],
+      [
+        130.93612701371322,
+        false,
+        -1,
+        -1
+      ],
+      [
+        132.471711873875,
+        true,
+        -1,
+        -1
+      ],
+      [
+        135.09510560641417,
+        true,
+        -1,
+        1
+      ],
+      [
+        137.007397606303,
+        true,
+        1,
+        -1
+      ],
+      [
+        139.39374020546754,
+        true,
+        1,
+        1
+      ]
+    ],
+    "png": "preview/UI_Img_Map_20057.png",
+    "cropped": "preview/UI_Img_Map_20057_cropped.png",
+    "preview": "preview/UI_Img_Map_20057_preview.jpg"
+  },
+  {
+    "label": "UI_Img_Map_20058",
+    "tiles": 64,
+    "full_size": [
+      2048,
+      2048
+    ],
+    "content_bbox": [
+      189,
+      124,
+      1859,
+      1924
+    ],
+    "tile_origin": [
+      0,
+      0
+    ],
+    "tile_size": [
+      256,
+      256
+    ],
+    "swap_axes": false,
+    "x_direction": 1,
+    "y_direction": 1,
+    "seam_error": 4.792742058643861,
+    "orientation_candidates": [
+      [
+        4.792742058643861,
+        false,
+        1,
+        1
+      ],
+      [
+        63.691404682274246,
+        false,
+        1,
+        -1
+      ],
+      [
+        77.26387476160204,
+        false,
+        -1,
+        1
+      ],
+      [
+        116.62781591933062,
+        true,
+        1,
+        1
+      ],
+      [
+        118.08220726783311,
+        true,
+        1,
+        -1
+      ],
+      [
+        119.69867493175614,
+        false,
+        -1,
+        -1
+      ],
+      [
+        120.29949765924991,
+        true,
+        -1,
+        1
+      ],
+      [
+        121.73908510188998,
+        true,
+        -1,
+        -1
+      ]
+    ],
+    "png": "preview/UI_Img_Map_20058.png",
+    "cropped": "preview/UI_Img_Map_20058_cropped.png",
+    "preview": "preview/UI_Img_Map_20058_preview.jpg"
+  },
+  {
+    "label": "UI_Img_Map_20059",
+    "tiles": 64,
+    "full_size": [
+      2048,
+      2048
+    ],
+    "content_bbox": [
+      124,
+      266,
+      1924,
+      1782
+    ],
+    "tile_origin": [
+      0,
+      0
+    ],
+    "tile_size": [
+      256,
+      256
+    ],
+    "swap_axes": false,
+    "x_direction": 1,
+    "y_direction": 1,
+    "seam_error": 7.837810745789896,
+    "orientation_candidates": [
+      [
+        7.837810745789896,
+        false,
+        1,
+        1
+      ],
+      [
+        83.96048030916452,
+        false,
+        -1,
+        1
+      ],
+      [
+        91.7149928081902,
+        false,
+        1,
+        -1
+      ],
+      [
+        123.54070855093927,
+        true,
+        1,
+        -1
+      ],
+      [
+        128.1387507649939,
+        true,
+        -1,
+        -1
+      ],
+      [
+        130.87541090130725,
+        true,
+        1,
+        1
+      ],
+      [
+        135.25272065445813,
+        true,
+        -1,
+        1
+      ],
+      [
+        138.13194941968763,
+        false,
+        -1,
+        -1
+      ]
+    ],
+    "png": "preview/UI_Img_Map_20059.png",
+    "cropped": "preview/UI_Img_Map_20059_cropped.png",
+    "preview": "preview/UI_Img_Map_20059_preview.jpg"
+  },
+  {
+    "label": "UI_Img_Map_20060",
+    "tiles": 64,
+    "full_size": [
+      2048,
+      2048
+    ],
+    "content_bbox": [
+      124,
+      394,
+      1924,
+      1654
+    ],
+    "tile_origin": [
+      0,
+      0
+    ],
+    "tile_size": [
+      256,
+      256
+    ],
+    "swap_axes": false,
+    "x_direction": 1,
+    "y_direction": 1,
+    "seam_error": 7.55867088607595,
+    "orientation_candidates": [
+      [
+        7.55867088607595,
+        false,
+        1,
+        1
+      ],
+      [
+        71.1635348583878,
+        false,
+        -1,
+        1
+      ],
+      [
+        94.4976376146789,
+        false,
+        1,
+        -1
+      ],
+      [
+        126.97250504880512,
+        true,
+        1,
+        1
+      ],
+      [
+        128.69423690396238,
+        true,
+        -1,
+        1
+      ],
+      [
+        133.18729501475894,
+        true,
+        1,
+        -1
+      ],
+      [
+        133.29983579638753,
+        false,
+        -1,
+        -1
+      ],
+      [
+        134.85084669502618,
+        true,
+        -1,
+        -1
+      ]
+    ],
+    "png": "preview/UI_Img_Map_20060.png",
+    "cropped": "preview/UI_Img_Map_20060_cropped.png",
+    "preview": "preview/UI_Img_Map_20060_preview.jpg"
+  },
+  {
+    "label": "UI_Img_Map_29999",
+    "tiles": 64,
+    "full_size": [
+      2048,
+      2048
+    ],
+    "content_bbox": [
+      252,
+      124,
+      1795,
+      1924
+    ],
+    "tile_origin": [
+      0,
+      0
+    ],
+    "tile_size": [
+      256,
+      256
+    ],
+    "swap_axes": false,
+    "x_direction": 1,
+    "y_direction": 1,
+    "seam_error": 2.482179614241061,
+    "orientation_candidates": [
+      [
+        2.482179614241061,
+        false,
+        1,
+        1
+      ],
+      [
+        66.2586167127982,
+        false,
+        1,
+        -1
+      ],
+      [
+        75.29821967992801,
+        false,
+        -1,
+        1
+      ],
+      [
+        97.60850431662742,
+        true,
+        -1,
+        1
+      ],
+      [
+        98.31059593023255,
+        true,
+        1,
+        1
+      ],
+      [
+        100.5661134315234,
+        true,
+        -1,
+        -1
+      ],
+      [
+        101.36135949424764,
+        true,
+        1,
+        -1
+      ],
+      [
+        121.73106834695731,
+        false,
+        -1,
+        -1
+      ]
+    ],
+    "png": "preview/UI_Img_Map_29999.png",
+    "cropped": "preview/UI_Img_Map_29999_cropped.png",
+    "preview": "preview/UI_Img_Map_29999_preview.jpg"
+  },
+  {
+    "label": "UI_Img_Map_Layer_20031_1_2_0",
+    "tiles": 32,
+    "full_size": [
+      2048,
+      1536
+    ],
+    "content_bbox": [
+      124,
+      224,
+      1924,
+      1312
+    ],
+    "tile_origin": [
+      0,
+      1
+    ],
+    "tile_size": [
+      256,
+      256
+    ],
+    "swap_axes": false,
+    "x_direction": 1,
+    "y_direction": 1,
+    "seam_error": 1.1181492109038738,
+    "orientation_candidates": [
+      [
+        1.1181492109038738,
+        false,
+        1,
+        1
+      ],
+      [
+        39.231684641130535,
+        false,
+        -1,
+        1
+      ],
+      [
+        46.54710244438341,
+        false,
+        1,
+        -1
+      ],
+      [
+        71.15410685805422,
+        true,
+        -1,
+        -1
+      ],
+      [
+        75.14581063682282,
+        true,
+        1,
+        -1
+      ],
+      [
+        75.78957711442786,
+        true,
+        -1,
+        1
+      ],
+      [
+        77.2937701396348,
+        false,
+        -1,
+        -1
+      ],
+      [
+        79.74438952051409,
+        true,
+        1,
+        1
+      ]
+    ],
+    "png": "preview/UI_Img_Map_Layer_20031_1_2_0.png",
+    "cropped": "preview/UI_Img_Map_Layer_20031_1_2_0_cropped.png",
+    "preview": "preview/UI_Img_Map_Layer_20031_1_2_0_preview.jpg"
+  },
+  {
+    "label": "UI_Img_Map_Layer_20032_1_2_0",
+    "tiles": 33,
+    "full_size": [
+      2048,
+      1536
+    ],
+    "content_bbox": [
+      124,
+      245,
+      1924,
+      1292
+    ],
+    "tile_origin": [
+      0,
+      1
+    ],
+    "tile_size": [
+      256,
+      256
+    ],
+    "swap_axes": false,
+    "x_direction": 1,
+    "y_direction": 1,
+    "seam_error": 2.9915924498205504,
+    "orientation_candidates": [
+      [
+        2.9915924498205504,
+        false,
+        1,
+        1
+      ],
+      [
+        35.35394409937888,
+        false,
+        -1,
+        1
+      ],
+      [
+        44.026017827029634,
+        false,
+        1,
+        -1
+      ],
+      [
+        70.30404815066498,
+        true,
+        1,
+        -1
+      ],
+      [
+        71.0836448068864,
+        false,
+        -1,
+        -1
+      ],
+      [
+        71.34437976912541,
+        true,
+        1,
+        1
+      ],
+      [
+        71.76300456791274,
+        true,
+        -1,
+        -1
+      ],
+      [
+        72.77253944402705,
+        true,
+        -1,
+        1
+      ]
+    ],
+    "png": "preview/UI_Img_Map_Layer_20032_1_2_0.png",
+    "cropped": "preview/UI_Img_Map_Layer_20032_1_2_0_cropped.png",
+    "preview": "preview/UI_Img_Map_Layer_20032_1_2_0_preview.jpg"
+  },
+  {
+    "label": "UI_Img_Map_Layer_20033_1_2_0",
+    "tiles": 35,
+    "full_size": [
+      2048,
+      1536
+    ],
+    "content_bbox": [
+      124,
+      16,
+      1924,
+      1520
+    ],
+    "tile_origin": [
+      0,
+      1
+    ],
+    "tile_size": [
+      256,
+      256
+    ],
+    "swap_axes": false,
+    "x_direction": 1,
+    "y_direction": 1,
+    "seam_error": 1.2650132914451426,
+    "orientation_candidates": [
+      [
+        1.2650132914451426,
+        false,
+        1,
+        1
+      ],
+      [
+        33.296668241965975,
+        false,
+        1,
+        -1
+      ],
+      [
+        53.377392842280486,
+        false,
+        -1,
+        1
+      ],
+      [
+        74.55061662674119,
+        true,
+        -1,
+        1
+      ],
+      [
+        74.79305977710233,
+        true,
+        -1,
+        -1
+      ],
+      [
+        76.09828858196792,
+        true,
+        1,
+        1
+      ],
+      [
+        76.38939784754959,
+        true,
+        1,
+        -1
+      ],
+      [
+        80.04257653061225,
+        false,
+        -1,
+        -1
+      ]
+    ],
+    "png": "preview/UI_Img_Map_Layer_20033_1_2_0.png",
+    "cropped": "preview/UI_Img_Map_Layer_20033_1_2_0_cropped.png",
+    "preview": "preview/UI_Img_Map_Layer_20033_1_2_0_preview.jpg"
+  },
+  {
+    "label": "UI_Img_Map_Layer_20034_1_2_0",
+    "tiles": 41,
+    "full_size": [
+      2048,
+      2048
+    ],
+    "content_bbox": [
+      124,
+      169,
+      1924,
+      1880
+    ],
+    "tile_origin": [
+      0,
+      0
+    ],
+    "tile_size": [
+      256,
+      256
+    ],
+    "swap_axes": false,
+    "x_direction": 1,
+    "y_direction": 1,
+    "seam_error": 1.8690919037199125,
+    "orientation_candidates": [
+      [
+        1.8690919037199125,
+        false,
+        1,
+        1
+      ],
+      [
+        35.71953281894091,
+        false,
+        1,
+        -1
+      ],
+      [
+        45.12444901557449,
+        false,
+        -1,
+        1
+      ],
+      [
+        74.21980056980057,
+        false,
+        -1,
+        -1
+      ],
+      [
+        76.9711213999843,
+        true,
+        -1,
+        -1
+      ],
+      [
+        77.33608362961817,
+        true,
+        -1,
+        1
+      ],
+      [
+        79.9300235478807,
+        true,
+        1,
+        -1
+      ],
+      [
+        80.25046385775029,
+        true,
+        1,
+        1
+      ]
+    ],
+    "png": "preview/UI_Img_Map_Layer_20034_1_2_0.png",
+    "cropped": "preview/UI_Img_Map_Layer_20034_1_2_0_cropped.png",
+    "preview": "preview/UI_Img_Map_Layer_20034_1_2_0_preview.jpg"
+  },
+  {
+    "label": "UI_Img_Map_Layer_20035_1_2_0",
+    "tiles": 36,
+    "full_size": [
+      2048,
+      1536
+    ],
+    "content_bbox": [
+      124,
+      25,
+      1924,
+      1511
+    ],
+    "tile_origin": [
+      0,
+      1
+    ],
+    "tile_size": [
+      256,
+      256
+    ],
+    "swap_axes": false,
+    "x_direction": 1,
+    "y_direction": 1,
+    "seam_error": 2.329193835210433,
+    "orientation_candidates": [
+      [
+        2.329193835210433,
+        false,
+        1,
+        1
+      ],
+      [
+        36.8738810741688,
+        false,
+        1,
+        -1
+      ],
+      [
+        45.499367152693395,
+        false,
+        -1,
+        1
+      ],
+      [
+        65.43870879869246,
+        true,
+        1,
+        -1
+      ],
+      [
+        66.95019285970578,
+        true,
+        1,
+        1
+      ],
+      [
+        69.76349728720092,
+        true,
+        -1,
+        -1
+      ],
+      [
+        71.19311390402531,
+        true,
+        -1,
+        1
+      ],
+      [
+        71.66092378752887,
+        false,
+        -1,
+        -1
+      ]
+    ],
+    "png": "preview/UI_Img_Map_Layer_20035_1_2_0.png",
+    "cropped": "preview/UI_Img_Map_Layer_20035_1_2_0_cropped.png",
+    "preview": "preview/UI_Img_Map_Layer_20035_1_2_0_preview.jpg"
+  },
+  {
+    "label": "UI_Img_Map_Layer_20036_1_2_0",
+    "tiles": 32,
+    "full_size": [
+      2048,
+      1536
+    ],
+    "content_bbox": [
+      124,
+      68,
+      1924,
+      1468
+    ],
+    "tile_origin": [
+      0,
+      1
+    ],
+    "tile_size": [
+      256,
+      256
+    ],
+    "swap_axes": false,
+    "x_direction": 1,
+    "y_direction": 1,
+    "seam_error": 1.2737126467449307,
+    "orientation_candidates": [
+      [
+        1.2737126467449307,
+        false,
+        1,
+        1
+      ],
+      [
+        33.09224007083228,
+        false,
+        -1,
+        1
+      ],
+      [
+        48.76774151774152,
+        false,
+        1,
+        -1
+      ],
+      [
+        76.6223567858516,
+        true,
+        1,
+        -1
+      ],
+      [
+        77.30742744712248,
+        false,
+        -1,
+        -1
+      ],
+      [
+        77.87207465192061,
+        true,
+        -1,
+        -1
+      ],
+      [
+        80.60426651630486,
+        true,
+        1,
+        1
+      ],
+      [
+        81.93183133925126,
+        true,
+        -1,
+        1
+      ]
+    ],
+    "png": "preview/UI_Img_Map_Layer_20036_1_2_0.png",
+    "cropped": "preview/UI_Img_Map_Layer_20036_1_2_0_cropped.png",
+    "preview": "preview/UI_Img_Map_Layer_20036_1_2_0_preview.jpg"
+  },
+  {
+    "label": "UI_Img_Map_Layer_20037_1_2_0",
+    "tiles": 30,
+    "full_size": [
+      2048,
+      1536
+    ],
+    "content_bbox": [
+      124,
+      227,
+      1924,
+      1309
+    ],
+    "tile_origin": [
+      0,
+      1
+    ],
+    "tile_size": [
+      256,
+      256
+    ],
+    "swap_axes": false,
+    "x_direction": 1,
+    "y_direction": 1,
+    "seam_error": 2.575711449371277,
+    "orientation_candidates": [
+      [
+        2.575711449371277,
+        false,
+        1,
+        1
+      ],
+      [
+        36.15085227272727,
+        false,
+        -1,
+        1
+      ],
+      [
+        38.86596896191966,
+        false,
+        1,
+        -1
+      ],
+      [
+        68.31182626896913,
+        true,
+        -1,
+        1
+      ],
+      [
+        68.82297651446427,
+        true,
+        -1,
+        -1
+      ],
+      [
+        70.31986804431719,
+        false,
+        -1,
+        -1
+      ],
+      [
+        70.43734296482413,
+        true,
+        1,
+        1
+      ],
+      [
+        70.87021072796935,
+        true,
+        1,
+        -1
+      ]
+    ],
+    "png": "preview/UI_Img_Map_Layer_20037_1_2_0.png",
+    "cropped": "preview/UI_Img_Map_Layer_20037_1_2_0_cropped.png",
+    "preview": "preview/UI_Img_Map_Layer_20037_1_2_0_preview.jpg"
+  },
+  {
+    "label": "UI_Img_Map_Layer_20038_1_2_0",
+    "tiles": 39,
+    "full_size": [
+      2048,
+      1536
+    ],
+    "content_bbox": [
+      124,
+      80,
+      1924,
+      1456
+    ],
+    "tile_origin": [
+      0,
+      1
+    ],
+    "tile_size": [
+      256,
+      256
+    ],
+    "swap_axes": false,
+    "x_direction": 1,
+    "y_direction": 1,
+    "seam_error": 1.492766424751719,
+    "orientation_candidates": [
+      [
+        1.492766424751719,
+        false,
+        1,
+        1
+      ],
+      [
+        37.680173692938816,
+        false,
+        -1,
+        1
+      ],
+      [
+        44.44647738294683,
+        false,
+        1,
+        -1
+      ],
+      [
+        68.18179010102479,
+        true,
+        -1,
+        -1
+      ],
+      [
+        68.27594443627811,
+        true,
+        -1,
+        1
+      ],
+      [
+        70.95208500400962,
+        true,
+        1,
+        -1
+      ],
+      [
+        71.07777941610145,
+        true,
+        1,
+        1
+      ],
+      [
+        74.65008924225215,
+        false,
+        -1,
+        -1
+      ]
+    ],
+    "png": "preview/UI_Img_Map_Layer_20038_1_2_0.png",
+    "cropped": "preview/UI_Img_Map_Layer_20038_1_2_0_cropped.png",
+    "preview": "preview/UI_Img_Map_Layer_20038_1_2_0_preview.jpg"
+  },
+  {
+    "label": "UI_Img_Map_Layer_20039_1_2_0",
+    "tiles": 49,
+    "full_size": [
+      2048,
+      2048
+    ],
+    "content_bbox": [
+      124,
+      160,
+      1924,
+      1889
+    ],
+    "tile_origin": [
+      0,
+      0
+    ],
+    "tile_size": [
+      256,
+      256
+    ],
+    "swap_axes": false,
+    "x_direction": 1,
+    "y_direction": 1,
+    "seam_error": 1.3475735780423281,
+    "orientation_candidates": [
+      [
+        1.3475735780423281,
+        false,
+        1,
+        1
+      ],
+      [
+        34.83574294148816,
+        false,
+        1,
+        -1
+      ],
+      [
+        36.77509842519685,
+        false,
+        -1,
+        1
+      ],
+      [
+        64.90541436849821,
+        false,
+        -1,
+        -1
+      ],
+      [
+        67.01198173082626,
+        true,
+        1,
+        1
+      ],
+      [
+        67.18261115073705,
+        true,
+        1,
+        -1
+      ],
+      [
+        67.67059734381515,
+        true,
+        -1,
+        1
+      ],
+      [
+        67.84329493912628,
+        true,
+        -1,
+        -1
+      ]
+    ],
+    "png": "preview/UI_Img_Map_Layer_20039_1_2_0.png",
+    "cropped": "preview/UI_Img_Map_Layer_20039_1_2_0_cropped.png",
+    "preview": "preview/UI_Img_Map_Layer_20039_1_2_0_preview.jpg"
+  },
+  {
+    "label": "UI_Img_Map_Layer_20040_1_2_0",
+    "tiles": 40,
+    "full_size": [
+      2048,
+      2048
+    ],
+    "content_bbox": [
+      129,
+      124,
+      1918,
+      1924
+    ],
+    "tile_origin": [
+      0,
+      0
+    ],
+    "tile_size": [
+      256,
+      256
+    ],
+    "swap_axes": false,
+    "x_direction": 1,
+    "y_direction": 1,
+    "seam_error": 1.7040879791925816,
+    "orientation_candidates": [
+      [
+        1.7040879791925816,
+        false,
+        1,
+        1
+      ],
+      [
+        35.15213773015708,
+        false,
+        -1,
+        1
+      ],
+      [
+        35.773973675963646,
+        false,
+        1,
+        -1
+      ],
+      [
+        62.47871575921542,
+        true,
+        1,
+        -1
+      ],
+      [
+        63.009561051510936,
+        true,
+        1,
+        1
+      ],
+      [
+        63.34040395504099,
+        true,
+        -1,
+        -1
+      ],
+      [
+        63.84401604453176,
+        true,
+        -1,
+        1
+      ],
+      [
+        64.32490573334623,
+        false,
+        -1,
+        -1
+      ]
+    ],
+    "png": "preview/UI_Img_Map_Layer_20040_1_2_0.png",
+    "cropped": "preview/UI_Img_Map_Layer_20040_1_2_0_cropped.png",
+    "preview": "preview/UI_Img_Map_Layer_20040_1_2_0_preview.jpg"
+  },
+  {
+    "label": "UI_Img_Map_Layer_20041_1_2_0",
+    "tiles": 37,
+    "full_size": [
+      1536,
+      2048
+    ],
+    "content_bbox": [
+      138,
+      124,
+      1397,
+      1924
+    ],
+    "tile_origin": [
+      1,
+      0
+    ],
+    "tile_size": [
+      256,
+      256
+    ],
+    "swap_axes": false,
+    "x_direction": 1,
+    "y_direction": 1,
+    "seam_error": 0.9987859868192854,
+    "orientation_candidates": [
+      [
+        0.9987859868192854,
+        false,
+        1,
+        1
+      ],
+      [
+        38.6461775186265,
+        false,
+        -1,
+        1
+      ],
+      [
+        43.05744784085395,
+        false,
+        1,
+        -1
+      ],
+      [
+        63.45448002093875,
+        true,
+        -1,
+        -1
+      ],
+      [
+        64.03771624830394,
+        true,
+        1,
+        -1
+      ],
+      [
+        70.11817960376746,
+        true,
+        -1,
+        1
+      ],
+      [
+        70.4881385418314,
+        true,
+        1,
+        1
+      ],
+      [
+        72.63632408170743,
+        false,
+        -1,
+        -1
+      ]
+    ],
+    "png": "preview/UI_Img_Map_Layer_20041_1_2_0.png",
+    "cropped": "preview/UI_Img_Map_Layer_20041_1_2_0_cropped.png",
+    "preview": "preview/UI_Img_Map_Layer_20041_1_2_0_preview.jpg"
+  },
+  {
+    "label": "UI_Img_Map_Layer_20042_1_2_0",
+    "tiles": 39,
+    "full_size": [
+      2048,
+      1536
+    ],
+    "content_bbox": [
+      124,
+      43,
+      1924,
+      1493
+    ],
+    "tile_origin": [
+      0,
+      1
+    ],
+    "tile_size": [
+      256,
+      256
+    ],
+    "swap_axes": false,
+    "x_direction": 1,
+    "y_direction": 1,
+    "seam_error": 1.1046254491845573,
+    "orientation_candidates": [
+      [
+        1.1046254491845573,
+        false,
+        1,
+        1
+      ],
+      [
+        30.890075051759833,
+        false,
+        -1,
+        1
+      ],
+      [
+        38.12868782161235,
+        false,
+        1,
+        -1
+      ],
+      [
+        63.768832163884184,
+        false,
+        -1,
+        -1
+      ],
+      [
+        64.02461314196007,
+        true,
+        -1,
+        -1
+      ],
+      [
+        64.7500929160782,
+        true,
+        1,
+        -1
+      ],
+      [
+        66.46273702778186,
+        true,
+        -1,
+        1
+      ],
+      [
+        67.16253106271013,
+        true,
+        1,
+        1
+      ]
+    ],
+    "png": "preview/UI_Img_Map_Layer_20042_1_2_0.png",
+    "cropped": "preview/UI_Img_Map_Layer_20042_1_2_0_cropped.png",
+    "preview": "preview/UI_Img_Map_Layer_20042_1_2_0_preview.jpg"
+  },
+  {
+    "label": "UI_Img_Map_Layer_20043_1_2_0",
+    "tiles": 44,
+    "full_size": [
+      2048,
+      2048
+    ],
+    "content_bbox": [
+      124,
+      182,
+      1924,
+      1866
+    ],
+    "tile_origin": [
+      0,
+      0
+    ],
+    "tile_size": [
+      256,
+      256
+    ],
+    "swap_axes": false,
+    "x_direction": 1,
+    "y_direction": 1,
+    "seam_error": 1.0787643575017947,
+    "orientation_candidates": [
+      [
+        1.0787643575017947,
+        false,
+        1,
+        1
+      ],
+      [
+        41.46483638153039,
+        false,
+        -1,
+        1
+      ],
+      [
+        44.40470675983356,
+        false,
+        1,
+        -1
+      ],
+      [
+        71.83823529411765,
+        true,
+        1,
+        1
+      ],
+      [
+        71.84645721925133,
+        true,
+        1,
+        -1
+      ],
+      [
+        72.33866260215332,
+        true,
+        -1,
+        1
+      ],
+      [
+        72.34776391055642,
+        true,
+        -1,
+        -1
+      ],
+      [
+        76.82734295662266,
+        false,
+        -1,
+        -1
+      ]
+    ],
+    "png": "preview/UI_Img_Map_Layer_20043_1_2_0.png",
+    "cropped": "preview/UI_Img_Map_Layer_20043_1_2_0_cropped.png",
+    "preview": "preview/UI_Img_Map_Layer_20043_1_2_0_preview.jpg"
+  },
+  {
+    "label": "UI_Img_Map_Layer_20044_1_2_0",
+    "tiles": 44,
+    "full_size": [
+      2048,
+      2048
+    ],
+    "content_bbox": [
+      146,
+      124,
+      1902,
+      1924
+    ],
+    "tile_origin": [
+      0,
+      0
+    ],
+    "tile_size": [
+      256,
+      256
+    ],
+    "swap_axes": false,
+    "x_direction": 1,
+    "y_direction": 1,
+    "seam_error": 12.682869012707723,
+    "orientation_candidates": [
+      [
+        12.682869012707723,
+        false,
+        1,
+        1
+      ],
+      [
+        40.43595302619693,
+        false,
+        1,
+        -1
+      ],
+      [
+        49.78694696473669,
+        false,
+        -1,
+        1
+      ],
+      [
+        65.15706057227797,
+        true,
+        1,
+        -1
+      ],
+      [
+        67.1022059903098,
+        true,
+        -1,
+        -1
+      ],
+      [
+        67.29155980415015,
+        true,
+        1,
+        1
+      ],
+      [
+        69.29710756483044,
+        true,
+        -1,
+        1
+      ],
+      [
+        73.7275604891163,
+        false,
+        -1,
+        -1
+      ]
+    ],
+    "png": "preview/UI_Img_Map_Layer_20044_1_2_0.png",
+    "cropped": "preview/UI_Img_Map_Layer_20044_1_2_0_cropped.png",
+    "preview": "preview/UI_Img_Map_Layer_20044_1_2_0_preview.jpg"
+  },
+  {
+    "label": "UI_Img_Map_Layer_20045_1_2_0",
+    "tiles": 40,
+    "full_size": [
+      2048,
+      1536
+    ],
+    "content_bbox": [
+      124,
+      28,
+      1924,
+      1509
+    ],
+    "tile_origin": [
+      0,
+      1
+    ],
+    "tile_size": [
+      256,
+      256
+    ],
+    "swap_axes": false,
+    "x_direction": 1,
+    "y_direction": 1,
+    "seam_error": 1.3576044703595724,
+    "orientation_candidates": [
+      [
+        1.3576044703595724,
+        false,
+        1,
+        1
+      ],
+      [
+        37.44089802542602,
+        false,
+        -1,
+        1
+      ],
+      [
+        42.13199400828267,
+        false,
+        1,
+        -1
+      ],
+      [
+        72.38216049382716,
+        false,
+        -1,
+        -1
+      ],
+      [
+        72.89009287925697,
+        true,
+        -1,
+        -1
+      ],
+      [
+        72.91927512355848,
+        true,
+        -1,
+        1
+      ],
+      [
+        73.50016069132981,
+        true,
+        1,
+        -1
+      ],
+      [
+        73.52598763677703,
+        true,
+        1,
+        1
+      ]
+    ],
+    "png": "preview/UI_Img_Map_Layer_20045_1_2_0.png",
+    "cropped": "preview/UI_Img_Map_Layer_20045_1_2_0_cropped.png",
+    "preview": "preview/UI_Img_Map_Layer_20045_1_2_0_preview.jpg"
+  },
+  {
+    "label": "UI_Img_Map_Layer_20046_1_2_0",
+    "tiles": 33,
+    "full_size": [
+      2048,
+      1536
+    ],
+    "content_bbox": [
+      124,
+      53,
+      1924,
+      1484
+    ],
+    "tile_origin": [
+      0,
+      1
+    ],
+    "tile_size": [
+      256,
+      256
+    ],
+    "swap_axes": false,
+    "x_direction": 1,
+    "y_direction": 1,
+    "seam_error": 0.7981172878768604,
+    "orientation_candidates": [
+      [
+        0.7981172878768604,
+        false,
+        1,
+        1
+      ],
+      [
+        34.0375,
+        false,
+        1,
+        -1
+      ],
+      [
+        39.36203356019713,
+        false,
+        -1,
+        1
+      ],
+      [
+        69.77581284232608,
+        false,
+        -1,
+        -1
+      ],
+      [
+        70.658073975972,
+        true,
+        1,
+        -1
+      ],
+      [
+        70.94414742619227,
+        true,
+        -1,
+        -1
+      ],
+      [
+        72.09608957219251,
+        true,
+        1,
+        1
+      ],
+      [
+        72.385280351514,
+        true,
+        -1,
+        1
+      ]
+    ],
+    "png": "preview/UI_Img_Map_Layer_20046_1_2_0.png",
+    "cropped": "preview/UI_Img_Map_Layer_20046_1_2_0_cropped.png",
+    "preview": "preview/UI_Img_Map_Layer_20046_1_2_0_preview.jpg"
+  },
+  {
+    "label": "UI_Img_Map_Layer_20047_1_2_0",
+    "tiles": 42,
+    "full_size": [
+      2048,
+      2048
+    ],
+    "content_bbox": [
+      124,
+      225,
+      1924,
+      1824
+    ],
+    "tile_origin": [
+      0,
+      0
+    ],
+    "tile_size": [
+      256,
+      256
+    ],
+    "swap_axes": false,
+    "x_direction": 1,
+    "y_direction": 1,
+    "seam_error": 1.4359102244389028,
+    "orientation_candidates": [
+      [
+        1.4359102244389028,
+        false,
+        1,
+        1
+      ],
+      [
+        44.15563002680965,
+        false,
+        -1,
+        1
+      ],
+      [
+        53.49852188492764,
+        false,
+        1,
+        -1
+      ],
+      [
+        81.04724110500433,
+        true,
+        -1,
+        1
+      ],
+      [
+        81.87105263157895,
+        true,
+        -1,
+        -1
+      ],
+      [
+        82.90703091910207,
+        true,
+        1,
+        1
+      ],
+      [
+        83.71809679019344,
+        true,
+        1,
+        -1
+      ],
+      [
+        86.89699527886692,
+        false,
+        -1,
+        -1
+      ]
+    ],
+    "png": "preview/UI_Img_Map_Layer_20047_1_2_0.png",
+    "cropped": "preview/UI_Img_Map_Layer_20047_1_2_0_cropped.png",
+    "preview": "preview/UI_Img_Map_Layer_20047_1_2_0_preview.jpg"
+  },
+  {
+    "label": "UI_Img_Map_Layer_20048_1_2_0",
+    "tiles": 37,
+    "full_size": [
+      1536,
+      2048
+    ],
+    "content_bbox": [
+      110,
+      124,
+      1425,
+      1924
+    ],
+    "tile_origin": [
+      1,
+      0
+    ],
+    "tile_size": [
+      256,
+      256
+    ],
+    "swap_axes": false,
+    "x_direction": 1,
+    "y_direction": 1,
+    "seam_error": 4.7880559501693805,
+    "orientation_candidates": [
+      [
+        4.7880559501693805,
+        false,
+        1,
+        1
+      ],
+      [
+        44.520413134561046,
+        false,
+        -1,
+        1
+      ],
+      [
+        47.43783993783994,
+        false,
+        1,
+        -1
+      ],
+      [
+        76.14871395806028,
+        true,
+        1,
+        -1
+      ],
+      [
+        76.87950800095534,
+        true,
+        -1,
+        -1
+      ],
+      [
+        77.5541625896934,
+        true,
+        1,
+        1
+      ],
+      [
+        78.24239121819767,
+        true,
+        -1,
+        1
+      ],
+      [
+        79.0250262973352,
+        false,
+        -1,
+        -1
+      ]
+    ],
+    "png": "preview/UI_Img_Map_Layer_20048_1_2_0.png",
+    "cropped": "preview/UI_Img_Map_Layer_20048_1_2_0_cropped.png",
+    "preview": "preview/UI_Img_Map_Layer_20048_1_2_0_preview.jpg"
+  },
+  {
+    "label": "UI_Img_Map_Layer_20049_1_2_0",
+    "tiles": 35,
+    "full_size": [
+      1536,
+      2048
+    ],
+    "content_bbox": [
+      145,
+      124,
+      1391,
+      1924
+    ],
+    "tile_origin": [
+      1,
+      0
+    ],
+    "tile_size": [
+      256,
+      256
+    ],
+    "swap_axes": false,
+    "x_direction": 1,
+    "y_direction": 1,
+    "seam_error": 7.860683553508665,
+    "orientation_candidates": [
+      [
+        7.860683553508665,
+        false,
+        1,
+        1
+      ],
+      [
+        44.63963436071722,
+        false,
+        -1,
+        1
+      ],
+      [
+        45.19399341744377,
+        false,
+        1,
+        -1
+      ],
+      [
+        73.92206284153005,
+        true,
+        1,
+        1
+      ],
+      [
+        75.44250554323725,
+        true,
+        -1,
+        1
+      ],
+      [
+        75.97619700292398,
+        true,
+        1,
+        -1
+      ],
+      [
+        77.44759320224219,
+        true,
+        -1,
+        -1
+      ],
+      [
+        77.47097477918484,
+        false,
+        -1,
+        -1
+      ]
+    ],
+    "png": "preview/UI_Img_Map_Layer_20049_1_2_0.png",
+    "cropped": "preview/UI_Img_Map_Layer_20049_1_2_0_cropped.png",
+    "preview": "preview/UI_Img_Map_Layer_20049_1_2_0_preview.jpg"
+  },
+  {
+    "label": "UI_Img_Map_Layer_20050_1_2_0",
+    "tiles": 40,
+    "full_size": [
+      2048,
+      2048
+    ],
+    "content_bbox": [
+      124,
+      234,
+      1924,
+      1837
+    ],
+    "tile_origin": [
+      0,
+      0
+    ],
+    "tile_size": [
+      256,
+      256
+    ],
+    "swap_axes": false,
+    "x_direction": 1,
+    "y_direction": 1,
+    "seam_error": 0.8866152297886615,
+    "orientation_candidates": [
+      [
+        0.8866152297886615,
+        false,
+        1,
+        1
+      ],
+      [
+        35.39871919061457,
+        false,
+        1,
+        -1
+      ],
+      [
+        36.24282473356548,
+        false,
+        -1,
+        1
+      ],
+      [
+        67.62684478371501,
+        false,
+        -1,
+        -1
+      ],
+      [
+        70.52601491300746,
+        true,
+        -1,
+        -1
+      ],
+      [
+        71.87548597898916,
+        true,
+        1,
+        -1
+      ],
+      [
+        72.42572331631412,
+        true,
+        -1,
+        1
+      ],
+      [
+        73.74289933646222,
+        true,
+        1,
+        1
+      ]
+    ],
+    "png": "preview/UI_Img_Map_Layer_20050_1_2_0.png",
+    "cropped": "preview/UI_Img_Map_Layer_20050_1_2_0_cropped.png",
+    "preview": "preview/UI_Img_Map_Layer_20050_1_2_0_preview.jpg"
+  },
+  {
+    "label": "UI_Img_Map_Layer_20051_1_2_0",
+    "tiles": 43,
+    "full_size": [
+      2048,
+      2048
+    ],
+    "content_bbox": [
+      124,
+      124,
+      1924,
+      1924
+    ],
+    "tile_origin": [
+      0,
+      0
+    ],
+    "tile_size": [
+      256,
+      256
+    ],
+    "swap_axes": false,
+    "x_direction": 1,
+    "y_direction": 1,
+    "seam_error": 4.9738100885515495,
+    "orientation_candidates": [
+      [
+        4.9738100885515495,
+        false,
+        1,
+        1
+      ],
+      [
+        32.42920470836792,
+        false,
+        -1,
+        1
+      ],
+      [
+        33.964367476552695,
+        false,
+        1,
+        -1
+      ],
+      [
+        53.1434595747431,
+        true,
+        1,
+        1
+      ],
+      [
+        55.45136709995518,
+        true,
+        1,
+        -1
+      ],
+      [
+        56.77710596110129,
+        true,
+        -1,
+        1
+      ],
+      [
+        58.44669871341722,
+        false,
+        -1,
+        -1
+      ],
+      [
+        58.99984355444305,
+        true,
+        -1,
+        -1
+      ]
+    ],
+    "png": "preview/UI_Img_Map_Layer_20051_1_2_0.png",
+    "cropped": "preview/UI_Img_Map_Layer_20051_1_2_0_cropped.png",
+    "preview": "preview/UI_Img_Map_Layer_20051_1_2_0_preview.jpg"
+  },
+  {
+    "label": "UI_Img_Map_Layer_20052_1_2_0",
+    "tiles": 38,
+    "full_size": [
+      2048,
+      2048
+    ],
+    "content_bbox": [
+      124,
+      224,
+      1924,
+      1824
+    ],
+    "tile_origin": [
+      0,
+      0
+    ],
+    "tile_size": [
+      256,
+      256
+    ],
+    "swap_axes": false,
+    "x_direction": 1,
+    "y_direction": 1,
+    "seam_error": 6.138508570234114,
+    "orientation_candidates": [
+      [
+        6.138508570234114,
+        false,
+        1,
+        1
+      ],
+      [
+        30.228207739307535,
+        false,
+        -1,
+        1
+      ],
+      [
+        34.13900098425197,
+        false,
+        1,
+        -1
+      ],
+      [
+        56.1813292354975,
+        false,
+        -1,
+        -1
+      ],
+      [
+        57.77082681476846,
+        true,
+        -1,
+        1
+      ],
+      [
+        58.82343850353244,
+        true,
+        -1,
+        -1
+      ],
+      [
+        60.2416921898928,
+        true,
+        1,
+        1
+      ],
+      [
+        61.335139805215206,
+        true,
+        1,
+        -1
+      ]
+    ],
+    "png": "preview/UI_Img_Map_Layer_20052_1_2_0.png",
+    "cropped": "preview/UI_Img_Map_Layer_20052_1_2_0_cropped.png",
+    "preview": "preview/UI_Img_Map_Layer_20052_1_2_0_preview.jpg"
+  },
+  {
+    "label": "UI_Img_Map_Layer_20053_1_2_0",
+    "tiles": 42,
+    "full_size": [
+      2048,
+      2048
+    ],
+    "content_bbox": [
+      124,
+      210,
+      1924,
+      1838
+    ],
+    "tile_origin": [
+      0,
+      0
+    ],
+    "tile_size": [
+      256,
+      256
+    ],
+    "swap_axes": false,
+    "x_direction": 1,
+    "y_direction": 1,
+    "seam_error": 0.4706508345468802,
+    "orientation_candidates": [
+      [
+        0.4706508345468802,
+        false,
+        1,
+        1
+      ],
+      [
+        32.02480230050323,
+        false,
+        1,
+        -1
+      ],
+      [
+        38.295513202302956,
+        false,
+        -1,
+        1
+      ],
+      [
+        63.70938993017273,
+        false,
+        -1,
+        -1
+      ],
+      [
+        65.58435331722148,
+        true,
+        -1,
+        1
+      ],
+      [
+        65.97330665257117,
+        true,
+        -1,
+        -1
+      ],
+      [
+        69.30856442469741,
+        true,
+        1,
+        1
+      ],
+      [
+        69.57594654788419,
+        true,
+        1,
+        -1
+      ]
+    ],
+    "png": "preview/UI_Img_Map_Layer_20053_1_2_0.png",
+    "cropped": "preview/UI_Img_Map_Layer_20053_1_2_0_cropped.png",
+    "preview": "preview/UI_Img_Map_Layer_20053_1_2_0_preview.jpg"
+  },
+  {
+    "label": "UI_Img_Map_Layer_20054_1_2_0",
+    "tiles": 40,
+    "full_size": [
+      2048,
+      2048
+    ],
+    "content_bbox": [
+      124,
+      180,
+      1924,
+      1868
+    ],
+    "tile_origin": [
+      0,
+      0
+    ],
+    "tile_size": [
+      256,
+      256
+    ],
+    "swap_axes": false,
+    "x_direction": 1,
+    "y_direction": 1,
+    "seam_error": 4.236829705023089,
+    "orientation_candidates": [
+      [
+        4.236829705023089,
+        false,
+        1,
+        1
+      ],
+      [
+        31.558011174191222,
+        false,
+        1,
+        -1
+      ],
+      [
+        33.2469961152769,
+        false,
+        -1,
+        1
+      ],
+      [
+        58.26510168758114,
+        false,
+        -1,
+        -1
+      ],
+      [
+        60.59125983083543,
+        true,
+        1,
+        1
+      ],
+      [
+        61.347002527988444,
+        true,
+        -1,
+        1
+      ],
+      [
+        62.89757194244604,
+        true,
+        1,
+        -1
+      ],
+      [
+        63.57163384033083,
+        true,
+        -1,
+        -1
+      ]
+    ],
+    "png": "preview/UI_Img_Map_Layer_20054_1_2_0.png",
+    "cropped": "preview/UI_Img_Map_Layer_20054_1_2_0_cropped.png",
+    "preview": "preview/UI_Img_Map_Layer_20054_1_2_0_preview.jpg"
+  },
+  {
+    "label": "UI_Img_Map_Layer_20055_1_2_0",
+    "tiles": 36,
+    "full_size": [
+      1536,
+      2048
+    ],
+    "content_bbox": [
+      27,
+      98,
+      1509,
+      1924
+    ],
+    "tile_origin": [
+      1,
+      0
+    ],
+    "tile_size": [
+      256,
+      256
+    ],
+    "swap_axes": false,
+    "x_direction": 1,
+    "y_direction": 1,
+    "seam_error": 4.541339193381592,
+    "orientation_candidates": [
+      [
+        4.541339193381592,
+        false,
+        1,
+        1
+      ],
+      [
+        33.197500496919105,
+        false,
+        -1,
+        1
+      ],
+      [
+        38.689980423562915,
+        false,
+        1,
+        -1
+      ],
+      [
+        51.97560092055915,
+        true,
+        1,
+        1
+      ],
+      [
+        55.57536003972852,
+        true,
+        -1,
+        1
+      ],
+      [
+        55.586592994161805,
+        true,
+        1,
+        -1
+      ],
+      [
+        59.00867098865478,
+        true,
+        -1,
+        -1
+      ],
+      [
+        62.33159931212382,
+        false,
+        -1,
+        -1
+      ]
+    ],
+    "png": "preview/UI_Img_Map_Layer_20055_1_2_0.png",
+    "cropped": "preview/UI_Img_Map_Layer_20055_1_2_0_cropped.png",
+    "preview": "preview/UI_Img_Map_Layer_20055_1_2_0_preview.jpg"
+  },
+  {
+    "label": "UI_Img_Map_Layer_20056_1_2_0",
+    "tiles": 49,
+    "full_size": [
+      2048,
+      2048
+    ],
+    "content_bbox": [
+      124,
+      172,
+      1924,
+      1876
+    ],
+    "tile_origin": [
+      0,
+      0
+    ],
+    "tile_size": [
+      256,
+      256
+    ],
+    "swap_axes": false,
+    "x_direction": 1,
+    "y_direction": 1,
+    "seam_error": 0.5046474358974359,
+    "orientation_candidates": [
+      [
+        0.5046474358974359,
+        false,
+        1,
+        1
+      ],
+      [
+        31.356350954478707,
+        false,
+        1,
+        -1
+      ],
+      [
+        35.54557736063709,
+        false,
+        -1,
+        1
+      ],
+      [
+        58.52695551279149,
+        true,
+        -1,
+        -1
+      ],
+      [
+        59.46872886133033,
+        true,
+        -1,
+        1
+      ],
+      [
+        60.555676137858455,
+        false,
+        -1,
+        -1
+      ],
+      [
+        63.82934699033392,
+        true,
+        1,
+        -1
+      ],
+      [
+        64.72241520787746,
+        true,
+        1,
+        1
+      ]
+    ],
+    "png": "preview/UI_Img_Map_Layer_20056_1_2_0.png",
+    "cropped": "preview/UI_Img_Map_Layer_20056_1_2_0_cropped.png",
+    "preview": "preview/UI_Img_Map_Layer_20056_1_2_0_preview.jpg"
+  },
+  {
+    "label": "UI_Img_Map_Layer_20057_1_2_0",
+    "tiles": 44,
+    "full_size": [
+      2048,
+      2048
+    ],
+    "content_bbox": [
+      124,
+      178,
+      1924,
+      1872
+    ],
+    "tile_origin": [
+      0,
+      0
+    ],
+    "tile_size": [
+      256,
+      256
+    ],
+    "swap_axes": false,
+    "x_direction": 1,
+    "y_direction": 1,
+    "seam_error": 0.7175356139160771,
+    "orientation_candidates": [
+      [
+        0.7175356139160771,
+        false,
+        1,
+        1
+      ],
+      [
+        32.961938043067626,
+        false,
+        1,
+        -1
+      ],
+      [
+        34.55204037800687,
+        false,
+        -1,
+        1
+      ],
+      [
+        62.455495843479724,
+        false,
+        -1,
+        -1
+      ],
+      [
+        64.86046549692287,
+        true,
+        -1,
+        -1
+      ],
+      [
+        66.45332528018254,
+        true,
+        1,
+        -1
+      ],
+      [
+        66.95423869680852,
+        true,
+        -1,
+        1
+      ],
+      [
+        68.6257585054885,
+        true,
+        1,
+        1
+      ]
+    ],
+    "png": "preview/UI_Img_Map_Layer_20057_1_2_0.png",
+    "cropped": "preview/UI_Img_Map_Layer_20057_1_2_0_cropped.png",
+    "preview": "preview/UI_Img_Map_Layer_20057_1_2_0_preview.jpg"
+  },
+  {
+    "label": "UI_Img_Map_Layer_20058_1_2_0",
+    "tiles": 48,
+    "full_size": [
+      2048,
+      2048
+    ],
+    "content_bbox": [
+      189,
+      124,
+      1859,
+      1924
+    ],
+    "tile_origin": [
+      0,
+      0
+    ],
+    "tile_size": [
+      256,
+      256
+    ],
+    "swap_axes": false,
+    "x_direction": 1,
+    "y_direction": 1,
+    "seam_error": 3.2744847328244275,
+    "orientation_candidates": [
+      [
+        3.2744847328244275,
+        false,
+        1,
+        1
+      ],
+      [
+        35.469236055848945,
+        false,
+        -1,
+        1
+      ],
+      [
+        38.893061946902655,
+        false,
+        1,
+        -1
+      ],
+      [
+        67.13092672413794,
+        false,
+        -1,
+        -1
+      ],
+      [
+        68.8649976255491,
+        true,
+        1,
+        -1
+      ],
+      [
+        69.35814738696418,
+        true,
+        1,
+        1
+      ],
+      [
+        70.04539600772698,
+        true,
+        -1,
+        -1
+      ],
+      [
+        70.51919847107199,
+        true,
+        -1,
+        1
+      ]
+    ],
+    "png": "preview/UI_Img_Map_Layer_20058_1_2_0.png",
+    "cropped": "preview/UI_Img_Map_Layer_20058_1_2_0_cropped.png",
+    "preview": "preview/UI_Img_Map_Layer_20058_1_2_0_preview.jpg"
+  },
+  {
+    "label": "UI_Img_Map_Layer_20059_1_2_0",
+    "tiles": 33,
+    "full_size": [
+      2048,
+      1536
+    ],
+    "content_bbox": [
+      124,
+      10,
+      1924,
+      1526
+    ],
+    "tile_origin": [
+      0,
+      1
+    ],
+    "tile_size": [
+      256,
+      256
+    ],
+    "swap_axes": false,
+    "x_direction": 1,
+    "y_direction": 1,
+    "seam_error": 4.462674604991985,
+    "orientation_candidates": [
+      [
+        4.462674604991985,
+        false,
+        1,
+        1
+      ],
+      [
+        36.785792290051326,
+        false,
+        1,
+        -1
+      ],
+      [
+        37.88975483461904,
+        false,
+        -1,
+        1
+      ],
+      [
+        60.20611320416218,
+        true,
+        1,
+        -1
+      ],
+      [
+        61.20453529937444,
+        true,
+        1,
+        1
+      ],
+      [
+        62.11382959479016,
+        true,
+        -1,
+        -1
+      ],
+      [
+        63.11330870427104,
+        true,
+        -1,
+        1
+      ],
+      [
+        66.39907444871535,
+        false,
+        -1,
+        -1
+      ]
+    ],
+    "png": "preview/UI_Img_Map_Layer_20059_1_2_0.png",
+    "cropped": "preview/UI_Img_Map_Layer_20059_1_2_0_cropped.png",
+    "preview": "preview/UI_Img_Map_Layer_20059_1_2_0_preview.jpg"
+  },
+  {
+    "label": "UI_Img_Map_Layer_20060_1_2_0",
+    "tiles": 29,
+    "full_size": [
+      2048,
+      1536
+    ],
+    "content_bbox": [
+      124,
+      138,
+      1924,
+      1398
+    ],
+    "tile_origin": [
+      0,
+      1
+    ],
+    "tile_size": [
+      256,
+      256
+    ],
+    "swap_axes": false,
+    "x_direction": 1,
+    "y_direction": 1,
+    "seam_error": 5.590779648145804,
+    "orientation_candidates": [
+      [
+        5.590779648145804,
+        false,
+        1,
+        1
+      ],
+      [
+        28.863712053285514,
+        false,
+        -1,
+        1
+      ],
+      [
+        41.81721145318637,
+        false,
+        1,
+        -1
+      ],
+      [
+        65.27619023189001,
+        true,
+        -1,
+        1
+      ],
+      [
+        65.55064751891268,
+        false,
+        -1,
+        -1
+      ],
+      [
+        65.93510452961672,
+        true,
+        1,
+        1
+      ],
+      [
+        67.91211534542491,
+        true,
+        -1,
+        -1
+      ],
+      [
+        68.56325055973947,
+        true,
+        1,
+        -1
+      ]
+    ],
+    "png": "preview/UI_Img_Map_Layer_20060_1_2_0.png",
+    "cropped": "preview/UI_Img_Map_Layer_20060_1_2_0_cropped.png",
+    "preview": "preview/UI_Img_Map_Layer_20060_1_2_0_preview.jpg"
+  },
+  {
+    "label": "UI_Img_Map_Layer_29999_1_2_0",
+    "tiles": 42,
+    "full_size": [
+      2048,
+      2048
+    ],
+    "content_bbox": [
+      252,
+      124,
+      1795,
+      1924
+    ],
+    "tile_origin": [
+      0,
+      0
+    ],
+    "tile_size": [
+      256,
+      256
+    ],
+    "swap_axes": false,
+    "x_direction": 1,
+    "y_direction": 1,
+    "seam_error": 0.7334972177757451,
+    "orientation_candidates": [
+      [
+        0.7334972177757451,
+        false,
+        1,
+        1
+      ],
+      [
+        36.86354631005448,
+        false,
+        1,
+        -1
+      ],
+      [
+        41.48173507599677,
+        false,
+        -1,
+        1
+      ],
+      [
+        68.86094098883572,
+        true,
+        1,
+        1
+      ],
+      [
+        70.18144681650284,
+        true,
+        1,
+        -1
+      ],
+      [
+        71.86514969301855,
+        true,
+        -1,
+        1
+      ],
+      [
+        73.11986705597316,
+        true,
+        -1,
+        -1
+      ],
+      [
+        73.55357753023986,
+        false,
+        -1,
+        -1
+      ]
+    ],
+    "png": "preview/UI_Img_Map_Layer_29999_1_2_0.png",
+    "cropped": "preview/UI_Img_Map_Layer_29999_1_2_0_cropped.png",
+    "preview": "preview/UI_Img_Map_Layer_29999_1_2_0_preview.jpg"
+  }
+]

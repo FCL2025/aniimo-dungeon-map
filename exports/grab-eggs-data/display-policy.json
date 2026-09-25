@@ -1,0 +1,50 @@
+{
+  "scope": {
+    "kind": "dungeon",
+    "sceneIds": [
+      20031,
+      20032,
+      20033,
+      20034,
+      20035,
+      20036,
+      20037,
+      20038,
+      20039,
+      20040,
+      20041,
+      20042,
+      20043,
+      20044,
+      20045,
+      20046,
+      20047,
+      20048,
+      20049,
+      20050,
+      20051,
+      20052,
+      20053,
+      20054,
+      20055,
+      20056,
+      20057,
+      20058,
+      20059,
+      20060,
+      29999
+    ],
+    "displayMode": "single_base_map",
+    "loadLayerTextures": false,
+    "floorDetection": "not_implemented",
+    "markerHeightPolicy": "project_all_heights_to_xz",
+    "monsterTypeIds": [
+      11001200090
+    ]
+  },
+  "sceneFloorConfigs": {
+    "map_layer_level_data": [],
+    "map_level_config_data": [],
+    "map_level_config_load_data": []
+  }
+}

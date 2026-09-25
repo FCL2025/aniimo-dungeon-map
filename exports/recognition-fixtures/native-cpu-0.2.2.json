@@ -1,0 +1,8 @@
+{
+  "seconds": 32.293,
+  "processCpuSeconds": 19.28125,
+  "oneCorePercent": 59.70721208930728,
+  "totalCpuPercent": 2.985360604465364,
+  "logicalProcessors": 20,
+  "note": "Short sample of app plus WebView2 while capturing current game window; not an FPS benchmark."
+}

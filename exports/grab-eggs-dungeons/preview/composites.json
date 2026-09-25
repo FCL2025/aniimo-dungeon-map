@@ -1,0 +1,281 @@
+[
+  {
+    "map_id": "20031",
+    "base": "preview/UI_Img_Map_20031.png",
+    "layers": [
+      "preview/UI_Img_Map_Layer_20031_1_2_0.png"
+    ],
+    "output": "preview/UI_Img_Map_20031_combined.png",
+    "note": "Alpha overlay of original map layers at original tile coordinates; for visual comparison, not a difficulty or traversability claim."
+  },
+  {
+    "map_id": "20032",
+    "base": "preview/UI_Img_Map_20032.png",
+    "layers": [
+      "preview/UI_Img_Map_Layer_20032_1_2_0.png"
+    ],
+    "output": "preview/UI_Img_Map_20032_combined.png",
+    "note": "Alpha overlay of original map layers at original tile coordinates; for visual comparison, not a difficulty or traversability claim."
+  },
+  {
+    "map_id": "20033",
+    "base": "preview/UI_Img_Map_20033.png",
+    "layers": [
+      "preview/UI_Img_Map_Layer_20033_1_2_0.png"
+    ],
+    "output": "preview/UI_Img_Map_20033_combined.png",
+    "note": "Alpha overlay of original map layers at original tile coordinates; for visual comparison, not a difficulty or traversability claim."
+  },
+  {
+    "map_id": "20034",
+    "base": "preview/UI_Img_Map_20034.png",
+    "layers": [
+      "preview/UI_Img_Map_Layer_20034_1_2_0.png"
+    ],
+    "output": "preview/UI_Img_Map_20034_combined.png",
+    "note": "Alpha overlay of original map layers at original tile coordinates; for visual comparison, not a difficulty or traversability claim."
+  },
+  {
+    "map_id": "20035",
+    "base": "preview/UI_Img_Map_20035.png",
+    "layers": [
+      "preview/UI_Img_Map_Layer_20035_1_2_0.png"
+    ],
+    "output": "preview/UI_Img_Map_20035_combined.png",
+    "note": "Alpha overlay of original map layers at original tile coordinates; for visual comparison, not a difficulty or traversability claim."
+  },
+  {
+    "map_id": "20036",
+    "base": "preview/UI_Img_Map_20036.png",
+    "layers": [
+      "preview/UI_Img_Map_Layer_20036_1_2_0.png"
+    ],
+    "output": "preview/UI_Img_Map_20036_combined.png",
+    "note": "Alpha overlay of original map layers at original tile coordinates; for visual comparison, not a difficulty or traversability claim."
+  },
+  {
+    "map_id": "20037",
+    "base": "preview/UI_Img_Map_20037.png",
+    "layers": [
+      "preview/UI_Img_Map_Layer_20037_1_2_0.png"
+    ],
+    "output": "preview/UI_Img_Map_20037_combined.png",
+    "note": "Alpha overlay of original map layers at original tile coordinates; for visual comparison, not a difficulty or traversability claim."
+  },
+  {
+    "map_id": "20038",
+    "base": "preview/UI_Img_Map_20038.png",
+    "layers": [
+      "preview/UI_Img_Map_Layer_20038_1_2_0.png"
+    ],
+    "output": "preview/UI_Img_Map_20038_combined.png",
+    "note": "Alpha overlay of original map layers at original tile coordinates; for visual comparison, not a difficulty or traversability claim."
+  },
+  {
+    "map_id": "20039",
+    "base": "preview/UI_Img_Map_20039.png",
+    "layers": [
+      "preview/UI_Img_Map_Layer_20039_1_2_0.png"
+    ],
+    "output": "preview/UI_Img_Map_20039_combined.png",
+    "note": "Alpha overlay of original map layers at original tile coordinates; for visual comparison, not a difficulty or traversability claim."
+  },
+  {
+    "map_id": "20040",
+    "base": "preview/UI_Img_Map_20040.png",
+    "layers": [
+      "preview/UI_Img_Map_Layer_20040_1_2_0.png"
+    ],
+    "output": "preview/UI_Img_Map_20040_combined.png",
+    "note": "Alpha overlay of original map layers at original tile coordinates; for visual comparison, not a difficulty or traversability claim."
+  },
+  {
+    "map_id": "20041",
+    "base": "preview/UI_Img_Map_20041.png",
+    "layers": [
+      "preview/UI_Img_Map_Layer_20041_1_2_0.png"
+    ],
+    "output": "preview/UI_Img_Map_20041_combined.png",
+    "note": "Alpha overlay of original map layers at original tile coordinates; for visual comparison, not a difficulty or traversability claim."
+  },
+  {
+    "map_id": "20042",
+    "base": "preview/UI_Img_Map_20042.png",
+    "layers": [
+      "preview/UI_Img_Map_Layer_20042_1_2_0.png"
+    ],
+    "output": "preview/UI_Img_Map_20042_combined.png",
+    "note": "Alpha overlay of original map layers at original tile coordinates; for visual comparison, not a difficulty or traversability claim."
+  },
+  {
+    "map_id": "20043",
+    "base": "preview/UI_Img_Map_20043.png",
+    "layers": [
+      "preview/UI_Img_Map_Layer_20043_1_2_0.png"
+    ],
+    "output": "preview/UI_Img_Map_20043_combined.png",
+    "note": "Alpha overlay of original map layers at original tile coordinates; for visual comparison, not a difficulty or traversability claim."
+  },
+  {
+    "map_id": "20044",
+    "base": "preview/UI_Img_Map_20044.png",
+    "layers": [
+      "preview/UI_Img_Map_Layer_20044_1_2_0.png"
+    ],
+    "output": "preview/UI_Img_Map_20044_combined.png",
+    "note": "Alpha overlay of original map layers at original tile coordinates; for visual comparison, not a difficulty or traversability claim."
+  },
+  {
+    "map_id": "20045",
+    "base": "preview/UI_Img_Map_20045.png",
+    "layers": [
+      "preview/UI_Img_Map_Layer_20045_1_2_0.png"
+    ],
+    "output": "preview/UI_Img_Map_20045_combined.png",
+    "note": "Alpha overlay of original map layers at original tile coordinates; for visual comparison, not a difficulty or traversability claim."
+  },
+  {
+    "map_id": "20046",
+    "base": "preview/UI_Img_Map_20046.png",
+    "layers": [
+      "preview/UI_Img_Map_Layer_20046_1_2_0.png"
+    ],
+    "output": "preview/UI_Img_Map_20046_combined.png",
+    "note": "Alpha overlay of original map layers at original tile coordinates; for visual comparison, not a difficulty or traversability claim."
+  },
+  {
+    "map_id": "20047",
+    "base": "preview/UI_Img_Map_20047.png",
+    "layers": [
+      "preview/UI_Img_Map_Layer_20047_1_2_0.png"
+    ],
+    "output": "preview/UI_Img_Map_20047_combined.png",
+    "note": "Alpha overlay of original map layers at original tile coordinates; for visual comparison, not a difficulty or traversability claim."
+  },
+  {
+    "map_id": "20048",
+    "base": "preview/UI_Img_Map_20048.png",
+    "layers": [
+      "preview/UI_Img_Map_Layer_20048_1_2_0.png"
+    ],
+    "output": "preview/UI_Img_Map_20048_combined.png",
+    "note": "Alpha overlay of original map layers at original tile coordinates; for visual comparison, not a difficulty or traversability claim."
+  },
+  {
+    "map_id": "20049",
+    "base": "preview/UI_Img_Map_20049.png",
+    "layers": [
+      "preview/UI_Img_Map_Layer_20049_1_2_0.png"
+    ],
+    "output": "preview/UI_Img_Map_20049_combined.png",
+    "note": "Alpha overlay of original map layers at original tile coordinates; for visual comparison, not a difficulty or traversability claim."
+  },
+  {
+    "map_id": "20050",
+    "base": "preview/UI_Img_Map_20050.png",
+    "layers": [
+      "preview/UI_Img_Map_Layer_20050_1_2_0.png"
+    ],
+    "output": "preview/UI_Img_Map_20050_combined.png",
+    "note": "Alpha overlay of original map layers at original tile coordinates; for visual comparison, not a difficulty or traversability claim."
+  },
+  {
+    "map_id": "20051",
+    "base": "preview/UI_Img_Map_20051.png",
+    "layers": [
+      "preview/UI_Img_Map_Layer_20051_1_2_0.png"
+    ],
+    "output": "preview/UI_Img_Map_20051_combined.png",
+    "note": "Alpha overlay of original map layers at original tile coordinates; for visual comparison, not a difficulty or traversability claim."
+  },
+  {
+    "map_id": "20052",
+    "base": "preview/UI_Img_Map_20052.png",
+    "layers": [
+      "preview/UI_Img_Map_Layer_20052_1_2_0.png"
+    ],
+    "output": "preview/UI_Img_Map_20052_combined.png",
+    "note": "Alpha overlay of original map layers at original tile coordinates; for visual comparison, not a difficulty or traversability claim."
+  },
+  {
+    "map_id": "20053",
+    "base": "preview/UI_Img_Map_20053.png",
+    "layers": [
+      "preview/UI_Img_Map_Layer_20053_1_2_0.png"
+    ],
+    "output": "preview/UI_Img_Map_20053_combined.png",
+    "note": "Alpha overlay of original map layers at original tile coordinates; for visual comparison, not a difficulty or traversability claim."
+  },
+  {
+    "map_id": "20054",
+    "base": "preview/UI_Img_Map_20054.png",
+    "layers": [
+      "preview/UI_Img_Map_Layer_20054_1_2_0.png"
+    ],
+    "output": "preview/UI_Img_Map_20054_combined.png",
+    "note": "Alpha overlay of original map layers at original tile coordinates; for visual comparison, not a difficulty or traversability claim."
+  },
+  {
+    "map_id": "20055",
+    "base": "preview/UI_Img_Map_20055.png",
+    "layers": [
+      "preview/UI_Img_Map_Layer_20055_1_2_0.png"
+    ],
+    "output": "preview/UI_Img_Map_20055_combined.png",
+    "note": "Alpha overlay of original map layers at original tile coordinates; for visual comparison, not a difficulty or traversability claim."
+  },
+  {
+    "map_id": "20056",
+    "base": "preview/UI_Img_Map_20056.png",
+    "layers": [
+      "preview/UI_Img_Map_Layer_20056_1_2_0.png"
+    ],
+    "output": "preview/UI_Img_Map_20056_combined.png",
+    "note": "Alpha overlay of original map layers at original tile coordinates; for visual comparison, not a difficulty or traversability claim."
+  },
+  {
+    "map_id": "20057",
+    "base": "preview/UI_Img_Map_20057.png",
+    "layers": [
+      "preview/UI_Img_Map_Layer_20057_1_2_0.png"
+    ],
+    "output": "preview/UI_Img_Map_20057_combined.png",
+    "note": "Alpha overlay of original map layers at original tile coordinates; for visual comparison, not a difficulty or traversability claim."
+  },
+  {
+    "map_id": "20058",
+    "base": "preview/UI_Img_Map_20058.png",
+    "layers": [
+      "preview/UI_Img_Map_Layer_20058_1_2_0.png"
+    ],
+    "output": "preview/UI_Img_Map_20058_combined.png",
+    "note": "Alpha overlay of original map layers at original tile coordinates; for visual comparison, not a difficulty or traversability claim."
+  },
+  {
+    "map_id": "20059",
+    "base": "preview/UI_Img_Map_20059.png",
+    "layers": [
+      "preview/UI_Img_Map_Layer_20059_1_2_0.png"
+    ],
+    "output": "preview/UI_Img_Map_20059_combined.png",
+    "note": "Alpha overlay of original map layers at original tile coordinates; for visual comparison, not a difficulty or traversability claim."
+  },
+  {
+    "map_id": "20060",
+    "base": "preview/UI_Img_Map_20060.png",
+    "layers": [
+      "preview/UI_Img_Map_Layer_20060_1_2_0.png"
+    ],
+    "output": "preview/UI_Img_Map_20060_combined.png",
+    "note": "Alpha overlay of original map layers at original tile coordinates; for visual comparison, not a difficulty or traversability claim."
+  },
+  {
+    "map_id": "29999",
+    "base": "preview/UI_Img_Map_29999.png",
+    "layers": [
+      "preview/UI_Img_Map_Layer_29999_1_2_0.png"
+    ],
+    "output": "preview/UI_Img_Map_29999_combined.png",
+    "note": "Alpha overlay of original map layers at original tile coordinates; for visual comparison, not a difficulty or traversability claim."
+  }
+]

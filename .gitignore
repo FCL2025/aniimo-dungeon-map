@@ -1,0 +1,11 @@
+.venv/
+__pycache__/
+*.py[cod]
+*.log
+app/frontend/
+app/src-tauri/target/
+app/src-tauri/gen/
+app/smoke-run*/
+app/capture-timing-tests.exe
+app/capture-timing-tests.pdb
+dist/

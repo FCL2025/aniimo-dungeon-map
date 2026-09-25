@@ -1,0 +1,223 @@
+{
+  "difficulties": {
+    "5": "惡夢",
+    "6": "混沌"
+  },
+  "enums": [
+    {
+      "Dummy": 0,
+      "PveChaos": 5,
+      "Pvp": 4,
+      "PveNightmare": 3,
+      "PveHard": 2,
+      "PveNormal": 1
+    },
+    {
+      "CHAOS": 6,
+      "NIGHTMARE": 5,
+      "HARD": 4,
+      "EASY": 2,
+      "NEWBIEGUIDE": 1,
+      "NORMAL": 3,
+      "PVP": 99
+    }
+  ],
+  "roomTypes": {
+    "Aisle": 2,
+    "Normal": 1,
+    "EggNest": 6,
+    "Reward": 5,
+    "Entry2": 4,
+    "Entry": 3
+  },
+  "pveSceneId": 3005,
+  "pvpSceneId": 3004,
+  "records": {
+    "5": {
+      "EquipmentLevel": 1378500078,
+      "KeyList": {
+        "1": 5001103
+      },
+      "MonsterBornBuff": {
+        "1": 6005013
+      },
+      "NPCMinLevel": 55,
+      "ReduceRestraintBuff": 6005014,
+      "atkOrDef": 50,
+      "bossMonBuff": 6005039,
+      "bossMonMax": 1,
+      "condition": {
+        "1": 91201
+      },
+      "dangerLevel": 2,
+      "dangerousRangeRadius": 20,
+      "describe": 1114452038,
+      "elitOrBossBuff": 50,
+      "eliteMonBuff": {
+        "1": 6005037,
+        "2": 6005038
+      },
+      "eliteMonMax": 4,
+      "gameUIAsset": {
+        "1": "$UI_GameMod_GrabEggs_Main_Bg_PvE_Go_01.png"
+      },
+      "gameUINpcAsset": {
+        "1": "$UI_GameMod_GrabEggs_Main_Bg_PvE_Go_People_01.png"
+      },
+      "hasNovProt": 1,
+      "levelRestriction": 50,
+      "name": 2073259223,
+      "novProtRound": {
+        "1": 0,
+        "2": 0,
+        "3": 0
+      },
+      "novRevealMapFog": 1,
+      "playingTime": 900,
+      "randomBuff": 10,
+      "rank": {
+        "1": 3,
+        "2": 1
+      },
+      "resultUIAsset": {
+        "1": "$UI_GameMod_GrabEggs_Main_Bg_PvE_Back_01.png"
+      },
+      "rewardList": {
+        "1": 5911201,
+        "2": 5911000,
+        "3": 5901301,
+        "4": 5900503
+      },
+      "sandBoxMonMan": 1,
+      "serverLevel": 7,
+      "teamsNumber": 1442005481,
+      "timetype": 1,
+      "trapDamageRatio": {
+        "1": 1.5
+      }
+    },
+    "6": {
+      "EquipmentLevel": 1261488468,
+      "KeyList": {
+        "1": 5001103
+      },
+      "MonsterBornBuff": {
+        "1": 6005029
+      },
+      "NPCMinLevel": 55,
+      "ReduceRestraintBuff": 6005014,
+      "atkOrDef": 50,
+      "bossMonBuff": 6005046,
+      "bossMonMax": 1,
+      "condition": {
+        "1": 91204
+      },
+      "dangerLevel": 2,
+      "dangerousRangeRadius": 20,
+      "describe": 1540552821,
+      "elitOrBossBuff": 50,
+      "eliteMonBuff": {
+        "1": 6005044,
+        "2": 6005045
+      },
+      "eliteMonMax": 5,
+      "gameUIAsset": {
+        "1": "$UI_GameMod_GrabEggs_Main_Bg_PvE_Go_02.png"
+      },
+      "gameUINpcAsset": {
+        "1": "$UI_GameMod_GrabEggs_Main_Bg_PvE_Go_People_02.png"
+      },
+      "hasNovProt": 1,
+      "levelRestriction": 50,
+      "name": 1545794407,
+      "novProtRound": {
+        "1": 0,
+        "2": 0,
+        "3": 0
+      },
+      "novRevealMapFog": 1,
+      "playingTime": 900,
+      "randomBuff": 10,
+      "rank": {
+        "1": 4,
+        "2": 1
+      },
+      "resultUIAsset": {
+        "1": "$UI_GameMod_GrabEggs_Main_Bg_PvE_Back_02.png"
+      },
+      "rewardList": {
+        "1": 5911201,
+        "2": 5911000,
+        "3": 5900509,
+        "4": 5900507
+      },
+      "sandBoxMonMan": 1,
+      "serverLevel": 7,
+      "teamsNumber": 2041120110,
+      "timetype": 1,
+      "trapDamageRatio": {
+        "1": 2
+      }
+    }
+  },
+  "rewardRules": {
+    "Chaos-hallway": {
+      "G-All": 5,
+      "G0": 0,
+      "G1": 8,
+      "G2": 4,
+      "G3": 3,
+      "G4": 0,
+      "G5": 0,
+      "G6": 0,
+      "roomtyperemark": "混沌-过道"
+    },
+    "Chaos-room": {
+      "EggCount": 1,
+      "EggProbability": 0.25,
+      "G-All": 7,
+      "G-sup": {
+        "1": "G2",
+        "2": "G3",
+        "3": "G4"
+      },
+      "G0": 0,
+      "G1": 0,
+      "G2": 6,
+      "G3": 5,
+      "G4": 3,
+      "G5": 4,
+      "G6": 2,
+      "roomtyperemark": "混沌-普通房间"
+    },
+    "Nightmare-hallway": {
+      "G-All": 5,
+      "G0": 0,
+      "G1": 8,
+      "G2": 4,
+      "G3": 2,
+      "G4": 0,
+      "G5": 0,
+      "G6": 0,
+      "roomtyperemark": "噩梦-过道"
+    },
+    "Nightmare-room": {
+      "EggCount": 1,
+      "EggProbability": 0.15,
+      "G-All": 7,
+      "G-sup": {
+        "1": "G2",
+        "2": "G3",
+        "3": "G4"
+      },
+      "G0": 0,
+      "G1": 0,
+      "G2": 6,
+      "G3": 4,
+      "G4": 2,
+      "G5": 3,
+      "G6": 1,
+      "roomtyperemark": "噩梦-普通房间"
+    }
+  }
+}

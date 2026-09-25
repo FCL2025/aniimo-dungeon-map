@@ -1,0 +1,62 @@
+{
+  "archive": "F:\\Pawprint\\Aniimo\\game\\Aniimo_Data\\cvs\\res\\lua\\LuaScripts.xdf",
+  "resourceVersion": 3595896,
+  "sha256": {
+    "xfs/luascripts/Common/Data/pmdata.bin": "1be329ee2d2dde7f4fd7b52813c6d1beda8477e4657fd863b68163ad2f2d16a0",
+    "xfs/luascripts/Common/Const/Const.lua": "83371dc70ac76156ffaafee33ea9c8820f0a1be6e528eceec0bd898f78439b73",
+    "xfs/luascripts/Common/Const/RandomMapConst.lua": "3f7b77cc36c8ee8cd643c87d6d18fbda4f784d116b5dc0fb41da249faac9387b",
+    "xfs/luascripts/Common/Utils/RandomMapBatchUtils.lua": "8dd88317104c2a437eb423a60927b2c56c0a7e0452024b5ec5742a4b0fd4a6ef",
+    "xfs/luascripts/Common/Utils/MapCoordUtils.lua": "dfc32560db5e4e627314969cf0e939f503fb1f560a84d7cd39ea98ace2e2f284",
+    "xfs/luascripts/Data/I18N/NewTextMap_zh_TW.json": "4c76c0acde1e90ab51a78230be6afa36bc450e71f19b3beeddcf4d6e2882e291",
+    "xfs/luascripts/Data/I18N/Compress_zh_TW.bin": "903a3744bfcfd61690c66598f84a7acc25152d57b35090f6607897fc3e327f90",
+    "xfs/luascripts/Data/I18N/NewTextMap_en.json": "7534e6ee47c456e8cc0f51c5680092efe7deb82e7a54b615a4072a9f55ad836b",
+    "xfs/luascripts/Data/I18N/Compress_en.bin": "d5fbfe6f83ba1ad78a9d2042f98bef6c95b62a3727ce32ed2833b506fbcec277"
+  },
+  "rootTableCount": 12109,
+  "rootTableOffset": 36619501,
+  "sourceScene": 10000,
+  "offlineOnly": true,
+  "scope": {
+    "kind": "dungeon",
+    "sceneIds": [
+      20031,
+      20032,
+      20033,
+      20034,
+      20035,
+      20036,
+      20037,
+      20038,
+      20039,
+      20040,
+      20041,
+      20042,
+      20043,
+      20044,
+      20045,
+      20046,
+      20047,
+      20048,
+      20049,
+      20050,
+      20051,
+      20052,
+      20053,
+      20054,
+      20055,
+      20056,
+      20057,
+      20058,
+      20059,
+      20060,
+      29999
+    ],
+    "displayMode": "single_base_map",
+    "loadLayerTextures": false,
+    "floorDetection": "not_implemented",
+    "markerHeightPolicy": "project_all_heights_to_xz",
+    "monsterTypeIds": [
+      11001200090
+    ]
+  }
+}
