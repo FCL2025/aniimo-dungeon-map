@@ -1,6 +1,6 @@
 {
   "identifier": "main-window",
   "description": "Local dungeon viewer window",
-  "windows": ["main"],
+  "windows": ["main", "map-overlay"],
   "permissions": ["core:default"]
 }

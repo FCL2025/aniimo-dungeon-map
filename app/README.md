@@ -2,7 +2,11 @@
 
 Rust + Tauri 2 的 Windows x64 可攜應用。資料來源為 `exports/grab-eggs-data`，僅將 31 張地城底圖與目前使用的欄位內嵌於 EXE。
 
-功能包含地圖／難度切換、獎勵與首領級幽黯星法師篩選、縮放平移、視窗置頂、收合側欄的地圖模式，以及篩選設定保存。
+功能包含地圖／難度切換、獎勵與首領級幽黯星法師篩選、縮放平移、視窗置頂、獨立覆蓋地圖，以及篩選設定保存。
+
+0.2.4 按「地圖模式」才建立獨立的 `map-overlay` 視窗，原 `main` 視窗保留；篩選、地宮、辨識狀態與人物位置以 Tauri events 同步。覆蓋視窗可獨立關閉，再開啟時取得主視窗最新狀態；關閉主視窗會關閉覆蓋地圖及停止擷取。主視窗保管偏好及辨識 Worker，覆蓋視窗不啟動第二份擷取／辨識，也不寫入偏好。舊版 compact 偏好不再自動縮小主視窗。詳見 [覆蓋地圖與驗證](../docs/覆蓋地圖.md)。
+
+0.2.3 改為跨版本共用設定並一次匯入舊版 localStorage；移除「陶罐」「其他搜刮點」的選項及標記，保留 9 種顯示類型。這兩類仍留在原始解析資料，桌面 EXE 不再內嵌其點位。已通過舊版匯入、重啟及移動 EXE 驗證，見 [設定保存驗證](../docs/設定保存驗證.md)。
 
 0.2.2 採用工具列開關及側欄內嵌設定，移除辨識彈窗。Evidence 將候選預覽和鎖定分離，未達 200 點先跟隨當前第一名，達 200（含）即永久鎖定至新一場。以提供的 M 地圖標題灰階特徵辨識開圖畫面，初始 10 點即可預覽；此標題特徵待更多 UI 縮放與語言驗證。取樣由 Win32 前景 M 按鍵上升沿觸發 2.4 秒加速，沒有鍵盤 Hook 或按鍵注入。原生快照上限 5 張／秒、前端最多排隊 3 張、重複畫面略過；鎖定後只做單圖定位。紀錄見 `dist/recognition-verification-0.2.2.json`。
 
@@ -14,7 +18,11 @@ Rust + Tauri 2 的 Windows x64 可攜應用。資料來源為 `exports/grab-eggs
 
 ## 可攜資料
 
-`src-tauri/src/main.rs` 將 WebView2 使用者資料目錄設為 EXE 旁的 `Data/WebView2`。前端篩選偏好保存在此 WebView2 profile 的 localStorage，應用不依賴原始遊戲路徑、Python 或開發環境。
+0.2.3 起，`src-tauri/src/main.rs` 使用 Tauri 的 `app_local_data_dir()`，將 WebView2 資料固定於 `%LOCALAPPDATA%\local.aniimo.dungeonmap\WebView2`。識別碼與 localStorage key 不隨版本變動，同一帳號更新、移動 EXE 或刪除舊版本資料夾都會保留設定。篩選、選圖、難度、品質、補充點、視窗模式及擷取範圍均沿用。應用不依賴原始遊戲路徑、Python 或開發環境。
+
+`src-tauri/src/profile.rs` 僅在共用 profile 尚不存在時匯入：優先選擇 EXE 旁的 `Data/WebView2`，其次在同層 `AniimoDungeonMap-*-windows-x64-portable`（含 EXE）中選擇最近修改 localStorage 的舊版。只複製 localStorage，保留原檔，先取得資料庫鎖、完成暫存複製才啟用共用 profile；舊版尚在執行時提示關閉後重試，避免複製寫入中的資料庫。若舊版不在同層，可在首次啟動前把舊 `Data` 複製到新版 EXE 旁。既有共用 profile 永遠優先，不會被舊資料覆寫。
+
+搬到新電腦時，先關閉所有版本，再將 `%LOCALAPPDATA%\local.aniimo.dungeonmap` 複製到新電腦同一位置。刪除應用資料夾會保留設定；完整移除時再刪除這個共用資料夾。這個路徑由 [Tauri 的應用資料路徑](https://docs.rs/tauri/2.10.3/tauri/path/struct.PathResolver.html#method.app_local_data_dir) 決定，profile 儲存內容見 [Microsoft WebView2 資料說明](https://learn.microsoft.com/en-us/microsoft-edge/webview2/concepts/user-data-folder)。
 
 Windows 執行時使用電腦既有的 WebView2 Runtime；未隨包附加固定版本 Runtime。此選擇與安裝版／可攜版是兩件事：可攜應用也能使用系統 Runtime。參考 [Tauri Windows WebView2 說明](https://v2.tauri.app/distribute/windows-installer/#webview2-installation-options)。
 
@@ -40,7 +48,7 @@ Windows 執行時使用電腦既有的 WebView2 Runtime；未隨包附加固定�
 
 ## 原生驗證
 
-可在獨立測試資料夾複製 EXE，再以 `--hidden` 啟動隱藏視窗。只有測試啟動時，才透過該程序的 `WEBVIEW2_ADDITIONAL_BROWSER_ARGUMENTS` 開啟本機 CDP 偵錯連線，供 agent-browser 檢查實際 WebView2、IPC、置頂、視窗大小與設定保存。正式執行不設定偵錯埠。
+可在獨立測試資料夾複製 EXE，再以 `--hidden` 啟動隱藏視窗。測試程序需將 `ANIIMO_TEST_DATA_DIR` 設為隔離資料根目錄，避免寫入使用者設定；此覆寫僅在 `--hidden` 時生效。只有測試啟動時，才透過該程序的 `WEBVIEW2_ADDITIONAL_BROWSER_ARGUMENTS` 開啟本機 CDP 偵錯連線，供 agent-browser 檢查實際 WebView2、IPC、置頂、視窗大小與設定保存。正式執行不設定偵錯埠。
 
 只靠瀏覽器開啟 `frontend/index.html` 無法驗證原生置頂功能，因此發行前須驗證實際 EXE。
 

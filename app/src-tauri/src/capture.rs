@@ -99,6 +99,21 @@ pub fn game_windows() -> Result<Vec<GameWindow>, String> {
         GameWindow { id: (w.as_raw_hwnd() as usize).to_string(), title: w.title().unwrap_or_else(|_| "伊莫".into()) }).collect())
 }
 
+pub fn game_client_bounds(selected: Option<&str>) -> Option<(i32, i32, u32, u32)> {
+    use windows_sys::Win32::{Foundation::{POINT, RECT}, Graphics::Gdi::ClientToScreen,
+        UI::WindowsAndMessaging::GetClientRect};
+    let windows = Window::enumerate().ok()?;
+    let game = windows.into_iter().find(|w| is_game(w) && selected.is_none_or(|id|
+        (w.as_raw_hwnd() as usize).to_string() == id))?;
+    let handle = game.as_raw_hwnd() as _;
+    let mut rect: RECT = unsafe { std::mem::zeroed() };
+    let mut origin = POINT { x: 0, y: 0 };
+    if unsafe { IsIconic(handle) } != 0 || unsafe { GetClientRect(handle, &mut rect) } == 0
+        || unsafe { ClientToScreen(handle, &mut origin) } == 0 { return None; }
+    let (w, h) = (rect.right - rect.left, rect.bottom - rect.top);
+    (w > 0 && h > 0).then_some((origin.x, origin.y, w as u32, h as u32))
+}
+
 #[tauri::command]
 pub async fn start_capture(window_id: String, state: State<'_, CaptureState>) -> Result<(), String> {
     let state = state.inner().clone();

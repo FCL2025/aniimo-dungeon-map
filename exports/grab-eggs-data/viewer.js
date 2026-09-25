@@ -1,5 +1,6 @@
 'use strict';
 const data=window.DUNGEON_DATA;
+const categories=Object.fromEntries(Object.entries(data.categories).filter(([key])=>!['pot','cache'].includes(key)));
 const $=id=>document.getElementById(id);
 const colors={egg:'#f3d76d',chest:'#c39fe5',pot:'#cfa881',cache:'#aebfc5',stellarys_boss:'#87dcff',entrance:'#79e1c0',exit:'#ff8798',key_blue:'#7fbbff',key_purple:'#c78aff',key_orange:'#ffb46e',challenge:'#82d2e5'};
 const canvas=$('map-canvas'), ctx=canvas.getContext('2d');
@@ -14,7 +15,7 @@ for(const [key,asset] of Object.entries(data.icons.assets)){
 function iconElement(key){const icon=document.createElement('img');icon.className='marker-icon';icon.src=data.icons.assets[key].image;icon.alt='';icon.setAttribute('aria-hidden','true');return icon;}
 function pinSize(pin){const primary=['egg','entrance','exit','stellarys_boss'].includes(pin.category);return primary?28:Math.min(22,Math.max(14,20*Math.sqrt(scale)));}
 for(const map of data.maps){const option=document.createElement('option');option.value=map.id;option.textContent=`地宮 ${map.id}`;$('map').append(option);}
-for(const [key,name] of Object.entries(data.categories)){
+for(const [key,name] of Object.entries(categories)){
   const label=document.createElement('label');label.className='check';
   const input=document.createElement('input');input.type='checkbox';input.checked=true;input.dataset.category=key;input.addEventListener('change',update);
   const swatch=iconElement(data.icons.categories[key]);
@@ -27,7 +28,7 @@ function update(){
   if(!current)return;
   const enabled=new Set([...document.querySelectorAll('[data-category]:checked')].map(x=>x.dataset.category));
   const candidates=candidatePins();visible=candidates.filter(p=>enabled.has(p.category));
-  for(const key of Object.keys(data.categories))$('count-'+key).textContent=candidates.filter(p=>p.category===key).length;
+  for(const key of Object.keys(categories))$('count-'+key).textContent=candidates.filter(p=>p.category===key).length;
   $('filter-total').textContent=visible.length+' 個候選';$('visible-count').textContent=`（${visible.length}）`;
   if(selected&&!visible.some(p=>p.id===selected.id)){selected=null;$('selected').textContent='點選地圖上的標記，查看名稱、位置與候選群組。';}
   const prefix=$('difficulty').value==='5'?'Nightmare':'Chaos', room=data.rewardRules[prefix+'-room'], hall=data.rewardRules[prefix+'-hallway'];

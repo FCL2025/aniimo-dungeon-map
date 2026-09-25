@@ -5,12 +5,18 @@
   let regions=structuredClone(defaults),worker,ready=false,initializing=false,busy=false,running=false,pollTimer,sequence=0,request=0,generation=0,pendingGeneration=0;
   let lastFrame=null,lastResult=null,lastLocationAt=0,previewImage=null,regionDrag=null,pinned=null,selected=null,lastGameId='',sessionToken=0,nextCaptureAt=0,burstUntil=0,mapKeyAt=0;
   const stats={captured:0,analyzed:0,duplicates:0,queuePeak:0},preview=el('capture-preview'),context=preview.getContext('2d');
+  let lastNoticeKey='';
   try{const saved=JSON.parse(localStorage.getItem('aniimo-capture-regions-v1'));if(saved&&['mini','map'].every(k=>Array.isArray(saved[k])&&saved[k].length===4&&saved[k].every(v=>Number.isFinite(v)&&v>=0&&v<=1)&&saved[k][2]>.01&&saved[k][3]>.01&&saved[k][0]+saved[k][2]<=1.001&&saved[k][1]+saved[k][3]<=1.001))regions=saved;}catch{}
   function message(title,text,state='waiting'){
     el('recognition-state').textContent=title;el('recognition-message').textContent=text;
-    el('live-status').textContent=title+' · '+text;el('live-status').dataset.state=state;
+    const badge=el('live-status');
+    badge.textContent=state==='locked'?'已鎖定':state==='preview'?'候選預覽':running?'辨識中':'未鎖定';
+    badge.title=title+' · '+text;badge.dataset.state=state;
+    const noticeKey=[title,state,pinned||selected||''].join(':');
+    if(noticeKey!==lastNoticeKey){lastNoticeKey=noticeKey;window.showMapNotice?.(title+' · '+text);}
+    window.dispatchEvent(new Event('recognition-ui'));
   }
-  function renderSwitch(){el('recognition-button').textContent=running?'辨識：開':'辨識：關';el('recognition-button').setAttribute('aria-checked',String(running));el('game-window').disabled=running;el('map').disabled=running&&!!pinned;}
+  function renderSwitch(){el('recognition-button').textContent=running?'辨識：開':'辨識：關';el('recognition-button').title=running?'關閉辨識':'開啟辨識';el('recognition-button').setAttribute('aria-checked',String(running));el('game-window').disabled=running;el('map').disabled=running&&!!pinned;window.dispatchEvent(new Event('recognition-ui'));}
   function clearTracking(){lastLocationAt=0;window.dispatchEvent(new CustomEvent('tracking-update',{detail:null}));}
   function initialize(){
     if(worker)return;
@@ -59,7 +65,7 @@
     busy=true;pendingGeneration=generation;request++;stats.analyzed++;
     worker.postMessage({type:'analyze',request,image:frame.image,capturedAt:frame.capturedAt,source:frame.source||'live',bigRegion:regions.map,miniRegion:regions.mini});
   }
-  function selectMap(id){const select=el('map');if(select.value!==String(id)){select.value=String(id);select.dispatchEvent(new Event('change'));}}
+  function selectMap(id){const select=el('map');if(select.value!==String(id)){select.value=String(id);select.dispatchEvent(new Event('change',{bubbles:true}));}}
   function renderResult(r){
     if(r.ranked.length){
       el('recognition-candidates').replaceChildren();
@@ -70,7 +76,7 @@
     if(r.selected){if(selected!==r.selected)clearTracking();selected=r.selected;selectMap(selected);}
     renderSwitch();
     if(r.locked){
-      if(r.location){lastLocationAt=Date.now();window.dispatchEvent(new CustomEvent('tracking-update',{detail:{...r.location,at:lastLocationAt}}));message('本場已鎖定',`地宮 ${r.locked} · 位置已更新`,'locked');}
+      if(r.location){lastLocationAt=r.capturedAt||Date.now();window.dispatchEvent(new CustomEvent('tracking-update',{detail:{...r.location,at:lastLocationAt}}));message('本場已鎖定',`地宮 ${r.locked} · ${r.lockedMatches} 個吻合點 · 位置已更新`,'locked');}
       else message('本場已鎖定',`地宮 ${r.locked} · ${r.lockedMatches} 個吻合點；換地宮請按「新一場」。`,'locked');
     }else if(r.selected)message('候選預覽',`地宮 ${r.selected} · ${r.previewMatches} / 200 點；目前第一名，會隨排名更新。`,'preview');
     else message('等待 M 地圖','開啟遊戲地圖後會先顯示最相似的地宮。');
@@ -114,7 +120,7 @@
       lastGameId=id;sequence=0;nextCaptureAt=0;running=true;lastFrame=null;renderSwitch();
       if(selected)selectMap(selected);message('辨識已開啟','在遊戲按 M；先預覽第一名，達 200 點後鎖定。');poll(++sessionToken);
     }catch(error){running=false;renderSwitch();message('無法開啟辨識',String(error));}
-    finally{button.disabled=false;}
+    finally{button.disabled=false;window.dispatchEvent(new Event('recognition-ui'));}
   };
   function reset(){generation++;pinned=null;selected=null;lastResult=null;lastFrame=null;frames.clear();clearTracking();worker?.postMessage({type:'reset'});el('recognition-candidates').replaceChildren();el('recognition-timing').textContent='';nextCaptureAt=0;renderSwitch();message('新一場','已解除鎖定，下一張 M 地圖會重新排名。');}
   el('new-session').onclick=reset;

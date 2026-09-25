@@ -5,13 +5,37 @@ body.desktop-app{height:100vh;grid-template-columns:280px minmax(0,1fr);overflow
 .desktop-app .mapbar{flex-wrap:wrap;padding:15px 20px 12px;gap:8px}
 .desktop-app .mapbar h2{font-size:19px}.desktop-app .tools{gap:5px;flex-wrap:wrap}
 .desktop-app .tools button{font-size:12px;padding:6px 8px}
-.desktop-app .notice{padding:8px 20px}.desktop-app .selection{max-height:28vh;padding:12px 20px}
+.desktop-app .selection{max-height:28vh;padding:12px 20px}
 .desktop-app.compact{grid-template-columns:minmax(0,1fr)}
 .desktop-app.compact aside{display:none}.desktop-app.compact .selection{display:none}
 .desktop-app.compact .mapbar{padding:9px 12px}.desktop-app.compact .mapbar h2{font-size:16px}
-.desktop-app.compact .notice{font-size:11px;padding:6px 12px}
 .desktop-app.compact .canvas-caption{font-size:10px;bottom:4px;left:6px}
-#app-status:empty{display:none}#app-status{color:var(--gold);margin:0;padding:8px 20px;background:var(--panel);font-size:12px}
+.desktop-app .notice,#app-status{position:absolute;z-index:3;top:8px;left:10px;right:10px;margin:0;padding:9px 12px;background:#172731f2;border:1px solid #dfb65b55;border-radius:5px;color:var(--gold);font-size:12px;line-height:1.5;pointer-events:none}
+.desktop-app .notice[hidden],#app-status[hidden],#app-status:empty{display:none}
+.session-heading{display:flex;align-items:center;gap:8px;min-width:0}.desktop-app .session-heading h2{margin:0;white-space:nowrap}
+.session-heading #new-session{padding:4px 7px;font-size:11px;white-space:nowrap}
+.map-heading .eyebrow{display:block;margin-bottom:5px}
+.player-tools{position:absolute;bottom:10px;right:10px;display:flex;align-items:center;gap:7px;pointer-events:none}
+#player-status{padding:4px 7px;background:#172731e0;color:var(--muted);border-radius:4px;font-size:11px}
+#player-status[data-state=live]{color:#79e1c0}#locate-player{pointer-events:auto;font-size:22px;line-height:1;width:32px;height:32px;padding:0;background:#172731ed}
+.desktop-app.compact .canvas-caption{display:none}
+body.desktop-app.overlay{background:transparent;border:1px solid #91bdb76b;border-radius:7px;grid-template-columns:minmax(0,1fr)}
+.desktop-app.overlay main{background:#14252be0;overflow:hidden;border-radius:6px}
+.desktop-app.overlay .stage{background:radial-gradient(ellipse at 50% 45%,#253b41b3,#17273166);min-height:0}
+.desktop-app.overlay .mapbar{padding:5px 6px;gap:5px;flex-wrap:nowrap;border-bottom:1px solid #91bdb72e;background:#14252bf0;min-height:35px}
+.desktop-app.overlay .map-heading{min-width:0}.desktop-app.overlay #map-id{display:none}
+.desktop-app.overlay .session-heading{gap:5px}.desktop-app.overlay #map-title{font-size:12px;font-variant-numeric:tabular-nums;cursor:move;user-select:none}
+.desktop-app.overlay .session-heading #new-session{padding:3px 4px;font-size:10px}
+.desktop-app.overlay #live-status{font-size:10px;padding:1px 3px}
+.desktop-app.overlay .tools{flex-wrap:nowrap;gap:4px}.desktop-app.overlay .tools button{font-size:10px;padding:4px 5px}
+.desktop-app.overlay #topmost,.desktop-app.overlay #compact,.desktop-app.overlay #help-button,.desktop-app.overlay #zoom-in,.desktop-app.overlay #zoom-out{display:none}
+.desktop-app.overlay #fit{font-size:0;width:25px;padding:3px}.desktop-app.overlay #fit::after{content:'⊞';font-size:16px}
+.desktop-app.overlay #overlay-close{font-size:18px;line-height:1;width:25px;padding:4px}.desktop-app.overlay #overlay-close:hover{color:#ffb6ad;border-color:#ffb6ad}
+.desktop-app.overlay #recognition-button{gap:4px}.desktop-app.overlay #recognition-button::before{width:6px;height:6px;border-radius:50%;background:#a5bac4}
+.desktop-app.overlay #recognition-button[aria-checked=true]::before{background:var(--accent)}
+.desktop-app.overlay .notice,.desktop-app.overlay #app-status{font-size:11px;padding:7px 9px;top:6px;left:6px;right:6px}
+.desktop-app.overlay #player-status{font-size:10px}.desktop-app.overlay .player-tools{bottom:7px;right:7px}
+@media(max-width:280px){.desktop-app.overlay #live-status{display:none}.desktop-app.overlay .session-heading{gap:3px}.desktop-app.overlay #map-title{font-size:11px}}
 button[aria-pressed=true]{border-color:var(--accent);color:var(--accent)}
 dialog{max-width:min(560px,90vw);max-height:85vh;overflow:auto;color:var(--text);background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:25px;line-height:1.8}
 dialog::backdrop{background:#08151bbf}dialog h2{margin-top:0}dialog p{font-size:13px}dialog button{float:right}

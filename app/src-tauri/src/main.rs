@@ -1,14 +1,10 @@
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 
-use std::{fs, sync::Mutex};
-use tauri::{LogicalSize, PhysicalSize, State, WebviewUrl, WebviewWindow, WebviewWindowBuilder, Manager};
+use tauri::{Emitter, WebviewUrl, WebviewWindow, WebviewWindowBuilder, Manager};
 mod capture;
 mod capture_timing;
-
-#[derive(Default)]
-struct WindowState {
-    expanded_size: Mutex<Option<PhysicalSize<u32>>>,
-}
+mod profile;
+mod overlay;
 
 #[tauri::command]
 fn set_topmost(window: WebviewWindow, enabled: bool) -> Result<bool, String> {
@@ -16,37 +12,32 @@ fn set_topmost(window: WebviewWindow, enabled: bool) -> Result<bool, String> {
     window.is_always_on_top().map_err(|e| e.to_string())
 }
 
-#[tauri::command]
-fn set_compact(window: WebviewWindow, state: State<WindowState>, enabled: bool) -> Result<(), String> {
-    let mut saved = state.expanded_size.lock().map_err(|e| e.to_string())?;
-    if enabled {
-        if saved.is_none() {
-            *saved = Some(window.inner_size().map_err(|e| e.to_string())?);
-        }
-        window.set_size(LogicalSize::new(600.0, 560.0)).map_err(|e| e.to_string())?;
-    } else if let Some(size) = saved.take() {
-        window.set_size(size).map_err(|e| e.to_string())?;
-    }
-    Ok(())
-}
-
 fn main() {
     let result = tauri::Builder::default()
-        .manage(WindowState::default())
         .manage(capture::CaptureState::default())
         .on_window_event(|window, event| {
-            if matches!(event, tauri::WindowEvent::CloseRequested { .. }) {
+            if window.label() == "main" && matches!(event, tauri::WindowEvent::CloseRequested { .. }) {
+                if let Some(overlay) = window.app_handle().get_webview_window("map-overlay") { let _ = overlay.close(); }
                 window.state::<capture::CaptureState>().shutdown();
             }
+            if window.label() == "map-overlay" && matches!(event, tauri::WindowEvent::Destroyed) {
+                let _ = window.app_handle().emit_to("main", "map-overlay-closed", ());
+            }
         })
-        .invoke_handler(tauri::generate_handler![set_topmost, set_compact, capture::game_windows,
+        .invoke_handler(tauri::generate_handler![set_topmost, overlay::set_map_overlay, overlay::drag_window, capture::game_windows,
             capture::start_capture, capture::stop_capture, capture::capture_frame])
         .setup(|app| {
             let exe = std::env::current_exe()?;
             let folder = exe.parent().ok_or("Cannot find executable directory")?;
-            let profile = folder.join("Data").join("WebView2");
-            fs::create_dir_all(&profile)?;
             let hidden = std::env::args().any(|a| a == "--hidden");
+            let data_root = if hidden {
+                std::env::var_os("ANIIMO_TEST_DATA_DIR").map(std::path::PathBuf::from)
+            } else { None }.unwrap_or(app.path().app_local_data_dir()?);
+            let profile = data_root.join("WebView2");
+            profile::prepare_profile(&profile, folder)?;
+            let browser_args = hidden.then(|| std::env::var("WEBVIEW2_ADDITIONAL_BROWSER_ARGUMENTS").ok()).flatten()
+                .map(|args| format!("--disable-features=msWebOOUI,msPdfOOUI,msSmartScreenProtection --autoplay-policy=no-user-gesture-required {args}"));
+            app.manage(overlay::OverlayConfig { profile: profile.clone(), hidden, browser_args: browser_args.clone() });
             let mut window = WebviewWindowBuilder::new(app, "main", WebviewUrl::App("index.html".into()))
                 .title(concat!("伊莫地城地圖 · 可攜版 ", env!("CARGO_PKG_VERSION")))
                 .inner_size(1220.0, 820.0)
@@ -58,13 +49,7 @@ fn main() {
                 .disable_drag_drop_handler();
             // Explicitly pass diagnostics to WebView2 for hidden smoke tests.
             // Ordinary launches keep the runtime defaults and open no debug port.
-            if hidden {
-                if let Ok(args) = std::env::var("WEBVIEW2_ADDITIONAL_BROWSER_ARGUMENTS") {
-                    window = window.additional_browser_args(&format!(
-                        "--disable-features=msWebOOUI,msPdfOOUI,msSmartScreenProtection --autoplay-policy=no-user-gesture-required {args}"
-                    ));
-                }
-            }
+            if let Some(args) = browser_args { window = window.additional_browser_args(&args); }
             window.build()?;
             Ok(())
         })
@@ -72,7 +57,7 @@ fn main() {
 
     if let Err(error) = result {
         let message = format!(
-            "無法啟動伊莫地城地圖。\n\n請確認 EXE 已解壓至可寫入的資料夾，且系統已安裝 Microsoft Edge WebView2 Runtime。\n\n錯誤：{error}"
+            "無法啟動伊莫地城地圖。\n\n請確認使用者資料夾可寫入，且系統已安裝 Microsoft Edge WebView2 Runtime。首次沿用設定時請先關閉舊版。\n\n錯誤：{error}"
         );
         let body: Vec<u16> = message.encode_utf16().chain(Some(0)).collect();
         let title: Vec<u16> = "伊莫地城地圖".encode_utf16().chain(Some(0)).collect();
