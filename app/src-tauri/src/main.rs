@@ -3,6 +3,7 @@
 use tauri::{Emitter, WebviewUrl, WebviewWindow, WebviewWindowBuilder, Manager};
 mod capture;
 mod capture_timing;
+mod capture_region;
 mod profile;
 mod overlay;
 
@@ -12,20 +13,35 @@ fn set_topmost(window: WebviewWindow, enabled: bool) -> Result<bool, String> {
     window.is_always_on_top().map_err(|e| e.to_string())
 }
 
+#[tauri::command]
+fn open_discord() -> Result<(), String> {
+    use windows_sys::Win32::UI::{Shell::ShellExecuteW, WindowsAndMessaging::SW_SHOWNORMAL};
+    // Only this fixed invite can be opened; no shell commands or frontend-supplied URLs.
+    let url: Vec<u16> = "https://discord.gg/Yh235uyafn".encode_utf16().chain(Some(0)).collect();
+    let result = unsafe {
+        ShellExecuteW(std::ptr::null_mut(), std::ptr::null(), url.as_ptr(),
+            std::ptr::null(), std::ptr::null(), SW_SHOWNORMAL)
+    } as isize;
+    if result <= 32 { Err(format!("Windows 錯誤碼 {result}")) } else { Ok(()) }
+}
+
 fn main() {
     let result = tauri::Builder::default()
         .manage(capture::CaptureState::default())
+        .manage(overlay::FollowState::default())
         .on_window_event(|window, event| {
             if window.label() == "main" && matches!(event, tauri::WindowEvent::CloseRequested { .. }) {
+                window.state::<overlay::FollowState>().stop();
                 if let Some(overlay) = window.app_handle().get_webview_window("map-overlay") { let _ = overlay.close(); }
                 window.state::<capture::CaptureState>().shutdown();
             }
             if window.label() == "map-overlay" && matches!(event, tauri::WindowEvent::Destroyed) {
+                window.state::<overlay::FollowState>().stop();
                 let _ = window.app_handle().emit_to("main", "map-overlay-closed", ());
             }
         })
-        .invoke_handler(tauri::generate_handler![set_topmost, overlay::set_map_overlay, overlay::drag_window, capture::game_windows,
-            capture::start_capture, capture::stop_capture, capture::capture_frame])
+        .invoke_handler(tauri::generate_handler![set_topmost, open_discord, overlay::set_map_overlay, overlay::drag_window, capture::game_windows,
+            capture::start_capture, capture::stop_capture, capture::configure_capture, capture::capture_frame])
         .setup(|app| {
             let exe = std::env::current_exe()?;
             let folder = exe.parent().ok_or("Cannot find executable directory")?;

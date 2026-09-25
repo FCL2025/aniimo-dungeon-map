@@ -4,8 +4,31 @@ const categories=Object.fromEntries(Object.entries(data.categories).filter(([key
 const $=id=>document.getElementById(id);
 const colors={egg:'#f3d76d',chest:'#c39fe5',pot:'#cfa881',cache:'#aebfc5',stellarys_boss:'#87dcff',entrance:'#79e1c0',exit:'#ff8798',key_blue:'#7fbbff',key_purple:'#c78aff',key_orange:'#ffb46e',challenge:'#82d2e5'};
 const canvas=$('map-canvas'), ctx=canvas.getContext('2d');
+const mapLayer=document.createElement('canvas'),mapContext=mapLayer.getContext('2d');
+let mapDirty=true,frameRequest=0;
 let current, image, visible=[], selected=null, scale=1, tx=0, ty=0, width=1, height=1, drag=null;
 let loadToken=0;
+let tracking=null;
+window.getTrackingSnapshot=()=>tracking?structuredClone(tracking):null;
+function renderTrackingStatus(){
+  const label=$('player-status'),button=$('locate-player');if(!label||!button)return;
+  const valid=tracking&&tracking.mapId===current?.id;
+  button.disabled=!valid;
+  label.dataset.state=valid?(tracking.stale?'stale':'live'):'waiting';
+  label.textContent=valid?(tracking.stale?'最後位置 · 追蹤中斷':'人物位置（估計）'):$('tracking-button')?.getAttribute('aria-checked')==='true'?'等待人物定位':'追蹤已關閉';
+  button.title=!valid?'尚未取得人物位置':tracking.stale?'置中到最後位置':'置中到人物位置';
+}
+window.addEventListener('tracking-update',event=>{
+  const next=event.detail;
+  if(!next){tracking=null;renderTrackingStatus();draw(false);return;}
+  if(!Array.isArray(next.pixel)||next.pixel.length!==2||!next.pixel.every(v=>Number.isFinite(v)&&v>=0&&v<=2048)||!Number.isFinite(next.at))return;
+  if(tracking&&next.mapId===tracking.mapId&&next.at<tracking.at)return;
+  tracking={...next,stale:!!next.stale||Date.now()-next.at>1500};
+  renderTrackingStatus();draw(false);
+});
+window.addEventListener('tracking-stale',()=>{if(tracking&&!tracking.stale){tracking.stale=true;renderTrackingStatus();draw(false);}});
+window.addEventListener('tracking-ui',renderTrackingStatus);
+$('locate-player')?.addEventListener('click',()=>{if(tracking&&tracking.mapId===current?.id){tx=width/2-tracking.pixel[0]*scale;ty=height/2-tracking.pixel[1]*scale;draw();}});
 const iconImages=new Map();
 for(const [key,asset] of Object.entries(data.icons.assets)){
   const icon=new Image();icon.onload=()=>draw();
@@ -27,7 +50,7 @@ function candidatePins(){return current.pins.filter(p=>p.difficultyCandidates.in
 function update(){
   if(!current)return;
   const enabled=new Set([...document.querySelectorAll('[data-category]:checked')].map(x=>x.dataset.category));
-  const candidates=candidatePins();visible=candidates.filter(p=>enabled.has(p.category));
+  const candidates=candidatePins();visible=candidates.filter(p=>enabled.has(p.category)).sort((a,b)=>(a.category==='chest'?-1:0)-(b.category==='chest'?-1:0));
   for(const key of Object.keys(categories))$('count-'+key).textContent=candidates.filter(p=>p.category===key).length;
   $('filter-total').textContent=visible.length+' 個候選';$('visible-count').textContent=`（${visible.length}）`;
   if(selected&&!visible.some(p=>p.id===selected.id)){selected=null;$('selected').textContent='點選地圖上的標記，查看名稱、位置與候選群組。';}
@@ -42,12 +65,16 @@ function renderList(){
   $('pin-list').replaceChildren();
   for(const pin of visible){const button=document.createElement('button');button.textContent=pin.name;const subtitle=document.createElement('span');subtitle.textContent=`房間 ${pin.roomId} · ${pin.provenance==='template_supplement'?'模組補充':'地圖引用'}${pin.sandboxConfigType===2?' · G'+pin.sandboxLevel:''}`;button.append(subtitle);button.onclick=()=>selectPin(pin);$('pin-list').append(button);}
 }
-function fit(){if(!current)return;const [x1,y1,x2,y2]=current.bounds;scale=Math.min((width-64)/(x2-x1),(height-64)/(y2-y1));scale=Math.max(.05,scale);tx=(width-(x1+x2)*scale)/2;ty=(height-(y1+y2)*scale)/2;draw();}
+function fit(){if(!current)return;const [x1,y1,x2,y2]=current.bounds,padding=document.body.classList.contains('overlay')?28:64;scale=Math.min((width-padding)/(x2-x1),(height-padding)/(y2-y1));scale=Math.max(.05,scale);tx=(width-(x1+x2)*scale)/2;ty=(height-(y1+y2)*scale)/2;draw();}
 function zoom(factor,cx=width/2,cy=height/2){const next=Math.min(5,Math.max(.05,scale*factor));tx=cx-(cx-tx)*next/scale;ty=cy-(cy-ty)*next/scale;scale=next;draw();}
-function draw(){
+function draw(mapChanged=true){
+  mapDirty=mapDirty||mapChanged;
+  if(!frameRequest)frameRequest=requestAnimationFrame(renderFrame);
+}
+function paintMap(ctx){
   ctx.clearRect(0,0,width,height);
   if(image)ctx.drawImage(image,tx,ty,current.size[0]*scale,current.size[1]*scale);
-  for(const pin of [...visible].sort((a,b)=>(a.category==='chest'?-1:0)-(b.category==='chest'?-1:0))){
+  for(const pin of visible){
     const x=pin.pixel[0]*scale+tx,y=pin.pixel[1]*scale+ty;
     const size=pinSize(pin),r=size/2,icon=iconImages.get(pin.iconKey);
     if(x<-size||y<-size||x>width+size||y>height+size)continue;
@@ -61,6 +88,29 @@ function draw(){
   }
   if(selected){ctx.strokeStyle='#ffffff';ctx.lineWidth=2;ctx.beginPath();ctx.arc(selected.pixel[0]*scale+tx,selected.pixel[1]*scale+ty,pinSize(selected)/2+4,0,Math.PI*2);ctx.stroke();}
 }
+function renderFrame(){
+  frameRequest=0;
+  if(mapDirty){
+    if(mapLayer.width!==canvas.width||mapLayer.height!==canvas.height){mapLayer.width=canvas.width;mapLayer.height=canvas.height;}
+    const ratio=window.devicePixelRatio||1;mapContext.setTransform(ratio,0,0,ratio,0,0);
+    paintMap(mapContext);mapDirty=false;
+  }
+  ctx.clearRect(0,0,width,height);
+  if(mapLayer.width&&mapLayer.height)ctx.drawImage(mapLayer,0,0,mapLayer.width,mapLayer.height,0,0,width,height);
+  if(tracking&&tracking.mapId===current?.id){
+    ctx.save();
+    const x=tracking.pixel[0]*scale+tx,y=tracking.pixel[1]*scale+ty;
+    ctx.setLineDash([]);ctx.fillStyle='#102127';ctx.beginPath();ctx.arc(x,y,12,0,Math.PI*2);ctx.fill();
+    ctx.strokeStyle=tracking.stale?'#a5bac4':'#79e1c0';ctx.lineWidth=2;ctx.beginPath();ctx.arc(x,y,10,0,Math.PI*2);ctx.stroke();
+    if(!tracking.stale){ctx.fillStyle='#79e1c0';ctx.beginPath();ctx.arc(x,y,5,0,Math.PI*2);ctx.fill();}
+    const label=tracking.stale?'最後位置':document.body.classList.contains('overlay')?'你':'人物位置（估計）';
+    ctx.font='12px "Microsoft JhengHei", sans-serif';const labelWidth=ctx.measureText(label).width+10;
+    const labelX=Math.max(0,Math.min(width-labelWidth,x+15)),labelY=Math.max(15,Math.min(height-7,y));
+    if(!document.body.classList.contains('overlay')){ctx.fillStyle='#172731e8';ctx.fillRect(labelX,labelY-14,labelWidth,21);}
+    else{ctx.shadowColor='#07131f';ctx.shadowBlur=3;}
+    ctx.fillStyle=tracking.stale?'#a5bac4':'#79e1c0';ctx.fillText(label,labelX+5,labelY+1);ctx.restore();
+  }
+}
 function selectPin(pin){
   selected=pin;$('selected').replaceChildren();
   const strong=document.createElement('strong');strong.textContent=pin.name;
@@ -71,6 +121,7 @@ function selectPin(pin){
 }
 function loadMap(){
   current=data.maps.find(m=>m.id===Number($('map').value));selected=null;image=null;
+  if(tracking&&tracking.mapId!==current.id)tracking=null;renderTrackingStatus();
   $('map-id').textContent='搶蛋大作戰';$('map-title').textContent='地宮 '+current.id;
   $('selected').textContent='點選地圖上的標記，查看名稱、位置與候選群組。';
   const missing=data.validation.missingReferences.filter(v=>v[0]===current.id).length;

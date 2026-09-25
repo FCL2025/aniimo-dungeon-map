@@ -2,6 +2,7 @@
 use std::{path::Path, sync::{Arc, Mutex, atomic::{AtomicBool, AtomicU64, Ordering}}, time::{Duration, SystemTime, UNIX_EPOCH}, thread::{self, JoinHandle}};
 use base64::{Engine, engine::general_purpose::STANDARD};
 use crate::capture_timing::{MapKeyTrigger, BURST_MS, CAPTURE_GAP_MS, KEY_POLL_MS};
+use crate::capture_region::{crop_bounds, valid_region, TRACKING_GAP_MS};
 use image::{DynamicImage, RgbaImage, codecs::jpeg::JpegEncoder};
 use serde::Serialize;
 use tauri::State;
@@ -15,10 +16,11 @@ fn now_ms() -> u64 { SystemTime::now().duration_since(UNIX_EPOCH).unwrap_or_defa
 
 #[derive(Clone, Serialize)]
 #[serde(rename_all = "camelCase")]
-pub struct CapturedFrame { pub sequence: u64, pub captured_at: u64, pub width: u32, pub height: u32, pub image: String }
+pub struct CapturedFrame { pub sequence: u64, pub captured_at: u64, pub width: u32, pub height: u32, pub image: String, pub source_region: [f64; 4] }
 #[derive(Default)]
 struct Shared { requested: AtomicBool, closed: AtomicBool, frame: Mutex<Option<CapturedFrame>>, error: Mutex<Option<String>>,
-    monitor_stop: AtomicBool, burst_until: AtomicU64, map_key_at: AtomicU64 }
+    monitor_stop: AtomicBool, burst_until: AtomicU64, map_key_at: AtomicU64,
+    fast: AtomicBool, watch_map: AtomicBool, crop: Mutex<Option<[f64; 4]>> }
 struct Handler { shared: Arc<Shared>, sequence: u64, last_capture: u64 }
 impl GraphicsCaptureApiHandler for Handler {
     type Flags = Arc<Shared>;
@@ -26,7 +28,8 @@ impl GraphicsCaptureApiHandler for Handler {
     fn new(ctx: Context<Self::Flags>) -> Result<Self, String> { Ok(Self { shared: ctx.flags, sequence: 0, last_capture: 0 }) }
     fn on_frame_arrived(&mut self, frame: &mut Frame<'_>, control: InternalCaptureControl) -> Result<(), String> {
         let now = now_ms();
-        if now.saturating_sub(self.last_capture) < CAPTURE_GAP_MS { return Ok(()); }
+        let gap = if self.shared.fast.load(Ordering::Relaxed) { TRACKING_GAP_MS } else { CAPTURE_GAP_MS };
+        if now.saturating_sub(self.last_capture) < gap { return Ok(()); }
         let requested = self.shared.requested.swap(false, Ordering::Relaxed);
         if !requested && now >= self.shared.burst_until.load(Ordering::Relaxed) { return Ok(()); }
         self.last_capture = now;
@@ -35,14 +38,23 @@ impl GraphicsCaptureApiHandler for Handler {
             let (w,h) = (buffer.width(), buffer.height());
             if w == 0 || h == 0 || w > 16384 || h > 16384 { return Err("遊戲畫面尺寸無效。".into()); }
             let mut padded = Vec::new();
-            let rgba = RgbaImage::from_raw(w, h, buffer.as_nopadding_buffer(&mut padded).to_vec()).ok_or("無法讀取擷取畫面。")?;
+            let region = *self.shared.crop.lock().map_err(|e| e.to_string())?;
+            let (x, y, cw, ch) = crop_bounds(w, h, region);
+            let pixels = buffer.as_nopadding_buffer(&mut padded);
+            let mut cropped = Vec::with_capacity((cw * ch * 4) as usize);
+            for row in y..y + ch {
+                let start = ((row * w + x) * 4) as usize;
+                cropped.extend_from_slice(&pixels[start..start + (cw * 4) as usize]);
+            }
+            let rgba = RgbaImage::from_raw(cw, ch, cropped).ok_or("無法讀取擷取畫面。")?;
             let mut image = DynamicImage::ImageRgba8(rgba);
-            if w > 1920 || h > 1200 { image = image.resize(1920, 1200, image::imageops::FilterType::Triangle); }
+            if cw > 1920 || ch > 1200 { image = image.resize(1920, 1200, image::imageops::FilterType::Triangle); }
             let rgb = image.to_rgb8();
             let mut jpeg = Vec::new();
             JpegEncoder::new_with_quality(&mut jpeg, 90).encode_image(&rgb).map_err(|e| e.to_string())?;
             self.sequence += 1;
-            Ok(CapturedFrame { sequence: self.sequence, captured_at: now_ms(), width: rgb.width(), height: rgb.height(),
+            Ok(CapturedFrame { sequence: self.sequence, captured_at: now, width: rgb.width(), height: rgb.height(),
+                source_region: [x as f64 / w as f64, y as f64 / h as f64, cw as f64 / w as f64, ch as f64 / h as f64],
                 image: format!("data:image/jpeg;base64,{}", STANDARD.encode(jpeg)) })
         })();
         match result {
@@ -99,19 +111,33 @@ pub fn game_windows() -> Result<Vec<GameWindow>, String> {
         GameWindow { id: (w.as_raw_hwnd() as usize).to_string(), title: w.title().unwrap_or_else(|_| "伊莫".into()) }).collect())
 }
 
-pub fn game_client_bounds(selected: Option<&str>) -> Option<(i32, i32, u32, u32)> {
-    use windows_sys::Win32::{Foundation::{POINT, RECT}, Graphics::Gdi::ClientToScreen,
-        UI::WindowsAndMessaging::GetClientRect};
-    let windows = Window::enumerate().ok()?;
-    let game = windows.into_iter().find(|w| is_game(w) && selected.is_none_or(|id|
-        (w.as_raw_hwnd() as usize).to_string() == id))?;
-    let handle = game.as_raw_hwnd() as _;
-    let mut rect: RECT = unsafe { std::mem::zeroed() };
-    let mut origin = POINT { x: 0, y: 0 };
-    if unsafe { IsIconic(handle) } != 0 || unsafe { GetClientRect(handle, &mut rect) } == 0
-        || unsafe { ClientToScreen(handle, &mut origin) } == 0 { return None; }
-    let (w, h) = (rect.right - rect.left, rect.bottom - rect.top);
-    (w > 0 && h > 0).then_some((origin.x, origin.y, w as u32, h as u32))
+#[derive(Clone, Copy)]
+pub struct GameTarget { handle: usize, process_id: u32 }
+impl GameTarget {
+    pub fn valid(&self) -> bool {
+        use windows_sys::Win32::UI::WindowsAndMessaging::{IsWindow, GetWindowThreadProcessId};
+        let mut pid = 0;
+        unsafe { GetWindowThreadProcessId(self.handle as _, &mut pid); }
+        unsafe { IsWindow(self.handle as _) != 0 && pid == self.process_id }
+    }
+    pub fn bounds(&self) -> Option<(i32, i32, u32, u32)> {
+        use windows_sys::Win32::{Foundation::{POINT, RECT}, Graphics::Gdi::ClientToScreen,
+            UI::WindowsAndMessaging::{GetClientRect, IsWindowVisible}};
+        let handle = self.handle as _;
+        let mut rect: RECT = unsafe { std::mem::zeroed() };
+        let mut origin = POINT { x: 0, y: 0 };
+        if !self.valid() || unsafe { IsIconic(handle) != 0 || IsWindowVisible(handle) == 0
+            || GetClientRect(handle, &mut rect) == 0 || ClientToScreen(handle, &mut origin) == 0 } { return None; }
+        let (w, h) = (rect.right - rect.left, rect.bottom - rect.top);
+        (w > 0 && h > 0).then_some((origin.x, origin.y, w as u32, h as u32))
+    }
+}
+
+// Resolve once, then query the cached HWND without enumerating processes on every movement.
+pub fn find_game_target(selected: Option<&str>) -> Option<GameTarget> {
+    let game = Window::enumerate().ok()?.into_iter().find(|w|
+        selected.is_none_or(|id| (w.as_raw_hwnd() as usize).to_string() == id) && is_game(w))?;
+    Some(GameTarget { handle: game.as_raw_hwnd() as usize, process_id: game.process_id().ok()? })
 }
 
 #[tauri::command]
@@ -123,6 +149,7 @@ pub async fn start_capture(window_id: String, state: State<'_, CaptureState>) ->
             (w.as_raw_hwnd() as usize).to_string() == window_id && is_game(w)).ok_or("找不到伊莫視窗，請開啟遊戲後重新整理。")?;
         if let Some(old) = guard.take() { old.stop()?; }
         let shared = Arc::new(Shared::default()); shared.requested.store(true, Ordering::Relaxed);
+        shared.watch_map.store(true, Ordering::Relaxed);
         let settings = Settings::new(window, CursorCaptureSettings::WithoutCursor, DrawBorderSettings::Default,
             SecondaryWindowSettings::Default, MinimumUpdateIntervalSettings::Default, DirtyRegionSettings::Default,
             ColorFormat::Rgba8, shared.clone());
@@ -133,7 +160,7 @@ pub async fn start_capture(window_id: String, state: State<'_, CaptureState>) ->
             let mut trigger = MapKeyTrigger::default();
             while !monitored.monitor_stop.load(Ordering::Relaxed) && !monitored.closed.load(Ordering::Relaxed) {
                 // Query only M, and only while the selected game is foreground. No hook or input injection.
-                let foreground = unsafe { GetForegroundWindow() as usize == handle };
+                let foreground = monitored.watch_map.load(Ordering::Relaxed) && unsafe { GetForegroundWindow() as usize == handle };
                 let down = foreground && unsafe { GetAsyncKeyState(VK_M as i32) < 0 };
                 if trigger.observe(foreground, down) {
                     let now = now_ms();
@@ -157,6 +184,21 @@ pub async fn stop_capture(state: State<'_, CaptureState>) -> Result<(), String> 
         if let Some(session) = guard.take() { session.stop()?; }
         Ok(())
     }).await.map_err(|e| e.to_string())?
+}
+
+#[tauri::command]
+pub fn configure_capture(state: State<'_, CaptureState>, fast: bool, watch_map: bool, region: Option<[f64; 4]>) -> Result<(), String> {
+    if region.is_some_and(|r| !valid_region(r)) { return Err("小地圖範圍無效。".into()); }
+    let guard = state.0.lock().map_err(|e| e.to_string())?;
+    if let Some(session) = guard.as_ref() {
+        *session.shared.crop.lock().map_err(|e| e.to_string())? = region;
+        session.shared.fast.store(fast, Ordering::Relaxed);
+        session.shared.watch_map.store(watch_map, Ordering::Relaxed);
+        if !watch_map { session.shared.burst_until.store(0, Ordering::Relaxed); }
+        *session.shared.frame.lock().map_err(|e| e.to_string())? = None;
+        session.shared.requested.store(true, Ordering::Relaxed);
+    }
+    Ok(())
 }
 
 #[derive(Serialize)]

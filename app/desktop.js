@@ -2,13 +2,25 @@
 (() => {
   const invoke = window.__TAURI__?.core.invoke, events = window.__TAURI__?.event;
   const el = id => document.getElementById(id), key = 'aniimo-dungeon-preferences-v1';
-  let topmost = true, mapOverlay = false, restoring = true, noticeTimer;
+  let topmost = true, mapOverlay = false, sidebarCollapsed = false, restoring = true, noticeTimer;
   const report = window.showMapNotice = (text, duration = 5000) => {
     clearTimeout(noticeTimer); document.querySelector('.notice').hidden = true;
     el('app-status').textContent = text; el('app-status').hidden = false;
     noticeTimer = setTimeout(() => { el('app-status').hidden = true; el('app-status').textContent = ''; }, duration);
   };
   setTimeout(() => { document.querySelector('.notice').hidden = true; }, 5000);
+  function renderSidebar() {
+    document.body.classList.toggle('sidebar-collapsed', sidebarCollapsed);
+    el('sidebar').hidden = sidebarCollapsed;
+    el('sidebar-toggle').setAttribute('aria-expanded', String(!sidebarCollapsed));
+    el('sidebar-toggle').title = sidebarCollapsed ? '展開側欄' : '收合側欄';
+    el('sidebar-toggle-label').textContent = el('sidebar-toggle').title;
+  }
+  function setMenu(open, restoreFocus = false) {
+    el('menu-panel').hidden = !open;
+    el('menu-button').setAttribute('aria-expanded', String(open));
+    if (restoreFocus) el('menu-button').focus();
+  }
   function renderButtons() {
     el('topmost').textContent = topmost ? '置頂：開' : '置頂：關';
     el('topmost').setAttribute('aria-pressed', String(topmost));
@@ -20,13 +32,21 @@
     return { map: el('map').value, difficulty: el('difficulty').value, quality: el('quality').value,
       supplements: el('supplements').checked,
       categories: [...document.querySelectorAll('[data-category]:checked')].map(e => e.dataset.category),
-      topmost, compact: false };
+      topmost, compact: false, sidebarCollapsed };
   }
+  let overlayPublishQueued=false;
   function publishOverlay() {
+    if (!events || !mapOverlay || overlayPublishQueued) return;
+    overlayPublishQueued=true;
+    // Microtasks also run when the main window is minimized; animation frames do not.
+    queueMicrotask(() => { overlayPublishQueued=false; sendOverlayState(); });
+  }
+  function sendOverlayState() {
     if (!events || !mapOverlay) return;
     events.emitTo('map-overlay', 'map-view-state', { ...preferences(), tracking: window.getTrackingSnapshot?.() || null,
       status: el('live-status').textContent, statusTitle: el('live-status').title, statusState: el('live-status').dataset.state,
-      recognition: el('recognition-button').getAttribute('aria-checked') === 'true', recognitionBusy: el('recognition-button').disabled
+      recognition: el('recognition-button').getAttribute('aria-checked') === 'true', recognitionBusy: el('recognition-button').disabled,
+      trackingEnabled: el('tracking-button').getAttribute('aria-checked') === 'true', trackingBusy: el('tracking-button').disabled
     }).catch(() => {});
   }
   function save() {
@@ -48,7 +68,7 @@
     try {
       mapOverlay = value; renderButtons();
       const placement = await invoke('set_map_overlay', { enabled: value, gameWindowId: el('game-window').value || null });
-      if (value) { publishOverlay(); report(placement?.gameFound ? '覆蓋地圖已開啟；原視窗可保留或最小化，再按「地圖模式」即可關閉。' : '覆蓋地圖已開啟在螢幕左側；可拖曳地宮編號調整位置。'); }
+      if (value) { publishOverlay(); report(placement?.gameFound ? '透明覆蓋地圖已開啟，會跟隨遊戲視窗移動；拖曳地宮編號可調整相對位置。' : '透明覆蓋地圖已開啟；找到伊莫視窗後會自動跟隨，拖曳地宮編號可調整位置。'); }
     } catch (error) { mapOverlay = false; renderButtons(); report('無法切換地圖模式：' + String(error)); }
     finally { el('compact').disabled = false; }
   }
@@ -59,6 +79,7 @@
       events.listen('map-overlay-action', ({ payload }) => {
         if (payload === 'new-session') el('new-session').click();
         if (payload === 'recognition') el('recognition-button').click();
+        if (payload === 'tracking') el('tracking-button').click();
         publishOverlay();
       })
     ]).catch(error => report('覆蓋地圖連線失敗：' + String(error)));
@@ -66,8 +87,30 @@
   for (const name of ['tracking-update', 'tracking-stale', 'recognition-ui']) window.addEventListener(name, publishOverlay);
   el('topmost').addEventListener('click', () => setPinned(!topmost));
   el('compact').addEventListener('click', async () => { await window.overlayBridgeReady; await setMapMode(!mapOverlay); });
-  el('help-button').onclick = () => el('help-dialog').showModal();
+  el('sidebar-toggle').addEventListener('click', () => { sidebarCollapsed = !sidebarCollapsed; renderSidebar(); save(); });
+  el('menu-button').addEventListener('click', () => setMenu(el('menu-panel').hidden));
+  document.addEventListener('click', event => {
+    if (!event.target.closest('.app-menu')) setMenu(false);
+  });
+  document.querySelector('.app-menu').addEventListener('focusout', event => {
+    if (!event.currentTarget.contains(event.relatedTarget)) setMenu(false);
+  });
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && !el('menu-panel').hidden) {
+      event.preventDefault(); setMenu(false, true);
+    }
+  });
+  el('discord-link').addEventListener('click', async event => {
+    if (invoke) event.preventDefault();
+    setMenu(false, true);
+    if (invoke) {
+      try { await invoke('open_discord'); }
+      catch (error) { report('無法開啟 Discord，請在瀏覽器輸入 https://discord.gg/Yh235uyafn（' + String(error) + '）', 10000); }
+    }
+  });
+  el('help-button').onclick = () => { setMenu(false, true); el('help-dialog').showModal(); };
   el('close-help').onclick = () => el('help-dialog').close();
+  el('help-dialog').addEventListener('close', () => el('menu-button').focus());
   document.addEventListener('change', save);
   for (const id of ['all', 'none']) el(id).addEventListener('click', save);
   window.desktopReady = (async () => {
@@ -78,13 +121,15 @@
           if ([...el(id).options].some(o => o.value === String(settings[id]))) el(id).value = String(settings[id]);
         }
         if (typeof settings.supplements === 'boolean') el('supplements').checked = settings.supplements;
+        sidebarCollapsed = settings.sidebarCollapsed === true;
+        renderSidebar();
         if (Array.isArray(settings.categories)) for (const e of document.querySelectorAll('[data-category]')) e.checked = settings.categories.includes(e.dataset.category);
         el('map').dispatchEvent(new Event('change'));
         if (settings.topmost === false) await setPinned(false);
       }
-      // Map mode is opened only by an explicit click; legacy compact settings never hide the panel.
+      // Map mode is opened only by an explicit click; only sidebarCollapsed hides the panel.
     } catch { report('先前設定無法讀取，已使用預設值。'); }
-    finally { restoring = false; renderButtons(); }
+    finally { restoring = false; renderButtons(); renderSidebar(); }
   })();
   renderButtons();
 })();

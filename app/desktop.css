@@ -5,6 +5,21 @@ body.desktop-app{height:100vh;grid-template-columns:280px minmax(0,1fr);overflow
 .desktop-app .mapbar{flex-wrap:wrap;padding:15px 20px 12px;gap:8px}
 .desktop-app .mapbar h2{font-size:19px}.desktop-app .tools{gap:5px;flex-wrap:wrap}
 .desktop-app .tools button{font-size:12px;padding:6px 8px}
+.desktop-app .mapbar-start{display:flex;align-items:center;gap:14px;min-width:0}
+.desktop-app #sidebar-toggle{display:flex;align-items:center;gap:6px;flex-shrink:0;font-size:12px;padding:7px 8px;white-space:nowrap}
+.desktop-app.sidebar-collapsed{grid-template-columns:minmax(0,1fr)}
+.desktop-app #sidebar[hidden]{display:none}
+.sidebar-collapsed .sidebar-arrow{transform:translateX(29px) scaleX(-1)}
+.app-menu{position:relative}
+#menu-button{display:flex;align-items:center;gap:8px}
+#menu-button[aria-expanded=true]{border-color:var(--accent);color:var(--accent)}
+#menu-panel{position:absolute;top:calc(100% + 8px);right:0;z-index:10;min-width:200px;padding:5px;background:var(--panel);border:1px solid var(--line);border-radius:7px;box-shadow:0 8px 24px #07131f66}
+#menu-panel[hidden]{display:none}
+#menu-panel a,#menu-panel button{display:flex;align-items:center;justify-content:space-between;gap:14px;width:100%;margin:0;padding:10px 12px;border:0;border-radius:4px;background:transparent;color:var(--text);font:13px "Segoe UI","Microsoft JhengHei",sans-serif;text-decoration:none;text-align:left;white-space:nowrap}
+#menu-panel a:hover,#menu-panel button:hover{background:var(--bg);color:var(--accent)}
+#menu-panel a span{color:var(--muted)}
+#menu-panel #help-button{border-top:1px solid var(--line);border-radius:0 0 4px 4px;margin-top:4px}
+@media(max-width:760px){body.desktop-app:not(.compact):not(.sidebar-collapsed){grid-template-columns:210px minmax(0,1fr)}.desktop-app .mapbar{padding:10px;gap:10px}.desktop-app .mapbar-start{gap:8px;flex-wrap:wrap}.desktop-app .tools{margin-left:auto}.desktop-app .session-heading{flex-wrap:wrap}.desktop-app.overlay .mapbar-start,.desktop-app.overlay .session-heading{flex-wrap:nowrap}}
 .desktop-app .selection{max-height:28vh;padding:12px 20px}
 .desktop-app.compact{grid-template-columns:minmax(0,1fr)}
 .desktop-app.compact aside{display:none}.desktop-app.compact .selection{display:none}
@@ -19,23 +34,27 @@ body.desktop-app{height:100vh;grid-template-columns:280px minmax(0,1fr);overflow
 #player-status{padding:4px 7px;background:#172731e0;color:var(--muted);border-radius:4px;font-size:11px}
 #player-status[data-state=live]{color:#79e1c0}#locate-player{pointer-events:auto;font-size:22px;line-height:1;width:32px;height:32px;padding:0;background:#172731ed}
 .desktop-app.compact .canvas-caption{display:none}
-body.desktop-app.overlay{background:transparent;border:1px solid #91bdb76b;border-radius:7px;grid-template-columns:minmax(0,1fr)}
-.desktop-app.overlay main{background:#14252be0;overflow:hidden;border-radius:6px}
-.desktop-app.overlay .stage{background:radial-gradient(ellipse at 50% 45%,#253b41b3,#17273166);min-height:0}
-.desktop-app.overlay .mapbar{padding:5px 6px;gap:5px;flex-wrap:nowrap;border-bottom:1px solid #91bdb72e;background:#14252bf0;min-height:35px}
+.overlay-root{background:transparent;color-scheme:normal}
+body.desktop-app.overlay{background:transparent;border:0;grid-template-columns:minmax(0,1fr);text-shadow:0 1px 3px #07131f,0 0 2px #07131f}
+.desktop-app.overlay main{background:transparent;overflow:hidden}
+.desktop-app.overlay .stage{background:transparent;min-height:0}
+.desktop-app.overlay .mapbar{padding:5px 6px;gap:5px;flex-wrap:nowrap;border:0;background:transparent;min-height:35px}
+.desktop-app.overlay button,.desktop-app.overlay #player-status,.desktop-app.overlay #live-status,.desktop-app.overlay .notice,.desktop-app.overlay #app-status{background:transparent;border-color:transparent;text-shadow:inherit}
+.desktop-app.overlay button:hover:not(:disabled){border-color:#79cabe88;color:var(--accent)}
 .desktop-app.overlay .map-heading{min-width:0}.desktop-app.overlay #map-id{display:none}
 .desktop-app.overlay .session-heading{gap:5px}.desktop-app.overlay #map-title{font-size:12px;font-variant-numeric:tabular-nums;cursor:move;user-select:none}
 .desktop-app.overlay .session-heading #new-session{padding:3px 4px;font-size:10px}
 .desktop-app.overlay #live-status{font-size:10px;padding:1px 3px}
 .desktop-app.overlay .tools{flex-wrap:nowrap;gap:4px}.desktop-app.overlay .tools button{font-size:10px;padding:4px 5px}
-.desktop-app.overlay #topmost,.desktop-app.overlay #compact,.desktop-app.overlay #help-button,.desktop-app.overlay #zoom-in,.desktop-app.overlay #zoom-out{display:none}
+.desktop-app.overlay #topmost,.desktop-app.overlay #compact,.desktop-app.overlay .app-menu,.desktop-app.overlay #sidebar-toggle,.desktop-app.overlay #zoom-in,.desktop-app.overlay #zoom-out{display:none}
 .desktop-app.overlay #fit{font-size:0;width:25px;padding:3px}.desktop-app.overlay #fit::after{content:'⊞';font-size:16px}
 .desktop-app.overlay #overlay-close{font-size:18px;line-height:1;width:25px;padding:4px}.desktop-app.overlay #overlay-close:hover{color:#ffb6ad;border-color:#ffb6ad}
-.desktop-app.overlay #recognition-button{gap:4px}.desktop-app.overlay #recognition-button::before{width:6px;height:6px;border-radius:50%;background:#a5bac4}
-.desktop-app.overlay #recognition-button[aria-checked=true]::before{background:var(--accent)}
+.desktop-app.overlay .live-switch{gap:4px}.desktop-app.overlay .live-switch::before{width:6px;height:6px;border-radius:50%;background:#a5bac4}
+.desktop-app.overlay .live-switch[aria-checked=true]::before{background:var(--accent)}
 .desktop-app.overlay .notice,.desktop-app.overlay #app-status{font-size:11px;padding:7px 9px;top:6px;left:6px;right:6px}
 .desktop-app.overlay #player-status{font-size:10px}.desktop-app.overlay .player-tools{bottom:7px;right:7px}
-@media(max-width:280px){.desktop-app.overlay #live-status{display:none}.desktop-app.overlay .session-heading{gap:3px}.desktop-app.overlay #map-title{font-size:11px}}
+.desktop-app.overlay #locate-player{background:transparent}
+@media(max-width:360px){.desktop-app.overlay #live-status{display:none}.desktop-app.overlay .session-heading{gap:3px}.desktop-app.overlay #map-title{font-size:11px}}
 button[aria-pressed=true]{border-color:var(--accent);color:var(--accent)}
 dialog{max-width:min(560px,90vw);max-height:85vh;overflow:auto;color:var(--text);background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:25px;line-height:1.8}
 dialog::backdrop{background:#08151bbf}dialog h2{margin-top:0}dialog p{font-size:13px}dialog button{float:right}

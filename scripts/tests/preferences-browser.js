@@ -12,6 +12,7 @@
     supplements: element('supplements').checked, categories: selected(),
     topmost: element('topmost').getAttribute('aria-pressed') === 'true',
     compact: document.body.classList.contains('compact'),
+    sidebarCollapsed: document.body.classList.contains('sidebar-collapsed'),
   });
   const checkState = async expected => {
     assert(same(state(), expected), 'Unexpected restored controls: ' + JSON.stringify(state()));
@@ -24,7 +25,7 @@
   };
   const expected = {
     map: '20036', difficulty: '5', quality: '5', supplements: true,
-    categories: [], topmost: true, compact: false,
+    categories: [], topmost: true, compact: false, sidebarCollapsed: false,
   };
   assert(document.querySelectorAll('[data-category]').length === 9, 'Expected 9 filter options');
   assert(!document.querySelector('[data-category="pot"], [data-category="cache"]'), 'Removed options still present');
@@ -36,7 +37,7 @@
   if (phase === 'upgrade') {
     await checkState({
       map: '20040', difficulty: '6', quality: '4', supplements: false,
-      categories: ['egg', 'chest', 'stellarys_boss', 'exit'], topmost: false, compact: false,
+      categories: ['egg', 'chest', 'stellarys_boss', 'exit'], topmost: false, compact: false, sidebarCollapsed: false,
     });
     element('all').click();
     assert(selected().length === 9, 'All must enable only supported categories');

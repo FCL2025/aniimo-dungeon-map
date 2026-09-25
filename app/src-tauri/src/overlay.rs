@@ -1,4 +1,4 @@
-use std::path::PathBuf;
+use std::{path::PathBuf, sync::{Arc, Mutex, atomic::{AtomicBool, Ordering}}, time::{Duration, Instant}};
 use tauri::{
     AppHandle, Manager, PhysicalPosition, PhysicalSize, WebviewUrl, WebviewWindow,
     WebviewWindowBuilder,
@@ -10,7 +10,17 @@ pub struct OverlayConfig {
     pub browser_args: Option<String>,
 }
 
-#[derive(serde::Serialize)]
+#[derive(Default)]
+pub struct FollowState(Mutex<Option<Arc<AtomicBool>>>);
+impl FollowState {
+    pub fn stop(&self) {
+        if let Ok(mut current) = self.0.lock() {
+            if let Some(stop) = current.take() { stop.store(true, Ordering::Relaxed); }
+        }
+    }
+}
+
+#[derive(Clone, Copy, PartialEq, Debug, serde::Serialize)]
 #[serde(rename_all = "camelCase")]
 pub struct Placement {
     x: i32,
@@ -33,6 +43,76 @@ fn placement(x: i32, y: i32, width: u32, height: u32, game_found: bool) -> Place
     }
 }
 
+fn follow_placement(bounds: (i32, i32, u32, u32), offset: Option<(i32, i32)>) -> Placement {
+    let (x, y, w, h) = bounds;
+    let mut target = placement(x, y, w, h, true);
+    if let Some((dx, dy)) = offset {
+        target.x = x + dx.clamp(0, w.saturating_sub(target.width) as i32);
+        target.y = y + dy.clamp(0, h.saturating_sub(target.height) as i32);
+    }
+    target
+}
+
+fn start_following(app: &AppHandle, overlay: &WebviewWindow, mut game: Option<crate::capture::GameTarget>,
+    selected: Option<String>, initial: Placement, hidden: bool) -> Result<(), String> {
+    use windows_sys::Win32::{Foundation::RECT, UI::WindowsAndMessaging::*};
+    let hwnd = overlay.hwnd().map_err(|e| e.to_string())?.0 as usize;
+    let owner_thread = unsafe { GetWindowThreadProcessId(hwnd as _, std::ptr::null_mut()) };
+    let state = app.state::<FollowState>();
+    state.stop();
+    let stop = Arc::new(AtomicBool::new(false));
+    *state.0.lock().map_err(|e| e.to_string())? = Some(stop.clone());
+    std::thread::Builder::new().name("overlay-follow".into()).spawn(move || {
+        let mut last_scan = Instant::now() - Duration::from_secs(1);
+        let mut offset = None;
+        let mut previous_dragging = false;
+        let mut attached = game.is_some();
+        let mut shown = !hidden && (game.is_none() || initial.game_found);
+        let mut last = Some(initial);
+        while !stop.load(Ordering::Relaxed) && unsafe { IsWindow(hwnd as _) } != 0 {
+            if game.is_some_and(|g| !g.valid()) { game = None; }
+            if game.is_none() && last_scan.elapsed() >= Duration::from_secs(1) {
+                game = crate::capture::find_game_target(selected.as_deref())
+                    .or_else(|| crate::capture::find_game_target(None));
+                last_scan = Instant::now();
+            }
+            attached |= game.is_some();
+            let bounds = game.and_then(|g| g.bounds());
+            let should_show = !hidden && (!attached || bounds.is_some());
+            if let Some(bounds) = bounds {
+                let mut gui: GUITHREADINFO = unsafe { std::mem::zeroed() };
+                gui.cbSize = std::mem::size_of::<GUITHREADINFO>() as u32;
+                let dragging = unsafe { GetGUIThreadInfo(owner_thread, &mut gui) != 0 }
+                    && gui.flags & GUI_INMOVESIZE != 0 && gui.hwndMoveSize as usize == hwnd;
+                if dragging || previous_dragging {
+                    let mut rect: RECT = unsafe { std::mem::zeroed() };
+                    if unsafe { GetWindowRect(hwnd as _, &mut rect) } != 0 {
+                        offset = Some((rect.left - bounds.0, rect.top - bounds.1));
+                    }
+                    last = None;
+                }
+                if !dragging {
+                    let target = follow_placement(bounds, offset);
+                    if last != Some(target) {
+                        let mut flags = SWP_NOACTIVATE | SWP_NOZORDER | SWP_NOOWNERZORDER | SWP_ASYNCWINDOWPOS;
+                        if last.is_some_and(|p| (p.width, p.height) == (target.width, target.height)) { flags |= SWP_NOSIZE; }
+                        if unsafe { SetWindowPos(hwnd as _, std::ptr::null_mut(), target.x, target.y,
+                            target.width as i32, target.height as i32, flags) } != 0 { last = Some(target); }
+                    }
+                }
+                previous_dragging = dragging;
+            }
+            if shown != should_show {
+                unsafe { ShowWindowAsync(hwnd as _, if should_show { SW_SHOWNOACTIVATE } else { SW_HIDE }); }
+                shown = should_show;
+            }
+            // The worker only reads Win32 geometry. Moving a window never triggers map analysis.
+            std::thread::sleep(Duration::from_millis(16));
+        }
+    }).map_err(|e| e.to_string())?;
+    Ok(())
+}
+
 // Creating a WebView2 window from an IPC command must run asynchronously on Windows.
 #[tauri::command]
 pub async fn set_map_overlay(
@@ -42,13 +122,16 @@ pub async fn set_map_overlay(
     game_window_id: Option<String>,
 ) -> Result<Option<Placement>, String> {
     if !enabled {
+        app.state::<FollowState>().stop();
         if let Some(overlay) = app.get_webview_window("map-overlay") {
             overlay.close().map_err(|e| e.to_string())?;
         }
         return Ok(None);
     }
+    let game = crate::capture::find_game_target(game_window_id.as_deref())
+        .or_else(|| crate::capture::find_game_target(None));
     let target =
-        if let Some((x, y, w, h)) = crate::capture::game_client_bounds(game_window_id.as_deref()) {
+        if let Some((x, y, w, h)) = game.and_then(|g| g.bounds()) {
             placement(x, y, w, h, true)
         } else {
             let monitor = window
@@ -93,9 +176,10 @@ pub async fn set_map_overlay(
         overlay
             .set_position(PhysicalPosition::new(target.x, target.y))
             .map_err(|e| e.to_string())?;
-        if !config.hidden {
+        if !config.hidden && (game.is_none() || target.game_found) {
             overlay.show().map_err(|e| e.to_string())?;
         }
+        start_following(&app, &overlay, game, game_window_id, target, config.hidden)?;
         Ok(())
     })();
     if let Err(error) = result {
@@ -127,5 +211,21 @@ mod tests {
     fn small_window_stays_inside_client_area() {
         let p = placement(30, 50, 400, 300, true);
         assert_eq!((p.x, p.y, p.width, p.height), (30, 50, 400, 300));
+    }
+    #[test]
+    fn follows_game_movement_across_monitors() {
+        let a = follow_placement((100, 60, 1920, 1080), None);
+        let b = follow_placement((-1700, 180, 1920, 1080), None);
+        assert_eq!((b.x - a.x, b.y - a.y), (-1800, 120));
+        assert_eq!((a.width, a.height), (b.width, b.height));
+    }
+    #[test]
+    fn manual_offset_is_preserved_and_clamped_when_resized() {
+        let moved = follow_placement((100, 200, 1920, 1080), Some((80, 400)));
+        assert_eq!((moved.x, moved.y), (180, 600));
+        let small = follow_placement((100, 200, 500, 500), Some((80, 400)));
+        assert_eq!((small.x, small.y), (152, 236));
+        let restored = follow_placement((100, 200, 1920, 1080), Some((80, 400)));
+        assert_eq!(restored, moved);
     }
 }

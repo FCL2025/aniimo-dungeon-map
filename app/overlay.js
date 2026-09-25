@@ -8,11 +8,16 @@
   }
   document.querySelector('.notice').hidden = true;
   el('recognition-button').textContent = '辨識';
+  el('tracking-button').textContent = '追蹤';
   el('overlay-close').onclick = () => core.invoke('set_map_overlay', { enabled: false }).catch(error => notice(String(error)));
   el('new-session').onclick = () => event.emitTo('main', 'map-overlay-action', 'new-session');
   el('recognition-button').onclick = () => {
     el('recognition-button').disabled = true;
     event.emitTo('main', 'map-overlay-action', 'recognition').catch(error => { el('recognition-button').disabled = false; notice(String(error)); });
+  };
+  el('tracking-button').onclick = () => {
+    el('tracking-button').disabled = true;
+    event.emitTo('main', 'map-overlay-action', 'tracking').catch(error => { el('tracking-button').disabled = false; notice(String(error)); });
   };
   el('map-title').onmousedown = e => { if (e.button === 0) { e.preventDefault(); core.invoke('drag_window').catch(error => notice(String(error))); } };
   window.overlayReady = event.listen('map-view-state', ({ payload: state }) => {
@@ -32,9 +37,13 @@
     el('recognition-button').setAttribute('aria-checked', String(state.recognition));
     el('recognition-button').title = state.recognition ? '關閉辨識' : '開啟辨識';
     el('recognition-button').disabled = state.recognitionBusy;
+    el('tracking-button').setAttribute('aria-checked', String(!!state.trackingEnabled));
+    el('tracking-button').title = state.trackingEnabled ? '關閉人物追蹤' : '開啟人物追蹤';
+    el('tracking-button').disabled = state.trackingBusy;
+    window.dispatchEvent(new Event('tracking-ui'));
     const noticeKey = JSON.stringify([state.map, state.status, state.statusState]);
     if (noticeKey !== lastNotice && state.statusTitle) notice(state.statusTitle);
     lastNotice = noticeKey;
   }).then(() => event.emitTo('main', 'map-overlay-ready')).catch(error => notice('無法同步主視窗：' + String(error)));
-  setInterval(() => { const point = window.getTrackingSnapshot?.(); if (point && !point.stale && Date.now() - point.at > 4000) window.dispatchEvent(new CustomEvent('tracking-stale')); }, 1000);
+  setInterval(() => { const point = window.getTrackingSnapshot?.(); if (point && !point.stale && Date.now() - point.at > 1500) window.dispatchEvent(new CustomEvent('tracking-stale')); }, 250);
 })();

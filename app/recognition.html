@@ -1,6 +1,8 @@
 <details id="recognition-settings">
-  <summary>辨識設定與候選</summary>
+  <summary>辨識、追蹤設定與候選</summary>
   <p class="small">開啟辨識後先跟隨第一名，達 200 點就鎖定本場；按「新一場」解除。</p>
+  <p class="small">選定地圖後可關閉辨識、開啟「追蹤」。人物追蹤獨立運作，也支援手動選圖；只顯示目前位置。</p>
+  <p id="tracking-message" class="small" role="status">人物追蹤已關閉。</p>
   <label for="game-window">遊戲視窗</label><div class="recognition-row"><select id="game-window"><option value="">自動尋找伊莫</option></select><button id="refresh-game">重新整理</button></div>
   <button id="import-map">匯入 M 地圖截圖</button><input id="map-screenshot" type="file" accept="image/png,image/jpeg,image/webp" hidden>
   <div class="recognition-result"><strong id="recognition-state">辨識已關閉</strong><p id="recognition-message" role="status">開啟上方辨識開關即可連接遊戲。</p><ol id="recognition-candidates" aria-label="候選地宮"></ol><p id="recognition-timing" class="small"></p></div>

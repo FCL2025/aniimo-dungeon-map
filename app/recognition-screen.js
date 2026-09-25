@@ -6,11 +6,13 @@
     let ab=0,aa=0,bb=0;for(let i=0;i<n;i++){const x=a[i]-ma,y=b[i]-mb;ab+=x*y;aa+=x*x;bb+=y*y;}
     return aa&&bb?ab/Math.sqrt(aa*bb):0;
   }
-  function inspect(bitmap){
+  function relativeRegion(region,source=[0,0,1,1]){return [(region[0]-source[0])/source[2],(region[1]-source[1])/source[3],region[2]/source[2],region[3]/source[3]];}
+  function inspect(bitmap,source=[0,0,1,1]){
     const spec=root.MAP_HEADER,canvas=new OffscreenCanvas(32,18),ctx=canvas.getContext('2d',{willReadFrequently:true});
     const [x,y,w,h]=spec.region;let headerScore=0;
     for(const dx of [-2,0,2])for(const dy of [-2,0,2]){
-      ctx.drawImage(bitmap,(x+dx/1920)*bitmap.width,(y+dy/1080)*bitmap.height,w*bitmap.width,h*bitmap.height,0,0,32,18);
+      const r=relativeRegion([x+dx/1920,y+dy/1080,w,h],source);
+      ctx.drawImage(bitmap,r[0]*bitmap.width,r[1]*bitmap.height,r[2]*bitmap.width,r[3]*bitmap.height,0,0,32,18);
       const p=ctx.getImageData(0,0,32,18).data,values=[];
       for(let i=0;i<p.length;i+=4)values.push((p[i]+p[i+1]+p[i+2])/3);
       headerScore=Math.max(headerScore,correlation(values,spec.values));
@@ -41,6 +43,6 @@
     }
     shift(){return this.items.shift();}
   }
-  const api={inspect,similar,correlation,FrameQueue};
+  const api={inspect,similar,correlation,FrameQueue,relativeRegion};
   if(typeof module==='object'&&module.exports)module.exports=api;else root.MapScreen=api;
 })(typeof self==='object'?self:globalThis);
