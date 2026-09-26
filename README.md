@@ -1,6 +1,6 @@
 # 伊莫搶蛋地圖
 
-桌面本地版：**[開啟 Windows x64 EXE · 0.2.13 測試版](dist/AniimoDungeonMap-0.2.13-windows-x64-portable/AniimoDungeonMap.exe)**。不需要安裝本工具，地圖、點位、遊戲圖示與辨識引擎已內嵌。依使用者偏好，之後預設只輸出可直接開啟的本地應用，明確需要時才建立 ZIP。
+桌面本地版：**[下載 Windows x64 EXE · 0.2.13 測試版](https://github.com/FCL2025/aniimo-dungeon-map/releases/download/v0.2.13/AniimoDungeonMap.exe)**。使用說明、第三方授權與 SHA-256 校驗檔見 [GitHub Release](https://github.com/FCL2025/aniimo-dungeon-map/releases/tag/v0.2.13)。不需要安裝本工具，地圖、點位、遊戲圖示與辨識引擎已內嵌。依使用者偏好，之後預設只輸出可直接開啟的本地應用，明確需要時才建立 ZIP。
 
 0.2.13 精簡主視窗左上角：不再顯示「搶蛋大作戰」、地宮編號與「手動選圖」等狀態，側欄切換改為方形圖示按鈕，保留滑鼠提示與無障礙名稱。
 
