@@ -84,7 +84,6 @@
         report(payload ? '覆蓋地圖已隱藏，可點擊下方遊戲。按 F1 恢復；辨識與追蹤繼續運作。' : '覆蓋地圖已恢復。按 F1 可再次隱藏。');
       }),
       events.listen('map-overlay-action', ({ payload }) => {
-        if (payload === 'new-session') el('new-session').click();
         if (payload === 'recognition') el('recognition-button').click();
         if (payload === 'tracking') el('tracking-button').click();
         publishOverlay();

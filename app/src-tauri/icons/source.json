@@ -1,0 +1,9 @@
+{
+  "name": "珍藏·不朽晶鑽蛋",
+  "itemId": 5900509,
+  "resourceVersion": "3595896",
+  "resourcePath": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_Grabegg_DiamondEgg_Pink.png",
+  "sourceBundleHash": "46550e44bb1d11420ca1f220767743da",
+  "sha256": "207903390b481280358082b5dab7b3ccbb64faa0912cadcd37ae462269759320",
+  "note": "Original transparent 256x256 PNG copied byte-for-byte. ICO contains resized versions; no redraw or recoloring."
+}

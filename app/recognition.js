@@ -20,7 +20,7 @@
   function trackingMessage(text){el('tracking-message').textContent=text;}
   function renderSwitch(){
     for(const [id,on,label] of [['recognition-button',running,'辨識'],['tracking-button',trackingRunning,'追蹤']]){
-      el(id).textContent=label+'：'+(on?'開':'關');el(id).title=(on?'關閉':'開啟')+(label==='辨識'?'地圖辨識':'小地圖人物追蹤');
+      el(id).textContent=label+'：'+(on?'開':'關');el(id).title=label==='辨識'?(on?'關閉地圖辨識':'重新辨識本場地宮'):(on?'關閉':'開啟')+'小地圖人物追蹤';
       el(id).setAttribute('aria-checked',String(on));el(id).disabled=changing;
     }
     el('game-window').disabled=capturing||changing;el('map').disabled=running&&!!pinned;el('import-map').disabled=changing;
@@ -129,9 +129,10 @@
     if(!capturing||token!==sessionToken)return;
     try{
       const now=Date.now(),requestFrame=(trackingRunning||running&&!pinned||previewOpen())&&now>=nextCaptureAt;if(requestFrame)nextCaptureAt=now+(trackingRunning?100:1000);
+      const generation=importToken;
       const reply=await invoke('capture_frame',{after:sequence,requestFrame});if(!capturing||token!==sessionToken)return;burstUntil=reply.burstUntil||0;mapKeyAt=reply.mapKeyAt||0;
       if(!reply.running)throw Error(reply.message||'遊戲擷取已結束，請重新開啟。');
-      if(reply.frame){sequence=reply.frame.sequence;stats.captured++;await offer({...reply.frame,source:'live'});}if(reply.message&&trackingRunning)trackingMessage(reply.message);
+      if(reply.frame){sequence=reply.frame.sequence;if(generation===importToken){stats.captured++;await offer({...reply.frame,source:'live'});}}if(reply.message&&trackingRunning)trackingMessage(reply.message);
     }catch(error){if(token===sessionToken)captureFailure(error);return;}
     if(capturing&&token===sessionToken)pollTimer=setTimeout(()=>poll(token),trackingRunning?25:100);
   }
@@ -140,8 +141,14 @@
     try{
       if(!invoke)throw Error('即時擷取需桌面版；可在側欄匯入 M 地圖截圖。');
       if(kind==='map'){
-        running=!running;importToken++;if(running&&!pinned)initializeMap();else if(!running)disposeMap();
-        message(running?'辨識已開啟':'辨識已關閉',pinned?`保留地宮 ${pinned}；人物追蹤由「追蹤」開關控制。`:'地圖辨識與人物追蹤可分別開關。',pinned?'locked':'waiting');
+        running=!running;importToken++;
+        if(running){
+          pinned=null;selected=null;lastResult=null;lastFrame=null;burstUntil=0;mapKeyAt=0;nextCaptureAt=0;
+          disposeMap();disposeTracker();clearTracking();
+          el('recognition-candidates').replaceChildren();el('recognition-timing').textContent='';
+          initializeMap();if(trackingRunning)initializeTracker();
+          message('重新辨識本場','已清除上一場鎖定，請開啟遊戲 M 地圖。');
+        }else{disposeMap();message('辨識已關閉',pinned?`保留地宮 ${pinned}供追蹤；再次開啟辨識會重新判斷本場。`:'可手動選圖，或再次開啟辨識。',pinned?'locked':'waiting');}
       }else{trackingRunning=!trackingRunning;if(trackingRunning)initializeTracker();else{disposeTracker();clearTracking();trackingMessage('人物追蹤已關閉。');}}
       await syncCapture();
     }catch(error){captureFailure(error);}finally{changing=false;renderSwitch();}
@@ -151,11 +158,7 @@
     if(!selectingMap){pinned=null;selected=Number(el('map').value);disposeMap();if(running)initializeMap();}
     clearTracking();if(trackingRunning)initializeTracker();nextCaptureAt=0;renderSwitch();if(capturing)syncCapture().catch(captureFailure);
   });
-  function reset(){
-    importToken++;pinned=null;selected=null;lastResult=null;disposeMap();trackingRunning=false;disposeTracker();clearTracking();el('recognition-candidates').replaceChildren();el('recognition-timing').textContent='';
-    if(running)initializeMap();renderSwitch();syncCapture().catch(captureFailure);trackingMessage('選定新地圖後，重新開啟人物追蹤。');message('新一場','已清除本場。辨識或手動選圖後，再開啟「追蹤」。');
-  }
-  el('new-session').onclick=reset;el('refresh-game').onclick=()=>refresh().catch(e=>message('無法尋找遊戲',String(e)));
+  el('refresh-game').onclick=()=>refresh().catch(e=>message('無法尋找遊戲',String(e)));
   el('recognition-settings').ontoggle=()=>{if(el('recognition-settings').open){refresh().catch(()=>{});drawPreview();}if(capturing)syncCapture().catch(captureFailure);};
   el('capture-details').ontoggle=()=>{drawPreview();if(capturing)syncCapture().catch(captureFailure);};
   el('import-map').onclick=()=>el('map-screenshot').click();

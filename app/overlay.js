@@ -10,7 +10,6 @@
   el('recognition-button').textContent = '辨識';
   el('tracking-button').textContent = '追蹤';
   el('overlay-close').onclick = () => core.invoke('set_map_overlay', { enabled: false }).catch(error => notice(String(error)));
-  el('new-session').onclick = () => event.emitTo('main', 'map-overlay-action', 'new-session');
   el('recognition-button').onclick = () => {
     el('recognition-button').disabled = true;
     event.emitTo('main', 'map-overlay-action', 'recognition').catch(error => { el('recognition-button').disabled = false; notice(String(error)); });
@@ -37,7 +36,7 @@
     el('live-status').textContent = state.status; el('live-status').title = state.statusTitle;
     el('live-status').dataset.state = state.statusState || 'waiting';
     el('recognition-button').setAttribute('aria-checked', String(state.recognition));
-    el('recognition-button').title = state.recognition ? '關閉辨識' : '開啟辨識';
+    el('recognition-button').title = state.recognition ? '關閉辨識' : '重新辨識本場地宮';
     el('recognition-button').disabled = state.recognitionBusy;
     el('tracking-button').setAttribute('aria-checked', String(!!state.trackingEnabled));
     el('tracking-button').title = state.trackingEnabled ? '關閉人物追蹤' : '開啟人物追蹤';

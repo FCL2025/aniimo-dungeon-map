@@ -9,6 +9,7 @@
   const selected = () => [...document.querySelectorAll('[data-category]:checked')].map(e => e.dataset.category);
   if (phase === 'main-open') {
     await window.desktopReady;
+    if(document.body.classList.contains('sidebar-collapsed')){el('sidebar-toggle').click();await delay(400);}
     assert((await windows()).length === 1, 'Overlay opened without clicking map mode');
     window.testMainBefore = { size: await native.innerSize(), position: await native.outerPosition() };
     el('map').value = '20036'; el('map').dispatchEvent(new Event('change', { bubbles: true }));
@@ -56,16 +57,15 @@
     assert(same(selected(), ['chest_glass']), 'Live filter updates not synced');
     assert(el('player-status').dataset.state === 'stale' && tracking.stale, 'Lost tracking still appears live');
     assert(scale === testZoom, 'Filter updates reset zoom');
-    el('new-session').click(); await delay(500);
-    assert(el('locate-player').disabled && tracking === null, 'Overlay new-session did not reset main tracking');
+    assert(!el('new-session'), 'Removed new-session control remains in the overlay');
     setTimeout(() => el('overlay-close').click(), 200);
-    return { phase, passed: true, staleSynced: true, newSessionSynced: true, closing: true };
+    return { phase, passed: true, staleSynced: true, newSessionRemoved: true, closing: true };
   }
   if (phase === 'main-final') {
     for (let i = 0; i < 40 && (await windows()).length !== 1; i++) await delay(50);
     assert((await windows()).length === 1, 'Closing overlay also closed main or left an orphan');
     assert(el('compact').getAttribute('aria-pressed') === 'false', 'Main toggle not reset by overlay close');
-    assert(tracking === null && !window.recognitionStatus().pinned, 'Session reset was not relayed');
+    assert(tracking?.stale && !window.recognitionStatus().pinned, 'Closing overlay changed the main tracking state');
     assert(same(await native.innerSize(), testMainBefore.size), 'Main geometry changed');
     el('compact').click(); await delay(800);
     assert((await windows()).length === 2, 'Overlay cannot reopen');

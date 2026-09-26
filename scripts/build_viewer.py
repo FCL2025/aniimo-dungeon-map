@@ -2,6 +2,7 @@
 import json
 from pathlib import Path
 import shutil
+from app_icons import stage_app_icons
 
 ROOT = Path(__file__).resolve().parent.parent
 SOURCE = ROOT / 'exports/grab-eggs-data'
@@ -56,6 +57,7 @@ def build(source=SOURCE):
     for file in (ROOT / 'scripts/data_viewer').iterdir():
         if file.is_file():
             shutil.copyfile(file, source / file.name)
+    stage_app_icons(source)
     print(f'Viewer: {len(maps)} maps, {sum(len(m["pins"]) for m in maps)} candidates')
 
 

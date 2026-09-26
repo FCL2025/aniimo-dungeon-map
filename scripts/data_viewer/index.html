@@ -3,6 +3,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>搶蛋地圖 · 點位解析</title>
+<link rel="icon" href="favicon.ico" sizes="16x16 24x24 32x32 48x48 64x64 128x128 256x256">
+<link rel="icon" type="image/png" sizes="256x256" href="favicon.png">
 <link rel="stylesheet" href="viewer.css">
 <body>
 <aside>
@@ -23,8 +25,7 @@
   <div class="mapbar"><div><span class="eyebrow" id="map-id"></span><h2 id="map-title"></h2></div><div class="tools"><button id="zoom-out" aria-label="縮小地圖">−</button><button id="fit">符合視窗</button><button id="zoom-in" aria-label="放大地圖">＋</button></div></div>
   <p class="notice">候選位置不代表當場一定出現。切換難度會篩選蛋巢及其中的怪物模組；其他點位保留各候選群組。</p>
   <p id="icon-status" role="status"></p>
-  <div class="stage"><canvas id="map-canvas" tabindex="0" aria-label="地宮候選點地圖。可拖曳、滾輪縮放，或使用方向鍵與加減鍵。下方另有可操作的標記清單。"></canvas><div id="load-status" role="status"></div><div class="canvas-caption">拖曳移動 / 滾輪縮放 / 點選標記查看來源</div></div>
-  <section class="selection"><div id="selected" aria-live="polite">點選地圖上的標記，查看名稱、位置與候選群組。</div><details id="list"><summary>標記清單 <span id="visible-count"></span></summary><div id="pin-list"></div></details></section>
+  <div class="stage"><canvas id="map-canvas" tabindex="0" aria-label="地宮候選點地圖。可拖曳、滾輪縮放，或使用方向鍵與加減鍵。"></canvas><div id="load-status" role="status"></div></div>
 </main>
 <noscript>請啟用 JavaScript，或直接開啟 candidates.csv 檢視點位。</noscript>
 <script src="data.js"></script><script src="viewer.js"></script>

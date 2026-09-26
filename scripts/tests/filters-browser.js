@@ -44,7 +44,7 @@
   // Pointerup tests the viewer's hit detection without artificial pointer capture.
   drag = { x: point.clientX, y: point.clientY, tx, ty };
   el('map-canvas').dispatchEvent(new PointerEvent('pointerup', point));
-  assert(selected?.id === target.id && el('selected').textContent.includes('金色石棺'), 'Enlarged hit area or source detail failed');
+  assert(selected?.id === target.id, 'Enlarged hit area failed');
   const summary = { maps: 0, combinations: 0, categories: 8, wheel: true, iconScale: true, enlargedHitArea: true };
   for (const map of DUNGEON_DATA.maps) {
     change('map', map.id);

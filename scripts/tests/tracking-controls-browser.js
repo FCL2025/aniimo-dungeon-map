@@ -20,12 +20,15 @@
   }}};
   w.addEventListener('tracking-update',e=>positions.push(e.detail));
   try{
-    w.eval(await (await fetch('recognition.js')).text());
+    await new Promise((resolve,reject)=>{
+      const script=d.createElement('script');script.src=new URL('recognition.js',location.href).href;
+      script.onload=resolve;script.onerror=()=>reject(Error('Controller script failed to load'));d.body.append(script);
+    });
     const state=()=>w.recognitionStatus(),count=name=>calls.filter(c=>c.name===name).length;
     await el('tracking-button').onclick();await until(()=>state().trackingReady);
     assert(state().trackingRunning&&!state().running&&state().capturing,'Tracking-only startup failed');
     assert(workers.length===1&&workers[0].url==='tracking-worker.js','Tracking startup initialized 31-map recognition');
-    const tracker=workers[0],mapId=Number(el('map').value),time=Date.now();
+    let tracker=workers[0];const mapId=Number(el('map').value),time=Date.now();
     frames.push(...[0,1,2].map(i=>({sequence:i+1,capturedAt:time+i,image:'tracking-only-frame',sourceRegion:[.04,.03,.11,.20]})));
     await until(()=>state().stats.captured===3);
     assert(state().trackingQueueLength===1,'Tracking queue grew beyond latest frame');
@@ -35,6 +38,8 @@
     tracker.reply({type:'result',request:latest.request,mapId,capturedAt:latest.capturedAt,elapsedMs:20,location:{mapId,pixel:[850,1250],inliers:20}});
     await el('recognition-button').onclick();await until(()=>state().ready);
     assert(state().running&&state().trackingRunning&&count('start_capture')===1,'Modes did not share one capture session');
+    assert(tracker.terminated&&positions.at(-1)===null,'Restart kept the previous tracker or position');
+    tracker=workers.filter(x=>x.url==='tracking-worker.js').at(-1);
     const recognizer=workers.find(x=>x.url==='recognition-worker.js');
     recognizer.reply({type:'result',request:0,ranked:[],locked:mapId,selected:mapId,observations:1,elapsedMs:1});
     await el('recognition-button').onclick();
@@ -43,18 +48,26 @@
     assert(calls.filter(c=>c.name==='configure_capture').at(-1).args.region!==null,'Tracking-only capture was not cropped');
     const received=positions.filter(Boolean).length;
     frames.push({sequence:4,capturedAt:Date.now(),image:'tracking-only-frame',sourceRegion:[.04,.03,.11,.2]});
-    await until(()=>tracker.messages.filter(m=>m.type==='track').length===3);
+    await until(()=>tracker.messages.filter(m=>m.type==='track').length===1);
     const next=tracker.messages.at(-1);tracker.reply({type:'result',request:next.request,mapId,capturedAt:next.capturedAt,elapsedMs:20,location:{mapId,pixel:[860,1250],inliers:20}});
     assert(positions.filter(Boolean).length===received+1,'No positions after recognition was closed');
     await el('tracking-button').onclick();assert(!state().capturing&&count('stop_capture')===1,'Both off did not stop capture');
-    await el('recognition-button').onclick();await el('tracking-button').onclick();await el('tracking-button').onclick();
+    await el('recognition-button').onclick();await until(()=>state().ready);
+    assert(state().pinned===null&&state().selected===null&&state().lastResult===null,'Recognition restart retained the old lock/results');
+    assert(el('recognition-candidates').children.length===0&&el('recognition-timing').textContent==='','Recognition restart retained old candidates');
+    recognizer.reply({type:'result',request:0,ranked:[],locked:mapId,selected:mapId,observations:1,elapsedMs:1});
+    assert(state().pinned===null,'A terminated recognizer relocked the previous map');
+    await el('tracking-button').onclick();await el('tracking-button').onclick();
     assert(state().running&&!state().trackingRunning&&state().capturing&&count('stop_capture')===1,'Turning tracking off stopped recognition');
     await el('recognition-button').onclick();el('map').value='20036';el('map').dispatchEvent(new w.Event('change'));
     await el('tracking-button').onclick();await until(()=>state().trackingReady);
     assert(state().trackingMap===20036&&!state().running,'Manual map tracking failed');
-    el('new-session').onclick();await until(()=>!state().capturing);
-    assert(!state().trackingRunning&&positions.at(-1)===null,'New session retained old position');
-    return {passed:true,independentSwitches:true,oneCaptureSession:true,latestFrameOnly:true,positionsAfterRecognitionOff:true,manualMap:true,newSessionClearsPosition:true};
+    await el('recognition-button').onclick();await until(()=>state().ready&&state().trackingReady);
+    assert(state().trackingRunning&&positions.at(-1)===null,'Restart failed to clear position while preserving tracking toggle');
+    assert(!el('new-session'),'Removed new-session button remains');
+    await el('recognition-button').onclick();await el('tracking-button').onclick();
+    await until(()=>!state().capturing);
+    return {passed:true,independentSwitches:true,oneCaptureSession:true,latestFrameOnly:true,positionsAfterRecognitionOff:true,manualMap:true,restartClearsLockAndPosition:true,lateResultIgnored:true};
   }catch(error){throw Error(String(error)+' '+JSON.stringify({state:w.recognitionStatus?.(),calls,workers:workers.map(x=>({url:x.url,messages:x.messages,terminated:x.terminated})),message:el('recognition-message').textContent}));}
   finally{iframe.remove();}
 })()
