@@ -6,7 +6,8 @@ body.desktop-app{height:100vh;grid-template-columns:280px minmax(0,1fr);overflow
 .desktop-app .mapbar h2{font-size:19px}.desktop-app .tools{gap:5px;flex-wrap:wrap}
 .desktop-app .tools button{font-size:12px;padding:6px 8px}
 .desktop-app .mapbar-start{display:flex;align-items:center;gap:14px;min-width:0}
-.desktop-app #sidebar-toggle{display:flex;align-items:center;gap:6px;flex-shrink:0;font-size:12px;padding:7px 8px;white-space:nowrap}
+.desktop-app #sidebar-toggle{display:flex;align-items:center;justify-content:center;flex-shrink:0;width:34px;height:34px;padding:7px}
+.desktop-app:not(.overlay) .map-heading{display:none}
 .desktop-app.sidebar-collapsed{grid-template-columns:minmax(0,1fr)}
 .desktop-app #sidebar[hidden]{display:none}
 .sidebar-collapsed .sidebar-arrow{transform:translateX(29px) scaleX(-1)}

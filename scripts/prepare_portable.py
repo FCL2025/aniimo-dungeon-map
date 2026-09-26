@@ -57,7 +57,7 @@ start = html.index('<details><summary>資料與限制</summary>')
 end = html.index('</details>', start) + len('</details>')
 html = html[:start]+'''<details><summary>資料與限制</summary><p>可手動選圖，或使用測試版畫面辨識。迷霧與相似房間可能無法判定；候選點不代表當場一定出現。</p><p id="gaps"></p></details>'''+html[end:]
 html = html.replace('資源版本 3595896 · 本機資料', f'可攜版 {VERSION} · 資源 3595896')
-html = html.replace('<div><span class="eyebrow" id="map-id"></span><h2 id="map-title"></h2></div>', '''<div class="mapbar-start"><button id="sidebar-toggle" aria-expanded="true" aria-controls="sidebar" title="收合側欄"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 4v16"/><path class="sidebar-arrow" d="m16 9-3 3 3 3"/></svg><span id="sidebar-toggle-label">收合側欄</span></button><div class="map-heading"><span class="eyebrow" id="map-id"></span><div class="session-heading"><h2 id="map-title" title="覆蓋模式可拖曳此處移動視窗"></h2><span id="live-status" role="status"></span></div></div></div>''')
+html = html.replace('<div><span class="eyebrow" id="map-id"></span><h2 id="map-title"></h2></div>', '''<div class="mapbar-start"><button id="sidebar-toggle" aria-expanded="true" aria-controls="sidebar" aria-label="收合側欄" title="收合側欄"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 4v16"/><path class="sidebar-arrow" d="m16 9-3 3 3 3"/></svg></button><div class="map-heading"><span class="eyebrow" id="map-id"></span><div class="session-heading"><h2 id="map-title" title="覆蓋模式可拖曳此處移動視窗"></h2><span id="live-status" role="status"></span></div></div></div>''')
 html = html.replace('<div class="tools">', '<div class="tools"><button id="recognition-button" class="live-switch" role="switch" aria-checked="false">辨識：關</button><button id="tracking-button" class="live-switch" role="switch" aria-checked="false">追蹤：關</button><button id="topmost" aria-pressed="true">置頂：開</button><button id="compact" aria-pressed="false">地圖模式</button>')
 html = html.replace('<button id="zoom-in" aria-label="放大地圖">＋</button>', '''<button id="zoom-in" aria-label="放大地圖">＋</button><div class="app-menu"><button id="menu-button" aria-expanded="false" aria-controls="menu-panel">選單 <span aria-hidden="true">▾</span></button><div id="menu-panel" hidden><a id="discord-link" href="https://discord.gg/Yh235uyafn" target="_blank" rel="noopener noreferrer" title="在瀏覽器開啟搶蛋 Discord">加入搶蛋 Discord <span aria-hidden="true">↗</span></a><button id="help-button">說明</button></div></div>''')
 notice_start = html.index('  <p class="notice">')
@@ -69,13 +69,13 @@ html = html.replace('<fieldset>', (ROOT/'app/recognition.html').read_text(encodi
 html = html.replace('<noscript>', f'''<dialog id="help-dialog"><h2>伊莫地城地圖 · 可攜版 {VERSION}</h2>
 <p>選擇地圖、惡夢或混沌難度，再勾選想看的候選點。怪物只收錄首領級幽黯星法師。</p>
 <p>寶箱分為金色與琉璃，可分別勾選。滑鼠停在地圖或難度選單上可用滾輪切換；側欄「圖示大小」可調整至 75–250%，會自動保存並同步到覆蓋地圖。</p>
-<p>左上角「收合側欄／展開側欄」可切換左側資訊，視窗尺寸不變，地圖會符合剩餘空間，並記住收合狀態。右上角「選單」可加入搶蛋 Discord 或開啟本說明。</p>
+<p>左上角側欄圖示可切換左側資訊，滑鼠停留可查看「收合側欄／展開側欄」提示。視窗尺寸不變，地圖會符合剩餘空間，並記住收合狀態。右上角「選單」可加入搶蛋 Discord 或開啟本說明。</p>
 <p>地圖以地宮編號識別。標記使用遊戲原始圖示，首領使用星法師肖像。</p>
 <p>「置頂」調整主視窗。只有按「地圖模式」才會開啟獨立的覆蓋地圖，主視窗會保留，可繼續調整篩選或最小化。再按「地圖模式」，或按覆蓋地圖右上 ×，即可關閉覆蓋地圖；關閉主視窗則一起結束。</p>
 <p>開啟地圖模式後，按 F1 暫時隱藏覆蓋地圖，再按 F1 恢復。遊戲在前景、主視窗最小化時也能使用；隱藏時可點擊下方遊戲，位置、縮放、篩選與追蹤狀態均保留。長按只切換一次。完全關閉地圖模式後會釋放 F1，重新開啟先按「地圖模式」。若 F1 被其他程式占用，工具會提示，仍可用原本按鈕關閉地圖。</p>
 <p>覆蓋地圖是 448 × 464 像素的透明無邊框視窗，背景與工具列不再鋪底色；1920 × 1080 遊戲畫面預設放在左側 (4, 496)。會持續跟隨遊戲視窗移動，遊戲最小化時隱藏、還原後跟回。拖曳地宮編號可調整相對位置，遊戲移動後仍保留；縮小遊戲時會限制在視窗內。尚未開啟遊戲時先放在螢幕左側，找到遊戲後自動跟隨。</p>
 <p>滾輪縮放、拖曳地圖平移。遊戲鎖住滑鼠時先按 Alt 顯示游標，再操作覆蓋地圖。兩個視窗同步地圖、篩選與人物位置，以及辨識／追蹤開關；取得人物位置後才顯示 ◎ 置中按鈕。</p>
-<p>一般提示顯示 5 秒後消失，本場狀態保留在地宮編號旁。候選位置不代表當場一定出現；切換難度會篩選蛋巢及其中的怪物模組，其他點位保留各候選群組。</p>
+<p>主視窗工具列不顯示模式名稱、地宮編號與本場狀態，可在側欄選圖及查看辨識結果。覆蓋地圖仍顯示可拖曳的地宮編號與本場狀態。一般提示顯示 5 秒後消失。候選位置不代表當場一定出現；切換難度會篩選蛋巢及其中的怪物模組，其他點位保留各候選群組。</p>
 <p>遊戲建議使用無邊框視窗或視窗模式；獨佔全螢幕下的覆蓋尚未驗證。</p>
 <p>「辨識」是工具列開關，開啟即自動連接伊莫，不開彈窗。未鎖定時跟隨當前第一名預覽，達 200 個吻合點（含）即固定本場。每次重新開啟辨識都會清除上一場鎖定與舊候選，重新讀取本場。側欄「辨識、追蹤設定與候選」可匯入截圖或調整擷取範圍。</p>
 <p>遊戲在前景時按 M，會短暫加強取樣 2.4 秒、最多每秒 5 張；平常未鎖定時約每秒 1 張。重複畫面會略過，鎖定後只追蹤該地宮的位置。M 按鍵只用來觸發取樣，仍會檢查畫面是否為地圖。</p>

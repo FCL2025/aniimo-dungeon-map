@@ -14,7 +14,7 @@
     el('sidebar').hidden = sidebarCollapsed;
     el('sidebar-toggle').setAttribute('aria-expanded', String(!sidebarCollapsed));
     el('sidebar-toggle').title = sidebarCollapsed ? '展開側欄' : '收合側欄';
-    el('sidebar-toggle-label').textContent = el('sidebar-toggle').title;
+    el('sidebar-toggle').setAttribute('aria-label', el('sidebar-toggle').title);
   }
   function setMenu(open, restoreFocus = false) {
     el('menu-panel').hidden = !open;
