@@ -2,7 +2,7 @@
 (() => {
   const invoke = window.__TAURI__?.core.invoke, events = window.__TAURI__?.event;
   const el = id => document.getElementById(id), key = 'aniimo-dungeon-preferences-v1';
-  let topmost = true, mapOverlay = false, sidebarCollapsed = false, restoring = true, noticeTimer;
+  let topmost = true, mapOverlay = false, overlayPaused = false, hotkeyError = '', sidebarCollapsed = false, restoring = true, noticeTimer;
   const report = window.showMapNotice = (text, duration = 5000) => {
     clearTimeout(noticeTimer); document.querySelector('.notice').hidden = true;
     el('app-status').textContent = text; el('app-status').hidden = false;
@@ -24,12 +24,12 @@
   function renderButtons() {
     el('topmost').textContent = topmost ? '置頂：開' : '置頂：關';
     el('topmost').setAttribute('aria-pressed', String(topmost));
-    el('compact').textContent = mapOverlay ? '地圖模式：開' : '地圖模式';
+    el('compact').textContent = mapOverlay ? overlayPaused ? '地圖已隱藏 · F1' : hotkeyError ? '地圖模式：開' : '地圖模式：開 · F1' : '地圖模式';
     el('compact').setAttribute('aria-pressed', String(mapOverlay));
-    el('compact').title = mapOverlay ? '關閉獨立覆蓋地圖' : '開啟 448 × 464 的獨立覆蓋地圖';
+    el('compact').title = mapOverlay ? hotkeyError || (overlayPaused ? '按 F1 恢復覆蓋地圖；點此完全關閉' : '按 F1 暫時隱藏覆蓋地圖；點此完全關閉') : '開啟獨立覆蓋地圖，之後可用 F1 隱藏／恢復';
   }
   function preferences() {
-    return { map: el('map').value, difficulty: el('difficulty').value, quality: el('quality').value,
+    return { map: el('map').value, difficulty: el('difficulty').value, iconSize: Number(el('icon-size').value),
       supplements: el('supplements').checked,
       categories: [...document.querySelectorAll('[data-category]:checked')].map(e => e.dataset.category),
       topmost, compact: false, sidebarCollapsed };
@@ -66,16 +66,23 @@
     if (!invoke) { report('地圖模式需在桌面應用內使用。'); return; }
     el('compact').disabled = true;
     try {
-      mapOverlay = value; renderButtons();
+      mapOverlay = value; overlayPaused = false; hotkeyError = ''; renderButtons();
       const placement = await invoke('set_map_overlay', { enabled: value, gameWindowId: el('game-window').value || null });
-      if (value) { publishOverlay(); report(placement?.gameFound ? '透明覆蓋地圖已開啟，會跟隨遊戲視窗移動；拖曳地宮編號可調整相對位置。' : '透明覆蓋地圖已開啟；找到伊莫視窗後會自動跟隨，拖曳地宮編號可調整位置。'); }
+      if (value) {
+        hotkeyError = placement?.hotkeyError || ''; renderButtons(); publishOverlay();
+        report(hotkeyError || '覆蓋地圖已開啟。按 F1 隱藏／恢復，隱藏時可點擊下方遊戲；拖曳地宮編號可調整位置。', hotkeyError ? 10000 : 5000);
+      }
     } catch (error) { mapOverlay = false; renderButtons(); report('無法切換地圖模式：' + String(error)); }
     finally { el('compact').disabled = false; }
   }
   if (events) {
     window.overlayBridgeReady = Promise.all([
       events.listen('map-overlay-ready', () => { mapOverlay = true; renderButtons(); publishOverlay(); }),
-      events.listen('map-overlay-closed', () => { mapOverlay = false; renderButtons(); }),
+      events.listen('map-overlay-closed', () => { mapOverlay = false; overlayPaused = false; hotkeyError = ''; renderButtons(); }),
+      events.listen('map-overlay-paused', ({ payload }) => {
+        overlayPaused = payload; renderButtons();
+        report(payload ? '覆蓋地圖已隱藏，可點擊下方遊戲。按 F1 恢復；辨識與追蹤繼續運作。' : '覆蓋地圖已恢復。按 F1 可再次隱藏。');
+      }),
       events.listen('map-overlay-action', ({ payload }) => {
         if (payload === 'new-session') el('new-session').click();
         if (payload === 'recognition') el('recognition-button').click();
@@ -112,18 +119,25 @@
   el('close-help').onclick = () => el('help-dialog').close();
   el('help-dialog').addEventListener('close', () => el('menu-button').focus());
   document.addEventListener('change', save);
+  el('icon-size').addEventListener('input', save);
   for (const id of ['all', 'none']) el(id).addEventListener('click', save);
   window.desktopReady = (async () => {
     try {
       const settings = JSON.parse(localStorage.getItem(key) || 'null');
       if (settings) {
-        for (const id of ['map', 'difficulty', 'quality']) {
+        for (const id of ['map', 'difficulty']) {
           if ([...el(id).options].some(o => o.value === String(settings[id]))) el(id).value = String(settings[id]);
         }
         if (typeof settings.supplements === 'boolean') el('supplements').checked = settings.supplements;
         sidebarCollapsed = settings.sidebarCollapsed === true;
         renderSidebar();
-        if (Array.isArray(settings.categories)) for (const e of document.querySelectorAll('[data-category]')) e.checked = settings.categories.includes(e.dataset.category);
+        if (Number.isFinite(settings.iconSize)) el('icon-size').value = String(Math.min(250, Math.max(75, settings.iconSize)));
+        el('icon-size').dispatchEvent(new Event('input'));
+        // The old chest checkbox covered both types, including with quality 5 selected.
+        if (Array.isArray(settings.categories)) for (const e of document.querySelectorAll('[data-category]')) {
+          e.checked = settings.categories.includes(e.dataset.category) ||
+            (e.dataset.category.startsWith('chest_') && settings.categories.includes('chest'));
+        }
         el('map').dispatchEvent(new Event('change'));
         if (settings.topmost === false) await setPinned(false);
       }

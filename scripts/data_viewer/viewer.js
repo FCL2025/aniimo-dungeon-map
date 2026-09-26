@@ -2,7 +2,7 @@
 const data=window.DUNGEON_DATA;
 const categories=Object.fromEntries(Object.entries(data.categories).filter(([key])=>!['pot','cache'].includes(key)));
 const $=id=>document.getElementById(id);
-const colors={egg:'#f3d76d',chest:'#c39fe5',pot:'#cfa881',cache:'#aebfc5',stellarys_boss:'#87dcff',entrance:'#79e1c0',exit:'#ff8798',key_blue:'#7fbbff',key_purple:'#c78aff',key_orange:'#ffb46e',challenge:'#82d2e5'};
+const colors={egg:'#f3d76d',chest_gold:'#dfb65b',chest_glass:'#9de9f4',stellarys_boss:'#87dcff',entrance:'#79e1c0',exit:'#ff8798',key_orange:'#ffb46e',challenge:'#82d2e5'};
 const canvas=$('map-canvas'), ctx=canvas.getContext('2d');
 const mapLayer=document.createElement('canvas'),mapContext=mapLayer.getContext('2d');
 let mapDirty=true,frameRequest=0;
@@ -36,21 +36,23 @@ for(const [key,asset] of Object.entries(data.icons.assets)){
   iconImages.set(key,icon);icon.src=asset.image;
 }
 function iconElement(key){const icon=document.createElement('img');icon.className='marker-icon';icon.src=data.icons.assets[key].image;icon.alt='';icon.setAttribute('aria-hidden','true');return icon;}
-function pinSize(pin){const primary=['egg','entrance','exit','stellarys_boss'].includes(pin.category);return primary?28:Math.min(22,Math.max(14,20*Math.sqrt(scale)));}
+function pinSize(pin){const primary=['egg','entrance','exit','stellarys_boss'].includes(pin.category);return (primary?28:Math.min(22,Math.max(14,20*Math.sqrt(scale))))*Number($('icon-size').value)/100;}
+function renderIconSize(){const value=$('icon-size').value+'%';$('icon-size-value').value=value;$('icon-size').setAttribute('aria-valuetext',value);draw();}
 for(const map of data.maps){const option=document.createElement('option');option.value=map.id;option.textContent=`地宮 ${map.id}`;$('map').append(option);}
 for(const [key,name] of Object.entries(categories)){
   const label=document.createElement('label');label.className='check';
   const input=document.createElement('input');input.type='checkbox';input.checked=true;input.dataset.category=key;input.addEventListener('change',update);
   const swatch=iconElement(data.icons.categories[key]);
+  swatch.dataset.categoryIcon=key;
   const text=document.createElement('span');text.textContent=name;
   const count=document.createElement('span');count.className='count';count.id='count-'+key;
   label.append(input,swatch,text,count);$('filters').append(label);
 }
-function candidatePins(){return current.pins.filter(p=>p.difficultyCandidates.includes(Number($('difficulty').value))&&($('supplements').checked||p.provenance==='scene_reference')&&(p.category!=='chest'||p.quality>=Number($('quality').value)));}
+function candidatePins(){return current.pins.filter(p=>categories[p.category]&&p.difficultyCandidates.includes(Number($('difficulty').value))&&($('supplements').checked||p.provenance==='scene_reference'));}
 function update(){
   if(!current)return;
   const enabled=new Set([...document.querySelectorAll('[data-category]:checked')].map(x=>x.dataset.category));
-  const candidates=candidatePins();visible=candidates.filter(p=>enabled.has(p.category)).sort((a,b)=>(a.category==='chest'?-1:0)-(b.category==='chest'?-1:0));
+  const candidates=candidatePins();visible=candidates.filter(p=>enabled.has(p.category)).sort((a,b)=>Number(b.category.startsWith('chest_'))-Number(a.category.startsWith('chest_')));
   for(const key of Object.keys(categories))$('count-'+key).textContent=candidates.filter(p=>p.category===key).length;
   $('filter-total').textContent=visible.length+' 個候選';$('visible-count').textContent=`（${visible.length}）`;
   if(selected&&!visible.some(p=>p.id===selected.id)){selected=null;$('selected').textContent='點選地圖上的標記，查看名稱、位置與候選群組。';}
@@ -84,6 +86,7 @@ function paintMap(ctx){
       ctx.drawImage(icon,x-w/2,y-h/2,w,h);ctx.restore();
     }
     ctx.lineWidth=1.2;
+    if(pin.category.startsWith('chest_')){ctx.strokeStyle=colors[pin.category];ctx.beginPath();ctx.arc(x,y,r+1,0,Math.PI*2);ctx.stroke();}
     if(pin.provenance==='template_supplement'){ctx.strokeStyle=colors[pin.category];ctx.setLineDash([2,2]);ctx.beginPath();ctx.arc(x,y,r+3,0,Math.PI*2);ctx.stroke();ctx.setLineDash([]);}
   }
   if(selected){ctx.strokeStyle='#ffffff';ctx.lineWidth=2;ctx.beginPath();ctx.arc(selected.pixel[0]*scale+tx,selected.pixel[1]*scale+ty,pinSize(selected)/2+4,0,Math.PI*2);ctx.stroke();}
@@ -115,7 +118,7 @@ function selectPin(pin){
   selected=pin;$('selected').replaceChildren();
   const strong=document.createElement('strong');strong.textContent=pin.name;
   if(pin.category==='stellarys_boss')strong.textContent+='（首領候選）';
-  const info=document.createElement('span');info.textContent=` · 房間 ${pin.roomId} · ${pin.provenance==='template_supplement'?'房間模組補充，待核對':'地圖直接引用'}${pin.sandboxConfigType===2?' · 候選群組 G'+pin.sandboxLevel:''}${pin.graphId?' · 有關卡觸發條件':''}`;
+  const info=document.createElement('span');info.textContent=`${pin.originalName?' · 資料名稱：'+pin.originalName:''} · 房間 ${pin.roomId} · ${pin.provenance==='template_supplement'?'房間模組補充，待核對':'地圖直接引用'}${pin.sandboxConfigType===2?' · 候選群組 G'+pin.sandboxLevel:''}${pin.graphId?' · 有關卡觸發條件':''}`;
   const coords=document.createElement('div');coords.className='coords';coords.textContent=`像素 (${pin.pixel.map(v=>v.toFixed(1)).join(', ')}) · 世界 (${pin.world.map(v=>v.toFixed(2)).join(', ')}) · 來源 ${pin.sourceId}`;
   $('selected').append(iconElement(pin.iconKey),strong,info,coords);draw();
 }
@@ -132,7 +135,24 @@ function loadMap(){
   nextImage.src=current.image;update();fit();
 }
 $('map').addEventListener('change',loadMap);
-for(const id of ['difficulty','quality','supplements'])$(id).addEventListener('change',update);
+for(const id of ['difficulty','supplements'])$(id).addEventListener('change',update);
+for(const name of ['input','change'])$('icon-size').addEventListener(name,renderIconSize);
+// Accumulate small touchpad deltas; one mouse-wheel notch selects one option.
+const selectWheels=new WeakMap();
+document.addEventListener('wheel',event=>{
+  const select=event.target.closest?.('select');
+  if(!select||select.disabled||event.ctrlKey||event.metaKey||!event.deltaY||Math.abs(event.deltaX)>Math.abs(event.deltaY))return;
+  event.preventDefault();
+  const now=performance.now(),direction=Math.sign(event.deltaY);
+  let wheel=selectWheels.get(select);
+  if(!wheel||now-wheel.at>180||wheel.direction!==direction)wheel={delta:0,direction};
+  wheel.at=now;wheel.delta+=Math.abs(event.deltaY)*(event.deltaMode===1?40:event.deltaMode===2?200:1);selectWheels.set(select,wheel);
+  if(wheel.delta<40)return;wheel.delta=0;
+  let index=select.selectedIndex+direction;
+  while(index>=0&&index<select.options.length&&(select.options[index].disabled||select.options[index].hidden||select.options[index].parentElement.disabled))index+=direction;
+  if(index<0||index>=select.options.length)return;
+  select.selectedIndex=index;select.dispatchEvent(new Event('change',{bubbles:true}));
+},{passive:false});
 for(const [id,checked] of [['all',true],['none',false]])$(id).onclick=()=>{for(const x of document.querySelectorAll('[data-category]'))x.checked=checked;update();};
 $('zoom-in').onclick=()=>zoom(1.35);$('zoom-out').onclick=()=>zoom(1/1.35);$('fit').onclick=fit;$('list').ontoggle=()=>{if($('list').open)renderList();};
 canvas.addEventListener('wheel',event=>{event.preventDefault();const box=canvas.getBoundingClientRect();zoom(event.deltaY<0?1.12:1/1.12,event.clientX-box.left,event.clientY-box.top);},{passive:false});

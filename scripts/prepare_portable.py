@@ -5,6 +5,7 @@ import math
 from pathlib import Path
 import shutil
 from PIL import Image, ImageDraw
+from build_viewer import CATEGORIES, display_pins, display_icons
 
 ROOT = Path(__file__).resolve().parent.parent
 OUTPUT = ROOT/'app/frontend'
@@ -18,19 +19,16 @@ assert policy['monsterTypeIds'] == [11001200090]
 allowed = set(policy['sceneIds'])
 maps = []
 pin_keys = ('id', 'category', 'name', 'iconKey', 'roomId', 'sourceId', 'sandboxConfigType', 'sandboxLevel',
-            'difficultyCandidates', 'world', 'pixel', 'provenance', 'quality', 'graphId', 'isBoss')
+            'difficultyCandidates', 'world', 'pixel', 'provenance', 'quality', 'graphId', 'isBoss', 'typeId', 'originalName')
 for mid in sorted(allowed):
     original = json.loads((source/'maps'/f'{mid}.json').read_text(encoding='utf8'))
     record = {k: original[k] for k in ('id', 'size', 'bounds')}
     record['image'] = f'maps/{mid}.png'
-    record['pins'] = [{k: p[k] for k in pin_keys if k in p} for p in original['pins']
-                      if p['category'] not in ('pot', 'cache')]
+    record['pins'] = [{k: p[k] for k in pin_keys if k in p} for p in display_pins(original['pins'])]
     maps.append(record)
     shutil.copyfile(ROOT/'exports/grab-eggs-dungeons/preview'/f'UI_Img_Map_{mid}.png', OUTPUT/record['image'])
 difficulty = json.loads((source/'difficulty.json').read_text(encoding='utf8'))
 validation = json.loads((source/'validation.json').read_text(encoding='utf8'))
-from parse_dungeon_data import CATEGORIES
-from extract_marker_icons import viewer_icons
 icon_catalog = json.loads((source/'marker-icons.json').read_text(encoding='utf8'))
 (OUTPUT/'icons').mkdir(exist_ok=True)
 for asset in icon_catalog['assets'].values():
@@ -38,7 +36,7 @@ for asset in icon_catalog['assets'].values():
     assert hashlib.sha256(icon.read_bytes()).hexdigest() == asset['sha256']
     shutil.copyfile(icon, OUTPUT/asset['image'])
 assert all(p['iconKey'] in icon_catalog['assets'] for m in maps for p in m['pins'])
-data = dict(categories={k: v for k, v in CATEGORIES.items() if k not in ('pot', 'cache')}, icons=viewer_icons(icon_catalog), difficulties=difficulty['difficulties'], rewardRules=difficulty['rewardRules'],
+data = dict(categories=CATEGORIES, icons=display_icons(icon_catalog), difficulties=difficulty['difficulties'], rewardRules=difficulty['rewardRules'],
             maps=maps, validation={'missingReferences': validation['missingReferences']}, scope=policy)
 (OUTPUT/'data.js').write_text('window.DUNGEON_DATA='+json.dumps(data, ensure_ascii=False, separators=(',', ':')).replace('</', '<\\/')+';', encoding='utf8')
 for name in ('viewer.js', 'viewer.css'):
@@ -71,9 +69,11 @@ html = html.replace('<div class="stage">', '<div class="stage">' + notice + '<p 
 html = html.replace('<fieldset>', (ROOT/'app/recognition.html').read_text(encoding='utf8')+'<fieldset>', 1)
 html = html.replace('<noscript>', f'''<dialog id="help-dialog"><h2>伊莫地城地圖 · 可攜版 {VERSION}</h2>
 <p>選擇地圖、惡夢或混沌難度，再勾選想看的候選點。怪物只收錄首領級幽黯星法師。</p>
+<p>寶箱分為金色與琉璃，可分別勾選。滑鼠停在地圖或難度選單上可用滾輪切換；側欄「圖示大小」可調整至 75–250%，會自動保存並同步到覆蓋地圖。</p>
 <p>左上角「收合側欄／展開側欄」可切換左側資訊，收合後地圖會自動符合視窗，並記住收合狀態。右上角「選單」可加入搶蛋 Discord 或開啟本說明。</p>
 <p>地圖以地宮編號識別。標記使用遊戲原始圖示，首領使用星法師肖像。</p>
 <p>「置頂」調整主視窗。只有按「地圖模式」才會開啟獨立的覆蓋地圖，主視窗會保留，可繼續調整篩選或最小化。再按「地圖模式」，或按覆蓋地圖右上 ×，即可關閉覆蓋地圖；關閉主視窗則一起結束。</p>
+<p>開啟地圖模式後，按 F1 暫時隱藏覆蓋地圖，再按 F1 恢復。遊戲在前景、主視窗最小化時也能使用；隱藏時可點擊下方遊戲，位置、縮放、篩選與追蹤狀態均保留。長按只切換一次。完全關閉地圖模式後會釋放 F1，重新開啟先按「地圖模式」。若 F1 被其他程式占用，工具會提示，仍可用原本按鈕關閉地圖。</p>
 <p>覆蓋地圖是 448 × 464 像素的透明無邊框視窗，背景與工具列不再鋪底色；1920 × 1080 遊戲畫面預設放在左側 (4, 496)。會持續跟隨遊戲視窗移動，遊戲最小化時隱藏、還原後跟回。拖曳地宮編號可調整相對位置，遊戲移動後仍保留；縮小遊戲時會限制在視窗內。尚未開啟遊戲時先放在螢幕左側，找到遊戲後自動跟隨。</p>
 <p>滾輪縮放、拖曳地圖平移。遊戲鎖住滑鼠時先按 Alt 顯示游標，再操作覆蓋地圖。兩個視窗同步地圖、篩選與人物位置，以及辨識／追蹤開關；尚未取得人物位置時，◎ 按鈕保持停用。</p>
 <p>一般提示顯示 5 秒後消失，本場狀態與「新一場」保留在地宮編號旁。候選位置不代表當場一定出現；切換難度會篩選蛋巢及其中的怪物模組，其他點位保留各候選群組。</p>

@@ -53,7 +53,9 @@ fn main() {
             profile::prepare_profile(&profile, folder)?;
             let browser_args = hidden.then(|| std::env::var("WEBVIEW2_ADDITIONAL_BROWSER_ARGUMENTS").ok()).flatten()
                 .map(|args| format!("--disable-features=msWebOOUI,msPdfOOUI,msSmartScreenProtection --autoplay-policy=no-user-gesture-required {args}"));
-            app.manage(overlay::OverlayConfig { profile: profile.clone(), hidden, browser_args: browser_args.clone() });
+            // Diagnostic opt-in for native visibility tests against an offscreen fixture.
+            let hide_overlay = hidden && std::env::var_os("ANIIMO_TEST_SHOW_OVERLAY").is_none();
+            app.manage(overlay::OverlayConfig { profile: profile.clone(), hidden: hide_overlay, browser_args: browser_args.clone() });
             let mut window = WebviewWindowBuilder::new(app, "main", WebviewUrl::App("index.html".into()))
                 .title(concat!("伊莫地城地圖 · 可攜版 ", env!("CARGO_PKG_VERSION")))
                 .inner_size(1220.0, 820.0)

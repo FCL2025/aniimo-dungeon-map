@@ -6,13 +6,12 @@ import hashlib
 import json
 import math
 from pathlib import Path
-import shutil
 import zipfile
 from PIL import Image
 
 from pmdata import PMData, plain, DEFAULT_ARCHIVE, MEMBER
 from luajit_constants import constants
-from extract_marker_icons import export_icons, viewer_icons
+from extract_marker_icons import export_icons
 
 MAP_IDS = [*range(20031, 20061), 29999]
 DIFFICULTIES = {5: '惡夢', 6: '混沌'}
@@ -354,14 +353,9 @@ def export(archive, output):
                            **dict(zip(['worldX', 'worldY', 'worldZ'], p['world'])),
                            **dict(zip(['pixelX', 'pixelY'], p['pixel'])))
                 writer.writerow(row)
-    # External JS rather than fetch allows opening the audit page through file://.
-    viewer_data = dict(categories=CATEGORIES, icons=viewer_icons(icon_catalog), difficulties=DIFFICULTIES, rewardRules=reward_rules,
-                       maps=map_records, source=source, validation=validations, scope=SCOPE)
-    (output/'data.js').write_text('window.DUNGEON_DATA='+json.dumps(viewer_data, ensure_ascii=False,
-        separators=(',', ':')).replace('</', '<\\/')+';\n', encoding='utf-8')
-    for file in (Path(__file__).parent/'data_viewer').iterdir():
-        if file.is_file():
-            shutil.copyfile(file, output/file.name)
+    # Keep the full audit exports; apply the same display policy as the desktop app.
+    from build_viewer import build
+    build(output)
     print(json.dumps({k: validations[k] for k in ('mapCount', 'candidateCount', 'counts',
                                                 'missingReferences', 'outsideImage')}, ensure_ascii=False))
 

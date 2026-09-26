@@ -1,6 +1,6 @@
-use std::{path::PathBuf, sync::{Arc, Mutex, atomic::{AtomicBool, Ordering}}, time::{Duration, Instant}};
+use std::{path::PathBuf, sync::{Arc, Mutex, mpsc, atomic::{AtomicBool, Ordering}}, thread::JoinHandle, time::{Duration, Instant}};
 use tauri::{
-    AppHandle, Manager, PhysicalPosition, PhysicalSize, WebviewUrl, WebviewWindow,
+    AppHandle, Emitter, Manager, PhysicalPosition, PhysicalSize, WebviewUrl, WebviewWindow,
     WebviewWindowBuilder,
 };
 
@@ -11,11 +11,15 @@ pub struct OverlayConfig {
 }
 
 #[derive(Default)]
-pub struct FollowState(Mutex<Option<Arc<AtomicBool>>>);
+pub struct FollowState(Mutex<Option<(Arc<AtomicBool>, JoinHandle<()>)>>);
 impl FollowState {
     pub fn stop(&self) {
         if let Ok(mut current) = self.0.lock() {
-            if let Some(stop) = current.take() { stop.store(true, Ordering::Relaxed); }
+            if let Some((stop, worker)) = current.take() {
+                stop.store(true, Ordering::Relaxed);
+                // Release F1 on its registering thread before another overlay opens.
+                let _ = worker.join();
+            }
         }
     }
 }
@@ -28,6 +32,18 @@ pub struct Placement {
     width: u32,
     height: u32,
     game_found: bool,
+}
+
+#[derive(serde::Serialize)]
+#[serde(rename_all = "camelCase")]
+pub struct OverlayOpened {
+    #[serde(flatten)]
+    placement: Placement,
+    hotkey_error: Option<String>,
+}
+
+fn should_show_overlay(test_hidden: bool, paused: bool, attached: bool, game_visible: bool) -> bool {
+    !test_hidden && !paused && (!attached || game_visible)
 }
 
 fn placement(x: i32, y: i32, width: u32, height: u32, game_found: bool) -> Placement {
@@ -54,22 +70,38 @@ fn follow_placement(bounds: (i32, i32, u32, u32), offset: Option<(i32, i32)>) ->
 }
 
 fn start_following(app: &AppHandle, overlay: &WebviewWindow, mut game: Option<crate::capture::GameTarget>,
-    selected: Option<String>, initial: Placement, hidden: bool) -> Result<(), String> {
-    use windows_sys::Win32::{Foundation::RECT, UI::WindowsAndMessaging::*};
+    selected: Option<String>, initial: Placement, hidden: bool) -> Result<Option<String>, String> {
+    use windows_sys::Win32::{Foundation::RECT, UI::{WindowsAndMessaging::*,
+        Input::KeyboardAndMouse::{RegisterHotKey, UnregisterHotKey, MOD_NOREPEAT, VK_F1}}};
     let hwnd = overlay.hwnd().map_err(|e| e.to_string())?.0 as usize;
     let owner_thread = unsafe { GetWindowThreadProcessId(hwnd as _, std::ptr::null_mut()) };
     let state = app.state::<FollowState>();
     state.stop();
     let stop = Arc::new(AtomicBool::new(false));
-    *state.0.lock().map_err(|e| e.to_string())? = Some(stop.clone());
-    std::thread::Builder::new().name("overlay-follow".into()).spawn(move || {
+    let worker_stop = stop.clone();
+    let app_handle = app.clone();
+    let (ready_tx, ready_rx) = mpsc::sync_channel(1);
+    let worker = std::thread::Builder::new().name("overlay-follow".into()).spawn(move || {
+        const HOTKEY_ID: i32 = 0x414e;
+        // Thread-owned global hotkey; no hooks and no dependency on WebView focus.
+        let registered = unsafe { RegisterHotKey(std::ptr::null_mut(), HOTKEY_ID, MOD_NOREPEAT, VK_F1 as u32) } != 0;
+        let hotkey_error = (!registered).then(|| format!("F1 無法使用，可能已被其他程式占用（{}）。仍可用「地圖模式」或 × 關閉覆蓋地圖。", std::io::Error::last_os_error()));
+        let _ = ready_tx.send(hotkey_error);
+        let mut paused = false;
         let mut last_scan = Instant::now() - Duration::from_secs(1);
         let mut offset = None;
         let mut previous_dragging = false;
         let mut attached = game.is_some();
         let mut shown = !hidden && (game.is_none() || initial.game_found);
         let mut last = Some(initial);
-        while !stop.load(Ordering::Relaxed) && unsafe { IsWindow(hwnd as _) } != 0 {
+        while !worker_stop.load(Ordering::Relaxed) && unsafe { IsWindow(hwnd as _) } != 0 {
+            let mut message: MSG = unsafe { std::mem::zeroed() };
+            while unsafe { PeekMessageW(&mut message, std::ptr::null_mut(), WM_HOTKEY, WM_HOTKEY, PM_REMOVE) } != 0 {
+                if registered && message.wParam == HOTKEY_ID as usize {
+                    paused = !paused;
+                    let _ = app_handle.emit_to("main", "map-overlay-paused", paused);
+                }
+            }
             if game.is_some_and(|g| !g.valid()) { game = None; }
             if game.is_none() && last_scan.elapsed() >= Duration::from_secs(1) {
                 game = crate::capture::find_game_target(selected.as_deref())
@@ -78,7 +110,7 @@ fn start_following(app: &AppHandle, overlay: &WebviewWindow, mut game: Option<cr
             }
             attached |= game.is_some();
             let bounds = game.and_then(|g| g.bounds());
-            let should_show = !hidden && (!attached || bounds.is_some());
+            let should_show = should_show_overlay(hidden, paused, attached, bounds.is_some());
             if let Some(bounds) = bounds {
                 let mut gui: GUITHREADINFO = unsafe { std::mem::zeroed() };
                 gui.cbSize = std::mem::size_of::<GUITHREADINFO>() as u32;
@@ -106,11 +138,13 @@ fn start_following(app: &AppHandle, overlay: &WebviewWindow, mut game: Option<cr
                 unsafe { ShowWindowAsync(hwnd as _, if should_show { SW_SHOWNOACTIVATE } else { SW_HIDE }); }
                 shown = should_show;
             }
-            // The worker only reads Win32 geometry. Moving a window never triggers map analysis.
+            // Visibility and geometry do not reload the WebView or change capture/tracking.
             std::thread::sleep(Duration::from_millis(16));
         }
+        if registered { unsafe { UnregisterHotKey(std::ptr::null_mut(), HOTKEY_ID); } }
     }).map_err(|e| e.to_string())?;
-    Ok(())
+    *state.0.lock().map_err(|e| e.to_string())? = Some((stop, worker));
+    ready_rx.recv().map_err(|e| e.to_string())
 }
 
 // Creating a WebView2 window from an IPC command must run asynchronously on Windows.
@@ -120,7 +154,7 @@ pub async fn set_map_overlay(
     window: WebviewWindow,
     enabled: bool,
     game_window_id: Option<String>,
-) -> Result<Option<Placement>, String> {
+) -> Result<Option<OverlayOpened>, String> {
     if !enabled {
         app.state::<FollowState>().stop();
         if let Some(overlay) = app.get_webview_window("map-overlay") {
@@ -148,7 +182,7 @@ pub async fn set_map_overlay(
             )
         };
     if app.get_webview_window("map-overlay").is_some() {
-        return Ok(Some(target));
+        return Ok(Some(OverlayOpened { placement: target, hotkey_error: None }));
     }
     let config = app.state::<OverlayConfig>();
     let mut builder =
@@ -179,14 +213,16 @@ pub async fn set_map_overlay(
         if !config.hidden && (game.is_none() || target.game_found) {
             overlay.show().map_err(|e| e.to_string())?;
         }
-        start_following(&app, &overlay, game, game_window_id, target, config.hidden)?;
-        Ok(())
+        start_following(&app, &overlay, game, game_window_id, target, config.hidden)
     })();
-    if let Err(error) = result {
-        let _ = overlay.close();
-        return Err(error);
+    match result {
+        Ok(hotkey_error) => Ok(Some(OverlayOpened { placement: target, hotkey_error })),
+        Err(error) => {
+            app.state::<FollowState>().stop();
+            let _ = overlay.close();
+            Err(error)
+        }
     }
-    Ok(Some(target))
 }
 
 #[tauri::command]
@@ -197,6 +233,16 @@ pub fn drag_window(window: WebviewWindow) -> Result<(), String> {
 #[cfg(test)]
 mod tests {
     use super::*;
+    #[test]
+    fn manual_hide_survives_game_minimize_restore_and_reconnect() {
+        for (attached, visible) in [(false, false), (true, false), (true, true)] {
+            assert!(!should_show_overlay(false, true, attached, visible));
+        }
+        assert!(should_show_overlay(false, false, true, true));
+        assert!(!should_show_overlay(false, false, true, false));
+        assert!(should_show_overlay(false, false, false, false));
+        assert!(!should_show_overlay(true, false, true, true));
+    }
     #[test]
     fn full_hd_matches_the_requested_rectangle() {
         let p = placement(0, 0, 1920, 1080, true);

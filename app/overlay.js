@@ -21,10 +21,12 @@
   };
   el('map-title').onmousedown = e => { if (e.button === 0) { e.preventDefault(); core.invoke('drag_window').catch(error => notice(String(error))); } };
   window.overlayReady = event.listen('map-view-state', ({ payload: state }) => {
-    const nextKey = JSON.stringify([state.map, state.difficulty, state.quality, state.supplements, state.categories]);
+    const nextKey = JSON.stringify([state.map, state.difficulty, state.iconSize, state.supplements, state.categories]);
     if (nextKey !== viewKey) {
       const mapChanged = el('map').value !== String(state.map);
-      for (const id of ['map', 'difficulty', 'quality']) if ([...el(id).options].some(o => o.value === String(state[id]))) el(id).value = String(state[id]);
+      for (const id of ['map', 'difficulty']) if ([...el(id).options].some(o => o.value === String(state[id]))) el(id).value = String(state[id]);
+      el('icon-size').value = String(Number.isFinite(state.iconSize) ? state.iconSize : 100);
+      el('icon-size').dispatchEvent(new Event('input'));
       el('supplements').checked = state.supplements;
       for (const e of document.querySelectorAll('[data-category]')) e.checked = state.categories.includes(e.dataset.category);
       el(mapChanged ? 'map' : 'difficulty').dispatchEvent(new Event('change'));
