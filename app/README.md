@@ -68,6 +68,8 @@ Windows 執行時使用電腦既有的 WebView2 Runtime；未隨包附加固定�
 
 使用者明確需要 ZIP 時，才執行 `scripts/build_portable.ps1 -Zip`，或對已編譯的版本執行 `scripts/package_portable.py --zip`。ZIP 使用明確檔案清單，只包含 EXE、使用說明、第三方授權與 SHA-256 校驗檔，不收錄測試 profile 或 `Data`。`dist/portable-build.json` 記錄本次可執行檔的大小及雜湊；未輸出 ZIP 時 `archive` 為 null，不更新既有 ZIP。
 
+GitHub Release 依使用者偏好僅上傳 EXE、`README.zh-TW.txt`（使用說明）與 `THIRD_PARTY_NOTICES.txt`（第三方授權），不發布 `SHA256SUMS.txt`。校驗檔保留供本地建置核對，公開使用說明須移除校驗檔的下載描述；上傳使用說明時使用英文檔名，避免 GitHub 自動重新命名。
+
 ## 原生驗證
 
 可在獨立測試資料夾複製 EXE，再以 `--hidden` 啟動隱藏視窗。測試程序需將 `ANIIMO_TEST_DATA_DIR` 設為隔離資料根目錄，避免寫入使用者設定；此覆寫僅在 `--hidden` 時生效。只有測試啟動時，才透過該程序的 `WEBVIEW2_ADDITIONAL_BROWSER_ARGUMENTS` 開啟本機 CDP 偵錯連線，供 agent-browser 檢查實際 WebView2、IPC、置頂、視窗大小與設定保存。正式執行不設定偵錯埠。
