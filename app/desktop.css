@@ -1,5 +1,6 @@
 body.desktop-app{height:100vh;grid-template-columns:280px minmax(0,1fr);overflow:hidden}
-.desktop-app aside{overflow-y:auto;padding:22px 18px;border-right:1px solid var(--line)}
+.desktop-app aside{display:flex;flex-direction:column;overflow-y:auto;padding:22px 18px;border-right:1px solid var(--line)}
+.desktop-app aside>*{flex-shrink:0}
 .desktop-app main{min-height:0}.desktop-app .stage{height:auto;flex:1;min-height:140px}
 .desktop-app #filters{display:block}.desktop-app footer{display:block}
 .desktop-app .mapbar{flex-wrap:wrap;padding:15px 20px 12px;gap:8px}
@@ -11,15 +12,9 @@ body.desktop-app{height:100vh;grid-template-columns:280px minmax(0,1fr);overflow
 .desktop-app.sidebar-collapsed{grid-template-columns:minmax(0,1fr)}
 .desktop-app #sidebar[hidden]{display:none}
 .sidebar-collapsed .sidebar-arrow{transform:translateX(29px) scaleX(-1)}
-.app-menu{position:relative}
-#menu-button{display:flex;align-items:center;gap:8px}
-#menu-button[aria-expanded=true]{border-color:var(--accent);color:var(--accent)}
-#menu-panel{position:absolute;top:calc(100% + 8px);right:0;z-index:10;min-width:200px;padding:5px;background:var(--panel);border:1px solid var(--line);border-radius:7px;box-shadow:0 8px 24px #07131f66}
-#menu-panel[hidden]{display:none}
-#menu-panel a,#menu-panel button{display:flex;align-items:center;justify-content:space-between;gap:14px;width:100%;margin:0;padding:10px 12px;border:0;border-radius:4px;background:transparent;color:var(--text);font:13px "Segoe UI","Microsoft JhengHei",sans-serif;text-decoration:none;text-align:left;white-space:nowrap}
-#menu-panel a:hover,#menu-panel button:hover{background:var(--bg);color:var(--accent)}
-#menu-panel a span{color:var(--muted)}
-#menu-panel #help-button{border-top:1px solid var(--line);border-radius:0 0 4px 4px;margin-top:4px}
+.desktop-app #help-button{position:sticky;bottom:0;z-index:2;width:100%;margin-top:auto;background:var(--panel);text-align:left}
+.desktop-app #discord-link{display:inline-flex;align-items:center;padding:6px 8px;border:1px solid var(--line);border-radius:5px;background:var(--bg);color:var(--text);font-size:12px;text-decoration:none}
+.desktop-app #discord-link:hover{border-color:var(--accent);color:var(--accent)}
 @media(max-width:760px){body.desktop-app:not(.compact):not(.sidebar-collapsed){grid-template-columns:210px minmax(0,1fr)}.desktop-app .mapbar{padding:10px;gap:10px}.desktop-app .mapbar-start{gap:8px;flex-wrap:wrap}.desktop-app .tools{margin-left:auto}.desktop-app .session-heading{flex-wrap:wrap}.desktop-app.overlay .mapbar-start,.desktop-app.overlay .session-heading{flex-wrap:nowrap}}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0}
 .desktop-app.compact{grid-template-columns:minmax(0,1fr)}
@@ -40,19 +35,19 @@ body.desktop-app.overlay{background:transparent;border:0;grid-template-columns:m
 .desktop-app.overlay .mapbar{padding:5px 6px;gap:5px;flex-wrap:nowrap;border:0;background:transparent;min-height:35px}
 .desktop-app.overlay button,.desktop-app.overlay #player-status,.desktop-app.overlay #live-status,.desktop-app.overlay .notice,.desktop-app.overlay #app-status{background:transparent;border-color:transparent;text-shadow:inherit}
 .desktop-app.overlay button:hover:not(:disabled){border-color:#79cabe88;color:var(--accent)}
-.desktop-app.overlay .map-heading{min-width:0}.desktop-app.overlay #map-id{display:none}
-.desktop-app.overlay .session-heading{gap:5px}.desktop-app.overlay #map-title{font-size:12px;font-variant-numeric:tabular-nums;cursor:move;user-select:none}
+.desktop-app.overlay .mapbar-start{display:none}
 .desktop-app.overlay #live-status{font-size:10px;padding:1px 3px}
-.desktop-app.overlay .tools{flex-wrap:nowrap;gap:4px}.desktop-app.overlay .tools button{font-size:10px;padding:4px 5px}
-.desktop-app.overlay #topmost,.desktop-app.overlay #compact,.desktop-app.overlay .app-menu,.desktop-app.overlay #sidebar-toggle,.desktop-app.overlay #zoom-in,.desktop-app.overlay #zoom-out{display:none}
+.desktop-app.overlay .tools{flex-wrap:nowrap;gap:4px;width:100%;margin-left:0}.desktop-app.overlay .tools button{font-size:10px;padding:4px 5px}
+.desktop-app.overlay .tools #recognition-button,.desktop-app.overlay .tools #tracking-button{font-size:13px;padding:4px 6px}
+.desktop-app.overlay #overlay-drag{cursor:move;font-size:16px;line-height:1;padding:3px 5px;user-select:none}
+.desktop-app.overlay #topmost,.desktop-app.overlay #compact,.desktop-app.overlay #discord-link,.desktop-app.overlay #sidebar-toggle,.desktop-app.overlay #zoom-in,.desktop-app.overlay #zoom-out{display:none}
 .desktop-app.overlay #fit{font-size:0;width:25px;padding:3px}.desktop-app.overlay #fit::after{content:'⊞';font-size:16px}
-.desktop-app.overlay #overlay-close{font-size:18px;line-height:1;width:25px;padding:4px}.desktop-app.overlay #overlay-close:hover{color:#ffb6ad;border-color:#ffb6ad}
+.desktop-app.overlay #overlay-close{font-size:18px;line-height:1;width:25px;padding:4px;margin-left:auto}.desktop-app.overlay #overlay-close:hover{color:#ffb6ad;border-color:#ffb6ad}
 .desktop-app.overlay .live-switch{gap:4px}.desktop-app.overlay .live-switch::before{width:6px;height:6px;border-radius:50%;background:#a5bac4}
 .desktop-app.overlay .live-switch[aria-checked=true]::before{background:var(--accent)}
 .desktop-app.overlay .notice,.desktop-app.overlay #app-status{font-size:11px;padding:7px 9px;top:6px;left:6px;right:6px}
-.desktop-app.overlay #player-status{font-size:10px}.desktop-app.overlay .player-tools{bottom:7px;right:7px}
-.desktop-app.overlay #locate-player{background:transparent}
-@media(max-width:360px){.desktop-app.overlay #live-status{display:none}.desktop-app.overlay .session-heading{gap:3px}.desktop-app.overlay #map-title{font-size:11px}}
+.desktop-app.overlay #player-status{font-size:10px}.desktop-app.overlay .player-tools{display:none}
+@media(max-width:360px){.desktop-app.overlay #live-status{display:none}}
 button[aria-pressed=true]{border-color:var(--accent);color:var(--accent)}
 dialog{max-width:min(560px,90vw);max-height:85vh;overflow:auto;color:var(--text);background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:25px;line-height:1.8}
 dialog::backdrop{background:#08151bbf}dialog h2{margin-top:0}dialog p{font-size:13px}dialog button{float:right}

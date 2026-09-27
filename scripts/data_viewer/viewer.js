@@ -6,8 +6,7 @@ const colors={egg:'#f3d76d',chest_gold:'#dfb65b',chest_glass:'#9de9f4',stellarys
 const canvas=$('map-canvas'), ctx=canvas.getContext('2d');
 const mapLayer=document.createElement('canvas'),mapContext=mapLayer.getContext('2d');
 const pinLayer=document.createElement('canvas'),pinContext=pinLayer.getContext('2d');
-const reducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)');
-let mapDirty=true,frameRequest=0,rippleTimer=0;
+let mapDirty=true,frameRequest=0;
 let current, image, visible=[], selected=null, scale=1, tx=0, ty=0, width=1, height=1, drag=null;
 let loadToken=0;
 let tracking=null;
@@ -26,7 +25,7 @@ window.addEventListener('tracking-update',event=>{
   if(!next){tracking=null;renderTrackingStatus();draw(false);return;}
   if(!Array.isArray(next.pixel)||next.pixel.length!==2||!next.pixel.every(v=>Number.isFinite(v)&&v>=0&&v<=2048)||!Number.isFinite(next.at))return;
   if(tracking&&next.mapId===tracking.mapId&&next.at<tracking.at)return;
-  tracking={...next,stale:!!next.stale||Date.now()-next.at>1500};
+  tracking={...next,heading:Number.isFinite(next.heading)?next.heading:tracking?.heading??null,stale:!!next.stale||Date.now()-next.at>1500};
   renderTrackingStatus();draw(false);
 });
 window.addEventListener('tracking-stale',()=>{if(tracking&&!tracking.stale){tracking.stale=true;renderTrackingStatus();draw(false);}});
@@ -39,7 +38,7 @@ for(const [key,asset] of Object.entries(data.icons.assets)){
   iconImages.set(key,icon);icon.src=asset.image;
 }
 function iconElement(key){const icon=document.createElement('img');icon.className='marker-icon';icon.src=data.icons.assets[key].image;icon.alt='';icon.setAttribute('aria-hidden','true');return icon;}
-function pinSize(pin){const primary=['egg','entrance','exit','stellarys_boss'].includes(pin.category);return (primary?28:Math.min(22,Math.max(14,20*Math.sqrt(scale))))*Number($('icon-size').value)/100;}
+function pinSize(pin){const primary=['egg','entrance','exit','stellarys_boss'].includes(pin.category);const categoryScale=pin.category==='key_orange'?1.5:1;return (primary?28:Math.min(22,Math.max(14,20*Math.sqrt(scale))))*Number($('icon-size').value)/100*categoryScale;}
 function renderIconSize(){const value=$('icon-size').value+'%';$('icon-size-value').value=value;$('icon-size').setAttribute('aria-valuetext',value);draw();}
 for(const map of data.maps){const option=document.createElement('option');option.value=map.id;option.textContent=`地宮 ${map.id}`;$('map').append(option);}
 for(const [key,name] of Object.entries(categories)){
@@ -93,31 +92,24 @@ function paintPins(ctx){
   }
   if(selected){ctx.strokeStyle='#ffffff';ctx.lineWidth=2;ctx.beginPath();ctx.arc(selected.pixel[0]*scale+tx,selected.pixel[1]*scale+ty,pinSize(selected)/2+4,0,Math.PI*2);ctx.stroke();}
 }
-function paintTracking(now){
+function paintTracking(){
   if(!tracking||tracking.mapId!==current?.id)return false;
   if(!tracking.stale&&Date.now()-tracking.at>1500){tracking.stale=true;renderTrackingStatus();}
   const x=tracking.pixel[0]*scale+tx,y=tracking.pixel[1]*scale+ty;
-  const maxRadius=Math.max(38,Number($('icon-size').value)*.2+14);
-  const animated=!tracking.stale&&!reducedMotion.matches&&!document.hidden;
+  const maxRadius=50;
   if(x<-maxRadius||y<-maxRadius||x>width+maxRadius||y>height+maxRadius)return false;
-  ctx.save();ctx.setLineDash([]);
-  if(animated){
-    for(const offset of [0,.5]){
-      const phase=(now/1600+offset)%1;
-      ctx.strokeStyle=`rgba(245,201,90,${.65*(1-phase)})`;ctx.lineWidth=2;
-      ctx.beginPath();ctx.arc(x,y,12+(maxRadius-12)*phase,0,Math.PI*2);ctx.stroke();
-    }
+  ctx.save();ctx.translate(x,y);ctx.rotate(Number.isFinite(tracking.heading)?tracking.heading:-Math.PI/2);
+  // A soft triangular sight cone and the white-rimmed yellow minimap arrow.
+  if(Number.isFinite(tracking.heading)&&!tracking.stale){
+    ctx.fillStyle='rgba(255,229,80,.23)';ctx.beginPath();ctx.moveTo(3,0);ctx.lineTo(43,-24);ctx.arc(3,0,47,-.53,.53);ctx.lineTo(3,0);ctx.fill();
   }
-  // Original high-contrast marker: an opaque dark disc, mint rim and center.
-  ctx.fillStyle='#102127';ctx.beginPath();ctx.arc(x,y,12,0,Math.PI*2);ctx.fill();
-  ctx.strokeStyle=tracking.stale?'#a5bac4':'#79e1c0';ctx.lineWidth=2;
-  ctx.beginPath();ctx.arc(x,y,10,0,Math.PI*2);ctx.stroke();
-  if(!tracking.stale){ctx.fillStyle='#79e1c0';ctx.beginPath();ctx.arc(x,y,5,0,Math.PI*2);ctx.fill();}
-  ctx.restore();return animated;
+  ctx.shadowColor='#17221b';ctx.shadowBlur=5;ctx.shadowOffsetY=2;
+  ctx.fillStyle=tracking.stale?'#849195':'#ffe64b';ctx.strokeStyle='#fffef3';ctx.lineWidth=2.5;
+  ctx.beginPath();ctx.moveTo(16,0);ctx.lineTo(-11,-12);ctx.lineTo(-7,0);ctx.lineTo(-11,12);ctx.closePath();ctx.fill();ctx.stroke();
+  ctx.restore();return false;
 }
-function renderFrame(now=performance.now()){
+function renderFrame(){
   frameRequest=0;
-  clearTimeout(rippleTimer);rippleTimer=0;
   if(mapDirty){
     for(const layer of [mapLayer,pinLayer])if(layer.width!==canvas.width||layer.height!==canvas.height){layer.width=canvas.width;layer.height=canvas.height;}
     const ratio=window.devicePixelRatio||1;
@@ -127,12 +119,10 @@ function renderFrame(now=performance.now()){
   ctx.clearRect(0,0,width,height);
   if(mapLayer.width&&mapLayer.height)ctx.drawImage(mapLayer,0,0,mapLayer.width,mapLayer.height,0,0,width,height);
   if(pinLayer.width&&pinLayer.height)ctx.drawImage(pinLayer,0,0,pinLayer.width,pinLayer.height,0,0,width,height);
-  // Player marker and golden ripples are drawn above all reward icons.
-  const animated=paintTracking(now);
-  if(animated)rippleTimer=setTimeout(()=>draw(false),33);
+  // Keep the facing arrow above reward icons.
+  paintTracking();
 }
-reducedMotion.addEventListener('change',()=>draw(false));
-document.addEventListener('visibilitychange',()=>{clearTimeout(rippleTimer);rippleTimer=0;if(!document.hidden)draw(false);});
+document.addEventListener('visibilitychange',()=>{if(!document.hidden)draw(false);});
 function selectPin(pin){
   selected=pin;draw();
 }

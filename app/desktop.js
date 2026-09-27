@@ -16,11 +16,6 @@
     el('sidebar-toggle').title = sidebarCollapsed ? '展開側欄' : '收合側欄';
     el('sidebar-toggle').setAttribute('aria-label', el('sidebar-toggle').title);
   }
-  function setMenu(open, restoreFocus = false) {
-    el('menu-panel').hidden = !open;
-    el('menu-button').setAttribute('aria-expanded', String(open));
-    if (restoreFocus) el('menu-button').focus();
-  }
   function renderButtons() {
     el('topmost').textContent = topmost ? '置頂：開' : '置頂：關';
     el('topmost').setAttribute('aria-pressed', String(topmost));
@@ -70,7 +65,7 @@
       const placement = await invoke('set_map_overlay', { enabled: value, gameWindowId: el('game-window').value || null });
       if (value) {
         hotkeyError = placement?.hotkeyError || ''; renderButtons(); publishOverlay();
-        report(hotkeyError || '覆蓋地圖已開啟。按 F1 隱藏／恢復，隱藏時可點擊下方遊戲；拖曳地宮編號可調整位置。', hotkeyError ? 10000 : 5000);
+        report(hotkeyError || '覆蓋地圖已開啟。按 F1 隱藏／恢復，隱藏時可點擊下方遊戲；拖曳上方移動圖示可調整位置。', hotkeyError ? 10000 : 5000);
       }
     } catch (error) { mapOverlay = false; renderButtons(); report('無法切換地圖模式：' + String(error)); }
     finally { el('compact').disabled = false; }
@@ -94,29 +89,16 @@
   el('topmost').addEventListener('click', () => setPinned(!topmost));
   el('compact').addEventListener('click', async () => { await window.overlayBridgeReady; await setMapMode(!mapOverlay); });
   el('sidebar-toggle').addEventListener('click', () => { sidebarCollapsed = !sidebarCollapsed; renderSidebar(); save(); });
-  el('menu-button').addEventListener('click', () => setMenu(el('menu-panel').hidden));
-  document.addEventListener('click', event => {
-    if (!event.target.closest('.app-menu')) setMenu(false);
-  });
-  document.querySelector('.app-menu').addEventListener('focusout', event => {
-    if (!event.currentTarget.contains(event.relatedTarget)) setMenu(false);
-  });
-  document.addEventListener('keydown', event => {
-    if (event.key === 'Escape' && !el('menu-panel').hidden) {
-      event.preventDefault(); setMenu(false, true);
-    }
-  });
   el('discord-link').addEventListener('click', async event => {
     if (invoke) event.preventDefault();
-    setMenu(false, true);
     if (invoke) {
       try { await invoke('open_discord'); }
       catch (error) { report('無法開啟 Discord，請在瀏覽器輸入 https://discord.gg/Yh235uyafn（' + String(error) + '）', 10000); }
     }
   });
-  el('help-button').onclick = () => { setMenu(false, true); el('help-dialog').showModal(); };
+  el('help-button').onclick = () => el('help-dialog').showModal();
   el('close-help').onclick = () => el('help-dialog').close();
-  el('help-dialog').addEventListener('close', () => el('menu-button').focus());
+  el('help-dialog').addEventListener('close', () => el('help-button').focus());
   document.addEventListener('change', save);
   el('icon-size').addEventListener('input', save);
   for (const id of ['all', 'none']) el(id).addEventListener('click', save);

@@ -21,7 +21,7 @@
     assert(same(await native.innerSize(), testMainBefore.size) && same(await native.outerPosition(), testMainBefore.position), 'Main window moved/resized');
     assert(getComputedStyle(document.querySelector('aside')).display !== 'none', 'Main panel was hidden');
     el('live-status').textContent = '已鎖定'; el('live-status').title = '本場已鎖定 · 地宮 20036 · 215 個吻合點'; el('live-status').dataset.state = 'locked';
-    const updatePoint = () => window.dispatchEvent(new CustomEvent('tracking-update', { detail: { mapId: 20036, pixel: [849, 1252], at: Date.now(), estimated: true } }));
+    const updatePoint = () => window.dispatchEvent(new CustomEvent('tracking-update', { detail: { mapId: 20036, pixel: [849, 1252], heading: 0, at: Date.now(), estimated: true } }));
     updatePoint(); window.testTrackingTimer = setInterval(updatePoint, 400);
     window.dispatchEvent(new Event('recognition-ui'));
     return { phase, passed: true, windows: (await windows()).map(w => w.label), mainUnchanged: true };
@@ -29,17 +29,16 @@
   if (phase === 'child-check') {
     await window.overlayReady;
     const size = await native.innerSize(), position = await native.outerPosition();
-    assert(size.width === 448 && size.height === 464, 'Overlay physical size incorrect');
+    assert(size.width === size.height && size.width >= 590, 'Overlay physical size incorrect');
     assert(!await native.isDecorated() && await native.isAlwaysOnTop() && !await native.isResizable(), 'Native overlay flags incorrect');
     assert(el('overlay-close').getBoundingClientRect().right <= innerWidth, 'Close button clipped');
     assert(el('map').value === '20036' && el('difficulty').value === '6' && el('icon-size').value === '175' && !el('supplements').checked, 'Controls not synced');
     assert(same(selected(), ['egg']), 'Categories not synced');
-    assert(!el('locate-player').disabled && el('player-status').dataset.state === 'live', 'Player position not synced');
+    assert(getComputedStyle(document.querySelector('.player-tools')).display === 'none' && el('player-status').dataset.state === 'live', 'Overlay locate control or player state incorrect');
     const rect = el('map-canvas').getBoundingClientRect(), initialScale = scale;
     el('map-canvas').dispatchEvent(new WheelEvent('wheel', { deltaY: -120, clientX: rect.left + 180, clientY: rect.top + 160, bubbles: true, cancelable: true }));
     assert(scale > initialScale, 'Wheel did not zoom');
-    window.testZoom = scale; el('locate-player').click();
-    assert(Math.abs(849 * scale + tx - width / 2) < 1 && Math.abs(1252 * scale + ty - height / 2) < 1, 'Player centering failed');
+    window.testZoom = scale;
     const stage = () => { const b = document.querySelector('.stage').getBoundingClientRect(); return [b.width, b.height]; };
     const area = stage(); await delay(5200);
     assert(el('app-status').hidden, 'Repeated position updates kept the notice visible');

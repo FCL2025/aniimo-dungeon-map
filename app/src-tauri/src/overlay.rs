@@ -47,14 +47,16 @@ fn should_show_overlay(test_hidden: bool, paused: bool, attached: bool, game_vis
 }
 
 fn placement(x: i32, y: i32, width: u32, height: u32, game_found: bool) -> Placement {
-    let w = 448.min(width);
-    let h = 464.min(height);
+    // Match the lower-left play area at Full HD and 2560 × 1440, and scale
+    // intermediate sizes while staying inside a smaller game client.
+    let factor = (width as f64 / 1920.0).min(height as f64 / 1080.0);
+    let side = (590.0 + (factor.max(1.0) - 1.0) * 600.0).round() as u32;
+    let side = side.min(width).min(height);
     Placement {
-        x: x + 4.min(width.saturating_sub(w)) as i32,
-        y: y + ((height as f64 * 496.0 / 1080.0).round() as u32).min(height.saturating_sub(h))
-            as i32,
-        width: w,
-        height: h,
+        x: x + 4.min(width.saturating_sub(side)) as i32,
+        y: y + height.saturating_sub(side).saturating_sub(4) as i32,
+        width: side,
+        height: side,
         game_found,
     }
 }
@@ -246,17 +248,25 @@ mod tests {
     #[test]
     fn full_hd_matches_the_requested_rectangle() {
         let p = placement(0, 0, 1920, 1080, true);
-        assert_eq!((p.x, p.y, p.width, p.height), (4, 496, 448, 464));
+        assert_eq!((p.x, p.y, p.width, p.height), (4, 486, 590, 590));
+    }
+    #[test]
+    fn two_k_switches_to_the_larger_square() {
+        let p = placement(0, 0, 2560, 1440, true);
+        assert_eq!((p.x, p.y, p.width, p.height), (4, 646, 790, 790));
+        let resized = follow_placement((0, 0, 2560, 1440), None);
+        assert_eq!(resized, p);
+        assert_eq!(follow_placement((0, 0, 1920, 1080), None).width, 590);
     }
     #[test]
     fn positions_are_relative_to_the_game_not_the_primary_monitor() {
         let p = placement(-1920, 80, 1920, 1080, true);
-        assert_eq!((p.x, p.y), (-1916, 576));
+        assert_eq!((p.x, p.y), (-1916, 566));
     }
     #[test]
     fn small_window_stays_inside_client_area() {
         let p = placement(30, 50, 400, 300, true);
-        assert_eq!((p.x, p.y, p.width, p.height), (30, 50, 400, 300));
+        assert_eq!((p.x, p.y, p.width, p.height), (34, 50, 300, 300));
     }
     #[test]
     fn follows_game_movement_across_monitors() {
@@ -270,7 +280,7 @@ mod tests {
         let moved = follow_placement((100, 200, 1920, 1080), Some((80, 400)));
         assert_eq!((moved.x, moved.y), (180, 600));
         let small = follow_placement((100, 200, 500, 500), Some((80, 400)));
-        assert_eq!((small.x, small.y), (152, 236));
+        assert_eq!((small.x, small.y), (100, 200));
         let restored = follow_placement((100, 200, 1920, 1080), Some((80, 400)));
         assert_eq!(restored, moved);
     }
