@@ -33,7 +33,9 @@
     }
     const trackingKey = JSON.stringify(state.tracking);
     if (trackingKey !== lastTracking) { window.dispatchEvent(new CustomEvent('tracking-update', { detail: state.tracking })); lastTracking = trackingKey; }
-    el('live-status').textContent = state.status; el('live-status').title = state.statusTitle;
+    const manualSelection = state.status === '手動選圖';
+    el('live-status').textContent = manualSelection ? '' : state.status;
+    el('live-status').title = manualSelection ? '' : state.statusTitle;
     el('live-status').dataset.state = state.statusState || 'waiting';
     el('recognition-button').setAttribute('aria-checked', String(state.recognition));
     el('recognition-button').title = state.recognition ? '關閉辨識' : '重新辨識本場地宮';
@@ -43,7 +45,7 @@
     el('tracking-button').disabled = state.trackingBusy;
     window.dispatchEvent(new Event('tracking-ui'));
     const noticeKey = JSON.stringify([state.map, state.status, state.statusState]);
-    if (noticeKey !== lastNotice && state.statusTitle) notice(state.statusTitle);
+    if (noticeKey !== lastNotice && state.statusTitle && !manualSelection) notice(state.statusTitle);
     lastNotice = noticeKey;
   }).then(() => event.emitTo('main', 'map-overlay-ready')).catch(error => notice('無法同步主視窗：' + String(error)));
   setInterval(() => { const point = window.getTrackingSnapshot?.(); if (point && !point.stale && Date.now() - point.at > 1500) window.dispatchEvent(new CustomEvent('tracking-stale')); }, 250);

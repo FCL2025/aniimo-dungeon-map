@@ -21,7 +21,7 @@
     assert(same(await native.innerSize(), testMainBefore.size) && same(await native.outerPosition(), testMainBefore.position), 'Main window moved/resized');
     assert(getComputedStyle(document.querySelector('aside')).display !== 'none', 'Main panel was hidden');
     el('live-status').textContent = '已鎖定'; el('live-status').title = '本場已鎖定 · 地宮 20036 · 215 個吻合點'; el('live-status').dataset.state = 'locked';
-    const updatePoint = () => window.dispatchEvent(new CustomEvent('tracking-update', { detail: { mapId: 20036, pixel: [849, 1252], heading: 0, at: Date.now(), estimated: true } }));
+    const updatePoint = () => window.dispatchEvent(new CustomEvent('tracking-update', { detail: { mapId: 20036, pixel: [849, 1252], at: Date.now(), estimated: true } }));
     updatePoint(); window.testTrackingTimer = setInterval(updatePoint, 400);
     window.dispatchEvent(new Event('recognition-ui'));
     return { phase, passed: true, windows: (await windows()).map(w => w.label), mainUnchanged: true };
@@ -32,6 +32,7 @@
     assert(size.width === size.height && size.width >= 590, 'Overlay physical size incorrect');
     assert(!await native.isDecorated() && await native.isAlwaysOnTop() && !await native.isResizable(), 'Native overlay flags incorrect');
     assert(el('overlay-close').getBoundingClientRect().right <= innerWidth, 'Close button clipped');
+    assert(el('recognition-button').getBoundingClientRect().left > innerWidth / 2 && el('tracking-button').getBoundingClientRect().left > innerWidth / 2, 'Recognition and tracking buttons did not return to the right');
     assert(el('map').value === '20036' && el('difficulty').value === '6' && el('icon-size').value === '175' && !el('supplements').checked, 'Controls not synced');
     assert(same(selected(), ['egg']), 'Categories not synced');
     assert(getComputedStyle(document.querySelector('.player-tools')).display === 'none' && el('player-status').dataset.state === 'live', 'Overlay locate control or player state incorrect');

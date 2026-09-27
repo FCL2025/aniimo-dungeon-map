@@ -31,13 +31,13 @@ async function track(message){
     let location=null,match=null,local=false;
     if(!screen.mapOpen){
       const region=MapScreen.relativeRegion(message.miniRegion||[.0427,.0389,.1042,.1852],message.sourceRegion);
-      const mini=crop(bitmap,region,400,true),heading=MapTracking.arrowHeading(mini.pixels);query=features(mini.pixels,true,queryDetector);
+      const mini=crop(bitmap,region,400,true);query=features(mini.pixels,true,queryDetector);
       const nearby=gate.last&&at-gate.last.at<1500?nearbyReference():null;
       if(nearby){match=score(query,nearby);local=usable(match);}
       if(!local)match=score(query,reference);
       if(usable(match)){
         const pixel=MapRecognition.transform(match.model,mini.width/2,mini.height/2).map(v=>v*2);
-        if(gate.accept(pixel,at))location={mapId:reference.id,pixel,heading,inliers:match.inliers,error:match.error,estimated:true};
+        if(gate.accept(pixel,at))location={mapId:reference.id,pixel,inliers:match.inliers,error:match.error,estimated:true};
       }
     }
     postMessage({type:'result',request:message.request,mapId:reference.id,location,isMap:screen.mapOpen,local,

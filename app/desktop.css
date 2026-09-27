@@ -37,12 +37,12 @@ body.desktop-app.overlay{background:transparent;border:0;grid-template-columns:m
 .desktop-app.overlay button:hover:not(:disabled){border-color:#79cabe88;color:var(--accent)}
 .desktop-app.overlay .mapbar-start{display:none}
 .desktop-app.overlay #live-status{font-size:10px;padding:1px 3px}
-.desktop-app.overlay .tools{flex-wrap:nowrap;gap:4px;width:100%;margin-left:0}.desktop-app.overlay .tools button{font-size:10px;padding:4px 5px}
+.desktop-app.overlay .tools{flex-wrap:nowrap;gap:4px;width:auto;margin-left:auto}.desktop-app.overlay .tools button{font-size:10px;padding:4px 5px}
 .desktop-app.overlay .tools #recognition-button,.desktop-app.overlay .tools #tracking-button{font-size:13px;padding:4px 6px}
 .desktop-app.overlay #overlay-drag{cursor:move;font-size:16px;line-height:1;padding:3px 5px;user-select:none}
 .desktop-app.overlay #topmost,.desktop-app.overlay #compact,.desktop-app.overlay #discord-link,.desktop-app.overlay #sidebar-toggle,.desktop-app.overlay #zoom-in,.desktop-app.overlay #zoom-out{display:none}
 .desktop-app.overlay #fit{font-size:0;width:25px;padding:3px}.desktop-app.overlay #fit::after{content:'⊞';font-size:16px}
-.desktop-app.overlay #overlay-close{font-size:18px;line-height:1;width:25px;padding:4px;margin-left:auto}.desktop-app.overlay #overlay-close:hover{color:#ffb6ad;border-color:#ffb6ad}
+.desktop-app.overlay #overlay-close{font-size:18px;line-height:1;width:25px;padding:4px}.desktop-app.overlay #overlay-close:hover{color:#ffb6ad;border-color:#ffb6ad}
 .desktop-app.overlay .live-switch{gap:4px}.desktop-app.overlay .live-switch::before{width:6px;height:6px;border-radius:50%;background:#a5bac4}
 .desktop-app.overlay .live-switch[aria-checked=true]::before{background:var(--accent)}
 .desktop-app.overlay .notice,.desktop-app.overlay #app-status{font-size:11px;padding:7px 9px;top:6px;left:6px;right:6px}
