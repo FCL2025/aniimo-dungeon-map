@@ -1,0 +1,896 @@
+{
+  "archive": "F:\\Pawprint\\Aniimo\\game\\Aniimo_Data\\cvs\\res\\lua\\LuaScripts.xdf",
+  "pmdataSha256": "10ad4ccf870ec26031b4d92ce1e97a129c096441dcb82adb5bc08e0bf7662513",
+  "verifiedPortals": 62,
+  "maps": [
+    {
+      "id": 20031,
+      "size": [
+        2048,
+        2048
+      ],
+      "entrance": [
+        734.3429,
+        957.6825
+      ],
+      "exit": [
+        1501.0273,
+        1082.9659
+      ],
+      "distance": 776.8532,
+      "angleDegrees": 9.2806,
+      "defaultDistance1080": 490.6449,
+      "mapImageScale": {
+        "1": 4,
+        "2": 3.696,
+        "3": 3.415,
+        "4": 3.155,
+        "5": 2.916,
+        "6": 2.695,
+        "7": 1.58
+      },
+      "defaultScaleRatio": 0
+    },
+    {
+      "id": 20032,
+      "size": [
+        2048,
+        2048
+      ],
+      "entrance": [
+        613.3941,
+        952.3106
+      ],
+      "exit": [
+        1164.0402,
+        952.9847
+      ],
+      "distance": 550.6465,
+      "angleDegrees": 0.0701,
+      "defaultDistance1080": 347.7773,
+      "mapImageScale": {
+        "1": 4,
+        "2": 3.696,
+        "3": 3.415,
+        "4": 3.155,
+        "5": 2.916,
+        "6": 2.695,
+        "7": 1.58
+      },
+      "defaultScaleRatio": 0
+    },
+    {
+      "id": 20033,
+      "size": [
+        2048,
+        2048
+      ],
+      "entrance": [
+        234.92,
+        936.8316
+      ],
+      "exit": [
+        1083.775,
+        910.9742
+      ],
+      "distance": 849.2487,
+      "angleDegrees": -1.7448,
+      "defaultDistance1080": 536.3685,
+      "mapImageScale": {
+        "1": 4,
+        "2": 3.696,
+        "3": 3.415,
+        "4": 3.155,
+        "5": 2.916,
+        "6": 2.695,
+        "7": 1.58
+      },
+      "defaultScaleRatio": 0
+    },
+    {
+      "id": 20034,
+      "size": [
+        2048,
+        2048
+      ],
+      "entrance": [
+        660.3476,
+        476.2751
+      ],
+      "exit": [
+        919.3955,
+        1207.5193
+      ],
+      "distance": 775.7731,
+      "angleDegrees": 70.493,
+      "defaultDistance1080": 489.9628,
+      "mapImageScale": {
+        "1": 4,
+        "2": 3.696,
+        "3": 3.415,
+        "4": 3.155,
+        "5": 2.916,
+        "6": 2.695,
+        "7": 1.58
+      },
+      "defaultScaleRatio": 0
+    },
+    {
+      "id": 20035,
+      "size": [
+        2048,
+        2048
+      ],
+      "entrance": [
+        221.0023,
+        1244.2018
+      ],
+      "exit": [
+        793.036,
+        865.2959
+      ],
+      "distance": 686.143,
+      "angleDegrees": -33.5198,
+      "defaultDistance1080": 433.3542,
+      "mapImageScale": {
+        "1": 4,
+        "2": 3.696,
+        "3": 3.415,
+        "4": 3.155,
+        "5": 2.916,
+        "6": 2.695,
+        "7": 1.58
+      },
+      "defaultScaleRatio": 0
+    },
+    {
+      "id": 20036,
+      "size": [
+        2048,
+        2048
+      ],
+      "entrance": [
+        1758.1859,
+        901.5142
+      ],
+      "exit": [
+        849.0855,
+        1251.9231
+      ],
+      "distance": 974.2946,
+      "angleDegrees": 158.9211,
+      "defaultDistance1080": 615.345,
+      "mapImageScale": {
+        "1": 4,
+        "2": 3.696,
+        "3": 3.415,
+        "4": 3.155,
+        "5": 2.916,
+        "6": 2.695,
+        "7": 1.58
+      },
+      "defaultScaleRatio": 0
+    },
+    {
+      "id": 20037,
+      "size": [
+        2048,
+        2048
+      ],
+      "entrance": [
+        734.6235,
+        1019.6904
+      ],
+      "exit": [
+        1340.4342,
+        1285.8501
+      ],
+      "distance": 661.7005,
+      "angleDegrees": 23.718,
+      "defaultDistance1080": 417.9168,
+      "mapImageScale": {
+        "1": 4,
+        "2": 3.696,
+        "3": 3.415,
+        "4": 3.155,
+        "5": 2.916,
+        "6": 2.695,
+        "7": 1.58
+      },
+      "defaultScaleRatio": 0
+    },
+    {
+      "id": 20038,
+      "size": [
+        2048,
+        2048
+      ],
+      "entrance": [
+        616.9742,
+        1027.7909
+      ],
+      "exit": [
+        1042.9963,
+        801.94
+      ],
+      "distance": 482.1861,
+      "angleDegrees": -27.9298,
+      "defaultDistance1080": 304.5391,
+      "mapImageScale": {
+        "1": 4,
+        "2": 3.696,
+        "3": 3.415,
+        "4": 3.155,
+        "5": 2.916,
+        "6": 2.695,
+        "7": 1.58
+      },
+      "defaultScaleRatio": 0
+    },
+    {
+      "id": 20039,
+      "size": [
+        2048,
+        2048
+      ],
+      "entrance": [
+        761.982,
+        1419.1017
+      ],
+      "exit": [
+        904.2836,
+        584.7542
+      ],
+      "distance": 846.3956,
+      "angleDegrees": -80.3211,
+      "defaultDistance1080": 534.5665,
+      "mapImageScale": {
+        "1": 4,
+        "2": 3.696,
+        "3": 3.415,
+        "4": 3.155,
+        "5": 2.916,
+        "6": 2.695,
+        "7": 1.58
+      },
+      "defaultScaleRatio": 0
+    },
+    {
+      "id": 20040,
+      "size": [
+        2048,
+        2048
+      ],
+      "entrance": [
+        1832.8856,
+        1103.2795
+      ],
+      "exit": [
+        843.186,
+        1092.389
+      ],
+      "distance": 989.7595,
+      "angleDegrees": -179.3696,
+      "defaultDistance1080": 625.1123,
+      "mapImageScale": {
+        "1": 4,
+        "2": 3.696,
+        "3": 3.415,
+        "4": 3.155,
+        "5": 2.916,
+        "6": 2.695,
+        "7": 1.58
+      },
+      "defaultScaleRatio": 0
+    },
+    {
+      "id": 20041,
+      "size": [
+        2048,
+        2048
+      ],
+      "entrance": [
+        723.2787,
+        595.4143
+      ],
+      "exit": [
+        1015.162,
+        1218.1032
+      ],
+      "distance": 687.7044,
+      "angleDegrees": 64.8853,
+      "defaultDistance1080": 434.3403,
+      "mapImageScale": {
+        "1": 4,
+        "2": 3.696,
+        "3": 3.415,
+        "4": 3.155,
+        "5": 2.916,
+        "6": 2.695,
+        "7": 1.58
+      },
+      "defaultScaleRatio": 0
+    },
+    {
+      "id": 20042,
+      "size": [
+        2048,
+        2048
+      ],
+      "entrance": [
+        475.9612,
+        421.67
+      ],
+      "exit": [
+        600.2194,
+        1090.947
+      ],
+      "distance": 680.7142,
+      "angleDegrees": 79.4822,
+      "defaultDistance1080": 429.9255,
+      "mapImageScale": {
+        "1": 4,
+        "2": 3.696,
+        "3": 3.415,
+        "4": 3.155,
+        "5": 2.916,
+        "6": 2.695,
+        "7": 1.58
+      },
+      "defaultScaleRatio": 0
+    },
+    {
+      "id": 20043,
+      "size": [
+        2048,
+        2048
+      ],
+      "entrance": [
+        518.5528,
+        844.896
+      ],
+      "exit": [
+        1328.2479,
+        1192.0701
+      ],
+      "distance": 880.9858,
+      "angleDegrees": 23.2083,
+      "defaultDistance1080": 556.413,
+      "mapImageScale": {
+        "1": 4,
+        "2": 3.696,
+        "3": 3.415,
+        "4": 3.155,
+        "5": 2.916,
+        "6": 2.695,
+        "7": 1.58
+      },
+      "defaultScaleRatio": 0
+    },
+    {
+      "id": 20044,
+      "size": [
+        2048,
+        2048
+      ],
+      "entrance": [
+        322.3473,
+        946.4898
+      ],
+      "exit": [
+        986.1055,
+        1079.5429
+      ],
+      "distance": 676.9624,
+      "angleDegrees": 11.335,
+      "defaultDistance1080": 427.5559,
+      "mapImageScale": {
+        "1": 4,
+        "2": 3.696,
+        "3": 3.415,
+        "4": 3.155,
+        "5": 2.916,
+        "6": 2.695,
+        "7": 1.58
+      },
+      "defaultScaleRatio": 0
+    },
+    {
+      "id": 20045,
+      "size": [
+        2048,
+        2048
+      ],
+      "entrance": [
+        614.4034,
+        1426.3487
+      ],
+      "exit": [
+        725.4106,
+        1005.5139
+      ],
+      "distance": 435.2293,
+      "angleDegrees": -75.2232,
+      "defaultDistance1080": 274.8821,
+      "mapImageScale": {
+        "1": 4,
+        "2": 3.696,
+        "3": 3.415,
+        "4": 3.155,
+        "5": 2.916,
+        "6": 2.695,
+        "7": 1.58
+      },
+      "defaultScaleRatio": 0
+    },
+    {
+      "id": 20046,
+      "size": [
+        2048,
+        2048
+      ],
+      "entrance": [
+        883.8742,
+        1628.6206
+      ],
+      "exit": [
+        1813.1422,
+        821.3286
+      ],
+      "distance": 1230.9587,
+      "angleDegrees": -40.9821,
+      "defaultDistance1080": 777.4489,
+      "mapImageScale": {
+        "1": 4,
+        "2": 3.696,
+        "3": 3.415,
+        "4": 3.155,
+        "5": 2.916,
+        "6": 2.695,
+        "7": 1.58
+      },
+      "defaultScaleRatio": 0
+    },
+    {
+      "id": 20047,
+      "size": [
+        2048,
+        2048
+      ],
+      "entrance": [
+        1689.4103,
+        1125.3667
+      ],
+      "exit": [
+        904.7961,
+        1676.4564
+      ],
+      "distance": 958.8114,
+      "angleDegrees": 144.9169,
+      "defaultDistance1080": 605.5661,
+      "mapImageScale": {
+        "1": 4,
+        "2": 3.696,
+        "3": 3.415,
+        "4": 3.155,
+        "5": 2.916,
+        "6": 2.695,
+        "7": 1.58
+      },
+      "defaultScaleRatio": 0
+    },
+    {
+      "id": 20048,
+      "size": [
+        2048,
+        2048
+      ],
+      "entrance": [
+        1021.5519,
+        1821.2336
+      ],
+      "exit": [
+        1022.5259,
+        220.3633
+      ],
+      "distance": 1600.8706,
+      "angleDegrees": -89.9651,
+      "defaultDistance1080": 1011.0779,
+      "mapImageScale": {
+        "1": 4,
+        "2": 3.696,
+        "3": 3.415,
+        "4": 3.155,
+        "5": 2.916,
+        "6": 2.695,
+        "7": 1.58
+      },
+      "defaultScaleRatio": 0
+    },
+    {
+      "id": 20049,
+      "size": [
+        2048,
+        2048
+      ],
+      "entrance": [
+        1058.825,
+        222.9296
+      ],
+      "exit": [
+        1059.7896,
+        1808.1139
+      ],
+      "distance": 1585.1846,
+      "angleDegrees": 89.9651,
+      "defaultDistance1080": 1001.1709,
+      "mapImageScale": {
+        "1": 4,
+        "2": 3.696,
+        "3": 3.415,
+        "4": 3.155,
+        "5": 2.916,
+        "6": 2.695,
+        "7": 1.58
+      },
+      "defaultScaleRatio": 0
+    },
+    {
+      "id": 20050,
+      "size": [
+        2048,
+        2048
+      ],
+      "entrance": [
+        1549.2108,
+        1066.5416
+      ],
+      "exit": [
+        505.3362,
+        1067.41
+      ],
+      "distance": 1043.875,
+      "angleDegrees": 179.9523,
+      "defaultDistance1080": 659.2905,
+      "mapImageScale": {
+        "1": 4,
+        "2": 3.696,
+        "3": 3.415,
+        "4": 3.155,
+        "5": 2.916,
+        "6": 2.695,
+        "7": 1.58
+      },
+      "defaultScaleRatio": 0
+    },
+    {
+      "id": 20051,
+      "size": [
+        2048,
+        2048
+      ],
+      "entrance": [
+        849.9325,
+        730.1
+      ],
+      "exit": [
+        738.4851,
+        1751.3467
+      ],
+      "distance": 1027.3098,
+      "angleDegrees": 96.228,
+      "defaultDistance1080": 648.8283,
+      "mapImageScale": {
+        "1": 4,
+        "2": 3.696,
+        "3": 3.415,
+        "4": 3.155,
+        "5": 2.916,
+        "6": 2.695,
+        "7": 1.58
+      },
+      "defaultScaleRatio": 0
+    },
+    {
+      "id": 20052,
+      "size": [
+        2048,
+        2048
+      ],
+      "entrance": [
+        568.6704,
+        968.4382
+      ],
+      "exit": [
+        871.7542,
+        1677.4157
+      ],
+      "distance": 771.044,
+      "angleDegrees": 66.8536,
+      "defaultDistance1080": 486.976,
+      "mapImageScale": {
+        "1": 4,
+        "2": 3.696,
+        "3": 3.415,
+        "4": 3.155,
+        "5": 2.916,
+        "6": 2.695,
+        "7": 1.58
+      },
+      "defaultScaleRatio": 0
+    },
+    {
+      "id": 20053,
+      "size": [
+        2048,
+        2048
+      ],
+      "entrance": [
+        1092.132,
+        1210.635
+      ],
+      "exit": [
+        1131.6018,
+        715.3329
+      ],
+      "distance": 496.8723,
+      "angleDegrees": -85.4438,
+      "defaultDistance1080": 313.8146,
+      "mapImageScale": {
+        "1": 4,
+        "2": 3.696,
+        "3": 3.415,
+        "4": 3.155,
+        "5": 2.916,
+        "6": 2.695,
+        "7": 1.58
+      },
+      "defaultScaleRatio": 0
+    },
+    {
+      "id": 20054,
+      "size": [
+        2048,
+        2048
+      ],
+      "entrance": [
+        824.6809,
+        313.4186
+      ],
+      "exit": [
+        731.4638,
+        1070.5734
+      ],
+      "distance": 762.8714,
+      "angleDegrees": 97.0186,
+      "defaultDistance1080": 481.8143,
+      "mapImageScale": {
+        "1": 4,
+        "2": 3.696,
+        "3": 3.415,
+        "4": 3.155,
+        "5": 2.916,
+        "6": 2.695,
+        "7": 1.58
+      },
+      "defaultScaleRatio": 0
+    },
+    {
+      "id": 20055,
+      "size": [
+        2048,
+        2048
+      ],
+      "entrance": [
+        865.3663,
+        707.9872
+      ],
+      "exit": [
+        1602.064,
+        1044.8872
+      ],
+      "distance": 810.0772,
+      "angleDegrees": 24.5751,
+      "defaultDistance1080": 511.6286,
+      "mapImageScale": {
+        "1": 4,
+        "2": 3.696,
+        "3": 3.415,
+        "4": 3.155,
+        "5": 2.916,
+        "6": 2.695,
+        "7": 1.58
+      },
+      "defaultScaleRatio": 0
+    },
+    {
+      "id": 20056,
+      "size": [
+        2048,
+        2048
+      ],
+      "entrance": [
+        294.4663,
+        1065.0646
+      ],
+      "exit": [
+        780.0624,
+        1066.395
+      ],
+      "distance": 485.5979,
+      "angleDegrees": 0.157,
+      "defaultDistance1080": 306.6939,
+      "mapImageScale": {
+        "1": 4,
+        "2": 3.696,
+        "3": 3.415,
+        "4": 3.155,
+        "5": 2.916,
+        "6": 2.695,
+        "7": 1.58
+      },
+      "defaultScaleRatio": 0
+    },
+    {
+      "id": 20057,
+      "size": [
+        2048,
+        2048
+      ],
+      "entrance": [
+        1033.5527,
+        736.0451
+      ],
+      "exit": [
+        992.2811,
+        1295.5878
+      ],
+      "distance": 561.0627,
+      "angleDegrees": 94.2185,
+      "defaultDistance1080": 354.356,
+      "mapImageScale": {
+        "1": 4,
+        "2": 3.696,
+        "3": 3.415,
+        "4": 3.155,
+        "5": 2.916,
+        "6": 2.695,
+        "7": 1.58
+      },
+      "defaultScaleRatio": 0
+    },
+    {
+      "id": 20058,
+      "size": [
+        2048,
+        2048
+      ],
+      "entrance": [
+        689.1563,
+        1787.5938
+      ],
+      "exit": [
+        1255.2978,
+        1788.625
+      ],
+      "distance": 566.1424,
+      "angleDegrees": 0.1044,
+      "defaultDistance1080": 357.5642,
+      "mapImageScale": {
+        "1": 4,
+        "2": 3.696,
+        "3": 3.415,
+        "4": 3.155,
+        "5": 2.916,
+        "6": 2.695,
+        "7": 1.58
+      },
+      "defaultScaleRatio": 0
+    },
+    {
+      "id": 20059,
+      "size": [
+        2048,
+        2048
+      ],
+      "entrance": [
+        733.3447,
+        1638.57
+      ],
+      "exit": [
+        1501.7459,
+        781.3276
+      ],
+      "distance": 1151.2189,
+      "angleDegrees": -48.1281,
+      "defaultDistance1080": 727.0868,
+      "mapImageScale": {
+        "1": 4,
+        "2": 3.696,
+        "3": 3.415,
+        "4": 3.155,
+        "5": 2.916,
+        "6": 2.695,
+        "7": 1.58
+      },
+      "defaultScaleRatio": 0
+    },
+    {
+      "id": 20060,
+      "size": [
+        2048,
+        2048
+      ],
+      "entrance": [
+        260.0859,
+        1056.3855
+      ],
+      "exit": [
+        1174.6771,
+        1057.4988
+      ],
+      "distance": 914.5919,
+      "angleDegrees": 0.0697,
+      "defaultDistance1080": 577.6379,
+      "mapImageScale": {
+        "1": 4,
+        "2": 3.696,
+        "3": 3.415,
+        "4": 3.155,
+        "5": 2.916,
+        "6": 2.695,
+        "7": 1.58
+      },
+      "defaultScaleRatio": 0
+    },
+    {
+      "id": 29999,
+      "size": [
+        2048,
+        2048
+      ],
+      "entrance": [
+        442.784,
+        1005.0277
+      ],
+      "exit": [
+        1598.8295,
+        1006.4222
+      ],
+      "distance": 1156.0463,
+      "angleDegrees": 0.0691,
+      "defaultDistance1080": 730.1357,
+      "mapImageScale": {
+        "1": 4,
+        "2": 3.696,
+        "3": 3.415,
+        "4": 3.155,
+        "5": 2.916,
+        "6": 2.695,
+        "7": 1.58
+      },
+      "defaultScaleRatio": 0
+    }
+  ],
+  "directionWindowDegrees": 8,
+  "directionCandidates": {
+    "min": 1,
+    "max": 6,
+    "mean": 3.26
+  },
+  "defaultView": {
+    "mapImageScale": 1.58,
+    "pixelsPerMapPixel1080": 0.63158,
+    "fixture": "real-20040-explored.png",
+    "calibrationResults": "exports/recognition-fixtures/results-0.2.2.json",
+    "calibrationSample": "real-explored-live",
+    "toleranceFraction": 0.03,
+    "tolerancePixels1080": 14
+  },
+  "defaultViewCandidates": {
+    "min": 1,
+    "max": 2,
+    "mean": 1.13
+  },
+  "note": "Primary path assumes the user-confirmed default farthest zoom; screen distances are normalized to 1920x1080."
+}

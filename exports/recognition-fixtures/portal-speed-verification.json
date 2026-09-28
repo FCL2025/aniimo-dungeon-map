@@ -1,0 +1,1177 @@
+{
+  "version": "0.2.16",
+  "date": "2026-09-28",
+  "status": "passed",
+  "gameAudit": {
+    "pmdataSha256": "10ad4ccf870ec26031b4d92ce1e97a129c096441dcb82adb5bc08e0bf7662513",
+    "verifiedPortals": 62,
+    "directionCandidates": {
+      "min": 1,
+      "max": 6,
+      "mean": 3.26
+    }
+  },
+  "executable": {
+    "version": "0.2.16",
+    "executable": "dist\\AniimoDungeonMap-0.2.16-windows-x64-portable\\AniimoDungeonMap.exe",
+    "exeBytes": 54995968,
+    "exeSha256": "dc5cc71050d3c0f049d260837db206c830331e2db2e9a78f71ca0c7493715081",
+    "archive": null,
+    "requiresWebView2": true,
+    "embeddedMaps": 31,
+    "difficultyIds": [
+      5,
+      6
+    ],
+    "monsterTypeIds": [
+      11001200090
+    ]
+  },
+  "measurement": "Actual release EXE, hidden isolated WebView2 profile; 3 repetitions per path, alternating order; timings exclude initial engine loading and live game capture.",
+  "benchmark": [
+    {
+      "sample": "initial",
+      "timesMs": {
+        "full": [
+          902,
+          897,
+          907
+        ],
+        "fast": [
+          158,
+          128,
+          129
+        ]
+      },
+      "medianMs": {
+        "full": 902,
+        "fast": 129
+      },
+      "reductionPercent": 85.7,
+      "speedup": 6.99
+    },
+    {
+      "sample": "explored",
+      "timesMs": {
+        "full": [
+          1623,
+          1610,
+          1623
+        ],
+        "fast": [
+          196,
+          192,
+          189
+        ]
+      },
+      "medianMs": {
+        "full": 1623,
+        "fast": 192
+      },
+      "reductionPercent": 88.2,
+      "speedup": 8.45
+    }
+  ],
+  "initialization": [
+    {
+      "ms": 4116,
+      "usePortals": true
+    },
+    {
+      "ms": 3632,
+      "usePortals": false
+    }
+  ],
+  "nativeInputs": [
+    {
+      "name": "initial-scaled-1280x720",
+      "selected": 20040,
+      "locked": null,
+      "previewMatches": 11,
+      "elapsedMs": 129,
+      "cached": false,
+      "search": {
+        "candidates": 2,
+        "evaluated": 2,
+        "fallback": null,
+        "featureMs": 32,
+        "matchMs": 57,
+        "portalMs": 23,
+        "strategy": "portals",
+        "total": 31
+      }
+    },
+    {
+      "name": "explored-scaled-1280x720",
+      "selected": 20040,
+      "locked": null,
+      "previewMatches": 190,
+      "elapsedMs": 186,
+      "cached": false,
+      "search": {
+        "candidates": 2,
+        "evaluated": 2,
+        "fallback": null,
+        "featureMs": 38,
+        "matchMs": 106,
+        "portalMs": 23,
+        "strategy": "portals",
+        "total": 31
+      }
+    },
+    {
+      "name": "initial-scaled-1600x900",
+      "selected": 20040,
+      "locked": null,
+      "previewMatches": 10,
+      "elapsedMs": 130,
+      "cached": false,
+      "search": {
+        "candidates": 2,
+        "evaluated": 2,
+        "fallback": null,
+        "featureMs": 31,
+        "matchMs": 55,
+        "portalMs": 21,
+        "strategy": "portals",
+        "total": 31
+      }
+    },
+    {
+      "name": "explored-scaled-1600x900",
+      "selected": 20040,
+      "locked": null,
+      "previewMatches": 191,
+      "elapsedMs": 189,
+      "cached": false,
+      "search": {
+        "candidates": 2,
+        "evaluated": 2,
+        "fallback": null,
+        "featureMs": 36,
+        "matchMs": 106,
+        "portalMs": 24,
+        "strategy": "portals",
+        "total": 31
+      }
+    },
+    {
+      "name": "initial-scaled-2560x1440",
+      "selected": 20040,
+      "locked": null,
+      "previewMatches": 8,
+      "elapsedMs": 147,
+      "cached": false,
+      "search": {
+        "candidates": 2,
+        "evaluated": 2,
+        "fallback": null,
+        "featureMs": 32,
+        "matchMs": 56,
+        "portalMs": 21,
+        "strategy": "portals",
+        "total": 31
+      }
+    },
+    {
+      "name": "explored-scaled-2560x1440",
+      "selected": 20040,
+      "locked": null,
+      "previewMatches": 195,
+      "elapsedMs": 211,
+      "cached": false,
+      "search": {
+        "candidates": 2,
+        "evaluated": 2,
+        "fallback": null,
+        "featureMs": 38,
+        "matchMs": 103,
+        "portalMs": 28,
+        "strategy": "portals",
+        "total": 31
+      }
+    },
+    {
+      "name": "initial-scaled-3840x2160",
+      "selected": 20040,
+      "locked": null,
+      "previewMatches": 11,
+      "elapsedMs": 165,
+      "cached": false,
+      "search": {
+        "candidates": 2,
+        "evaluated": 2,
+        "fallback": null,
+        "featureMs": 31,
+        "matchMs": 54,
+        "portalMs": 23,
+        "strategy": "portals",
+        "total": 31
+      }
+    },
+    {
+      "name": "explored-scaled-3840x2160",
+      "selected": 20040,
+      "locked": null,
+      "previewMatches": 182,
+      "elapsedMs": 236,
+      "cached": false,
+      "search": {
+        "candidates": 2,
+        "evaluated": 2,
+        "fallback": null,
+        "featureMs": 36,
+        "matchMs": 102,
+        "portalMs": 30,
+        "strategy": "portals",
+        "total": 31
+      }
+    },
+    {
+      "name": "cropped-map-region",
+      "selected": 20040,
+      "locked": 20040,
+      "previewMatches": 215,
+      "elapsedMs": 173,
+      "cached": false,
+      "search": {
+        "candidates": 2,
+        "evaluated": 2,
+        "fallback": null,
+        "featureMs": 32,
+        "matchMs": 101,
+        "portalMs": 21,
+        "strategy": "portals",
+        "total": 31
+      }
+    },
+    {
+      "name": "missing-side-door",
+      "selected": 20040,
+      "locked": null,
+      "previewMatches": 186,
+      "elapsedMs": 1632,
+      "cached": false,
+      "search": {
+        "candidates": 0,
+        "evaluated": 31,
+        "fallback": "portals-unavailable",
+        "featureMs": 35,
+        "matchMs": 1547,
+        "portalMs": 22,
+        "strategy": "full",
+        "total": 31
+      },
+      "baseline": {
+        "locked": null,
+        "points": 186,
+        "selected": 20040
+      }
+    },
+    {
+      "name": "missing-front-door",
+      "selected": 20034,
+      "locked": null,
+      "previewMatches": 174,
+      "elapsedMs": 1620,
+      "cached": false,
+      "search": {
+        "candidates": 0,
+        "evaluated": 31,
+        "fallback": "terrain-disagrees",
+        "featureMs": 35,
+        "matchMs": 1533,
+        "portalMs": 22,
+        "strategy": "full",
+        "total": 31
+      },
+      "baseline": {
+        "locked": null,
+        "points": 174,
+        "selected": 20034
+      }
+    },
+    {
+      "name": "misleading-side-door",
+      "selected": 20040,
+      "locked": null,
+      "previewMatches": 175,
+      "elapsedMs": 1622,
+      "cached": false,
+      "search": {
+        "candidates": 0,
+        "evaluated": 31,
+        "fallback": "terrain-disagrees",
+        "featureMs": 36,
+        "matchMs": 1533,
+        "portalMs": 24,
+        "strategy": "full",
+        "total": 31
+      },
+      "baseline": {
+        "locked": null,
+        "points": 175,
+        "selected": 20040
+      }
+    },
+    {
+      "name": "ambiguous-side-doors",
+      "selected": 20040,
+      "locked": null,
+      "previewMatches": 170,
+      "elapsedMs": 1615,
+      "cached": false,
+      "search": {
+        "candidates": 0,
+        "evaluated": 31,
+        "fallback": "portals-unavailable",
+        "featureMs": 36,
+        "matchMs": 1523,
+        "portalMs": 26,
+        "strategy": "full",
+        "total": 31
+      },
+      "baseline": {
+        "locked": null,
+        "points": 170,
+        "selected": 20040
+      }
+    },
+    {
+      "name": "duplicate",
+      "selected": 20040,
+      "locked": null,
+      "previewMatches": 184,
+      "elapsedMs": 20,
+      "cached": true,
+      "search": {
+        "candidates": 2,
+        "evaluated": 0,
+        "fallback": null,
+        "featureMs": 36,
+        "matchMs": 103,
+        "portalMs": 24,
+        "reused": true,
+        "strategy": "portals",
+        "total": 31
+      }
+    },
+    {
+      "name": "changed-crop",
+      "selected": 20040,
+      "locked": 20040,
+      "previewMatches": 215,
+      "elapsedMs": 175,
+      "cached": false,
+      "search": {
+        "candidates": 2,
+        "evaluated": 2,
+        "fallback": null,
+        "featureMs": 32,
+        "matchMs": 103,
+        "portalMs": 22,
+        "strategy": "portals",
+        "total": 31
+      }
+    }
+  ],
+  "nativeUiImports": [
+    {
+      "elapsedMs": 156,
+      "message": "地宮 20040 · 10 / 200 點。",
+      "name": "real-20040-initial.png",
+      "pinned": null,
+      "points": 10,
+      "search": {
+        "candidates": 2,
+        "evaluated": 2,
+        "fallback": null,
+        "featureMs": 30,
+        "matchMs": 63,
+        "portalMs": 44,
+        "strategy": "portals",
+        "total": 31
+      },
+      "selected": 20040,
+      "totalMs": 3633,
+      "uiMap": "20040"
+    },
+    {
+      "elapsedMs": 232,
+      "message": "地宮 20040 · 184 / 200 點。",
+      "name": "real-20040-explored.png",
+      "pinned": null,
+      "points": 184,
+      "search": {
+        "candidates": 2,
+        "evaluated": 2,
+        "fallback": null,
+        "featureMs": 37,
+        "matchMs": 118,
+        "portalMs": 46,
+        "strategy": "portals",
+        "total": 31
+      },
+      "selected": 20040,
+      "totalMs": 3929,
+      "uiMap": "20040"
+    }
+  ],
+  "regression": {
+    "cases": 42,
+    "error": null,
+    "selectionOrEvidenceChanges": [],
+    "results": [
+      {
+        "name": "real-initial-live",
+        "selected": 20040,
+        "locked": null,
+        "previewMatches": 10,
+        "elapsedMs": 156,
+        "cached": false,
+        "search": {
+          "candidates": 2,
+          "evaluated": 2,
+          "fallback": null,
+          "featureMs": 32,
+          "matchMs": 62,
+          "portalMs": 43,
+          "strategy": "portals",
+          "total": 31
+        }
+      },
+      {
+        "name": "real-explored-live",
+        "selected": 20040,
+        "locked": null,
+        "previewMatches": 184,
+        "elapsedMs": 203,
+        "cached": false,
+        "search": {
+          "candidates": 2,
+          "evaluated": 2,
+          "fallback": null,
+          "featureMs": 39,
+          "matchMs": 108,
+          "portalMs": 37,
+          "strategy": "portals",
+          "total": 31
+        }
+      },
+      {
+        "name": "duplicate-explored",
+        "selected": 20040,
+        "locked": null,
+        "previewMatches": 184,
+        "elapsedMs": 20,
+        "cached": true,
+        "search": {
+          "candidates": 2,
+          "evaluated": 0,
+          "fallback": null,
+          "featureMs": 39,
+          "matchMs": 108,
+          "portalMs": 37,
+          "reused": true,
+          "strategy": "portals",
+          "total": 31
+        }
+      },
+      {
+        "name": "strong-lock",
+        "selected": 20040,
+        "locked": 20040,
+        "previewMatches": 639,
+        "elapsedMs": 1794,
+        "cached": false,
+        "search": {
+          "candidates": 0,
+          "evaluated": 31,
+          "fallback": "portals-unavailable",
+          "featureMs": 67,
+          "matchMs": 1689,
+          "portalMs": 0,
+          "strategy": "full",
+          "total": 31
+        }
+      },
+      {
+        "name": "other-map-after-lock",
+        "selected": 20040,
+        "locked": 20040,
+        "previewMatches": 639,
+        "elapsedMs": 24
+      },
+      {
+        "name": "new-session-other-map",
+        "selected": 20036,
+        "locked": 20036,
+        "previewMatches": 796,
+        "elapsedMs": 1749,
+        "cached": false,
+        "search": {
+          "candidates": 0,
+          "evaluated": 31,
+          "fallback": "portals-unavailable",
+          "featureMs": 68,
+          "matchMs": 1642,
+          "portalMs": 0,
+          "strategy": "full",
+          "total": 31
+        }
+      },
+      {
+        "name": "reference-20059",
+        "selected": 20059,
+        "locked": null,
+        "previewMatches": 129,
+        "elapsedMs": 1606,
+        "cached": false,
+        "search": {
+          "candidates": 0,
+          "evaluated": 31,
+          "fallback": "portals-unavailable",
+          "featureMs": 44,
+          "matchMs": 1554,
+          "portalMs": 0,
+          "strategy": "full",
+          "total": 31
+        }
+      },
+      {
+        "name": "reference-20048",
+        "selected": 20048,
+        "locked": null,
+        "previewMatches": 118,
+        "elapsedMs": 1622,
+        "cached": false,
+        "search": {
+          "candidates": 0,
+          "evaluated": 31,
+          "fallback": "portals-unavailable",
+          "featureMs": 52,
+          "matchMs": 1562,
+          "portalMs": 0,
+          "strategy": "full",
+          "total": 31
+        }
+      },
+      {
+        "name": "reference-20046",
+        "selected": 20046,
+        "locked": null,
+        "previewMatches": 167,
+        "elapsedMs": 1640,
+        "cached": false,
+        "search": {
+          "candidates": 0,
+          "evaluated": 31,
+          "fallback": "portals-unavailable",
+          "featureMs": 53,
+          "matchMs": 1577,
+          "portalMs": 0,
+          "strategy": "full",
+          "total": 31
+        }
+      },
+      {
+        "name": "reference-20058",
+        "selected": 20058,
+        "locked": null,
+        "previewMatches": 131,
+        "elapsedMs": 1639,
+        "cached": false,
+        "search": {
+          "candidates": 0,
+          "evaluated": 31,
+          "fallback": "portals-unavailable",
+          "featureMs": 55,
+          "matchMs": 1574,
+          "portalMs": 0,
+          "strategy": "full",
+          "total": 31
+        }
+      },
+      {
+        "name": "reference-20034",
+        "selected": 20040,
+        "locked": null,
+        "previewMatches": 70,
+        "elapsedMs": 1606,
+        "cached": false,
+        "search": {
+          "candidates": 0,
+          "evaluated": 31,
+          "fallback": "portals-unavailable",
+          "featureMs": 43,
+          "matchMs": 1554,
+          "portalMs": 0,
+          "strategy": "full",
+          "total": 31
+        }
+      },
+      {
+        "name": "reference-20037",
+        "selected": 20037,
+        "locked": null,
+        "previewMatches": 85,
+        "elapsedMs": 1639,
+        "cached": false,
+        "search": {
+          "candidates": 0,
+          "evaluated": 31,
+          "fallback": "portals-unavailable",
+          "featureMs": 46,
+          "matchMs": 1586,
+          "portalMs": 0,
+          "strategy": "full",
+          "total": 31
+        }
+      },
+      {
+        "name": "reference-20049",
+        "selected": 20049,
+        "locked": null,
+        "previewMatches": 103,
+        "elapsedMs": 1795,
+        "cached": false,
+        "search": {
+          "candidates": 0,
+          "evaluated": 31,
+          "fallback": "portals-unavailable",
+          "featureMs": 52,
+          "matchMs": 1731,
+          "portalMs": 0,
+          "strategy": "full",
+          "total": 31
+        }
+      },
+      {
+        "name": "reference-20042",
+        "selected": 20042,
+        "locked": null,
+        "previewMatches": 125,
+        "elapsedMs": 1645,
+        "cached": false,
+        "search": {
+          "candidates": 0,
+          "evaluated": 31,
+          "fallback": "portals-unavailable",
+          "featureMs": 55,
+          "matchMs": 1574,
+          "portalMs": 0,
+          "strategy": "full",
+          "total": 31
+        }
+      },
+      {
+        "name": "reference-20054",
+        "selected": 20054,
+        "locked": null,
+        "previewMatches": 114,
+        "elapsedMs": 1712,
+        "cached": false,
+        "search": {
+          "candidates": 0,
+          "evaluated": 31,
+          "fallback": "portals-unavailable",
+          "featureMs": 54,
+          "matchMs": 1648,
+          "portalMs": 0,
+          "strategy": "full",
+          "total": 31
+        }
+      },
+      {
+        "name": "reference-20053",
+        "selected": 20053,
+        "locked": null,
+        "previewMatches": 145,
+        "elapsedMs": 1659,
+        "cached": false,
+        "search": {
+          "candidates": 0,
+          "evaluated": 31,
+          "fallback": "portals-unavailable",
+          "featureMs": 46,
+          "matchMs": 1602,
+          "portalMs": 0,
+          "strategy": "full",
+          "total": 31
+        }
+      },
+      {
+        "name": "reference-20038",
+        "selected": 20038,
+        "locked": null,
+        "previewMatches": 69,
+        "elapsedMs": 1574,
+        "cached": false,
+        "search": {
+          "candidates": 0,
+          "evaluated": 31,
+          "fallback": "portals-unavailable",
+          "featureMs": 48,
+          "matchMs": 1518,
+          "portalMs": 0,
+          "strategy": "full",
+          "total": 31
+        }
+      },
+      {
+        "name": "reference-20045",
+        "selected": 20045,
+        "locked": null,
+        "previewMatches": 179,
+        "elapsedMs": 1613,
+        "cached": false,
+        "search": {
+          "candidates": 0,
+          "evaluated": 31,
+          "fallback": "portals-unavailable",
+          "featureMs": 49,
+          "matchMs": 1557,
+          "portalMs": 0,
+          "strategy": "full",
+          "total": 31
+        }
+      },
+      {
+        "name": "reference-20056",
+        "selected": 20056,
+        "locked": null,
+        "previewMatches": 138,
+        "elapsedMs": 1667,
+        "cached": false,
+        "search": {
+          "candidates": 0,
+          "evaluated": 31,
+          "fallback": "portals-unavailable",
+          "featureMs": 50,
+          "matchMs": 1606,
+          "portalMs": 0,
+          "strategy": "full",
+          "total": 31
+        }
+      },
+      {
+        "name": "reference-20043",
+        "selected": 20043,
+        "locked": null,
+        "previewMatches": 187,
+        "elapsedMs": 1783,
+        "cached": false,
+        "search": {
+          "candidates": 0,
+          "evaluated": 31,
+          "fallback": "portals-unavailable",
+          "featureMs": 56,
+          "matchMs": 1716,
+          "portalMs": 0,
+          "strategy": "full",
+          "total": 31
+        }
+      },
+      {
+        "name": "reference-20060",
+        "selected": 20060,
+        "locked": null,
+        "previewMatches": 169,
+        "elapsedMs": 1651,
+        "cached": false,
+        "search": {
+          "candidates": 0,
+          "evaluated": 31,
+          "fallback": "portals-unavailable",
+          "featureMs": 45,
+          "matchMs": 1597,
+          "portalMs": 0,
+          "strategy": "full",
+          "total": 31
+        }
+      },
+      {
+        "name": "reference-20035",
+        "selected": 20035,
+        "locked": null,
+        "previewMatches": 85,
+        "elapsedMs": 1650,
+        "cached": false,
+        "search": {
+          "candidates": 0,
+          "evaluated": 31,
+          "fallback": "portals-unavailable",
+          "featureMs": 54,
+          "matchMs": 1583,
+          "portalMs": 0,
+          "strategy": "full",
+          "total": 31
+        }
+      },
+      {
+        "name": "reference-20041",
+        "selected": 20041,
+        "locked": null,
+        "previewMatches": 130,
+        "elapsedMs": 1637,
+        "cached": false,
+        "search": {
+          "candidates": 0,
+          "evaluated": 31,
+          "fallback": "portals-unavailable",
+          "featureMs": 52,
+          "matchMs": 1576,
+          "portalMs": 0,
+          "strategy": "full",
+          "total": 31
+        }
+      },
+      {
+        "name": "reference-20050",
+        "selected": 20050,
+        "locked": null,
+        "previewMatches": 119,
+        "elapsedMs": 1606,
+        "cached": false,
+        "search": {
+          "candidates": 0,
+          "evaluated": 31,
+          "fallback": "portals-unavailable",
+          "featureMs": 50,
+          "matchMs": 1548,
+          "portalMs": 0,
+          "strategy": "full",
+          "total": 31
+        }
+      },
+      {
+        "name": "reference-20047",
+        "selected": 20047,
+        "locked": null,
+        "previewMatches": 174,
+        "elapsedMs": 1630,
+        "cached": false,
+        "search": {
+          "candidates": 0,
+          "evaluated": 31,
+          "fallback": "portals-unavailable",
+          "featureMs": 53,
+          "matchMs": 1562,
+          "portalMs": 0,
+          "strategy": "full",
+          "total": 31
+        }
+      },
+      {
+        "name": "reference-20040",
+        "selected": 20040,
+        "locked": null,
+        "previewMatches": 112,
+        "elapsedMs": 1605,
+        "cached": false,
+        "search": {
+          "candidates": 0,
+          "evaluated": 31,
+          "fallback": "portals-unavailable",
+          "featureMs": 59,
+          "matchMs": 1538,
+          "portalMs": 0,
+          "strategy": "full",
+          "total": 31
+        }
+      },
+      {
+        "name": "reference-20033",
+        "selected": 20033,
+        "locked": null,
+        "previewMatches": 91,
+        "elapsedMs": 1586,
+        "cached": false,
+        "search": {
+          "candidates": 0,
+          "evaluated": 31,
+          "fallback": "portals-unavailable",
+          "featureMs": 48,
+          "matchMs": 1530,
+          "portalMs": 0,
+          "strategy": "full",
+          "total": 31
+        }
+      },
+      {
+        "name": "reference-20051",
+        "selected": 20051,
+        "locked": null,
+        "previewMatches": 128,
+        "elapsedMs": 1613,
+        "cached": false,
+        "search": {
+          "candidates": 0,
+          "evaluated": 31,
+          "fallback": "portals-unavailable",
+          "featureMs": 53,
+          "matchMs": 1551,
+          "portalMs": 0,
+          "strategy": "full",
+          "total": 31
+        }
+      },
+      {
+        "name": "reference-20055",
+        "selected": 20055,
+        "locked": null,
+        "previewMatches": 185,
+        "elapsedMs": 1614,
+        "cached": false,
+        "search": {
+          "candidates": 0,
+          "evaluated": 31,
+          "fallback": "portals-unavailable",
+          "featureMs": 48,
+          "matchMs": 1557,
+          "portalMs": 0,
+          "strategy": "full",
+          "total": 31
+        }
+      },
+      {
+        "name": "reference-20039",
+        "selected": 20039,
+        "locked": null,
+        "previewMatches": 54,
+        "elapsedMs": 1602,
+        "cached": false,
+        "search": {
+          "candidates": 0,
+          "evaluated": 31,
+          "fallback": "portals-unavailable",
+          "featureMs": 59,
+          "matchMs": 1536,
+          "portalMs": 0,
+          "strategy": "full",
+          "total": 31
+        }
+      },
+      {
+        "name": "reference-20057",
+        "selected": 20057,
+        "locked": null,
+        "previewMatches": 190,
+        "elapsedMs": 1630,
+        "cached": false,
+        "search": {
+          "candidates": 0,
+          "evaluated": 31,
+          "fallback": "portals-unavailable",
+          "featureMs": 48,
+          "matchMs": 1569,
+          "portalMs": 0,
+          "strategy": "full",
+          "total": 31
+        }
+      },
+      {
+        "name": "reference-20052",
+        "selected": 20052,
+        "locked": null,
+        "previewMatches": 122,
+        "elapsedMs": 1593,
+        "cached": false,
+        "search": {
+          "candidates": 0,
+          "evaluated": 31,
+          "fallback": "portals-unavailable",
+          "featureMs": 47,
+          "matchMs": 1538,
+          "portalMs": 0,
+          "strategy": "full",
+          "total": 31
+        }
+      },
+      {
+        "name": "reference-20036",
+        "selected": 20036,
+        "locked": null,
+        "previewMatches": 98,
+        "elapsedMs": 1605,
+        "cached": false,
+        "search": {
+          "candidates": 0,
+          "evaluated": 31,
+          "fallback": "portals-unavailable",
+          "featureMs": 43,
+          "matchMs": 1551,
+          "portalMs": 0,
+          "strategy": "full",
+          "total": 31
+        }
+      },
+      {
+        "name": "reference-20044",
+        "selected": 20044,
+        "locked": null,
+        "previewMatches": 113,
+        "elapsedMs": 1606,
+        "cached": false,
+        "search": {
+          "candidates": 0,
+          "evaluated": 31,
+          "fallback": "portals-unavailable",
+          "featureMs": 54,
+          "matchMs": 1543,
+          "portalMs": 0,
+          "strategy": "full",
+          "total": 31
+        }
+      },
+      {
+        "name": "reference-29999",
+        "selected": 29999,
+        "locked": null,
+        "previewMatches": 75,
+        "elapsedMs": 1615,
+        "cached": false,
+        "search": {
+          "candidates": 0,
+          "evaluated": 31,
+          "fallback": "portals-unavailable",
+          "featureMs": 53,
+          "matchMs": 1554,
+          "portalMs": 0,
+          "strategy": "full",
+          "total": 31
+        }
+      },
+      {
+        "name": "reference-20032",
+        "selected": 20032,
+        "locked": null,
+        "previewMatches": 60,
+        "elapsedMs": 1637,
+        "cached": false,
+        "search": {
+          "candidates": 0,
+          "evaluated": 31,
+          "fallback": "portals-unavailable",
+          "featureMs": 50,
+          "matchMs": 1575,
+          "portalMs": 0,
+          "strategy": "full",
+          "total": 31
+        }
+      },
+      {
+        "name": "reference-20031",
+        "selected": 20031,
+        "locked": null,
+        "previewMatches": 108,
+        "elapsedMs": 1587,
+        "cached": false,
+        "search": {
+          "candidates": 0,
+          "evaluated": 31,
+          "fallback": "portals-unavailable",
+          "featureMs": 49,
+          "matchMs": 1531,
+          "portalMs": 0,
+          "strategy": "full",
+          "total": 31
+        }
+      },
+      {
+        "name": "fog-25",
+        "selected": 20037,
+        "locked": null,
+        "previewMatches": 31,
+        "elapsedMs": 1578,
+        "cached": false,
+        "search": {
+          "candidates": 0,
+          "evaluated": 31,
+          "fallback": "portals-unavailable",
+          "featureMs": 34,
+          "matchMs": 1537,
+          "portalMs": 0,
+          "strategy": "full",
+          "total": 31
+        }
+      },
+      {
+        "name": "fog-50",
+        "selected": 20036,
+        "locked": null,
+        "previewMatches": 96,
+        "elapsedMs": 1595,
+        "cached": false,
+        "search": {
+          "candidates": 0,
+          "evaluated": 31,
+          "fallback": "portals-unavailable",
+          "featureMs": 47,
+          "matchMs": 1537,
+          "portalMs": 0,
+          "strategy": "full",
+          "total": 31
+        }
+      },
+      {
+        "name": "fog-75",
+        "selected": 20036,
+        "locked": null,
+        "previewMatches": 103,
+        "elapsedMs": 1592,
+        "cached": false,
+        "search": {
+          "candidates": 0,
+          "evaluated": 31,
+          "fallback": "portals-unavailable",
+          "featureMs": 44,
+          "matchMs": 1541,
+          "portalMs": 0,
+          "strategy": "full",
+          "total": 31
+        }
+      },
+      {
+        "name": "blank",
+        "selected": null,
+        "locked": null,
+        "previewMatches": 0,
+        "elapsedMs": 17,
+        "cached": false,
+        "search": {
+          "candidates": 0,
+          "evaluated": 31,
+          "fallback": "portals-unavailable",
+          "featureMs": 9,
+          "matchMs": 0,
+          "portalMs": 0,
+          "strategy": "full",
+          "total": 31
+        }
+      },
+      {
+        "name": "gameplay",
+        "selected": null,
+        "locked": null,
+        "previewMatches": 0,
+        "elapsedMs": 9
+      }
+    ]
+  },
+  "coreTests": {
+    "passed": 21,
+    "command": "node --test scripts/tests/recognition-core.test.cjs scripts/tests/recognition-portals.test.cjs scripts/tests/tracking-core.test.cjs"
+  },
+  "controllerChecks": {
+    "independentSwitches": true,
+    "restartClearsLock": true,
+    "manualMapTracking": true,
+    "lateResultsIgnored": true
+  },
+  "limitations": [
+    "Only dungeon 20040 has real initial-fog samples. Other resolutions are simulated from those images.",
+    "One artificial front-door occlusion still previews 20034 at 174 points, matching the old exhaustive search; it does not lock.",
+    "Initial map/ORB loading still costs several seconds; no live M-to-result latency, GPU, FPS, or broad all-map accuracy claim."
+  ]
+}

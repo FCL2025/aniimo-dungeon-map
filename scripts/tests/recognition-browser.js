@@ -20,7 +20,8 @@
   }
   (async()=>{
     try{
-      await send({type:'init',maps:DUNGEON_DATA.maps.map(m=>({id:m.id,image:new URL(m.image,location.href).href}))},'ready');
+      await send({type:'init',maps:DUNGEON_DATA.maps.map(m=>({id:m.id,size:m.size,portalGeometry:m.portalGeometry,image:new URL(m.image,location.href).href})),
+        portalIcons:Object.fromEntries(['entrance','exit'].map(kind=>[kind,new URL(DUNGEON_DATA.icons.assets[DUNGEON_DATA.icons.categories[kind]].image,location.href).href]))},'ready');
       const fixture=name=>new URL('../../exports/recognition-fixtures/'+name,location.href).href;
       let r=await analyze('real-initial-live',fixture('real-20040-initial.png'),'live');
       check(r.selected===20040&&r.locked===null,'Initial live fog must immediately preview 20040');

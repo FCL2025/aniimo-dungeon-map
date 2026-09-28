@@ -36,7 +36,7 @@
     renderSwitch();syncCapture().catch(captureFailure);
   }
   function initializeMap(){
-    if(mapWorker)return;message('準備辨識資料','正在載入 31 張地形；人物追蹤使用獨立處理流程。');
+    if(mapWorker)return;message('準備辨識資料','正在載入常見地宮，未吻合時會繼續搜尋其他地圖。');
     const worker=mapWorker=new Worker('recognition-worker.js');
     worker.onerror=e=>{if(mapWorker===worker)workerFailure('map',e.message);};
     worker.onmessage=({data:r})=>{
@@ -47,7 +47,8 @@
       if(r.type!=='result'||r.request!==mapRequest)return;
       mapBusy=false;lastResult=r;renderResult(r);if(pinned||!running)disposeMap();else pumpMap();
     };
-    worker.postMessage({type:'init',maps:DUNGEON_DATA.maps.map(m=>({id:m.id,image:new URL(m.image,location.href).href}))});
+    worker.postMessage({type:'init',maps:DUNGEON_DATA.maps.map(m=>({id:m.id,size:m.size,portalGeometry:m.portalGeometry,image:new URL(m.image,location.href).href})),
+      portalIcons:Object.fromEntries(['entrance','exit'].map(kind=>[kind,new URL(DUNGEON_DATA.icons.assets[DUNGEON_DATA.icons.categories[kind]].image,location.href).href]))});
   }
   function initializeTracker(){
     if(!trackingRunning)return;const map=DUNGEON_DATA.maps.find(m=>m.id===Number(el('map').value));

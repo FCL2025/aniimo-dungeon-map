@@ -33,7 +33,7 @@ function crop(bitmap,region,maxWidth=1200,circle=false){
   if(!circle&&region[2]>.9){ctx.fillStyle='#14212c';ctx.fillRect(0,0,width*.18,height*.28);}
   return {pixels:!circle?ctx.getImageData(0,0,width,height):pixels,width,height,ratio,region:[x,y,w,h]};
 }
-function score(query,reference){
+function score(query,reference,estimate=MapRecognition.consensus){
   if(query.descriptors.rows<6)return null;
   const matches=new cv.DMatchVectorVector(),pairs=[],used=new Set();
   try{
@@ -48,7 +48,7 @@ function score(query,reference){
       }m.delete();
     }
   }finally{matches.delete();}
-  const result=MapRecognition.consensus(pairs);
+  const result=estimate(pairs);
   if(!result)return null;
   const {model,inliers,cells,area,error}=result;
   return {id:reference.id,model,inliers:inliers.length,cells,area,error,score:inliers.length+Math.min(20,cells)*1.5,

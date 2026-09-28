@@ -5,6 +5,7 @@ from pathlib import Path
 import shutil
 from app_icons import stage_app_icons
 from build_viewer import CATEGORIES, display_pins, display_icons
+from analyze_portal_geometry import portal_geometry
 
 ROOT = Path(__file__).resolve().parent.parent
 OUTPUT = ROOT/'app/frontend'
@@ -12,6 +13,7 @@ VERSION = json.loads((ROOT/'app/src-tauri/tauri.conf.json').read_text(encoding='
 OUTPUT.mkdir(parents=True, exist_ok=True)
 (OUTPUT/'maps').mkdir(exist_ok=True)
 source = ROOT/'exports/grab-eggs-data'
+scenes = json.loads((source/'source-tables.json').read_text(encoding='utf8'))['scenes']
 policy = json.loads((source/'display-policy.json').read_text(encoding='utf8'))['scope']
 assert policy['kind'] == 'dungeon' and policy['loadLayerTextures'] is False
 assert policy['monsterTypeIds'] == [11001200090]
@@ -23,6 +25,7 @@ for mid in sorted(allowed):
     original = json.loads((source/'maps'/f'{mid}.json').read_text(encoding='utf8'))
     record = {k: original[k] for k in ('id', 'size', 'bounds')}
     record['image'] = f'maps/{mid}.png'
+    record['portalGeometry'] = portal_geometry(original, scenes[str(mid)]['mapImageScale'])
     record['pins'] = [{k: p[k] for k in pin_keys if k in p} for p in display_pins(original['pins'])]
     maps.append(record)
     shutil.copyfile(ROOT/'exports/grab-eggs-dungeons/preview'/f'UI_Img_Map_{mid}.png', OUTPUT/record['image'])
@@ -44,7 +47,7 @@ viewer_js = (OUTPUT/'viewer.js').read_text(encoding='utf8').replace(
     '找不到底圖，請保留 grab-eggs-dungeons 與本資料夾的相對位置。',
     '內嵌底圖載入失敗，請重新解壓應用並確認檔案完整。')
 (OUTPUT/'viewer.js').write_text(viewer_js, encoding='utf8')
-for name in ('desktop.js', 'overlay.js', 'desktop.css', 'recognition.js', 'recognition.css', 'recognition-worker.js', 'recognition-core.js', 'recognition-vision.js', 'tracking-core.js', 'tracking-worker.js', 'map-header.js', 'recognition-screen.js'):
+for name in ('desktop.js', 'overlay.js', 'desktop.css', 'recognition.js', 'recognition.css', 'recognition-worker.js', 'recognition-core.js', 'recognition-vision.js', 'recognition-portals.js', 'recognition-search.js', 'recognition-fog.js', 'fog-references.json', 'tracking-core.js', 'tracking-worker.js', 'map-header.js', 'recognition-screen.js'):
     shutil.copyfile(ROOT/'app'/name, OUTPUT/name)
 shutil.copytree(ROOT/'app/vendor', OUTPUT/'vendor', dirs_exist_ok=True)
 html = (ROOT/'scripts/data_viewer/index.html').read_text(encoding='utf8')
@@ -80,6 +83,7 @@ html = html.replace('<noscript>', f'''<dialog id="help-dialog"><h2>伊莫地城�
 <p>遊戲建議使用無邊框視窗或視窗模式；獨佔全螢幕下的覆蓋尚未驗證。</p>
 <p>「辨識」是工具列開關，開啟即自動連接伊莫，不開彈窗。未鎖定時跟隨當前第一名預覽，達 200 個吻合點（含）即固定本場。每次重新開啟辨識都會清除上一場鎖定與舊候選，重新讀取本場。側欄「辨識、追蹤設定與候選」可匯入截圖或調整擷取範圍。</p>
 <p>遊戲在前景時按 M，會短暫加強取樣 2.4 秒、最多每秒 5 張；平常未鎖定時約每秒 1 張。重複畫面會略過，鎖定後只追蹤該地宮的位置。M 按鍵只用來觸發取樣，仍會檢查畫面是否為地圖。</p>
+<p>使用預設拉到最遠的 M 地圖時，先按正門／側門距離與方向縮小候選，再比對地形。線索不足時自動放寬搜尋；初始迷霧線索不足時仍顯示候選預覽，達 200 個地形吻合點才鎖定。</p>
 <p>「辨識」只負責判斷地宮，「追蹤」獨立判斷小地圖上的人物位置。找到正確地宮後可關閉辨識、開啟追蹤，也可手動選圖後直接追蹤。只載入目前地圖，優先處理最新畫面；僅追蹤時先裁切小地圖與 M 地圖標題區再編碼，最高每秒取樣 10 張。實際更新速度取決於畫面與電腦效能。</p>
 <p>人物位置顯示為薄荷綠圓點與金色漣漪。主視窗按 ◎ 可置中人物；1.5 秒無法取得新位置時轉為灰色空心圈。關閉追蹤會清除人物標記；重新開啟辨識會清除舊位置，追蹤開關保持獨立。迷霧、相似房間或範圍未對準時可能無法定位；不辨識樓層，也不判定寶箱是否已取得。虛線外圈為房間模組補充點。</p>
 <p>資料與 31 張單張地城底圖已內嵌。篩選設定會自動保存，同一個 Windows 帳號更新版本或移動應用資料夾後仍會沿用。首次升級請先關閉舊版，並將新版放在舊版旁邊，以便自動匯入設定。需 Windows 10/11 x64 與 Microsoft Edge WebView2 Runtime。</p>

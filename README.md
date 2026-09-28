@@ -2,7 +2,7 @@
 
 伊莫「搶蛋大作戰」的 Windows 地圖工具，提供 31 張地宮底圖、寶箱與蛋巢等候選點標記，支援地圖辨識、人物追蹤及透明覆蓋地圖。
 
-**[下載 Windows x64 應用](https://github.com/FCL2025/aniimo-dungeon-map/releases/download/v0.2.15/AniimoDungeonMap.exe)** · [下載頁面](https://github.com/FCL2025/aniimo-dungeon-map/releases)
+**[下載 Windows x64 應用](https://github.com/FCL2025/aniimo-dungeon-map/releases/download/v0.2.19/AniimoDungeonMap.exe)** · [下載頁面](https://github.com/FCL2025/aniimo-dungeon-map/releases)
 
 ## 下載與啟動
 
@@ -27,6 +27,8 @@
 2. 回到遊戲按 **M** 開啟地圖，等待辨識結果。可在側欄「辨識、追蹤設定與候選」查看目前狀態。
 3. 確認選到正確地宮後，可關閉「辨識」，保留目前地圖。
 4. 開啟「追蹤」，關閉遊戲的 M 地圖並回到遊玩畫面，即可嘗試定位人物。
+
+使用 M 地圖時請保持預設、拉到最遠的視野，以使用門位與初始迷霧的快速辨識。未達 200 個地形吻合點時顯示候選預覽，達到門檻才鎖定本場。
 
 手動選圖也能直接開啟「追蹤」。取得位置後，地圖會顯示薄荷綠人物標記與金色漣漪；主視窗右下角 **◎** 可將人物移到地圖中央。
 
