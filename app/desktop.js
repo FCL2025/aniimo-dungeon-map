@@ -1,8 +1,25 @@
 'use strict';
 (() => {
   const invoke = window.__TAURI__?.core.invoke, events = window.__TAURI__?.event;
-  const el = id => document.getElementById(id), key = 'aniimo-dungeon-preferences-v1';
+  const el = id => document.getElementById(id), key = 'aniimo-dungeon-preferences-v1', sizeKey = 'aniimo-overlay-size-v1';
   let topmost = true, mapOverlay = false, overlayPaused = false, hotkeyError = '', sidebarCollapsed = false, restoring = true, noticeTimer;
+  const overlaySize = el('main-overlay-size');
+  const savedSize = Number(localStorage.getItem(sizeKey));
+  const initialSize = savedSize >= 50 && savedSize <= 150 && savedSize % 10 === 0 ? savedSize : 100;
+  function showOverlaySize(percent) {
+    overlaySize.value = String(percent);
+    overlaySize.setAttribute('aria-valuetext', percent + '%');
+    el('main-overlay-size-value').value = percent + '%';
+  }
+  function selectOverlaySize(percent, sendToOverlay = true) {
+    if (!Number.isInteger(percent) || percent < 50 || percent > 150 || percent % 10 !== 0) return;
+    showOverlaySize(percent);
+    localStorage.setItem(sizeKey, String(percent));
+    if (sendToOverlay && mapOverlay && events) {
+      events.emitTo('map-overlay', 'map-overlay-size-request', percent).catch(error => report('無法調整覆蓋地圖大小：' + String(error)));
+    }
+  }
+  showOverlaySize(initialSize);
   const report = window.showMapNotice = (text, duration = 5000) => {
     clearTimeout(noticeTimer); document.querySelector('.notice').hidden = true;
     el('app-status').textContent = text; el('app-status').hidden = false;
@@ -72,7 +89,7 @@
   }
   if (events) {
     window.overlayBridgeReady = Promise.all([
-      events.listen('map-overlay-ready', () => { mapOverlay = true; renderButtons(); publishOverlay(); }),
+      events.listen('map-overlay-ready', () => { mapOverlay = true; renderButtons(); publishOverlay(); events.emitTo('map-overlay', 'map-overlay-size-request', Number(overlaySize.value)).catch(() => {}); }),
       events.listen('map-overlay-closed', () => { mapOverlay = false; overlayPaused = false; hotkeyError = ''; renderButtons(); }),
       events.listen('map-overlay-paused', ({ payload }) => {
         overlayPaused = payload; renderButtons();
@@ -82,12 +99,15 @@
         if (payload === 'recognition') el('recognition-button').click();
         if (payload === 'tracking') el('tracking-button').click();
         publishOverlay();
-      })
+      }),
+      events.listen('map-overlay-size-selected', ({ payload }) => selectOverlaySize(Number(payload), false))
     ]).catch(error => report('覆蓋地圖連線失敗：' + String(error)));
   }
   for (const name of ['tracking-update', 'tracking-stale', 'recognition-ui']) window.addEventListener(name, publishOverlay);
   el('topmost').addEventListener('click', () => setPinned(!topmost));
   el('compact').addEventListener('click', async () => { await window.overlayBridgeReady; await setMapMode(!mapOverlay); });
+  overlaySize.addEventListener('input', () => selectOverlaySize(Number(overlaySize.value)));
+  el('main-overlay-size-reset').addEventListener('click', () => selectOverlaySize(100));
   el('sidebar-toggle').addEventListener('click', () => { sidebarCollapsed = !sidebarCollapsed; renderSidebar(); save(); });
   el('discord-link').addEventListener('click', async event => {
     if (invoke) event.preventDefault();

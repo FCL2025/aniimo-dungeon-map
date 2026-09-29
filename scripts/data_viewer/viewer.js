@@ -169,7 +169,7 @@ document.addEventListener('wheel',event=>{
   select.selectedIndex=index;select.dispatchEvent(new Event('change',{bubbles:true}));
 },{passive:false});
 for(const [id,checked] of [['all',true],['none',false]])$(id).onclick=()=>{for(const x of document.querySelectorAll('[data-category]'))x.checked=checked;update();};
-$('zoom-in').onclick=()=>zoom(1.35);$('zoom-out').onclick=()=>zoom(1/1.35);$('fit').onclick=fit;
+$('zoom-in')?.addEventListener('click',()=>zoom(1.35));$('zoom-out')?.addEventListener('click',()=>zoom(1/1.35));$('fit').onclick=fit;
 canvas.addEventListener('wheel',event=>{event.preventDefault();const box=canvas.getBoundingClientRect();zoom(event.deltaY<0?1.12:1/1.12,event.clientX-box.left,event.clientY-box.top);},{passive:false});
 canvas.addEventListener('pointerdown',event=>{drag={x:event.clientX,y:event.clientY,tx,ty};canvas.setPointerCapture(event.pointerId);canvas.classList.add('dragging');});
 canvas.addEventListener('pointermove',event=>{if(!drag)return;tx=drag.tx+event.clientX-drag.x;ty=drag.ty+event.clientY-drag.y;draw();});
@@ -181,5 +181,5 @@ canvas.addEventListener('pointerup',event=>{
 });
 canvas.addEventListener('pointercancel',()=>{drag=null;canvas.classList.remove('dragging');});
 canvas.addEventListener('keydown',event=>{if(['+','=','-','ArrowUp','ArrowDown','ArrowLeft','ArrowRight','0'].includes(event.key))event.preventDefault();if(event.key==='+'||event.key==='=')zoom(1.2);else if(event.key==='-')zoom(1/1.2);else if(event.key==='0')fit();else if(event.key==='ArrowUp')ty+=30;else if(event.key==='ArrowDown')ty-=30;else if(event.key==='ArrowLeft')tx+=30;else if(event.key==='ArrowRight')tx-=30;draw();});
-new ResizeObserver(()=>{const box=canvas.getBoundingClientRect();width=box.width;height=box.height;const ratio=window.devicePixelRatio||1;canvas.width=Math.round(width*ratio);canvas.height=Math.round(height*ratio);ctx.setTransform(ratio,0,0,ratio,0,0);fit();}).observe(canvas);
+new ResizeObserver(()=>{const box=canvas.getBoundingClientRect();width=box.width;height=box.height;const ratio=window.devicePixelRatio||1;const pixelWidth=Math.round(width*ratio),pixelHeight=Math.round(height*ratio);if(canvas.width!==pixelWidth)canvas.width=pixelWidth;if(canvas.height!==pixelHeight)canvas.height=pixelHeight;ctx.setTransform(ratio,0,0,ratio,0,0);fit();if(frameRequest){cancelAnimationFrame(frameRequest);frameRequest=0;}renderFrame();}).observe(canvas);
 loadMap();

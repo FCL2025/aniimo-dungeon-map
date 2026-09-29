@@ -65,8 +65,9 @@ start = html.index('<details><summary>資料與限制</summary>')
 end = html.index('</details>', start) + len('</details>')
 html = html[:start]+'''<details><summary>資料與限制</summary><p>可手動選圖，或使用畫面辨識。迷霧與相似房間可能無法判定；候選點不代表當場一定出現。</p><p id="gaps"></p></details>'''+html[end:]
 html = html.replace('資源版本 3595896 · 本機資料', f'可攜版 {VERSION} · 資源 3595896')
-html = html.replace('</footer>', '''</footer><div id="sidebar-bottom"><button id="help-button" type="button">說明</button>
-<label class="check debug-log-control" title="開啟後才寫入辨識診斷紀錄"><input type="checkbox" id="debug-log"><span>DEBUG LOG（辨識診斷）</span></label></div>''', 1)
+html = html.replace('<footer>', '''<button id="help-button" type="button">說明</button>
+<label class="check debug-log-control" title="開啟後才寫入辨識診斷紀錄"><input type="checkbox" id="debug-log"><span>DEBUG LOG（辨識診斷）</span></label>
+<footer>''', 1)
 html = html.replace('<div><span class="eyebrow" id="map-id"></span><h2 id="map-title"></h2></div>', '''<div class="mapbar-start"><button id="sidebar-toggle" aria-expanded="true" aria-controls="sidebar" aria-label="收合側欄" title="收合側欄"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 4v16"/><path class="sidebar-arrow" d="m16 9-3 3 3 3"/></svg></button><div class="map-heading"><span class="eyebrow" id="map-id"></span><div class="session-heading"><h2 id="map-title"></h2><span id="live-status" role="status"></span></div></div></div>''')
 html = html.replace('<div class="tools">', '<div class="tools"><button id="recognition-button" class="live-switch" role="switch" aria-checked="false">辨識：關</button><button id="tracking-button" class="live-switch" role="switch" aria-checked="false">追蹤：關</button><button id="topmost" aria-pressed="true">置頂：開</button><button id="compact" aria-pressed="false">地圖模式</button>')
 html = html.replace('<button id="zoom-in" aria-label="放大地圖">＋</button>', '''<button id="zoom-in" aria-label="放大地圖">＋</button><a id="discord-link" href="https://discord.gg/Yh235uyafn" target="_blank" rel="noopener noreferrer" title="在瀏覽器開啟搶蛋 Discord">Discord ↗</a>''')
@@ -84,6 +85,7 @@ html = html.replace('<noscript>', f'''<dialog id="help-dialog"><h2>伊莫地城�
 <p>「置頂」調整主視窗。只有按「地圖模式」才會開啟獨立的覆蓋地圖，主視窗會保留，可繼續調整篩選或最小化。再按「地圖模式」，或按覆蓋地圖右上 ×，即可關閉覆蓋地圖；關閉主視窗則一起結束。</p>
 <p>開啟地圖模式後，按 F1 暫時隱藏覆蓋地圖，再按 F1 恢復。遊戲在前景、主視窗最小化時也能使用；隱藏時可點擊下方遊戲，位置、縮放、篩選與追蹤狀態均保留。長按只切換一次。完全關閉地圖模式後會釋放 F1，重新開啟先按「地圖模式」。若 F1 被其他程式占用，工具會提示，仍可用原本按鈕關閉地圖。</p>
 <p>覆蓋地圖是透明正方形視窗；1920 × 1080 遊戲畫面預設為 590 × 590 像素，2560 × 1440 自動切換為 790 × 790 像素，放在遊戲畫面左下。會持續跟隨遊戲視窗移動，遊戲最小化時隱藏、還原後跟回。拖曳上方移動圖示可調整相對位置，遊戲移動後仍保留；縮小遊戲時會限制在視窗內。尚未開啟遊戲時先放在螢幕左側，找到遊戲後自動跟隨。</p>
+<p>主視窗「覆蓋大小」可拖動調整至 50–150%，按「重置大小」回到 100%。覆蓋地圖上方的大小滑桿在放開後才調整視窗，避免滑桿跟著視窗移動。兩邊設定同步並保存。</p>
 <p>滾輪縮放、拖曳地圖平移。遊戲鎖住滑鼠時先按 Alt 顯示游標，再操作覆蓋地圖。兩個視窗同步地圖、篩選與人物位置，以及辨識／追蹤開關。</p>
 <p>覆蓋地圖右上方顯示辨識與追蹤開關，不顯示「手動選圖」狀態文字、地宮編號或右下角置中按鈕。一般提示顯示 5 秒後消失。候選位置不代表當場一定出現；切換難度會篩選蛋巢及其中的怪物模組，其他點位保留各候選群組。</p>
 <p>遊戲建議使用無邊框視窗或視窗模式；獨佔全螢幕下的覆蓋尚未驗證。</p>
@@ -97,7 +99,6 @@ html = html.replace('<noscript>', f'''<dialog id="help-dialog"><h2>伊莫地城�
 <button id="close-help">關閉</button></dialog><noscript>''')
 html = html.replace('<script src="viewer.js"></script>', '<script src="viewer.js"></script><script src="desktop.js"></script><script src="map-header.js"></script><script src="recognition-screen.js"></script><script src="recognition.js"></script>')
 html = html.replace('，或直接開啟 candidates.csv 檢視點位', '')
-(OUTPUT/'index.html').write_text(html, encoding='utf8')
 overlay_html = html.replace('<body class="desktop-app">', '<body class="desktop-app compact overlay">')
 overlay_html = overlay_html.replace('<html lang="zh-Hant">', '<html lang="zh-Hant" class="overlay-root">')
 overlay_html = overlay_html.replace('<title>伊莫地城地圖 · 可攜版</title>', '<title>伊莫地圖 · 覆蓋視窗</title>')
@@ -108,6 +109,10 @@ overlay_html = overlay_html.replace('<button id="tracking-button" class="live-sw
 overlay_html = overlay_html.replace('<button id="zoom-in" aria-label="放大地圖">＋</button>', '<button id="zoom-in" aria-label="放大地圖">＋</button><button id="overlay-close" title="關閉覆蓋地圖，保留主視窗" aria-label="關閉覆蓋地圖">×</button>')
 overlay_html = overlay_html.replace('<button id="overlay-close"', '<button id="overlay-drag" title="拖曳移動覆蓋地圖" aria-label="拖曳移動覆蓋地圖">⠿</button><button id="overlay-close"')
 overlay_html = overlay_html.replace('<script src="desktop.js"></script><script src="map-header.js"></script><script src="recognition-screen.js"></script><script src="recognition.js"></script>', '<script src="overlay.js"></script>')
+main_html = html.replace('<button id="compact" aria-pressed="false">地圖模式</button>', '''<button id="compact" aria-pressed="false">地圖模式</button><label id="main-overlay-size-control" for="main-overlay-size" title="調整覆蓋地圖視窗大小">覆蓋大小 <input type="range" id="main-overlay-size" min="50" max="150" step="10" value="100" aria-label="覆蓋地圖大小" aria-valuetext="100%"><output id="main-overlay-size-value" for="main-overlay-size">100%</output></label><button id="main-overlay-size-reset" type="button" title="將覆蓋地圖大小重置為 100%">重置大小</button>''')
+main_html = main_html.replace('<button id="zoom-out" aria-label="縮小地圖">−</button>', '', 1)
+main_html = main_html.replace('<button id="zoom-in" aria-label="放大地圖">＋</button>', '', 1)
+(OUTPUT/'index.html').write_text(main_html, encoding='utf8')
 (OUTPUT/'overlay.html').write_text(overlay_html, encoding='utf8')
 
 stage_app_icons(OUTPUT)

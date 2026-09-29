@@ -10,7 +10,7 @@ use windows_capture::{capture::{CaptureControl, Context, GraphicsCaptureApiHandl
     frame::Frame, graphics_capture_api::InternalCaptureControl, settings::*, window::Window};
 use windows_sys::Win32::{Foundation::CloseHandle,
     System::Threading::{OpenProcess, QueryFullProcessImageNameW, PROCESS_QUERY_LIMITED_INFORMATION},
-    UI::{WindowsAndMessaging::{IsIconic, GetForegroundWindow}, Input::KeyboardAndMouse::{GetAsyncKeyState, VK_M}}};
+    UI::{WindowsAndMessaging::{IsIconic, GetForegroundWindow, GetClassNameW}, Input::KeyboardAndMouse::{GetAsyncKeyState, VK_M}}};
 
 fn now_ms() -> u64 { SystemTime::now().duration_since(UNIX_EPOCH).unwrap_or_default().as_millis() as u64 }
 
@@ -86,11 +86,22 @@ impl CaptureState {
 
 #[derive(Serialize)]
 #[serde(rename_all = "camelCase")]
-pub struct GameWindow { id: String, title: String }
+pub struct GameWindow { id: String, title: String, process_id: u32, window_class: String }
+
+const GAME_WINDOW_CLASS: &str = "UnityWndClass";
+
+fn is_game_surface(handle: usize) -> bool {
+    let mut class = [0u16; 256];
+    let len = unsafe { GetClassNameW(handle as _, class.as_mut_ptr(), class.len() as i32) };
+    len > 0 && class[..len as usize].iter().copied().eq(GAME_WINDOW_CLASS.encode_utf16())
+}
 
 // PROCESS_QUERY_LIMITED_INFORMATION suffices to identify the owning executable.
 // Do not use the library's process_name(), which unnecessarily requests VM_READ.
 fn is_game(window: &Window) -> bool {
+    // Aniimo.exe also owns Qt windows. Only the Unity surface contains gameplay;
+    // window titles are localized and enumeration order is not a priority order.
+    if !is_game_surface(window.as_raw_hwnd() as usize) { return false; }
     let Ok(pid) = window.process_id() else { return false };
     if pid == std::process::id() { return false; }
     unsafe {
@@ -108,7 +119,8 @@ fn is_game(window: &Window) -> bool {
 #[tauri::command]
 pub fn game_windows() -> Result<Vec<GameWindow>, String> {
     Ok(Window::enumerate().map_err(|e| e.to_string())?.into_iter().filter(is_game).map(|w|
-        GameWindow { id: (w.as_raw_hwnd() as usize).to_string(), title: w.title().unwrap_or_else(|_| "伊莫".into()) }).collect())
+        GameWindow { id: (w.as_raw_hwnd() as usize).to_string(), title: w.title().unwrap_or_else(|_| "伊莫".into()),
+            process_id: w.process_id().unwrap_or_default(), window_class: GAME_WINDOW_CLASS.into() }).collect())
 }
 
 #[derive(Clone, Copy)]
@@ -118,7 +130,7 @@ impl GameTarget {
         use windows_sys::Win32::UI::WindowsAndMessaging::{IsWindow, GetWindowThreadProcessId};
         let mut pid = 0;
         unsafe { GetWindowThreadProcessId(self.handle as _, &mut pid); }
-        unsafe { IsWindow(self.handle as _) != 0 && pid == self.process_id }
+        unsafe { IsWindow(self.handle as _) != 0 && pid == self.process_id && is_game_surface(self.handle) }
     }
     pub fn bounds(&self) -> Option<(i32, i32, u32, u32)> {
         use windows_sys::Win32::{Foundation::{POINT, RECT}, Graphics::Gdi::ClientToScreen,
@@ -146,7 +158,7 @@ pub async fn start_capture(window_id: String, state: State<'_, CaptureState>) ->
     tauri::async_runtime::spawn_blocking(move || {
         let mut guard = state.0.lock().map_err(|e| e.to_string())?;
         let window = Window::enumerate().map_err(|e| e.to_string())?.into_iter().find(|w|
-            (w.as_raw_hwnd() as usize).to_string() == window_id && is_game(w)).ok_or("找不到伊莫視窗，請開啟遊戲後重新整理。")?;
+            (w.as_raw_hwnd() as usize).to_string() == window_id && is_game(w)).ok_or("找不到伊莫遊戲主視窗，請進入遊戲後重新整理並重新開啟辨識。")?;
         if let Some(old) = guard.take() { old.stop()?; }
         let shared = Arc::new(Shared::default()); shared.requested.store(true, Ordering::Relaxed);
         shared.watch_map.store(true, Ordering::Relaxed);

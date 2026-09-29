@@ -6,7 +6,7 @@
   let mapWorker=null,mapReady=false,mapBusy=false,mapRequest=0,mapWatchdog=null,trackWorker=null,trackReady=false,trackBusy=false,trackRequest=0,trackMap=null,pendingTrack=null;
   let pollTimer,sessionToken=0,sequence=0,nextCaptureAt=0,lastFrame=null,lastResult=null,lastTrackingResult=null,lastLocationAt=0,lastScreen=null,nonMapFrames=0;
   let mapAttemptStartedAt=0,nextDiagnosticAt=0,diagnosticCount=0,attemptCaptured=0,attemptAnalyzed=0,mapProgress=null,mapRequestStartedAt=0,lastCaptureMessage=null,diagnosticPath=null;
-  let previewImage=null,regionDrag=null,pinned=null,selected=null,lastGameId='',selectingMap=false,importToken=0;
+  let previewImage=null,regionDrag=null,pinned=null,selected=null,lastGameId='',lastGameWindow=null,selectingMap=false,importToken=0;
   let burstUntil=0,mapKeyAt=0,lastNoticeKey='',configuration=Promise.resolve();
   const stats={captured:0,analyzed:0,tracked:0,duplicates:0,queuePeak:0,replacedTrackingFrames:0},preview=el('capture-preview'),context=preview.getContext('2d');
   try{const saved=JSON.parse(localStorage.getItem('aniimo-capture-regions-v1'));if(saved&&['mini','map'].every(k=>Array.isArray(saved[k])&&saved[k].length===4&&saved[k].every(v=>Number.isFinite(v)&&v>=0&&v<=1)&&saved[k][2]>.01&&saved[k][3]>.01&&saved[k][0]+saved[k][2]<=1.001&&saved[k][1]+saved[k][3]<=1.001))regions=saved;}catch{}
@@ -34,7 +34,7 @@
     if(!invoke||!mapAttemptStartedAt||!el('debug-log')?.checked)return;
     const now=Date.now(),reason=error?{code:'error',text:String(error)}:diagnosis();
     const entry={at:new Date(now).toISOString(),event,elapsedMs:now-mapAttemptStartedAt,reason,
-      capture:{active:capturing,frames:stats.captured-attemptCaptured,lastMessage:lastCaptureMessage,
+      capture:{active:capturing,window:lastGameWindow,frames:stats.captured-attemptCaptured,lastMessage:lastCaptureMessage,
         frame:lastFrame?{width:lastFrame.width,height:lastFrame.height,source:lastFrame.source}:null,mapRegion:regions.map},
       screen:lastScreen?{mapOpen:lastScreen.mapOpen,headerScore:Number(lastScreen.headerScore.toFixed(3)),backScore:Number(lastScreen.backScore.toFixed(3)),backOffset:lastScreen.backOffset}:null,
       worker:{ready:mapReady,initializing:!!mapWorker&&!mapReady,busy:mapBusy,busyMs:mapBusy?now-mapRequestStartedAt:0,
@@ -150,7 +150,7 @@
   async function refresh(){
     if(!invoke){el('game-window').replaceChildren(new Option('視窗擷取需桌面版',''));return [];}
     const windows=await invoke('game_windows'),select=el('game-window'),old=select.value;select.replaceChildren();for(const w of windows)select.add(new Option(w.title,w.id));
-    if(!windows.length)select.add(new Option('找不到遊戲，請先啟動伊莫',''));else if(windows.some(w=>w.id===old))select.value=old;return windows;
+    if(!windows.length)select.add(new Option('找不到遊戲主視窗，請先進入伊莫',''));else if(windows.some(w=>w.id===old))select.value=old;return windows;
   }
   function syncCapture(){
     configuration=configuration.catch(()=>{}).then(async()=>{
@@ -158,9 +158,10 @@
       if(!running&&!trackingRunning){if(capturing){capturing=false;sessionToken++;clearTimeout(pollTimer);await invoke('stop_capture');}renderSwitch();return;}
       const starting=!capturing;
       if(starting){
-        await refresh();const id=el('game-window').value;if(!id)throw Error('找不到伊莫，請啟動遊戲後再開啟。');
+        lastGameWindow=null;
+        const windows=await refresh(),id=el('game-window').value;if(!id)throw Error('找不到伊莫遊戲主視窗，請進入遊戲後再開啟。');
         if(lastGameId&&lastGameId!==id){pinned=null;selected=null;disposeMap();disposeTracker();clearTracking();if(running)initializeMap();if(trackingRunning)initializeTracker();}
-        await invoke('start_capture',{windowId:id});lastGameId=id;sequence=0;capturing=true;lastFrame=null;
+        await invoke('start_capture',{windowId:id});lastGameId=id;lastGameWindow=windows.find(w=>w.id===id)||null;sequence=0;capturing=true;lastFrame=null;
       }
       const watchMap=running&&!pinned;
       await invoke('configure_capture',{fast:trackingRunning,watchMap,region:trackingRunning&&!watchMap&&!previewOpen()?regions.mini:null});
