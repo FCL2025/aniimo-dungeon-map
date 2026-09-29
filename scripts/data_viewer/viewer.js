@@ -52,7 +52,7 @@ for(const [key,name] of Object.entries(categories)){
   const count=document.createElement('span');count.className='count';count.id='count-'+key;
   label.append(input,swatch,text,count);$('filters').append(label);
 }
-function candidatePins(){return current.pins.filter(p=>categories[p.category]&&p.difficultyCandidates.includes(Number($('difficulty').value)));}
+function candidatePins(){return current.pins.filter(p=>categories[p.category]&&p.difficultyCandidates.includes(Number($('difficulty').value))&&($('supplements').checked||p.provenance==='scene_reference'));}
 function update(){
   if(!current)return;
   const enabled=new Set([...document.querySelectorAll('[data-category]:checked')].map(x=>x.dataset.category));
@@ -90,6 +90,7 @@ function paintPins(ctx){
     }
     ctx.lineWidth=1.2;
     if(pin.category.startsWith('chest_')){ctx.strokeStyle=colors[pin.category];ctx.beginPath();ctx.arc(x,y,r+1,0,Math.PI*2);ctx.stroke();}
+    if(pin.provenance==='template_supplement'){ctx.strokeStyle=colors[pin.category];ctx.setLineDash([2,2]);ctx.beginPath();ctx.arc(x,y,r+3,0,Math.PI*2);ctx.stroke();ctx.setLineDash([]);}
   }
   if(selected){ctx.strokeStyle='#ffffff';ctx.lineWidth=2;ctx.beginPath();ctx.arc(selected.pixel[0]*scale+tx,selected.pixel[1]*scale+ty,pinSize(selected)/2+4,0,Math.PI*2);ctx.stroke();}
 }
@@ -149,7 +150,7 @@ function loadMap(){
   nextImage.src=current.image;update();fit();
 }
 $('map').addEventListener('change',loadMap);
-$('difficulty').addEventListener('change',update);
+for(const id of ['difficulty','supplements'])$(id).addEventListener('change',update);
 for(const name of ['input','change'])$('icon-size').addEventListener(name,renderIconSize);
 // Accumulate small touchpad deltas; one mouse-wheel notch selects one option.
 const selectWheels=new WeakMap();

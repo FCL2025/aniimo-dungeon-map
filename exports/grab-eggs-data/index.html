@@ -15,7 +15,8 @@
   <fieldset><legend>顯示類型 <span id="filter-total"></span></legend><div id="filters"></div><div class="actions"><button id="all">全部顯示</button><button id="none">全部隱藏</button></div></fieldset>
   <label for="icon-size">圖示大小 <output id="icon-size-value" for="icon-size">150%</output></label>
   <input type="range" id="icon-size" min="75" max="250" step="25" value="150" aria-valuetext="150%">
-  <p class="small">只顯示地圖直接引用的候選點。星法師肖像為首領候選點。</p>
+  <label class="check supplemental"><input type="checkbox" id="supplements" checked><span>顯示房間模組補充點</span></label>
+  <p class="small">虛線外圈表示依同房間模板補出的候選位置，尚待遊戲畫面核對；星法師肖像為首領候選點。</p>
   <details><summary>難度的獎勵設定</summary><div id="rules"></div><p class="small">以上為原始設定值。寶箱群組會經過抽選；不同群組的候選點可能重疊。</p></details>
   <details><summary>資料與限制</summary><p>僅顯示地城的單張底圖，不載入額外分層貼圖。不同高度的候選點投影在同一張圖上，尚未判斷玩家所在樓層。</p><p>實際生成、已開啟狀態、每場選用的地圖及玩家位置，仍需要遊戲畫面驗證。首領級幽黯星法師可能是生成群組的其中一個抽選結果。</p><p id="gaps"></p><a href="candidates.csv" download>下載全部候選點 CSV</a><a href="difficulty.json">難度資料 JSON</a><a href="monster-types.json">首領星法師資料 JSON</a><a href="../../docs/解析報告.md">解析報告</a><a href="../grab-eggs-dungeons/index.html">原始底圖與範例比對</a></details>
   <footer>資源版本 3595896 · 本機資料</footer>

@@ -2,7 +2,7 @@
 
 玩家操作方式見 [使用指南](../README.md)。本文件說明本地建置、封裝與驗證流程。
 
-應用使用 Rust + Tauri 2，目標平台為 Windows x64。建置資料來源為 `exports/grab-eggs-data` 與 `exports/grab-eggs-dungeons`，惡夢／混沌地圖池的 7 張地宮底圖、直接引用點位、房間模板中的星法師首領候選點及辨識引擎會內嵌於 EXE。
+應用使用 Rust + Tauri 2，目標平台為 Windows x64。建置資料來源為 `exports/grab-eggs-data` 與 `exports/grab-eggs-dungeons`，惡夢／混沌地圖池的 7 張地宮底圖、直接引用點位、房間模組補充點及辨識引擎會內嵌於 EXE。
 
 ## 建置環境
 
