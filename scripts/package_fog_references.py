@@ -15,10 +15,11 @@ def main():
     raw = json.loads(args.extraction.read_text(encoding='utf-8-sig'))
     assert raw['success'], raw.get('error')
     extracted = raw['data']['result']['samples']
-    assert [s['id'] for s in extracted] == [20032, 20034, 20035, 20037]
+    assert [s['id'] for s in extracted] == [20032, 20034, 20035, 20037, 20040]
     samples = []
     for sample in extracted:
-        path = ROOT/'exports/recognition-fixtures'/f'real-{sample["id"]}-initial.png'
+        name = 'real-20040-sparse.png' if sample['id'] == 20040 else f'real-{sample["id"]}-initial.png'
+        path = ROOT/'exports/recognition-fixtures'/name
         with Image.open(path) as image:
             assert image.size == (1920, 1080)
         assert 8 <= len(sample['points']) <= 128

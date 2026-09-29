@@ -2,7 +2,8 @@
 (()=>{
   const state=window.fogChecks={done:false,error:null,results:[],benchmark:[],initialization:[]},workers=[];
   const check=(ok,message)=>{if(!ok)throw Error(message);};
-  const ids=[20032,20034,20035,20037];
+  const ids=[20032,20034,20035,20037,20040];
+  const fixtureName=id=>id===20040?'real-20040-sparse.png':'real-'+id+'-initial.png';
   const source=new Map(),specs=new Map(DUNGEON_DATA.maps.map(m=>[m.id,m]));
   async function engine(enabled){
     const worker=new Worker('recognition-worker.js');workers.push(worker);let pending,request=0;
@@ -13,7 +14,7 @@
     const ready=await send({type:'init',fogReferences:enabled,maps:[...specs.values()].map(m=>({id:m.id,size:m.size,portalGeometry:m.portalGeometry,image:new URL(m.image,location.href).href})),
       portalIcons:Object.fromEntries(['entrance','exit'].map(k=>[k,new URL(DUNGEON_DATA.icons.assets[DUNGEON_DATA.icons.categories[k]].image,location.href).href]))},'ready');
     state.initialization.push({enabled,ms:Math.round(performance.now()-start),...ready});
-    check(ready.fogReferences===(enabled?4:0),'Unexpected fog reference count');
+    check(ready.fogReferences===(enabled?5:0),'Unexpected fog reference count');
     return {reset:()=>send({type:'reset'},'reset'),analyze:image=>send({type:'analyze',request:++request,source:'live',image},'result')};
   }
   function altered(img,width=img.width,height=img.height,edit=()=>{}){
@@ -21,13 +22,13 @@
     const ctx=c.getContext('2d');ctx.drawImage(img,0,0,width,height);edit(ctx,c);return c.toDataURL('image/png');
   }
   (async()=>{try{
-    for(const id of ids){const name='real-'+id+'-initial.png',img=new Image();img.src=window.recognitionFixtureOverrides?.[name]||new URL('../../exports/recognition-fixtures/'+name,location.href).href;await img.decode();source.set(id,img);}
+    for(const id of ids){const name=fixtureName(id),img=new Image();img.src=window.recognitionFixtureOverrides?.[name]||new URL('../../exports/recognition-fixtures/'+name,location.href).href;await img.decode();source.set(id,img);}
     const fast=await engine(true),old=await engine(false);
     const samples=(await(await fetch('fog-references.json')).json()).samples;
     for(let repeat=0;repeat<(window.fogBenchmarkRepeats??3);repeat++)for(const id of ids)for(const mode of repeat%2?['fast','old']:['old','fast']){
       const e=mode==='fast'?fast:old;await e.reset();const r=await e.analyze(source.get(id).src);
       state.benchmark.push({id,mode,repeat,...r});
-      if(mode==='fast')check(r.selected===id&&!r.locked&&r.search.strategy==='fog-reference'&&r.search.loadedReferences===8,'Original failed: '+id);
+      if(mode==='fast')check(r.selected===id&&!r.locked&&r.search.strategy==='fog-reference'&&r.search.loadedReferences===specs.size,'Original failed: '+id);
     }
     async function run(name,id,image,expectedFast=true){
       await fast.reset();const r=await fast.analyze(image);state.results.push({name,id,...r});
