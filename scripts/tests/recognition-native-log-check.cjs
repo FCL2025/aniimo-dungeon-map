@@ -2,6 +2,7 @@
 const fs=require('node:fs'),os=require('node:os'),path=require('node:path'),net=require('node:net');
 const {spawn}=require('node:child_process');
 const exe=process.argv[2];if(!exe)throw Error('Pass the built AniimoDungeonMap.exe path');
+const expectedVersion=JSON.parse(fs.readFileSync(path.join(__dirname,'../../app/src-tauri/tauri.conf.json'),'utf8')).version;
 const root=fs.mkdtempSync(path.join(os.tmpdir(),'aniimo-native-log-'));
 const wait=ms=>new Promise(resolve=>setTimeout(resolve,ms));
 async function freePort(){const server=net.createServer();await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));const port=server.address().port;await new Promise(resolve=>server.close(resolve));return port;}
@@ -36,7 +37,7 @@ async function connect(url){
     const expected=path.join(root,'logs','recognition.log');
     if(path.resolve(saved)!==path.resolve(expected))throw Error(`Unexpected log path: ${saved}`);
     const lines=fs.readFileSync(expected,'utf8').trim().split(/\r?\n/),entry=JSON.parse(lines.at(-1));
-    if(entry.version!=='0.2.21'||entry.entry?.event!=='native_smoke')throw Error(JSON.stringify(entry));
+    if(entry.version!==expectedVersion||entry.entry?.event!=='native_smoke')throw Error(JSON.stringify(entry));
     console.log(JSON.stringify({ok:true,version:entry.version,path:saved}));
   }finally{
     cdp?.socket.close();child.kill();await wait(500);

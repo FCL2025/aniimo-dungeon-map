@@ -47,7 +47,7 @@ python -m venv .venv
 
 不發布 `SHA256SUMS.txt`；校驗檔保留供本地建置核對，公開使用說明須移除校驗檔的下載描述。版本更新內容寫在 Release，README 維持使用與建置指南。
 
-本地發行資料夾與壓縮檔最多保留最新版及前兩版。新版驗證完成後執行 `scripts/prune_releases.ps1 -Apply`；不帶 `-Apply` 可先查看清理清單。共用使用者設定不在清理範圍內。
+本地發行資料夾與壓縮檔預設保留最新版及前兩版。新版驗證完成後執行 `scripts/prune_releases.ps1 -Apply`；不帶 `-Apply` 可先查看清理清單。若只保留最新版並清除舊版發行／測試副本，使用 `scripts/prune_releases.ps1 -KeepCount 1 -IncludeTestCopies -Apply`。共用使用者設定不在清理範圍內。
 
 ## 設定與資料保存
 
