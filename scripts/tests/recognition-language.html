@@ -2,23 +2,35 @@
 <html lang="en">
 <meta charset="utf-8">
 <title>Running recognition language check</title>
-<script src="../../app/frontend/map-header.js"></script>
-<script src="../../app/frontend/recognition-screen.js"></script>
+<script src="../../app/map-header.js"></script>
+<script src="../../app/recognition-screen.js"></script>
 <pre id="result">running</pre>
 <script>
 'use strict';
 (async()=>{
   const image=async name=>{const img=new Image();img.src='../../exports/recognition-fixtures/'+name;await img.decode();return img;};
-  const source=await image('real-20040-initial.png'),gameplay=await image('minimap-0.jpg');
-  const original=MapScreen.inspect(source),notMap=MapScreen.inspect(gameplay);
+  const source=await image('real-20040-initial.png'),gameplay=await Promise.all([0,1,2,3].map(i=>image(`minimap-${i}.jpg`)));
+  const original=MapScreen.inspect(source),notMap=gameplay.map(img=>MapScreen.inspect(img));
   const canvas=document.createElement('canvas');canvas.width=source.width;canvas.height=source.height;
   const ctx=canvas.getContext('2d');ctx.drawImage(source,0,0);
   ctx.fillStyle='#454e63';ctx.fillRect(132,42,72,39);
   ctx.fillStyle='white';ctx.font='bold 27px Arial';ctx.fillText('MAP',137,72);
   const translated=MapScreen.inspect(canvas);
-  const ok=original.mapOpen&&translated.mapOpen&&translated.headerScore<.64&&translated.backScore>.75&&!notMap.mapOpen;
+  const shiftedCanvas=(img,top)=>{const c=document.createElement('canvas');c.width=1920;c.height=1118;
+    const x=c.getContext('2d');x.fillStyle='#454e63';x.fillRect(0,0,c.width,c.height);x.drawImage(img,0,top);return c;};
+  const shifted=(img,top)=>MapScreen.inspect(shiftedCanvas(img,top));
+  const trackCrop=full=>{const [w,h]=[full.width,full.height],mini=[.0427,.0389,.1042,.1852];
+    const x=Math.floor(Math.min(mini[0],65/1920)*w),y=Math.floor(Math.min(mini[1],25/1080)*h);
+    const right=Math.ceil(Math.max(mini[0]+mini[2],203/1920)*w),bottom=Math.ceil(Math.max(mini[1]+mini[3],145/1080)*h);
+    const c=document.createElement('canvas');c.width=right-x;c.height=bottom-y;c.getContext('2d').drawImage(full,x,y,c.width,c.height,0,0,c.width,c.height);
+    return MapScreen.inspect(c,[x/w,y/h,c.width/w,c.height/h]);};
+  const top19=shifted(source,19),top38=shifted(source,38),gameplay38=gameplay.map(img=>shifted(img,38));
+  const croppedMap=trackCrop(shiftedCanvas(source,38)),croppedGameplay=trackCrop(shiftedCanvas(gameplay[0],38));
+  const ok=original.mapOpen&&translated.mapOpen&&translated.headerScore<.64&&translated.backScore>.8&&
+    top19.mapOpen&&top38.mapOpen&&top38.backOffset>=32&&croppedMap.mapOpen&&!croppedGameplay.mapOpen&&
+    notMap.every(r=>!r.mapOpen)&&gameplay38.every(r=>!r.mapOpen);
   document.title=ok?'PASS':'FAIL';
-  document.getElementById('result').textContent=JSON.stringify({ok,original:{headerScore:original.headerScore,backScore:original.backScore},translated:{headerScore:translated.headerScore,backScore:translated.backScore},gameplay:{headerScore:notMap.headerScore,backScore:notMap.backScore}},null,2);
+  document.getElementById('result').textContent=JSON.stringify({ok,original:{headerScore:original.headerScore,backScore:original.backScore},translated:{headerScore:translated.headerScore,backScore:translated.backScore},top19:{headerScore:top19.headerScore,backScore:top19.backScore,backOffset:top19.backOffset},top38:{headerScore:top38.headerScore,backScore:top38.backScore,backOffset:top38.backOffset},croppedMap:{headerScore:croppedMap.headerScore,backScore:croppedMap.backScore},croppedGameplay:{headerScore:croppedGameplay.headerScore,backScore:croppedGameplay.backScore},gameplay:notMap.map(r=>({headerScore:r.headerScore,backScore:r.backScore})),gameplay38:gameplay38.map(r=>({headerScore:r.headerScore,backScore:r.backScore}))},null,2);
 })().catch(error=>{document.title='FAIL';document.getElementById('result').textContent=String(error.stack||error);});
 </script>
 </html>

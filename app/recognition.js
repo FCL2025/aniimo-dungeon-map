@@ -36,7 +36,7 @@
     const entry={at:new Date(now).toISOString(),event,elapsedMs:now-mapAttemptStartedAt,reason,
       capture:{active:capturing,frames:stats.captured-attemptCaptured,lastMessage:lastCaptureMessage,
         frame:lastFrame?{width:lastFrame.width,height:lastFrame.height,source:lastFrame.source}:null,mapRegion:regions.map},
-      screen:lastScreen?{mapOpen:lastScreen.mapOpen,headerScore:Number(lastScreen.headerScore.toFixed(3)),backScore:Number(lastScreen.backScore.toFixed(3))}:null,
+      screen:lastScreen?{mapOpen:lastScreen.mapOpen,headerScore:Number(lastScreen.headerScore.toFixed(3)),backScore:Number(lastScreen.backScore.toFixed(3)),backOffset:lastScreen.backOffset}:null,
       worker:{ready:mapReady,initializing:!!mapWorker&&!mapReady,busy:mapBusy,busyMs:mapBusy?now-mapRequestStartedAt:0,
         progress:mapProgress,analyzed:stats.analyzed-attemptAnalyzed,queued:frames.items.length},
       result:lastResult?{selected:lastResult.selected,locked:lastResult.locked,previewMatches:lastResult.previewMatches,queryFeatures:lastResult.queryFeatures,

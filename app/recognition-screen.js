@@ -27,19 +27,22 @@
     }
     // The title is localized. The back button beside it is the same visual
     // marker across languages, so an English M map still reaches recognition.
-    let backScore=0;
+    let backScore=0,backOffset=0;
     const backCanvas=new OffscreenCanvas(back.width,back.height),backCtx=backCanvas.getContext('2d',{willReadFrequently:true});
     const [bx,by,bw,bh]=back.region;
-    for(const dx of [-2,0,2])for(const dy of [-2,0,2]){
+    // Some window captures include a strip above the 1080p game content.
+    // Search only the top edge, where the back button belongs.
+    for(const dx of [-2,0,2])for(const dy of [-8,-4,0,4,8,12,16,20,24,28,32,36,40,44,48,52]){
       const r=relativeRegion([bx+dx/1920,by+dy/1080,bw,bh],source);
       backCtx.drawImage(bitmap,r[0]*bitmap.width,r[1]*bitmap.height,r[2]*bitmap.width,r[3]*bitmap.height,0,0,back.width,back.height);
       const p=backCtx.getImageData(0,0,back.width,back.height).data,values=[];
       for(let i=0;i<p.length;i+=4)values.push((p[i]+p[i+1]+p[i+2])/3);
-      backScore=Math.max(backScore,correlation(values,back.values));
+      const score=correlation(values,back.values);
+      if(score>backScore){backScore=score;backOffset=dy;}
     }
     ctx.drawImage(bitmap,0,0,32,18);const p=ctx.getImageData(0,0,32,18).data,signature=[];
     for(let i=0;i<p.length;i+=4)signature.push(Math.round((p[i]+p[i+1]+p[i+2])/60));
-    return {mapOpen:headerScore>.64||backScore>.75,headerScore,backScore,signature};
+    return {mapOpen:headerScore>.64||backScore>.8,headerScore,backScore,backOffset,signature};
   }
   function similar(a,b){
     if(!a||!b||a.length!==b.length)return false;
