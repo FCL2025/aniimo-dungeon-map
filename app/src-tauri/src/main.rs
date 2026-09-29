@@ -41,7 +41,7 @@ fn main() {
                 let _ = window.app_handle().emit_to("main", "map-overlay-closed", ());
             }
         })
-        .invoke_handler(tauri::generate_handler![set_topmost, open_discord, recognition_log::append_recognition_log, overlay::set_map_overlay, overlay::drag_window, capture::game_windows,
+        .invoke_handler(tauri::generate_handler![set_topmost, open_discord, recognition_log::append_recognition_log, overlay::set_map_overlay, overlay::set_overlay_scale, overlay::drag_window, capture::game_windows,
             capture::start_capture, capture::stop_capture, capture::configure_capture, capture::capture_frame])
         .setup(|app| {
             let exe = std::env::current_exe()?;

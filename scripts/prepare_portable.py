@@ -91,7 +91,7 @@ html = html.replace('<noscript>', f'''<dialog id="help-dialog"><h2>伊莫地城�
 <p>使用預設拉到最遠的 M 地圖時，先按正門／側門距離與方向縮小候選，再比對地形。線索不足時自動放寬搜尋；初始迷霧線索不足時仍顯示候選預覽，達 200 個地形吻合點才鎖定。</p>
 <p>「辨識」只負責判斷地宮，「追蹤」獨立判斷小地圖上的人物位置。找到正確地宮後可關閉辨識、開啟追蹤，也可手動選圖後直接追蹤。只載入目前地圖，優先處理最新畫面；僅追蹤時先裁切小地圖與 M 地圖標題區再編碼，最高每秒取樣 10 張。實際更新速度取決於畫面與電腦效能。</p>
 <p>人物位置顯示為薄荷綠圓點與金色漣漪。主視窗按 ◎ 可置中人物；1.5 秒無法取得新位置時轉為灰色空心圈。關閉追蹤會清除人物標記；重新開啟辨識會清除舊位置，追蹤開關保持獨立。迷霧、相似房間或範圍未對準時可能無法定位；不辨識樓層，也不判定寶箱是否已取得。</p>
-<p>惡夢與混沌地圖池的 7 張單張底圖已內嵌；不顯示推論補入的房間模組點。篩選設定會自動保存，同一個 Windows 帳號更新版本或移動應用資料夾後仍會沿用。首次升級請先關閉舊版，並將新版放在舊版旁邊，以便自動匯入設定。需 Windows 10/11 x64 與 Microsoft Edge WebView2 Runtime。</p>
+<p>惡夢與混沌地圖池的 7 張單張底圖已內嵌；一般點位只顯示直接引用，星法師另含同房間模板的首領候選點。篩選設定會自動保存，同一個 Windows 帳號更新版本或移動應用資料夾後仍會沿用。首次升級請先關閉舊版，並將新版放在舊版旁邊，以便自動匯入設定。需 Windows 10/11 x64 與 Microsoft Edge WebView2 Runtime。</p>
 <button id="close-help">關閉</button></dialog><noscript>''')
 html = html.replace('<script src="viewer.js"></script>', '<script src="viewer.js"></script><script src="desktop.js"></script><script src="map-header.js"></script><script src="recognition-screen.js"></script><script src="recognition.js"></script>')
 html = html.replace('，或直接開啟 candidates.csv 檢視點位', '')
@@ -99,6 +99,8 @@ html = html.replace('，或直接開啟 candidates.csv 檢視點位', '')
 overlay_html = html.replace('<body class="desktop-app">', '<body class="desktop-app compact overlay">')
 overlay_html = overlay_html.replace('<html lang="zh-Hant">', '<html lang="zh-Hant" class="overlay-root">')
 overlay_html = overlay_html.replace('<title>伊莫地城地圖 · 可攜版</title>', '<title>伊莫地圖 · 覆蓋視窗</title>')
+overlay_html = overlay_html.replace('<div class="tools"><button id="recognition-button"',
+    '<div class="tools"><label id="overlay-size-control" for="overlay-size" title="以左下角為錨點調整覆蓋地圖大小">大小 <input type="range" id="overlay-size" min="50" max="150" step="10" value="100" aria-label="覆蓋地圖大小" aria-valuetext="100%"></label><button id="recognition-button"')
 overlay_html = overlay_html.replace('<span id="live-status" role="status"></span>', '', 1)
 overlay_html = overlay_html.replace('<button id="tracking-button" class="live-switch" role="switch" aria-checked="false">追蹤：關</button>', '<button id="tracking-button" class="live-switch" role="switch" aria-checked="false">追蹤：關</button><span id="live-status" role="status"></span>')
 overlay_html = overlay_html.replace('<button id="zoom-in" aria-label="放大地圖">＋</button>', '<button id="zoom-in" aria-label="放大地圖">＋</button><button id="overlay-close" title="關閉覆蓋地圖，保留主視窗" aria-label="關閉覆蓋地圖">×</button>')

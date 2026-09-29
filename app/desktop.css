@@ -38,6 +38,8 @@ body.desktop-app.overlay{background:transparent;border:0;grid-template-columns:m
 .desktop-app.overlay .mapbar-start{display:none}
 .desktop-app.overlay #live-status{font-size:10px;padding:1px 3px}
 .desktop-app.overlay .tools{flex-wrap:nowrap;gap:4px;width:auto;margin-left:auto}.desktop-app.overlay .tools button{font-size:10px;padding:4px 5px}
+.desktop-app.overlay #overlay-size-control{display:flex;align-items:center;gap:3px;flex:0 1 auto;margin:0;color:var(--text);font-size:11px;white-space:nowrap}
+.desktop-app.overlay #overlay-size{width:62px;min-width:42px;margin:0;accent-color:var(--accent);cursor:pointer}
 .desktop-app.overlay .tools #recognition-button,.desktop-app.overlay .tools #tracking-button{font-size:13px;padding:4px 6px}
 .desktop-app.overlay #overlay-drag{cursor:move;font-size:16px;line-height:1;padding:3px 5px;user-select:none}
 .desktop-app.overlay #topmost,.desktop-app.overlay #compact,.desktop-app.overlay #discord-link,.desktop-app.overlay #sidebar-toggle,.desktop-app.overlay #zoom-in,.desktop-app.overlay #zoom-out{display:none}
@@ -47,7 +49,7 @@ body.desktop-app.overlay{background:transparent;border:0;grid-template-columns:m
 .desktop-app.overlay .live-switch[aria-checked=true]::before{background:var(--accent)}
 .desktop-app.overlay .notice,.desktop-app.overlay #app-status{font-size:11px;padding:7px 9px;top:6px;left:6px;right:6px}
 .desktop-app.overlay #player-status{font-size:10px}.desktop-app.overlay .player-tools{display:none}
-@media(max-width:360px){.desktop-app.overlay #live-status{display:none}}
+@media(max-width:360px){.desktop-app.overlay #live-status,.desktop-app.overlay #fit{display:none}.desktop-app.overlay #overlay-size{width:48px}}
 button[aria-pressed=true]{border-color:var(--accent);color:var(--accent)}
 dialog{max-width:min(560px,90vw);max-height:85vh;overflow:auto;color:var(--text);background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:25px;line-height:1.8}
 dialog::backdrop{background:#08151bbf}dialog h2{margin-top:0}dialog p{font-size:13px}dialog button{float:right}

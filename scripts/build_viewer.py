@@ -20,7 +20,12 @@ CHEST_CATEGORIES = {2004: 'chest_gold', 2007: 'chest_gold',
 def display_pins(pins):
     result = []
     for pin in pins:
-        if pin['provenance'] != 'scene_reference':
+        # Chaos boss modules are present in the matching room template, while
+        # the sampled scene directly references only their Nightmare variants.
+        if pin['provenance'] != 'scene_reference' and not (
+                pin['category'] == 'stellarys_boss'
+                and pin['provenance'] == 'template_supplement'
+                and pin['sandboxConfigType'] == 4):
             continue
         category = CHEST_CATEGORIES.get(pin.get('typeId')) if pin['category'] == 'chest' else pin['category']
         if category not in CATEGORIES:

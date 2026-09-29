@@ -9,6 +9,20 @@
   document.querySelector('.notice').hidden = true;
   el('recognition-button').textContent = '辨識';
   el('tracking-button').textContent = '追蹤';
+  const size = el('overlay-size'), sizeKey = 'aniimo-overlay-size-v1';
+  const savedSize = Number(localStorage.getItem(sizeKey));
+  if (savedSize >= 50 && savedSize <= 150 && savedSize % 10 === 0) size.value = String(savedSize);
+  const resizeOverlay = () => {
+    const percent = Number(size.value);
+    window.overlaySizeRatio = percent / 100;
+    window.dispatchEvent(new Event('overlay-size-changed'));
+    size.setAttribute('aria-valuetext', percent + '%');
+    size.title = '覆蓋地圖大小 ' + percent + '%';
+    core.invoke('set_overlay_scale', { percent }).then(() => localStorage.setItem(sizeKey, String(percent)))
+      .catch(error => notice('無法調整覆蓋地圖大小：' + String(error)));
+  };
+  size.addEventListener('input', resizeOverlay);
+  resizeOverlay();
   el('overlay-close').onclick = () => core.invoke('set_map_overlay', { enabled: false }).catch(error => notice(String(error)));
   el('recognition-button').onclick = () => {
     el('recognition-button').disabled = true;

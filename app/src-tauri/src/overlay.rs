@@ -1,4 +1,4 @@
-use std::{path::PathBuf, sync::{Arc, Mutex, mpsc, atomic::{AtomicBool, Ordering}}, thread::JoinHandle, time::{Duration, Instant}};
+use std::{path::PathBuf, sync::{Arc, Mutex, mpsc, atomic::{AtomicBool, AtomicU32, Ordering}}, thread::JoinHandle, time::{Duration, Instant}};
 use tauri::{
     AppHandle, Emitter, Manager, PhysicalPosition, PhysicalSize, WebviewUrl, WebviewWindow,
     WebviewWindowBuilder,
@@ -11,7 +11,7 @@ pub struct OverlayConfig {
 }
 
 #[derive(Default)]
-pub struct FollowState(Mutex<Option<(Arc<AtomicBool>, JoinHandle<()>)>>);
+pub struct FollowState(Mutex<Option<(Arc<AtomicBool>, JoinHandle<()>)>>, Arc<AtomicU32>);
 impl FollowState {
     pub fn stop(&self) {
         if let Ok(mut current) = self.0.lock() {
@@ -46,11 +46,12 @@ fn should_show_overlay(test_hidden: bool, paused: bool, attached: bool, game_vis
     !test_hidden && !paused && (!attached || game_visible)
 }
 
-fn placement(x: i32, y: i32, width: u32, height: u32, game_found: bool) -> Placement {
+fn placement(x: i32, y: i32, width: u32, height: u32, game_found: bool, percent: u32) -> Placement {
     // Match the lower-left play area at Full HD and 2560 × 1440, and scale
     // intermediate sizes while staying inside a smaller game client.
     let factor = (width as f64 / 1920.0).min(height as f64 / 1080.0);
     let side = (590.0 + (factor.max(1.0) - 1.0) * 600.0).round() as u32;
+    let side = ((side as u64 * percent as u64 + 50) / 100) as u32;
     let side = side.min(width).min(height);
     Placement {
         x: x + 4.min(width.saturating_sub(side)) as i32,
@@ -61,24 +62,26 @@ fn placement(x: i32, y: i32, width: u32, height: u32, game_found: bool) -> Place
     }
 }
 
-fn follow_placement(bounds: (i32, i32, u32, u32), offset: Option<(i32, i32)>) -> Placement {
+fn follow_placement(bounds: (i32, i32, u32, u32), offset: Option<(i32, i32)>, percent: u32) -> Placement {
     let (x, y, w, h) = bounds;
-    let mut target = placement(x, y, w, h, true);
-    if let Some((dx, dy)) = offset {
+    let mut target = placement(x, y, w, h, true, percent);
+    if let Some((dx, bottom_margin)) = offset {
         target.x = x + dx.clamp(0, w.saturating_sub(target.width) as i32);
-        target.y = y + dy.clamp(0, h.saturating_sub(target.height) as i32);
+        target.y = y + h.saturating_sub(target.height) as i32
+            - bottom_margin.clamp(0, h.saturating_sub(target.height) as i32);
     }
     target
 }
 
 fn start_following(app: &AppHandle, overlay: &WebviewWindow, mut game: Option<crate::capture::GameTarget>,
-    selected: Option<String>, initial: Placement, hidden: bool) -> Result<Option<String>, String> {
+    selected: Option<String>, initial: Placement, fallback_bounds: (i32, i32, u32, u32), hidden: bool) -> Result<Option<String>, String> {
     use windows_sys::Win32::{Foundation::RECT, UI::{WindowsAndMessaging::*,
         Input::KeyboardAndMouse::{RegisterHotKey, UnregisterHotKey, MOD_NOREPEAT, VK_F1}}};
     let hwnd = overlay.hwnd().map_err(|e| e.to_string())?.0 as usize;
     let owner_thread = unsafe { GetWindowThreadProcessId(hwnd as _, std::ptr::null_mut()) };
     let state = app.state::<FollowState>();
     state.stop();
+    let scale_percent = state.1.clone();
     let stop = Arc::new(AtomicBool::new(false));
     let worker_stop = stop.clone();
     let app_handle = app.clone();
@@ -121,12 +124,13 @@ fn start_following(app: &AppHandle, overlay: &WebviewWindow, mut game: Option<cr
                 if dragging || previous_dragging {
                     let mut rect: RECT = unsafe { std::mem::zeroed() };
                     if unsafe { GetWindowRect(hwnd as _, &mut rect) } != 0 {
-                        offset = Some((rect.left - bounds.0, rect.top - bounds.1));
+                        // Store the lower-left corner so a size change grows upward.
+                        offset = Some((rect.left - bounds.0, bounds.1 + bounds.3 as i32 - rect.bottom));
                     }
                     last = None;
                 }
                 if !dragging {
-                    let target = follow_placement(bounds, offset);
+                    let target = follow_placement(bounds, offset, scale_percent.load(Ordering::Relaxed));
                     if last != Some(target) {
                         let mut flags = SWP_NOACTIVATE | SWP_NOZORDER | SWP_NOOWNERZORDER | SWP_ASYNCWINDOWPOS;
                         if last.is_some_and(|p| (p.width, p.height) == (target.width, target.height)) { flags |= SWP_NOSIZE; }
@@ -135,6 +139,14 @@ fn start_following(app: &AppHandle, overlay: &WebviewWindow, mut game: Option<cr
                     }
                 }
                 previous_dragging = dragging;
+            } else if !attached {
+                // The overlay can be opened before the game; keep its slider usable.
+                let target = follow_placement(fallback_bounds, offset, scale_percent.load(Ordering::Relaxed));
+                if last != Some(target) && unsafe { SetWindowPos(hwnd as _, std::ptr::null_mut(), target.x, target.y,
+                    target.width as i32, target.height as i32,
+                    SWP_NOACTIVATE | SWP_NOZORDER | SWP_NOOWNERZORDER | SWP_ASYNCWINDOWPOS) } != 0 {
+                    last = Some(target);
+                }
             }
             if shown != should_show {
                 unsafe { ShowWindowAsync(hwnd as _, if should_show { SW_SHOWNOACTIVATE } else { SW_HIDE }); }
@@ -166,16 +178,16 @@ pub async fn set_map_overlay(
     }
     let game = crate::capture::find_game_target(game_window_id.as_deref())
         .or_else(|| crate::capture::find_game_target(None));
-    let target =
+    let bounds =
         if let Some((x, y, w, h)) = game.and_then(|g| g.bounds()) {
-            placement(x, y, w, h, true)
+            (x, y, w, h, true)
         } else {
             let monitor = window
                 .current_monitor()
                 .map_err(|e| e.to_string())?
                 .or(window.primary_monitor().map_err(|e| e.to_string())?)
                 .ok_or("找不到螢幕")?;
-            placement(
+            (
                 monitor.position().x,
                 monitor.position().y,
                 monitor.size().width,
@@ -183,6 +195,7 @@ pub async fn set_map_overlay(
                 false,
             )
         };
+    let target = placement(bounds.0, bounds.1, bounds.2, bounds.3, bounds.4, 100);
     if app.get_webview_window("map-overlay").is_some() {
         return Ok(Some(OverlayOpened { placement: target, hotkey_error: None }));
     }
@@ -215,7 +228,9 @@ pub async fn set_map_overlay(
         if !config.hidden && (game.is_none() || target.game_found) {
             overlay.show().map_err(|e| e.to_string())?;
         }
-        start_following(&app, &overlay, game, game_window_id, target, config.hidden)
+        app.state::<FollowState>().1.store(100, Ordering::Relaxed);
+        start_following(&app, &overlay, game, game_window_id, target,
+            (bounds.0, bounds.1, bounds.2, bounds.3), config.hidden)
     })();
     match result {
         Ok(hotkey_error) => Ok(Some(OverlayOpened { placement: target, hotkey_error })),
@@ -225,6 +240,15 @@ pub async fn set_map_overlay(
             Err(error)
         }
     }
+}
+
+#[tauri::command]
+pub fn set_overlay_scale(window: WebviewWindow, percent: u32) -> Result<(), String> {
+    if window.label() != "map-overlay" || !(50..=150).contains(&percent) {
+        return Err("覆蓋地圖大小無效".into());
+    }
+    window.state::<FollowState>().1.store(percent, Ordering::Relaxed);
+    Ok(())
 }
 
 #[tauri::command]
@@ -247,41 +271,41 @@ mod tests {
     }
     #[test]
     fn full_hd_matches_the_requested_rectangle() {
-        let p = placement(0, 0, 1920, 1080, true);
+        let p = placement(0, 0, 1920, 1080, true, 100);
         assert_eq!((p.x, p.y, p.width, p.height), (4, 486, 590, 590));
     }
     #[test]
     fn two_k_switches_to_the_larger_square() {
-        let p = placement(0, 0, 2560, 1440, true);
+        let p = placement(0, 0, 2560, 1440, true, 100);
         assert_eq!((p.x, p.y, p.width, p.height), (4, 646, 790, 790));
-        let resized = follow_placement((0, 0, 2560, 1440), None);
+        let resized = follow_placement((0, 0, 2560, 1440), None, 100);
         assert_eq!(resized, p);
-        assert_eq!(follow_placement((0, 0, 1920, 1080), None).width, 590);
+        assert_eq!(follow_placement((0, 0, 1920, 1080), None, 100).width, 590);
     }
     #[test]
     fn positions_are_relative_to_the_game_not_the_primary_monitor() {
-        let p = placement(-1920, 80, 1920, 1080, true);
+        let p = placement(-1920, 80, 1920, 1080, true, 100);
         assert_eq!((p.x, p.y), (-1916, 566));
     }
     #[test]
     fn small_window_stays_inside_client_area() {
-        let p = placement(30, 50, 400, 300, true);
+        let p = placement(30, 50, 400, 300, true, 100);
         assert_eq!((p.x, p.y, p.width, p.height), (34, 50, 300, 300));
     }
     #[test]
     fn follows_game_movement_across_monitors() {
-        let a = follow_placement((100, 60, 1920, 1080), None);
-        let b = follow_placement((-1700, 180, 1920, 1080), None);
+        let a = follow_placement((100, 60, 1920, 1080), None, 100);
+        let b = follow_placement((-1700, 180, 1920, 1080), None, 100);
         assert_eq!((b.x - a.x, b.y - a.y), (-1800, 120));
         assert_eq!((a.width, a.height), (b.width, b.height));
     }
     #[test]
     fn manual_offset_is_preserved_and_clamped_when_resized() {
-        let moved = follow_placement((100, 200, 1920, 1080), Some((80, 400)));
-        assert_eq!((moved.x, moved.y), (180, 600));
-        let small = follow_placement((100, 200, 500, 500), Some((80, 400)));
+        let moved = follow_placement((100, 200, 1920, 1080), Some((80, 400)), 100);
+        assert_eq!((moved.x, moved.y), (180, 290));
+        let small = follow_placement((100, 200, 500, 500), Some((80, 400)), 100);
         assert_eq!((small.x, small.y), (100, 200));
-        let restored = follow_placement((100, 200, 1920, 1080), Some((80, 400)));
+        let restored = follow_placement((100, 200, 1920, 1080), Some((80, 400)), 100);
         assert_eq!(restored, moved);
     }
 }
