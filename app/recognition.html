@@ -5,7 +5,7 @@
   <p id="tracking-message" class="small" role="status">人物追蹤已關閉。</p>
   <label for="game-window">遊戲視窗</label><div class="recognition-row"><select id="game-window"><option value="">自動尋找伊莫</option></select><button id="refresh-game">重新整理</button></div>
   <button id="import-map">匯入 M 地圖截圖</button><input id="map-screenshot" type="file" accept="image/png,image/jpeg,image/webp" hidden>
-  <div class="recognition-result"><strong id="recognition-state">辨識已關閉</strong><p id="recognition-message" role="status">開啟上方辨識開關即可連接遊戲。</p><ol id="recognition-candidates" aria-label="候選地宮"></ol><p id="recognition-timing" class="small"></p></div>
+  <div class="recognition-result"><strong id="recognition-state">辨識已關閉</strong><p id="recognition-message" role="status">開啟上方辨識開關即可連接遊戲。</p><ol id="recognition-candidates" aria-label="候選地宮"></ol><p id="recognition-timing" class="small"></p><p id="recognition-log" class="small" role="status"></p></div>
   <details id="capture-details"><summary>擷取預覽與範圍</summary>
     <div class="recognition-preview"><canvas id="capture-preview" width="480" height="270" aria-label="遊戲擷取預覽，可拖曳框選辨識範圍"></canvas><p id="capture-empty">尚無畫面</p></div>
     <label for="capture-region">辨識範圍</label><select id="capture-region"><option value="view">預覽畫面</option><option value="mini">框選小地圖</option><option value="map">框選 M 地圖</option></select><button id="reset-regions">還原範圍</button>

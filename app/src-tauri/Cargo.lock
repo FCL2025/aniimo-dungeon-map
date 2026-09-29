@@ -43,11 +43,12 @@ dependencies = [
 
 [[package]]
 name = "aniimo-dungeon-map"
-version = "0.2.20"
+version = "0.2.21"
 dependencies = [
  "base64 0.22.1",
  "image",
  "serde",
+ "serde_json",
  "tauri",
  "tauri-build",
  "windows-capture",

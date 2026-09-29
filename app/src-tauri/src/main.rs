@@ -6,6 +6,7 @@ mod capture_timing;
 mod capture_region;
 mod profile;
 mod overlay;
+mod recognition_log;
 
 #[tauri::command]
 fn set_topmost(window: WebviewWindow, enabled: bool) -> Result<bool, String> {
@@ -40,7 +41,7 @@ fn main() {
                 let _ = window.app_handle().emit_to("main", "map-overlay-closed", ());
             }
         })
-        .invoke_handler(tauri::generate_handler![set_topmost, open_discord, overlay::set_map_overlay, overlay::drag_window, capture::game_windows,
+        .invoke_handler(tauri::generate_handler![set_topmost, open_discord, recognition_log::append_recognition_log, overlay::set_map_overlay, overlay::drag_window, capture::game_windows,
             capture::start_capture, capture::stop_capture, capture::configure_capture, capture::capture_frame])
         .setup(|app| {
             let exe = std::env::current_exe()?;
@@ -51,6 +52,7 @@ fn main() {
             } else { None }.unwrap_or(app.path().app_local_data_dir()?);
             let profile = data_root.join("WebView2");
             profile::prepare_profile(&profile, folder)?;
+            app.manage(recognition_log::RecognitionLogState::new(data_root.clone()));
             let browser_args = hidden.then(|| std::env::var("WEBVIEW2_ADDITIONAL_BROWSER_ARGUMENTS").ok()).flatten()
                 .map(|args| format!("--disable-features=msWebOOUI,msPdfOOUI,msSmartScreenProtection --autoplay-policy=no-user-gesture-required {args}"));
             // Diagnostic opt-in for native visibility tests against an offscreen fixture.

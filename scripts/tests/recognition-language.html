@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<title>Running recognition language check</title>
+<script src="../../app/frontend/map-header.js"></script>
+<script src="../../app/frontend/recognition-screen.js"></script>
+<pre id="result">running</pre>
+<script>
+'use strict';
+(async()=>{
+  const image=async name=>{const img=new Image();img.src='../../exports/recognition-fixtures/'+name;await img.decode();return img;};
+  const source=await image('real-20040-initial.png'),gameplay=await image('minimap-0.jpg');
+  const original=MapScreen.inspect(source),notMap=MapScreen.inspect(gameplay);
+  const canvas=document.createElement('canvas');canvas.width=source.width;canvas.height=source.height;
+  const ctx=canvas.getContext('2d');ctx.drawImage(source,0,0);
+  ctx.fillStyle='#454e63';ctx.fillRect(132,42,72,39);
+  ctx.fillStyle='white';ctx.font='bold 27px Arial';ctx.fillText('MAP',137,72);
+  const translated=MapScreen.inspect(canvas);
+  const ok=original.mapOpen&&translated.mapOpen&&translated.headerScore<.64&&translated.backScore>.75&&!notMap.mapOpen;
+  document.title=ok?'PASS':'FAIL';
+  document.getElementById('result').textContent=JSON.stringify({ok,original:{headerScore:original.headerScore,backScore:original.backScore},translated:{headerScore:translated.headerScore,backScore:translated.backScore},gameplay:{headerScore:notMap.headerScore,backScore:notMap.backScore}},null,2);
+})().catch(error=>{document.title='FAIL';document.getElementById('result').textContent=String(error.stack||error);});
+</script>
+</html>
