@@ -9,11 +9,14 @@ import zipfile
 ROOT = Path(__file__).resolve().parent.parent
 parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument('--zip', action='store_true', help='Also create a distributable ZIP (opt-in).')
+parser.add_argument('--output-dir', type=Path, help='Stage in another directory inside the project, e.g. when the default EXE is running.')
 args = parser.parse_args()
 VERSION = json.loads((ROOT/'app/src-tauri/tauri.conf.json').read_text(encoding='utf8'))['version']
 NAME = f'AniimoDungeonMap-{VERSION}-windows-x64-portable'
 DIST = ROOT/'dist'
-folder = DIST/NAME
+folder = args.output_dir.resolve() if args.output_dir else DIST/NAME
+if not folder.is_relative_to(ROOT):
+    parser.error('--output-dir must be inside the project')
 folder.mkdir(parents=True, exist_ok=True)
 binary = ROOT/'app/src-tauri/target/x86_64-pc-windows-msvc/release/aniimo-dungeon-map.exe'
 if not binary.is_file():
@@ -43,7 +46,7 @@ readme = rf'''伊莫地城地圖　可攜版 {VERSION}
 - 自動選取伊莫遊戲主畫面，排除同一程序的其他介面視窗；若提示找不到主視窗，請先進入遊戲再開啟辨識。
 - 使用預設拉到最遠的 M 地圖時，先按正門／側門距離與方向縮小候選，再比對地形；線索不足時自動放寬搜尋。
 - 只辨識惡夢／混沌地圖池的 7 張地宮：20032、20034、20035、20036、20037、20039、20040。
-- 加入 20032、20034、20035、20037 的初始迷霧參考地形；正門被人物遮住時，以入口周圍地形與側門位置交叉確認候選，並依畫面尺寸換算參考比例。線索不足時沿用完整搜尋。
+- 加入 20032、20034、20035、20037、20040 的初始迷霧參考地形；正門被人物遮住時，以入口周圍地形與側門位置交叉確認候選，並依畫面尺寸換算參考比例。線索不足時沿用完整搜尋。
 - 未鎖定時隨當前第一名預覽，達到 200 個吻合點（含）即鎖定，本場不再換圖。
 - 每次重新開啟辨識都會清除舊鎖定、候選與人物位置，重新判斷本場。側欄可匯入截圖。
 - 按 M 後短暫加強取樣 2.4 秒、最多每秒 5 張；重複畫面會略過，待比對最多保留 3 張。
@@ -78,7 +81,7 @@ readme = rf'''伊莫地城地圖　可攜版 {VERSION}
 
 這一版的範圍
 - 7 張惡夢／混沌候選地城、單張底圖；不載入外部地圖或第二層貼圖。
-- 標記是候選點，不代表當場必定生成；不顯示依房間模板推論補入的點。
+- 標記是候選點，不代表當場必定生成。「顯示房間模組補充點」預設開啟；虛線外圈代表同房間模板推論的候選位置，包含星法師首領。關閉後只顯示地圖直接引用的候選點。
 - 地圖辨識已驗證 20032、20034、20035、20037、20040 的真實初始迷霧截圖；其他解析度以縮放模擬測試，更多地宮與連續遊玩仍待實機驗證。人物追蹤的測試範圍未因此擴大。
 - 不判定物件是否已生成／搜刮，不提供樓層辨識或滑鼠穿透。
 - 即時擷取使用 Windows Graphics Capture，需要 Windows 10 1903 以上；遊戲最小化時暫停辨識。

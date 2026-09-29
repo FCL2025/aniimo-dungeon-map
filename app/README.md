@@ -35,6 +35,8 @@ python -m venv .venv
 
 預設只輸出可直接執行的本地應用。使用者明確需要 ZIP 時，才使用 `scripts/build_portable.ps1 -Zip`，或執行 `scripts/package_portable.py --zip`。封裝採用明確檔案清單，不收錄測試 profile 或 `Data`。`dist/portable-build.json` 記錄可執行檔大小及雜湊；未輸出 ZIP 時 `archive` 為 null。
 
+若預設發行資料夾的 EXE 正在執行，可在編譯完成後執行 `scripts/package_portable.py --output-dir dist/github-release-v<版本>`，將同一份建置封裝到專案內的獨立資料夾。
+
 應用圖示來源為 `src-tauri/icons/icon.png`；`scripts/app_icons.py` 負責 ICO 與 favicon 封裝，來源紀錄見 `src-tauri/icons/source.json`。
 
 ## GitHub Release
