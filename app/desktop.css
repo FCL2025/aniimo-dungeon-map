@@ -12,7 +12,9 @@ body.desktop-app{height:100vh;grid-template-columns:280px minmax(0,1fr);overflow
 .desktop-app.sidebar-collapsed{grid-template-columns:minmax(0,1fr)}
 .desktop-app #sidebar[hidden]{display:none}
 .sidebar-collapsed .sidebar-arrow{transform:translateX(29px) scaleX(-1)}
-.desktop-app #help-button{position:sticky;bottom:0;z-index:2;width:100%;margin-top:auto;background:var(--panel);text-align:left}
+.desktop-app #sidebar-bottom{position:sticky;bottom:0;z-index:2;margin-top:auto;padding-top:8px;background:var(--panel)}
+.desktop-app #help-button{width:100%;background:var(--panel);text-align:left}
+.desktop-app .debug-log-control{margin-top:8px;padding:7px 2px 3px;font-size:12px}
 .desktop-app #discord-link{display:inline-flex;align-items:center;padding:6px 8px;border:1px solid var(--line);border-radius:5px;background:var(--bg);color:var(--text);font-size:12px;text-decoration:none}
 .desktop-app #discord-link:hover{border-color:var(--accent);color:var(--accent)}
 @media(max-width:760px){body.desktop-app:not(.compact):not(.sidebar-collapsed){grid-template-columns:210px minmax(0,1fr)}.desktop-app .mapbar{padding:10px;gap:10px}.desktop-app .mapbar-start{gap:8px;flex-wrap:wrap}.desktop-app .tools{margin-left:auto}.desktop-app .session-heading{flex-wrap:wrap}.desktop-app.overlay .mapbar-start,.desktop-app.overlay .session-heading{flex-wrap:nowrap}}

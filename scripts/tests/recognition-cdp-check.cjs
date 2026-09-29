@@ -2,6 +2,7 @@
 const fs=require('node:fs'),os=require('node:os'),path=require('node:path');
 const {spawn}=require('node:child_process');
 const chrome=process.env.CHROME_PATH||'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe';
+const origin=process.env.ANIIMO_TEST_ORIGIN||'http://127.0.0.1:8765';
 const profile=fs.mkdtempSync(path.join(os.tmpdir(),'aniimo-recognition-cdp-'));
 const browser=spawn(chrome,['--headless=new','--disable-gpu','--no-first-run','--remote-allow-origins=*','--remote-debugging-port=0',`--user-data-dir=${profile}`,'about:blank'],{windowsHide:true,stdio:'ignore'});
 const wait=ms=>new Promise(resolve=>setTimeout(resolve,ms));
@@ -32,12 +33,12 @@ async function connection(url){
       window.__TAURI__={core:{invoke:async(name,args)=>{
         if(name==='game_windows')return [{id:'1',title:'Aniimo'}];
         if(name==='capture_frame')return {running:true,message:null,mapKeyAt:0,burstUntil:0,
-          frame:${sample?`args.requestFrame?{sequence:++window.__captureSequence,capturedAt:Date.now(),width:1920,height:1080,image:'http://127.0.0.1:8765/exports/recognition-fixtures/${sample}',sourceRegion:[0,0,1,1]}:null`:'null'}};
+          frame:${sample?`args.requestFrame?{sequence:++window.__captureSequence,capturedAt:Date.now(),width:1920,height:1080,image:'${origin}/exports/recognition-fixtures/${sample}',sourceRegion:[0,0,1,1]}:null`:'null'}};
         if(name==='append_recognition_log'){window.__logEntries.push(args.entry);return 'C:\\\\test\\\\recognition.log';}
         return null;
       }}};
     `});
-    const target=logMode?'http://127.0.0.1:8765/app/frontend/index.html':process.argv[2]||'http://127.0.0.1:8765/scripts/tests/recognition-language.html';
+    const target=logMode?`${origin}/app/frontend/index.html`:process.argv[2]||`${origin}/scripts/tests/recognition-language.html`;
     await cdp.send('Page.navigate',{url:target});
     let result;
     for(let i=0;i<100;i++){
@@ -51,16 +52,31 @@ async function connection(url){
     if(target.includes('recognition-language.html')&&result.title!=='PASS')throw Error(JSON.stringify(result));
     if(target.includes('/app/frontend/index.html')&&(!result.hasRecognition||result.text.length<100))throw Error(JSON.stringify(result));
     if(logMode){
+      const initial=await cdp.send('Runtime.evaluate',{expression:'document.querySelector("#debug-log").checked',returnByValue:true});
+      if(initial.result?.value!==false)throw Error('DEBUG LOG must default to off');
       await cdp.send('Runtime.evaluate',{expression:'document.querySelector("#recognition-button").click()'});
       let log;
-      for(let i=0;i<80;i++){
+      for(let i=0;i<60;i++){
         await wait(100);
         const reply=await cdp.send('Runtime.evaluate',{expression:'({entries:window.__logEntries,display:document.querySelector("#recognition-log").textContent,status:window.recognitionStatus()})',returnByValue:true});
+        if(reply.exceptionDetails)throw Error(JSON.stringify(reply.exceptionDetails));
+        log=reply.result?.value;
+      }
+      if(log?.entries?.length)throw Error('DEBUG LOG wrote entries while off');
+      await cdp.send('Runtime.evaluate',{expression:'document.querySelector("#debug-log").click()'});
+      for(let i=0;i<40;i++){
+        await wait(100);
+        const reply=await cdp.send('Runtime.evaluate',{expression:'({entries:window.__logEntries,display:document.querySelector("#recognition-log").textContent,status:window.recognitionStatus()})',returnByValue:true});
+        if(reply.exceptionDetails)throw Error(JSON.stringify(reply.exceptionDetails));
         log=reply.result?.value;
         if(log?.entries?.length)break;
       }
       const expected=sample==='minimap-0.jpg'?'m_map_not_detected':sample?'below_lock_threshold':'no_frame';
       if(log?.entries?.[0]?.event!=='slow'||log.entries[0].elapsedMs<5000||log.entries[0].reason.code!==expected)throw Error(JSON.stringify(log));
+      await cdp.send('Runtime.evaluate',{expression:'document.querySelector("#debug-log").click()'});
+      await wait(11000);
+      const disabled=await cdp.send('Runtime.evaluate',{expression:'({count:window.__logEntries.length,checked:document.querySelector("#debug-log").checked,saved:JSON.parse(localStorage.getItem("aniimo-dungeon-preferences-v1")).debugLog})',returnByValue:true});
+      if(disabled.result?.value?.count!==log.entries.length||disabled.result.value.checked!==false||disabled.result.value.saved!==false)throw Error('DEBUG LOG kept writing after it was disabled');
       result={log:log.entries[0],display:log.display};
     }
     console.log(JSON.stringify(result));

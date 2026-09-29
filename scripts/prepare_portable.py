@@ -65,7 +65,8 @@ start = html.index('<details><summary>資料與限制</summary>')
 end = html.index('</details>', start) + len('</details>')
 html = html[:start]+'''<details><summary>資料與限制</summary><p>可手動選圖，或使用畫面辨識。迷霧與相似房間可能無法判定；候選點不代表當場一定出現。</p><p id="gaps"></p></details>'''+html[end:]
 html = html.replace('資源版本 3595896 · 本機資料', f'可攜版 {VERSION} · 資源 3595896')
-html = html.replace('</footer>', '</footer><button id="help-button" type="button">說明</button>', 1)
+html = html.replace('</footer>', '''</footer><div id="sidebar-bottom"><button id="help-button" type="button">說明</button>
+<label class="check debug-log-control" title="開啟後才寫入辨識診斷紀錄"><input type="checkbox" id="debug-log"><span>DEBUG LOG（辨識診斷）</span></label></div>''', 1)
 html = html.replace('<div><span class="eyebrow" id="map-id"></span><h2 id="map-title"></h2></div>', '''<div class="mapbar-start"><button id="sidebar-toggle" aria-expanded="true" aria-controls="sidebar" aria-label="收合側欄" title="收合側欄"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 4v16"/><path class="sidebar-arrow" d="m16 9-3 3 3 3"/></svg></button><div class="map-heading"><span class="eyebrow" id="map-id"></span><div class="session-heading"><h2 id="map-title"></h2><span id="live-status" role="status"></span></div></div></div>''')
 html = html.replace('<div class="tools">', '<div class="tools"><button id="recognition-button" class="live-switch" role="switch" aria-checked="false">辨識：關</button><button id="tracking-button" class="live-switch" role="switch" aria-checked="false">追蹤：關</button><button id="topmost" aria-pressed="true">置頂：開</button><button id="compact" aria-pressed="false">地圖模式</button>')
 html = html.replace('<button id="zoom-in" aria-label="放大地圖">＋</button>', '''<button id="zoom-in" aria-label="放大地圖">＋</button><a id="discord-link" href="https://discord.gg/Yh235uyafn" target="_blank" rel="noopener noreferrer" title="在瀏覽器開啟搶蛋 Discord">Discord ↗</a>''')
@@ -92,6 +93,7 @@ html = html.replace('<noscript>', f'''<dialog id="help-dialog"><h2>伊莫地城�
 <p>「辨識」只負責判斷地宮，「追蹤」獨立判斷小地圖上的人物位置。找到正確地宮後可關閉辨識、開啟追蹤，也可手動選圖後直接追蹤。只載入目前地圖，優先處理最新畫面；僅追蹤時先裁切小地圖與 M 地圖標題區再編碼，最高每秒取樣 10 張。實際更新速度取決於畫面與電腦效能。</p>
 <p>人物位置顯示為薄荷綠圓點與金色漣漪。主視窗按 ◎ 可置中人物；1.5 秒無法取得新位置時轉為灰色空心圈。關閉追蹤會清除人物標記；重新開啟辨識會清除舊位置，追蹤開關保持獨立。迷霧、相似房間或範圍未對準時可能無法定位；不辨識樓層，也不判定寶箱是否已取得。</p>
 <p>惡夢與混沌地圖池的 7 張單張底圖已內嵌。「顯示房間模組補充點」預設開啟；虛線外圈是同房間模板推論的候選位置，關閉後只顯示地圖直接引用的點位。篩選設定會自動保存，同一個 Windows 帳號更新版本或移動應用資料夾後仍會沿用。首次升級請先關閉舊版，並將新版放在舊版旁邊，以便自動匯入設定。需 Windows 10/11 x64 與 Microsoft Edge WebView2 Runtime。</p>
+<p>側欄最下方的 DEBUG LOG 預設關閉。需要排查辨識時再開啟；關閉後停止新增診斷紀錄，先前產生的檔案仍會保留。</p>
 <button id="close-help">關閉</button></dialog><noscript>''')
 html = html.replace('<script src="viewer.js"></script>', '<script src="viewer.js"></script><script src="desktop.js"></script><script src="map-header.js"></script><script src="recognition-screen.js"></script><script src="recognition.js"></script>')
 html = html.replace('，或直接開啟 candidates.csv 檢視點位', '')

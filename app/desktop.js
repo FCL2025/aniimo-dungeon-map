@@ -25,7 +25,7 @@
   }
   function preferences() {
     return { map: el('map').value, difficulty: el('difficulty').value, iconSize: Number(el('icon-size').value),
-      supplements: el('supplements').checked,
+      supplements: el('supplements').checked, debugLog: el('debug-log').checked,
       categories: [...document.querySelectorAll('[data-category]:checked')].map(e => e.dataset.category),
       topmost, compact: false, sidebarCollapsed };
   }
@@ -110,6 +110,7 @@
           if ([...el(id).options].some(o => o.value === String(settings[id]))) el(id).value = String(settings[id]);
         }
         if (typeof settings.supplements === 'boolean') el('supplements').checked = settings.supplements;
+        el('debug-log').checked = settings.debugLog === true;
         sidebarCollapsed = settings.sidebarCollapsed === true;
         renderSidebar();
         if (Number.isFinite(settings.iconSize)) el('icon-size').value = String(Math.min(250, Math.max(75, settings.iconSize)));

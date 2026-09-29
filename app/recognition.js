@@ -31,7 +31,7 @@
     return {code:'waiting_for_match',text:'已偵測到 M 地圖，正在等待辨識引擎處理畫面。'};
   }
   async function recordDiagnostic(event,error=null){
-    if(!invoke||!mapAttemptStartedAt)return;
+    if(!invoke||!mapAttemptStartedAt||!el('debug-log')?.checked)return;
     const now=Date.now(),reason=error?{code:'error',text:String(error)}:diagnosis();
     const entry={at:new Date(now).toISOString(),event,elapsedMs:now-mapAttemptStartedAt,reason,
       capture:{active:capturing,frames:stats.captured-attemptCaptured,lastMessage:lastCaptureMessage,
@@ -229,7 +229,7 @@
   el('reset-regions').onclick=()=>{regions=structuredClone(defaults);try{localStorage.removeItem('aniimo-capture-regions-v1');}catch{}regionsChanged();drawPreview();};
   setInterval(()=>{if(lastLocationAt&&Date.now()-lastLocationAt>1500)window.dispatchEvent(new CustomEvent('tracking-stale'));},250);
   setInterval(()=>{
-    const now=Date.now();if(!mapWorker||pinned||!mapAttemptStartedAt||now<nextDiagnosticAt)return;
+    const now=Date.now();if(!el('debug-log')?.checked||!mapWorker||pinned||!mapAttemptStartedAt||now<nextDiagnosticAt)return;
     diagnosticCount++;nextDiagnosticAt=now+10000;void recordDiagnostic('slow');
   },250);
   window.recognitionStatus=()=>({ready:mapReady,initializing:!!mapWorker&&!mapReady,busy:mapBusy,running,trackingRunning,capturing,lastScreen,nonMapFrames,
