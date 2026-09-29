@@ -39,7 +39,7 @@ for(const [key,asset] of Object.entries(data.icons.assets)){
   iconImages.set(key,icon);icon.src=asset.image;
 }
 function iconElement(key){const icon=document.createElement('img');icon.className='marker-icon';icon.src=data.icons.assets[key].image;icon.alt='';icon.setAttribute('aria-hidden','true');return icon;}
-function pinSize(pin){const primary=['egg','entrance','exit','stellarys_boss'].includes(pin.category);return (primary?28:Math.min(22,Math.max(14,20*Math.sqrt(scale))))*Number($('icon-size').value)/100;}
+function pinSize(pin){const primary=['egg','entrance','exit','stellarys_boss'].includes(pin.category);const categoryScale=pin.category==='key_orange'?1.5:1;return (primary?28:Math.min(22,Math.max(14,20*Math.sqrt(scale))))*Number($('icon-size').value)/100*categoryScale;}
 function renderIconSize(){const value=$('icon-size').value+'%';$('icon-size-value').value=value;$('icon-size').setAttribute('aria-valuetext',value);draw();}
 for(const map of data.maps){const option=document.createElement('option');option.value=map.id;option.textContent=`地宮 ${map.id}`;$('map').append(option);}
 for(const [key,name] of Object.entries(categories)){
@@ -51,7 +51,7 @@ for(const [key,name] of Object.entries(categories)){
   const count=document.createElement('span');count.className='count';count.id='count-'+key;
   label.append(input,swatch,text,count);$('filters').append(label);
 }
-function candidatePins(){return current.pins.filter(p=>categories[p.category]&&p.difficultyCandidates.includes(Number($('difficulty').value))&&($('supplements').checked||p.provenance==='scene_reference'));}
+function candidatePins(){return current.pins.filter(p=>categories[p.category]&&p.difficultyCandidates.includes(Number($('difficulty').value)));}
 function update(){
   if(!current)return;
   const enabled=new Set([...document.querySelectorAll('[data-category]:checked')].map(x=>x.dataset.category));
@@ -89,7 +89,6 @@ function paintPins(ctx){
     }
     ctx.lineWidth=1.2;
     if(pin.category.startsWith('chest_')){ctx.strokeStyle=colors[pin.category];ctx.beginPath();ctx.arc(x,y,r+1,0,Math.PI*2);ctx.stroke();}
-    if(pin.provenance==='template_supplement'){ctx.strokeStyle=colors[pin.category];ctx.setLineDash([2,2]);ctx.beginPath();ctx.arc(x,y,r+3,0,Math.PI*2);ctx.stroke();ctx.setLineDash([]);}
   }
   if(selected){ctx.strokeStyle='#ffffff';ctx.lineWidth=2;ctx.beginPath();ctx.arc(selected.pixel[0]*scale+tx,selected.pixel[1]*scale+ty,pinSize(selected)/2+4,0,Math.PI*2);ctx.stroke();}
 }
@@ -148,7 +147,7 @@ function loadMap(){
   nextImage.src=current.image;update();fit();
 }
 $('map').addEventListener('change',loadMap);
-for(const id of ['difficulty','supplements'])$(id).addEventListener('change',update);
+$('difficulty').addEventListener('change',update);
 for(const name of ['input','change'])$('icon-size').addEventListener(name,renderIconSize);
 // Accumulate small touchpad deltas; one mouse-wheel notch selects one option.
 const selectWheels=new WeakMap();

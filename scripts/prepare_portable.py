@@ -4,7 +4,7 @@ import json
 from pathlib import Path
 import shutil
 from app_icons import stage_app_icons
-from build_viewer import CATEGORIES, display_pins, display_icons
+from build_viewer import CATEGORIES, active_map_ids, display_pins, display_icons
 from analyze_portal_geometry import portal_geometry
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -17,7 +17,12 @@ scenes = json.loads((source/'source-tables.json').read_text(encoding='utf8'))['s
 policy = json.loads((source/'display-policy.json').read_text(encoding='utf8'))['scope']
 assert policy['kind'] == 'dungeon' and policy['loadLayerTextures'] is False
 assert policy['monsterTypeIds'] == [11001200090]
-allowed = set(policy['sceneIds'])
+allowed = set(active_map_ids(source))
+map_output = (OUTPUT/'maps').resolve()
+for old_map in (OUTPUT/'maps').glob('*.png'):
+    assert old_map.resolve().parent == map_output
+    if old_map.stem not in {str(mid) for mid in allowed}:
+        old_map.unlink()
 maps = []
 pin_keys = ('id', 'category', 'name', 'iconKey', 'roomId', 'sourceId', 'sandboxConfigType', 'sandboxLevel',
             'difficultyCandidates', 'world', 'pixel', 'provenance', 'quality', 'graphId', 'isBoss', 'typeId', 'originalName')
@@ -85,8 +90,8 @@ html = html.replace('<noscript>', f'''<dialog id="help-dialog"><h2>伊莫地城�
 <p>遊戲在前景時按 M，會短暫加強取樣 2.4 秒、最多每秒 5 張；平常未鎖定時約每秒 1 張。重複畫面會略過，鎖定後只追蹤該地宮的位置。M 按鍵只用來觸發取樣，仍會檢查畫面是否為地圖。</p>
 <p>使用預設拉到最遠的 M 地圖時，先按正門／側門距離與方向縮小候選，再比對地形。線索不足時自動放寬搜尋；初始迷霧線索不足時仍顯示候選預覽，達 200 個地形吻合點才鎖定。</p>
 <p>「辨識」只負責判斷地宮，「追蹤」獨立判斷小地圖上的人物位置。找到正確地宮後可關閉辨識、開啟追蹤，也可手動選圖後直接追蹤。只載入目前地圖，優先處理最新畫面；僅追蹤時先裁切小地圖與 M 地圖標題區再編碼，最高每秒取樣 10 張。實際更新速度取決於畫面與電腦效能。</p>
-<p>人物位置顯示為薄荷綠圓點與金色漣漪。主視窗按 ◎ 可置中人物；1.5 秒無法取得新位置時轉為灰色空心圈。關閉追蹤會清除人物標記；重新開啟辨識會清除舊位置，追蹤開關保持獨立。迷霧、相似房間或範圍未對準時可能無法定位；不辨識樓層，也不判定寶箱是否已取得。虛線外圈為房間模組補充點。</p>
-<p>資料與 31 張單張地城底圖已內嵌。篩選設定會自動保存，同一個 Windows 帳號更新版本或移動應用資料夾後仍會沿用。首次升級請先關閉舊版，並將新版放在舊版旁邊，以便自動匯入設定。需 Windows 10/11 x64 與 Microsoft Edge WebView2 Runtime。</p>
+<p>人物位置顯示為薄荷綠圓點與金色漣漪。主視窗按 ◎ 可置中人物；1.5 秒無法取得新位置時轉為灰色空心圈。關閉追蹤會清除人物標記；重新開啟辨識會清除舊位置，追蹤開關保持獨立。迷霧、相似房間或範圍未對準時可能無法定位；不辨識樓層，也不判定寶箱是否已取得。</p>
+<p>惡夢與混沌地圖池的 7 張單張底圖已內嵌；不顯示推論補入的房間模組點。篩選設定會自動保存，同一個 Windows 帳號更新版本或移動應用資料夾後仍會沿用。首次升級請先關閉舊版，並將新版放在舊版旁邊，以便自動匯入設定。需 Windows 10/11 x64 與 Microsoft Edge WebView2 Runtime。</p>
 <button id="close-help">關閉</button></dialog><noscript>''')
 html = html.replace('<script src="viewer.js"></script>', '<script src="viewer.js"></script><script src="desktop.js"></script><script src="map-header.js"></script><script src="recognition-screen.js"></script><script src="recognition.js"></script>')
 html = html.replace('，或直接開啟 candidates.csv 檢視點位', '')

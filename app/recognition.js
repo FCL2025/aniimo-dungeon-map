@@ -36,7 +36,7 @@
     renderSwitch();syncCapture().catch(captureFailure);
   }
   function initializeMap(){
-    if(mapWorker)return;message('準備辨識資料','正在載入常見地宮，未吻合時會繼續搜尋其他地圖。');
+    if(mapWorker)return;message('準備辨識資料','正在載入惡夢／混沌地宮的 7 張地圖。');
     const worker=mapWorker=new Worker('recognition-worker.js');
     worker.onerror=e=>{if(mapWorker===worker)workerFailure('map',e.message);};
     worker.onmessage=({data:r})=>{

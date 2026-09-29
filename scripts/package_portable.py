@@ -41,7 +41,7 @@ readme = rf'''伊莫地城地圖　可攜版 {VERSION}
 - 側欄「圖示大小」預設為 150%，可調整至 75–250%，會自動保存並同步到覆蓋地圖；鑰匙標記另外放大 50%。
 - 工具列「辨識」開關：開啟即自動連接伊莫，無需彈窗；在遊戲中按 M 即可。
 - 使用預設拉到最遠的 M 地圖時，先按正門／側門距離與方向縮小候選，再比對地形；線索不足時自動放寬搜尋。
-- 優先辨識 20032、20034、20035、20040、20037、20036、20038、20039；未可靠吻合時繼續搜尋其他地宮。啟動先準備這 8 張，其餘地圖按需載入。
+- 只辨識惡夢／混沌地圖池的 7 張地宮：20032、20034、20035、20036、20037、20039、20040。
 - 加入 20032、20034、20035、20037 的初始迷霧參考地形；正門被人物遮住時，以入口周圍地形與側門位置交叉確認候選，並依畫面尺寸換算參考比例。線索不足時沿用完整搜尋。
 - 未鎖定時隨當前第一名預覽，達到 200 個吻合點（含）即鎖定，本場不再換圖。
 - 每次重新開啟辨識都會清除舊鎖定、候選與人物位置，重新判斷本場。側欄可匯入截圖。
@@ -74,8 +74,8 @@ readme = rf'''伊莫地城地圖　可攜版 {VERSION}
 - 建議遊戲使用無邊框視窗或視窗模式；獨佔全螢幕覆蓋尚未驗證。
 
 這一版的範圍
-- 31 張地城、單張底圖；不載入外部地圖或第二層貼圖。
-- 標記是候選點，不代表當場必定生成；虛線外圈是房間模組補充點。
+- 7 張惡夢／混沌候選地城、單張底圖；不載入外部地圖或第二層貼圖。
+- 標記是候選點，不代表當場必定生成；不顯示依房間模板推論補入的點。
 - 地圖辨識已驗證 20032、20034、20035、20037、20040 的真實初始迷霧截圖；其他解析度以縮放模擬測試，更多地宮與連續遊玩仍待實機驗證。人物追蹤的測試範圍未因此擴大。
 - 不判定物件是否已生成／搜刮，不提供樓層辨識或滑鼠穿透。
 - 即時擷取使用 Windows Graphics Capture，需要 Windows 10 1903 以上；遊戲最小化時暫停辨識。
@@ -83,7 +83,7 @@ readme = rf'''伊莫地城地圖　可攜版 {VERSION}
 - 遊戲資料來源版本：3595896。
 
 設定保存與更新
-篩選、難度、圖示大小、補充點、側欄收合、置頂與擷取範圍會自動保存。
+篩選、難度、圖示大小、側欄收合、置頂與擷取範圍會自動保存。
 覆蓋地圖僅在按下「地圖模式」時開啟，啟動程式不會自動顯示。
 0.2.3 起統一存在 %LOCALAPPDATA%\local.aniimo.dungeonmap\WebView2。
 同一個 Windows 帳號更新版本、換資料夾或刪除舊版，仍會沿用設定。
@@ -107,7 +107,9 @@ files.append(folder/'SHA256SUMS.txt')
 report = dict(version=VERSION, executable=str(files[0].relative_to(ROOT)),
               exeBytes=files[0].stat().st_size, exeSha256=hashlib.sha256(files[0].read_bytes()).hexdigest(),
               archive=None,
-              requiresWebView2=True, embeddedMaps=31, difficultyIds=[5,6], monsterTypeIds=[11001200090])
+              requiresWebView2=True,
+              embeddedMaps=json.loads((ROOT/'app/asset-manifest.json').read_text(encoding='utf8'))['maps'],
+              difficultyIds=[5,6], monsterTypeIds=[11001200090])
 if args.zip:
     archive = DIST/f'{NAME}.zip'
     with zipfile.ZipFile(archive, 'w', compression=zipfile.ZIP_DEFLATED, compresslevel=9) as z:

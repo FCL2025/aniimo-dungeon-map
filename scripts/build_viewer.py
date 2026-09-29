@@ -20,6 +20,8 @@ CHEST_CATEGORIES = {2004: 'chest_gold', 2007: 'chest_gold',
 def display_pins(pins):
     result = []
     for pin in pins:
+        if pin['provenance'] != 'scene_reference':
+            continue
         category = CHEST_CATEGORIES.get(pin.get('typeId')) if pin['category'] == 'chest' else pin['category']
         if category not in CATEGORIES:
             continue
@@ -28,6 +30,13 @@ def display_pins(pins):
             item.update(name=CATEGORIES[category], originalName=pin['name'])
         result.append(item)
     return result
+
+
+def active_map_ids(source=SOURCE):
+    pool = json.loads((source / 'map-pool.json').read_text(encoding='utf8'))
+    ids = sorted({mid for difficulty in ('5', '6') for mid in pool['entries'][difficulty]})
+    assert ids == pool['mapIds'] and len(ids) == 7
+    return ids
 
 
 def display_icons(catalog):
@@ -44,7 +53,8 @@ def build(source=SOURCE):
         return json.loads((source / name).read_text(encoding='utf8'))
     policy = read('display-policy.json')['scope']
     maps = []
-    for mid in policy['sceneIds']:
+    for mid in active_map_ids(source):
+        assert mid in policy['sceneIds']
         record = read(f'maps/{mid}.json')
         record['pins'] = display_pins(record['pins'])
         maps.append(record)

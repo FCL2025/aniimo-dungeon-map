@@ -1,7 +1,7 @@
 /* Search common dungeons first; priority never changes terrain scores. */
 (function(root){
   'use strict';
-  const COMMON=Object.freeze([20032,20034,20035,20040,20037,20036,20038,20039]);
+  const COMMON=Object.freeze([20032,20034,20035,20040,20037,20036,20039]);
   function partition(references,priority=COMMON){
     const byId=new Map(references.map(r=>[r.id,r]));
     const common=[...new Set(priority)].map(id=>byId.get(id)).filter(Boolean);

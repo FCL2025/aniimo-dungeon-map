@@ -1,6 +1,6 @@
 [package]
 name = "aniimo-dungeon-map"
-version = "0.2.19"
+version = "0.2.20"
 description = "Portable Aniimo dungeon map companion"
 edition = "2021"
 

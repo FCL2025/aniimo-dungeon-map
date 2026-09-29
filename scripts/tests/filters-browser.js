@@ -5,6 +5,8 @@
   const change = (id, value) => { el(id).value = value; el(id).dispatchEvent(new Event('change', { bubbles: true })); };
   const wheel = (id, deltaY, options = {}) => el(id).dispatchEvent(new WheelEvent('wheel', { deltaY, bubbles: true, cancelable: true, ...options }));
   await window.desktopReady;
+  assert(DUNGEON_DATA.maps.length === 7, 'Expected seven maps');
+  assert(!el('supplements') && DUNGEON_DATA.maps.every(m => m.pins.every(p => p.provenance === 'scene_reference')), 'Inferred pins still visible');
   assert(document.querySelectorAll('[data-category]').length === 8, 'Expected eight categories');
   assert(!el('quality'), 'Quality selector still present');
   assert(!document.querySelector('[data-category="chest"], [data-category="key_blue"], [data-category="key_purple"]'), 'Old categories remain');
@@ -19,7 +21,7 @@
   change('difficulty', '6');
   assert(visible.every(p => p.difficultyCandidates.includes(6)), 'Difficulty mismatch');
   const beforeScroll = document.querySelector('aside').scrollTop;
-  assert(wheel('map', 100) === false && el('map').value === '20038', 'Wheel down failed');
+  assert(wheel('map', 100) === false && el('map').value === '20039', 'Wheel down failed');
   wheel('map', -100); assert(el('map').value === '20037', 'Wheel up failed');
   assert(document.querySelector('aside').scrollTop === beforeScroll, 'Selector wheel scrolled sidebar');
   wheel('map', 100, { ctrlKey: true }); assert(el('map').value === '20037', 'Ctrl-wheel switched maps');

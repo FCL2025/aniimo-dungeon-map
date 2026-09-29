@@ -21,8 +21,8 @@
       image:new URL(m.image,location.href).href})),
       portalIcons:usePortals?Object.fromEntries(['entrance','exit'].map(kind=>[kind,new URL(DUNGEON_DATA.icons.assets[DUNGEON_DATA.icons.categories[kind]].image,location.href).href])):undefined},'ready');
     state.initialization.push({usePortals,ms:Math.round(performance.now()-started),...ready});
-    check(ready.loaded===(usePortals?8:31),'Unexpected number of preloaded references');
-    if(usePortals)check(JSON.stringify(ready.priority)==='[20032,20034,20035,20040,20037,20036,20038,20039]','Common map priority order changed');
+    check(ready.loaded===7 && ready.total===7,'Unexpected number of map references');
+    if(usePortals)check(JSON.stringify(ready.priority)==='[20032,20034,20035,20040,20037,20036,20039]','Map priority order changed');
     return {
       reset:()=>send({type:'reset'},'reset'),
       analyze:(image,bigRegion,source='live')=>send({type:'analyze',request:++request,image,bigRegion,source,capturedAt:Date.now()},'result'),
@@ -47,7 +47,7 @@
           const e=mode==='fast'?fast:full;await e.reset();const r=await e.analyze(img.src);
           check(r.selected===20040&&r.locked===null,name+' '+mode+' changed selection');
           check(r.previewMatches===(name==='initial'?10:184),name+' '+mode+' changed terrain evidence');
-          if(mode==='fast')check(r.search.strategy==='portals'&&r.search.filter==='default-distance'&&r.search.evaluated===1&&r.search.priorityGroup==='common'&&r.search.loadedReferences===8,'Expected one-map common default-distance search');
+          if(mode==='fast')check(r.search.strategy==='portals'&&r.search.filter==='default-distance'&&r.search.evaluated===1&&r.search.priorityGroup==='common'&&r.search.loadedReferences===7,'Expected one-map default-distance search');
           state.benchmark.push({name,mode,repeat,...r});
         }
       }
@@ -88,17 +88,6 @@
       state.results.push({name:'wrong-distance-calibration',...recovered});
       check(recovered.selected===20040&&recovered.previewMatches===184&&recovered.search.filter==='direction'&&recovered.search.evaluated===1,
         'Incorrect distance hint must retry direction candidates and retain terrain evidence');
-      const cold=await engine(true);
-      for(const id of [20052,20058]){
-        await cold.reset();await full.reset();
-        const image=new URL('maps/'+id+'.png',location.href).href;
-        const r=await cold.analyze(image,undefined,'import'),baseline=await full.analyze(image,undefined,'import');
-        state.results.push({name:'uncommon-'+id,...r,baseline:{selected:baseline.selected,points:baseline.previewMatches,locked:baseline.locked}});
-        check(r.selected===id&&r.locked===id&&r.previewMatches===baseline.previewMatches,'Uncommon map must retain exhaustive search evidence');
-        check(r.search.evaluated===31&&r.search.loadedReferences===31,'Uncommon fallback must load and check all references');
-        check(JSON.stringify(r.search.evaluatedOrder.slice(0,8))==='[20032,20034,20035,20040,20037,20036,20038,20039]','Common references must be checked first');
-        check(r.search.newlyLoadedReferences===(id===20052?23:0),'Loaded reference features must be reused');
-      }
     }catch(e){state.error=String(e.stack||e);}
     finally{for(const w of workers)w.terminate();state.done=true;}
   })();

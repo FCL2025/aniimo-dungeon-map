@@ -14,7 +14,7 @@
     window.testMainBefore = { size: await native.innerSize(), position: await native.outerPosition() };
     el('map').value = '20036'; el('map').dispatchEvent(new Event('change', { bubbles: true }));
     el('none').click(); document.querySelector('[data-category="egg"]').click();
-    el('difficulty').value = '6'; el('icon-size').value = '175'; el('supplements').checked = false;
+    el('difficulty').value = '6'; el('icon-size').value = '175';
     el('difficulty').dispatchEvent(new Event('change', { bubbles: true }));
     el('compact').click(); await delay(1000);
     assert((await windows()).length === 2, 'Separate overlay window not created');
@@ -33,7 +33,7 @@
     assert(!await native.isDecorated() && await native.isAlwaysOnTop() && !await native.isResizable(), 'Native overlay flags incorrect');
     assert(el('overlay-close').getBoundingClientRect().right <= innerWidth, 'Close button clipped');
     assert(el('recognition-button').getBoundingClientRect().left > innerWidth / 2 && el('tracking-button').getBoundingClientRect().left > innerWidth / 2, 'Recognition and tracking buttons did not return to the right');
-    assert(el('map').value === '20036' && el('difficulty').value === '6' && el('icon-size').value === '175' && !el('supplements').checked, 'Controls not synced');
+    assert(el('map').value === '20036' && el('difficulty').value === '6' && el('icon-size').value === '175' && !el('supplements'), 'Controls not synced');
     assert(same(selected(), ['egg']), 'Categories not synced');
     assert(getComputedStyle(document.querySelector('.player-tools')).display === 'none' && el('player-status').dataset.state === 'live', 'Overlay locate control or player state incorrect');
     const rect = el('map-canvas').getBoundingClientRect(), initialScale = scale;

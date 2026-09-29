@@ -9,7 +9,7 @@
   const same = (actual, expected) => JSON.stringify(actual) === JSON.stringify(expected);
   const state = () => ({
     map: element('map').value, difficulty: element('difficulty').value, iconSize: Number(element('icon-size').value),
-    supplements: element('supplements').checked, categories: selected(),
+    categories: selected(),
     topmost: element('topmost').getAttribute('aria-pressed') === 'true',
     compact: document.body.classList.contains('compact'),
     sidebarCollapsed: document.body.classList.contains('sidebar-collapsed'),
@@ -24,26 +24,27 @@
     e.dispatchEvent(new Event('change', { bubbles: true }));
   };
   const expected = {
-    map: '20036', difficulty: '5', iconSize: 175, supplements: true,
+    map: '20036', difficulty: '5', iconSize: 175,
     categories: [], topmost: true, compact: false, sidebarCollapsed: false,
   };
   assert(document.querySelectorAll('[data-category]').length === 8, 'Expected 8 filter options');
   assert(!document.querySelector('[data-category="pot"], [data-category="cache"]'), 'Removed options still present');
-  assert(DUNGEON_DATA.maps.length === 31, 'Missing dungeon maps');
+  assert(DUNGEON_DATA.maps.length === 7, 'Incorrect dungeon map pool');
+  assert(!element('supplements') && DUNGEON_DATA.maps.every(m => m.pins.every(p => p.provenance === 'scene_reference')), 'Inferred pins remain');
   assert(DUNGEON_DATA.maps.every(m => m.pins.every(p => !['pot', 'cache'].includes(p.category))), 'Removed markers still embedded');
   assert(JSON.parse(localStorage.getItem('aniimo-capture-regions-v1')).mini[0] === .75, 'Capture region not carried over');
   assert(element('load-status').textContent === '', 'Map failed to load');
   assert(element('app-status').textContent === '', 'Settings error displayed');
   if (phase === 'upgrade') {
     await checkState({
-      map: '20040', difficulty: '6', iconSize: 100, supplements: false,
+      map: '20040', difficulty: '6', iconSize: 100,
       categories: ['egg', 'chest_gold', 'chest_glass', 'stellarys_boss', 'exit'], topmost: false, compact: false, sidebarCollapsed: false,
     });
     element('all').click();
     assert(selected().length === 8, 'All must enable only supported categories');
     element('none').click();
     assert(element('filter-total').textContent === '0 個候選', 'Hidden filters still render markers');
-    set('map', '20036'); set('difficulty', '5'); set('icon-size', '175'); set('supplements', true);
+    set('map', '20036'); set('difficulty', '5'); set('icon-size', '175');
     element('topmost').click();
     await new Promise(resolve => setTimeout(resolve, 400));
     await checkState(expected);
@@ -58,5 +59,5 @@
     throw new Error('Unknown test phase');
   }
   assert(same(JSON.parse(localStorage.getItem('aniimo-dungeon-preferences-v1')), state()), 'Saved state differs from controls');
-  return { phase, passed: true, state: state(), categories: 8, maps: 31 };
+  return { phase, passed: true, state: state(), categories: 8, maps: 7 };
 })()
