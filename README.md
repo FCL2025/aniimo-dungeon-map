@@ -2,7 +2,7 @@
 
 伊莫「搶蛋大作戰」的 Windows 地圖工具，針對惡夢與混沌的 7 張候選地宮提供寶箱與蛋巢標記，支援地圖辨識、人物追蹤及透明覆蓋地圖。
 
-**[下載最新版 v0.2.26](https://github.com/FCL2025/aniimo-dungeon-map/releases/download/v0.2.26/AniimoDungeonMap.exe)** · [下載頁面](https://github.com/FCL2025/aniimo-dungeon-map/releases)。
+**[下載最新版 EXE](https://github.com/FCL2025/aniimo-dungeon-map/releases/latest/download/AniimoDungeonMap.exe)** · [最新版本與其他附件](https://github.com/FCL2025/aniimo-dungeon-map/releases/latest)。
 
 ## 下載與啟動
 
