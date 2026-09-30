@@ -15,19 +15,20 @@ def main():
     raw = json.loads(args.extraction.read_text(encoding='utf-8-sig'))
     assert raw['success'], raw.get('error')
     extracted = raw['data']['result']['samples']
-    assert [s['id'] for s in extracted] == [20032, 20034, 20035, 20037, 20040]
+    assert [s['id'] for s in extracted] == [20032, 20034, 20035, 20036, 20037, 20039, 20040]
     samples = []
     for sample in extracted:
         name = 'real-20040-sparse.png' if sample['id'] == 20040 else f'real-{sample["id"]}-initial.png'
         path = ROOT/'exports/recognition-fixtures'/name
         with Image.open(path) as image:
-            assert image.size == (1920, 1080)
+            size = list(image.size)
+            assert sample['size'] == size
         assert 8 <= len(sample['points']) <= 128
         assert len(sample['descriptors']) == len(sample['points'])*32
         assert all(isinstance(v, int) and 0 <= v <= 255 for v in sample['descriptors'])
         samples.append(dict(id=sample['id'], points=[[round(v, 5) for v in p] for p in sample['points']],
             descriptors=sample['descriptors'], source=dict(file=path.relative_to(ROOT).as_posix(),
-                sha256=hashlib.sha256(path.read_bytes()).hexdigest(), size=[1920, 1080],
+                sha256=hashlib.sha256(path.read_bytes()).hexdigest(), size=size,
                 exit=sample['exit'], entrance=sample['entrance'])))
     output = ROOT/'app/fog-references.json'
     output.write_text(json.dumps(dict(version=1, samples=samples), separators=(',', ':'))+'\n', encoding='utf8')

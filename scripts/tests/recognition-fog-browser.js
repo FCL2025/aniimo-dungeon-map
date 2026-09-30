@@ -2,7 +2,7 @@
 (()=>{
   const state=window.fogChecks={done:false,error:null,results:[],benchmark:[],initialization:[]},workers=[];
   const check=(ok,message)=>{if(!ok)throw Error(message);};
-  const ids=[20032,20034,20035,20037,20040];
+  const ids=[20032,20034,20035,20036,20037,20039,20040];
   const fixtureName=id=>id===20040?'real-20040-sparse.png':'real-'+id+'-initial.png';
   const source=new Map(),specs=new Map(DUNGEON_DATA.maps.map(m=>[m.id,m]));
   async function engine(enabled){
@@ -14,7 +14,7 @@
     const ready=await send({type:'init',fogReferences:enabled,maps:[...specs.values()].map(m=>({id:m.id,size:m.size,portalGeometry:m.portalGeometry,image:new URL(m.image,location.href).href})),
       portalIcons:Object.fromEntries(['entrance','exit'].map(k=>[k,new URL(DUNGEON_DATA.icons.assets[DUNGEON_DATA.icons.categories[k]].image,location.href).href]))},'ready');
     state.initialization.push({enabled,ms:Math.round(performance.now()-start),...ready});
-    check(ready.fogReferences===(enabled?5:0),'Unexpected fog reference count');
+    check(ready.fogReferences===(enabled?ids.length:0),'Unexpected fog reference count');
     return {reset:()=>send({type:'reset'},'reset'),analyze:image=>send({type:'analyze',request:++request,source:'live',image},'result')};
   }
   function altered(img,width=img.width,height=img.height,edit=()=>{}){
@@ -43,20 +43,23 @@
     for(const id of ids){
       const img=source.get(id),s=samples.find(s=>s.id===id).source;
       for(const [w,h] of [[1280,720],[1600,900],[2560,1440],[3840,2160]])await run(id+'-scaled-'+w+'x'+h,id,altered(img,w,h));
-      await run(id+'-no-notification',id,altered(img,1920,1080,ctx=>{ctx.fillStyle='#454d61';ctx.fillRect(230,145,1320,121);}));
-      await run(id+'-changed-player',id,altered(img,1920,1080,ctx=>{
+      await run(id+'-no-notification',id,altered(img,img.width,img.height,ctx=>{
+        ctx.fillStyle='#454d61';ctx.fillRect(230,145,1320,121);
+        ctx.drawImage(img,s.exit[0]-42,s.exit[1]-42,84,84,s.exit[0]-42,s.exit[1]-42,84,84);
+      }));
+      await run(id+'-changed-player',id,altered(img,img.width,img.height,ctx=>{
         const [x,y]=s.entrance;ctx.fillStyle='#454d61';ctx.beginPath();ctx.arc(x,y-6,28,0,Math.PI*2);ctx.fill();
         ctx.fillStyle='#ffff8c';ctx.beginPath();ctx.moveTo(x-15,y);ctx.lineTo(x+14,y-12);ctx.lineTo(x+10,y+15);ctx.fill();
       }));
-      await run(id+'-panned',id,altered(img,1920,1080,ctx=>{
-        ctx.fillStyle='#454d61';ctx.fillRect(210,210,1450,720);ctx.drawImage(img,210,210,1450,720,247,233,1450,720);
+      await run(id+'-panned',id,altered(img,img.width,img.height,ctx=>{
+        ctx.fillStyle='#454d61';ctx.fillRect(210,125,1450,805);ctx.drawImage(img,210,125,1450,805,247,148,1450,805);
       }));
-      await run(id+'-no-side-door',id,altered(img,1920,1080,ctx=>{ctx.fillStyle='#454d61';ctx.fillRect(s.exit[0]-42,s.exit[1]-42,84,84);}),false);
-      await run(id+'-wrong-side-door',id,altered(img,1920,1080,ctx=>{
+      await run(id+'-no-side-door',id,altered(img,img.width,img.height,ctx=>{ctx.fillStyle='#454d61';ctx.fillRect(s.exit[0]-42,s.exit[1]-42,84,84);}),false);
+      await run(id+'-wrong-side-door',id,altered(img,img.width,img.height,ctx=>{
         ctx.fillStyle='#454d61';ctx.fillRect(s.exit[0]-42,s.exit[1]-42,84,84);
         ctx.drawImage(img,s.exit[0]-42,s.exit[1]-42,84,84,s.exit[0]+110,s.exit[1]-155,84,84);
       }),false);
-      await run(id+'-no-terrain',id,altered(img,1920,1080,ctx=>{
+      await run(id+'-no-terrain',id,altered(img,img.width,img.height,ctx=>{
         const [x,y]=s.entrance;ctx.fillStyle='#454d61';ctx.fillRect(x-145,y-145,290,290);
         ctx.drawImage(img,x-25,y-30,50,55,x-25,y-30,50,55);
       }),false);

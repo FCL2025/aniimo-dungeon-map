@@ -41,7 +41,9 @@
       const cases=await (await fetch(fixture('cases.json'))).json(),failures=[];
       for(const c of cases){
         await send({type:'reset'},'reset');
-        r=await analyze(c.name,c.url,c.source);
+        const url=new URL(c.url),exportAt=url.pathname.indexOf('/exports/');
+        const image=window.recognitionFixtureOverrides?.[c.name]||(url.protocol==='file:'&&exportAt>=0?new URL(url.pathname.slice(exportAt),location.origin).href:c.url);
+        r=await analyze(c.name,image,c.source);
         if(r.locked!==null&&r.locked!==c.mapId)failures.push('Incorrect auto-lock: '+c.name+' -> '+r.locked);
         if(c.kind==='negative'&&r.selected!==null)failures.push('Negative frame selected: '+c.name);
       }

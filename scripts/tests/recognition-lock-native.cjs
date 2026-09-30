@@ -1,6 +1,7 @@
 // Verify the packaged WebView2 worker and real screenshot-import controller.
 // Uses a hidden window and an isolated profile; never captures or controls the game.
 const fs=require('node:fs'),os=require('node:os'),path=require('node:path'),net=require('node:net');
+const {createHash}=require('node:crypto');
 const {spawn}=require('node:child_process');
 const root=path.resolve(__dirname,'../..'),exe=process.argv[2];
 if(!exe)throw Error('Pass the packaged AniimoDungeonMap.exe path');
@@ -17,7 +18,8 @@ async function connect(url){
   const port=await freePort(),child=spawn(path.resolve(exe),['--hidden'],{windowsHide:true,stdio:'ignore',env:{...process.env,
     ANIIMO_TEST_DATA_DIR:profile,WEBVIEW2_ADDITIONAL_BROWSER_ARGUMENTS:`--remote-debugging-port=${port} --remote-allow-origins=*`}});
   let cdp;
-  const report={version:JSON.parse(fs.readFileSync(path.join(root,'app/src-tauri/tauri.conf.json'),'utf8')).version,imports:[]};
+  const report={version:JSON.parse(fs.readFileSync(path.join(root,'app/src-tauri/tauri.conf.json'),'utf8')).version,
+    exeSha256:createHash('sha256').update(fs.readFileSync(exe)).digest('hex'),imports:[]};
   try{
     let page;
     for(let i=0;i<150;i++){try{page=(await(await fetch(`http://127.0.0.1:${port}/json/list`)).json()).find(x=>x.type==='page');if(page)break;}catch{}await wait(100);}
@@ -29,7 +31,7 @@ async function connect(url){
     };
     const until=async expression=>{for(let i=0;i<600;i++){const value=await evaluate(expression);if(value)return value;await wait(100);}throw Error('Timed out: '+expression);};
     await until('!!window.recognitionStatus');
-    const ids=[20032,20034,20035,20037,20040],fixtures={};
+    const ids=[20032,20034,20035,20036,20037,20039,20040],fixtures={};
     for(const name of [...ids.map(id=>id===20040?'real-20040-sparse.png':`real-${id}-initial.png`),'real-20040-initial.png','real-20040-explored.png']){
       fixtures[name]='data:image/png;base64,'+fs.readFileSync(path.join(root,'exports/recognition-fixtures',name)).toString('base64');
     }
@@ -76,7 +78,7 @@ async function connect(url){
       report.imports.push({id,totalMs:Date.now()-started,...actual});
     }
     report.passed=true;
-    fs.writeFileSync(path.join(root,'exports/recognition-fixtures/lock-native-verification.json'),JSON.stringify(report,null,2));
+    fs.writeFileSync(process.argv[3]||path.join(root,'exports/recognition-fixtures/lock-native-verification.json'),JSON.stringify(report,null,2));
     console.log(JSON.stringify({version:report.version,passed:true,fogCases:report.fogChecks.results.length,portalCases:report.portalChecks.results.length,
       synthesizedCases:report.fogUnseenChecks.results.length,fullMaps:report.fullMaps,imports:report.imports.map(r=>({id:r.id,points:r.result.lockedMatches,reason:r.result.lockReason,processMs:r.result.elapsedMs,totalMs:r.totalMs}))},null,2));
   }finally{cdp?.socket.close();child.kill();}

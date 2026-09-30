@@ -8,11 +8,11 @@ self.onmessage=async({data})=>{
     for(const sample of data.samples){
       const bitmap=await decode(sample.image);let query;
       try{
-        if(bitmap.width!==1920||bitmap.height!==1080)throw Error('Expected original 1920x1080 sample');
-        const big=crop(bitmap,[0,0,1,1]),observed=portals.detect(big.pixels,big.ratio,true);
+        const big=crop(bitmap,[0,0,1,1]),uiScale=Math.min(bitmap.width/1920,bitmap.height/1080)*big.ratio;
+        const observed=portals.detect(big.pixels,uiScale,true);
         if(!observed?.exit)throw Error('No reliable side door for '+sample.id);
         query=features(big.pixels);
-        const g=MapPortals.geometry(sample.map),scale=1/(sample.pixelsPerMapPixel1080*2*big.ratio);
+        const g=MapPortals.geometry(sample.map),scale=1/(sample.pixelsPerMapPixel1080*2*uiScale);
         const model={a:scale,b:0,tx:g.exit[0]-scale*observed.exit[0],ty:g.exit[1]-scale*observed.exit[1]};
         const entrance=[(g.entrance[0]-model.tx)/scale/big.ratio,(g.entrance[1]-model.ty)/scale/big.ratio];
         const points=[],descriptors=[],sourcePoints=[],occupied=new Set();
@@ -29,7 +29,7 @@ self.onmessage=async({data})=>{
           if(points.length===128)break;
         }
         if(points.length<8||points.length>160)throw Error('Unexpected terrain feature count '+sample.id+': '+points.length);
-        samples.push({id:sample.id,points,descriptors,sourcePoints,entrance,exit:observed.exit.map(v=>v/big.ratio),model});
+        samples.push({id:sample.id,size:[bitmap.width,bitmap.height],points,descriptors,sourcePoints,entrance,exit:observed.exit.map(v=>v/big.ratio),model});
       }finally{query?.descriptors.delete();bitmap.close();}
     }
     postMessage({samples});

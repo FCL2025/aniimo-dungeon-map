@@ -3,7 +3,9 @@
     {id:20032,region:[592,448,807,643],exclude:[[702,533,65]]},
     {id:20034,region:[676,270,788,418],exclude:[[733,292,61],[733,344,46]]},
     {id:20035,region:[395,528,564,622],exclude:[[452,568,60]]},
+    {id:20036,region:[1310,470,1484,652],exclude:[[1430,537,55],[1430,445,50]]},
     {id:20037,region:[668,431,831,637],exclude:[[778,534,61]]},
+    {id:20039,region:[730,622,910,782],exclude:[[800,679,55],[800,794,40]]},
     {id:20040,image:'real-20040-sparse.png',region:[1345,470,1540,610],exclude:[[1474,530,45]]},
   ];
   const w=new Worker('../../scripts/tests/build-fog-references-worker.js');
