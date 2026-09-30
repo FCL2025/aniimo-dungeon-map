@@ -51,6 +51,7 @@ function score(query,reference,estimate=MapRecognition.consensus){
   const result=estimate(pairs);
   if(!result)return null;
   const {model,inliers,cells,area,error}=result;
-  return {id:reference.id,model,inliers:inliers.length,cells,area,error,score:inliers.length+Math.min(20,cells)*1.5,
-    spread:Math.max(...inliers.map(p=>p.u))-Math.min(...inliers.map(p=>p.u))};
+  const xs=inliers.map(p=>p.u),ys=inliers.map(p=>p.v);
+  return {id:reference.id,model,inliers:inliers.length,cells,area,error,support:inliers.length/query.points.length,score:inliers.length+Math.min(20,cells)*1.5,
+    spread:Math.max(...xs)-Math.min(...xs),coverage:Math.hypot(Math.max(...xs)-Math.min(...xs),Math.max(...ys)-Math.min(...ys))};
 }

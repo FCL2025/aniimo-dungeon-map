@@ -1,9 +1,19 @@
 /* Geometry and temporal evidence, shared by the worker and offline regression checks. */
 (function(root){
   'use strict';
-  const AUTO_CONFIRM_MATCHES=200;
   // Rank by the same geometric inlier count shown in the candidate list.
   const compareCandidates=(a,b)=>b.inliers-a.inliers||b.score-a.score||a.id-b.id;
+  function terrainConfirmation(results,complete){
+    if(!complete)return null;
+    const [best,second]=results.filter(r=>r.inliers>=6&&r.cells>=2).sort(compareCandidates);
+    // Without reliable doors, require terrain across a sizeable part of the map
+    // and a clear lead after checking every reference. A shared entrance room
+    // or a large count concentrated in one room must remain a preview.
+    if(!best||best.inliers<12||best.cells<6||!Number.isFinite(best.support)||best.support<.08||!Number.isFinite(best.coverage)||best.coverage<240||
+      !Number.isFinite(best.error)||best.error>3)return null;
+    if(second&&(best.inliers-second.inliers<8||best.inliers<second.inliers*1.35))return null;
+    return {id:best.id,method:'terrain'};
+  }
   function transform(t,x,y){return [t.a*x-t.b*y+t.tx,t.b*x+t.a*y+t.ty];}
   function fit(pairs){
     if(pairs.length<2)return null;
@@ -39,23 +49,25 @@
   }
   class Evidence {
     constructor(){this.reset();}
-    reset(){this.frames=[];this.locked=null;this.manual=false;this.preview=null;this.previewMatches=0;this.lockedMatches=0;}
+    reset(){this.frames=[];this.locked=null;this.manual=false;this.preview=null;this.previewMatches=0;this.lockedMatches=0;this.lockReason=null;}
     pin(id){this.reset();this.locked=id;this.manual=true;}
-    observe(results,signature,kind){
+    observe(results,signature,kind,confirmation=null){
       const ranked=results.filter(r=>r.inliers>=6&&r.cells>=2).sort(compareCandidates);
       const best=ranked[0];
       if(kind==='map'&&best){
         if(!this.frames.includes(signature)){this.frames.push(signature);if(this.frames.length>8)this.frames.shift();}
         if(!this.locked){
           this.preview=best.id;this.previewMatches=best.inliers;
-          if(best.inliers>=AUTO_CONFIRM_MATCHES){this.locked=best.id;this.lockedMatches=best.inliers;}
+          if(confirmation?.id===best.id&&['terrain-and-portals','terrain-and-side-door','terrain'].includes(confirmation.method)){
+            this.locked=best.id;this.lockedMatches=best.inliers;this.lockReason=confirmation.method;
+          }
         }
       }
       return {ranked:ranked.slice(0,5),locked:this.locked,manual:this.manual,preview:this.preview,
-        selected:this.locked||this.preview,previewMatches:this.previewMatches,lockedMatches:this.lockedMatches,
+        selected:this.locked||this.preview,previewMatches:this.previewMatches,lockedMatches:this.lockedMatches,lockReason:this.lockReason,
         state:this.locked?'locked':this.preview?'preview':'waiting',observations:this.frames.length};
     }
   }
-  const api={transform,fit,residual,consensus,Evidence,compareCandidates,AUTO_CONFIRM_MATCHES};
+  const api={transform,fit,residual,consensus,Evidence,compareCandidates,terrainConfirmation};
   if(typeof module==='object'&&module.exports)module.exports=api;else root.MapRecognition=api;
 })(typeof self==='object'?self:globalThis);

@@ -16,7 +16,7 @@
       pending={expected,resolve,reject};worker.postMessage(message);
     });
     const started=performance.now();
-    const ready=await send({type:'init',priorityMaps:usePortals?undefined:[],maps:DUNGEON_DATA.maps.map(m=>({id:m.id,size:m.size,
+    const ready=await send({type:'init',fogReferences:false,priorityMaps:usePortals?undefined:[],maps:DUNGEON_DATA.maps.map(m=>({id:m.id,size:m.size,
       portalGeometry:usePortals==='miscalibrated'?{...m.portalGeometry,defaultDistance1080:m.id===20040?1000:m.id===20050?625:m.portalGeometry.defaultDistance1080}:m.portalGeometry,
       image:new URL(m.image,location.href).href})),
       portalIcons:usePortals?Object.fromEntries(['entrance','exit'].map(kind=>[kind,new URL(DUNGEON_DATA.icons.assets[DUNGEON_DATA.icons.categories[kind]].image,location.href).href])):undefined},'ready');
@@ -45,7 +45,8 @@
         // Alternate order to avoid always warming one path first.
         for(const mode of repeat%2?['fast','full']:['full','fast']){
           const e=mode==='fast'?fast:full;await e.reset();const r=await e.analyze(img.src);
-          check(r.selected===20040&&r.locked===null,name+' '+mode+' changed selection');
+          check(r.selected===20040&&(!r.locked||r.locked===20040),name+' '+mode+' changed selection');
+          if(mode==='fast')check(r.locked===20040&&r.lockReason==='terrain-and-portals',name+' must lock from verified terrain and doors');
           check(r.previewMatches===(name==='initial'?10:184),name+' '+mode+' changed terrain evidence');
           if(mode==='fast')check(r.search.strategy==='portals'&&r.search.filter==='default-distance'&&r.search.evaluated===1&&r.search.priorityGroup==='common'&&r.search.loadedReferences===7,'Expected one-map default-distance search');
           state.benchmark.push({name,mode,repeat,...r});
@@ -53,7 +54,7 @@
       }
       async function run(name,image,expectedStrategy,bigRegion){
         await fast.reset();const r=await fast.analyze(image,bigRegion);state.results.push({name,...r});
-        check(!r.locked||r.locked===20040&&r.lockedMatches>=200,name+' must not lock another map');
+        check(!r.locked||r.locked===20040,name+' must not lock another map');
         if(expectedStrategy==='full'){
           await full.reset();const baseline=await full.analyze(image,bigRegion);
           r.baseline={selected:baseline.selected,points:baseline.previewMatches,locked:baseline.locked};
@@ -81,9 +82,9 @@
       await fast.reset();
       await fast.analyze(explored.src);
       const cached=await fast.analyze(explored.src);state.results.push({name:'duplicate',...cached});
-      check(cached.cached&&cached.search.evaluated===0,'Duplicate must skip matching');
+      check(cached.locked===20040&&cached.search.evaluated===0,'Locked duplicate must skip matching');
       const cropped=await fast.analyze(explored.src,[.3,.15,.55,.6]);state.results.push({name:'changed-crop',...cropped});
-      check(!cropped.cached,'Changing crop must invalidate cached results');
+      check(cropped.locked===20040&&cropped.search.evaluated===0,'Changed crop must not restart a locked session');
       const miscalibrated=await engine('miscalibrated'),recovered=await miscalibrated.analyze(explored.src);
       state.results.push({name:'wrong-distance-calibration',...recovered});
       check(recovered.selected===20040&&recovered.previewMatches===184&&recovered.search.filter==='direction'&&recovered.search.evaluated===1,

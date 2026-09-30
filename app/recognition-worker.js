@@ -36,16 +36,16 @@ async function init(maps,portalIcons,priority,useFog){
     loaded:preload.length,total:references.length,priority:common.map(r=>r.id),fogReferences:fog.items.length,features:preload.reduce((n,r)=>n+r.points.length,0)});
 }
 async function analyze(message){
-  const started=performance.now(),bitmap=await decode(message.image);
+  const started=performance.now();
+  if(evidence.locked){
+    postMessage({type:'result',request:message.request,source:message.source,isMap:false,
+      ...evidence.observe([],'','none'),location:null,search:{strategy:'locked',evaluated:0},elapsedMs:0,capturedAt:message.capturedAt});return;
+  }
+  const bitmap=await decode(message.image);
   let query;
   try{
     const screen=MapScreen.inspect(bitmap);
-    // Once locked, never search or switch maps again in this session.
     let location=null,miniScore=null;
-    if(evidence.locked){
-      postMessage({type:'result',request:message.request,source:message.source,isMap:screen.mapOpen,
-        ...evidence.observe([],'','none'),location:null,elapsedMs:Math.round(performance.now()-started),capturedAt:message.capturedAt});return;
-    }
     if(message.source!=='import'&&!screen.mapOpen){
       postMessage({type:'result',request:message.request,source:message.source,isMap:false,
         ...evidence.observe([],'','none'),location:null,elapsedMs:Math.round(performance.now()-started),capturedAt:message.capturedAt});return;
@@ -64,11 +64,18 @@ async function analyze(message){
       const portalMs=performance.now()-portalStart,matchStart=performance.now();
       const fogResult=fog.match(query,big.pixels,partial?.exit,uiScale,score,MapRecognition.compareCandidates);
       let referenceLoadMs=0,newlyLoadedReferences=0;
-      const result=fogResult.best?{scores:[fogResult.best],confirmed:true,filter:'terrain-and-side-door',group:'common',order:[]}:await MapSearch.search({references,near,direction:candidates,priority:priorityMaps,
+      const result=fogResult.best?{scores:[fogResult.best],confirmed:true,confirmedId:fogResult.best.id,filter:'terrain-and-side-door',group:'common',order:[]}:await MapSearch.search({references,near,direction:candidates,priority:priorityMaps,
         evaluate:async r=>{const start=performance.now();if(!r.descriptors)newlyLoadedReferences++;await loadReference(r);referenceLoadMs+=performance.now()-start;return score(query,r);},
-        agrees:(best,r)=>MapPortals.agrees(best,r,observed),compare:MapRecognition.compareCandidates});
+        agrees:(best,r)=>MapPortals.agrees(best,r,observed,references),compare:MapRecognition.compareCandidates});
       const {confirmed,filter}=result;scores=result.scores;
+      let confirmation=confirmed?{id:result.confirmedId,method:fogResult.best?'terrain-and-side-door':'terrain-and-portals'}:
+        MapRecognition.terrainConfirmation(scores,result.order.length===references.length);
+      // Reliable doors contradicting a terrain candidate are evidence against
+      // locking, even if that candidate has a broad terrain match.
+      if(confirmation?.method==='terrain'&&observed&&
+        !MapPortals.agrees(scores.find(s=>s.id===confirmation.id),references.find(r=>r.id===confirmation.id),observed,references))confirmation=null;
       search={strategy:fogResult.best?'fog-reference':confirmed?'portals':'full',filter:confirmed?filter:null,fogEvaluated:fogResult.evaluated,
+        confirmation,
         candidates:confirmed&&filter==='default-distance'?near.length:candidates.length,
         priorityGroup:result.group,evaluatedOrder:result.order,
         defaultCandidates:near.length,directionCandidates:candidates.length,evaluated:result.order.length,total:references.length,
@@ -78,7 +85,7 @@ async function analyze(message){
       cachedMap={signature,scores,search};
     }
     const isMap=true;
-    const state=evidence.observe(isMap?scores:[],signature,isMap?'map':'none');
+    const state=evidence.observe(isMap?scores:[],signature,isMap?'map':'none',search.confirmation);
     postMessage({type:'result',request:message.request,source:message.source,isMap,queryFeatures:query?.points.length||0,...state,location,miniScore,
       cached,search,headerScore:screen.headerScore,elapsedMs:Math.round(performance.now()-started),capturedAt:message.capturedAt});
   }finally{query?.descriptors.delete();bitmap.close();}

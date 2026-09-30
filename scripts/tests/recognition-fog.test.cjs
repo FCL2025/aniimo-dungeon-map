@@ -3,9 +3,9 @@ const Fog=require('../../app/recognition-fog.js'),Core=require('../../app/recogn
 const data=require('../../app/fog-references.json');
 const candidate={id:20034,inliers:13,cells:3,area:2000,error:1,score:17,model:{a:1.266667,b:0,tx:-200,ty:20}};
 const exit=[500,450],reference={id:20034,portals:{entrance:[100,100],exit:Core.transform(candidate.model,...exit)}};
-test('all five labelled references have valid descriptors and fewer than 200 terrain points',()=>{
+test('all five labelled references have valid sparse terrain descriptors',()=>{
   assert.deepEqual(data.samples.map(s=>s.id),[20032,20034,20035,20037,20040]);
-  for(const s of data.samples){assert.ok(Fog.valid(s));assert.ok(s.points.length<Core.AUTO_CONFIRM_MATCHES);assert.deepEqual(s.source.size,[1920,1080]);}
+  for(const s of data.samples){assert.ok(Fog.valid(s));assert.deepEqual(s.source.size,[1920,1080]);}
 });
 test('incomplete, nonfinite and malformed reference data is rejected',()=>{
   const s=data.samples[0];

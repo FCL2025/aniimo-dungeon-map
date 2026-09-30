@@ -85,3 +85,10 @@ test('rotated evidence cannot skip full matching just because distances agree',(
   const rotated=Object.fromEntries(Object.entries(seen).map(([k,p])=>[k,transform(t,...p)]));
   assert.ok(!shortlist(references,rotated).includes(ref));
 });
+test('similar door geometry in an unscored map prevents early confirmation',()=>{
+  const ref=references.find(r=>r.id===20040),seen=observation(ref),score={model:{a:1,b:0,tx:0,ty:0},inliers:10,cells:4,error:1};
+  const other={id:99999,portals:{...ref.portals,exit:[ref.portals.exit[0]+1,ref.portals.exit[1]]}};
+  assert.equal(agrees(score,ref,seen,[ref,other]),false);
+  assert.equal(agrees(score,ref,seen,[ref]),true);
+  assert.equal(agrees({...score,error:4},ref,seen,[ref]),false);
+});

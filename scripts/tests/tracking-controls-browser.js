@@ -42,6 +42,9 @@
     tracker=workers.filter(x=>x.url==='tracking-worker.js').at(-1);
     const recognizer=workers.find(x=>x.url==='recognition-worker.js');
     recognizer.reply({type:'result',request:0,ranked:[],locked:mapId,selected:mapId,observations:1,elapsedMs:1});
+    await until(()=>recognizer.terminated&&calls.filter(c=>c.name==='configure_capture').at(-1)?.args.watchMap===false);
+    assert(!state().ready&&!state().busy&&state().queueLength===0,'Lock did not release recognition worker and queued frames');
+    assert(state().trackingRunning&&state().capturing,'Automatic lock stopped independent tracking');
     await el('recognition-button').onclick();
     assert(!state().running&&state().trackingRunning&&state().capturing&&count('stop_capture')===0,'Turning recognition off stopped tracking');
     assert(state().pinned===mapId,'Recognized map was lost');
@@ -65,9 +68,14 @@
     await el('recognition-button').onclick();await until(()=>state().ready&&state().trackingReady);
     assert(state().trackingRunning&&positions.at(-1)===null,'Restart failed to clear position while preserving tracking toggle');
     assert(!el('new-session'),'Removed new-session button remains');
-    await el('recognition-button').onclick();await el('tracking-button').onclick();
+    await el('tracking-button').onclick();
+    const finalRecognizer=workers.filter(x=>x.url==='recognition-worker.js').at(-1);
+    finalRecognizer.reply({type:'result',request:0,ranked:[],locked:20036,selected:20036,observations:1,elapsedMs:1});
+    await until(()=>!state().capturing&&finalRecognizer.terminated);
+    assert(state().pinned===20036&&state().queueLength===0,'Recognition-only lock did not stop capture and retain the map');
+    await el('recognition-button').onclick();
     await until(()=>!state().capturing);
-    return {passed:true,independentSwitches:true,oneCaptureSession:true,latestFrameOnly:true,positionsAfterRecognitionOff:true,manualMap:true,restartClearsLockAndPosition:true,lateResultIgnored:true};
+    return {passed:true,independentSwitches:true,oneCaptureSession:true,latestFrameOnly:true,positionsAfterRecognitionOff:true,manualMap:true,restartClearsLockAndPosition:true,lateResultIgnored:true,lockStopsCapture:true};
   }catch(error){throw Error(String(error)+' '+JSON.stringify({state:w.recognitionStatus?.(),calls,workers:workers.map(x=>({url:x.url,messages:x.messages,terminated:x.terminated})),message:el('recognition-message').textContent}));}
   finally{iframe.remove();}
 })()

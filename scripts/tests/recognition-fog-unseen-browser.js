@@ -21,6 +21,7 @@
       ctx.drawImage(frame,1008,496,80,80,exit[0]-40,exit[1]-40,80,80);
       await send({type:'reset'},'reset');
       const r=await send({type:'analyze',request:++request,source:'live',image:c.toDataURL()},'result');state.results.push({expected:map.id,...r});
+      if(r.locked&&r.locked!==map.id)throw Error('Incorrect sparse auto-lock: '+map.id+' -> '+r.locked);
       if(r.search?.strategy==='fog-reference'&&r.selected!==map.id)throw Error('False fog shortcut: '+map.id+' -> '+r.selected);
     }
   }catch(e){state.error=String(e.stack||e);}finally{worker.terminate();state.done=true;}})();return 'Unseen fog checks started';

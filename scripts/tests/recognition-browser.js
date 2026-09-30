@@ -24,25 +24,28 @@
         portalIcons:Object.fromEntries(['entrance','exit'].map(kind=>[kind,new URL(DUNGEON_DATA.icons.assets[DUNGEON_DATA.icons.categories[kind]].image,location.href).href]))},'ready');
       const fixture=name=>new URL('../../exports/recognition-fixtures/'+name,location.href).href;
       let r=await analyze('real-initial-live',fixture('real-20040-initial.png'),'live');
-      check(r.selected===20040&&r.locked===null,'Initial live fog must immediately preview 20040');
+      check(r.selected===20040&&r.locked===20040&&r.lockedMatches>=8,'Initial live fog must immediately lock 20040 using terrain and door evidence');
+      await send({type:'reset'},'reset');
       r=await analyze('real-explored-live',fixture('real-20040-explored.png'),'live');
-      check(r.selected===20040&&r.locked===null&&r.previewMatches===184,'184 points must remain a preview');
+      check(r.selected===20040&&r.locked===20040&&r.lockedMatches===184,'Explored terrain and doors must lock without a fixed count');
       r=await analyze('duplicate-explored',fixture('real-20040-explored.png'),'live');
-      check(r.cached&&r.locked===null,'Duplicate map should skip ORB matching');
+      check(r.locked===20040&&r.search.evaluated===0,'Locked map should skip all image processing');
+      await send({type:'reset'},'reset');
       r=await analyze('strong-lock',new URL('maps/20040.png',location.href).href);
-      check(r.locked===20040&&r.lockedMatches>=200,'200+ must lock');
+      check(r.locked===20040&&r.lockReason==='terrain','Broad unambiguous terrain must lock without doors');
       r=await analyze('other-map-after-lock',new URL('maps/20036.png',location.href).href);
       check(r.locked===20040&&r.selected===20040,'Later other map must never change lock');
       await send({type:'reset'},'reset');
       r=await analyze('new-session-other-map',new URL('maps/20036.png',location.href).href);
       check(r.locked===20036,'New session must release lock');
-      const cases=await (await fetch(fixture('cases.json'))).json();
+      const cases=await (await fetch(fixture('cases.json'))).json(),failures=[];
       for(const c of cases){
         await send({type:'reset'},'reset');
         r=await analyze(c.name,c.url,c.source);
-        check(r.locked===null||r.locked===c.mapId,'Incorrect auto-lock: '+c.name);
-        if(c.kind==='negative')check(r.selected===null,'Negative frame must not preview or lock');
+        if(r.locked!==null&&r.locked!==c.mapId)failures.push('Incorrect auto-lock: '+c.name+' -> '+r.locked);
+        if(c.kind==='negative'&&r.selected!==null)failures.push('Negative frame selected: '+c.name);
       }
+      check(failures.length===0,failures.join('; '));
     }catch(error){state.error=String(error.stack||error);}
     finally{state.done=true;worker.terminate();}
   })();

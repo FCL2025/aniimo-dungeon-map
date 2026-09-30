@@ -24,7 +24,7 @@
     if(!capturing&&!lastFrame)return {code:'capture_not_started',text:'遊戲畫面擷取尚未開始。'};
     if(!lastFrame)return {code:'no_frame',text:lastCaptureMessage||'已連接遊戲視窗，但尚未收到擷取畫面。'};
     if(lastResult?.locked)return {code:'recognized',text:`已鎖定地宮 ${lastResult.locked}。`};
-    if(lastResult?.selected)return {code:'below_lock_threshold',text:`目前候選地宮 ${lastResult.selected} 有 ${lastResult.previewMatches} 個吻合點，尚未達 200 點鎖定門檻。`};
+    if(lastResult?.selected)return {code:'confirmation_pending',text:`目前候選地宮 ${lastResult.selected} 有 ${lastResult.previewMatches} 個吻合點，尚待門位交叉確認或更明確的地形。`};
     if(lastScreen&&!lastScreen.mapOpen)return {code:'m_map_not_detected',text:'畫面已擷取，但 M 地圖標題與返回圖示均未通過檢查；可能是語系、UI 比例或擷取範圍不同。'};
     if(mapBusy)return {code:'matching_in_progress',text:'已收到 M 地圖畫面，辨識引擎仍在比對地形。'};
     if(lastResult)return {code:'no_terrain_match',text:'已偵測到 M 地圖，但沒有候選同時達到 6 個吻合點與 2 個地形區塊；也請確認目前地宮屬於支援的 7 張。'};
@@ -39,7 +39,7 @@
       screen:lastScreen?{mapOpen:lastScreen.mapOpen,headerScore:Number(lastScreen.headerScore.toFixed(3)),backScore:Number(lastScreen.backScore.toFixed(3)),backOffset:lastScreen.backOffset}:null,
       worker:{ready:mapReady,initializing:!!mapWorker&&!mapReady,busy:mapBusy,busyMs:mapBusy?now-mapRequestStartedAt:0,
         progress:mapProgress,analyzed:stats.analyzed-attemptAnalyzed,queued:frames.items.length},
-      result:lastResult?{selected:lastResult.selected,locked:lastResult.locked,previewMatches:lastResult.previewMatches,queryFeatures:lastResult.queryFeatures,
+      result:lastResult?{selected:lastResult.selected,locked:lastResult.locked,lockReason:lastResult.lockReason,previewMatches:lastResult.previewMatches,queryFeatures:lastResult.queryFeatures,
         candidates:lastResult.ranked?.slice(0,3).map(c=>({id:c.id,inliers:c.inliers,cells:c.cells})),
         search:lastResult.search?{strategy:lastResult.search.strategy,evaluated:lastResult.search.evaluated,total:lastResult.search.total,fallback:lastResult.search.fallback}:null}:null};
     try{diagnosticPath=await invoke('append_recognition_log',{entry});el('recognition-log').textContent='辨識診斷 log：'+diagnosticPath;}
@@ -142,8 +142,8 @@
     el('recognition-timing').textContent=`本次地圖比對 ${(r.elapsedMs/1000).toFixed(2)} 秒 · ${r.observations} 組畫面`;
     const lockedBefore=pinned;pinned=r.locked;if(r.selected){selected=r.selected;selectMap(selected);}renderSwitch();
     if(r.locked&&diagnosticCount)void recordDiagnostic('recognized');
-    if(r.locked)message('本場已鎖定',`地宮 ${r.locked} · 可關閉辨識，使用「追蹤」獨立更新人物位置。`,'locked');
-    else if(r.selected)message('候選預覽',`地宮 ${r.selected} · ${r.previewMatches} / 200 點。`,'preview');
+    if(r.locked)message('本場已鎖定',`地宮 ${r.locked} · 已停止地圖辨識，可使用「追蹤」更新人物位置。`,'locked');
+    else if(r.selected)message('候選預覽',`地宮 ${r.selected} · ${r.previewMatches} 個吻合點，等待確認。`,'preview');
     else message('地圖線索不足','已偵測到 M 地圖，但目前沒有足夠地形線索；請探索後再開圖。');
     if(pinned!==lockedBefore)syncCapture().catch(captureFailure);
   }
@@ -155,7 +155,9 @@
   function syncCapture(){
     configuration=configuration.catch(()=>{}).then(async()=>{
       if(!invoke)return;
-      if(!running&&!trackingRunning){if(capturing){capturing=false;sessionToken++;clearTimeout(pollTimer);await invoke('stop_capture');}renderSwitch();return;}
+      if(!running&&!trackingRunning||pinned&&!trackingRunning&&!previewOpen()){
+        if(capturing){capturing=false;sessionToken++;clearTimeout(pollTimer);await invoke('stop_capture');}renderSwitch();return;
+      }
       const starting=!capturing;
       if(starting){
         lastGameWindow=null;

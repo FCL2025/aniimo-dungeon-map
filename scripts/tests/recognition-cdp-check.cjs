@@ -30,10 +30,22 @@ async function connection(url){
     if(logMode)await cdp.send('Page.addScriptToEvaluateOnNewDocument',{source:`
       window.__logEntries=[];
       window.__captureSequence=0;
+      window.__previewFrame=null;
+      window.__captureImage=async()=>{
+        const url='${origin}/exports/recognition-fixtures/${sample}';
+        if(${JSON.stringify(sample)}!=='real-20040-initial.png')return url;
+        if(!window.__previewFrame){
+          const img=new Image();img.src=url;await img.decode();
+          const c=document.createElement('canvas');c.width=img.width;c.height=img.height;
+          const ctx=c.getContext('2d');ctx.drawImage(img,0,0);ctx.fillStyle='#454d61';ctx.fillRect(800,475,90,95);
+          window.__previewFrame=c.toDataURL();
+        }
+        return window.__previewFrame;
+      };
       window.__TAURI__={core:{invoke:async(name,args)=>{
         if(name==='game_windows')return [{id:'1',title:'Aniimo'}];
         if(name==='capture_frame')return {running:true,message:null,mapKeyAt:0,burstUntil:0,
-          frame:${sample?`args.requestFrame?{sequence:++window.__captureSequence,capturedAt:Date.now(),width:1920,height:1080,image:'${origin}/exports/recognition-fixtures/${sample}',sourceRegion:[0,0,1,1]}:null`:'null'}};
+          frame:${sample?`args.requestFrame?{sequence:++window.__captureSequence,capturedAt:Date.now(),width:1920,height:1080,image:await window.__captureImage(),sourceRegion:[0,0,1,1]}:null`:'null'}};
         if(name==='append_recognition_log'){window.__logEntries.push(args.entry);return 'C:\\\\test\\\\recognition.log';}
         return null;
       }}};
@@ -71,7 +83,7 @@ async function connection(url){
         log=reply.result?.value;
         if(log?.entries?.length)break;
       }
-      const expected=sample==='minimap-0.jpg'?'m_map_not_detected':sample?'below_lock_threshold':'no_frame';
+      const expected=sample==='minimap-0.jpg'?'m_map_not_detected':sample?'confirmation_pending':'no_frame';
       if(log?.entries?.[0]?.event!=='slow'||log.entries[0].elapsedMs<5000||log.entries[0].reason.code!==expected)throw Error(JSON.stringify(log));
       await cdp.send('Runtime.evaluate',{expression:'document.querySelector("#debug-log").click()'});
       await wait(11000);

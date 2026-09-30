@@ -35,13 +35,21 @@
       return delta<=8*Math.PI/180&&scale>=.15&&scale<=10;
     });
   }
-  function agrees(candidate,reference,observed){
+  function agrees(candidate,reference,observed,references=[]){
     if(!candidate?.model||candidate.inliers<8||candidate.cells<3||!reference?.portals||!observed)return false;
+    if(Number.isFinite(candidate.error)&&candidate.error>3.5)return false;
     const t=candidate.model,tolerance=Math.max(12,Math.min(20,reference.portals.distance*.03));
-    return KINDS.every(kind=>{
+    if(!KINDS.every(kind=>{
       const [x,y]=observed[kind],[u,v]=reference.portals[kind];
       return Math.hypot(t.a*x-t.b*y+t.tx-u,t.b*x+t.a*y+t.ty-v)<=tolerance;
-    });
+    }))return false;
+    const dx=observed.exit[0]-observed.entrance[0],dy=observed.exit[1]-observed.entrance[1];
+    const vector=[t.a*dx-t.b*dy,t.b*dx+t.a*dy];
+    const errorTo=r=>Math.hypot(vector[0]-(r.portals.exit[0]-r.portals.entrance[0]),vector[1]-(r.portals.exit[1]-r.portals.entrance[1]));
+    const error=errorTo(reference);
+    // Check even references not yet scored: nearly identical door vectors must
+    // not let a shared room lock the first map visited by the search.
+    return references.every(r=>r.id===reference.id||r.portals&&errorTo(r)-error>=2);
   }
   function chroma(pixels,kind){
     const mat=new cv.Mat(pixels.height,pixels.width,cv.CV_8UC1),p=pixels.data,out=mat.data;

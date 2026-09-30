@@ -30,7 +30,7 @@
         // Similar rooms alone must not suppress an uncommon map. Both fixed
         // doors must agree with the independently estimated terrain transform.
         if(best&&agrees(best,references.find(r=>r.id===best.id)))
-          return {scores,order,confirmed:true,group,filter};
+          return {scores,order,confirmed:true,confirmedId:best.id,group,filter};
       }
     }
     return {scores,order,confirmed:false,group:null,filter:null};

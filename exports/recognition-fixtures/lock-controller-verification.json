@@ -1,0 +1,14 @@
+{
+  "version": "0.2.27",
+  "result": {
+    "independentSwitches": true,
+    "lateResultIgnored": true,
+    "latestFrameOnly": true,
+    "lockStopsCapture": true,
+    "manualMap": true,
+    "oneCaptureSession": true,
+    "passed": true,
+    "positionsAfterRecognitionOff": true,
+    "restartClearsLockAndPosition": true
+  }
+}

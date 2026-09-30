@@ -28,11 +28,11 @@
     for(let repeat=0;repeat<(window.fogBenchmarkRepeats??3);repeat++)for(const id of ids)for(const mode of repeat%2?['fast','old']:['old','fast']){
       const e=mode==='fast'?fast:old;await e.reset();const r=await e.analyze(source.get(id).src);
       state.benchmark.push({id,mode,repeat,...r});
-      if(mode==='fast')check(r.selected===id&&!r.locked&&r.search.strategy==='fog-reference'&&r.search.loadedReferences===specs.size,'Original failed: '+id);
+      if(mode==='fast')check(r.selected===id&&r.locked===id&&r.lockReason==='terrain-and-side-door'&&r.search.strategy==='fog-reference'&&r.search.loadedReferences===specs.size,'Original failed: '+id);
     }
     async function run(name,id,image,expectedFast=true){
       await fast.reset();const r=await fast.analyze(image);state.results.push({name,id,...r});
-      if(expectedFast)check(r.selected===id&&!r.locked&&r.search.strategy==='fog-reference',name+' must use the correct fog reference');
+      if(expectedFast)check(r.selected===id&&r.locked===id&&r.lockReason==='terrain-and-side-door'&&r.search.strategy==='fog-reference',name+' must lock using the correct fog reference');
       else {
         await old.reset();const baseline=await old.analyze(image);state.results.at(-1).baseline={selected:baseline.selected,points:baseline.previewMatches,locked:baseline.locked};
         check(r.search?.strategy!=='fog-reference',name+' must reject the fog shortcut');
@@ -63,7 +63,7 @@
     }
     await fast.reset();await fast.analyze(source.get(20034).src);
     const duplicate=await fast.analyze(source.get(20034).src);state.results.push({name:'duplicate',...duplicate});
-    check(duplicate.cached&&duplicate.search.fogEvaluated===0&&duplicate.search.evaluated===0,'Duplicate must reuse the fog result');
+    check(duplicate.locked===20034&&duplicate.search.strategy==='locked'&&duplicate.search.evaluated===0,'Locked map must skip all later matching');
   }catch(e){state.error=String(e.stack||e);}finally{workers.forEach(w=>w.terminate());state.done=true;}})();
   return 'Fog checks started';
 })();
