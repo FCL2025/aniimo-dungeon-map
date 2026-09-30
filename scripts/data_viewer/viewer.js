@@ -11,6 +11,8 @@ let mapDirty=true,frameRequest=0,rippleTimer=0;
 let current, image, visible=[], selected=null, scale=1, tx=0, ty=0, width=1, height=1, drag=null;
 let loadToken=0;
 let tracking=null;
+let route=null;
+window.getRouteSnapshot=()=>$('best-route')?.checked&&route?{mapId:current.id,...structuredClone(route)}:null;
 window.getTrackingSnapshot=()=>tracking?structuredClone(tracking):null;
 function renderTrackingStatus(){
   const label=$('player-status'),button=$('locate-player');if(!label||!button)return;
@@ -55,6 +57,14 @@ for(const [key,name] of Object.entries(categories)){
 function candidatePins(){return current.pins.filter(p=>categories[p.category]&&p.difficultyCandidates.includes(Number($('difficulty').value))&&($('supplements').checked||p.provenance==='scene_reference'));}
 function update(){
   if(!current)return;
+  const routes=current.routes?.[$('supplements').checked?'supplements':'direct'];
+  route=routes?.selections?.[$('route-start').value]||null;
+  const routeSummary=$('route-summary'),showRoute=$('best-route')?.checked;
+  if(routeSummary){
+    routeSummary.hidden=!showRoute;
+    const portal=kind=>kind==='entrance'?'入口':'出口';
+    routeSummary.textContent=route?`${portal(route.start)}出發 → ${route.chestCount} 個琉璃候選 → ${portal(route.end)}離開${route.optionalDoor?' · 順路鑰匙房 +1':''}${route.stairs?.length?' · 點線處走階梯':''}`:'這張地圖尚無建議路線。';
+  }
   const enabled=new Set([...document.querySelectorAll('[data-category]:checked')].map(x=>x.dataset.category));
   const candidates=candidatePins();visible=candidates.filter(p=>enabled.has(p.category)).sort((a,b)=>Number(b.category.startsWith('chest_'))-Number(a.category.startsWith('chest_')));
   for(const key of Object.keys(categories))$('count-'+key).textContent=candidates.filter(p=>p.category===key).length;
@@ -76,6 +86,46 @@ function draw(mapChanged=true){
 function paintMap(ctx){
   ctx.clearRect(0,0,width,height);
   if(image)ctx.drawImage(image,tx,ty,current.size[0]*scale,current.size[1]*scale);
+  paintRoute(ctx);
+}
+function paintRoute(ctx){
+  if(!$('best-route')?.checked||!route)return;
+  const point=p=>[p[0]*scale+tx,p[1]*scale+ty];
+  const stroke=(points,color,dash=[])=>{
+    if(points.length<2)return;
+    ctx.beginPath();points.forEach((p,i)=>{const [x,y]=point(p);i?ctx.lineTo(x,y):ctx.moveTo(x,y);});
+    ctx.strokeStyle='#102630e8';ctx.lineWidth=6;ctx.setLineDash(dash);ctx.stroke();
+    ctx.strokeStyle=color;ctx.lineWidth=2.5;ctx.stroke();ctx.setLineDash([]);
+  };
+  ctx.save();ctx.lineJoin='round';ctx.lineCap='round';
+  stroke(route.points,'#87e4f4');
+  // Direction arrows follow the polyline's travel order, including backtracking.
+  let untilArrow=64;
+  for(let i=1;i<route.points.length;i++){
+    const a=point(route.points[i-1]),b=point(route.points[i]),length=Math.hypot(b[0]-a[0],b[1]-a[1]);
+    if(!length)continue;
+    for(;untilArrow<length;untilArrow+=88){
+      const x=a[0]+(b[0]-a[0])*untilArrow/length,y=a[1]+(b[1]-a[1])*untilArrow/length,angle=Math.atan2(b[1]-a[1],b[0]-a[0]);
+      ctx.save();ctx.translate(x,y);ctx.rotate(angle);ctx.beginPath();ctx.moveTo(-5,-4);ctx.lineTo(0,0);ctx.lineTo(-5,4);ctx.strokeStyle='#caf6fb';ctx.lineWidth=2;ctx.stroke();ctx.restore();
+    }
+    untilArrow-=length;
+  }
+  for(const stairs of route.stairs||[])stroke(stairs.points,'#f0d99b',[2,6]);
+  if(route.optionalDoor){stroke(route.optionalDoor.points,'#ffb46e',[7,5]);for(const stairs of route.optionalDoor.stairs||[])stroke(stairs.points,'#f0d99b',[2,6]);}
+  ctx.restore();
+}
+function paintRouteStops(ctx){
+  if(!$('best-route')?.checked||!route)return;
+  ctx.save();ctx.font='600 13px "Segoe UI",sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';
+  route.stops.filter(s=>s.kind==='glass').forEach((stop,i)=>{
+    const x=stop.pixel[0]*scale+tx+20,y=stop.pixel[1]*scale+ty-20;
+    ctx.fillStyle='#17333e';ctx.strokeStyle='#87e4f4';ctx.lineWidth=1.5;ctx.beginPath();ctx.arc(x,y,13,0,Math.PI*2);ctx.fill();ctx.stroke();ctx.fillStyle='#e8fbff';ctx.fillText(String(i+1),x,y);
+  });
+  if(route.optionalDoor){
+    const [px,py]=route.optionalDoor.chestPixel,x=px*scale+tx+20,y=py*scale+ty-20;
+    ctx.fillStyle='#17333e';ctx.strokeStyle='#ffb46e';ctx.lineWidth=1.5;ctx.beginPath();ctx.arc(x,y,13,0,Math.PI*2);ctx.fill();ctx.stroke();ctx.fillStyle='#ffd4ae';ctx.fillText('+1',x,y);
+  }
+  ctx.restore();
 }
 function paintPins(ctx){
   ctx.clearRect(0,0,width,height);
@@ -93,6 +143,7 @@ function paintPins(ctx){
     if(pin.provenance==='template_supplement'){ctx.strokeStyle=colors[pin.category];ctx.setLineDash([2,2]);ctx.beginPath();ctx.arc(x,y,r+3,0,Math.PI*2);ctx.stroke();ctx.setLineDash([]);}
   }
   if(selected){ctx.strokeStyle='#ffffff';ctx.lineWidth=2;ctx.beginPath();ctx.arc(selected.pixel[0]*scale+tx,selected.pixel[1]*scale+ty,pinSize(selected)/2+4,0,Math.PI*2);ctx.stroke();}
+  paintRouteStops(ctx);
 }
 function paintTracking(now){
   if(!tracking||tracking.mapId!==current?.id)return false;
@@ -150,7 +201,7 @@ function loadMap(){
   nextImage.src=current.image;update();fit();
 }
 $('map').addEventListener('change',loadMap);
-for(const id of ['difficulty','supplements'])$(id).addEventListener('change',update);
+for(const id of ['difficulty','supplements','best-route','route-start'])$(id)?.addEventListener('change',update);
 for(const name of ['input','change'])$('icon-size').addEventListener(name,renderIconSize);
 // Accumulate small touchpad deltas; one mouse-wheel notch selects one option.
 const selectWheels=new WeakMap();

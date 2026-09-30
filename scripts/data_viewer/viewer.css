@@ -1,4 +1,5 @@
 :root{color-scheme:dark;--bg:#172731;--panel:#203542;--line:#3b505b;--text:#e8edf0;--muted:#a5bac4;--accent:#79cabe;--gold:#dfb65b;font-family:"Segoe UI","Microsoft JhengHei",sans-serif;font-size:14px}
+.route-setting{border-block:1px solid var(--line);padding:12px 0;margin:12px 0 16px}.route-setting .check{color:#b5eff7;font-weight:600}.route-setting label[for="route-start"]{margin:8px 0 5px}.route-setting select{padding:7px 8px;font-size:12px}.route-setting .small{margin:5px 0 0}.route-setting #route-summary{color:#b5eff7;line-height:1.7}.route-setting input{accent-color:#87e4f4}
 #icon-size{width:100%;margin:4px 0 8px;accent-color:var(--accent);cursor:pointer}
 #icon-size-value{float:right;color:var(--text);font:12px Consolas,monospace}
 .marker-icon[data-category-icon="chest_gold"]{outline:1px solid var(--gold);border-radius:50%}

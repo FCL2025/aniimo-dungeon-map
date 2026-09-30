@@ -1,0 +1,162 @@
+{
+  "version": "0.2.32",
+  "exeSha256": "26c50d6c6faa6e5021b09b699c64ddf627a5d0c6ad7904221abe58c5e431b78e",
+  "migration": {
+    "checked": true,
+    "routeStart": "auto",
+    "start": "exit",
+    "end": "exit"
+  },
+  "routes": {
+    "passed": true,
+    "maps": [
+      {
+        "id": 20032,
+        "start": "entrance",
+        "end": "exit",
+        "chests": 4,
+        "optionalDoor": false
+      },
+      {
+        "id": 20034,
+        "start": "entrance",
+        "end": "exit",
+        "chests": 4,
+        "optionalDoor": false
+      },
+      {
+        "id": 20035,
+        "start": "entrance",
+        "end": "exit",
+        "chests": 4,
+        "optionalDoor": false
+      },
+      {
+        "id": 20036,
+        "start": "exit",
+        "end": "exit",
+        "chests": 4,
+        "optionalDoor": false
+      },
+      {
+        "id": 20037,
+        "start": "entrance",
+        "end": "exit",
+        "chests": 4,
+        "optionalDoor": false
+      },
+      {
+        "id": 20039,
+        "start": "exit",
+        "end": "exit",
+        "chests": 4,
+        "optionalDoor": true
+      },
+      {
+        "id": 20040,
+        "start": "exit",
+        "end": "exit",
+        "chests": 4,
+        "optionalDoor": true
+      }
+    ],
+    "variants": 84,
+    "routePaintsDuringTracking": 0,
+    "saved": true,
+    "toggle": true,
+    "segmentControlsRemoved": true
+  },
+  "tracking": {
+    "done": true,
+    "results": [
+      {
+        "expected": [
+          849,
+          1252
+        ],
+        "actual": [
+          849.2913705374087,
+          1252.3481578713865
+        ],
+        "pixelError": 0.45399415577545577,
+        "inliers": 200,
+        "elapsedMs": 92,
+        "local": false
+      },
+      {
+        "expected": [
+          861,
+          1246
+        ],
+        "actual": [
+          861.027496135987,
+          1246.3168081938559
+        ],
+        "pixelError": 0.3179991653895321,
+        "inliers": 201,
+        "elapsedMs": 29,
+        "local": true
+      },
+      {
+        "expected": [
+          873,
+          1240
+        ],
+        "actual": [
+          872.7272973692255,
+          1240.135290258774
+        ],
+        "pixelError": 0.3044177704248331,
+        "inliers": 199,
+        "elapsedMs": 26,
+        "local": true
+      },
+      {
+        "expected": [
+          885,
+          1234
+        ],
+        "actual": [
+          885.2286763748623,
+          1234.2985400648165
+        ],
+        "pixelError": 0.37605724925973993,
+        "inliers": 190,
+        "elapsedMs": 26,
+        "local": true
+      }
+    ],
+    "error": null,
+    "initMs": 678.9000000059605,
+    "features": 7000,
+    "croppedFrame": {
+      "passed": true,
+      "elapsedMs": 24,
+      "actual": [
+        849.2835868783365,
+        1252.2841852868237
+      ]
+    }
+  },
+  "overlay": {
+    "passed": true,
+    "onOffSync": true,
+    "mapSync": true,
+    "startSync": true,
+    "segmentControlsRemoved": true,
+    "route": {
+      "mapId": 20040,
+      "start": "exit",
+      "end": "exit",
+      "chestCount": 4,
+      "optionalDoor": true
+    }
+  },
+  "restart": {
+    "checked": true,
+    "mapId": 20040,
+    "routeStart": "exit",
+    "start": "exit"
+  },
+  "passed": true
+}

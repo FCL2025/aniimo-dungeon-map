@@ -42,7 +42,8 @@
   }
   function preferences() {
     return { map: el('map').value, difficulty: el('difficulty').value, iconSize: Number(el('icon-size').value),
-      supplements: el('supplements').checked, debugLog: el('debug-log').checked,
+      supplements: el('supplements').checked, bestRoute: el('best-route').checked,
+      routeStart: el('route-start').value, debugLog: el('debug-log').checked,
       categories: [...document.querySelectorAll('[data-category]:checked')].map(e => e.dataset.category),
       topmost, compact: false, sidebarCollapsed };
   }
@@ -130,6 +131,8 @@
           if ([...el(id).options].some(o => o.value === String(settings[id]))) el(id).value = String(settings[id]);
         }
         if (typeof settings.supplements === 'boolean') el('supplements').checked = settings.supplements;
+        el('best-route').checked = settings.bestRoute === true;
+        if (['auto', 'entrance', 'exit'].includes(settings.routeStart)) el('route-start').value = settings.routeStart;
         el('debug-log').checked = settings.debugLog === true;
         sidebarCollapsed = settings.sidebarCollapsed === true;
         renderSidebar();

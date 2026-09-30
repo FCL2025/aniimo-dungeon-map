@@ -57,13 +57,15 @@
   };
   el('overlay-drag').onmousedown = e => { if (e.button === 0) { e.preventDefault(); core.invoke('drag_window').catch(error => notice(String(error))); } };
   window.overlayReady = Promise.all([sizeListener, event.listen('map-view-state', ({ payload: state }) => {
-    const nextKey = JSON.stringify([state.map, state.difficulty, state.iconSize, state.supplements, state.categories]);
+    const nextKey = JSON.stringify([state.map, state.difficulty, state.iconSize, state.supplements, state.bestRoute, state.routeStart, state.categories]);
     if (nextKey !== viewKey) {
       const mapChanged = el('map').value !== String(state.map);
       for (const id of ['map', 'difficulty']) if ([...el(id).options].some(o => o.value === String(state[id]))) el(id).value = String(state[id]);
       el('icon-size').value = String(Number.isFinite(state.iconSize) ? state.iconSize : 150);
       el('icon-size').dispatchEvent(new Event('input'));
       el('supplements').checked = state.supplements !== false;
+      el('best-route').checked = state.bestRoute === true;
+      el('route-start').value = ['auto', 'entrance', 'exit'].includes(state.routeStart) ? state.routeStart : 'auto';
       for (const e of document.querySelectorAll('[data-category]')) e.checked = state.categories.includes(e.dataset.category);
       el(mapChanged ? 'map' : 'difficulty').dispatchEvent(new Event('change'));
       viewKey = nextKey;

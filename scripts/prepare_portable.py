@@ -6,6 +6,7 @@ import shutil
 from app_icons import stage_app_icons
 from build_viewer import CATEGORIES, active_map_ids, display_pins, display_icons
 from analyze_portal_geometry import portal_geometry
+from build_routes import build as build_routes
 
 ROOT = Path(__file__).resolve().parent.parent
 OUTPUT = ROOT/'app/frontend'
@@ -24,6 +25,7 @@ for old_map in (OUTPUT/'maps').glob('*.png'):
     if old_map.stem not in {str(mid) for mid in allowed}:
         old_map.unlink()
 maps = []
+routes = build_routes()['maps']
 pin_keys = ('id', 'category', 'name', 'iconKey', 'roomId', 'sourceId', 'sandboxConfigType', 'sandboxLevel',
             'difficultyCandidates', 'world', 'pixel', 'provenance', 'quality', 'graphId', 'isBoss', 'typeId', 'originalName')
 for mid in sorted(allowed):
@@ -31,6 +33,7 @@ for mid in sorted(allowed):
     record = {k: original[k] for k in ('id', 'size', 'bounds')}
     record['image'] = f'maps/{mid}.png'
     record['portalGeometry'] = portal_geometry(original, scenes[str(mid)]['mapImageScale'])
+    record['routes'] = routes[str(mid)]['variants']
     record['pins'] = [{k: p[k] for k in pin_keys if k in p} for p in display_pins(original['pins'])]
     maps.append(record)
     shutil.copyfile(ROOT/'exports/grab-eggs-dungeons/preview'/f'UI_Img_Map_{mid}.png', OUTPUT/record['image'])
@@ -80,6 +83,8 @@ html = html.replace('<fieldset>', (ROOT/'app/recognition.html').read_text(encodi
 html = html.replace('<noscript>', f'''<dialog id="help-dialog"><h2>伊莫地城地圖 · 可攜版 {VERSION}</h2>
 <p>選擇地圖、惡夢或混沌難度，再勾選想看的候選點。怪物只收錄首領級幽黯星法師。</p>
 <p>寶箱分為金色與琉璃，可分別勾選。滑鼠停在地圖或難度選單上可用滾輪切換；側欄「圖示大小」可調整至 75–250%，會自動保存並同步到覆蓋地圖。</p>
+<p>勾選「顯示最佳路徑」，可查看經過 4 個以上琉璃候選點的淺藍路線，編號表示查看順序。入口與出口都可進出，預設比較四種進出組合；已進入地宮時，可指定「從入口出發」或「從出口出發」，摘要會標明離開端。順路的橙色鑰匙房畫成橙色虛線，有鑰匙才走，沒有就跳過。淡金點線表示階梯連接，依現場上下層走法。路線依底圖估計，候選寶箱會抽選，不能保證當場生成四箱；路線開關與出發點會保存並同步到覆蓋地圖。</p>
+<p>寶箱順序數字使用較大的圓形編號，便於在覆蓋地圖辨認；編號表示建議查看順序，不代表已開箱。</p>
 <p>左上角側欄圖示可切換左側資訊，滑鼠停留可查看「收合側欄／展開側欄」提示。視窗尺寸不變，地圖會符合剩餘空間，並記住收合狀態。主視窗工具列可開啟搶蛋 Discord，側欄底部可開啟說明。</p>
 <p>地圖以地宮編號識別。標記使用遊戲原始圖示，首領使用星法師肖像。</p>
 <p>「置頂」調整主視窗。只有按「地圖模式」才會開啟獨立的覆蓋地圖，主視窗會保留，可繼續調整篩選或最小化。再按「地圖模式」，或按覆蓋地圖右上 ×，即可關閉覆蓋地圖；關閉主視窗則一起結束。</p>

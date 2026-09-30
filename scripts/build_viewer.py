@@ -3,6 +3,7 @@ import json
 from pathlib import Path
 import shutil
 from app_icons import stage_app_icons
+from build_routes import build as build_routes
 
 ROOT = Path(__file__).resolve().parent.parent
 SOURCE = ROOT / 'exports/grab-eggs-data'
@@ -51,10 +52,12 @@ def build(source=SOURCE):
         return json.loads((source / name).read_text(encoding='utf8'))
     policy = read('display-policy.json')['scope']
     maps = []
+    routes = build_routes()['maps']
     for mid in active_map_ids(source):
         assert mid in policy['sceneIds']
         record = read(f'maps/{mid}.json')
         record['pins'] = display_pins(record['pins'])
+        record['routes'] = routes[str(mid)]['variants']
         maps.append(record)
     difficulty = read('difficulty.json')
     data = dict(categories=CATEGORIES, icons=display_icons(read('marker-icons.json')),
