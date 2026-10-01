@@ -41,11 +41,17 @@ async function launch(){
     app=await launch();
     if(await app.cdp.evaluate('document.getElementById("best-route").checked'))throw Error('New profile route must default to off');
     if(await app.cdp.evaluate('document.getElementById("route-start").value!=="auto"'))throw Error('New profile must default to automatic start');
+    if(await app.cdp.evaluate('document.getElementById("route-number").value!=="1"'))throw Error('New profile must default to route 1');
     await app.cdp.evaluate('localStorage.setItem("aniimo-dungeon-preferences-v1",JSON.stringify({map:"20036",bestRoute:true,supplements:true}));location.reload()');
     await app.cdp.until('!!window.desktopReady&&document.getElementById("map").value==="20036"&&document.getElementById("best-route").checked');
     await app.cdp.evaluate('window.desktopReady');
-    report.migration=await app.cdp.evaluate('({checked:document.getElementById("best-route").checked,routeStart:document.getElementById("route-start").value,start:getRouteSnapshot()?.start,end:getRouteSnapshot()?.end})');
-    if(!report.migration.checked||report.migration.routeStart!=='auto'||report.migration.start!=='exit'||report.migration.end!=='exit')throw Error('Old route preferences did not migrate');
+    report.migration=await app.cdp.evaluate('({checked:document.getElementById("best-route").checked,routeStart:document.getElementById("route-start").value,routeNumber:document.getElementById("route-number").value,start:getRouteSnapshot()?.start,end:getRouteSnapshot()?.end})');
+    if(!report.migration.checked||report.migration.routeStart!=='auto'||report.migration.routeNumber!=='1'||report.migration.start!=='exit'||report.migration.end!=='exit')throw Error('Old route preferences did not migrate');
+    await app.cdp.evaluate('localStorage.setItem("aniimo-dungeon-preferences-v1",JSON.stringify({map:"20036",bestRoute:true,routeNumber:"invalid",routeStart:"invalid"}));location.reload()');
+    await app.cdp.until('!!window.desktopReady&&document.getElementById("best-route").checked');
+    await app.cdp.evaluate('window.desktopReady');
+    if(await app.cdp.evaluate('document.getElementById("route-number").value!=="1"||document.getElementById("route-start").value!=="auto"'))throw Error('Invalid route preferences did not fall back');
+    report.invalidPreferencesFallback=true;
     report.routes=await app.cdp.evaluate(fs.readFileSync(path.join(__dirname,'routes-browser.js'),'utf8'));
     const fixtures=Object.fromEntries(['minimap-0.jpg','minimap-1.jpg','minimap-2.jpg','minimap-3.jpg','blank.png'].map(name=>[
       name,`data:image/${name.endsWith('.png')?'png':'jpeg'};base64,`+fs.readFileSync(path.join(root,'exports/recognition-fixtures',name)).toString('base64')]));
@@ -59,7 +65,7 @@ async function launch(){
     for(let i=0;i<100;i++){page=(await app.pages()).find(p=>p.url.includes('overlay.html'));if(page)break;await wait(100);}
     if(!page)throw Error('Native overlay did not open');
     overlay=await connect(page.webSocketDebuggerUrl);
-    await overlay.until('window.getRouteSnapshot?.()?.mapId===20039');
+    await overlay.until('window.getRouteSnapshot?.()?.mapId===20039&&window.getRouteSnapshot?.()?.routeNumber===2');
     await app.cdp.evaluate('document.getElementById("best-route").click()');
     await overlay.until('window.getRouteSnapshot?.()===null&&!document.getElementById("best-route").checked');
     await app.cdp.evaluate('document.getElementById("map").value="20040";document.getElementById("map").dispatchEvent(new Event("change",{bubbles:true}));document.getElementById("best-route").click()');
@@ -68,15 +74,26 @@ async function launch(){
     await overlay.until('window.getRouteSnapshot?.()?.start==="entrance"&&document.getElementById("route-start").value==="entrance"');
     await app.cdp.evaluate('document.getElementById("route-start").value="exit";document.getElementById("route-start").dispatchEvent(new Event("change",{bubbles:true}))');
     await overlay.until('window.getRouteSnapshot?.()?.start==="exit"&&window.getRouteSnapshot?.()?.end==="exit"&&document.getElementById("route-start").value==="exit"');
-    report.overlay={passed:true,onOffSync:true,mapSync:true,startSync:true,segmentControlsRemoved:await overlay.evaluate('!document.getElementById("route-guide")&&!document.getElementById("route-steps")'),route:await overlay.evaluate('({mapId:getRouteSnapshot().mapId,start:getRouteSnapshot().start,end:getRouteSnapshot().end,chestCount:getRouteSnapshot().chestCount,optionalDoor:!!getRouteSnapshot().optionalDoor})')};
+    for(const number of ['1','2']){
+      await app.cdp.evaluate(`document.getElementById("route-number").value="${number}";document.getElementById("route-number").dispatchEvent(new Event("change",{bubbles:true}))`);
+      await overlay.until(`window.getRouteSnapshot?.()?.routeNumber===${number}&&document.getElementById("route-number").value==="${number}"`);
+      const mainRoute=await app.cdp.evaluate('getRouteSnapshot()'),overlayRoute=await overlay.evaluate('getRouteSnapshot()');
+      if(JSON.stringify(mainRoute)!==JSON.stringify(overlayRoute))throw Error('Overlay route differs from main');
+    }
+    report.overlay={passed:true,onOffSync:true,mapSync:true,startSync:true,routeNumberSync:true,segmentControlsRemoved:await overlay.evaluate('!document.getElementById("route-guide")&&!document.getElementById("route-steps")'),route:await overlay.evaluate('({mapId:getRouteSnapshot().mapId,routeNumber:getRouteSnapshot().routeNumber,start:getRouteSnapshot().start,end:getRouteSnapshot().end,chestCount:getRouteSnapshot().chestCount,optionalDoor:!!getRouteSnapshot().optionalDoor})')};
     if(!report.overlay.segmentControlsRemoved)throw Error('Removed controls remain in overlay');
+    const screenshotDir=path.join(root,'dist/route-previews');fs.mkdirSync(screenshotDir,{recursive:true});
+    for(const [name,cdp] of [['main',app.cdp],['overlay',overlay]]){
+      const {data}=await cdp.send('Page.captureScreenshot',{format:'png'});
+      fs.writeFileSync(path.join(screenshotDir,`routes-${name}-${version}.png`),Buffer.from(data,'base64'));
+    }
     overlay.socket.close();overlay=null;
     await app.cdp.evaluate('document.getElementById("compact").click()');
     app.cdp.socket.close();app.child.kill();app=null;
     await wait(1200);
     app=await launch();
-    report.restart=await app.cdp.evaluate('({checked:document.getElementById("best-route").checked,mapId:window.getRouteSnapshot()?.mapId,routeStart:document.getElementById("route-start").value,start:window.getRouteSnapshot()?.start})');
-    if(!report.restart.checked||report.restart.mapId!==20040||report.restart.routeStart!=='exit'||report.restart.start!=='exit')throw Error('Route preferences did not survive native restart');
+    report.restart=await app.cdp.evaluate('({checked:document.getElementById("best-route").checked,mapId:window.getRouteSnapshot()?.mapId,routeStart:document.getElementById("route-start").value,routeNumber:document.getElementById("route-number").value,start:window.getRouteSnapshot()?.start})');
+    if(!report.restart.checked||report.restart.mapId!==20040||report.restart.routeStart!=='exit'||report.restart.routeNumber!=='2'||report.restart.start!=='exit')throw Error('Route preferences did not survive native restart');
     report.passed=true;
     fs.writeFileSync(path.join(root,'exports/recognition-fixtures/routes-native-verification.json'),JSON.stringify(report,null,2)+'\n');
     console.log(JSON.stringify(report,null,2));

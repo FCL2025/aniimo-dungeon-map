@@ -41,7 +41,9 @@ python -m venv .venv
 
 ## GitHub Release
 
-目前 v0.2.32 發布以下附件：
+v0.2.33 提供「路線 1／路線 2」分工：琉璃候選與可選鑰匙房不重複，兩邊的候選與門數差距最多 1，並保存路線選擇及同步覆蓋地圖。規劃與驗證方式見 [雙人分工路線](../docs/最佳路徑.md)。
+
+GitHub Release 發布以下附件：
 
 - `AniimoDungeonMap.exe`
 - `AniimoDungeonMap-<版本>-windows-x64-portable.zip`：包含 EXE、使用說明與第三方授權。

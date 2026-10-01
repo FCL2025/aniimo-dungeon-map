@@ -58,12 +58,12 @@ function candidatePins(){return current.pins.filter(p=>categories[p.category]&&p
 function update(){
   if(!current)return;
   const routes=current.routes?.[$('supplements').checked?'supplements':'direct'];
-  route=routes?.selections?.[$('route-start').value]||null;
+  route=routes?.selections?.[$('route-start').value]?.[$('route-number').value]||null;
   const routeSummary=$('route-summary'),showRoute=$('best-route')?.checked;
   if(routeSummary){
     routeSummary.hidden=!showRoute;
     const portal=kind=>kind==='entrance'?'入口':'出口';
-    routeSummary.textContent=route?`${portal(route.start)}出發 → ${route.chestCount} 個琉璃候選 → ${portal(route.end)}離開${route.optionalDoor?' · 順路鑰匙房 +1':''}${route.stairs?.length?' · 點線處走階梯':''}`:'這張地圖尚無建議路線。';
+    routeSummary.textContent=route?`路線 ${route.routeNumber} · ${portal(route.start)}出發 → ${route.chestCount} 個琉璃候選 → ${portal(route.end)}離開 · ${route.optionalDoor?'鑰匙房 1 間（另有 1 個琉璃候選）':'鑰匙房 0 間'}${route.stairs?.length?' · 點線處走階梯':''}`:'這張地圖尚無建議路線。';
   }
   const enabled=new Set([...document.querySelectorAll('[data-category]:checked')].map(x=>x.dataset.category));
   const candidates=candidatePins();visible=candidates.filter(p=>enabled.has(p.category)).sort((a,b)=>Number(b.category.startsWith('chest_'))-Number(a.category.startsWith('chest_')));
@@ -201,7 +201,7 @@ function loadMap(){
   nextImage.src=current.image;update();fit();
 }
 $('map').addEventListener('change',loadMap);
-for(const id of ['difficulty','supplements','best-route','route-start'])$(id)?.addEventListener('change',update);
+for(const id of ['difficulty','supplements','best-route','route-start','route-number'])$(id)?.addEventListener('change',update);
 for(const name of ['input','change'])$('icon-size').addEventListener(name,renderIconSize);
 // Accumulate small touchpad deltas; one mouse-wheel notch selects one option.
 const selectWheels=new WeakMap();

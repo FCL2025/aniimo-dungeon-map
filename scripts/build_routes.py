@@ -126,7 +126,7 @@ class Floor:
         return path[::-1]
 
 
-def shortest_tours(matrix, count):
+def shortest_tours(matrix, count, by_mask=False):
     """Exact subset DP: any start, distinct chest stops, then any end."""
     states, parents = {}, {}
     for i in range(count):
@@ -140,8 +140,9 @@ def shortest_tours(matrix, count):
             if not math.isfinite(cost):
                 continue
             total = cost+matrix[last+1][-1]
-            if size not in best or total < best[size][0]:
-                best[size] = total, key
+            group = mask if by_mask else size
+            if group not in best or total < best[group][0]:
+                best[group] = total, key
             for nxt in range(count):
                 if mask & (1 << nxt):
                     continue
@@ -212,7 +213,7 @@ def prepare_plan(record, floor, supplements, start, end):
     checkpoints, nodes, searches = ([items[i] for i in keep] for items in (checkpoints, nodes, searches))
     matrix = [[matrix[i][j] for j in keep] for i in keep]
     tours = shortest_tours(matrix, len(reachable))
-    return dict(checkpoints=checkpoints, nodes=nodes, searches=searches, tours=tours,
+    return dict(checkpoints=checkpoints, nodes=nodes, searches=searches, tours=tours, matrix=matrix,
                 glass=glass, doors=doors, omitted=omitted, start=start, end=end)
 
 
@@ -271,23 +272,115 @@ def plan(record, floor, prepared, budget_baseline=None):
                         if any({a,b} == set(link['nodes']) for a,b in zip(walk, walk[1:]))])
 
 
+def paired_masks(subsets, seed_mask, count):
+    """Keep the original first circuit where possible; reserve different rooms.
+
+    If fewer than twice the original stop count are reachable, rebalance to a
+    difference of one. Route 2 gets the shortest tour of the unassigned rooms.
+    Portal choices never affect ownership.
+    """
+    first_count = min(seed_mask.bit_count(), (count+1)//2)
+    second_count = min(first_count, count-first_count)
+    first_masks = [mask for mask in subsets if mask.bit_count() == first_count and mask & seed_mask == mask]
+    second_masks = [mask for mask in subsets if mask.bit_count() == second_count]
+    return min(((a, b) for a in first_masks for b in second_masks if not a & b),
+               key=lambda pair: (max(subsets[m][0] for m in pair),
+                                 sum(subsets[m][0] for m in pair), pair))
+
+
+def assigned_route(floor, prepared, tour, number):
+    length, order = tour
+    checkpoints, nodes, searches = (prepared[k] for k in ('checkpoints', 'nodes', 'searches'))
+    walk = []
+    for a, b in zip(order, order[1:]):
+        segment = floor.path(nodes[a], nodes[b], searches[a][1])
+        walk.extend(segment if not walk else segment[1:])
+    stops = [dict(pinId=checkpoints[i]['id'], roomId=checkpoints[i]['roomId'], pixel=checkpoints[i]['pixel'],
+                  floorPixel=floor.pixel(nodes[i]), kind='glass' if checkpoints[i].get('typeId') == 2011 else checkpoints[i]['category'],
+                  provenance=checkpoints[i]['provenance']) for i in order]
+    return dict(routeNumber=number, start=prepared['start'], end=prepared['end'],
+                chestCount=len(order)-2, points=simplify(walk, floor), stops=stops,
+                distancePixels=round(length, 2), optionalDoor=None, estimated=True,
+                omittedPinIds=prepared['omitted'],
+                stairs=[{k:v for k,v in link.items() if k != 'nodes'} for link in floor.stair_links
+                        if any({a,b} == set(link['nodes']) for a,b in zip(walk, walk[1:]))]), walk
+
+
+def door_branches(record, floor, prepared, route, walk):
+    """One optional key room per player, within 15% of that player's circuit."""
+    world_scale = (abs(record['calibration']['scaleX'])+abs(record['calibration']['scaleZ']))/2
+    choices = {}
+    for chest in prepared['glass']:
+        door = prepared['doors'].get(chest['roomId'])
+        if door is None:
+            continue
+        try:
+            door_node, chest_node = floor.snap(door['pixel'], 48), floor.snap(chest['pixel'], 48)
+        except ValueError:
+            continue
+        distances, parents = floor.distances(door_node)
+        anchor = min(walk, key=lambda node: distances.get(node, math.inf))
+        detour = 2*(distances.get(anchor, math.inf)+distances.get(chest_node, math.inf))
+        if detour > min(route['distancePixels']*DOOR_BUDGET, 90*world_scale):
+            continue
+        branch = floor.path(door_node, anchor, parents)[::-1]
+        branch.extend(floor.path(door_node, chest_node, parents)[1:])
+        choices[chest['roomId']] = dict(doorPinId=door['id'], chestPinId=chest['id'], roomId=chest['roomId'],
+            points=simplify(branch, floor), doorPixel=door['pixel'], chestPixel=chest['pixel'],
+            detourPixels=round(detour, 2), requiresOrangeKey=True,
+            stairs=[{k:v for k,v in link.items() if k != 'nodes'} for link in floor.stair_links
+                    if any({a,b} == set(link['nodes']) for a,b in zip(branch, branch[1:]))])
+    return choices
+
+
 def plan_variants(record, floor, supplements):
-    # Compare all four portal combinations against the same distance budget.
-    # A forced starting portal gets its own budget, with either end still allowed.
     prepared = {f'{start}-{end}': prepare_plan(record, floor, supplements, start, end)
                 for start, end in itertools.product(('entrance', 'exit'), repeat=2)}
-    options = {key: plan(record, floor, value) for key, value in prepared.items()}
-    selections = {}
+    sample = next(iter(prepared.values()))
+    count = len(sample['checkpoints'])-2
+    for value in prepared.values():
+        assert [p['id'] for p in value['checkpoints'][1:-1]] == [p['id'] for p in sample['checkpoints'][1:-1]]
+        value['subsets'] = shortest_tours(value['matrix'], count, by_mask=True)
+    baseline = min(value['tours'][4][0] for value in prepared.values())
+    originals = [plan(record, floor, value, baseline) for value in prepared.values()]
+    seed = min((r for r in originals if r), key=lambda r: (
+        -r['chestCount'], -bool(r['optionalDoor']),
+        r['distancePixels']+(r['optionalDoor']['detourPixels'] if r['optionalDoor'] else 0),
+        r['distancePixels'], r['start'] != 'entrance', r['end'] != r['start']))
+    seed_rooms = {s['roomId'] for s in seed['stops'][1:-1]}
+    seed_mask = sum(1 << i for i, p in enumerate(sample['checkpoints'][1:-1]) if p['roomId'] in seed_rooms)
+
+    def best_tour(mask, start='auto'):
+        value = min((v for v in prepared.values() if start == 'auto' or v['start'] == start),
+                    key=lambda v: (round(v['subsets'][mask][0], 6), v['start'] != 'entrance', v['end'] != v['start']))
+        return value, value['subsets'][mask]
+
+    subsets = {mask: best_tour(mask)[1] for mask in sample['subsets']}
+    masks = paired_masks(subsets, seed_mask, count)
+    selections, branches = {}, {}
     for start in ('auto', 'entrance', 'exit'):
-        allowed = [value for value in prepared.values() if start == 'auto' or value['start'] == start]
-        baseline = min(value['tours'][4][0] for value in allowed)
-        candidates = [plan(record, floor, value, baseline) for value in allowed]
-        candidates = [route for route in candidates if route is not None]
-        selections[start] = min(candidates, key=lambda r: (
-            -r['chestCount'], -bool(r['optionalDoor']),
-            r['distancePixels']+(r['optionalDoor']['detourPixels'] if r['optionalDoor'] else 0),
-            r['distancePixels'], r['start'] != 'entrance', r['end'] != r['start']))
-    return dict(options=options, selections=selections)
+        selections[start], branches[start] = {}, {}
+        for number, mask in enumerate(masks, 1):
+            value, tour = best_tour(mask, start)
+            route, walk = assigned_route(floor, value, tour, number)
+            selections[start][str(number)] = route
+            branches[start][str(number)] = door_branches(record, floor, value, route, walk)
+
+    # Reserve the same door for every starting portal, so two people can choose
+    # different starts without being sent to the same chest or locked room.
+    doors = {n: set.intersection(*(set(v[n]) for v in branches.values())) for n in ('1', '2')}
+    candidates = [(a, b) for a in [None, *sorted(doors['1'])] for b in [None, *sorted(doors['2'])]
+                  if (a is None or a != b) and
+                  abs(masks[0].bit_count()+int(a is not None)-masks[1].bit_count()-int(b is not None)) <= 1]
+    chosen = min(candidates, key=lambda pair: (
+        -sum(room is not None for room in pair),
+        sum(branches[start][str(n)][room]['detourPixels'] for start in branches
+            for n, room in enumerate(pair, 1) if room is not None),
+        tuple(-1 if room is None else room for room in pair)))
+    for start, pair in selections.items():
+        for n, room in enumerate(chosen, 1):
+            pair[str(n)]['optionalDoor'] = branches[start][str(n)].get(room)
+    return dict(selections=selections, reachableChestCount=count)
 
 
 def build(output=ROOT/'app/routes.json', previews=None):
@@ -302,11 +395,12 @@ def build(output=ROOT/'app/routes.json', previews=None):
         variants = {name: plan_variants(record, floor, enabled) for name, enabled in [('direct', False), ('supplements', True)]}
         routes[str(mid)] = dict(variants=variants, sourceSha256=hashlib.sha256(record_path.read_bytes()).hexdigest(),
                                 imageSha256=hashlib.sha256(image_path.read_bytes()).hexdigest())
-        route = variants['supplements']['selections']['auto']
-        print(f'{mid}: {route["start"]} -> {route["end"]}, '
-              f'{route["chestCount"]} unlocked glass stops, {route["distancePixels"]:.0f} px, '
-              f'orange branch: {route["optionalDoor"]["roomId"] if route["optionalDoor"] else "skip"}')
-        if previews:
+        for number, route in variants['supplements']['selections']['auto'].items():
+            print(f'{mid} route {number}: {route["start"]} -> {route["end"]}, '
+                  f'{route["chestCount"]} unlocked glass stops, {route["distancePixels"]:.0f} px, '
+                  f'orange branch: {route["optionalDoor"]["roomId"] if route["optionalDoor"] else "skip"}')
+            if not previews:
+                continue
             previews.mkdir(parents=True, exist_ok=True)
             preview = Image.new('RGB', image.size, '#172731')
             preview.paste(image, mask=image.getchannel('A'))
@@ -319,12 +413,14 @@ def build(output=ROOT/'app/routes.json', previews=None):
                 x, y = stop['pixel']
                 draw.ellipse((x-19, y-19, x+19, y+19), fill='#172731', outline='#87e4f4', width=3)
                 draw.text((x, y), str(n), fill='white', font=font, anchor='mm')
-            preview.save(previews/f'route-{mid}.png')
-    result = dict(version=2, policy=dict(minGlass=4, extraDistanceRatio=EXTRA_BUDGET,
+            preview.save(previews/f'route-{mid}-{number}.png')
+    result = dict(version=3, policy=dict(targetGlassPerRoute=4, maxChestCountDifference=1,
+                 sharedChestRooms=False, sharedDoorRooms=False, ownershipIndependentOfStart=True,
                  orangeDetourRatio=DOOR_BUDGET, orangeDetourWorldLimit=90, gridPixels=STEP,
                  navigation='visible-floor-raster', spawnGuarantee=False,
                  startingPortals=['entrance', 'exit'], leavingPortals=['entrance', 'exit'],
-                 preference=['more-unlocked-glass', 'optional-orange-within-budget', 'shorter-total-distance']), maps=routes)
+                 preference=['preserve-first-route-when-balanced', 'distinct-balanced-chests',
+                             'shorter-circuits', 'distinct-optional-orange-within-budget']), maps=routes)
     output.write_text(json.dumps(result, ensure_ascii=False, separators=(',', ':'))+'\n', encoding='utf8')
     return result
 

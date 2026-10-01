@@ -1,66 +1,152 @@
 {
-  "version": "0.2.32",
-  "exeSha256": "26c50d6c6faa6e5021b09b699c64ddf627a5d0c6ad7904221abe58c5e431b78e",
+  "version": "0.2.33",
+  "exeSha256": "205a92ee75f977227efa60ae4ceb220487dde2d370117f732401d0cc62fe20df",
   "migration": {
     "checked": true,
     "routeStart": "auto",
+    "routeNumber": "1",
     "start": "exit",
     "end": "exit"
   },
+  "invalidPreferencesFallback": true,
   "routes": {
     "passed": true,
     "maps": [
       {
         "id": 20032,
-        "start": "entrance",
-        "end": "exit",
-        "chests": 4,
-        "optionalDoor": false
+        "routes": [
+          {
+            "number": 1,
+            "start": "entrance",
+            "end": "entrance",
+            "chests": 3,
+            "optionalDoor": false
+          },
+          {
+            "number": 2,
+            "start": "exit",
+            "end": "exit",
+            "chests": 3,
+            "optionalDoor": false
+          }
+        ]
       },
       {
         "id": 20034,
-        "start": "entrance",
-        "end": "exit",
-        "chests": 4,
-        "optionalDoor": false
+        "routes": [
+          {
+            "number": 1,
+            "start": "entrance",
+            "end": "exit",
+            "chests": 4,
+            "optionalDoor": false
+          },
+          {
+            "number": 2,
+            "start": "entrance",
+            "end": "exit",
+            "chests": 4,
+            "optionalDoor": false
+          }
+        ]
       },
       {
         "id": 20035,
-        "start": "entrance",
-        "end": "exit",
-        "chests": 4,
-        "optionalDoor": false
+        "routes": [
+          {
+            "number": 1,
+            "start": "entrance",
+            "end": "exit",
+            "chests": 4,
+            "optionalDoor": false
+          },
+          {
+            "number": 2,
+            "start": "entrance",
+            "end": "exit",
+            "chests": 4,
+            "optionalDoor": true
+          }
+        ]
       },
       {
         "id": 20036,
-        "start": "exit",
-        "end": "exit",
-        "chests": 4,
-        "optionalDoor": false
+        "routes": [
+          {
+            "number": 1,
+            "start": "exit",
+            "end": "exit",
+            "chests": 4,
+            "optionalDoor": false
+          },
+          {
+            "number": 2,
+            "start": "entrance",
+            "end": "exit",
+            "chests": 3,
+            "optionalDoor": true
+          }
+        ]
       },
       {
         "id": 20037,
-        "start": "entrance",
-        "end": "exit",
-        "chests": 4,
-        "optionalDoor": false
+        "routes": [
+          {
+            "number": 1,
+            "start": "entrance",
+            "end": "exit",
+            "chests": 4,
+            "optionalDoor": false
+          },
+          {
+            "number": 2,
+            "start": "exit",
+            "end": "exit",
+            "chests": 4,
+            "optionalDoor": false
+          }
+        ]
       },
       {
         "id": 20039,
-        "start": "exit",
-        "end": "exit",
-        "chests": 4,
-        "optionalDoor": true
+        "routes": [
+          {
+            "number": 1,
+            "start": "exit",
+            "end": "exit",
+            "chests": 4,
+            "optionalDoor": true
+          },
+          {
+            "number": 2,
+            "start": "entrance",
+            "end": "exit",
+            "chests": 4,
+            "optionalDoor": false
+          }
+        ]
       },
       {
         "id": 20040,
-        "start": "exit",
-        "end": "exit",
-        "chests": 4,
-        "optionalDoor": true
+        "routes": [
+          {
+            "number": 1,
+            "start": "exit",
+            "end": "exit",
+            "chests": 4,
+            "optionalDoor": true
+          },
+          {
+            "number": 2,
+            "start": "exit",
+            "end": "exit",
+            "chests": 4,
+            "optionalDoor": true
+          }
+        ]
       }
     ],
-    "variants": 84,
+    "variants": 168,
     "routePaintsDuringTracking": 0,
     "saved": true,
     "toggle": true,
@@ -80,7 +166,7 @@
         ],
         "pixelError": 0.45399415577545577,
         "inliers": 200,
-        "elapsedMs": 92,
+        "elapsedMs": 77,
         "local": false
       },
       {
@@ -94,7 +180,7 @@
         ],
         "pixelError": 0.3179991653895321,
         "inliers": 201,
-        "elapsedMs": 29,
+        "elapsedMs": 25,
         "local": true
       },
       {
@@ -108,7 +194,7 @@
         ],
         "pixelError": 0.3044177704248331,
         "inliers": 199,
-        "elapsedMs": 26,
+        "elapsedMs": 25,
         "local": true
       },
       {
@@ -122,16 +208,16 @@
         ],
         "pixelError": 0.37605724925973993,
         "inliers": 190,
-        "elapsedMs": 26,
+        "elapsedMs": 24,
         "local": true
       }
     ],
     "error": null,
-    "initMs": 678.9000000059605,
+    "initMs": 656.5,
     "features": 7000,
     "croppedFrame": {
       "passed": true,
-      "elapsedMs": 24,
+      "elapsedMs": 23,
       "actual": [
         849.2835868783365,
         1252.2841852868237
@@ -143,9 +229,11 @@
     "onOffSync": true,
     "mapSync": true,
     "startSync": true,
+    "routeNumberSync": true,
     "segmentControlsRemoved": true,
     "route": {
       "mapId": 20040,
+      "routeNumber": 2,
       "start": "exit",
       "end": "exit",
       "chestCount": 4,
@@ -156,6 +244,7 @@
     "checked": true,
     "mapId": 20040,
     "routeStart": "exit",
+    "routeNumber": "2",
     "start": "exit"
   },
   "passed": true

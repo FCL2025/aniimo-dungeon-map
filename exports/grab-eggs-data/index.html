@@ -12,6 +12,15 @@
   <label for="map">選擇地圖</label><select id="map" title="滑鼠停在選單上，滾輪可切換地圖" aria-describedby="select-hint"></select>
   <label for="difficulty">難度</label><select id="difficulty" title="滑鼠停在選單上，滾輪可切換難度"><option value="5">惡夢</option><option value="6">混沌</option></select>
   <p class="small" id="select-hint">滑鼠停在選單上，可用滾輪切換。</p>
+  <div class="route-setting">
+    <label class="check"><input type="checkbox" id="best-route" aria-describedby="route-summary route-hint"><span>顯示最佳路徑</span></label>
+    <label for="route-number">選擇路線</label>
+    <select id="route-number" aria-describedby="route-hint"><option value="1">路線 1</option><option value="2">路線 2</option></select>
+    <label for="route-start">路線出發點</label>
+    <select id="route-start" aria-describedby="route-hint"><option value="auto">自動選擇較順路的起點</option><option value="entrance">從入口出發</option><option value="exit">從出口出發</option></select>
+    <p id="route-summary" class="small" role="status" hidden></p>
+    <p id="route-hint" class="small">兩人使用相同的補充點設定，分別選路線 1、2。通道可重疊，編號琉璃候選與鑰匙房分開分配，數量相差最多 1 個；只開自己路線標出的箱子。橙色虛線有鑰匙才走，寶箱依當場生成。</p>
+  </div>
   <fieldset><legend>顯示類型 <span id="filter-total"></span></legend><div id="filters"></div><div class="actions"><button id="all">全部顯示</button><button id="none">全部隱藏</button></div></fieldset>
   <label for="icon-size">圖示大小 <output id="icon-size-value" for="icon-size">150%</output></label>
   <input type="range" id="icon-size" min="75" max="250" step="25" value="150" aria-valuetext="150%">

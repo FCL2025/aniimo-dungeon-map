@@ -43,7 +43,7 @@
   function preferences() {
     return { map: el('map').value, difficulty: el('difficulty').value, iconSize: Number(el('icon-size').value),
       supplements: el('supplements').checked, bestRoute: el('best-route').checked,
-      routeStart: el('route-start').value, debugLog: el('debug-log').checked,
+      routeStart: el('route-start').value, routeNumber: el('route-number').value, debugLog: el('debug-log').checked,
       categories: [...document.querySelectorAll('[data-category]:checked')].map(e => e.dataset.category),
       topmost, compact: false, sidebarCollapsed };
   }
@@ -133,6 +133,7 @@
         if (typeof settings.supplements === 'boolean') el('supplements').checked = settings.supplements;
         el('best-route').checked = settings.bestRoute === true;
         if (['auto', 'entrance', 'exit'].includes(settings.routeStart)) el('route-start').value = settings.routeStart;
+        if (['1', '2'].includes(settings.routeNumber)) el('route-number').value = settings.routeNumber;
         el('debug-log').checked = settings.debugLog === true;
         sidebarCollapsed = settings.sidebarCollapsed === true;
         renderSidebar();
