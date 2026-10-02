@@ -65,7 +65,7 @@
     await el('tracking-button').onclick();assert(!state().capturing&&count('stop_capture')===1,'Both off did not stop capture');
     await el('recognition-button').onclick();await until(()=>state().ready);
     assert(state().pinned===null&&state().selected===null&&state().lastResult===null,'Recognition restart retained the old lock/results');
-    assert(el('recognition-candidates').children.length===0&&el('recognition-timing').textContent==='','Recognition restart retained old candidates');
+    assert(!el('recognition-settings')&&!el('recognition-candidates'),'Removed recognition settings remain in the sidebar');
     recognizer.reply({type:'result',request:0,ranked:[],locked:mapId,selected:mapId,observations:1,elapsedMs:1});
     assert(state().pinned===null,'A terminated recognizer relocked the previous map');
     await el('tracking-button').onclick();await el('tracking-button').onclick();
@@ -103,6 +103,6 @@
     releaseWindows([{id:'fixture',title:'Fixture'}]);await Promise.all([startup,manual]);
     assert(!state().capturing&&el('map').value==='20035'&&!state().running,'Native startup race restarted capture after manual choice');
     return {passed:true,languagePreservesWorkers:true,independentSwitches:true,oneCaptureSession:true,latestFrameOnly:true,positionsAfterRecognitionOff:true,manualMap:true,restartClearsLockAndPosition:true,lateResultIgnored:true,lockStopsCapture:true,manualOverridesAutomatic:true,sameMapResetsTracking:true,manualCancelsPendingStartup:true};
-  }catch(error){throw Error(String(error)+' '+JSON.stringify({state:w.recognitionStatus?.(),calls,workers:workers.map(x=>({url:x.url,messages:x.messages,terminated:x.terminated})),message:el('recognition-message').textContent}));}
+  }catch(error){throw Error(String(error)+' '+JSON.stringify({state:w.recognitionStatus?.(),calls,workers:workers.map(x=>({url:x.url,messages:x.messages,terminated:x.terminated})),message:el('recognition-message')?.textContent}));}
   finally{iframe.remove();}
 })()

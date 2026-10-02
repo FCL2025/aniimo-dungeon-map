@@ -5,6 +5,7 @@ import shutil
 from app_icons import stage_app_icons
 from build_routes import build as build_routes
 from build_i18n import stage_i18n
+from build_loot_ranking import stage_loot_ranking
 
 ROOT = Path(__file__).resolve().parent.parent
 SOURCE = ROOT / 'exports/grab-eggs-data'
@@ -71,6 +72,7 @@ def build(source=SOURCE):
             shutil.copyfile(file, source / file.name)
     stage_app_icons(source)
     stage_i18n(source)
+    stage_loot_ranking(source)
     print(f'Viewer: {len(maps)} maps, {sum(len(m["pins"]) for m in maps)} candidates')
 
 

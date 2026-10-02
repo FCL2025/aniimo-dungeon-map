@@ -81,7 +81,7 @@
     el('compact').disabled = true;
     try {
       mapOverlay = value; overlayPaused = false; hotkeyError = ''; renderButtons();
-      const placement = await invoke('set_map_overlay', { enabled: value, gameWindowId: el('game-window').value || null });
+      const placement = await invoke('set_map_overlay', { enabled: value, gameWindowId: window.recognitionStatus?.().gameWindowId || null });
       if (value) {
         hotkeyError = placement?.hotkeyError || ''; renderButtons(); publishOverlay();
         report(hotkeyError ? I18n.error(hotkeyError) : msg('help.overlay'), hotkeyError ? 10000 : 5000);

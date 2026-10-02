@@ -8,6 +8,7 @@ from build_viewer import CATEGORIES, active_map_ids, display_pins, display_icons
 from analyze_portal_geometry import portal_geometry
 from build_routes import build as build_routes
 from build_i18n import stage_i18n
+from build_loot_ranking import stage_loot_ranking
 
 ROOT = Path(__file__).resolve().parent.parent
 OUTPUT = ROOT/'app/frontend'
@@ -50,7 +51,7 @@ assert all(p['iconKey'] in icon_catalog['assets'] for m in maps for p in m['pins
 data = dict(categories=CATEGORIES, icons=display_icons(icon_catalog), difficulties=difficulty['difficulties'], rewardRules=difficulty['rewardRules'],
             maps=maps, validation={'missingReferences': validation['missingReferences']}, scope=policy)
 (OUTPUT/'data.js').write_text('window.DUNGEON_DATA='+json.dumps(data, ensure_ascii=False, separators=(',', ':')).replace('</', '<\\/')+';', encoding='utf8')
-for name in ('viewer.js', 'viewer.css', 'i18n.js', 'i18n.css'):
+for name in ('viewer.js', 'viewer.css', 'i18n.js', 'i18n.css', 'loot-ranking.js', 'loot-ranking.css'):
     shutil.copyfile(ROOT/'scripts/data_viewer'/name, OUTPUT/name)
 for name in ('desktop.js', 'overlay.js', 'desktop.css', 'manual-map.js', 'manual-map-core.js', 'manual-map.css', 'recognition.js', 'recognition.css', 'recognition-worker.js', 'recognition-core.js', 'recognition-vision.js', 'recognition-portals.js', 'recognition-search.js', 'recognition-fog.js', 'fog-references.json', 'tracking-core.js', 'tracking-worker.js', 'map-header.js', 'recognition-screen.js'):
     shutil.copyfile(ROOT/'app'/name, OUTPUT/name)
@@ -61,9 +62,6 @@ html = html.replace('<body>', '<body class="desktop-app">')
 html = html.replace('<link rel="stylesheet" href="viewer.css">', '<link rel="stylesheet" href="viewer.css"><link rel="stylesheet" href="desktop.css"><link rel="stylesheet" href="recognition.css"><link rel="stylesheet" href="manual-map.css">')
 html = html.replace('<h1>地宮點位解析</h1>', '<h1>地城地圖</h1>')
 html = html.replace('<aside>', '<aside id="sidebar" aria-label="地圖與篩選設定">')
-start = html.index('<details><summary>資料與限制</summary>')
-end = html.index('</details>', start) + len('</details>')
-html = html[:start]+'''<details><summary>資料與限制</summary><p>可手動選圖，或使用畫面辨識。迷霧與相似房間可能無法判定；候選點不代表當場一定出現。</p><p id="gaps"></p></details>'''+html[end:]
 html = html.replace('資源版本 3595896 · 本機資料', f'可攜版 {VERSION} · 資源 3595896')
 html = html.replace('<footer>', '''<button id="help-button" type="button">說明</button>
 <label class="check debug-log-control" title="開啟後才寫入辨識診斷紀錄"><input type="checkbox" id="debug-log"><span>DEBUG LOG（辨識診斷）</span></label>
@@ -75,7 +73,6 @@ notice_end = html.index('</p>', notice_start) + len('</p>')
 notice = html[notice_start:notice_end]
 html = html[:notice_start] + html[notice_end:]
 html = html.replace('<div class="stage">', '<div class="stage">' + notice + '<p id="app-status" role="status" hidden></p><div class="player-tools"><span id="player-status" class="sr-only" role="status">等待人物定位</span><button id="locate-player" title="置中到人物位置" aria-label="置中到人物位置" hidden disabled>◎</button></div>')
-html = html.replace('<fieldset>', (ROOT/'app/recognition.html').read_text(encoding='utf8')+'<fieldset>', 1)
 html = html.replace('<noscript>', (ROOT/'app/help.html').read_text(encoding='utf8')+(ROOT/'app/manual-map.html').read_text(encoding='utf8')+'<noscript>')
 html = html.replace('<script src="viewer.js"></script>', '<script src="viewer.js"></script><script src="desktop.js"></script><script src="map-header.js"></script><script src="recognition-screen.js"></script><script src="recognition.js"></script><script src="manual-map-core.js"></script><script src="manual-map.js"></script>')
 html = html.replace('，或直接開啟 candidates.csv 檢視點位', '')
@@ -97,6 +94,7 @@ main_html = main_html.replace('<button id="zoom-in" aria-label="放大地圖">�
 
 stage_app_icons(OUTPUT)
 stage_i18n(OUTPUT)
+stage_loot_ranking(OUTPUT)
 inventory = {str(p.relative_to(OUTPUT)).replace('\\','/'): hashlib.sha256(p.read_bytes()).hexdigest()
              for p in OUTPUT.rglob('*') if p.is_file()}
 (ROOT/'app/asset-manifest.json').write_text(json.dumps(dict(maps=len(maps), candidates=sum(len(m['pins']) for m in maps),

@@ -58,3 +58,5 @@ For two-player chest routes, enable **Show suggested route**, use the same **Sho
 - Markers indicate possible spawns, not guaranteed ones. Opened chests are not recorded automatically. Fog can affect recognition and tracking; floor detection is not supported.
 
 For more controls, open **Help** at the bottom of the sidebar.
+
+Open **Gold loot priority** above the marker filters to compare 24 gold treasures by weight, sale price, and value per weight. Items rank by sale price ÷ weight, with shared ranks for equal values. Item names use the game's translations for the selected language.

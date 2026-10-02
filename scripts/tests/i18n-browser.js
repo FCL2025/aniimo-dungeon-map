@@ -2,9 +2,16 @@
 (async () => {
   const assert=(value,message)=>{if(!value)throw Error(message);},el=id=>document.getElementById(id);
   const settle=()=>new Promise(resolve=>requestAnimationFrame(()=>setTimeout(resolve,30)));
+  const closeDialog=(id,button)=>new Promise(resolve=>{
+    const dialog=el(id);if(!dialog?.open){resolve();return;}
+    dialog.addEventListener('close',resolve,{once:true});
+    if(button)el(button).click();else dialog.close();
+  });
   await window.desktopReady;
   await window.manualMapReady;
-  document.getElementById('manual-map-dialog')?.close();
+  await closeDialog('manual-map-dialog');
+  assert(!el('recognition-settings')&&!el('rules')&&!el('gaps'),'Removed sidebar sections remain');
+  assert(el('loot-ranking-button').nextElementSibling?.tagName==='FIELDSET','Loot button is not above filters');
   assert(I18n.locales.length===13,'Expected all 13 requested languages');
   assert(el('language-menu').children.length===13,'Language menu is incomplete');
   const set=(id,value)=>{const node=el(id);if(node.type==='checkbox')node.checked=value;else node.value=value;node.dispatchEvent(new Event('change',{bubbles:true}));};
@@ -22,7 +29,7 @@
     await settle();
     assert(I18n.locale===code&&document.documentElement.lang===code,'Locale not applied: '+code);
     assert(el('language-button').textContent.includes(name),'Native language name missing');
-    assert(el('language-menu').hidden&&document.activeElement===el('language-button'),'Menu did not close/restore focus');
+    assert(el('language-menu').hidden&&document.activeElement===el('language-button'),'Menu did not close/restore focus: '+code+' active='+document.activeElement.id+' hidden='+el('language-menu').hidden);
     assert(document.querySelector('header h1').textContent===ANIIMO_LOCALES.messages[code]['app.heading'],'Heading untranslated: '+code);
     assert(el('fit').textContent===ANIIMO_LOCALES.messages[code].fit,'Toolbar untranslated: '+code);
     assert(el('map').selectedOptions[0].textContent===I18n.t('map.name',{id:20039}),'Map options untranslated');
@@ -36,8 +43,24 @@
     assert(localStorage.getItem(I18n.storageKey)===code,'Locale not persisted');
     el('help-button').click();
     assert(el('help-dialog').open&&el('help-dialog').querySelector('p').textContent===I18n.t('help.map'),'Help untranslated');
-    el('close-help').click();
+    await closeDialog('help-dialog','close-help');
     await settle();
+    el('loot-ranking-button').click();
+    assert(el('loot-ranking-dialog').open,'Loot dialog did not open');
+    assert(el('loot-ranking-title').textContent===I18n.t('loot.button'),'Loot title untranslated');
+    const lootRows=[...el('loot-ranking-body').rows];
+    assert(lootRows.length===24,'Gold treasure list is incomplete');
+    assert(lootRows.slice(0,3).map(row=>row.dataset.itemId).join(',')==='5000409,5000407,5000410','Wrong pickup priority');
+    for(const [index,row] of lootRows.entries()){
+      const item=LOOT_RANKING[index],format=new Intl.NumberFormat(code,{maximumFractionDigits:2});
+      assert(row.cells[1].textContent===item.names[code],'Item name differs from game localization: '+code);
+      assert(row.cells[2].textContent===format.format(item.weight)&&row.cells[3].textContent===format.format(item.sellPrice),'Wrong loot values');
+      assert(row.cells[4].textContent===format.format(item.sellPrice/item.weight),'Wrong value per weight');
+    }
+    const tied=lootRows.filter(row=>['5000120','5000408'].includes(row.dataset.itemId));
+    assert(tied.length===2&&tied[0].cells[0].textContent===tied[1].cells[0].textContent,'Equal values do not share rank');
+    await closeDialog('loot-ranking-dialog','close-loot-ranking');await settle();
+    assert(document.activeElement===el('loot-ranking-button'),'Loot close did not restore focus');
     if(!['zh-TW','zh-CN','ja','ko'].includes(code)){
       const chinese=document.body.innerText.split('\n').filter(line=>/[\u3400-\u9fff]/.test(line));
       assert(!chinese.length,'Untranslated visible text: '+JSON.stringify(chinese));
@@ -45,6 +68,10 @@
     report.push({code,translated:true,preserved:true});
   }
   I18n.setLocale('en');
+  el('loot-ranking-button').click();
+  I18n.setLocale('ja');
+  assert(el('loot-ranking-body').rows[0].cells[1].textContent===LOOT_RANKING[0].names.ja,'Open loot dialog did not translate');
+  await closeDialog('loot-ranking-dialog','close-loot-ranking');await settle();I18n.setLocale('en');
   el('language-button').click();
   const key=value=>document.activeElement.dispatchEvent(new KeyboardEvent('keydown',{key:value,bubbles:true,cancelable:true}));
   key('End');assert(document.activeElement.dataset.locale==='vi','End key failed');
@@ -67,5 +94,5 @@
   I18n.setLocale('de');assert(el('app-status').textContent===I18n.format(error),'Pending notice did not translate');
   el('app-status').textContent='';I18n.setLocale('en');assert(!el('app-status').textContent,'Cleared notice reappeared');
   window.dispatchEvent(new CustomEvent('tracking-update',{detail:null}));
-  return {passed:true,languages:report,keyboard:true,outsideClick:true,fallback:true,transientMessages:true};
+  return {passed:true,languages:report,keyboard:true,outsideClick:true,fallback:true,transientMessages:true,lootRanking:true,lootTies:true,lootLiveTranslation:true,sidebarCleanup:true};
 })()

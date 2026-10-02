@@ -81,6 +81,10 @@ GitHub Release 發布以下附件：
 
 ### 多語介面
 
+金色道具排名使用 `app/loot-ranking.json` 的離線快照。`scripts/extract_loot_ranking.py` 從本機 `LuaScripts.xdf` 解碼寶箱獎勵群組 `520005` 的 24 種金色寶物，以 `item_data.quality = 5` 篩選，讀取 `weight`／`sellPrice`，並核對 `rob_egg_item_in.outid` 對應的帶出道具售價。以分數精確排序售價／重量，同值並列，畫面最多顯示兩位小數。名稱直接解碼 13 種語言的 `NewTextMap_*` 與 `Compress_*.bin`；快照包含文字鍵、道具 ID 及來源檔案 SHA-256。
+
+排名範圍是寶箱獎勵清單可核實的金色寶物，未將背包、裝備、鑰匙或蛋混入寶物排名，也未推論伺服器掉落機率或空白禮包的內容。`build_loot_ranking.py` 在網頁與可攜版建置時驗證語言完整性、品質及排名，再內嵌資料，正常建置不需要讀取遊戲。`i18n-browser.js` 驗證 13 語言名稱、數值、同值排名、彈窗即時翻譯與焦點返回，並確認三個側欄區塊已移除。
+
 `app/locales/<語言代碼>.json` 保存 13 種語言，`bindings.json` 對應靜態介面文字。動態訊息使用 `I18n.msg(key, params)` 與 `I18n.bind(node, message)`；參數可以巢狀使用訊息，讓語序依語言調整。翻譯只寫入文字或屬性，不插入 HTML。
 
 `scripts/build_i18n.py` 在兩種前端建置時驗證所有鍵與參數一致，將語言檔打包為本地 `locales.js`。不需網路或額外翻譯服務。找不到翻譯時依序使用英文、繁體中文；未知語言設定使用繁體中文。偏好鍵為 `aniimo-language-v1`，不取代既有地圖設定。

@@ -9,7 +9,7 @@
   let mapAttemptStartedAt=0,nextDiagnosticAt=0,diagnosticCount=0,attemptCaptured=0,attemptAnalyzed=0,mapProgress=null,mapRequestStartedAt=0,lastCaptureMessage=null,diagnosticPath=null;
   let previewImage=null,regionDrag=null,pinned=null,selected=null,lastGameId='',lastGameWindow=null,selectingMap=false,importToken=0;
   let burstUntil=0,mapKeyAt=0,lastNoticeKey='',configuration=Promise.resolve();
-  const stats={captured:0,analyzed:0,tracked:0,duplicates:0,queuePeak:0,replacedTrackingFrames:0},preview=el('capture-preview'),context=preview.getContext('2d');
+  const stats={captured:0,analyzed:0,tracked:0,duplicates:0,queuePeak:0,replacedTrackingFrames:0},preview=el('capture-preview'),context=preview?.getContext('2d');
   try{const saved=JSON.parse(localStorage.getItem('aniimo-capture-regions-v1'));if(saved&&['mini','map'].every(k=>Array.isArray(saved[k])&&saved[k].length===4&&saved[k].every(v=>Number.isFinite(v)&&v>=0&&v<=1)&&saved[k][2]>.01&&saved[k][3]>.01&&saved[k][0]+saved[k][2]<=1.001&&saved[k][1]+saved[k][3]<=1.001))regions=saved;}catch{}
   function message(title,text,state='waiting'){
     b(el('recognition-state'),title);b(el('recognition-message'),text);
@@ -51,7 +51,8 @@
       b(el(id),m('switch',{label:m(label),state:m(on?'on':'off')}));b(el(id),m(label+'.'+(on?'disable':'enable')),'title');
       el(id).setAttribute('aria-checked',String(on));el(id).disabled=changing;
     }
-    el('game-window').disabled=capturing||changing;el('map').disabled=running&&!!pinned;el('import-map').disabled=changing;
+    if(el('game-window'))el('game-window').disabled=capturing||changing;
+    el('map').disabled=running&&!!pinned;if(el('import-map'))el('import-map').disabled=changing;
     window.dispatchEvent(new Event('recognition-ui'));
     window.dispatchEvent(new Event('tracking-ui'));
   }
@@ -70,7 +71,7 @@
   }
   function initializeMap(){
     if(mapWorker)return;message(m('recognition.loading'),m('recognition.loadingMaps'));
-    lastResult=null;lastScreen=null;lastFrame=null;diagnosticPath=null;el('recognition-log').textContent='';
+    lastResult=null;lastScreen=null;lastFrame=null;diagnosticPath=null;b(el('recognition-log'),'');
     mapAttemptStartedAt=Date.now();nextDiagnosticAt=mapAttemptStartedAt+5000;diagnosticCount=0;
     attemptCaptured=stats.captured;attemptAnalyzed=stats.analyzed;mapProgress=null;mapRequestStartedAt=0;lastCaptureMessage=null;
     const worker=mapWorker=new Worker('recognition-worker.js');
@@ -118,9 +119,9 @@
     if(Date.now()-frame.capturedAt>1000)return;trackBusy=true;stats.tracked++;
     trackWorker.postMessage({type:'track',request:++trackRequest,image:frame.image,capturedAt:frame.capturedAt,sourceRegion:frame.sourceRegion,miniRegion:regions.mini});
   }
-  const previewOpen=()=>el('recognition-settings').open&&el('capture-details').open;
+  const previewOpen=()=>!!(el('recognition-settings')?.open&&el('capture-details')?.open);
   function drawPreview(){
-    if(!previewImage)return;preview.width=previewImage.width;preview.height=previewImage.height;context.drawImage(previewImage,0,0);
+    if(!previewImage||!preview)return;preview.width=previewImage.width;preview.height=previewImage.height;context.drawImage(previewImage,0,0);
     for(const [kind,color] of [['mini','#79e1c0'],['map','#dfb65b']]){if(kind==='map'&&regions.map[2]===1)continue;const r=regions[kind];context.strokeStyle=color;context.lineWidth=Math.max(2,preview.width/500);context.setLineDash(kind==='mini'?[]:[8,5]);context.strokeRect(r[0]*preview.width,r[1]*preview.height,r[2]*preview.width,r[3]*preview.height);}context.setLineDash([]);
   }
   async function offer(frame){
@@ -140,7 +141,7 @@
   }
   function selectMap(id){if(el('map').value!==String(id)){selectingMap=true;el('map').value=String(id);el('map').dispatchEvent(new Event('change',{bubbles:true}));selectingMap=false;}}
   function renderResult(r){
-    if(r.ranked.length){el('recognition-candidates').replaceChildren();for(const c of r.ranked){const li=document.createElement('li');b(li,m('recognition.matches',{id:c.id,count:c.inliers}));el('recognition-candidates').append(li);}}
+    if(r.ranked.length){el('recognition-candidates')?.replaceChildren();for(const c of r.ranked){const li=document.createElement('li');b(li,m('recognition.matches',{id:c.id,count:c.inliers}));el('recognition-candidates')?.append(li);}}
     b(el('recognition-timing'),m('recognition.timing',{seconds:(r.elapsedMs/1000).toFixed(2),count:r.observations}));
     const lockedBefore=pinned;pinned=r.locked;if(r.selected){selected=r.selected;selectMap(selected);}renderSwitch();
     if(r.locked&&diagnosticCount)void recordDiagnostic('recognized');
@@ -150,8 +151,9 @@
     if(pinned!==lockedBefore)syncCapture().catch(captureFailure);
   }
   async function refresh(){
-    if(!invoke){const option=new Option('','');b(option,m('error.desktop'));el('game-window').replaceChildren(option);return [];}
-    const windows=await invoke('game_windows'),select=el('game-window'),old=select.value;select.replaceChildren();for(const w of windows)select.add(new Option(w.title,w.id));
+    if(!invoke){if(!el('game-window'))return [];const option=new Option('','');b(option,m('error.desktop'));el('game-window').replaceChildren(option);return [];}
+    const windows=await invoke('game_windows'),select=el('game-window');
+    if(!select)return windows;const old=select.value;select.replaceChildren();for(const w of windows)select.add(new Option(w.title,w.id));
     if(!windows.length){const option=new Option('','');b(option,m('game.missing'));select.add(option);}else if(windows.some(w=>w.id===old))select.value=old;return windows;
   }
   function syncCapture(){
@@ -164,7 +166,7 @@
       const starting=!capturing;
       if(starting){
         lastGameWindow=null;
-        const windows=await refresh(),id=el('game-window').value;if(!id)throw m('game.missing');
+        const windows=await refresh(),id=el('game-window')?.value||(windows.find(w=>w.id===lastGameId)||windows[0])?.id;if(!id)throw m('game.missing');
         if(lastGameId&&lastGameId!==id){pinned=null;selected=null;disposeMap();disposeTracker();clearTracking();if(running)initializeMap();if(trackingRunning)initializeTracker();}
         await invoke('start_capture',{windowId:id});lastGameId=id;lastGameWindow=windows.find(w=>w.id===id)||null;sequence=0;capturing=true;lastFrame=null;
       }
@@ -198,9 +200,9 @@
         running=!running;importToken++;
         if(running){
           pinned=null;selected=null;lastResult=null;lastFrame=null;lastScreen=null;nonMapFrames=0;burstUntil=0;mapKeyAt=0;nextCaptureAt=0;
-          diagnosticPath=null;el('recognition-log').textContent='';
+          diagnosticPath=null;b(el('recognition-log'),'');
           disposeMap();disposeTracker();clearTracking();
-          el('recognition-candidates').replaceChildren();el('recognition-timing').textContent='';
+          el('recognition-candidates')?.replaceChildren();b(el('recognition-timing'),'');
           initializeMap();if(trackingRunning)initializeTracker();
           message(m('recognition.reset'),m('recognition.resetHint'));
         }else{disposeMap();message(m('recognition.off'),pinned?m('recognition.retained',{id:pinned}):m('recognition.manualHint'),pinned?'locked':'waiting');}
@@ -214,7 +216,7 @@
   window.enterManualMode=async(id)=>{
     if(id!==undefined&&!DUNGEON_DATA.maps.some(map=>map.id===Number(id)))throw m('manual.retry');
     running=false;importToken++;pinned=null;lastResult=null;selected=id===undefined?null:Number(id);
-    disposeMap();el('recognition-candidates').replaceChildren();el('recognition-timing').textContent='';
+    disposeMap();el('recognition-candidates')?.replaceChildren();b(el('recognition-timing'),'');
     if(id!==undefined){
       disposeTracker();clearTracking();
       selectingMap=true;
@@ -231,6 +233,8 @@
     }
     clearTracking();if(trackingRunning)initializeTracker();nextCaptureAt=0;renderSwitch();if(capturing)syncCapture().catch(captureFailure);
   });
+  // Optional diagnostic controls are absent from the player sidebar.
+  if(el('recognition-settings')){
   el('refresh-game').onclick=()=>refresh().catch(e=>message(m('recognition.failed'),I18n.error(e)));
   el('recognition-settings').ontoggle=()=>{if(el('recognition-settings').open){refresh().catch(()=>{
   const {msg:m,bind:b}=window.I18n;});drawPreview();}if(capturing)syncCapture().catch(captureFailure);};
@@ -253,6 +257,7 @@
   };
   preview.onpointercancel=()=>{regionDrag=null;drawPreview();};
   el('reset-regions').onclick=()=>{regions=structuredClone(defaults);try{localStorage.removeItem('aniimo-capture-regions-v1');}catch{}regionsChanged();drawPreview();};
+  }
   setInterval(()=>{
   const {msg:m,bind:b}=window.I18n;if(lastLocationAt&&Date.now()-lastLocationAt>1500)window.dispatchEvent(new CustomEvent('tracking-stale'));},250);
   setInterval(()=>{
@@ -261,7 +266,7 @@
     diagnosticCount++;nextDiagnosticAt=now+10000;void recordDiagnostic('slow');
   },250);
   window.recognitionStatus=()=>({ready:mapReady,initializing:!!mapWorker&&!mapReady,busy:mapBusy,running,trackingRunning,capturing,lastScreen,nonMapFrames,
-    trackingReady:trackReady,trackingBusy:trackBusy,trackingMap:trackMap,pinned,selected,lastResult,lastTrackingResult,regions,diagnosticPath,
+    gameWindowId:lastGameId,trackingReady:trackReady,trackingBusy:trackBusy,trackingMap:trackMap,pinned,selected,lastResult,lastTrackingResult,regions,diagnosticPath,
     queueLength:frames.items.length,trackingQueueLength:pendingTrack?1:0,burstUntil,mapKeyAt,stats:{...stats}});
   renderSwitch();
 })();

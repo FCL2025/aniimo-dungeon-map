@@ -73,12 +73,6 @@ function update(){
   for(const key of Object.keys(categories))$('count-'+key).textContent=candidates.filter(p=>p.category===key).length;
   bind($('filter-total'),msg('filters.total',{count:visible.length}));
   if(selected&&!visible.some(p=>p.id===selected.id))selected=null;
-  const prefix=$('difficulty').value==='5'?'Nightmare':'Chaos', room=data.rewardRules[prefix+'-room'], hall=data.rewardRules[prefix+'-hallway'];
-  $('rules').replaceChildren();
-  const p=document.createElement('p');bind(p,msg('rewards.egg',{count:room.EggCount,probability:room.EggProbability}));$('rules').append(p);
-  const table=document.createElement('table'),head=document.createElement('thead'),row=document.createElement('tr');
-  for(const key of ['table.group','table.room','table.hall']){const cell=document.createElement('th');bind(cell,msg(key));row.append(cell);}head.append(row);table.append(head);
-  const body=document.createElement('tbody');for(const key of ['G-All','G0','G1','G2','G3','G4','G5','G6']){const tr=document.createElement('tr');for(const value of [key,room[key]??'—',hall[key]??'—']){const td=document.createElement('td');td.textContent=value;tr.append(td);}body.append(tr);}table.append(body);$('rules').append(table);
   draw();
 }
 function fit(){if(!current)return;const [x1,y1,x2,y2]=current.bounds,padding=document.body.classList.contains('overlay')?28:64;scale=Math.min((width-padding)/(x2-x1),(height-padding)/(y2-y1));scale=Math.max(.05,scale);tx=(width-(x1+x2)*scale)/2;ty=(height-(y1+y2)*scale)/2;draw();}
@@ -197,8 +191,6 @@ function loadMap(){
   current=data.maps.find(m=>m.id===Number($('map').value));selected=null;image=null;
   if(tracking&&tracking.mapId!==current.id)tracking=null;renderTrackingStatus();
   bind($('map-id'),msg('app.mode'));bind($('map-title'),msg('map.name',{id:current.id}));
-  const missing=data.validation.missingReferences.filter(v=>v[0]===current.id).length;
-  bind($('gaps'),missing?msg('map.gaps',{count:missing}):msg('map.complete'));
   bind($('load-status'),msg('map.loading'));const token=++loadToken;const nextImage=new Image();
   nextImage.onload=()=>{if(token!==loadToken)return;image=nextImage;$('load-status').textContent='';fit();};
   nextImage.onerror=()=>{if(token!==loadToken)return;bind($('load-status'),msg('error.assets'));};

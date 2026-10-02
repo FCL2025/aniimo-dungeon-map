@@ -1,0 +1,18 @@
+#loot-ranking-button{width:100%;background:var(--panel);text-align:left}
+#loot-ranking-dialog{width:min(760px,calc(100vw - 32px));max-width:none;max-height:85vh;padding:0;color:var(--text);background:var(--panel);border:1px solid var(--line);border-radius:10px;overflow:auto;line-height:1.6}
+#loot-ranking-dialog::backdrop{background:#08151bbf}
+.loot-heading{padding:22px 24px 16px;border-bottom:1px solid var(--line)}
+.loot-heading h2{margin:0;color:var(--gold);font-weight:600}
+.loot-heading p{margin:8px 0 0;font-size:13px;color:var(--muted)}
+.loot-table-wrap{padding:0 24px}
+.loot-table{margin:0;table-layout:fixed;font-variant-numeric:tabular-nums;font-size:13px}
+.loot-table .loot-rank{width:8%}.loot-table .loot-name{width:38%}.loot-table .loot-weight{width:13%}.loot-table .loot-price{width:19%}.loot-table .loot-value{width:22%}
+.loot-table th,.loot-table td{padding:10px 7px;vertical-align:middle;overflow-wrap:anywhere}
+.loot-table thead th{position:sticky;top:0;background:var(--panel);z-index:1;font-size:12px;font-weight:500}
+.loot-table th:nth-child(2){text-align:left}.loot-table tbody th{color:var(--text);font-weight:500}
+.loot-table td:first-child{color:var(--muted)}.loot-table td:last-child{font-weight:600}
+.loot-table .loot-top{background:#dfb65b0b}.loot-table .loot-top td:first-child,.loot-table .loot-top td:last-child{color:var(--gold)}
+.loot-table tbody tr:last-child>*{border-bottom:0}
+.loot-actions{position:sticky;bottom:0;display:flex;justify-content:flex-end;padding:12px 24px;background:var(--panel);border-top:1px solid var(--line)}
+.loot-actions button{float:none}
+@media(max-width:520px){.loot-heading{padding:18px 12px 12px}.loot-heading h2{font-size:18px}.loot-table-wrap{padding:0 5px}.loot-table{font-size:12px}.loot-table th,.loot-table td{padding:9px 4px}.loot-actions{padding:10px 12px}.loot-table .loot-rank{width:12%}.loot-table .loot-name{width:30%}.loot-table .loot-weight{width:15%}.loot-table .loot-price{width:21%}.loot-table .loot-value{width:22%}}
