@@ -52,13 +52,13 @@ data = dict(categories=CATEGORIES, icons=display_icons(icon_catalog), difficulti
 (OUTPUT/'data.js').write_text('window.DUNGEON_DATA='+json.dumps(data, ensure_ascii=False, separators=(',', ':')).replace('</', '<\\/')+';', encoding='utf8')
 for name in ('viewer.js', 'viewer.css', 'i18n.js', 'i18n.css'):
     shutil.copyfile(ROOT/'scripts/data_viewer'/name, OUTPUT/name)
-for name in ('desktop.js', 'overlay.js', 'desktop.css', 'recognition.js', 'recognition.css', 'recognition-worker.js', 'recognition-core.js', 'recognition-vision.js', 'recognition-portals.js', 'recognition-search.js', 'recognition-fog.js', 'fog-references.json', 'tracking-core.js', 'tracking-worker.js', 'map-header.js', 'recognition-screen.js'):
+for name in ('desktop.js', 'overlay.js', 'desktop.css', 'manual-map.js', 'manual-map-core.js', 'manual-map.css', 'recognition.js', 'recognition.css', 'recognition-worker.js', 'recognition-core.js', 'recognition-vision.js', 'recognition-portals.js', 'recognition-search.js', 'recognition-fog.js', 'fog-references.json', 'tracking-core.js', 'tracking-worker.js', 'map-header.js', 'recognition-screen.js'):
     shutil.copyfile(ROOT/'app'/name, OUTPUT/name)
 shutil.copytree(ROOT/'app/vendor', OUTPUT/'vendor', dirs_exist_ok=True)
 html = (ROOT/'scripts/data_viewer/index.html').read_text(encoding='utf8')
 html = html.replace('<title>搶蛋地圖 · 點位解析</title>', '<title>伊莫地城地圖 · 可攜版</title>')
 html = html.replace('<body>', '<body class="desktop-app">')
-html = html.replace('<link rel="stylesheet" href="viewer.css">', '<link rel="stylesheet" href="viewer.css"><link rel="stylesheet" href="desktop.css"><link rel="stylesheet" href="recognition.css">')
+html = html.replace('<link rel="stylesheet" href="viewer.css">', '<link rel="stylesheet" href="viewer.css"><link rel="stylesheet" href="desktop.css"><link rel="stylesheet" href="recognition.css"><link rel="stylesheet" href="manual-map.css">')
 html = html.replace('<h1>地宮點位解析</h1>', '<h1>地城地圖</h1>')
 html = html.replace('<aside>', '<aside id="sidebar" aria-label="地圖與篩選設定">')
 start = html.index('<details><summary>資料與限制</summary>')
@@ -69,15 +69,15 @@ html = html.replace('<footer>', '''<button id="help-button" type="button">說明
 <label class="check debug-log-control" title="開啟後才寫入辨識診斷紀錄"><input type="checkbox" id="debug-log"><span>DEBUG LOG（辨識診斷）</span></label>
 <footer>''', 1)
 html = html.replace('<div><span class="eyebrow" id="map-id"></span><h2 id="map-title"></h2></div>', '''<div class="mapbar-start"><button id="sidebar-toggle" aria-expanded="true" aria-controls="sidebar" aria-label="收合側欄" title="收合側欄"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 4v16"/><path class="sidebar-arrow" d="m16 9-3 3 3 3"/></svg></button><div class="map-heading"><span class="eyebrow" id="map-id"></span><div class="session-heading"><h2 id="map-title"></h2><span id="live-status" role="status"></span></div></div></div>''')
-html = html.replace('<div class="tools">', '<div class="tools"><button id="recognition-button" class="live-switch" role="switch" aria-checked="false">辨識：關</button><button id="tracking-button" class="live-switch" role="switch" aria-checked="false">追蹤：關</button><button id="topmost" aria-pressed="true">置頂：開</button><button id="compact" aria-pressed="false">地圖模式</button>')
+html = html.replace('<div class="tools">', '<div class="tools"><button id="recognition-button" class="live-switch" role="switch" aria-checked="false">辨識：關</button><button id="manual-map-button" type="button" aria-haspopup="dialog" aria-controls="manual-map-dialog"></button><button id="tracking-button" class="live-switch" role="switch" aria-checked="false">追蹤：關</button><button id="topmost" aria-pressed="true">置頂：開</button><button id="compact" aria-pressed="false">地圖模式</button>')
 notice_start = html.index('  <p class="notice">')
 notice_end = html.index('</p>', notice_start) + len('</p>')
 notice = html[notice_start:notice_end]
 html = html[:notice_start] + html[notice_end:]
 html = html.replace('<div class="stage">', '<div class="stage">' + notice + '<p id="app-status" role="status" hidden></p><div class="player-tools"><span id="player-status" class="sr-only" role="status">等待人物定位</span><button id="locate-player" title="置中到人物位置" aria-label="置中到人物位置" hidden disabled>◎</button></div>')
 html = html.replace('<fieldset>', (ROOT/'app/recognition.html').read_text(encoding='utf8')+'<fieldset>', 1)
-html = html.replace('<noscript>', (ROOT/'app/help.html').read_text(encoding='utf8')+'<noscript>')
-html = html.replace('<script src="viewer.js"></script>', '<script src="viewer.js"></script><script src="desktop.js"></script><script src="map-header.js"></script><script src="recognition-screen.js"></script><script src="recognition.js"></script>')
+html = html.replace('<noscript>', (ROOT/'app/help.html').read_text(encoding='utf8')+(ROOT/'app/manual-map.html').read_text(encoding='utf8')+'<noscript>')
+html = html.replace('<script src="viewer.js"></script>', '<script src="viewer.js"></script><script src="desktop.js"></script><script src="map-header.js"></script><script src="recognition-screen.js"></script><script src="recognition.js"></script><script src="manual-map-core.js"></script><script src="manual-map.js"></script>')
 html = html.replace('，或直接開啟 candidates.csv 檢視點位', '')
 overlay_html = html.replace('<body class="desktop-app">', '<body class="desktop-app compact overlay">')
 overlay_html = overlay_html.replace('<html lang="zh-Hant">', '<html lang="zh-Hant" class="overlay-root">')

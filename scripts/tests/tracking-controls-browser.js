@@ -4,7 +4,7 @@
   const w=iframe.contentWindow,d=w.document;d.body.innerHTML=document.body.innerHTML;d.querySelectorAll('iframe,script').forEach(e=>e.remove());
   const el=id=>d.getElementById(id),assert=(ok,msg)=>{if(!ok)throw Error(msg);},pause=ms=>new Promise(r=>setTimeout(r,ms));
   const until=async condition=>{for(let i=0;i<100;i++){if(condition())return;await pause(20);}throw Error('Timed out');};
-  const workers=[],calls=[],frames=[],positions=[];let active=false;
+  const workers=[],calls=[],frames=[],positions=[];let active=false,holdWindows=false,releaseWindows;
   w.DUNGEON_DATA=DUNGEON_DATA;w.MapScreen=MapScreen;w.I18n=I18n;w.showMapNotice=()=>{};
   w.URL=class extends URL {constructor(url,base){super(url,base==='about:blank'?location.href:base);}};
   w.Worker=class {
@@ -14,7 +14,7 @@
     reply(data){this.onmessage({data});}
   };
   w.__TAURI__={core:{invoke:async(name,args)=>{
-    calls.push({name,args});if(name==='game_windows')return [{id:'fixture',title:'Fixture'}];
+    calls.push({name,args});if(name==='game_windows')return holdWindows?new Promise(resolve=>{releaseWindows=resolve;}):[{id:'fixture',title:'Fixture'}];
     if(name==='start_capture'){active=true;return;}if(name==='stop_capture'){active=false;return;}
     if(name==='capture_frame')return {running:active,frame:frames.shift()||null};
   }}};
@@ -83,7 +83,26 @@
     assert(state().pinned===20036&&state().queueLength===0,'Recognition-only lock did not stop capture and retain the map');
     await el('recognition-button').onclick();
     await until(()=>!state().capturing);
-    return {passed:true,languagePreservesWorkers:true,independentSwitches:true,oneCaptureSession:true,latestFrameOnly:true,positionsAfterRecognitionOff:true,manualMap:true,restartClearsLockAndPosition:true,lateResultIgnored:true,lockStopsCapture:true};
+    await el('tracking-button').onclick();await el('recognition-button').onclick();
+    const superseded=workers.filter(x=>x.url==='recognition-worker.js').at(-1);
+    const oldTracker=workers.filter(x=>x.url==='tracking-worker.js').at(-1);
+    await w.enterManualMode(20040);
+    assert(!state().running&&state().trackingRunning&&state().trackingMap===20040,'Manual selection did not preserve independent tracking');
+    assert(superseded.terminated&&oldTracker.terminated&&positions.at(-1)===null,'Manual selection retained workers or a stale position');
+    superseded.reply({type:'result',request:0,ranked:[],locked:20036,selected:20036,observations:1,elapsedMs:1});
+    assert(el('map').value==='20040'&&state().pinned===null&&state().lastResult===null,'Late automatic result overwrote the manual map');
+    const sameMapTracker=workers.filter(x=>x.url==='tracking-worker.js').at(-1);
+    await w.enterManualMode(20040);
+    assert(sameMapTracker.terminated&&state().trackingMap===20040,'Same-map reselection did not reset tracking');
+    assert(calls.filter(c=>c.name==='configure_capture').at(-1).args.watchMap===false,'Manual mode still watches M for recognition');
+    await el('tracking-button').onclick();
+    holdWindows=true;
+    const startup=el('recognition-button').onclick();await until(()=>!!releaseWindows);
+    const manual=w.enterManualMode(20035);
+    assert(!state().running&&!state().ready&&!state().initializing,'Manual mode waited for native startup before cancelling recognition');
+    releaseWindows([{id:'fixture',title:'Fixture'}]);await Promise.all([startup,manual]);
+    assert(!state().capturing&&el('map').value==='20035'&&!state().running,'Native startup race restarted capture after manual choice');
+    return {passed:true,languagePreservesWorkers:true,independentSwitches:true,oneCaptureSession:true,latestFrameOnly:true,positionsAfterRecognitionOff:true,manualMap:true,restartClearsLockAndPosition:true,lateResultIgnored:true,lockStopsCapture:true,manualOverridesAutomatic:true,sameMapResetsTracking:true,manualCancelsPendingStartup:true};
   }catch(error){throw Error(String(error)+' '+JSON.stringify({state:w.recognitionStatus?.(),calls,workers:workers.map(x=>({url:x.url,messages:x.messages,terminated:x.terminated})),message:el('recognition-message').textContent}));}
   finally{iframe.remove();}
 })()

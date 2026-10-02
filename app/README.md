@@ -41,6 +41,8 @@ python -m venv .venv
 
 ## GitHub Release
 
+v0.2.34 新增出口方向手動選圖與覆蓋地圖「重選」。同方向候選用地形縮圖及門位區分；小型覆蓋視窗使用可返回的兩步選擇。辨識預設關閉，手動操作會取消未完成辨識，避免延遲結果改回舊圖。
+
 v0.2.33 提供「路線 1／路線 2」分工：琉璃候選與可選鑰匙房不重複，兩邊的候選與門數差距最多 1，並保存路線選擇及同步覆蓋地圖。規劃與驗證方式見 [雙人分工路線](../docs/最佳路徑.md)。
 
 GitHub Release 發布以下附件：
@@ -70,6 +72,12 @@ GitHub Release 發布以下附件：
 測試程序可透過 `WEBVIEW2_ADDITIONAL_BROWSER_ARGUMENTS` 開啟本機 CDP 偵錯連線，使用 agent-browser 檢查實際 WebView2、IPC、側欄切換、置頂、覆蓋地圖與設定保存。正式執行不設定偵錯埠。發行前須以實際 EXE 驗證，單獨開啟 `frontend/index.html` 無法確認原生視窗功能。
 
 ## 技術資料
+
+### 手動選圖驗證
+
+`app/manual-map-core.js` 依入口至出口的像素向量分組八方向，資料取自內嵌七張地圖的 `portalGeometry`。沒有以人物位置或地圖中心推算方向，也不需要擷取遊戲畫面。`manual-map.js` 在主視窗與覆蓋視窗共用介面；覆蓋視窗經事件送交主視窗套用並等待結果。
+
+`node --test scripts/tests/manual-map.test.cjs` 核對七張地圖的方向及左側兩張候選。`node scripts/tests/manual-map-native.cjs` 以隔離 profile、隱藏視窗驗證首次啟動、七張選圖、13 語言、原生覆蓋同步、重新啟動保存，以及 590／400／295 像素視窗中的真實滑鼠點擊；截圖與結果輸出到 `dist/manual-map-preview/`。其中辨識延遲回傳、原生擷取啟動中的取消，以及同圖重選的追蹤重置，透過 `tracking-controls-browser.js` 的假擷取邊界測試，不連接遊戲。
 
 ### 多語介面
 

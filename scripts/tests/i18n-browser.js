@@ -3,6 +3,8 @@
   const assert=(value,message)=>{if(!value)throw Error(message);},el=id=>document.getElementById(id);
   const settle=()=>new Promise(resolve=>requestAnimationFrame(()=>setTimeout(resolve,30)));
   await window.desktopReady;
+  await window.manualMapReady;
+  document.getElementById('manual-map-dialog')?.close();
   assert(I18n.locales.length===13,'Expected all 13 requested languages');
   assert(el('language-menu').children.length===13,'Language menu is incomplete');
   const set=(id,value)=>{const node=el(id);if(node.type==='checkbox')node.checked=value;else node.value=value;node.dispatchEvent(new Event('change',{bubbles:true}));};

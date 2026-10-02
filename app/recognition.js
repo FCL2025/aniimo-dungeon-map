@@ -209,8 +209,26 @@
     }catch(error){captureFailure(error);}finally{changing=false;renderSwitch();}
   }
   el('recognition-button').onclick=()=>toggle('map');el('tracking-button').onclick=()=>toggle('track');
+  // Invalidate pending imports and worker replies before waiting for native capture changes.
+  // A manual choice is authoritative even while automatic startup is still in flight.
+  window.enterManualMode=async(id)=>{
+    if(id!==undefined&&!DUNGEON_DATA.maps.some(map=>map.id===Number(id)))throw m('manual.retry');
+    running=false;importToken++;pinned=null;lastResult=null;selected=id===undefined?null:Number(id);
+    disposeMap();el('recognition-candidates').replaceChildren();el('recognition-timing').textContent='';
+    if(id!==undefined){
+      disposeTracker();clearTracking();
+      selectingMap=true;
+      try{el('map').value=String(id);el('map').dispatchEvent(new Event('change',{bubbles:true}));}
+      finally{selectingMap=false;}
+    }
+    renderSwitch();message(m('status.manual'),id===undefined?m('manual.hint'):m('manual.selected',{id:Number(id)}));
+    try{await syncCapture();}catch(error){captureFailure(error);throw error;}
+  };
   el('map').addEventListener('change',()=>{
-    if(!selectingMap){pinned=null;selected=Number(el('map').value);disposeMap();if(running)initializeMap();}
+    if(!selectingMap){
+      running=false;importToken++;pinned=null;selected=Number(el('map').value);lastResult=null;disposeMap();
+      message(m('status.manual'),m('manual.selected',{id:selected}));
+    }
     clearTracking();if(trackingRunning)initializeTracker();nextCaptureAt=0;renderSwitch();if(capturing)syncCapture().catch(captureFailure);
   });
   el('refresh-game').onclick=()=>refresh().catch(e=>message(m('recognition.failed'),I18n.error(e)));

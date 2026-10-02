@@ -102,6 +102,14 @@
         if (payload === 'tracking') el('tracking-button').click();
         publishOverlay();
       }),
+      events.listen('map-overlay-manual', async ({ payload }) => {
+        if(!payload||!Number.isInteger(payload.requestId))return;
+        let result;
+        try{await window.enterManualMode(payload.mapId);result={ok:true};}
+        catch(error){result={ok:false,error:I18n.error(error)};}
+        publishOverlay();
+        events.emitTo('map-overlay','map-overlay-manual-result',{requestId:payload.requestId,...result}).catch(()=>{});
+      }),
       events.listen('map-overlay-size-selected', ({ payload }) => selectOverlaySize(Number(payload), false))
     ]).catch(error => report(msg('error.operation', { error: I18n.error(error) })));
   }

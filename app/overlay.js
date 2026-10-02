@@ -85,6 +85,7 @@
     el('tracking-button').setAttribute('aria-checked', String(!!state.trackingEnabled));
     bind(el('tracking-button'), msg(state.trackingEnabled ? 'tracking.disable' : 'tracking.enable'), 'title');
     el('tracking-button').disabled = state.trackingBusy;
+    window.dispatchEvent(new Event('recognition-ui'));
     window.dispatchEvent(new Event('tracking-ui'));
     const noticeKey = JSON.stringify([state.map, state.status, state.statusState]);
     if (noticeKey !== lastNotice && state.statusTitle && !manualSelection) notice(state.statusTitle);

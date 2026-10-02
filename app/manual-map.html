@@ -1,0 +1,18 @@
+<dialog id="manual-map-dialog" aria-labelledby="manual-map-title" aria-describedby="manual-map-hint">
+  <div class="manual-map-heading"><h2 id="manual-map-title" data-i18n="manual.title"></h2><button id="manual-map-close" type="button">×</button></div>
+  <p id="manual-map-hint" data-i18n="manual.hint"></p>
+  <div class="manual-map-layout">
+    <div class="manual-map-directions">
+      <div id="manual-map-compass"></div>
+      <button id="manual-map-all" type="button" data-i18n="manual.all"></button>
+    </div>
+    <section class="manual-map-results" aria-labelledby="manual-map-result-title" hidden>
+      <div class="manual-map-results-heading"><button id="manual-map-back" type="button">←</button><h3 id="manual-map-result-title" tabindex="-1"></h3></div>
+      <p data-i18n="manual.compare"></p>
+      <div class="manual-map-legend"><span class="manual-map-entrance" data-i18n="category.entrance"></span><span class="manual-map-exit" data-i18n="category.exit"></span></div>
+      <div id="manual-map-candidates"></div>
+    </section>
+  </div>
+  <p id="manual-map-message" role="status"></p>
+  <p class="manual-map-mode" data-i18n="manual.mode"></p>
+</dialog>
