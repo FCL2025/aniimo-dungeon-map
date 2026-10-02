@@ -15,8 +15,21 @@
   bind(el('manual-map-button'), msg(overlay ? 'manual.reset' : 'manual.open'));
   bind(el('manual-map-button'), msg('manual.title'), 'title');
   bind(el('manual-map-close'), msg('close'), 'attr:aria-label');
-  bind(el('manual-map-back'), msg('manual.title'), 'attr:aria-label');
-  bind(el('manual-map-back'), msg('manual.title'), 'title');
+  bind(el('manual-map-close'), msg('close'), 'title');
+  bind(el('manual-map-back'), msg('manual.back'), 'attr:aria-label');
+  bind(el('manual-map-back'), msg('manual.back'), 'title');
+  function positionDialog() {
+    // A modal lives in the top layer, so its default center ignores the sidebar.
+    const bounds = overlay ? { left:0, top:0, right:innerWidth, bottom:innerHeight, width:innerWidth, height:innerHeight }
+      : document.querySelector('.stage').getBoundingClientRect();
+    dialog.style.setProperty('--manual-map-inset', `${bounds.top}px ${innerWidth - bounds.right}px ${innerHeight - bounds.bottom}px ${bounds.left}px`);
+    dialog.style.setProperty('--manual-map-width', `${Math.max(0, bounds.width - 16)}px`);
+    dialog.style.setProperty('--manual-map-height', `${Math.max(0, bounds.height - 16)}px`);
+    dialog.classList.toggle('manual-map-narrow', bounds.width <= 540);
+    dialog.classList.toggle('manual-map-short', bounds.height <= 400);
+  }
+  if (!overlay) new ResizeObserver(positionDialog).observe(document.querySelector('.stage'));
+  window.addEventListener('resize', positionDialog);
   for (const item of symbols) {
     if (!item) {
       const center = node('div', null, 'manual-map-center'), icon = node('img');
@@ -27,6 +40,7 @@
     const [direction, arrow] = item, matches = candidates(maps, direction);
     const button = node('button', null, 'manual-direction'), symbol = node('span', null, 'manual-direction-arrow');
     button.type = 'button'; button.dataset.direction = direction;
+    button.classList.toggle('manual-direction-empty', !matches.length);
     symbol.textContent = arrow; symbol.setAttribute('aria-hidden', 'true');
     button.append(symbol, node('span', 'manual.' + direction));
     const count = node('span', null, 'manual-direction-count');
@@ -102,6 +116,7 @@
   async function open() {
     if (busy) return;
     filter = null; renderCandidates(); el('manual-map-message').textContent = '';
+    positionDialog();
     if (!dialog.open) dialog.showModal();
     setBusy(true);
     try { await enterManualMode(); }

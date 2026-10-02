@@ -1,4 +1,5 @@
 {
+  "manual.back": "返回方向選擇",
   "language": "語言",
   "overlay.hotkeyFailed": "F1 無法使用，可能已被其他程式占用。仍可用地圖模式或 × 關閉覆蓋地圖。",
   "capture.invalid": "畫面或範圍無效，請檢查遊戲視窗並還原擷取範圍。",

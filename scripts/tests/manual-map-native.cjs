@@ -39,6 +39,46 @@ async function launch(){
   await cdp.until('!!window.manualMapReady');await cdp.evaluate('window.manualMapReady');
   return {child,cdp,pages,port};
 }
+// Runs inside either native window. Check rendered copy as well as tooltips and screen-reader labels.
+function pickerCopy(){
+  const el=id=>document.getElementById(id),t=I18n.t,failures=[];
+  const check=(ok,label)=>{if(!ok)failures.push(label);};
+  const overlay=document.body.classList.contains('overlay');
+  check(el('manual-map-button').textContent===t(overlay?'manual.reset':'manual.open'),'open/reset');
+  check(el('manual-map-button').title===t('manual.title'),'open tooltip');
+  for(const [id,key] of [['manual-map-close','close'],['manual-map-back','manual.back']]){
+    check(el(id).title===t(key)&&el(id).getAttribute('aria-label')===t(key),id);
+  }
+  for(const node of document.querySelectorAll('#manual-map-dialog [data-i18n],[data-i18n="manual.help"]')){
+    check(node.textContent===t(node.dataset.i18n),node.dataset.i18n);
+  }
+  for(const button of document.querySelectorAll('.manual-direction')){
+    const direction=button.dataset.direction,count=direction==='left'?2:['upLeft','downLeft'].includes(direction)?0:1;
+    check(button.children[1].textContent===t('manual.'+direction),'direction '+direction);
+    check(button.querySelector('.manual-direction-count').textContent===(count?t('manual.count',{count}):t('manual.empty')),'count '+direction);
+    if(!count)check(getComputedStyle(button).visibility==='hidden','empty direction '+direction);
+  }
+  const hints={20032:'right',20034:'down',20035:'upRight',20036:'leftLower',20037:'downRight',20039:'up',20040:'left'};
+  for(const card of document.querySelectorAll('.manual-map-card')){
+    check(card.getAttribute('aria-label')===t('map.name',{id:card.dataset.mapId}),'card label '+card.dataset.mapId);
+    check(card.querySelector('span').textContent===t('manual.'+hints[card.dataset.mapId]),'card hint '+card.dataset.mapId);
+  }
+  const filter=document.querySelector('.manual-direction[aria-pressed=true]')?.dataset.direction;
+  const cards=document.querySelectorAll('.manual-map-card').length;
+  if(cards)check(el('manual-map-result-title').textContent===t('manual.results',{direction:t(filter?'manual.'+filter:'manual.all'),count:cards}),'results');
+  const catalog=ANIIMO_LOCALES.messages[I18n.locale];
+  for(const key of Object.keys(ANIIMO_LOCALES.messages.en).filter(key=>key.startsWith('manual.'))){
+    check(typeof catalog[key]==='string'&&catalog[key].trim()&&t(key)!==key,'catalog '+key);
+  }
+  return failures;
+}
+async function centered(cdp,label){
+  const expression=`(()=>{const d=document.getElementById('manual-map-dialog'),r=d.getBoundingClientRect(),s=document.querySelector('.stage').getBoundingClientRect();return {
+    label:${JSON.stringify(label)},dx:Math.abs(r.left+r.width/2-s.left-s.width/2),dy:Math.abs(r.top+r.height/2-s.top-s.height/2),
+    contained:r.left>=s.left&&r.right<=s.right+1&&r.top>=s.top&&r.bottom<=s.bottom+1,overflow:d.scrollWidth>d.clientWidth+1};})()`;
+  await cdp.until(`(()=>{const r=${expression};return r.dx<1&&r.dy<1&&r.contained&&!r.overflow;})()`);
+  return cdp.evaluate(expression);
+}
 (async()=>{
   let app,overlay;
   const report={version,exeSha256:createHash('sha256').update(fs.readFileSync(exe)).digest('hex')};
@@ -47,6 +87,8 @@ async function launch(){
     const main=app.cdp;
     report.initial=await main.evaluate('({open:document.getElementById("manual-map-dialog").open,running:recognitionStatus().running,capturing:recognitionStatus().capturing,ready:recognitionStatus().ready})');
     assert(report.initial.open&&!report.initial.running&&!report.initial.capturing&&!report.initial.ready,'First run must allow manual selection without capture');
+    assert(await main.evaluate('getComputedStyle(document.getElementById("map-canvas")).visibility==="hidden"'),'Map remains visible beneath selection');
+    report.centering=[await centered(main,'initial directions')];
     await main.shot('main-directions');
     report.empty=await main.evaluate('[...document.querySelectorAll(".manual-direction:disabled")].map(button=>button.dataset.direction).sort()');
     assert(JSON.stringify(report.empty)===JSON.stringify(['downLeft','upLeft']),'Unexpected empty directions');
@@ -56,10 +98,19 @@ async function launch(){
     report.locales=[];
     for(const code of await main.evaluate('I18n.locales.map(locale=>locale.code)')){
       await main.evaluate(`I18n.setLocale(${JSON.stringify(code)})`);
-      assert(await main.evaluate('document.getElementById("manual-map-title").textContent===I18n.t("manual.title")&&!document.getElementById("manual-map-result-title").textContent.includes("{count}")'),'Picker did not translate: '+code);
+      const failures=await main.evaluate(`(${pickerCopy.toString()})()`);
+      assert(!failures.length,'Picker did not translate: '+code+' '+failures.join(', '));
+      report.centering.push(await centered(main,'left candidates '+code));
       report.locales.push(code);
     }
     await main.evaluate('I18n.setLocale("zh-TW")');
+    for(const [width,height,collapsed] of [[1220,820,false],[1220,820,true],[800,600,false],[760,600,false],[640,480,false]]){
+      await main.send('Emulation.setDeviceMetricsOverride',{width,height,deviceScaleFactor:1,mobile:false});
+      await main.evaluate(`if(document.body.classList.contains('sidebar-collapsed')!==${collapsed})document.getElementById('sidebar-toggle').click()`);
+      report.centering.push(await centered(main,`${width}x${height} sidebar ${collapsed?'closed':'open'}`));
+      if(width===640)await main.shot('main-narrow-candidates');
+    }
+    await main.send('Emulation.clearDeviceMetricsOverride');
     await main.click('[data-map-id="20036"]');await main.until('!document.getElementById("manual-map-dialog").open&&document.getElementById("map").value==="20036"');
     report.selected=[];
     for(const [direction,id] of [['right',20032],['down',20034],['upRight',20035],['downRight',20037],['up',20039]]){
@@ -69,9 +120,21 @@ async function launch(){
     }
     await main.click('#manual-map-button');await main.until('!document.getElementById("manual-map-all").disabled');await main.click('#manual-map-all');
     assert(await main.evaluate('document.querySelectorAll(".manual-map-card").length===7'),'All-maps fallback is incomplete');
+    assert(!(await main.evaluate(`(${pickerCopy.toString()})()`)).length,'All-maps labels did not translate');
+    report.centering.push(await centered(main,'all maps'));
     await main.click('[data-map-id="20040"]');await main.until('!document.getElementById("manual-map-dialog").open');
     await main.click('#manual-map-button');await main.until('!document.getElementById("manual-map-all").disabled');await main.click('#manual-map-close');
     assert(await main.evaluate('document.getElementById("map").value==="20040"&&document.activeElement.id==="manual-map-button"'),'Cancel lost map or keyboard focus');
+    assert(await main.evaluate('getComputedStyle(document.getElementById("map-canvas")).visibility==="visible"'),'Closing the picker did not restore the main map');
+    // Exercise the actual error rendering path, then switch languages while it is displayed.
+    await main.evaluate('window.savedEnterManualMode=window.enterManualMode;window.enterManualMode=async()=>{throw I18n.msg("manual.retry")};document.getElementById("manual-map-button").click()');
+    await main.until('!document.getElementById("manual-map-all").disabled&&document.getElementById("manual-map-message").textContent===I18n.t("manual.retry")');
+    for(const code of report.locales){
+      await main.evaluate(`I18n.setLocale(${JSON.stringify(code)})`);
+      assert(await main.evaluate('document.getElementById("manual-map-message").textContent===I18n.t("manual.retry")'),'Error did not translate: '+code);
+    }
+    await main.evaluate('window.enterManualMode=window.savedEnterManualMode;delete window.savedEnterManualMode;I18n.setLocale("zh-TW");document.getElementById("manual-map-dialog").close()');
+    report.localizedError=true;
     report.controller=await main.evaluate(fs.readFileSync(path.join(__dirname,'tracking-controls-browser.js'),'utf8'));
     assert(report.controller.passed,'Controller regression failed');
     await main.click('#compact');
@@ -80,8 +143,33 @@ async function launch(){
     assert(overlayPage,'Native overlay did not open');overlay=await connect(overlayPage.webSocketDebuggerUrl);
     await overlay.until('!!window.overlayReady&&!!window.manualMapReady');await overlay.evaluate('Promise.all([window.overlayReady,window.manualMapReady])');
     await overlay.until('document.getElementById("map").value==="20040"');
+    const viewportBefore=await overlay.evaluate('({scale,tx,ty})');
+    await overlay.click('#manual-map-button');await overlay.until('!document.getElementById("manual-map-all").disabled');
+    report.transparentPicker=await overlay.evaluate(`(()=>{
+      const d=document.getElementById('manual-map-dialog'),title=document.getElementById('manual-map-title').getBoundingClientRect();
+      return {panel:getComputedStyle(d).backgroundColor,backdrop:getComputedStyle(d,'::backdrop').backgroundColor,
+        map:getComputedStyle(document.getElementById('map-canvas')).visibility,visibleTitle:title.width>1&&title.height>1,
+        introductions:d.querySelectorAll('p[data-i18n]').length};
+    })()`);
+    assert(report.transparentPicker.panel==='rgba(0, 0, 0, 0)'&&report.transparentPicker.backdrop==='rgba(0, 0, 0, 0)','Picker or backdrop still covers the game');
+    assert(report.transparentPicker.map==='hidden'&&!report.transparentPicker.visibleTitle&&!report.transparentPicker.introductions,'Picker still shows map or introductory copy');
+    await overlay.send('Input.dispatchKeyEvent',{type:'keyDown',key:'Escape',code:'Escape',windowsVirtualKeyCode:27});
+    await overlay.send('Input.dispatchKeyEvent',{type:'keyUp',key:'Escape',code:'Escape',windowsVirtualKeyCode:27});
+    await overlay.until('!document.getElementById("manual-map-dialog").open');
+    assert(await overlay.evaluate('getComputedStyle(document.getElementById("map-canvas")).visibility==="visible"'),'Escape did not restore the overlay map');
+    assert(JSON.stringify(await overlay.evaluate('({scale,tx,ty})'))===JSON.stringify(viewportBefore),'Cancel changed map zoom or position');
+    report.transparentPicker.escapeRestoresMap=true;
     await overlay.click('#manual-map-button');await overlay.until('!document.getElementById("manual-map-all").disabled');
     await overlay.click('[data-direction="left"]');await overlay.shot('overlay-left-candidates');
+    report.overlayLocales=[];
+    for(const code of report.locales){
+      await main.evaluate(`I18n.setLocale(${JSON.stringify(code)})`);
+      await overlay.until(`I18n.locale===${JSON.stringify(code)}`);
+      const failures=await overlay.evaluate(`(${pickerCopy.toString()})()`);
+      assert(!failures.length,'Overlay picker did not translate: '+code+' '+failures.join(', '));
+      report.overlayLocales.push(code);
+    }
+    await main.evaluate('I18n.setLocale("zh-TW")');await overlay.until('I18n.locale==="zh-TW"');
     await overlay.click('[data-map-id="20036"]');await overlay.until('!document.getElementById("manual-map-dialog").open&&document.getElementById("map").value==="20036"');
     assert(await main.evaluate('document.getElementById("map").value==="20036"&&!recognitionStatus().running&&!recognitionStatus().capturing'),'Overlay selection did not synchronize manual mode');
     await overlay.click('#manual-map-button');await overlay.until('!document.getElementById("manual-map-all").disabled');await overlay.click('[data-direction="left"]');
@@ -102,6 +190,7 @@ async function launch(){
         await overlay.pointerClick('[data-direction="left"]');
       }
       await overlay.pointerClick('[data-map-id="20040"]');await overlay.until('!document.getElementById("manual-map-dialog").open');
+      assert(await overlay.evaluate('getComputedStyle(document.getElementById("map-canvas")).visibility==="visible"'),'Selection did not restore the overlay map');
     }
     await overlay.send('Emulation.clearDeviceMetricsOverride');
     overlay.socket.close();overlay=null;await main.click('#compact');

@@ -1,4 +1,5 @@
 {
+  "manual.back": "Retour au choix de la direction",
   "language": "Langue",
   "overlay.hotkeyFailed": "F1 est peut-être utilisé par une autre application. Fermez avec Superposition ou ×.",
   "capture.invalid": "Image ou zone invalide. Vérifiez la fenêtre du jeu et réinitialisez les zones.",

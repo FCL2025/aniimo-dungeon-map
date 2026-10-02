@@ -1,4 +1,5 @@
 {
+  "manual.back": "Back to directions",
   "language": "Language",
   "overlay.hotkeyFailed": "F1 is unavailable, possibly used by another app. Use Overlay or × to close the overlay.",
   "capture.invalid": "Invalid frame or region. Check the game window and reset capture regions.",
