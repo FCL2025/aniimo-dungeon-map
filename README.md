@@ -1,5 +1,7 @@
 # 伊莫搶蛋地圖
 
+**繁體中文** | [English](README.en.md)
+
 伊莫「搶蛋大作戰」的 Windows 地圖工具，支援惡夢與混沌的 7 張地宮，提供寶箱／蛋巢標記、手動選圖、自動辨識、人物追蹤與透明覆蓋小地圖。
 
 **[下載最新版 EXE](https://github.com/FCL2025/aniimo-dungeon-map/releases/latest/download/AniimoDungeonMap.exe)** · [版本更新與 ZIP 下載](https://github.com/FCL2025/aniimo-dungeon-map/releases/latest)
@@ -8,19 +10,19 @@
 
 **1. 支援各國語言（13 種）**
 
-![側欄語言選單，可切換繁體中文、英文、日文等 13 種語言](docs/images/languages.png)
+![側欄語言選單，可切換繁體中文、英文、日文等 13 種語言](docs/images/languages.webp)
 
 **2. 範例圖 1：主視窗與遊戲地圖對照**
 
-![主視窗顯示完整地宮，與遊戲中的已探索區域對照](docs/images/map-example.jpg)
+![主視窗顯示完整地宮，與遊戲中的已探索區域對照](docs/images/map-example.webp)
 
 **3. 遊戲中的小地圖**
 
-![透明小地圖覆蓋在遊戲左下方，顯示地形與寶箱、蛋巢位置](docs/images/in-game-overlay.jpg)
+![透明小地圖覆蓋在遊戲左下方，顯示地形與寶箱、蛋巢位置](docs/images/in-game-overlay.webp)
 
 **4. 小地圖選擇出口**
 
-![直接在覆蓋小地圖中選擇出口方向，手動切換本場地圖](docs/images/overlay-exit-selection.png)
+![直接在覆蓋小地圖中選擇出口方向，手動切換本場地圖](docs/images/overlay-exit-selection.webp)
 
 圖 2、3 為舊版介面示意，實際按鈕與提示以最新版為準。
 
