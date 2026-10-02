@@ -63,6 +63,8 @@
   "recognition.settings": "Recognition, tracking and candidates",
   "game.window": "Game window",
   "game.auto": "Find Aniimo automatically",
+  "resolution.label": "Game resolution",
+  "resolution.hint": "For 2560×1440 and other 16:9 resolutions, choose 1920×1080.",
   "refresh": "Refresh",
   "import": "Import M-map screenshot",
   "recognition.off": "Recognition is off",

@@ -63,6 +63,8 @@
   "recognition.settings": "Erkennung, Verfolgung und Kandidaten",
   "game.window": "Spielfenster",
   "game.auto": "Aniimo automatisch finden",
+  "resolution.label": "Spielauflösung",
+  "resolution.hint": "Für 2560×1440 und andere 16:9-Auflösungen 1920×1080 wählen.",
   "refresh": "Aktualisieren",
   "import": "M-Kartenbild importieren",
   "recognition.off": "Erkennung ausgeschaltet",

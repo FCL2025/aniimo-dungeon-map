@@ -47,7 +47,7 @@ fn should_show_overlay(test_hidden: bool, paused: bool, attached: bool, game_vis
 }
 
 fn placement(x: i32, y: i32, width: u32, height: u32, game_found: bool, percent: u32) -> Placement {
-    // Match the lower-left play area at Full HD and 2560 × 1440, and scale
+    // Match the lower-left play area at Full HD, 2560 × 1440 and 3440 × 1440, and scale
     // intermediate sizes while staying inside a smaller game client.
     let factor = (width as f64 / 1920.0).min(height as f64 / 1080.0);
     let side = (590.0 + (factor.max(1.0) - 1.0) * 600.0).round() as u32;
@@ -281,6 +281,11 @@ mod tests {
         let resized = follow_placement((0, 0, 2560, 1440), None, 100);
         assert_eq!(resized, p);
         assert_eq!(follow_placement((0, 0, 1920, 1080), None, 100).width, 590);
+    }
+    #[test]
+    fn ultrawide_uses_the_height_scaled_square() {
+        let p = placement(0, 0, 3440, 1440, true, 100);
+        assert_eq!((p.x, p.y, p.width, p.height), (4, 646, 790, 790));
     }
     #[test]
     fn positions_are_relative_to_the_game_not_the_primary_monitor() {

@@ -7,11 +7,13 @@ pub fn valid_region(r: [f64; 4]) -> bool {
 
 // Keep the M-map title and back button, including possible top padding, so
 // tracking can reject the full-screen map without decoding a full frame.
+// The header is top-left anchored and scales with height (16:9 and 21:9).
 pub fn crop_bounds(w: u32, h: u32, mini: Option<[f64; 4]>) -> (u32, u32, u32, u32) {
     let Some(r) = mini else { return (0, 0, w, h) };
-    let x = (r[0].min(65.0 / 1920.0) * w as f64).floor() as u32;
+    let ux = h as f64 / 1080.0 / w as f64;
+    let x = (r[0].min(65.0 * ux) * w as f64).floor() as u32;
     let y = (r[1].min(25.0 / 1080.0) * h as f64).floor() as u32;
-    let right = ((r[0] + r[2]).max(203.0 / 1920.0) * w as f64).ceil() as u32;
+    let right = ((r[0] + r[2]).max(203.0 * ux) * w as f64).ceil() as u32;
     let bottom = ((r[1] + r[3]).max(145.0 / 1080.0) * h as f64).ceil() as u32;
     (x, y, right.min(w) - x, bottom.min(h) - y)
 }
@@ -30,6 +32,13 @@ mod tests {
     fn custom_minimap_still_contains_map_header() {
         let (x, y, w, h) = crop_bounds(1920, 1080, Some([0.75, 0.03, 0.2, 0.2]));
         assert!(x <= 65 && y <= 25 && x + w >= 1824 && y + h >= 249);
+    }
+    #[test]
+    fn ultrawide_tracking_crop_keeps_header_and_minimap() {
+        let u = 1080.0 * 3440.0 / 1440.0;
+        let (x, y, w, h) = crop_bounds(3440, 1440, Some([82.0 / u, 42.0 / 1080.0, 200.0 / u, 200.0 / 1080.0]));
+        assert!(x <= 87 && y <= 33 && x + w >= 376 && y + h >= 323);
+        assert!(w * h < 3440 * 1440 / 30);
     }
     #[test]
     fn invalid_regions_are_rejected() {

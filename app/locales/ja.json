@@ -63,6 +63,8 @@
   "recognition.settings": "認識・追跡設定と候補",
   "game.window": "ゲームウィンドウ",
   "game.auto": "Aniimo を自動検索",
+  "resolution.label": "ゲーム解像度",
+  "resolution.hint": "2560×1440 など 16:9 の解像度では 1920×1080 を選択してください。",
   "refresh": "更新",
   "import": "M マップ画像を読み込む",
   "recognition.off": "認識はオフです",

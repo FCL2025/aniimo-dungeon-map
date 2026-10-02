@@ -63,6 +63,8 @@
   "recognition.settings": "Reconhecimento, rastreamento e candidatos",
   "game.window": "Janela do jogo",
   "game.auto": "Encontrar Aniimo automaticamente",
+  "resolution.label": "Resolução do jogo",
+  "resolution.hint": "Para 2560×1440 e outras resoluções 16:9, escolha 1920×1080.",
   "refresh": "Atualizar",
   "import": "Importar captura do mapa M",
   "recognition.off": "Reconhecimento desligado",
