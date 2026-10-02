@@ -17,8 +17,6 @@ body.desktop-app{height:100vh;grid-template-columns:280px minmax(0,1fr);overflow
 .sidebar-collapsed .sidebar-arrow{transform:translateX(29px) scaleX(-1)}
 .desktop-app #help-button{width:100%;margin-top:14px;background:var(--panel);text-align:left}
 .desktop-app .debug-log-control{margin-top:8px;padding:7px 2px 3px;font-size:12px}
-.desktop-app #discord-link{display:inline-flex;align-items:center;padding:6px 8px;border:1px solid var(--line);border-radius:5px;background:var(--bg);color:var(--text);font-size:12px;text-decoration:none}
-.desktop-app #discord-link:hover{border-color:var(--accent);color:var(--accent)}
 @media(max-width:760px){body.desktop-app:not(.compact):not(.sidebar-collapsed){grid-template-columns:210px minmax(0,1fr)}.desktop-app .mapbar{padding:10px;gap:10px}.desktop-app .mapbar-start{gap:8px;flex-wrap:wrap}.desktop-app .tools{margin-left:auto}.desktop-app .session-heading{flex-wrap:wrap}.desktop-app.overlay .mapbar-start,.desktop-app.overlay .session-heading{flex-wrap:nowrap}}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0}
 .desktop-app.compact{grid-template-columns:minmax(0,1fr)}
@@ -46,7 +44,7 @@ body.desktop-app.overlay{background:transparent;border:0;grid-template-columns:m
 .desktop-app.overlay #overlay-size{width:62px;min-width:42px;margin:0;accent-color:var(--accent);cursor:pointer}
 .desktop-app.overlay .tools #recognition-button,.desktop-app.overlay .tools #tracking-button{font-size:13px;padding:4px 6px}
 .desktop-app.overlay #overlay-drag{cursor:move;font-size:16px;line-height:1;padding:3px 5px;user-select:none}
-.desktop-app.overlay #topmost,.desktop-app.overlay #compact,.desktop-app.overlay #discord-link,.desktop-app.overlay #sidebar-toggle,.desktop-app.overlay #zoom-in,.desktop-app.overlay #zoom-out{display:none}
+.desktop-app.overlay #topmost,.desktop-app.overlay #compact,.desktop-app.overlay #sidebar-toggle,.desktop-app.overlay #zoom-in,.desktop-app.overlay #zoom-out{display:none}
 .desktop-app.overlay #fit{font-size:0;width:25px;padding:3px}.desktop-app.overlay #fit::after{content:'⊞';font-size:16px}
 .desktop-app.overlay #overlay-close{font-size:18px;line-height:1;width:25px;padding:4px}.desktop-app.overlay #overlay-close:hover{color:#ffb6ad;border-color:#ffb6ad}
 .desktop-app.overlay .live-switch{gap:4px}.desktop-app.overlay .live-switch::before{width:6px;height:6px;border-radius:50%;background:#a5bac4}

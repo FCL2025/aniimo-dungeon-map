@@ -1,5 +1,6 @@
-.language-picker{display:flex;flex-shrink:0}
-#language-button{display:flex;align-items:center;gap:7px;white-space:nowrap}
+.language-picker{display:flex;flex-shrink:0;margin-bottom:20px}
+#language-button{display:flex;align-items:center;gap:7px;width:100%;white-space:nowrap}
+#language-button .language-name{flex:1;text-align:left}
 #language-button[aria-expanded=true]{border-color:var(--accent)}
 .language-menu{position:fixed;z-index:1000;overflow-y:auto;overscroll-behavior:contain;padding:5px;background:#454556;border:1px solid #636377;border-radius:16px;box-shadow:0 12px 32px #07131f66;color:#d5d5df;scrollbar-width:thin;scrollbar-color:#9292a5 transparent}
 .language-menu[hidden]{display:none}
@@ -11,7 +12,6 @@
 .desktop-app:not(.overlay) .mapbar{flex-wrap:nowrap;align-items:flex-start}
 .desktop-app:not(.overlay) .tools{flex:1;min-width:0;justify-content:flex-end}
 .desktop-app .tools button{max-width:100%;overflow-wrap:anywhere}
-.desktop-app .tools #language-button{white-space:nowrap;overflow-wrap:normal}
 .desktop-app aside select{min-width:0}
 .desktop-app .check span:not(.count){min-width:0;overflow-wrap:anywhere}
 .desktop-app .check .count{flex-shrink:0}

@@ -96,7 +96,7 @@
     if (!menu || menu.hidden) return;
     const box = trigger.getBoundingClientRect();
     menu.style.width = Math.min(238, innerWidth - 16) + 'px';
-    menu.style.left = Math.max(8, Math.min(box.right - menu.offsetWidth, innerWidth - menu.offsetWidth - 8)) + 'px';
+    menu.style.left = Math.max(8, Math.min(box.left, innerWidth - menu.offsetWidth - 8)) + 'px';
     menu.style.top = Math.max(8, box.bottom + 6) + 'px';
     menu.style.maxHeight = Math.max(90, innerHeight - box.bottom - 14) + 'px';
   }
@@ -107,7 +107,7 @@
   }
   function mountPicker() {
     if (document.body.classList.contains('overlay')) return;
-    const tools = document.querySelector('.tools'); if (!tools) return;
+    const sidebar = document.querySelector('aside'); if (!sidebar) return;
     picker = document.createElement('div'); picker.className = 'language-picker';
     trigger = document.createElement('button'); trigger.id = 'language-button'; trigger.type = 'button';
     trigger.setAttribute('aria-haspopup', 'listbox'); trigger.setAttribute('aria-expanded', 'false'); trigger.setAttribute('aria-controls', 'language-menu');
@@ -136,7 +136,8 @@
     document.addEventListener('focusin', event => { if (!picker.contains(event.target) && !menu.contains(event.target)) closeMenu(); });
     window.addEventListener('resize', positionMenu);
     window.addEventListener('blur', () => closeMenu());
-    picker.append(trigger); tools.append(picker); document.body.append(menu); updatePicker();
+    sidebar.addEventListener('scroll', () => closeMenu());
+    picker.append(trigger); sidebar.prepend(picker); document.body.append(menu); updatePicker();
   }
   window.I18n = { t, msg, format, bind, error, setLocale, get locale() { return locale; }, locales, storageKey };
   document.documentElement.lang = locale;

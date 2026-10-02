@@ -43,7 +43,6 @@
   ["#fit", "fit", "title"],
   ["#zoom-in", "zoom.in", "aria-label"],
   ["#zoom-out", "zoom.out", "aria-label"],
-  ["#discord-link", "Discord", "title"],
   [".notice", "notice"],
   ["#map-canvas", "help.map", "aria-label"],
   ["#recognition-settings > summary", "recognition.settings"],

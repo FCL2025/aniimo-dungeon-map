@@ -112,13 +112,6 @@
   overlaySize.addEventListener('input', () => selectOverlaySize(Number(overlaySize.value)));
   el('main-overlay-size-reset').addEventListener('click', () => selectOverlaySize(100));
   el('sidebar-toggle').addEventListener('click', () => { sidebarCollapsed = !sidebarCollapsed; renderSidebar(); save(); });
-  el('discord-link').addEventListener('click', async event => {
-    if (invoke) event.preventDefault();
-    if (invoke) {
-      try { await invoke('open_discord'); }
-      catch (error) { report(msg('error.operation', { error: String(error) + ' · https://discord.gg/Yh235uyafn' }), 10000); }
-    }
-  });
   el('help-button').onclick = () => el('help-dialog').showModal();
   el('close-help').onclick = () => el('help-dialog').close();
   el('help-dialog').addEventListener('close', () => el('help-button').focus());
