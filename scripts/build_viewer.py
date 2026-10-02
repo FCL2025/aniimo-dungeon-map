@@ -4,6 +4,7 @@ from pathlib import Path
 import shutil
 from app_icons import stage_app_icons
 from build_routes import build as build_routes
+from build_i18n import stage_i18n
 
 ROOT = Path(__file__).resolve().parent.parent
 SOURCE = ROOT / 'exports/grab-eggs-data'
@@ -69,6 +70,7 @@ def build(source=SOURCE):
         if file.is_file():
             shutil.copyfile(file, source / file.name)
     stage_app_icons(source)
+    stage_i18n(source)
     print(f'Viewer: {len(maps)} maps, {sum(len(m["pins"]) for m in maps)} candidates')
 
 

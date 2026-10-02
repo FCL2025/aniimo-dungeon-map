@@ -7,6 +7,7 @@ from app_icons import stage_app_icons
 from build_viewer import CATEGORIES, active_map_ids, display_pins, display_icons
 from analyze_portal_geometry import portal_geometry
 from build_routes import build as build_routes
+from build_i18n import stage_i18n
 
 ROOT = Path(__file__).resolve().parent.parent
 OUTPUT = ROOT/'app/frontend'
@@ -49,12 +50,8 @@ assert all(p['iconKey'] in icon_catalog['assets'] for m in maps for p in m['pins
 data = dict(categories=CATEGORIES, icons=display_icons(icon_catalog), difficulties=difficulty['difficulties'], rewardRules=difficulty['rewardRules'],
             maps=maps, validation={'missingReferences': validation['missingReferences']}, scope=policy)
 (OUTPUT/'data.js').write_text('window.DUNGEON_DATA='+json.dumps(data, ensure_ascii=False, separators=(',', ':')).replace('</', '<\\/')+';', encoding='utf8')
-for name in ('viewer.js', 'viewer.css'):
+for name in ('viewer.js', 'viewer.css', 'i18n.js', 'i18n.css'):
     shutil.copyfile(ROOT/'scripts/data_viewer'/name, OUTPUT/name)
-viewer_js = (OUTPUT/'viewer.js').read_text(encoding='utf8').replace(
-    '找不到底圖，請保留 grab-eggs-dungeons 與本資料夾的相對位置。',
-    '內嵌底圖載入失敗，請重新解壓應用並確認檔案完整。')
-(OUTPUT/'viewer.js').write_text(viewer_js, encoding='utf8')
 for name in ('desktop.js', 'overlay.js', 'desktop.css', 'recognition.js', 'recognition.css', 'recognition-worker.js', 'recognition-core.js', 'recognition-vision.js', 'recognition-portals.js', 'recognition-search.js', 'recognition-fog.js', 'fog-references.json', 'tracking-core.js', 'tracking-worker.js', 'map-header.js', 'recognition-screen.js'):
     shutil.copyfile(ROOT/'app'/name, OUTPUT/name)
 shutil.copytree(ROOT/'app/vendor', OUTPUT/'vendor', dirs_exist_ok=True)
@@ -80,29 +77,7 @@ notice = html[notice_start:notice_end]
 html = html[:notice_start] + html[notice_end:]
 html = html.replace('<div class="stage">', '<div class="stage">' + notice + '<p id="app-status" role="status" hidden></p><div class="player-tools"><span id="player-status" class="sr-only" role="status">等待人物定位</span><button id="locate-player" title="置中到人物位置" aria-label="置中到人物位置" hidden disabled>◎</button></div>')
 html = html.replace('<fieldset>', (ROOT/'app/recognition.html').read_text(encoding='utf8')+'<fieldset>', 1)
-html = html.replace('<noscript>', f'''<dialog id="help-dialog"><h2>伊莫地城地圖 · 可攜版 {VERSION}</h2>
-<p>選擇地圖、惡夢或混沌難度，再勾選想看的候選點。怪物只收錄首領級幽黯星法師。</p>
-<p>寶箱分為金色與琉璃，可分別勾選。滑鼠停在地圖或難度選單上可用滾輪切換；側欄「圖示大小」可調整至 75–250%，會自動保存並同步到覆蓋地圖。</p>
-<p>勾選「顯示最佳路徑」，再選「路線 1」或「路線 2」。兩人使用相同的補充點設定、各選一條，只開自己路線編號的琉璃候選與橙色支線鑰匙房。通道可共用，寶箱與鑰匙房不重複分配；主線候選、含鑰匙房的候選總數與門數均相差最多 1 個。候選較少時兩條路線會減少分配，金色寶箱不納入分工。</p>
-<p>入口與出口都可進出，可自動選起點或指定從入口／出口出發；切換出發點只改變順序，不改變寶箱歸屬。摘要會標明離開端與鑰匙房數。淺藍線是主線，橙色虛線有鑰匙才走，淡金點線依現場走階梯。路線依底圖估計，寶箱依當場生成；開關、路線選擇與出發點會保存並同步到覆蓋地圖。</p>
-<p>寶箱順序數字使用較大的圓形編號，便於在覆蓋地圖辨認；編號表示建議查看順序，不代表已開箱。</p>
-<p>左上角側欄圖示可切換左側資訊，滑鼠停留可查看「收合側欄／展開側欄」提示。視窗尺寸不變，地圖會符合剩餘空間，並記住收合狀態。主視窗工具列可開啟搶蛋 Discord，側欄底部可開啟說明。</p>
-<p>地圖以地宮編號識別。標記使用遊戲原始圖示，首領使用星法師肖像。</p>
-<p>「置頂」調整主視窗。只有按「地圖模式」才會開啟獨立的覆蓋地圖，主視窗會保留，可繼續調整篩選或最小化。再按「地圖模式」，或按覆蓋地圖右上 ×，即可關閉覆蓋地圖；關閉主視窗則一起結束。</p>
-<p>開啟地圖模式後，按 F1 暫時隱藏覆蓋地圖，再按 F1 恢復。遊戲在前景、主視窗最小化時也能使用；隱藏時可點擊下方遊戲，位置、縮放、篩選與追蹤狀態均保留。長按只切換一次。完全關閉地圖模式後會釋放 F1，重新開啟先按「地圖模式」。若 F1 被其他程式占用，工具會提示，仍可用原本按鈕關閉地圖。</p>
-<p>覆蓋地圖是透明正方形視窗；1920 × 1080 遊戲畫面預設為 590 × 590 像素，2560 × 1440 自動切換為 790 × 790 像素，放在遊戲畫面左下。會持續跟隨遊戲視窗移動，遊戲最小化時隱藏、還原後跟回。拖曳上方移動圖示可調整相對位置，遊戲移動後仍保留；縮小遊戲時會限制在視窗內。尚未開啟遊戲時先放在螢幕左側，找到遊戲後自動跟隨。</p>
-<p>主視窗「覆蓋大小」可拖動調整至 50–150%，按「重置大小」回到 100%。覆蓋地圖上方的大小滑桿在放開後才調整視窗，避免滑桿跟著視窗移動。兩邊設定同步並保存。</p>
-<p>滾輪縮放、拖曳地圖平移。遊戲鎖住滑鼠時先按 Alt 顯示游標，再操作覆蓋地圖。兩個視窗同步地圖、篩選與人物位置，以及辨識／追蹤開關。</p>
-<p>覆蓋地圖右上方顯示辨識與追蹤開關，不顯示「手動選圖」狀態文字、地宮編號或右下角置中按鈕。一般提示顯示 5 秒後消失。候選位置不代表當場一定出現；切換難度會篩選蛋巢及其中的怪物模組，其他點位保留各候選群組。</p>
-<p>遊戲建議使用無邊框視窗或視窗模式；獨佔全螢幕下的覆蓋尚未驗證。</p>
-<p>「辨識」是工具列開關，開啟即自動連接伊莫，不開彈窗。確認地圖後立即鎖定並停止辨識，本場不再自動換圖。每次重新開啟辨識都會清除上一場鎖定與舊候選，重新讀取本場。側欄「辨識、追蹤設定與候選」可匯入截圖或調整擷取範圍。</p>
-<p>遊戲在前景時按 M，會短暫加強取樣 2.4 秒、最多每秒 5 張；平常未鎖定時約每秒 1 張。重複畫面會略過，鎖定後只追蹤該地宮的位置。M 按鍵只用來觸發取樣，仍會檢查畫面是否為地圖。</p>
-<p>使用預設拉到最遠的 M 地圖時，先按正門／側門距離與角度縮小候選，再以地形與門位交叉確認。正門被遮住時，可使用初始地形與側門位置確認；門位無法使用時，要求分布夠廣且明顯勝過其他候選的地形。線索不足時保留預覽，沒有固定 200 點限制。</p>
-<p>「辨識」只負責判斷地宮，「追蹤」獨立判斷小地圖上的人物位置。找到正確地宮後可關閉辨識、開啟追蹤，也可手動選圖後直接追蹤。只載入目前地圖，優先處理最新畫面；僅追蹤時先裁切小地圖與 M 地圖標題區再編碼，最高每秒取樣 10 張。實際更新速度取決於畫面與電腦效能。</p>
-<p>人物位置顯示為薄荷綠圓點與金色漣漪。主視窗按 ◎ 可置中人物；1.5 秒無法取得新位置時轉為灰色空心圈。關閉追蹤會清除人物標記；重新開啟辨識會清除舊位置，追蹤開關保持獨立。迷霧、相似房間或範圍未對準時可能無法定位；不辨識樓層，也不判定寶箱是否已取得。</p>
-<p>惡夢與混沌地圖池的 7 張單張底圖已內嵌。「顯示房間模組補充點」預設開啟；虛線外圈是同房間模板推論的候選位置，關閉後只顯示地圖直接引用的點位。篩選設定會自動保存，同一個 Windows 帳號更新版本或移動應用資料夾後仍會沿用。首次升級請先關閉舊版，並將新版放在舊版旁邊，以便自動匯入設定。需 Windows 10/11 x64 與 Microsoft Edge WebView2 Runtime。</p>
-<p>側欄最下方的 DEBUG LOG 預設關閉。需要排查辨識時再開啟；關閉後停止新增診斷紀錄，先前產生的檔案仍會保留。</p>
-<button id="close-help">關閉</button></dialog><noscript>''')
+html = html.replace('<noscript>', (ROOT/'app/help.html').read_text(encoding='utf8')+'<noscript>')
 html = html.replace('<script src="viewer.js"></script>', '<script src="viewer.js"></script><script src="desktop.js"></script><script src="map-header.js"></script><script src="recognition-screen.js"></script><script src="recognition.js"></script>')
 html = html.replace('，或直接開啟 candidates.csv 檢視點位', '')
 overlay_html = html.replace('<body class="desktop-app">', '<body class="desktop-app compact overlay">')
@@ -122,6 +97,7 @@ main_html = main_html.replace('<button id="zoom-in" aria-label="放大地圖">�
 (OUTPUT/'overlay.html').write_text(overlay_html, encoding='utf8')
 
 stage_app_icons(OUTPUT)
+stage_i18n(OUTPUT)
 inventory = {str(p.relative_to(OUTPUT)).replace('\\','/'): hashlib.sha256(p.read_bytes()).hexdigest()
              for p in OUTPUT.rglob('*') if p.is_file()}
 (ROOT/'app/asset-manifest.json').write_text(json.dumps(dict(maps=len(maps), candidates=sum(len(m['pins']) for m in maps),

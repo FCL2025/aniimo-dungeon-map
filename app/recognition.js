@@ -1,5 +1,6 @@
 'use strict';
 (()=>{
+  const {msg:m,bind:b}=window.I18n;
   const el=id=>document.getElementById(id),invoke=window.__TAURI__?.core.invoke;
   const defaults={mini:[.0427,.0389,.1042,.1852],map:[0,0,1,1]},frames=new MapScreen.FrameQueue();
   let regions=structuredClone(defaults),running=false,trackingRunning=false,capturing=false,changing=false;
@@ -11,14 +12,14 @@
   const stats={captured:0,analyzed:0,tracked:0,duplicates:0,queuePeak:0,replacedTrackingFrames:0},preview=el('capture-preview'),context=preview.getContext('2d');
   try{const saved=JSON.parse(localStorage.getItem('aniimo-capture-regions-v1'));if(saved&&['mini','map'].every(k=>Array.isArray(saved[k])&&saved[k].length===4&&saved[k].every(v=>Number.isFinite(v)&&v>=0&&v<=1)&&saved[k][2]>.01&&saved[k][3]>.01&&saved[k][0]+saved[k][2]<=1.001&&saved[k][1]+saved[k][3]<=1.001))regions=saved;}catch{}
   function message(title,text,state='waiting'){
-    el('recognition-state').textContent=title;el('recognition-message').textContent=text;
-    const badge=el('live-status');badge.textContent=pinned?'已鎖定':state==='preview'?'候選預覽':running?'辨識中':'手動選圖';
-    badge.title=title+' · '+text;badge.dataset.state=pinned?'locked':state;
-    const key=[title,state,pinned||selected||''].join(':');if(key!==lastNoticeKey){lastNoticeKey=key;window.showMapNotice?.(title+' · '+text);}
+    b(el('recognition-state'),title);b(el('recognition-message'),text);
+    const badge=el('live-status');badge.dataset.statusKey=pinned?'status.locked':state==='preview'?'status.preview':running?'status.recognizing':'status.manual';b(badge,m(badge.dataset.statusKey));
+    b(badge,m('combined',{title,text}),'title');badge.dataset.state=pinned?'locked':state;
+    const key=JSON.stringify([title,state,pinned||selected||'']);if(key!==lastNoticeKey){lastNoticeKey=key;window.showMapNotice?.(m('combined',{title,text}));}
     window.dispatchEvent(new Event('recognition-ui'));
     window.dispatchEvent(new Event('tracking-ui'));
   }
-  function trackingMessage(text){el('tracking-message').textContent=text;}
+  function trackingMessage(text){b(el('tracking-message'),I18n.error(text));}
   function diagnosis(){
     if(!mapReady)return {code:'worker_initializing',text:'辨識引擎仍在載入地圖資料。'};
     if(!capturing&&!lastFrame)return {code:'capture_not_started',text:'遊戲畫面擷取尚未開始。'};
@@ -32,7 +33,7 @@
   }
   async function recordDiagnostic(event,error=null){
     if(!invoke||!mapAttemptStartedAt||!el('debug-log')?.checked)return;
-    const now=Date.now(),reason=error?{code:'error',text:String(error)}:diagnosis();
+    const now=Date.now(),reason=error?{code:'error',text:I18n.format(I18n.error(error))}:diagnosis();
     const entry={at:new Date(now).toISOString(),event,elapsedMs:now-mapAttemptStartedAt,reason,
       capture:{active:capturing,window:lastGameWindow,frames:stats.captured-attemptCaptured,lastMessage:lastCaptureMessage,
         frame:lastFrame?{width:lastFrame.width,height:lastFrame.height,source:lastFrame.source}:null,mapRegion:regions.map},
@@ -42,12 +43,12 @@
       result:lastResult?{selected:lastResult.selected,locked:lastResult.locked,lockReason:lastResult.lockReason,previewMatches:lastResult.previewMatches,queryFeatures:lastResult.queryFeatures,
         candidates:lastResult.ranked?.slice(0,3).map(c=>({id:c.id,inliers:c.inliers,cells:c.cells})),
         search:lastResult.search?{strategy:lastResult.search.strategy,evaluated:lastResult.search.evaluated,total:lastResult.search.total,fallback:lastResult.search.fallback}:null}:null};
-    try{diagnosticPath=await invoke('append_recognition_log',{entry});el('recognition-log').textContent='辨識診斷 log：'+diagnosticPath;}
-    catch(writeError){el('recognition-log').textContent='無法寫入辨識診斷 log：'+String(writeError);}
+    try{diagnosticPath=await invoke('append_recognition_log',{entry});b(el('recognition-log'),m('log.path',{path:diagnosticPath}));}
+    catch(writeError){b(el('recognition-log'),m('error.operation',{error:I18n.error(writeError)}));}
   }
   function renderSwitch(){
-    for(const [id,on,label] of [['recognition-button',running,'辨識'],['tracking-button',trackingRunning,'追蹤']]){
-      el(id).textContent=label+'：'+(on?'開':'關');el(id).title=label==='辨識'?(on?'關閉地圖辨識':'重新辨識本場地宮'):(on?'關閉':'開啟')+'小地圖人物追蹤';
+    for(const [id,on,label] of [['recognition-button',running,'recognition'],['tracking-button',trackingRunning,'tracking']]){
+      b(el(id),m('switch',{label:m(label),state:m(on?'on':'off')}));b(el(id),m(label+'.'+(on?'disable':'enable')),'title');
       el(id).setAttribute('aria-checked',String(on));el(id).disabled=changing;
     }
     el('game-window').disabled=capturing||changing;el('map').disabled=running&&!!pinned;el('import-map').disabled=changing;
@@ -56,28 +57,29 @@
   }
   function clearTracking(){lastLocationAt=0;lastTrackingResult=null;window.dispatchEvent(new CustomEvent('tracking-update',{detail:null}));}
   function disposeMap(){clearTimeout(mapWatchdog);mapWatchdog=null;mapWorker?.terminate();mapWorker=null;mapReady=false;mapBusy=false;frames.clear();}
-  function watchMapWorker(worker,stage){
+  function watchMapWorker(worker){
     clearTimeout(mapWatchdog);
-    mapWatchdog=setTimeout(()=>{if(mapWorker===worker)workerFailure('map',`辨識引擎在${stage}超過 30 秒沒有回應。請重新開啟辨識；若持續發生，請提供擷取預覽與程式版本。`);},30000);
+    mapWatchdog=setTimeout(()=>{
+  const {msg:m,bind:b}=window.I18n;if(mapWorker===worker)workerFailure('map',m('error.timeout'));},30000);
   }
   function disposeTracker(){trackWorker?.terminate();trackWorker=null;trackReady=false;trackBusy=false;pendingTrack=null;trackMap=null;}
   function workerFailure(kind,error){
-    if(kind==='map'){void recordDiagnostic('worker_failure',error);running=false;disposeMap();message('辨識失敗',String(error));}
-    else{trackingRunning=false;disposeTracker();clearTracking();trackingMessage('追蹤失敗：'+String(error));window.showMapNotice?.('追蹤失敗：'+String(error));}
+    if(kind==='map'){void recordDiagnostic('worker_failure',error);running=false;disposeMap();message(m('recognition.failed'),I18n.error(error));}
+    else{trackingRunning=false;disposeTracker();clearTracking();trackingMessage(m('tracking.failed',{error:I18n.error(error)}));window.showMapNotice?.(m('tracking.failed',{error:I18n.error(error)}));}
     renderSwitch();syncCapture().catch(captureFailure);
   }
   function initializeMap(){
-    if(mapWorker)return;message('準備辨識資料','正在載入惡夢／混沌地宮的 7 張地圖。');
+    if(mapWorker)return;message(m('recognition.loading'),m('recognition.loadingMaps'));
     lastResult=null;lastScreen=null;lastFrame=null;diagnosticPath=null;el('recognition-log').textContent='';
     mapAttemptStartedAt=Date.now();nextDiagnosticAt=mapAttemptStartedAt+5000;diagnosticCount=0;
     attemptCaptured=stats.captured;attemptAnalyzed=stats.analyzed;mapProgress=null;mapRequestStartedAt=0;lastCaptureMessage=null;
     const worker=mapWorker=new Worker('recognition-worker.js');
     worker.onerror=e=>{if(mapWorker===worker)workerFailure('map',e.message);};
-    worker.onmessageerror=()=>{if(mapWorker===worker)workerFailure('map','辨識引擎回傳的資料無法讀取。');};
+    worker.onmessageerror=()=>{if(mapWorker===worker)workerFailure('map',m('error.workerData'));};
     worker.onmessage=({data:r})=>{
       if(mapWorker!==worker)return;
-      if(r.type==='progress'){mapProgress={loaded:r.loaded,total:r.total};watchMapWorker(worker,'載入地圖資料');message('準備辨識資料',`${r.loaded} / ${r.total} 張地宮`);return;}
-      if(r.type==='ready'){clearTimeout(mapWatchdog);mapWatchdog=null;mapReady=true;message('等待 M 地圖','辨識資料已載入；請在遊戲中開啟 M 地圖。');pumpMap();return;}
+      if(r.type==='progress'){mapProgress={loaded:r.loaded,total:r.total};watchMapWorker(worker);message(m('recognition.loading'),m('recognition.progress',{loaded:r.loaded,total:r.total}));return;}
+      if(r.type==='ready'){clearTimeout(mapWatchdog);mapWatchdog=null;mapReady=true;message(m('recognition.wait'),m('recognition.ready'));pumpMap();return;}
       if(r.type==='error'){workerFailure('map',r.message);return;}
       if(r.type!=='result'||r.request!==mapRequest)return;
       clearTimeout(mapWatchdog);mapWatchdog=null;
@@ -85,23 +87,23 @@
     };
     worker.postMessage({type:'init',maps:DUNGEON_DATA.maps.map(m=>({id:m.id,size:m.size,portalGeometry:m.portalGeometry,image:new URL(m.image,location.href).href})),
       portalIcons:Object.fromEntries(['entrance','exit'].map(kind=>[kind,new URL(DUNGEON_DATA.icons.assets[DUNGEON_DATA.icons.categories[kind]].image,location.href).href]))});
-    watchMapWorker(worker,'載入地圖資料');
+    watchMapWorker(worker);
   }
   function initializeTracker(){
     if(!trackingRunning)return;const map=DUNGEON_DATA.maps.find(m=>m.id===Number(el('map').value));
     if(!map||(trackWorker&&trackMap===map.id))return;
-    disposeTracker();clearTracking();trackMap=map.id;trackingMessage(`準備追蹤地宮 ${map.id}，只載入目前地圖。`);
+    disposeTracker();clearTracking();trackMap=map.id;trackingMessage(m('tracking.loading',{id:map.id}));
     const worker=trackWorker=new Worker('tracking-worker.js');
     worker.onerror=e=>{if(trackWorker===worker)workerFailure('track',e.message);};
     worker.onmessage=({data:r})=>{
       if(trackWorker!==worker)return;
-      if(r.type==='ready'){trackReady=true;trackingMessage(`追蹤地宮 ${trackMap}：等待小地圖畫面。`);pumpTrack();return;}
+      if(r.type==='ready'){trackReady=true;trackingMessage(m('tracking.waitMap',{id:trackMap}));pumpTrack();return;}
       if(r.type==='error'){workerFailure('track',r.message);return;}
       if(r.type!=='result'||r.request!==trackRequest)return;trackBusy=false;
       if(trackingRunning&&r.mapId===Number(el('map').value)){
         lastTrackingResult=r;
-        if(r.location&&Date.now()-r.capturedAt<1500){lastLocationAt=r.capturedAt;window.dispatchEvent(new CustomEvent('tracking-update',{detail:{...r.location,at:r.capturedAt}}));trackingMessage(`地宮 ${r.mapId} · ${r.elapsedMs} ms · ${r.location.inliers} 個吻合點`);}
-        else trackingMessage(r.isMap?'請關閉 M 地圖，回到遊玩畫面追蹤人物。':`追蹤地宮 ${r.mapId}：等待足夠的小地圖地形。`);
+        if(r.location&&Date.now()-r.capturedAt<1500){lastLocationAt=r.capturedAt;window.dispatchEvent(new CustomEvent('tracking-update',{detail:{...r.location,at:r.capturedAt}}));trackingMessage(m('combined',{title:m('recognition.matches',{id:r.mapId,count:r.location.inliers}),text:r.elapsedMs+' ms'}));}
+        else trackingMessage(r.isMap?m('tracking.closeMap'):m('tracking.waitMap',{id:r.mapId}));
       }pumpTrack();
     };
     worker.postMessage({type:'init',map:{id:map.id,image:new URL(map.image,location.href).href}});
@@ -109,7 +111,7 @@
   function pumpMap(){
     if(!mapWorker||!mapReady||mapBusy)return;const frame=frames.shift();if(!frame)return;mapBusy=true;stats.analyzed++;
     mapRequestStartedAt=Date.now();mapWorker.postMessage({type:'analyze',request:++mapRequest,image:frame.image,capturedAt:frame.capturedAt,source:frame.source,bigRegion:regions.map});
-    watchMapWorker(mapWorker,'比對地圖畫面');
+    watchMapWorker(mapWorker);
   }
   function pumpTrack(){
     if(!trackingRunning||!trackReady||trackBusy||!pendingTrack)return;const frame=pendingTrack;pendingTrack=null;
@@ -130,7 +132,7 @@
     if(previewOpen()&&full){previewImage=img;el('capture-empty').hidden=true;drawPreview();}
     if(!analyzeMap||worker!==mapWorker)return;lastScreen=MapScreen.inspect(img);Object.assign(frame,lastScreen);if(frame.source==='import')frame.mapOpen=true;
     if(!frame.mapOpen){
-      if(++nonMapFrames>=2&&!selected)message('等待 M 地圖','遊戲畫面已擷取，但未偵測到 M 地圖。若地圖已開啟，請提供擷取預覽截圖並檢查辨識範圍。');
+      if(++nonMapFrames>=2&&!selected)message(m('recognition.wait'),m('recognition.notMap'));
       return;
     }
     nonMapFrames=0;
@@ -138,22 +140,23 @@
   }
   function selectMap(id){if(el('map').value!==String(id)){selectingMap=true;el('map').value=String(id);el('map').dispatchEvent(new Event('change',{bubbles:true}));selectingMap=false;}}
   function renderResult(r){
-    if(r.ranked.length){el('recognition-candidates').replaceChildren();for(const c of r.ranked){const li=document.createElement('li');li.textContent=`地宮 ${c.id} · ${c.inliers} 個吻合點`;el('recognition-candidates').append(li);}}
-    el('recognition-timing').textContent=`本次地圖比對 ${(r.elapsedMs/1000).toFixed(2)} 秒 · ${r.observations} 組畫面`;
+    if(r.ranked.length){el('recognition-candidates').replaceChildren();for(const c of r.ranked){const li=document.createElement('li');b(li,m('recognition.matches',{id:c.id,count:c.inliers}));el('recognition-candidates').append(li);}}
+    b(el('recognition-timing'),m('recognition.timing',{seconds:(r.elapsedMs/1000).toFixed(2),count:r.observations}));
     const lockedBefore=pinned;pinned=r.locked;if(r.selected){selected=r.selected;selectMap(selected);}renderSwitch();
     if(r.locked&&diagnosticCount)void recordDiagnostic('recognized');
-    if(r.locked)message('本場已鎖定',`地宮 ${r.locked} · 已停止地圖辨識，可使用「追蹤」更新人物位置。`,'locked');
-    else if(r.selected)message('候選預覽',`地宮 ${r.selected} · ${r.previewMatches} 個吻合點，等待確認。`,'preview');
-    else message('地圖線索不足','已偵測到 M 地圖，但目前沒有足夠地形線索；請探索後再開圖。');
+    if(r.locked)message(m('status.locked'),m('recognition.locked',{id:r.locked}),'locked');
+    else if(r.selected)message(m('status.preview'),m('recognition.matches',{id:r.selected,count:r.previewMatches}),'preview');
+    else message(m('recognition.insufficient'),m('recognition.explore'));
     if(pinned!==lockedBefore)syncCapture().catch(captureFailure);
   }
   async function refresh(){
-    if(!invoke){el('game-window').replaceChildren(new Option('視窗擷取需桌面版',''));return [];}
+    if(!invoke){const option=new Option('','');b(option,m('error.desktop'));el('game-window').replaceChildren(option);return [];}
     const windows=await invoke('game_windows'),select=el('game-window'),old=select.value;select.replaceChildren();for(const w of windows)select.add(new Option(w.title,w.id));
-    if(!windows.length)select.add(new Option('找不到遊戲主視窗，請先進入伊莫',''));else if(windows.some(w=>w.id===old))select.value=old;return windows;
+    if(!windows.length){const option=new Option('','');b(option,m('game.missing'));select.add(option);}else if(windows.some(w=>w.id===old))select.value=old;return windows;
   }
   function syncCapture(){
-    configuration=configuration.catch(()=>{}).then(async()=>{
+    configuration=configuration.catch(()=>{
+  const {msg:m,bind:b}=window.I18n;}).then(async()=>{
       if(!invoke)return;
       if(!running&&!trackingRunning||pinned&&!trackingRunning&&!previewOpen()){
         if(capturing){capturing=false;sessionToken++;clearTimeout(pollTimer);await invoke('stop_capture');}renderSwitch();return;
@@ -161,7 +164,7 @@
       const starting=!capturing;
       if(starting){
         lastGameWindow=null;
-        const windows=await refresh(),id=el('game-window').value;if(!id)throw Error('找不到伊莫遊戲主視窗，請進入遊戲後再開啟。');
+        const windows=await refresh(),id=el('game-window').value;if(!id)throw m('game.missing');
         if(lastGameId&&lastGameId!==id){pinned=null;selected=null;disposeMap();disposeTracker();clearTracking();if(running)initializeMap();if(trackingRunning)initializeTracker();}
         await invoke('start_capture',{windowId:id});lastGameId=id;lastGameWindow=windows.find(w=>w.id===id)||null;sequence=0;capturing=true;lastFrame=null;
       }
@@ -172,7 +175,8 @@
   }
   function captureFailure(error){
     if(running||mapWorker)void recordDiagnostic('capture_failure',error);
-    running=false;trackingRunning=false;disposeMap();disposeTracker();clearTracking();renderSwitch();message('擷取已停止',String(error));trackingMessage('擷取已停止，可重新開啟追蹤。');syncCapture().catch(()=>{});
+    running=false;trackingRunning=false;disposeMap();disposeTracker();clearTracking();renderSwitch();message(m('capture.stopped'),I18n.error(error));trackingMessage(m('capture.restart'));syncCapture().catch(()=>{
+  const {msg:m,bind:b}=window.I18n;});
   }
   async function poll(token){
     if(!capturing||token!==sessionToken)return;
@@ -181,7 +185,7 @@
       const generation=importToken;
       const reply=await invoke('capture_frame',{after:sequence,requestFrame});if(!capturing||token!==sessionToken)return;burstUntil=reply.burstUntil||0;mapKeyAt=reply.mapKeyAt||0;
       if(reply.message)lastCaptureMessage=reply.message;else if(reply.frame)lastCaptureMessage=null;
-      if(!reply.running)throw Error(reply.message||'遊戲擷取已結束，請重新開啟。');
+      if(!reply.running)throw reply.message?I18n.error(reply.message):m('capture.restart');
       if(reply.frame){sequence=reply.frame.sequence;if(generation===importToken){stats.captured++;await offer({...reply.frame,source:'live'});}}if(reply.message&&trackingRunning)trackingMessage(reply.message);
     }catch(error){if(token===sessionToken)captureFailure(error);return;}
     if(capturing&&token===sessionToken)pollTimer=setTimeout(()=>poll(token),trackingRunning?25:100);
@@ -189,7 +193,7 @@
   async function toggle(kind){
     if(changing)return;changing=true;renderSwitch();
     try{
-      if(!invoke)throw Error('即時擷取需桌面版；可在側欄匯入 M 地圖截圖。');
+      if(!invoke)throw m('error.desktop');
       if(kind==='map'){
         running=!running;importToken++;
         if(running){
@@ -198,9 +202,9 @@
           disposeMap();disposeTracker();clearTracking();
           el('recognition-candidates').replaceChildren();el('recognition-timing').textContent='';
           initializeMap();if(trackingRunning)initializeTracker();
-          message('重新辨識本場','已清除上一場鎖定，請開啟遊戲 M 地圖。');
-        }else{disposeMap();message('辨識已關閉',pinned?`保留地宮 ${pinned}供追蹤；再次開啟辨識會重新判斷本場。`:'可手動選圖，或再次開啟辨識。',pinned?'locked':'waiting');}
-      }else{trackingRunning=!trackingRunning;if(trackingRunning)initializeTracker();else{disposeTracker();clearTracking();trackingMessage('人物追蹤已關閉。');}}
+          message(m('recognition.reset'),m('recognition.resetHint'));
+        }else{disposeMap();message(m('recognition.off'),pinned?m('recognition.retained',{id:pinned}):m('recognition.manualHint'),pinned?'locked':'waiting');}
+      }else{trackingRunning=!trackingRunning;if(trackingRunning)initializeTracker();else{disposeTracker();clearTracking();trackingMessage(m('tracking.off'));}}
       await syncCapture();
     }catch(error){captureFailure(error);}finally{changing=false;renderSwitch();}
   }
@@ -209,15 +213,16 @@
     if(!selectingMap){pinned=null;selected=Number(el('map').value);disposeMap();if(running)initializeMap();}
     clearTracking();if(trackingRunning)initializeTracker();nextCaptureAt=0;renderSwitch();if(capturing)syncCapture().catch(captureFailure);
   });
-  el('refresh-game').onclick=()=>refresh().catch(e=>message('無法尋找遊戲',String(e)));
-  el('recognition-settings').ontoggle=()=>{if(el('recognition-settings').open){refresh().catch(()=>{});drawPreview();}if(capturing)syncCapture().catch(captureFailure);};
+  el('refresh-game').onclick=()=>refresh().catch(e=>message(m('recognition.failed'),I18n.error(e)));
+  el('recognition-settings').ontoggle=()=>{if(el('recognition-settings').open){refresh().catch(()=>{
+  const {msg:m,bind:b}=window.I18n;});drawPreview();}if(capturing)syncCapture().catch(captureFailure);};
   el('capture-details').ontoggle=()=>{drawPreview();if(capturing)syncCapture().catch(captureFailure);};
   el('import-map').onclick=()=>el('map-screenshot').click();
   el('map-screenshot').onchange=async event=>{
-    const file=event.target.files[0];event.target.value='';if(!file)return;if(file.size>30*1024*1024){message('截圖過大','請使用小於 30 MB 的 PNG、JPG 或 WebP。');return;}
+    const file=event.target.files[0];event.target.value='';if(!file)return;if(file.size>30*1024*1024){message(m('import.large'),m('import.limit'));return;}
     const token=++importToken;running=false;disposeMap();renderSwitch();
     try{await syncCapture();const image=await new Promise((resolve,reject)=>{const reader=new FileReader();reader.onload=()=>resolve(reader.result);reader.onerror=reject;reader.readAsDataURL(file);});if(token!==importToken)return;initializeMap();await offer({image,capturedAt:Date.now(),source:'import'});}
-    catch(error){message('無法匯入截圖',String(error));}
+    catch(error){message(m('import.failed'),I18n.error(error));}
   };
   function regionsChanged(){importToken++;pinned=null;disposeMap();if(running)initializeMap();disposeTracker();clearTracking();if(trackingRunning)initializeTracker();if(capturing)syncCapture().catch(captureFailure);renderSwitch();}
   el('capture-region').onchange=()=>preview.classList.toggle('selecting',el('capture-region').value!=='view');
@@ -230,8 +235,10 @@
   };
   preview.onpointercancel=()=>{regionDrag=null;drawPreview();};
   el('reset-regions').onclick=()=>{regions=structuredClone(defaults);try{localStorage.removeItem('aniimo-capture-regions-v1');}catch{}regionsChanged();drawPreview();};
-  setInterval(()=>{if(lastLocationAt&&Date.now()-lastLocationAt>1500)window.dispatchEvent(new CustomEvent('tracking-stale'));},250);
   setInterval(()=>{
+  const {msg:m,bind:b}=window.I18n;if(lastLocationAt&&Date.now()-lastLocationAt>1500)window.dispatchEvent(new CustomEvent('tracking-stale'));},250);
+  setInterval(()=>{
+  const {msg:m,bind:b}=window.I18n;
     const now=Date.now();if(!el('debug-log')?.checked||!mapWorker||pinned||!mapAttemptStartedAt||now<nextDiagnosticAt)return;
     diagnosticCount++;nextDiagnosticAt=now+10000;void recordDiagnostic('slow');
   },250);

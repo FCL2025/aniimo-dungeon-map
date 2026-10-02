@@ -71,6 +71,16 @@ GitHub Release 發布以下附件：
 
 ## 技術資料
 
+### 多語介面
+
+`app/locales/<語言代碼>.json` 保存 13 種語言，`bindings.json` 對應靜態介面文字。動態訊息使用 `I18n.msg(key, params)` 與 `I18n.bind(node, message)`；參數可以巢狀使用訊息，讓語序依語言調整。翻譯只寫入文字或屬性，不插入 HTML。
+
+`scripts/build_i18n.py` 在兩種前端建置時驗證所有鍵與參數一致，將語言檔打包為本地 `locales.js`。不需網路或額外翻譯服務。找不到翻譯時依序使用英文、繁體中文；未知語言設定使用繁體中文。偏好鍵為 `aniimo-language-v1`，不取代既有地圖設定。
+
+切換語言更新既有文字節點，不重建控制項或重啟辨識工作執行緒。主視窗經由 `map-view-state` 同步語言至覆蓋地圖；狀態判斷使用 `statusKey`，不比對翻譯後的文字。
+
+將 `scripts/tests/i18n-browser.js` 交由 agent-browser `eval --stdin` 可驗證選單、翻譯與地圖狀態保留。`node scripts/tests/i18n-native.cjs <EXE 路徑>` 會用隔離 profile、隱藏視窗驗證桌面版的 13 語言、覆蓋同步、標題與重新啟動後的設定保存，並將結果輸出至 `dist/i18n-preview/`。辨識與追蹤不中斷的測試使用假擷取邊界，不連接遊戲。
+
 - [地圖資料解析](../docs/解析報告.md)
 - [人物追蹤](../docs/人物追蹤.md)
 - [正門／側門辨識加速與驗證](../docs/辨識加速.md)

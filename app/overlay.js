@@ -1,14 +1,15 @@
 'use strict';
 (() => {
+  const { msg, bind } = window.I18n;
   const el = id => document.getElementById(id), { core, event } = window.__TAURI__;
   let noticeTimer, lastNotice = '', viewKey = '', lastTracking = '';
   function notice(text) {
-    clearTimeout(noticeTimer); el('app-status').textContent = text; el('app-status').hidden = false;
+    clearTimeout(noticeTimer); bind(el('app-status'), text); el('app-status').hidden = false;
     noticeTimer = setTimeout(() => { el('app-status').hidden = true; el('app-status').textContent = ''; }, 5000);
   }
   document.querySelector('.notice').hidden = true;
-  el('recognition-button').textContent = '辨識';
-  el('tracking-button').textContent = '追蹤';
+  bind(el('recognition-button'), msg('recognition'));
+  bind(el('tracking-button'), msg('tracking'));
   const size = el('overlay-size'), sizeKey = 'aniimo-overlay-size-v1';
   const savedSize = Number(localStorage.getItem(sizeKey));
   if (savedSize >= 50 && savedSize <= 150 && savedSize % 10 === 0) size.value = String(savedSize);
@@ -18,7 +19,7 @@
     window.overlaySizeRatio = percent / 100;
     window.dispatchEvent(new Event('overlay-size-changed'));
     size.setAttribute('aria-valuetext', percent + '%');
-    size.title = '覆蓋地圖大小 ' + percent + '%';
+    bind(size, msg('overlay.sizeValue', { value: percent }), 'title');
   };
   const applyPendingSize = async () => {
     if (applyingSize) return;
@@ -27,7 +28,7 @@
       const percent = pendingSize;
       pendingSize = null;
       try { await core.invoke('set_overlay_scale', { percent }); }
-      catch (error) { notice('無法調整覆蓋地圖大小：' + String(error)); }
+      catch (error) { notice(msg('error.operation', { error: I18n.error(error) })); }
     }
     applyingSize = false;
   };
@@ -41,7 +42,7 @@
   };
   size.addEventListener('input', () => {
     size.setAttribute('aria-valuetext', size.value + '%');
-    size.title = '覆蓋地圖大小 ' + size.value + '%（放開後套用）';
+    bind(size, msg('overlay.sizePending', { value: size.value }), 'title');
   });
   size.addEventListener('change', () => resizeOverlay(Number(size.value), true));
   const sizeListener = event.listen('map-overlay-size-request', ({ payload }) => resizeOverlay(Number(payload), false));
@@ -57,6 +58,7 @@
   };
   el('overlay-drag').onmousedown = e => { if (e.button === 0) { e.preventDefault(); core.invoke('drag_window').catch(error => notice(String(error))); } };
   window.overlayReady = Promise.all([sizeListener, event.listen('map-view-state', ({ payload: state }) => {
+    I18n.setLocale(state.locale, { persist: false });
     const nextKey = JSON.stringify([state.map, state.difficulty, state.iconSize, state.supplements, state.bestRoute, state.routeStart, state.routeNumber, state.categories]);
     if (nextKey !== viewKey) {
       const mapChanged = el('map').value !== String(state.map);
@@ -73,20 +75,20 @@
     }
     const trackingKey = JSON.stringify(state.tracking);
     if (trackingKey !== lastTracking) { window.dispatchEvent(new CustomEvent('tracking-update', { detail: state.tracking })); lastTracking = trackingKey; }
-    const manualSelection = state.status === '手動選圖';
+    const manualSelection = state.statusKey === 'status.manual';
     el('live-status').textContent = manualSelection ? '' : state.status;
     el('live-status').title = manualSelection ? '' : state.statusTitle;
     el('live-status').dataset.state = state.statusState || 'waiting';
     el('recognition-button').setAttribute('aria-checked', String(state.recognition));
-    el('recognition-button').title = state.recognition ? '關閉辨識' : '重新辨識本場地宮';
+    bind(el('recognition-button'), msg(state.recognition ? 'recognition.disable' : 'recognition.enable'), 'title');
     el('recognition-button').disabled = state.recognitionBusy;
     el('tracking-button').setAttribute('aria-checked', String(!!state.trackingEnabled));
-    el('tracking-button').title = state.trackingEnabled ? '關閉人物追蹤' : '開啟人物追蹤';
+    bind(el('tracking-button'), msg(state.trackingEnabled ? 'tracking.disable' : 'tracking.enable'), 'title');
     el('tracking-button').disabled = state.trackingBusy;
     window.dispatchEvent(new Event('tracking-ui'));
     const noticeKey = JSON.stringify([state.map, state.status, state.statusState]);
     if (noticeKey !== lastNotice && state.statusTitle && !manualSelection) notice(state.statusTitle);
     lastNotice = noticeKey;
-  })]).then(() => event.emitTo('main', 'map-overlay-ready')).catch(error => notice('無法同步主視窗：' + String(error)));
+  })]).then(() => event.emitTo('main', 'map-overlay-ready')).catch(error => notice(msg('error.operation', { error: I18n.error(error) })));
   setInterval(() => { const point = window.getTrackingSnapshot?.(); if (point && !point.stale && Date.now() - point.at > 1500) window.dispatchEvent(new CustomEvent('tracking-stale')); }, 250);
 })();

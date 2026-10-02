@@ -5,7 +5,7 @@
   const el=id=>d.getElementById(id),assert=(ok,msg)=>{if(!ok)throw Error(msg);},pause=ms=>new Promise(r=>setTimeout(r,ms));
   const until=async condition=>{for(let i=0;i<100;i++){if(condition())return;await pause(20);}throw Error('Timed out');};
   const workers=[],calls=[],frames=[],positions=[];let active=false;
-  w.DUNGEON_DATA=DUNGEON_DATA;w.MapScreen=MapScreen;w.showMapNotice=()=>{};
+  w.DUNGEON_DATA=DUNGEON_DATA;w.MapScreen=MapScreen;w.I18n=I18n;w.showMapNotice=()=>{};
   w.URL=class extends URL {constructor(url,base){super(url,base==='about:blank'?location.href:base);}};
   w.Worker=class {
     constructor(url){this.url=url;this.messages=[];workers.push(this);}
@@ -38,6 +38,14 @@
     tracker.reply({type:'result',request:latest.request,mapId,capturedAt:latest.capturedAt,elapsedMs:20,location:{mapId,pixel:[850,1250],inliers:20}});
     await el('recognition-button').onclick();await until(()=>state().ready);
     assert(state().running&&state().trackingRunning&&count('start_capture')===1,'Modes did not share one capture session');
+    const activeWorkers=workers.length,activeCalls=calls.filter(c=>c.name!=='capture_frame').length,previousLocale=I18n.locale;
+    for(const locale of ['ja','de','zh-TW','en']){
+      I18n.setLocale(locale);
+      assert(state().running&&state().trackingRunning&&state().capturing,'Language change stopped capture');
+      assert(workers.length===activeWorkers&&calls.filter(c=>c.name!=='capture_frame').length===activeCalls,'Language change restarted a worker or capture');
+      assert(el('recognition-button').textContent===I18n.t('switch',{label:I18n.msg('recognition'),state:I18n.msg('on')}),'Active switch did not translate');
+    }
+    I18n.setLocale(previousLocale);
     assert(tracker.terminated&&positions.at(-1)===null,'Restart kept the previous tracker or position');
     tracker=workers.filter(x=>x.url==='tracking-worker.js').at(-1);
     const recognizer=workers.find(x=>x.url==='recognition-worker.js');
@@ -75,7 +83,7 @@
     assert(state().pinned===20036&&state().queueLength===0,'Recognition-only lock did not stop capture and retain the map');
     await el('recognition-button').onclick();
     await until(()=>!state().capturing);
-    return {passed:true,independentSwitches:true,oneCaptureSession:true,latestFrameOnly:true,positionsAfterRecognitionOff:true,manualMap:true,restartClearsLockAndPosition:true,lateResultIgnored:true,lockStopsCapture:true};
+    return {passed:true,languagePreservesWorkers:true,independentSwitches:true,oneCaptureSession:true,latestFrameOnly:true,positionsAfterRecognitionOff:true,manualMap:true,restartClearsLockAndPosition:true,lateResultIgnored:true,lockStopsCapture:true};
   }catch(error){throw Error(String(error)+' '+JSON.stringify({state:w.recognitionStatus?.(),calls,workers:workers.map(x=>({url:x.url,messages:x.messages,terminated:x.terminated})),message:el('recognition-message').textContent}));}
   finally{iframe.remove();}
 })()

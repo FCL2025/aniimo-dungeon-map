@@ -2,5 +2,5 @@
   "identifier": "main-window",
   "description": "Local dungeon viewer window",
   "windows": ["main", "map-overlay"],
-  "permissions": ["core:default"]
+  "permissions": ["core:default", "core:window:allow-set-title"]
 }
