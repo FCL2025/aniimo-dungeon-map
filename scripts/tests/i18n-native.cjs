@@ -38,6 +38,10 @@ async function stop(app){app.cdp.socket.close();const exited=new Promise(r=>app.
     app=await launch();assert(await app.cdp.evaluate('I18n.locale==="zh-TW"'),'Fresh profile must default to Traditional Chinese');
     report.browser=await app.cdp.evaluate(fs.readFileSync(path.join(__dirname,'i18n-browser.js'),'utf8').replace('requestAnimationFrame(()=>setTimeout(resolve,30))','setTimeout(resolve,60)'));
     report.controller=await app.cdp.evaluate(fs.readFileSync(path.join(__dirname,'tracking-controls-browser.js'),'utf8'));
+    const fixtures=Object.fromEntries(['real-20040-initial.png','minimap-0.jpg'].map(name=>[name,
+      `data:image/${name.endsWith('.png')?'png':'jpeg'};base64,`+fs.readFileSync(path.join(root,'exports/recognition-fixtures',name)).toString('base64')]));
+    await app.cdp.evaluate(`window.recognitionFixtureOverrides=${JSON.stringify(fixtures)}`);
+    report.resolution=await app.cdp.evaluate(fs.readFileSync(path.join(__dirname,'recognition-resolution-browser.js'),'utf8'));
     await app.cdp.evaluate('document.getElementById("compact").click()');
     let page;
     for(let i=0;i<100;i++){page=(await app.pages()).find(p=>p.url.includes('overlay.html'));if(page)break;await wait(100);}
@@ -58,10 +62,23 @@ async function stop(app){app.cdp.socket.close();const exited=new Promise(r=>app.
     await app.cdp.evaluate('document.getElementById("compact").click()');overlay.socket.close();overlay=null;
     await app.cdp.until('document.getElementById("compact").getAttribute("aria-pressed")==="false"');
     assert(!app.cdp.errors.length,'Native runtime errors: '+JSON.stringify(app.cdp.errors));
+    await app.cdp.evaluate(`(()=>{const el=document.getElementById('game-resolution');el.value='21:9';el.dispatchEvent(new Event('change'));})()`);
     await stop(app);app=null;app=await launch();
     const restored=await app.cdp.evaluate('({locale:I18n.locale,settings:JSON.parse(localStorage.getItem("aniimo-dungeon-preferences-v1")),label:document.querySelector("header h1").textContent})');
     assert(restored.locale==='en'&&restored.label==='Dungeon map','Locale did not survive application restart');
     assert(JSON.stringify(restored.settings)===JSON.stringify(before),'Restart altered saved settings');report.restart=true;
+    assert(await app.cdp.evaluate(`document.getElementById('game-resolution').value==='21:9'&&localStorage.getItem('aniimo-game-resolution-v1')==='21:9'`),'Resolution did not survive application restart');
+    report.resolution.restart=true;
+    for(const [mini,expected] of [[[.0427,.0389,.1042,.1852],null],[null,null],[[.2,.1,.15,.2],[.2,.1,.15,.2]]]){
+      await app.cdp.evaluate(`localStorage.setItem('aniimo-capture-regions-v1',JSON.stringify({mini:${JSON.stringify(mini)},map:[0,0,1,1]}));location.reload()`);
+      await app.cdp.until('!!window.desktopReady&&!!window.recognitionStatus');await app.cdp.evaluate('window.desktopReady');
+      assert(await app.cdp.evaluate(`JSON.stringify(recognitionStatus().regions.mini)===${JSON.stringify(JSON.stringify(expected))}`),'Saved minimap migration failed');
+    }
+    report.resolution.savedRegions=true;
+    await app.cdp.evaluate(`localStorage.setItem('aniimo-game-resolution-v1','toString');location.reload()`);
+    await app.cdp.until('!!window.desktopReady&&!!window.recognitionStatus');await app.cdp.evaluate('window.desktopReady');
+    assert(await app.cdp.evaluate(`document.getElementById('game-resolution').value==='16:9'`),'Invalid resolution must fall back to 16:9');
+    report.resolution.invalidSettingFallback=true;
     await app.cdp.evaluate('localStorage.setItem(I18n.storageKey,"invalid-locale");location.reload()');
     await app.cdp.until('!!window.desktopReady&&I18n.locale==="zh-TW"');await app.cdp.evaluate('window.desktopReady');report.invalidLocaleFallback=true;
     await app.cdp.evaluate('document.getElementById("language-button").click()');

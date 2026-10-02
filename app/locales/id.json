@@ -63,6 +63,8 @@
   "recognition.settings": "Pengenalan, pelacakan, dan kandidat",
   "game.window": "Jendela game",
   "game.auto": "Cari Aniimo otomatis",
+  "resolution.label": "Resolusi game",
+  "resolution.hint": "Untuk 2560×1440 dan resolusi 16:9 lainnya, pilih 1920×1080.",
   "refresh": "Segarkan",
   "import": "Impor tangkapan peta M",
   "recognition.off": "Pengenalan nonaktif",

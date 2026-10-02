@@ -2,7 +2,11 @@
 (()=>{
   const {msg:m,bind:b}=window.I18n;
   const el=id=>document.getElementById(id),invoke=window.__TAURI__?.core.invoke;
-  const defaults={mini:[.0427,.0389,.1042,.1852],map:[0,0,1,1]},frames=new MapScreen.FrameQueue();
+  // mini=null follows the selected game resolution; a dragged box is kept as-is.
+  const defaults={mini:null,map:[0,0,1,1]},frames=new MapScreen.FrameQueue();
+  const ASPECTS={'16:9':16/9,'21:9':3440/1440};let resolution='16:9';
+  try{const saved=localStorage.getItem('aniimo-game-resolution-v1');if(Object.hasOwn(ASPECTS,saved))resolution=saved;}catch{}
+  const aspect=()=>ASPECTS[resolution],miniRegion=()=>regions.mini??MapScreen.defaultMini(aspect());
   let regions=structuredClone(defaults),running=false,trackingRunning=false,capturing=false,changing=false;
   let mapWorker=null,mapReady=false,mapBusy=false,mapRequest=0,mapWatchdog=null,trackWorker=null,trackReady=false,trackBusy=false,trackRequest=0,trackMap=null,pendingTrack=null;
   let pollTimer,sessionToken=0,sequence=0,nextCaptureAt=0,lastFrame=null,lastResult=null,lastTrackingResult=null,lastLocationAt=0,lastScreen=null,nonMapFrames=0;
@@ -10,7 +14,9 @@
   let previewImage=null,regionDrag=null,pinned=null,selected=null,lastGameId='',lastGameWindow=null,selectingMap=false,importToken=0;
   let burstUntil=0,mapKeyAt=0,lastNoticeKey='',configuration=Promise.resolve();
   const stats={captured:0,analyzed:0,tracked:0,duplicates:0,queuePeak:0,replacedTrackingFrames:0},preview=el('capture-preview'),context=preview?.getContext('2d');
-  try{const saved=JSON.parse(localStorage.getItem('aniimo-capture-regions-v1'));if(saved&&['mini','map'].every(k=>Array.isArray(saved[k])&&saved[k].length===4&&saved[k].every(v=>Number.isFinite(v)&&v>=0&&v<=1)&&saved[k][2]>.01&&saved[k][3]>.01&&saved[k][0]+saved[k][2]<=1.001&&saved[k][1]+saved[k][3]<=1.001))regions=saved;}catch{}
+  try{const saved=JSON.parse(localStorage.getItem('aniimo-capture-regions-v1'));if(saved&&['mini','map'].every(k=>k==='mini'&&saved[k]===null||Array.isArray(saved[k])&&saved[k].length===4&&saved[k].every(v=>Number.isFinite(v)&&v>=0&&v<=1)&&saved[k][2]>.01&&saved[k][3]>.01&&saved[k][0]+saved[k][2]<=1.001&&saved[k][1]+saved[k][3]<=1.001)){
+    // Older saves stored the 16:9 default minimap box; treat it as automatic.
+    if(saved.mini?.every((v,i)=>Math.abs(v-[.0427,.0389,.1042,.1852][i])<1e-6))saved.mini=null;regions=saved;}}catch{}
   function message(title,text,state='waiting'){
     b(el('recognition-state'),title);b(el('recognition-message'),text);
     const badge=el('live-status');badge.dataset.statusKey=pinned?'status.locked':state==='preview'?'status.preview':running?'status.recognizing':'status.manual';b(badge,m(badge.dataset.statusKey));
@@ -111,18 +117,18 @@
   }
   function pumpMap(){
     if(!mapWorker||!mapReady||mapBusy)return;const frame=frames.shift();if(!frame)return;mapBusy=true;stats.analyzed++;
-    mapRequestStartedAt=Date.now();mapWorker.postMessage({type:'analyze',request:++mapRequest,image:frame.image,capturedAt:frame.capturedAt,source:frame.source,bigRegion:regions.map});
+    mapRequestStartedAt=Date.now();mapWorker.postMessage({type:'analyze',request:++mapRequest,image:frame.image,capturedAt:frame.capturedAt,source:frame.source,bigRegion:regions.map,aspect:aspect()});
     watchMapWorker(mapWorker);
   }
   function pumpTrack(){
     if(!trackingRunning||!trackReady||trackBusy||!pendingTrack)return;const frame=pendingTrack;pendingTrack=null;
     if(Date.now()-frame.capturedAt>1000)return;trackBusy=true;stats.tracked++;
-    trackWorker.postMessage({type:'track',request:++trackRequest,image:frame.image,capturedAt:frame.capturedAt,sourceRegion:frame.sourceRegion,miniRegion:regions.mini});
+    trackWorker.postMessage({type:'track',request:++trackRequest,image:frame.image,capturedAt:frame.capturedAt,sourceRegion:frame.sourceRegion,miniRegion:miniRegion(),aspect:aspect()});
   }
   const previewOpen=()=>!!(el('recognition-settings')?.open&&el('capture-details')?.open);
   function drawPreview(){
     if(!previewImage||!preview)return;preview.width=previewImage.width;preview.height=previewImage.height;context.drawImage(previewImage,0,0);
-    for(const [kind,color] of [['mini','#79e1c0'],['map','#dfb65b']]){if(kind==='map'&&regions.map[2]===1)continue;const r=regions[kind];context.strokeStyle=color;context.lineWidth=Math.max(2,preview.width/500);context.setLineDash(kind==='mini'?[]:[8,5]);context.strokeRect(r[0]*preview.width,r[1]*preview.height,r[2]*preview.width,r[3]*preview.height);}context.setLineDash([]);
+    for(const [kind,color] of [['mini','#79e1c0'],['map','#dfb65b']]){if(kind==='map'&&regions.map[2]===1)continue;const r=kind==='mini'?miniRegion():regions[kind];context.strokeStyle=color;context.lineWidth=Math.max(2,preview.width/500);context.setLineDash(kind==='mini'?[]:[8,5]);context.strokeRect(r[0]*preview.width,r[1]*preview.height,r[2]*preview.width,r[3]*preview.height);}context.setLineDash([]);
   }
   async function offer(frame){
     lastFrame=frame;
@@ -131,7 +137,7 @@
     const analyzeMap=(running&&!pinned||frame.source==='import')&&full;if(!analyzeMap&&!previewOpen())return;
     const worker=mapWorker,token=importToken,img=new Image();img.src=frame.image;await img.decode();if(token!==importToken)return;
     if(previewOpen()&&full){previewImage=img;el('capture-empty').hidden=true;drawPreview();}
-    if(!analyzeMap||worker!==mapWorker)return;lastScreen=MapScreen.inspect(img);Object.assign(frame,lastScreen);if(frame.source==='import')frame.mapOpen=true;
+    if(!analyzeMap||worker!==mapWorker)return;lastScreen=MapScreen.inspect(img,undefined,aspect());Object.assign(frame,lastScreen);if(frame.source==='import')frame.mapOpen=true;
     if(!frame.mapOpen){
       if(++nonMapFrames>=2&&!selected)message(m('recognition.wait'),m('recognition.notMap'));
       return;
@@ -171,7 +177,7 @@
         await invoke('start_capture',{windowId:id});lastGameId=id;lastGameWindow=windows.find(w=>w.id===id)||null;sequence=0;capturing=true;lastFrame=null;
       }
       const watchMap=running&&!pinned;
-      await invoke('configure_capture',{fast:trackingRunning,watchMap,region:trackingRunning&&!watchMap&&!previewOpen()?regions.mini:null});
+      await invoke('configure_capture',{fast:trackingRunning,watchMap,region:trackingRunning&&!watchMap&&!previewOpen()?miniRegion():null});
       nextCaptureAt=0;renderSwitch();if(starting)poll(++sessionToken);
     });return configuration;
   }
@@ -233,6 +239,11 @@
     }
     clearTracking();if(trackingRunning)initializeTracker();nextCaptureAt=0;renderSwitch();if(capturing)syncCapture().catch(captureFailure);
   });
+  function regionsChanged(){importToken++;pinned=null;disposeMap();if(running)initializeMap();disposeTracker();clearTracking();if(trackingRunning)initializeTracker();if(running||trackingRunning||capturing)syncCapture().catch(captureFailure);renderSwitch();}
+  if(el('game-resolution')){
+  el('game-resolution').value=resolution;
+  el('game-resolution').onchange=()=>{resolution=Object.hasOwn(ASPECTS,el('game-resolution').value)?el('game-resolution').value:'16:9';try{localStorage.setItem('aniimo-game-resolution-v1',resolution);}catch{}regionsChanged();drawPreview();};
+  }
   // Optional diagnostic controls are absent from the player sidebar.
   if(el('recognition-settings')){
   el('refresh-game').onclick=()=>refresh().catch(e=>message(m('recognition.failed'),I18n.error(e)));
@@ -246,7 +257,6 @@
     try{await syncCapture();const image=await new Promise((resolve,reject)=>{const reader=new FileReader();reader.onload=()=>resolve(reader.result);reader.onerror=reject;reader.readAsDataURL(file);});if(token!==importToken)return;initializeMap();await offer({image,capturedAt:Date.now(),source:'import'});}
     catch(error){message(m('import.failed'),I18n.error(error));}
   };
-  function regionsChanged(){importToken++;pinned=null;disposeMap();if(running)initializeMap();disposeTracker();clearTracking();if(trackingRunning)initializeTracker();if(capturing)syncCapture().catch(captureFailure);renderSwitch();}
   el('capture-region').onchange=()=>preview.classList.toggle('selecting',el('capture-region').value!=='view');
   function normalized(event){const box=preview.getBoundingClientRect();return [Math.max(0,Math.min(1,(event.clientX-box.left)/box.width)),Math.max(0,Math.min(1,(event.clientY-box.top)/box.height))];}
   preview.onpointerdown=event=>{if(!previewImage||el('capture-region').value==='view')return;regionDrag={start:normalized(event),kind:el('capture-region').value};preview.setPointerCapture(event.pointerId);};

@@ -63,6 +63,8 @@
   "recognition.settings": "Reconocimiento, seguimiento y candidatos",
   "game.window": "Ventana del juego",
   "game.auto": "Buscar Aniimo automáticamente",
+  "resolution.label": "Resolución del juego",
+  "resolution.hint": "Para 2560×1440 y otras resoluciones 16:9, elige 1920×1080.",
   "refresh": "Actualizar",
   "import": "Importar captura del mapa M",
   "recognition.off": "Reconocimiento desactivado",

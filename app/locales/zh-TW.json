@@ -63,6 +63,8 @@
   "recognition.settings": "辨識、追蹤設定與候選",
   "game.window": "遊戲視窗",
   "game.auto": "自動尋找伊莫",
+  "resolution.label": "遊戲解析度",
+  "resolution.hint": "2560×1440 等 16:9 解析度請選 1920×1080。",
   "refresh": "重新整理",
   "import": "匯入 M 地圖截圖",
   "recognition.off": "辨識已關閉",

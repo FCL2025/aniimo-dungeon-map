@@ -30,7 +30,7 @@ function crop(bitmap,region,maxWidth=1200,circle=false){
   ctx.drawImage(bitmap,x,y,w,h,0,0,width,height);
   const pixels=ctx.getImageData(0,0,width,height);
   // Ignore HUD/minimap corners when looking for the full-screen M map.
-  if(!circle&&region[2]>.9){ctx.fillStyle='#14212c';ctx.fillRect(0,0,width*.18,height*.28);}
+  if(!circle&&region[2]>.9){ctx.fillStyle='#14212c';ctx.fillRect(0,0,height*.32,height*.28);}
   return {pixels:!circle?ctx.getImageData(0,0,width,height):pixels,width,height,ratio,region:[x,y,w,h]};
 }
 function score(query,reference,estimate=MapRecognition.consensus){

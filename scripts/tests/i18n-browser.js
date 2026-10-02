@@ -34,6 +34,8 @@
     assert(el('fit').textContent===ANIIMO_LOCALES.messages[code].fit,'Toolbar untranslated: '+code);
     assert(el('map').selectedOptions[0].textContent===I18n.t('map.name',{id:20039}),'Map options untranslated');
     assert(el('recognition-button').textContent===I18n.t('switch',{label:I18n.msg('recognition'),state:I18n.msg('off')}),'Recognition switch untranslated');
+    assert(document.querySelector('label[for="game-resolution"]').textContent===I18n.t('resolution.label'),'Resolution label untranslated');
+    assert(el('resolution-hint').textContent===I18n.t('resolution.hint'),'Resolution hint untranslated');
     assert(el('route-summary').textContent.includes('2')&&!/\{\w+\}/.test(el('route-summary').textContent),'Route interpolation failed');
     assert(el('map')===initial.map&&el('icon-size')===initial.input,'Switching replaced form controls');
     assert(loadToken===initial.token&&JSON.stringify(getRouteSnapshot())===initial.route,'Switching reset map/route');

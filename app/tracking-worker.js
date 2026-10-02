@@ -26,10 +26,10 @@ function nearbyReference(radius){
 async function track(message){
   const started=performance.now(),bitmap=await decode(message.image);let query;
   try{
-    const screen=MapScreen.inspect(bitmap,message.sourceRegion),at=message.capturedAt||Date.now();
+    const screen=MapScreen.inspect(bitmap,message.sourceRegion,message.aspect),at=message.capturedAt||Date.now();
     let location=null,match=null,local=false,relocalizing=false;
     if(!screen.mapOpen){
-      const region=MapScreen.relativeRegion(message.miniRegion||[.0427,.0389,.1042,.1852],message.sourceRegion);
+      const region=MapScreen.relativeRegion(message.miniRegion||MapScreen.defaultMini(message.aspect),message.sourceRegion);
       const mini=crop(bitmap,region,400,true);query=features(mini.pixels,true,queryDetector);
       const age=gate.last?at-gate.last.at:Infinity;
       const sameSize=lastSize&&Math.abs(mini.width-lastSize[0])<2&&Math.abs(mini.height-lastSize[1])<2;

@@ -37,6 +37,8 @@ Recognition is off by default. To select a map automatically, turn on **Recogniz
 
 To track your position, select a map, turn on **Track**, then close the game's M-map and return to gameplay.
 
+Set **Game resolution** in the sidebar to 1920×1080 for 16:9 (including 2560×1440), or 3440×1440 for 21:9. The setting is saved; changing it resets recognition and tracking. At 1440p, the overlay defaults to about 790×790.
+
 ## Common controls
 
 | Control | Action |

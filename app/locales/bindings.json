@@ -47,6 +47,8 @@
   ["#tracking-message", "tracking.off"],
   ["label[for=game-window]", "game.window"],
   ["#game-window option[value='']", "game.auto"],
+  ["label[for=game-resolution]", "resolution.label"],
+  ["#resolution-hint", "resolution.hint"],
   ["#refresh-game", "refresh"],
   ["#import-map", "import"],
   ["#recognition-state", "recognition.off"],

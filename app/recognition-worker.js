@@ -44,13 +44,15 @@ async function analyze(message){
   const bitmap=await decode(message.image);
   let query;
   try{
-    const screen=MapScreen.inspect(bitmap);
+    const screen=MapScreen.inspect(bitmap,undefined,message.aspect);
     let location=null,miniScore=null;
     if(message.source!=='import'&&!screen.mapOpen){
       postMessage({type:'result',request:message.request,source:message.source,isMap:false,
         ...evidence.observe([],'','none'),location:null,elapsedMs:Math.round(performance.now()-started),capturedAt:message.capturedAt});return;
     }
-    const big=crop(bitmap,message.bigRegion||[0,0,1,1]),signature=[big.width,big.height,...big.region,fingerprint(big.pixels)].join(':');
+    const region=message.bigRegion||[0,0,1,1],regionAspect=region[2]*bitmap.width/(region[3]*bitmap.height);
+    // A full-width ultrawide M map keeps the same UI scale as 16:9 after downscaling.
+    const big=crop(bitmap,region,Math.round(1200*Math.max(1,regionAspect/(16/9)))),signature=[big.width,big.height,...big.region,fingerprint(big.pixels)].join(':');
     const cached=!!cachedMap&&signature===cachedMap.signature;
     let scores,search;
     if(cached){scores=cachedMap.scores;search={...cachedMap.search,reused:true,evaluated:0,evaluatedOrder:[],fogEvaluated:0,newlyLoadedReferences:0,referenceLoadMs:0};}

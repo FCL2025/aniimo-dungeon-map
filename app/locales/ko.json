@@ -63,6 +63,8 @@
   "recognition.settings": "인식·추적 설정 및 후보",
   "game.window": "게임 창",
   "game.auto": "Aniimo 자동 검색",
+  "resolution.label": "게임 해상도",
+  "resolution.hint": "2560×1440 등 16:9 해상도는 1920×1080을 선택하세요.",
   "refresh": "새로 고침",
   "import": "M 지도 스크린샷 가져오기",
   "recognition.off": "인식 꺼짐",

@@ -63,6 +63,8 @@
   "recognition.settings": "Nhận dạng, theo dõi và ứng viên",
   "game.window": "Cửa sổ trò chơi",
   "game.auto": "Tự động tìm Aniimo",
+  "resolution.label": "Độ phân giải game",
+  "resolution.hint": "Với 2560×1440 và các độ phân giải 16:9 khác, hãy chọn 1920×1080.",
   "refresh": "Làm mới",
   "import": "Nhập ảnh chụp bản đồ M",
   "recognition.off": "Đã tắt nhận dạng",

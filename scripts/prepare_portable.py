@@ -89,6 +89,9 @@ overlay_html = overlay_html.replace('<script src="desktop.js"></script><script s
 main_html = html.replace('<button id="compact" aria-pressed="false">地圖模式</button>', '''<button id="compact" aria-pressed="false">地圖模式</button><label id="main-overlay-size-control" for="main-overlay-size" title="調整覆蓋地圖視窗大小">覆蓋大小 <input type="range" id="main-overlay-size" min="50" max="150" step="10" value="100" aria-label="覆蓋地圖大小" aria-valuetext="100%"><output id="main-overlay-size-value" for="main-overlay-size">100%</output></label><button id="main-overlay-size-reset" type="button" title="將覆蓋地圖大小重置為 100%">重置大小</button>''')
 main_html = main_html.replace('<button id="zoom-out" aria-label="縮小地圖">−</button>', '', 1)
 main_html = main_html.replace('<button id="zoom-in" aria-label="放大地圖">＋</button>', '', 1)
+main_html = main_html.replace('<button id="help-button"', '''<label for="game-resolution">遊戲解析度</label><select id="game-resolution" aria-describedby="resolution-hint"><option value="16:9">1920×1080</option><option value="21:9">3440×1440</option></select>
+<p id="resolution-hint" class="small">2560×1440 等 16:9 解析度請選 1920×1080。</p>
+<button id="help-button"''', 1)
 (OUTPUT/'index.html').write_text(main_html, encoding='utf8')
 (OUTPUT/'overlay.html').write_text(overlay_html, encoding='utf8')
 

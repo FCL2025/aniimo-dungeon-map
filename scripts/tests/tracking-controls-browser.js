@@ -102,7 +102,43 @@
     assert(!state().running&&!state().ready&&!state().initializing,'Manual mode waited for native startup before cancelling recognition');
     releaseWindows([{id:'fixture',title:'Fixture'}]);await Promise.all([startup,manual]);
     assert(!state().capturing&&el('map').value==='20035'&&!state().running,'Native startup race restarted capture after manual choice');
-    return {passed:true,languagePreservesWorkers:true,independentSwitches:true,oneCaptureSession:true,latestFrameOnly:true,positionsAfterRecognitionOff:true,manualMap:true,restartClearsLockAndPosition:true,lateResultIgnored:true,lockStopsCapture:true,manualOverridesAutomatic:true,sameMapResetsTracking:true,manualCancelsPendingStartup:true};
+    holdWindows=false;
+    const resolution=el('game-resolution'),previousResolution=resolution.value;
+    assert(resolution&&!el('recognition-settings'),'Resolution must be available without diagnostic controls');
+    const setResolution=value=>{resolution.value=value;resolution.dispatchEvent(new w.Event('change'));};
+    const checkRegion=expected=>{
+      const region=calls.filter(c=>c.name==='configure_capture').at(-1).args.region;
+      assert(region&&region.every((v,i)=>Math.abs(v-expected[i])<1e-9),'Native capture used the wrong resolution region');
+    };
+    try{
+      setResolution('16:9');await el('tracking-button').onclick();await until(()=>state().trackingReady);
+      checkRegion(state().regions.mini||[82/1920,42/1080,200/1920,200/1080]);
+      const oldResolutionTracker=workers.filter(x=>x.url==='tracking-worker.js').at(-1);
+      setResolution('21:9');await until(()=>state().trackingReady);await pause(30);
+      assert(oldResolutionTracker.terminated&&state().trackingRunning,'Resolution change must restart active tracking');
+      checkRegion(state().regions.mini||[82/2580,42/1080,200/2580,200/1080]);
+      frames.push({sequence:1,capturedAt:Date.now(),image:'tracking-only-frame',sourceRegion:[.02,.02,.1,.2]});
+      const wideTracker=workers.filter(x=>x.url==='tracking-worker.js').at(-1);
+      await until(()=>wideTracker.messages.some(m=>m.type==='track'));
+      const wideFrame=wideTracker.messages.find(m=>m.type==='track');
+      assert(wideFrame.aspect===3440/1440,'Tracking worker did not receive the selected aspect ratio');
+      await el('recognition-button').onclick();await until(()=>state().ready);
+      const wideRecognizer=workers.filter(x=>x.url==='recognition-worker.js').at(-1);
+      wideRecognizer.reply({type:'result',request:0,ranked:[],locked:20035,selected:20035,observations:1,elapsedMs:1});
+      await until(()=>state().pinned===20035);
+      setResolution('16:9');await until(()=>state().ready&&state().trackingReady);
+      assert(state().pinned===null&&state().lastResult===null,'Resolution change retained an old recognition lock');
+      wideRecognizer.reply({type:'result',request:0,ranked:[],locked:20040,selected:20040,observations:1,elapsedMs:1});
+      assert(state().pinned===null,'Old resolution worker overwrote the new session');
+      await el('recognition-button').onclick();await el('tracking-button').onclick();
+      await el('recognition-button').onclick();await until(()=>state().ready);
+      workers.filter(x=>x.url==='recognition-worker.js').at(-1).reply({type:'result',request:0,ranked:[],locked:20035,selected:20035,observations:1,elapsedMs:1});
+      await until(()=>state().pinned===20035&&!state().capturing);
+      setResolution('21:9');await until(()=>state().ready&&state().capturing);
+      assert(state().pinned===null&&state().running&&!state().trackingRunning,'Changing resolution after a recognition-only lock did not resume capture');
+      await el('recognition-button').onclick();
+    }finally{setResolution(previousResolution);}
+    return {passed:true,languagePreservesWorkers:true,independentSwitches:true,oneCaptureSession:true,latestFrameOnly:true,positionsAfterRecognitionOff:true,manualMap:true,restartClearsLockAndPosition:true,lateResultIgnored:true,lockStopsCapture:true,manualOverridesAutomatic:true,sameMapResetsTracking:true,manualCancelsPendingStartup:true,resolutionRestartsWorkers:true,resolutionUpdatesNativeCrop:true};
   }catch(error){throw Error(String(error)+' '+JSON.stringify({state:w.recognitionStatus?.(),calls,workers:workers.map(x=>({url:x.url,messages:x.messages,terminated:x.terminated})),message:el('recognition-message')?.textContent}));}
   finally{iframe.remove();}
 })()
