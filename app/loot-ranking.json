@@ -73,7 +73,8 @@
         "th": "แคลเซโดนีพริสมานา",
         "vi": "Vi Thạch Prismana"
       },
-      "rank": 1
+      "rank": 1,
+      "icon": "loot-icons/ui_item_Gem_21.png"
     },
     {
       "id": 5000407,
@@ -97,7 +98,8 @@
         "th": "หยกจักรพรรดิ",
         "vi": "Phỉ Thúy Hoàng Gia"
       },
-      "rank": 2
+      "rank": 2,
+      "icon": "loot-icons/ui_item_Gem_11.png"
     },
     {
       "id": 5000410,
@@ -121,7 +123,8 @@
         "th": "เพชรพริสมานา",
         "vi": "Kim Cương Prismana"
       },
-      "rank": 3
+      "rank": 3,
+      "icon": "loot-icons/ui_item_Gem_22.png"
     },
     {
       "id": 5000021,
@@ -145,7 +148,8 @@
         "th": "กล้วยไม้พริสมานา",
         "vi": "Phong Lan Prismana"
       },
-      "rank": 4
+      "rank": 4,
+      "icon": "loot-icons/ui_item_Mushroom_51.png"
     },
     {
       "id": 5000220,
@@ -169,7 +173,8 @@
         "th": "แหวนตราประทับมรกต",
         "vi": "Nhẫn Lục Bảo"
       },
-      "rank": 5
+      "rank": 5,
+      "icon": "loot-icons/ui_item_Relic_44.png"
     },
     {
       "id": 5000121,
@@ -193,7 +198,8 @@
         "th": "ดอกระฆังพริสมานา",
         "vi": "Hoa Chuông Prismana"
       },
-      "rank": 6
+      "rank": 6,
+      "icon": "loot-icons/ui_item_Fruit_51.png"
     },
     {
       "id": 5000018,
@@ -217,7 +223,8 @@
         "th": "เฟิร์นเส้นใบเงิน",
         "vi": "Dương Xỉ Vân Bạc"
       },
-      "rank": 7
+      "rank": 7,
+      "icon": "loot-icons/ui_item_Mushroom_42.png"
     },
     {
       "id": 5000320,
@@ -241,7 +248,8 @@
         "th": "แร่แพลทินัม",
         "vi": "Quặng Bạch Kim"
       },
-      "rank": 8
+      "rank": 8,
+      "icon": "loot-icons/ui_item_Ore_44.png"
     },
     {
       "id": 5000219,
@@ -265,7 +273,8 @@
         "th": "สายสะพายเพชรดาว",
         "vi": "Đai Trang Sức Kim Cương Sao"
       },
-      "rank": 9
+      "rank": 9,
+      "icon": "loot-icons/ui_item_Relic_43.png"
     },
     {
       "id": 5000321,
@@ -289,7 +298,8 @@
         "th": "โอปอลพริสมานา",
         "vi": "Opal Prismana"
       },
-      "rank": 10
+      "rank": 10,
+      "icon": "loot-icons/ui_item_Ore_51.png"
     },
     {
       "id": 5000020,
@@ -313,7 +323,8 @@
         "th": "กุหลาบสีรุ้ง",
         "vi": "Hoa Hồng Pha Lê"
       },
-      "rank": 11
+      "rank": 11,
+      "icon": "loot-icons/ui_item_Mushroom_44.png"
     },
     {
       "id": 5000217,
@@ -337,7 +348,8 @@
         "th": "ไม้เท้าทองคํา",
         "vi": "Trượng Vàng"
       },
-      "rank": 12
+      "rank": 12,
+      "icon": "loot-icons/ui_item_Relic_41.png"
     },
     {
       "id": 5000319,
@@ -361,7 +373,8 @@
         "th": "แร่ทอง",
         "vi": "Quặng Vàng"
       },
-      "rank": 13
+      "rank": 13,
+      "icon": "loot-icons/ui_item_Ore_43.png"
     },
     {
       "id": 5000118,
@@ -385,7 +398,8 @@
         "th": "มาลโลว์เมฆฟ้า",
         "vi": "Hoa Vân Thảo Thiên"
       },
-      "rank": 14
+      "rank": 14,
+      "icon": "loot-icons/ui_item_Fruit_42.png"
     },
     {
       "id": 5000405,
@@ -409,7 +423,8 @@
         "th": "ทับทิมสีเลือดนกพิราบ",
         "vi": "Hồng Ngọc Huyết Bồ Câu"
       },
-      "rank": 15
+      "rank": 15,
+      "icon": "loot-icons/ui_item_Gem_05.png"
     },
     {
       "id": 5000406,
@@ -433,7 +448,8 @@
         "th": "มรกต",
         "vi": "Ngọc Lục Bảo"
       },
-      "rank": 16
+      "rank": 16,
+      "icon": "loot-icons/ui_item_Gem_06.png"
     },
     {
       "id": 5000120,
@@ -457,7 +473,8 @@
         "th": "ดอกหยาดนํ้าค้าง",
         "vi": "Hoa Sương"
       },
-      "rank": 17
+      "rank": 17,
+      "icon": "loot-icons/ui_item_Fruit_44.png"
     },
     {
       "id": 5000408,
@@ -481,7 +498,8 @@
         "th": "แอมโมไลต์",
         "vi": "Mã Não Vân Sắc"
       },
-      "rank": 17
+      "rank": 17,
+      "icon": "loot-icons/ui_item_Gem_12.png"
     },
     {
       "id": 5000019,
@@ -505,7 +523,8 @@
         "th": "ทรัฟเฟิลพระจันทร์",
         "vi": "Nấm Truffle Mặt Trăng"
       },
-      "rank": 19
+      "rank": 19,
+      "icon": "loot-icons/ui_item_Mushroom_43.png"
     },
     {
       "id": 5000117,
@@ -529,7 +548,8 @@
         "th": "ผ้าปักดอกสีรุ้ง",
         "vi": "Gấm Bảy Màu"
       },
-      "rank": 20
+      "rank": 20,
+      "icon": "loot-icons/ui_item_Fruit_41.png"
     },
     {
       "id": 5000017,
@@ -553,7 +573,8 @@
         "th": "เห็ดหลินจือหยก",
         "vi": "Linh Chi Ngọc Cổ"
       },
-      "rank": 21
+      "rank": 21,
+      "icon": "loot-icons/ui_item_Mushroom_41.png"
     },
     {
       "id": 5000119,
@@ -577,7 +598,8 @@
         "th": "ทับทิมลายริ้วดาว",
         "vi": "Lựu Sọc Sao"
       },
-      "rank": 22
+      "rank": 22,
+      "icon": "loot-icons/ui_item_Fruit_43.png"
     },
     {
       "id": 5000317,
@@ -601,7 +623,8 @@
         "th": "แร่อุกกาบาต",
         "vi": "Quặng Thiên Thạch"
       },
-      "rank": 23
+      "rank": 23,
+      "icon": "loot-icons/ui_item_Ore_41.png"
     },
     {
       "id": 5000318,
@@ -625,7 +648,8 @@
         "th": "แร่มิธริล",
         "vi": "Quặng Mithril"
       },
-      "rank": 24
+      "rank": 24,
+      "icon": "loot-icons/ui_item_Ore_42.png"
     }
   ]
 }

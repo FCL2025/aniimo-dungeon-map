@@ -83,6 +83,8 @@ GitHub Release 發布以下附件：
 
 金色道具排名使用 `app/loot-ranking.json` 的離線快照。`scripts/extract_loot_ranking.py` 從本機 `LuaScripts.xdf` 解碼寶箱獎勵群組 `520005` 的 24 種金色寶物，以 `item_data.quality = 5` 篩選，讀取 `weight`／`sellPrice`，並核對 `rob_egg_item_in.outid` 對應的帶出道具售價。以分數精確排序售價／重量，同值並列，畫面最多顯示兩位小數。名稱直接解碼 13 種語言的 `NewTextMap_*` 與 `Compress_*.bin`；快照包含文字鍵、道具 ID 及來源檔案 SHA-256。
 
+每列名稱旁顯示 `item_data.icon` 指向的遊戲原始圖示。更新排名後執行 `scripts/extract_loot_icons.py`，會讀取目前安裝的資源版本清單（可用 `--version` 指定），將 24 張原始紋理匯出至 `app/loot-icons/`，並記錄來源 bundle、尺寸與 SHA-256。正常建置僅驗證並複製已匯出的 PNG，不需遊戲檔案或網路。`i18n-browser.js` 會在原生視窗驗證全部圖示可解碼，且切換 13 語言後仍對應正確道具。
+
 排名範圍是寶箱獎勵清單可核實的金色寶物，未將背包、裝備、鑰匙或蛋混入寶物排名，也未推論伺服器掉落機率或空白禮包的內容。`build_loot_ranking.py` 在網頁與可攜版建置時驗證語言完整性、品質及排名，再內嵌資料，正常建置不需要讀取遊戲。`i18n-browser.js` 驗證 13 語言名稱、數值、同值排名、彈窗即時翻譯與焦點返回，並確認三個側欄區塊已移除。
 
 `app/locales/<語言代碼>.json` 保存 13 種語言，`bindings.json` 對應靜態介面文字。動態訊息使用 `I18n.msg(key, params)` 與 `I18n.bind(node, message)`；參數可以巢狀使用訊息，讓語序依語言調整。翻譯只寫入文字或屬性，不插入 HTML。

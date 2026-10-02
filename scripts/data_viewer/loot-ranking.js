@@ -15,8 +15,21 @@
         number.format(item.weight), number.format(item.sellPrice), number.format(item.sellPrice / item.weight)];
       values.forEach((value, index) => {
         const cell = document.createElement(index === 1 ? 'th' : 'td');
-        if (index === 1) cell.scope = 'row';
-        cell.textContent = value;
+        if (index === 1) {
+          cell.scope = 'row';
+          const label = document.createElement('span');
+          label.className = 'loot-item';
+          const icon = document.createElement('img');
+          icon.className = 'loot-icon';
+          icon.src = item.icon;
+          icon.alt = '';
+          icon.width = 40;
+          icon.height = 40;
+          const name = document.createElement('span');
+          name.textContent = value;
+          label.append(icon, name);
+          cell.append(label);
+        } else cell.textContent = value;
         row.append(cell);
       });
       return row;

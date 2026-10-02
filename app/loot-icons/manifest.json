@@ -1,0 +1,250 @@
+{
+  "source": {
+    "version": "3634150",
+    "manifestSha256": "d63d4761ba0724bcd1d5dc4c3ddc62540c203c7a64c9db8b841511c1d4ced70c",
+    "table": "xfs/luascripts/Common/Data/pmdata.bin",
+    "tableSha256": "14552ae57c7d99279ac3791e732ca74ae5dc8cc6db38c01d0e4e0b0134fc77bb"
+  },
+  "assets": {
+    "loot-icons/ui_item_Fruit_41.png": {
+      "resourcePath": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_Fruit_41.png",
+      "size": [
+        256,
+        256
+      ],
+      "sourceBundle": "xgui_texture_icon_item_icon_png_0.uab",
+      "sourceBundleHash": "b72ec45341026ac701dccecedadc83fb",
+      "sha256": "76630f2a8667be66910f1505e333513be369b8569169a66c362afcb8ae514121"
+    },
+    "loot-icons/ui_item_Mushroom_44.png": {
+      "resourcePath": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_Mushroom_44.png",
+      "size": [
+        256,
+        256
+      ],
+      "sourceBundle": "xgui_texture_icon_item_icon_png_0.uab",
+      "sourceBundleHash": "b72ec45341026ac701dccecedadc83fb",
+      "sha256": "1259b2a63d5b7f39f15c21b18c363998a815abfb724493fa62162cc2446068bb"
+    },
+    "loot-icons/ui_item_Fruit_42.png": {
+      "resourcePath": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_Fruit_42.png",
+      "size": [
+        256,
+        256
+      ],
+      "sourceBundle": "xgui_texture_icon_item_icon_png_2.uab",
+      "sourceBundleHash": "889ab49c37311da855f7ec0eddd02a3b",
+      "sha256": "ed4ec4b13f4eb3d27dec5962a9b03ab93b8b92fc079f41e234d36d46e2dcec34"
+    },
+    "loot-icons/ui_item_Gem_06.png": {
+      "resourcePath": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_Gem_06.png",
+      "size": [
+        256,
+        256
+      ],
+      "sourceBundle": "xgui_texture_icon_item_icon_png_2.uab",
+      "sourceBundleHash": "889ab49c37311da855f7ec0eddd02a3b",
+      "sha256": "b90e5fe807d3118ebf6609872c2f42ca53e6b16f4e5061c1b478f98c58663ad4"
+    },
+    "loot-icons/ui_item_Ore_43.png": {
+      "resourcePath": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_Ore_43.png",
+      "size": [
+        256,
+        256
+      ],
+      "sourceBundle": "xgui_texture_icon_item_icon_png_2.uab",
+      "sourceBundleHash": "889ab49c37311da855f7ec0eddd02a3b",
+      "sha256": "21e64385992d4b1ae4e7469358f5181f19905a5e0ef688d4c8e8e9330149bea4"
+    },
+    "loot-icons/ui_item_Ore_44.png": {
+      "resourcePath": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_Ore_44.png",
+      "size": [
+        256,
+        256
+      ],
+      "sourceBundle": "xgui_texture_icon_item_icon_png_2.uab",
+      "sourceBundleHash": "889ab49c37311da855f7ec0eddd02a3b",
+      "sha256": "72ac6144746b83f240f8b40c7fe47029e5c55bb35041c792a256da1ab859d4ea"
+    },
+    "loot-icons/ui_item_Fruit_43.png": {
+      "resourcePath": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_Fruit_43.png",
+      "size": [
+        256,
+        256
+      ],
+      "sourceBundle": "xgui_texture_icon_item_icon_png_7.uab",
+      "sourceBundleHash": "d1832548968e304e925fc344456c4c4b",
+      "sha256": "a6f0c5be24831ef8e20aa51a361bea352f61b7add797f2207448228b2578fb29"
+    },
+    "loot-icons/ui_item_Relic_43.png": {
+      "resourcePath": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_Relic_43.png",
+      "size": [
+        256,
+        256
+      ],
+      "sourceBundle": "xgui_texture_icon_item_icon_png_7.uab",
+      "sourceBundleHash": "d1832548968e304e925fc344456c4c4b",
+      "sha256": "43ec3b8759092723e4d06de838b1ed82d83fcf4748565007672eedb636d791c1"
+    },
+    "loot-icons/ui_item_Fruit_44.png": {
+      "resourcePath": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_Fruit_44.png",
+      "size": [
+        256,
+        256
+      ],
+      "sourceBundle": "xgui_texture_icon_item_icon_png_3.uab",
+      "sourceBundleHash": "2ea949c91f18150da6d7f20ee1cb345a",
+      "sha256": "c7ea5d562e44d5f2ec356d21c10b52c36349a1436482586b88a0b45a1798caf1"
+    },
+    "loot-icons/ui_item_Fruit_51.png": {
+      "resourcePath": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_Fruit_51.png",
+      "size": [
+        256,
+        256
+      ],
+      "sourceBundle": "xgui_texture_icon_item_icon_png_3.uab",
+      "sourceBundleHash": "2ea949c91f18150da6d7f20ee1cb345a",
+      "sha256": "9fa6dd9a0f0894da4c7276c300293b9feaea06a4acca670e7f8ae217781f5812"
+    },
+    "loot-icons/ui_item_Gem_05.png": {
+      "resourcePath": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_Gem_05.png",
+      "size": [
+        256,
+        256
+      ],
+      "sourceBundle": "xgui_texture_icon_item_icon_png_3.uab",
+      "sourceBundleHash": "2ea949c91f18150da6d7f20ee1cb345a",
+      "sha256": "a76f19679a219d74e698ba2521a61052bebe63f98d453bc6f5bab7302e13952a"
+    },
+    "loot-icons/ui_item_Gem_21.png": {
+      "resourcePath": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_Gem_21.png",
+      "size": [
+        256,
+        256
+      ],
+      "sourceBundle": "xgui_texture_icon_item_icon_png_3.uab",
+      "sourceBundleHash": "2ea949c91f18150da6d7f20ee1cb345a",
+      "sha256": "44f3cffdc0257a3eb238cd7af6298ead4dd75963215e7fa54873a4c3846645f8"
+    },
+    "loot-icons/ui_item_Gem_11.png": {
+      "resourcePath": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_Gem_11.png",
+      "size": [
+        256,
+        256
+      ],
+      "sourceBundle": "xgui_texture_icon_item_icon_png_9.uab",
+      "sourceBundleHash": "f42eb8ab3b30e3715fa042a604a50ba4",
+      "sha256": "d35970837ca6310472e2d1dafd91d50d867d4daccb0dc16d1aa4e9f3ffc35888"
+    },
+    "loot-icons/ui_item_Ore_42.png": {
+      "resourcePath": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_Ore_42.png",
+      "size": [
+        256,
+        256
+      ],
+      "sourceBundle": "xgui_texture_icon_item_icon_png_9.uab",
+      "sourceBundleHash": "f42eb8ab3b30e3715fa042a604a50ba4",
+      "sha256": "532acd04ca0c5969777d8ae4ad80de3bd0422df9146dcfa20a0723aed83dde18"
+    },
+    "loot-icons/ui_item_Relic_41.png": {
+      "resourcePath": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_Relic_41.png",
+      "size": [
+        256,
+        256
+      ],
+      "sourceBundle": "xgui_texture_icon_item_icon_png_9.uab",
+      "sourceBundleHash": "f42eb8ab3b30e3715fa042a604a50ba4",
+      "sha256": "e87c70fd4221628538ba0a37b5c9ff8b136b1d88a892aa45f586fd73fb0be57e"
+    },
+    "loot-icons/ui_item_Gem_12.png": {
+      "resourcePath": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_Gem_12.png",
+      "size": [
+        256,
+        256
+      ],
+      "sourceBundle": "xgui_texture_icon_item_icon_png_6.uab",
+      "sourceBundleHash": "7e55044cf4e181ee4519d8c06bacc52b",
+      "sha256": "5848137d2198cd20e2583fb129f6d600ae03f406a0b35bcc4e7ccb6563eb63b9"
+    },
+    "loot-icons/ui_item_Mushroom_41.png": {
+      "resourcePath": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_Mushroom_41.png",
+      "size": [
+        256,
+        256
+      ],
+      "sourceBundle": "xgui_texture_icon_item_icon_png_6.uab",
+      "sourceBundleHash": "7e55044cf4e181ee4519d8c06bacc52b",
+      "sha256": "3bb7888f2ed5b67b32b57cfeaf02c6bf371e91e0f2430f26f1ca908635717802"
+    },
+    "loot-icons/ui_item_Ore_51.png": {
+      "resourcePath": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_Ore_51.png",
+      "size": [
+        256,
+        256
+      ],
+      "sourceBundle": "xgui_texture_icon_item_icon_png_6.uab",
+      "sourceBundleHash": "7e55044cf4e181ee4519d8c06bacc52b",
+      "sha256": "938cbfad3ee31d8aa3626fb32ac29e38ef48cb05eb1666f0a07d01d2d831f0c7"
+    },
+    "loot-icons/ui_item_Gem_22.png": {
+      "resourcePath": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_Gem_22.png",
+      "size": [
+        256,
+        256
+      ],
+      "sourceBundle": "xgui_texture_icon_item_icon_png_1.uab",
+      "sourceBundleHash": "2301e10a290ca9cd94a7906fea4eea06",
+      "sha256": "8073d4335e083610d3dc784879ab0391dfaa5b5f7230617adb3e753a2b18898f"
+    },
+    "loot-icons/ui_item_Mushroom_42.png": {
+      "resourcePath": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_Mushroom_42.png",
+      "size": [
+        256,
+        256
+      ],
+      "sourceBundle": "xgui_texture_icon_item_icon_png_1.uab",
+      "sourceBundleHash": "2301e10a290ca9cd94a7906fea4eea06",
+      "sha256": "b1efbafbd62ba00c6e056e39389fed09694da7f010c8ed0af5d4be0332f7f196"
+    },
+    "loot-icons/ui_item_Mushroom_43.png": {
+      "resourcePath": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_Mushroom_43.png",
+      "size": [
+        256,
+        256
+      ],
+      "sourceBundle": "xgui_texture_icon_item_icon_png_1.uab",
+      "sourceBundleHash": "2301e10a290ca9cd94a7906fea4eea06",
+      "sha256": "094c9f8bd54fc8677a0463def52c891747bc68a806fed71b0d67f7af8b55d463"
+    },
+    "loot-icons/ui_item_Mushroom_51.png": {
+      "resourcePath": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_Mushroom_51.png",
+      "size": [
+        256,
+        256
+      ],
+      "sourceBundle": "xgui_texture_icon_item_icon_png_5.uab",
+      "sourceBundleHash": "3976ade5081071fe1fc05eb162940220",
+      "sha256": "69f6bf797e2ea9c357fc6e9097d96bf7c8f7ffc3fff3719ce869ab38dbb43991"
+    },
+    "loot-icons/ui_item_Ore_41.png": {
+      "resourcePath": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_Ore_41.png",
+      "size": [
+        256,
+        256
+      ],
+      "sourceBundle": "xgui_texture_icon_item_icon_png_4.uab",
+      "sourceBundleHash": "d40ae5bd47fbb2531efc62f55705a764",
+      "sha256": "b82944d4063c8f5e2076d82c5a5422c148f570919538e093a0a4db061f7b535a"
+    },
+    "loot-icons/ui_item_Relic_44.png": {
+      "resourcePath": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_Relic_44.png",
+      "size": [
+        256,
+        256
+      ],
+      "sourceBundle": "xgui_texture_icon_item_icon_png_8.uab",
+      "sourceBundleHash": "20967b3920dc3ff2fb0eb6f725c6b182",
+      "sha256": "611705c6df6ba0106c02ceb4ecd7669dddade6861e37ee2185cf09b6fa1c6dde"
+    }
+  }
+}

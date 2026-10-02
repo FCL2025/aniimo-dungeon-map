@@ -52,7 +52,8 @@ def extract(archive=DEFAULT_ARCHIVE):
             names[code] = blob[offset:offset + length].decode('utf-8')
             assert names[code].strip()
         items.append(dict(id=item_id, outsideId=outside_id, nameKey=row['itemName'],
-                          quality=row['quality'], weight=row['weight'], sellPrice=row['sellPrice'], names=names))
+                          quality=row['quality'], weight=row['weight'], sellPrice=row['sellPrice'], names=names,
+                          icon=f'loot-icons/{row["icon"].lstrip("$")}'))
     items.sort(key=lambda item: (-Fraction(item['sellPrice'], item['weight']), item['id']))
     previous, rank = None, 0
     for position, item in enumerate(items, 1):

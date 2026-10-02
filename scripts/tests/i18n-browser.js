@@ -50,10 +50,13 @@
     assert(el('loot-ranking-title').textContent===I18n.t('loot.button'),'Loot title untranslated');
     const lootRows=[...el('loot-ranking-body').rows];
     assert(lootRows.length===24,'Gold treasure list is incomplete');
+    await Promise.all(lootRows.map(row=>row.querySelector('.loot-icon').decode()));
     assert(lootRows.slice(0,3).map(row=>row.dataset.itemId).join(',')==='5000409,5000407,5000410','Wrong pickup priority');
     for(const [index,row] of lootRows.entries()){
       const item=LOOT_RANKING[index],format=new Intl.NumberFormat(code,{maximumFractionDigits:2});
       assert(row.cells[1].textContent===item.names[code],'Item name differs from game localization: '+code);
+      const icon=row.querySelector('.loot-icon');
+      assert(icon.getAttribute('src')===item.icon&&icon.naturalWidth>0&&icon.naturalHeight>0,'Game item icon missing or incorrect');
       assert(row.cells[2].textContent===format.format(item.weight)&&row.cells[3].textContent===format.format(item.sellPrice),'Wrong loot values');
       assert(row.cells[4].textContent===format.format(item.sellPrice/item.weight),'Wrong value per weight');
     }
@@ -94,5 +97,5 @@
   I18n.setLocale('de');assert(el('app-status').textContent===I18n.format(error),'Pending notice did not translate');
   el('app-status').textContent='';I18n.setLocale('en');assert(!el('app-status').textContent,'Cleared notice reappeared');
   window.dispatchEvent(new CustomEvent('tracking-update',{detail:null}));
-  return {passed:true,languages:report,keyboard:true,outsideClick:true,fallback:true,transientMessages:true,lootRanking:true,lootTies:true,lootLiveTranslation:true,sidebarCleanup:true};
+  return {passed:true,languages:report,keyboard:true,outsideClick:true,fallback:true,transientMessages:true,lootRanking:true,lootIcons:true,lootTies:true,lootLiveTranslation:true,sidebarCleanup:true};
 })()
