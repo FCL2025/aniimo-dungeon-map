@@ -43,7 +43,7 @@ dependencies = [
 
 [[package]]
 name = "aniimo-dungeon-map"
-version = "0.2.39"
+version = "0.2.40"
 dependencies = [
  "base64 0.22.1",
  "image",
