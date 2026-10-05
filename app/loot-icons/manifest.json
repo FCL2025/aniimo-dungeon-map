@@ -16,6 +16,16 @@
       "sourceBundleHash": "b72ec45341026ac701dccecedadc83fb",
       "sha256": "76630f2a8667be66910f1505e333513be369b8569169a66c362afcb8ae514121"
     },
+    "loot-icons/ui_item_GrabEgg_Atk_RepairPack_Gold.png": {
+      "resourcePath": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_GrabEgg_Atk_RepairPack_Gold.png",
+      "size": [
+        256,
+        256
+      ],
+      "sourceBundle": "xgui_texture_icon_item_icon_png_0.uab",
+      "sourceBundleHash": "b72ec45341026ac701dccecedadc83fb",
+      "sha256": "e975879a51a418effcb3ecc29a95611ed695d34c1cd47822db29f2818f1b899c"
+    },
     "loot-icons/ui_item_Mushroom_44.png": {
       "resourcePath": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_Mushroom_44.png",
       "size": [
@@ -46,6 +56,16 @@
       "sourceBundleHash": "889ab49c37311da855f7ec0eddd02a3b",
       "sha256": "b90e5fe807d3118ebf6609872c2f42ca53e6b16f4e5061c1b478f98c58663ad4"
     },
+    "loot-icons/ui_item_Key_02.png": {
+      "resourcePath": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_Key_02.png",
+      "size": [
+        256,
+        256
+      ],
+      "sourceBundle": "xgui_texture_icon_item_icon_png_2.uab",
+      "sourceBundleHash": "889ab49c37311da855f7ec0eddd02a3b",
+      "sha256": "dca6d3ca661a2072962651d022509e50362a386dbc215b1bc0b88899f7c3a0e2"
+    },
     "loot-icons/ui_item_Ore_43.png": {
       "resourcePath": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_Ore_43.png",
       "size": [
@@ -75,6 +95,16 @@
       "sourceBundle": "xgui_texture_icon_item_icon_png_7.uab",
       "sourceBundleHash": "d1832548968e304e925fc344456c4c4b",
       "sha256": "a6f0c5be24831ef8e20aa51a361bea352f61b7add797f2207448228b2578fb29"
+    },
+    "loot-icons/ui_item_GrabEgg_Def_RepairPackt_Purple.png": {
+      "resourcePath": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_GrabEgg_Def_RepairPackt_Purple.png",
+      "size": [
+        256,
+        256
+      ],
+      "sourceBundle": "xgui_texture_icon_item_icon_png_7.uab",
+      "sourceBundleHash": "d1832548968e304e925fc344456c4c4b",
+      "sha256": "cd6b6510cbe2412b04be69680400b2f27129079ddf1302ecf3d5352d81ef5c9d"
     },
     "loot-icons/ui_item_Relic_43.png": {
       "resourcePath": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_Relic_43.png",
@@ -136,6 +166,16 @@
       "sourceBundleHash": "f42eb8ab3b30e3715fa042a604a50ba4",
       "sha256": "d35970837ca6310472e2d1dafd91d50d867d4daccb0dc16d1aa4e9f3ffc35888"
     },
+    "loot-icons/ui_item_GrabEgg_Def_RepairPack_Gold.png": {
+      "resourcePath": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_GrabEgg_Def_RepairPack_Gold.png",
+      "size": [
+        256,
+        256
+      ],
+      "sourceBundle": "xgui_texture_icon_item_icon_png_9.uab",
+      "sourceBundleHash": "f42eb8ab3b30e3715fa042a604a50ba4",
+      "sha256": "bea8c18872a92897a2aa338fc276cd0782d7fffc597e4ccccf7c6b31e5347fdb"
+    },
     "loot-icons/ui_item_Ore_42.png": {
       "resourcePath": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_Ore_42.png",
       "size": [
@@ -196,6 +236,16 @@
       "sourceBundleHash": "2301e10a290ca9cd94a7906fea4eea06",
       "sha256": "8073d4335e083610d3dc784879ab0391dfaa5b5f7230617adb3e753a2b18898f"
     },
+    "loot-icons/ui_item_MonDrop_Gold.png": {
+      "resourcePath": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_MonDrop_Gold.png",
+      "size": [
+        256,
+        256
+      ],
+      "sourceBundle": "xgui_texture_icon_item_icon_png_1.uab",
+      "sourceBundleHash": "2301e10a290ca9cd94a7906fea4eea06",
+      "sha256": "2fd5065f913b458149303e473264c022873ee43388fde7e487cb313ee3d4e32b"
+    },
     "loot-icons/ui_item_Mushroom_42.png": {
       "resourcePath": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_Mushroom_42.png",
       "size": [
@@ -216,15 +266,35 @@
       "sourceBundleHash": "2301e10a290ca9cd94a7906fea4eea06",
       "sha256": "094c9f8bd54fc8677a0463def52c891747bc68a806fed71b0d67f7af8b55d463"
     },
-    "loot-icons/ui_item_Mushroom_51.png": {
-      "resourcePath": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_Mushroom_51.png",
+    "loot-icons/ui_item_GrabEgg_Atk_RepairPackt_Purple.png": {
+      "resourcePath": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_GrabEgg_Atk_RepairPackt_Purple.png",
       "size": [
         256,
         256
       ],
-      "sourceBundle": "xgui_texture_icon_item_icon_png_5.uab",
-      "sourceBundleHash": "3976ade5081071fe1fc05eb162940220",
-      "sha256": "69f6bf797e2ea9c357fc6e9097d96bf7c8f7ffc3fff3719ce869ab38dbb43991"
+      "sourceBundle": "xgui_texture_icon_item_icon_png_8.uab",
+      "sourceBundleHash": "20967b3920dc3ff2fb0eb6f725c6b182",
+      "sha256": "a69d71f6abe139cdc56e7a14f2b271c606ca9e6197e94dce3b62d9fa2f6d5e94"
+    },
+    "loot-icons/ui_item_Relic_44.png": {
+      "resourcePath": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_Relic_44.png",
+      "size": [
+        256,
+        256
+      ],
+      "sourceBundle": "xgui_texture_icon_item_icon_png_8.uab",
+      "sourceBundleHash": "20967b3920dc3ff2fb0eb6f725c6b182",
+      "sha256": "611705c6df6ba0106c02ceb4ecd7669dddade6861e37ee2185cf09b6fa1c6dde"
+    },
+    "loot-icons/ui_item_Key_03.png": {
+      "resourcePath": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_Key_03.png",
+      "size": [
+        256,
+        256
+      ],
+      "sourceBundle": "xgui_texture_icon_item_icon_png_4.uab",
+      "sourceBundleHash": "d40ae5bd47fbb2531efc62f55705a764",
+      "sha256": "3d04e37c137a9eb3b697c27961c51ba556b75ae4ea826a5c150f24b512b5d7ab"
     },
     "loot-icons/ui_item_Ore_41.png": {
       "resourcePath": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_Ore_41.png",
@@ -236,15 +306,15 @@
       "sourceBundleHash": "d40ae5bd47fbb2531efc62f55705a764",
       "sha256": "b82944d4063c8f5e2076d82c5a5422c148f570919538e093a0a4db061f7b535a"
     },
-    "loot-icons/ui_item_Relic_44.png": {
-      "resourcePath": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_Relic_44.png",
+    "loot-icons/ui_item_Mushroom_51.png": {
+      "resourcePath": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_Mushroom_51.png",
       "size": [
         256,
         256
       ],
-      "sourceBundle": "xgui_texture_icon_item_icon_png_8.uab",
-      "sourceBundleHash": "20967b3920dc3ff2fb0eb6f725c6b182",
-      "sha256": "611705c6df6ba0106c02ceb4ecd7669dddade6861e37ee2185cf09b6fa1c6dde"
+      "sourceBundle": "xgui_texture_icon_item_icon_png_5.uab",
+      "sourceBundleHash": "3976ade5081071fe1fc05eb162940220",
+      "sha256": "69f6bf797e2ea9c357fc6e9097d96bf7c8f7ffc3fff3719ce869ab38dbb43991"
     }
   }
 }

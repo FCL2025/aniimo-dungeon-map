@@ -1,4 +1,4 @@
-"""Read gold chest treasure values and official names from local game resources.
+"""Read dungeon loot values, names, and pickup weights from local game resources.
 
 No game code is executed. The committed snapshot lets ordinary builds run offline.
 """
@@ -15,6 +15,10 @@ ROOT = Path(__file__).resolve().parent.parent
 LANGUAGES = {'zh-CN': 'zh_CN', 'en': 'en', 'ja': 'ja', 'ko': 'ko',
              'zh-TW': 'zh_TW', 'de': 'de_DE', 'fr': 'fr_FR', 'es': 'es_ES',
              'pt': 'pt_PT', 'ru': 'ru_RU', 'id': 'id_ID', 'th': 'th_TH', 'vi': 'vi_VN'}
+EXTRA_GOLD_ITEM_IDS = (5030203, 5030213, 5001002, 5001103)
+KEY_ITEM_IDS = (5001102, 5001103)
+PURPLE_VALUE_THRESHOLD = 7000
+EXCLUDED_ITEM_TYPES = (10, 14, 15, 16)  # Backpacks, attack amplifiers, defense chassis, and chips.
 
 
 def extract(archive=DEFAULT_ARCHIVE):
@@ -36,23 +40,44 @@ def extract(archive=DEFAULT_ARCHIVE):
             hashes[index_path] = hashlib.sha256(index).hexdigest()
             hashes[blob_path] = hashlib.sha256(blob).hexdigest()
 
-    items = []
-    for member in root['drop_group_data'][520005].values():
-        item_id = member['itemId']
+    chest_item_ids = [member['itemId'] for member in root['drop_group_data'][520005].values()]
+    assert len(chest_item_ids) == len(set(chest_item_ids))
+    purple_item_ids = sorted(item_id for item_id in root['rob_egg_item_in']
+                             if (row := root['item_data'][item_id]).get('quality') == 4
+                             and row['type'] not in EXCLUDED_ITEM_TYPES
+                             and row.get('weight', 0) > 0 and row.get('sellPrice', 0) > 0
+                             and Fraction(row['sellPrice'], row['weight']) > PURPLE_VALUE_THRESHOLD)
+    selected_ids = [*chest_item_ids, *EXTRA_GOLD_ITEM_IDS, *purple_item_ids]
+    assert len(selected_ids) == len(set(selected_ids))
+    assert set(KEY_ITEM_IDS).issubset(selected_ids)
+    items, name_fallbacks = [], []
+    for item_id in selected_ids:
         row = root['item_data'][item_id]
-        if row['quality'] != 5:
+        if item_id in chest_item_ids and row['quality'] != 5:
             continue
+        if item_id in EXTRA_GOLD_ITEM_IDS and row['quality'] != 5:
+            raise ValueError(f'Extra item is no longer gold quality: {item_id}')
+        if item_id in purple_item_ids and row['quality'] != 4:
+            raise ValueError(f'Purple item changed quality: {item_id}')
         outside_id = root['rob_egg_item_in'][item_id]['outid']
         outside = root['item_data'][outside_id]
         assert row['sellPrice'] == outside['sellPrice'] > 0
         assert row['weight'] > 0
         names = {}
         for code, (index, blob) in languages.items():
-            offset, length = index[str(row['itemName'])]
+            name_key = str(row['itemName'])
+            if name_key not in index:
+                if item_id in chest_item_ids:
+                    raise ValueError(f'Missing game translation: {item_id}/{code}')
+                code_index, blob = languages['en']
+                index = code_index
+                name_fallbacks.append(dict(itemId=item_id, language=code, fallback='en'))
+            offset, length = index[name_key]
             names[code] = blob[offset:offset + length].decode('utf-8')
             assert names[code].strip()
         items.append(dict(id=item_id, outsideId=outside_id, nameKey=row['itemName'],
-                          quality=row['quality'], weight=row['weight'], sellPrice=row['sellPrice'], names=names,
+                          quality=row['quality'], itemType=row['type'], weight=row['weight'],
+                          sellPrice=row['sellPrice'], names=names,
                           icon=f'loot-icons/{row["icon"].lstrip("$")}'))
     items.sort(key=lambda item: (-Fraction(item['sellPrice'], item['weight']), item['id']))
     previous, rank = None, 0
@@ -62,9 +87,12 @@ def extract(archive=DEFAULT_ARCHIVE):
             rank = position
         item['rank'] = rank
         previous = value
-    return dict(source=dict(groupId=520005, quality=5, ranking='sellPrice / weight',
+    return dict(source=dict(groupId=520005, extraGoldItemIds=list(EXTRA_GOLD_ITEM_IDS),
+                            keyItemIds=list(KEY_ITEM_IDS), purpleValueThresholdExclusive=PURPLE_VALUE_THRESHOLD,
+                            purpleItemIds=purple_item_ids, excludedItemTypes=list(EXCLUDED_ITEM_TYPES),
+                            ranking='sellPrice / weight',
                             rewardChains=[dict(chestId=c, difficulty=d, dropId=r) for c, d, r in chains],
-                            memberSha256=hashes), items=items)
+                            memberSha256=hashes, nameFallbacks=name_fallbacks), items=items)
 
 
 if __name__ == '__main__':
@@ -74,4 +102,4 @@ if __name__ == '__main__':
     args = parser.parse_args()
     result = extract(args.archive)
     args.output.write_text(json.dumps(result, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
-    print(f'Exported {len(result["items"])} gold treasures in {len(LANGUAGES)} game languages')
+    print(f'Exported {len(result["items"])} ranked items in {len(LANGUAGES)} game languages')

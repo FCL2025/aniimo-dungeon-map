@@ -61,4 +61,4 @@ For two-player chest routes, enable **Show suggested route**, use the same **Sho
 
 For more controls, open **Help** at the bottom of the sidebar.
 
-Open **Gold loot priority** above the marker filters to view the original game icons for 24 gold treasures and compare their weight, sale price, and value per weight. Items rank by sale price ÷ weight, with shared ranks for equal values. Item names use the game's translations for the selected language.
+Open **Loot value ranking** above the marker filters to compare 24 gold chest treasures, two high-grade energy stones, Gold Essence, the Gilded Key, and three purple items worth strictly more than 7,000 per weight: the Silver-Plated Key and two medium-grade energy stones. Backpacks, attack amplifiers, chips, and defense chassis are excluded. The list shows original game icons, weight, sale price, and value per weight. Equal values share a rank. Item names use the game's translations for the selected language, with English as a fallback when unavailable.

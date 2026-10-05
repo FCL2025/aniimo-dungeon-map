@@ -51,9 +51,15 @@
     assert(el('loot-ranking-dialog').open,'Loot dialog did not open');
     assert(el('loot-ranking-title').textContent===I18n.t('loot.button'),'Loot title untranslated');
     const lootRows=[...el('loot-ranking-body').rows];
-    assert(lootRows.length===24,'Gold treasure list is incomplete');
+    assert(lootRows.length===31,'Loot ranking is incomplete');
     await Promise.all(lootRows.map(row=>row.querySelector('.loot-icon').decode()));
-    assert(lootRows.slice(0,3).map(row=>row.dataset.itemId).join(',')==='5000409,5000407,5000410','Wrong pickup priority');
+    assert(lootRows.slice(0,3).map(row=>row.dataset.itemId).join(',')==='5001103,5030203,5030213','Wrong pickup priority');
+    assert(lootRows[0].cells[0].textContent==='1'&&lootRows[1].cells[0].textContent==='2'&&
+      lootRows[1].cells[0].textContent===lootRows[2].cells[0].textContent,'Top ranks or tie are incorrect');
+    assert(lootRows.some(row=>row.dataset.itemId==='5001102'),'Silver-Plated Key is missing');
+    assert(LOOT_RANKING.filter(item=>item.quality===4).length===3&&
+      LOOT_RANKING.every(item=>![10,14,15,16].includes(item.itemType))&&
+      LOOT_RANKING.every(item=>item.quality===5||item.sellPrice/item.weight>7000),'Purple threshold was not applied');
     for(const [index,row] of lootRows.entries()){
       const item=LOOT_RANKING[index],format=new Intl.NumberFormat(code,{maximumFractionDigits:2});
       assert(row.cells[1].textContent===item.names[code],'Item name differs from game localization: '+code);

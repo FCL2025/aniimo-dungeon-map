@@ -14,15 +14,31 @@ def stage_loot_ranking(output):
     snapshot = json.loads((ROOT / 'app/loot-ranking.json').read_text(encoding='utf-8'))
     items = snapshot['items']
     icons = json.loads((ROOT / 'app/loot-icons/manifest.json').read_text(encoding='utf-8'))['assets']
-    if not items or len({item['id'] for item in items}) != len(items):
+    ids = {item['id'] for item in items}
+    if not items or len(ids) != len(items):
         raise ValueError('Missing or duplicate loot items')
+    source = snapshot['source']
+    if (source['purpleValueThresholdExclusive'] != 7000
+            or set(source['keyItemIds']) != {5001102, 5001103}
+            or set(source['excludedItemTypes']) != {10, 14, 15, 16}):
+        raise ValueError('Unexpected loot ranking scope')
+    if (not set(source['keyItemIds']).issubset(ids)
+            or not set(source['extraGoldItemIds']).issubset(ids)
+            or not set(source['purpleItemIds']).issubset(ids)):
+        raise ValueError('Missing keys or ranked gold/purple items')
     previous, rank = None, 0
     for position, item in enumerate(items, 1):
-        if item['quality'] != 5 or item['weight'] <= 0 or item['sellPrice'] <= 0:
-            raise ValueError(f'Invalid gold treasure: {item["id"]}')
+        if item['quality'] not in (4, 5) or item['weight'] <= 0 or item['sellPrice'] <= 0:
+            raise ValueError(f'Invalid ranked item: {item["id"]}')
+        if item['itemType'] in source['excludedItemTypes']:
+            raise ValueError(f'Excluded equipment or chip in ranking: {item["id"]}')
+        if item['id'] in source['extraGoldItemIds'] and item['quality'] != 5:
+            raise ValueError(f'Extra gold item changed quality: {item["id"]}')
         if set(item['names']) != {code for code, _ in LOCALES} or not all(item['names'].values()):
             raise ValueError(f'Incomplete game translations: {item["id"]}')
         value = Fraction(item['sellPrice'], item['weight'])
+        if item['quality'] == 4 and (item['id'] not in source['purpleItemIds'] or value <= 7000):
+            raise ValueError(f'Purple item does not meet threshold: {item["id"]}')
         if previous is not None and value > previous:
             raise ValueError('Loot ranking is not sorted by value per weight')
         if value != previous:
