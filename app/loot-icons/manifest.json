@@ -16,6 +16,16 @@
       "sourceBundleHash": "b72ec45341026ac701dccecedadc83fb",
       "sha256": "76630f2a8667be66910f1505e333513be369b8569169a66c362afcb8ae514121"
     },
+    "loot-icons/ui_item_GrabEgg_Atk_RepairPack_Blue.png": {
+      "resourcePath": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_GrabEgg_Atk_RepairPack_Blue.png",
+      "size": [
+        256,
+        256
+      ],
+      "sourceBundle": "xgui_texture_icon_item_icon_png_0.uab",
+      "sourceBundleHash": "b72ec45341026ac701dccecedadc83fb",
+      "sha256": "dbab184b282126085d9c963d8fb3b553179e299c1656aacf6c7ca1d40f1b7a7f"
+    },
     "loot-icons/ui_item_GrabEgg_Atk_RepairPack_Gold.png": {
       "resourcePath": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_GrabEgg_Atk_RepairPack_Gold.png",
       "size": [
@@ -155,6 +165,16 @@
       "sourceBundle": "xgui_texture_icon_item_icon_png_3.uab",
       "sourceBundleHash": "2ea949c91f18150da6d7f20ee1cb345a",
       "sha256": "44f3cffdc0257a3eb238cd7af6298ead4dd75963215e7fa54873a4c3846645f8"
+    },
+    "loot-icons/ui_item_GrabEgg_Def_RepairPack_Blue.png": {
+      "resourcePath": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_GrabEgg_Def_RepairPack_Blue.png",
+      "size": [
+        256,
+        256
+      ],
+      "sourceBundle": "xgui_texture_icon_item_icon_png_3.uab",
+      "sourceBundleHash": "2ea949c91f18150da6d7f20ee1cb345a",
+      "sha256": "2dd1544c44223826573cdadfce80b3df194d2369b0cb4f22620e349a5abbbe81"
     },
     "loot-icons/ui_item_Gem_11.png": {
       "resourcePath": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_Gem_11.png",
@@ -305,6 +325,16 @@
       "sourceBundle": "xgui_texture_icon_item_icon_png_4.uab",
       "sourceBundleHash": "d40ae5bd47fbb2531efc62f55705a764",
       "sha256": "b82944d4063c8f5e2076d82c5a5422c148f570919538e093a0a4db061f7b535a"
+    },
+    "loot-icons/ui_item_MonDrop_Pruple.png": {
+      "resourcePath": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_MonDrop_Pruple.png",
+      "size": [
+        256,
+        256
+      ],
+      "sourceBundle": "xgui_texture_icon_item_icon_png_5.uab",
+      "sourceBundleHash": "3976ade5081071fe1fc05eb162940220",
+      "sha256": "4827a7e08c56ea2221248ac1d89f817187bdc6d142a48cb079019bf11d631c3b"
     },
     "loot-icons/ui_item_Mushroom_51.png": {
       "resourcePath": "Assets/Res/XGUI/Texture/Icon/Item_icon/ui_item_Mushroom_51.png",

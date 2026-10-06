@@ -184,7 +184,7 @@
   "manual.help": "Pengenalan secara bawaan mati. Gunakan Pilih pintu keluar untuk memilih arah dari pintu masuk. Jika beberapa peta memiliki arah sama, bandingkan medan dan portalnya. Pilih ulang di overlay membuka pilihan lagi dan mematikan pengenalan.",
   "loot.button": "Peringkat nilai jarahan",
   "loot.hint": "Diurutkan berdasarkan harga jual ÷ berat, dari tertinggi. Utamakan saat kapasitas tas terbatas. Nilai sama berbagi peringkat; ditampilkan hingga dua desimal.",
-  "loot.scope": "Mencakup item emas dan item ungu dengan nilai per berat di atas 7.000, termasuk kedua kunci. Tas ransel, penguat serangan, cip, dan rangka pertahanan tidak termasuk.",
+  "loot.scope": "Mencakup item emas, Esens Ungu, dua batu energi dasar, dan item ungu dengan nilai per berat di atas 7.000, termasuk kedua kunci. Tas ransel, penguat serangan, cip, dan rangka pertahanan tidak termasuk.",
   "loot.rank": "Peringkat",
   "loot.item": "Item",
   "loot.weight": "Berat",

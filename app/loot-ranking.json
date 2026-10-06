@@ -13,9 +13,17 @@
     ],
     "purpleValueThresholdExclusive": 7000,
     "purpleItemIds": [
+      5001001,
       5001102,
       5030202,
       5030212
+    ],
+    "extraPurpleItemIds": [
+      5001001
+    ],
+    "extraBlueItemIds": [
+      5030201,
+      5030211
     ],
     "excludedItemTypes": [
       10,
@@ -88,6 +96,16 @@
       },
       {
         "itemId": 5030212,
+        "language": "ko",
+        "fallback": "en"
+      },
+      {
+        "itemId": 5030211,
+        "language": "ja",
+        "fallback": "en"
+      },
+      {
+        "itemId": 5030211,
         "language": "ko",
         "fallback": "en"
       }
@@ -485,6 +503,58 @@
       "rank": 15
     },
     {
+      "id": 5030201,
+      "outsideId": 5930201,
+      "nameKey": 1906839491,
+      "quality": 3,
+      "itemType": 17,
+      "weight": 1,
+      "sellPrice": 7000,
+      "names": {
+        "zh-CN": "低级脉冲能量石",
+        "en": "Low-Grade Pulse Energy Stone",
+        "ja": "エネルギーショウハク・撃破",
+        "ko": "에너지 결정·격파",
+        "zh-TW": "初級脈衝能量石",
+        "de": "Puls-Energiestein niedriger Qualität",
+        "fr": "Pierre d'énergie pulsative inférieure",
+        "es": "Piedra de energía de pulso de calidad baja",
+        "pt": "Pedra de Energia de Pulso de Grau Baixo",
+        "ru": "Импульсный энергокамень низкого ранга",
+        "id": "Batu Energi Denyut Dasar",
+        "th": "สโตน​พลังงาน​พัลส์​เกรด​ตํ่า",
+        "vi": "Đá Năng Lượng Xung Cấp Thấp"
+      },
+      "icon": "loot-icons/ui_item_GrabEgg_Def_RepairPack_Blue.png",
+      "rank": 16
+    },
+    {
+      "id": 5030211,
+      "outsideId": 5930211,
+      "nameKey": 2077106654,
+      "quality": 3,
+      "itemType": 17,
+      "weight": 1,
+      "sellPrice": 7000,
+      "names": {
+        "zh-CN": "低级谐振能量石",
+        "en": "Low-Grade Harmonic Energy Stone",
+        "ja": "Low-Grade Harmonic Energy Stone",
+        "ko": "Low-Grade Harmonic Energy Stone",
+        "zh-TW": "初級諧振能量石",
+        "de": "Harmonie-Energiestein niedriger Qualität",
+        "fr": "Pierre d'énergie résonante inférieure",
+        "es": "Piedra de energía armoniosa de calidad baja",
+        "pt": "Pedra de Energia Harmônica de Grau Baixo",
+        "ru": "Гармоничный энергокамень низкого ранга",
+        "id": "Batu Energi Harmonik Dasar",
+        "th": "สโตน​พลังงาน​ฮาร์มอนิก​เกรด​ตํ่า",
+        "vi": "Đá Năng Lượng Hài Hòa Cấp Thấp"
+      },
+      "icon": "loot-icons/ui_item_GrabEgg_Atk_RepairPack_Blue.png",
+      "rank": 16
+    },
+    {
       "id": 5000219,
       "outsideId": 5900219,
       "nameKey": 1948929154,
@@ -508,7 +578,7 @@
         "vi": "Đai Trang Sức Kim Cương Sao"
       },
       "icon": "loot-icons/ui_item_Relic_43.png",
-      "rank": 16
+      "rank": 18
     },
     {
       "id": 5000321,
@@ -534,7 +604,33 @@
         "vi": "Opal Prismana"
       },
       "icon": "loot-icons/ui_item_Ore_51.png",
-      "rank": 17
+      "rank": 19
+    },
+    {
+      "id": 5001001,
+      "outsideId": 5901001,
+      "nameKey": 1629210017,
+      "quality": 4,
+      "itemType": 1,
+      "weight": 1,
+      "sellPrice": 6750,
+      "names": {
+        "zh-CN": "紫魄",
+        "en": "Purple Essence",
+        "ja": "生命秘石",
+        "ko": "생명의 신비석",
+        "zh-TW": "紫魄",
+        "de": "Violettessenz",
+        "fr": "Essence violette",
+        "es": "Esencia púrpura",
+        "pt": "Essência Roxa",
+        "ru": "Пурпурная эссенция",
+        "id": "Esens Ungu",
+        "th": "แก่นสีม่วง",
+        "vi": "Tinh Chất Tím"
+      },
+      "icon": "loot-icons/ui_item_MonDrop_Pruple.png",
+      "rank": 20
     },
     {
       "id": 5000020,
@@ -560,7 +656,7 @@
         "vi": "Hoa Hồng Pha Lê"
       },
       "icon": "loot-icons/ui_item_Mushroom_44.png",
-      "rank": 18
+      "rank": 21
     },
     {
       "id": 5000217,
@@ -586,7 +682,7 @@
         "vi": "Trượng Vàng"
       },
       "icon": "loot-icons/ui_item_Relic_41.png",
-      "rank": 19
+      "rank": 22
     },
     {
       "id": 5000319,
@@ -612,7 +708,7 @@
         "vi": "Quặng Vàng"
       },
       "icon": "loot-icons/ui_item_Ore_43.png",
-      "rank": 20
+      "rank": 23
     },
     {
       "id": 5000118,
@@ -638,7 +734,7 @@
         "vi": "Hoa Vân Thảo Thiên"
       },
       "icon": "loot-icons/ui_item_Fruit_42.png",
-      "rank": 21
+      "rank": 24
     },
     {
       "id": 5000405,
@@ -664,7 +760,7 @@
         "vi": "Hồng Ngọc Huyết Bồ Câu"
       },
       "icon": "loot-icons/ui_item_Gem_05.png",
-      "rank": 22
+      "rank": 25
     },
     {
       "id": 5000406,
@@ -690,7 +786,7 @@
         "vi": "Ngọc Lục Bảo"
       },
       "icon": "loot-icons/ui_item_Gem_06.png",
-      "rank": 23
+      "rank": 26
     },
     {
       "id": 5000120,
@@ -716,7 +812,7 @@
         "vi": "Hoa Sương"
       },
       "icon": "loot-icons/ui_item_Fruit_44.png",
-      "rank": 24
+      "rank": 27
     },
     {
       "id": 5000408,
@@ -742,7 +838,7 @@
         "vi": "Mã Não Vân Sắc"
       },
       "icon": "loot-icons/ui_item_Gem_12.png",
-      "rank": 24
+      "rank": 27
     },
     {
       "id": 5000019,
@@ -768,7 +864,7 @@
         "vi": "Nấm Truffle Mặt Trăng"
       },
       "icon": "loot-icons/ui_item_Mushroom_43.png",
-      "rank": 26
+      "rank": 29
     },
     {
       "id": 5000117,
@@ -794,7 +890,7 @@
         "vi": "Gấm Bảy Màu"
       },
       "icon": "loot-icons/ui_item_Fruit_41.png",
-      "rank": 27
+      "rank": 30
     },
     {
       "id": 5000017,
@@ -820,7 +916,7 @@
         "vi": "Linh Chi Ngọc Cổ"
       },
       "icon": "loot-icons/ui_item_Mushroom_41.png",
-      "rank": 28
+      "rank": 31
     },
     {
       "id": 5000119,
@@ -846,7 +942,7 @@
         "vi": "Lựu Sọc Sao"
       },
       "icon": "loot-icons/ui_item_Fruit_43.png",
-      "rank": 29
+      "rank": 32
     },
     {
       "id": 5000317,
@@ -872,7 +968,7 @@
         "vi": "Quặng Thiên Thạch"
       },
       "icon": "loot-icons/ui_item_Ore_41.png",
-      "rank": 30
+      "rank": 33
     },
     {
       "id": 5000318,
@@ -898,7 +994,7 @@
         "vi": "Quặng Mithril"
       },
       "icon": "loot-icons/ui_item_Ore_42.png",
-      "rank": 31
+      "rank": 34
     }
   ]
 }

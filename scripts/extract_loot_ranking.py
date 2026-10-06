@@ -16,6 +16,8 @@ LANGUAGES = {'zh-CN': 'zh_CN', 'en': 'en', 'ja': 'ja', 'ko': 'ko',
              'zh-TW': 'zh_TW', 'de': 'de_DE', 'fr': 'fr_FR', 'es': 'es_ES',
              'pt': 'pt_PT', 'ru': 'ru_RU', 'id': 'id_ID', 'th': 'th_TH', 'vi': 'vi_VN'}
 EXTRA_GOLD_ITEM_IDS = (5030203, 5030213, 5001002, 5001103)
+EXTRA_PURPLE_ITEM_IDS = (5001001,)  # Purple Soul is useful even below the general value cutoff.
+EXTRA_BLUE_ITEM_IDS = (5030201, 5030211)  # Basic pulse and resonance energy stones.
 KEY_ITEM_IDS = (5001102, 5001103)
 PURPLE_VALUE_THRESHOLD = 7000
 EXCLUDED_ITEM_TYPES = (10, 14, 15, 16)  # Backpacks, attack amplifiers, defense chassis, and chips.
@@ -47,7 +49,8 @@ def extract(archive=DEFAULT_ARCHIVE):
                              and row['type'] not in EXCLUDED_ITEM_TYPES
                              and row.get('weight', 0) > 0 and row.get('sellPrice', 0) > 0
                              and Fraction(row['sellPrice'], row['weight']) > PURPLE_VALUE_THRESHOLD)
-    selected_ids = [*chest_item_ids, *EXTRA_GOLD_ITEM_IDS, *purple_item_ids]
+    purple_item_ids = sorted(set(purple_item_ids) | set(EXTRA_PURPLE_ITEM_IDS))
+    selected_ids = [*chest_item_ids, *EXTRA_GOLD_ITEM_IDS, *purple_item_ids, *EXTRA_BLUE_ITEM_IDS]
     assert len(selected_ids) == len(set(selected_ids))
     assert set(KEY_ITEM_IDS).issubset(selected_ids)
     items, name_fallbacks = [], []
@@ -59,6 +62,8 @@ def extract(archive=DEFAULT_ARCHIVE):
             raise ValueError(f'Extra item is no longer gold quality: {item_id}')
         if item_id in purple_item_ids and row['quality'] != 4:
             raise ValueError(f'Purple item changed quality: {item_id}')
+        if item_id in EXTRA_BLUE_ITEM_IDS and row['quality'] != 3:
+            raise ValueError(f'Blue item changed quality: {item_id}')
         outside_id = root['rob_egg_item_in'][item_id]['outid']
         outside = root['item_data'][outside_id]
         assert row['sellPrice'] == outside['sellPrice'] > 0
@@ -89,7 +94,9 @@ def extract(archive=DEFAULT_ARCHIVE):
         previous = value
     return dict(source=dict(groupId=520005, extraGoldItemIds=list(EXTRA_GOLD_ITEM_IDS),
                             keyItemIds=list(KEY_ITEM_IDS), purpleValueThresholdExclusive=PURPLE_VALUE_THRESHOLD,
-                            purpleItemIds=purple_item_ids, excludedItemTypes=list(EXCLUDED_ITEM_TYPES),
+                            purpleItemIds=purple_item_ids, extraPurpleItemIds=list(EXTRA_PURPLE_ITEM_IDS),
+                            extraBlueItemIds=list(EXTRA_BLUE_ITEM_IDS),
+                            excludedItemTypes=list(EXCLUDED_ITEM_TYPES),
                             ranking='sellPrice / weight',
                             rewardChains=[dict(chestId=c, difficulty=d, dropId=r) for c, d, r in chains],
                             memberSha256=hashes, nameFallbacks=name_fallbacks), items=items)

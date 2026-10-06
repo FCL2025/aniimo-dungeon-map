@@ -184,7 +184,7 @@
   "manual.help": "La reconnaissance est désactivée par défaut. Choisir la sortie permet de sélectionner la direction depuis l’entrée. Si plusieurs cartes ont la même direction, comparez leurs terrains et portails. Rechoisir sur la superposition rouvre le choix et désactive la reconnaissance.",
   "loot.button": "Classement du butin par valeur",
   "loot.hint": "Tri par prix de vente ÷ poids, du plus élevé au plus bas. À privilégier quand le sac est plein. Valeurs égales : même rang. Affichage à deux décimales maximum.",
-  "loot.scope": "Comprend les objets dorés et les objets violets dont la valeur par poids dépasse 7 000, y compris les deux clés. Les sacs à dos, amplificateurs d’attaque, puces et châssis défensifs sont exclus.",
+  "loot.scope": "Comprend les objets dorés, l’Essence violette, les deux pierres d’énergie élémentaires et les objets violets dont la valeur par poids dépasse 7 000, y compris les deux clés. Les sacs à dos, amplificateurs d’attaque, puces et châssis défensifs sont exclus.",
   "loot.rank": "Rang",
   "loot.item": "Objet",
   "loot.weight": "Poids",

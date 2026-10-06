@@ -20,24 +20,34 @@ def stage_loot_ranking(output):
     source = snapshot['source']
     if (source['purpleValueThresholdExclusive'] != 7000
             or set(source['keyItemIds']) != {5001102, 5001103}
+            or set(source['extraPurpleItemIds']) != {5001001}
+            or set(source['extraBlueItemIds']) != {5030201, 5030211}
             or set(source['excludedItemTypes']) != {10, 14, 15, 16}):
         raise ValueError('Unexpected loot ranking scope')
     if (not set(source['keyItemIds']).issubset(ids)
             or not set(source['extraGoldItemIds']).issubset(ids)
+            or not set(source['extraBlueItemIds']).issubset(ids)
             or not set(source['purpleItemIds']).issubset(ids)):
-        raise ValueError('Missing keys or ranked gold/purple items')
+        raise ValueError('Missing keys or ranked gold/purple/blue items')
     previous, rank = None, 0
     for position, item in enumerate(items, 1):
-        if item['quality'] not in (4, 5) or item['weight'] <= 0 or item['sellPrice'] <= 0:
+        if item['quality'] not in (3, 4, 5) or item['weight'] <= 0 or item['sellPrice'] <= 0:
             raise ValueError(f'Invalid ranked item: {item["id"]}')
+        if item['quality'] == 3 and item['id'] not in source['extraBlueItemIds']:
+            raise ValueError(f'Unexpected blue item in ranking: {item["id"]}')
+        if item['id'] in source['extraBlueItemIds'] and item['quality'] != 3:
+            raise ValueError(f'Basic energy stone changed quality: {item["id"]}')
         if item['itemType'] in source['excludedItemTypes']:
             raise ValueError(f'Excluded equipment or chip in ranking: {item["id"]}')
         if item['id'] in source['extraGoldItemIds'] and item['quality'] != 5:
             raise ValueError(f'Extra gold item changed quality: {item["id"]}')
+        if item['id'] in source['extraPurpleItemIds'] and item['quality'] != 4:
+            raise ValueError(f'Extra purple item changed quality: {item["id"]}')
         if set(item['names']) != {code for code, _ in LOCALES} or not all(item['names'].values()):
             raise ValueError(f'Incomplete game translations: {item["id"]}')
         value = Fraction(item['sellPrice'], item['weight'])
-        if item['quality'] == 4 and (item['id'] not in source['purpleItemIds'] or value <= 7000):
+        if item['quality'] == 4 and (item['id'] not in source['purpleItemIds']
+                                     or (value <= 7000 and item['id'] not in source['extraPurpleItemIds'])):
             raise ValueError(f'Purple item does not meet threshold: {item["id"]}')
         if previous is not None and value > previous:
             raise ValueError('Loot ranking is not sorted by value per weight')

@@ -184,7 +184,7 @@
   "manual.help": "Die Erkennung ist standardmäßig aus. Wähle mit Ausgang wählen die Richtung vom Eingang zum Ausgang. Haben mehrere Karten dieselbe Richtung, vergleiche Gelände und Portale. Neu wählen im Overlay öffnet die Auswahl erneut und schaltet die Erkennung aus.",
   "loot.button": "Wert-Rangliste der Beute",
   "loot.hint": "Nach Verkaufspreis ÷ Gewicht absteigend sortiert. Hilft bei knappem Taschenplatz. Gleiche Werte teilen sich einen Rang; Anzeige mit bis zu zwei Dezimalstellen.",
-  "loot.scope": "Enthält goldene Gegenstände und violette Gegenstände mit einem Wert pro Gewicht über 7.000, einschließlich beider Schlüssel. Rucksäcke, Angriffsverstärker, Chips und Schutzgehäuse sind ausgeschlossen.",
+  "loot.scope": "Enthält goldene Gegenstände, Violettessenz, zwei einfache Energiesteine und violette Gegenstände mit einem Wert pro Gewicht über 7.000, einschließlich beider Schlüssel. Rucksäcke, Angriffsverstärker, Chips und Schutzgehäuse sind ausgeschlossen.",
   "loot.rank": "Rang",
   "loot.item": "Gegenstand",
   "loot.weight": "Gewicht",
