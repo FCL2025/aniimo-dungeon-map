@@ -6,6 +6,7 @@ from pathlib import Path
 import shutil
 
 from build_i18n import LOCALES
+from loot_capacity import BACKPACK, RANKING_FORMULA, capacity_metrics, cp_value
 
 ROOT = Path(__file__).resolve().parent.parent
 
@@ -18,6 +19,8 @@ def stage_loot_ranking(output):
     if not items or len(ids) != len(items):
         raise ValueError('Missing or duplicate loot items')
     source = snapshot['source']
+    if source.get('backpack') != BACKPACK or source['ranking'] != RANKING_FORMULA:
+        raise ValueError('Unexpected backpack capacity or CP formula')
     if (source['purpleValueThresholdExclusive'] != 7000
             or set(source['keyItemIds']) != {5001102, 5001103}
             or set(source['extraPurpleItemIds']) != {5001001}
@@ -45,12 +48,15 @@ def stage_loot_ranking(output):
             raise ValueError(f'Extra purple item changed quality: {item["id"]}')
         if set(item['names']) != {code for code, _ in LOCALES} or not all(item['names'].values()):
             raise ValueError(f'Incomplete game translations: {item["id"]}')
-        value = Fraction(item['sellPrice'], item['weight'])
+        value_per_weight = Fraction(item['sellPrice']) / Fraction(str(item['weight']))
         if item['quality'] == 4 and (item['id'] not in source['purpleItemIds']
-                                     or (value <= 7000 and item['id'] not in source['extraPurpleItemIds'])):
+                                     or (value_per_weight <= 7000 and item['id'] not in source['extraPurpleItemIds'])):
             raise ValueError(f'Purple item does not meet threshold: {item["id"]}')
+        value = cp_value(item)
+        if any(item.get(key) != expected for key, expected in capacity_metrics(item).items()):
+            raise ValueError(f'Incorrect backpack calculation: {item["id"]}')
         if previous is not None and value > previous:
-            raise ValueError('Loot ranking is not sorted by value per weight')
+            raise ValueError('Loot ranking is not sorted by backpack CP')
         if value != previous:
             rank = position
         if item['rank'] != rank:

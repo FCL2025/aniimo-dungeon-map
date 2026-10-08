@@ -183,11 +183,14 @@
   "manual.upRight": "Rechts oben",
   "manual.help": "Die Erkennung ist standardmäßig aus. Wähle mit Ausgang wählen die Richtung vom Eingang zum Ausgang. Haben mehrere Karten dieselbe Richtung, vergleiche Gelände und Portale. Neu wählen im Overlay öffnet die Auswahl erneut und schaltet die Erkennung aus.",
   "loot.button": "Wert-Rangliste der Beute",
-  "loot.hint": "Nach Verkaufspreis ÷ Gewicht absteigend sortiert. Hilft bei knappem Taschenplatz. Gleiche Werte teilen sich einen Rang; Anzeige mit bis zu zwei Dezimalstellen.",
+  "loot.hint": "25 Plätze / 70 kg; ein Gegenstand je Platz, im Schnitt 2,8 kg. Taschen-CP = Verkaufspreis ÷ max(1, Gewicht ÷ 2,8), absteigend mit gleichen Rängen bei Gleichstand. Bis 2,8 kg zählt der Preis je Platz; schwerere Gegenstände werden nach Gewicht abgewertet.",
   "loot.scope": "Enthält goldene Gegenstände, Violettessenz, zwei einfache Energiesteine und violette Gegenstände mit einem Wert pro Gewicht über 7.000, einschließlich beider Schlüssel. Rucksäcke, Angriffsverstärker, Chips und Schutzgehäuse sind ausgeschlossen.",
   "loot.rank": "Rang",
   "loot.item": "Gegenstand",
-  "loot.weight": "Gewicht",
+  "loot.weight": "Gewicht (kg)",
   "loot.price": "Verkaufspreis",
-  "loot.value": "Wert pro Gewicht"
+  "loot.value": "Taschen-CP",
+  "loot.limits": "Die Rechnung für gleiche Gegenstände nutzt ganze Stückzahlen und setzt genügend Exemplare voraus. Drop-Raten sind unbekannt; die Summe ist kein erwarteter Erlös pro Runde. Bei gemischter Beute freie Plätze und Restgewicht berücksichtigen.",
+  "loot.pack": "Wert bei gleicher Beute",
+  "loot.packDetails": "{count} Stück · {weight} kg"
 }

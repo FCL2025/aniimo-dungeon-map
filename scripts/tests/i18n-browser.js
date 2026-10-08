@@ -58,8 +58,12 @@
       lootRows[1].cells[0].textContent===lootRows[2].cells[0].textContent,'Top ranks or tie are incorrect');
     assert(lootRows.some(row=>row.dataset.itemId==='5001102'),'Silver-Plated Key is missing');
     const basic=lootRows.filter(row=>['5030201','5030211'].includes(row.dataset.itemId));
-    assert(basic.length===2&&basic.every(row=>row.cells[0].textContent==='16'&&row.cells[4].textContent===new Intl.NumberFormat(code).format(7000)),'Basic energy stones are missing or out of order');
-    assert(lootRows.find(row=>row.dataset.itemId==='5001001')?.cells[0].textContent==='20','Purple Essence is missing or out of order');
+    assert(basic.length===2&&basic.every(row=>row.cells[0].textContent==='32'&&row.cells[4].textContent===new Intl.NumberFormat(code).format(7000)),'Basic energy stones are missing or out of order');
+    assert(lootRows.find(row=>row.dataset.itemId==='5001001')?.cells[0].textContent==='34','Purple Essence is missing or out of order');
+    assert(lootRows.find(row=>row.dataset.itemId==='5000410')?.cells[0].textContent==='5','Rainbow Diamond should outrank cheap lightweight items');
+    assert(el('loot-ranking-hint').textContent===I18n.t('loot.hint')&&
+      document.querySelector('[data-i18n="loot.limits"]').textContent===I18n.t('loot.limits'),'Capacity assumptions are untranslated');
+    assert(document.querySelector('[aria-sort="descending"]').textContent===I18n.t('loot.value'),'CP sort heading is untranslated');
     assert(LOOT_RANKING.filter(item=>item.quality===4).length===4&&
       LOOT_RANKING.filter(item=>item.quality===3).length===2&&
       LOOT_RANKING.every(item=>![10,14,15,16].includes(item.itemType))&&
@@ -72,7 +76,11 @@
       const icon=row.querySelector('.loot-icon');
       assert(icon.getAttribute('src')===item.icon&&icon.naturalWidth>0&&icon.naturalHeight>0,'Game item icon missing or incorrect');
       assert(row.cells[2].textContent===format.format(item.weight)&&row.cells[3].textContent===format.format(item.sellPrice),'Wrong loot values');
-      assert(row.cells[4].textContent===format.format(item.sellPrice/item.weight),'Wrong value per weight');
+      assert(row.cells[4].textContent===format.format(item.cpValue),'Wrong backpack CP');
+      assert(row.cells[5].firstChild.textContent===format.format(item.packValue),'Wrong same-item bag value');
+      assert(row.cells[5].querySelector('.loot-pack-details').textContent===I18n.t('loot.packDetails',{
+        count:format.format(item.packCount),weight:format.format(item.packWeight)}),'Wrong packing details');
+      assert(item.packCount<=25&&item.packWeight<=70&&Number.isInteger(item.packCount),'Packing exceeds bag capacity');
     }
     const tied=lootRows.filter(row=>['5000120','5000408'].includes(row.dataset.itemId));
     assert(tied.length===2&&tied[0].cells[0].textContent===tied[1].cells[0].textContent,'Equal values do not share rank');

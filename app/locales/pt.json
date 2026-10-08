@@ -183,11 +183,14 @@
   "manual.upRight": "Acima à direita",
   "manual.help": "O reconhecimento começa desativado. Use Escolher saída para indicar a direção a partir da entrada. Quando vários mapas têm a mesma direção, compare os terrenos e portais. Reescolher na sobreposição reabre a seleção e desativa o reconhecimento.",
   "loot.button": "Classificação do valor do saque",
-  "loot.hint": "Ordenado por preço de venda ÷ peso, do maior para o menor. Útil quando há pouco espaço na mochila. Valores iguais dividem a posição; até duas casas decimais.",
+  "loot.hint": "25 espaços / 70 kg; um item por espaço, com média de 2,8 kg. CP da mochila = preço de venda ÷ max(1, peso ÷ 2,8), do maior ao menor, com empates. Até 2,8 kg, compara-se o preço por espaço; itens mais pesados são ajustados pelo peso.",
   "loot.scope": "Inclui itens dourados, Essência Roxa, duas pedras de energia básicas e itens roxos com valor por peso acima de 7.000, incluindo ambas as chaves. Exclui mochilas, amplificadores de ataque, chips e chassis defensivos.",
   "loot.rank": "Posição",
   "loot.item": "Item",
-  "loot.weight": "Peso",
+  "loot.weight": "Peso (kg)",
   "loot.price": "Preço de venda",
-  "loot.value": "Valor por peso"
+  "loot.value": "CP da mochila",
+  "loot.limits": "O cálculo com um só tipo de item usa unidades inteiras e pressupõe cópias suficientes. As taxas de obtenção são desconhecidas; o total não é um ganho esperado por partida. Ao misturar itens, considere os espaços e o peso restantes.",
+  "loot.pack": "Valor com itens iguais",
+  "loot.packDetails": "{count} itens · {weight} kg"
 }

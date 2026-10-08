@@ -183,11 +183,14 @@
   "manual.upRight": "Trên phải",
   "manual.help": "Nhận diện mặc định tắt. Dùng Chọn lối ra để chọn hướng so với lối vào. Nếu nhiều bản đồ cùng hướng, hãy so sánh địa hình và các cổng. Chọn lại trên bản đồ phủ sẽ mở bộ chọn và tắt nhận diện.",
   "loot.button": "Xếp hạng giá trị vật phẩm",
-  "loot.hint": "Xếp theo giá bán ÷ trọng lượng từ cao xuống thấp. Ưu tiên khi túi sắp đầy. Giá trị bằng nhau có cùng hạng; hiển thị tối đa hai chữ số thập phân.",
+  "loot.hint": "25 ô / 70 kg; mỗi vật phẩm chiếm một ô, trung bình 2,8 kg mỗi ô. CP túi = giá bán ÷ max(1, trọng lượng ÷ 2,8), xếp giảm dần, bằng điểm thì cùng hạng. Đến 2,8 kg so sánh giá mỗi ô; vật phẩm nặng hơn được điều chỉnh theo trọng lượng.",
   "loot.scope": "Bao gồm vật phẩm vàng, Tinh Chất Tím, hai loại đá năng lượng sơ cấp và vật phẩm tím có giá trị trên mỗi đơn vị trọng lượng lớn hơn 7.000, kể cả hai loại chìa khóa. Loại trừ ba lô, bộ khuếch đại tấn công, chip và khung phòng thủ.",
   "loot.rank": "Hạng",
   "loot.item": "Vật phẩm",
-  "loot.weight": "Trọng lượng",
+  "loot.weight": "Trọng lượng (kg)",
   "loot.price": "Giá bán",
-  "loot.value": "Giá trị mỗi đơn vị trọng lượng"
+  "loot.value": "CP túi",
+  "loot.limits": "Phép tính cùng loại dùng số lượng nguyên và giả định có đủ vật phẩm. Chưa biết tỷ lệ rơi, nên tổng tiền không phải thu nhập kỳ vọng mỗi lượt. Khi chứa nhiều loại, hãy cân nhắc số ô và trọng lượng còn lại.",
+  "loot.pack": "Giá trị túi cùng loại",
+  "loot.packDetails": "{count} vật phẩm · {weight} kg"
 }

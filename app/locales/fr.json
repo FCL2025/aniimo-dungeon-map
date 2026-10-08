@@ -183,11 +183,14 @@
   "manual.upRight": "En haut à droite",
   "manual.help": "La reconnaissance est désactivée par défaut. Choisir la sortie permet de sélectionner la direction depuis l’entrée. Si plusieurs cartes ont la même direction, comparez leurs terrains et portails. Rechoisir sur la superposition rouvre le choix et désactive la reconnaissance.",
   "loot.button": "Classement du butin par valeur",
-  "loot.hint": "Tri par prix de vente ÷ poids, du plus élevé au plus bas. À privilégier quand le sac est plein. Valeurs égales : même rang. Affichage à deux décimales maximum.",
+  "loot.hint": "25 emplacements / 70 kg ; un objet par emplacement, soit 2,8 kg en moyenne. CP du sac = prix de vente ÷ max(1, poids ÷ 2,8), par ordre décroissant, ex æquo inclus. Jusqu’à 2,8 kg, on compare le prix par emplacement ; au-delà, le poids réduit le score.",
   "loot.scope": "Comprend les objets dorés, l’Essence violette, les deux pierres d’énergie élémentaires et les objets violets dont la valeur par poids dépasse 7 000, y compris les deux clés. Les sacs à dos, amplificateurs d’attaque, puces et châssis défensifs sont exclus.",
   "loot.rank": "Rang",
   "loot.item": "Objet",
-  "loot.weight": "Poids",
+  "loot.weight": "Poids (kg)",
   "loot.price": "Prix de vente",
-  "loot.value": "Valeur par poids"
+  "loot.value": "CP du sac",
+  "loot.limits": "Le calcul pour un seul type d’objet utilise des quantités entières et suppose assez d’exemplaires. Les taux de butin sont inconnus : ce total n’est pas un gain attendu par partie. Pour un sac mixte, tenez compte des places et du poids restants.",
+  "loot.pack": "Valeur en objets identiques",
+  "loot.packDetails": "{count} objets · {weight} kg"
 }

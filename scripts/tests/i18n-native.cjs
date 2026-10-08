@@ -84,6 +84,23 @@ async function stop(app){app.cdp.socket.close();const exited=new Promise(r=>app.
     await app.cdp.evaluate('document.getElementById("language-button").click()');
     const shot=await app.cdp.send('Page.captureScreenshot',{format:'png'});
     const out=path.join(root,'dist/i18n-preview');fs.mkdirSync(out,{recursive:true});fs.writeFileSync(path.join(out,'language-menu.png'),Buffer.from(shot.data,'base64'));
+    await app.cdp.evaluate('document.getElementById("language-button").click();document.getElementById("loot-ranking-button").click()');
+    report.lootLayout=[];
+    for(const width of [1100,400]){
+      await app.cdp.send('Emulation.setDeviceMetricsOverride',{width,height:900,deviceScaleFactor:1,mobile:false});
+      await wait(150);
+      const layout=await app.cdp.evaluate(`(()=>{
+        const dialog=document.getElementById('loot-ranking-dialog'),wrap=dialog.querySelector('.loot-table-wrap'),r=dialog.getBoundingClientRect();
+        return {width:innerWidth,contained:r.left>=0&&r.right<=innerWidth,dialogOverflow:dialog.scrollWidth>dialog.clientWidth+1,
+          scrollableTable:wrap.scrollWidth>wrap.clientWidth+1,rows:document.getElementById('loot-ranking-body').rows.length};
+      })()`);
+      assert(layout.contained&&!layout.dialogOverflow&&layout.rows===34,'Loot layout overflow: '+JSON.stringify(layout));
+      assert(width>620?!layout.scrollableTable:layout.scrollableTable,'Unexpected loot table scrolling');
+      report.lootLayout.push(layout);
+      const screenshot=await app.cdp.send('Page.captureScreenshot',{format:'png'});
+      fs.writeFileSync(path.join(out,`loot-capacity-${width}.png`),Buffer.from(screenshot.data,'base64'));
+    }
+    await app.cdp.send('Emulation.clearDeviceMetricsOverride');
     report.passed=true;fs.writeFileSync(path.join(out,'i18n-verification.json'),JSON.stringify(report,null,2));console.log(JSON.stringify(report,null,2));
   }finally{overlay?.socket.close();if(app)await stop(app);}
 })().catch(error=>{console.error(error);process.exitCode=1;});

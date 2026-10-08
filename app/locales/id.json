@@ -183,11 +183,14 @@
   "manual.upRight": "Kanan atas",
   "manual.help": "Pengenalan secara bawaan mati. Gunakan Pilih pintu keluar untuk memilih arah dari pintu masuk. Jika beberapa peta memiliki arah sama, bandingkan medan dan portalnya. Pilih ulang di overlay membuka pilihan lagi dan mematikan pengenalan.",
   "loot.button": "Peringkat nilai jarahan",
-  "loot.hint": "Diurutkan berdasarkan harga jual ÷ berat, dari tertinggi. Utamakan saat kapasitas tas terbatas. Nilai sama berbagi peringkat; ditampilkan hingga dua desimal.",
+  "loot.hint": "25 slot / 70 kg; satu item per slot, rata-rata 2,8 kg per slot. CP tas = harga jual ÷ max(1, berat ÷ 2,8), dari tertinggi dengan peringkat sama untuk nilai setara. Hingga 2,8 kg dibandingkan berdasarkan harga per slot; item lebih berat disesuaikan menurut berat.",
   "loot.scope": "Mencakup item emas, Esens Ungu, dua batu energi dasar, dan item ungu dengan nilai per berat di atas 7.000, termasuk kedua kunci. Tas ransel, penguat serangan, cip, dan rangka pertahanan tidak termasuk.",
   "loot.rank": "Peringkat",
   "loot.item": "Item",
-  "loot.weight": "Berat",
+  "loot.weight": "Berat (kg)",
   "loot.price": "Harga jual",
-  "loot.value": "Nilai per berat"
+  "loot.value": "CP tas",
+  "loot.limits": "Perhitungan item sejenis memakai jumlah bulat dan mengasumsikan salinan yang cukup. Peluang drop tidak diketahui, sehingga total bukan perkiraan pendapatan per putaran. Untuk campuran item, sesuaikan dengan sisa slot dan berat.",
+  "loot.pack": "Nilai tas item sejenis",
+  "loot.packDetails": "{count} item · {weight} kg"
 }

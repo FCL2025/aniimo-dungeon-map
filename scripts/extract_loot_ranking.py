@@ -10,6 +10,7 @@ from pathlib import Path
 import zipfile
 
 from pmdata import DEFAULT_ARCHIVE, MEMBER, PMData
+from loot_capacity import BACKPACK, RANKING_FORMULA, rank_items
 
 ROOT = Path(__file__).resolve().parent.parent
 LANGUAGES = {'zh-CN': 'zh_CN', 'en': 'en', 'ja': 'ja', 'ko': 'ko',
@@ -68,6 +69,7 @@ def extract(archive=DEFAULT_ARCHIVE):
         outside = root['item_data'][outside_id]
         assert row['sellPrice'] == outside['sellPrice'] > 0
         assert row['weight'] > 0
+        assert row['stackcount'] == 1, f'Capacity model requires one item per slot: {item_id}'
         names = {}
         for code, (index, blob) in languages.items():
             name_key = str(row['itemName'])
@@ -82,22 +84,15 @@ def extract(archive=DEFAULT_ARCHIVE):
             assert names[code].strip()
         items.append(dict(id=item_id, outsideId=outside_id, nameKey=row['itemName'],
                           quality=row['quality'], itemType=row['type'], weight=row['weight'],
-                          sellPrice=row['sellPrice'], names=names,
+                          sellPrice=row['sellPrice'], stackCount=row['stackcount'], names=names,
                           icon=f'loot-icons/{row["icon"].lstrip("$")}'))
-    items.sort(key=lambda item: (-Fraction(item['sellPrice'], item['weight']), item['id']))
-    previous, rank = None, 0
-    for position, item in enumerate(items, 1):
-        value = Fraction(item['sellPrice'], item['weight'])
-        if value != previous:
-            rank = position
-        item['rank'] = rank
-        previous = value
+    rank_items(items)
     return dict(source=dict(groupId=520005, extraGoldItemIds=list(EXTRA_GOLD_ITEM_IDS),
                             keyItemIds=list(KEY_ITEM_IDS), purpleValueThresholdExclusive=PURPLE_VALUE_THRESHOLD,
                             purpleItemIds=purple_item_ids, extraPurpleItemIds=list(EXTRA_PURPLE_ITEM_IDS),
                             extraBlueItemIds=list(EXTRA_BLUE_ITEM_IDS),
                             excludedItemTypes=list(EXCLUDED_ITEM_TYPES),
-                            ranking='sellPrice / weight',
+                            ranking=RANKING_FORMULA, backpack=BACKPACK,
                             rewardChains=[dict(chestId=c, difficulty=d, dropId=r) for c, d, r in chains],
                             memberSha256=hashes, nameFallbacks=name_fallbacks), items=items)
 

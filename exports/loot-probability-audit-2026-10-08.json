@@ -1,0 +1,3413 @@
+{
+  "checkedAt": "2026-10-08T09:02:24+08:00",
+  "snapshots": [
+    {
+      "archive": "F:\\Pawprint\\Aniimo\\game\\Aniimo_Data\\cvs\\res\\lua\\LuaScripts.xdf",
+      "pmdataSha256": "14552ae57c7d99279ac3791e732ca74ae5dc8cc6db38c01d0e4e0b0134fc77bb",
+      "tableCount": 12110,
+      "dropRecords": 4977,
+      "dropGroups": 1750,
+      "groupMemberFields": [
+        "dropMaxNum",
+        "dropMinNum",
+        "groupDropMaxNum",
+        "groupDropMinNum",
+        "index",
+        "itemConditions",
+        "itemId",
+        "petId",
+        "petLabel",
+        "rewardGroupID"
+      ],
+      "packageCount": 395,
+      "packageSubtableCount": 652,
+      "nonemptyPackageSubtables": 0
+    },
+    {
+      "archive": "F:\\Pawprint\\Aniimo\\game\\Aniimo_Data\\cvs\\res\\patchv2\\lua\\ver\\3584014\\LuaScripts.xdf",
+      "pmdataSha256": "3b7b1db4e204e48ccff6d0ceb212dcfae480ef73ea0d79f9fc2f51eee618c7ca",
+      "tableCount": 12109,
+      "dropRecords": 4968,
+      "dropGroups": 1749,
+      "groupMemberFields": [
+        "dropMaxNum",
+        "dropMinNum",
+        "groupDropMaxNum",
+        "groupDropMinNum",
+        "index",
+        "itemConditions",
+        "itemId",
+        "petId",
+        "petLabel",
+        "rewardGroupID"
+      ],
+      "packageCount": 395,
+      "packageSubtableCount": 652,
+      "nonemptyPackageSubtables": 0
+    },
+    {
+      "archive": "F:\\Pawprint\\Aniimo\\game\\Aniimo_Data\\cvs\\res\\patchv2\\lua\\ver\\3629693\\LuaScripts.xdf",
+      "pmdataSha256": "b6f78f2a1e05b64c6b857dde241fc6837fefc45e4209458fc735eaffdac04181",
+      "tableCount": 12110,
+      "dropRecords": 4976,
+      "dropGroups": 1750,
+      "groupMemberFields": [
+        "dropMaxNum",
+        "dropMinNum",
+        "groupDropMaxNum",
+        "groupDropMinNum",
+        "index",
+        "itemConditions",
+        "itemId",
+        "petId",
+        "petLabel",
+        "rewardGroupID"
+      ],
+      "packageCount": 395,
+      "packageSubtableCount": 652,
+      "nonemptyPackageSubtables": 0
+    },
+    {
+      "archive": "F:\\Pawprint\\Aniimo\\game\\Aniimo_Data\\cvs\\res\\patchv2\\lua\\ver\\3634150\\LuaScripts.xdf",
+      "pmdataSha256": "14552ae57c7d99279ac3791e732ca74ae5dc8cc6db38c01d0e4e0b0134fc77bb",
+      "tableCount": 12110,
+      "dropRecords": 4977,
+      "dropGroups": 1750,
+      "groupMemberFields": [
+        "dropMaxNum",
+        "dropMinNum",
+        "groupDropMaxNum",
+        "groupDropMinNum",
+        "index",
+        "itemConditions",
+        "itemId",
+        "petId",
+        "petLabel",
+        "rewardGroupID"
+      ],
+      "packageCount": 395,
+      "packageSubtableCount": 652,
+      "nonemptyPackageSubtables": 0
+    }
+  ],
+  "chestChains": [
+    {
+      "chestId": 10,
+      "editorName": "蛋巢-掉蛋",
+      "containerQuality": 5,
+      "difficulty": 5,
+      "rewardGroup": [
+        {
+          "dropId": 5002003,
+          "dropData": {
+            "dropParam": {
+              "1": 49903
+            },
+            "dropType": 3
+          },
+          "targets": [
+            {
+              "packageId": 49903,
+              "contents": {
+                "1": {}
+              }
+            }
+          ]
+        }
+      ],
+      "rewardGroup2": []
+    },
+    {
+      "chestId": 10,
+      "editorName": "蛋巢-掉蛋",
+      "containerQuality": 5,
+      "difficulty": 6,
+      "rewardGroup": [
+        {
+          "dropId": 5002005,
+          "dropData": {
+            "dropParam": {
+              "1": 49905
+            },
+            "dropType": 3
+          },
+          "targets": [
+            {
+              "packageId": 49905,
+              "contents": {
+                "1": {}
+              }
+            }
+          ]
+        }
+      ],
+      "rewardGroup2": []
+    },
+    {
+      "chestId": 2001,
+      "editorName": "陈旧木箱",
+      "containerQuality": 3,
+      "difficulty": 5,
+      "rewardGroup": [
+        {
+          "dropId": 15101201,
+          "dropData": {
+            "dropParam": {
+              "1": 5104201,
+              "2": 5104202
+            },
+            "dropType": 3
+          },
+          "targets": [
+            {
+              "packageId": 5104201,
+              "contents": {
+                "1": {}
+              }
+            },
+            {
+              "packageId": 5104202,
+              "contents": {
+                "1": {}
+              }
+            }
+          ]
+        }
+      ],
+      "rewardGroup2": []
+    },
+    {
+      "chestId": 2001,
+      "editorName": "陈旧木箱",
+      "containerQuality": 3,
+      "difficulty": 6,
+      "rewardGroup": [
+        {
+          "dropId": 15101301,
+          "dropData": {
+            "dropParam": {
+              "1": 5104301,
+              "2": 5104302
+            },
+            "dropType": 3
+          },
+          "targets": [
+            {
+              "packageId": 5104301,
+              "contents": {
+                "1": {}
+              }
+            },
+            {
+              "packageId": 5104302,
+              "contents": {
+                "1": {}
+              }
+            }
+          ]
+        }
+      ],
+      "rewardGroup2": []
+    },
+    {
+      "chestId": 2002,
+      "editorName": "华丽木箱",
+      "containerQuality": 4,
+      "difficulty": 5,
+      "rewardGroup": [
+        {
+          "dropId": 15101202,
+          "dropData": {
+            "dropParam": {
+              "1": 5104203,
+              "2": 5104204
+            },
+            "dropType": 3
+          },
+          "targets": [
+            {
+              "packageId": 5104203,
+              "contents": {
+                "1": {}
+              }
+            },
+            {
+              "packageId": 5104204,
+              "contents": {
+                "1": {}
+              }
+            }
+          ]
+        }
+      ],
+      "rewardGroup2": [
+        {
+          "dropId": 15101218,
+          "dropData": {
+            "dropParam": {
+              "1": 520003
+            },
+            "dropType": 2
+          },
+          "targets": [
+            {
+              "groupId": 520003,
+              "members": {
+                "1": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 1,
+                  "itemId": 5000009
+                },
+                "2": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 2,
+                  "itemId": 5000010
+                },
+                "3": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 3,
+                  "itemId": 5000011
+                },
+                "4": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 4,
+                  "itemId": 5000012
+                },
+                "5": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 5,
+                  "itemId": 5000109
+                },
+                "6": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 6,
+                  "itemId": 5000110
+                },
+                "7": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 7,
+                  "itemId": 5000111
+                },
+                "8": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 8,
+                  "itemId": 5000112
+                },
+                "9": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 9,
+                  "itemId": 5000209
+                },
+                "10": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 10,
+                  "itemId": 5000210
+                },
+                "11": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 11,
+                  "itemId": 5000211
+                },
+                "12": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 12,
+                  "itemId": 5000212
+                },
+                "13": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 13,
+                  "itemId": 5000309
+                },
+                "14": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 14,
+                  "itemId": 5000310
+                },
+                "15": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 15,
+                  "itemId": 5000311
+                },
+                "16": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 16,
+                  "itemId": 5000312
+                }
+              },
+              "memberQualities": [
+                3
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "chestId": 2002,
+      "editorName": "华丽木箱",
+      "containerQuality": 4,
+      "difficulty": 6,
+      "rewardGroup": [
+        {
+          "dropId": 15101302,
+          "dropData": {
+            "dropParam": {
+              "1": 5104303,
+              "2": 5104304
+            },
+            "dropType": 3
+          },
+          "targets": [
+            {
+              "packageId": 5104303,
+              "contents": {
+                "1": {}
+              }
+            },
+            {
+              "packageId": 5104304,
+              "contents": {
+                "1": {}
+              }
+            }
+          ]
+        }
+      ],
+      "rewardGroup2": [
+        {
+          "dropId": 15101309,
+          "dropData": {
+            "dropParam": {
+              "1": 520004
+            },
+            "dropType": 2
+          },
+          "targets": [
+            {
+              "groupId": 520004,
+              "members": {
+                "1": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 1,
+                  "itemId": 5000013
+                },
+                "2": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 2,
+                  "itemId": 5000014
+                },
+                "3": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 3,
+                  "itemId": 5000015
+                },
+                "4": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 4,
+                  "itemId": 5000016
+                },
+                "5": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 5,
+                  "itemId": 5000113
+                },
+                "6": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 6,
+                  "itemId": 5000114
+                },
+                "7": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 7,
+                  "itemId": 5000115
+                },
+                "8": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 8,
+                  "itemId": 5000116
+                },
+                "9": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 9,
+                  "itemId": 5000213
+                },
+                "10": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 10,
+                  "itemId": 5000214
+                },
+                "11": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 11,
+                  "itemId": 5000215
+                },
+                "12": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 12,
+                  "itemId": 5000216
+                },
+                "13": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 13,
+                  "itemId": 5000313
+                },
+                "14": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 14,
+                  "itemId": 5000314
+                },
+                "15": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 15,
+                  "itemId": 5000315
+                },
+                "16": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 16,
+                  "itemId": 5000316
+                },
+                "17": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 17,
+                  "itemId": 5000401
+                },
+                "18": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 18,
+                  "itemId": 5000402
+                },
+                "19": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 19,
+                  "itemId": 5000403
+                },
+                "20": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 20,
+                  "itemId": 5000404
+                }
+              },
+              "memberQualities": [
+                4
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "chestId": 2003,
+      "editorName": "朴素铁箱",
+      "containerQuality": 4,
+      "difficulty": 5,
+      "rewardGroup": [
+        {
+          "dropId": 15101202,
+          "dropData": {
+            "dropParam": {
+              "1": 5104203,
+              "2": 5104204
+            },
+            "dropType": 3
+          },
+          "targets": [
+            {
+              "packageId": 5104203,
+              "contents": {
+                "1": {}
+              }
+            },
+            {
+              "packageId": 5104204,
+              "contents": {
+                "1": {}
+              }
+            }
+          ]
+        }
+      ],
+      "rewardGroup2": [
+        {
+          "dropId": 15101218,
+          "dropData": {
+            "dropParam": {
+              "1": 520003
+            },
+            "dropType": 2
+          },
+          "targets": [
+            {
+              "groupId": 520003,
+              "members": {
+                "1": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 1,
+                  "itemId": 5000009
+                },
+                "2": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 2,
+                  "itemId": 5000010
+                },
+                "3": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 3,
+                  "itemId": 5000011
+                },
+                "4": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 4,
+                  "itemId": 5000012
+                },
+                "5": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 5,
+                  "itemId": 5000109
+                },
+                "6": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 6,
+                  "itemId": 5000110
+                },
+                "7": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 7,
+                  "itemId": 5000111
+                },
+                "8": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 8,
+                  "itemId": 5000112
+                },
+                "9": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 9,
+                  "itemId": 5000209
+                },
+                "10": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 10,
+                  "itemId": 5000210
+                },
+                "11": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 11,
+                  "itemId": 5000211
+                },
+                "12": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 12,
+                  "itemId": 5000212
+                },
+                "13": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 13,
+                  "itemId": 5000309
+                },
+                "14": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 14,
+                  "itemId": 5000310
+                },
+                "15": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 15,
+                  "itemId": 5000311
+                },
+                "16": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 16,
+                  "itemId": 5000312
+                }
+              },
+              "memberQualities": [
+                3
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "chestId": 2003,
+      "editorName": "朴素铁箱",
+      "containerQuality": 4,
+      "difficulty": 6,
+      "rewardGroup": [
+        {
+          "dropId": 15101302,
+          "dropData": {
+            "dropParam": {
+              "1": 5104303,
+              "2": 5104304
+            },
+            "dropType": 3
+          },
+          "targets": [
+            {
+              "packageId": 5104303,
+              "contents": {
+                "1": {}
+              }
+            },
+            {
+              "packageId": 5104304,
+              "contents": {
+                "1": {}
+              }
+            }
+          ]
+        }
+      ],
+      "rewardGroup2": [
+        {
+          "dropId": 15101309,
+          "dropData": {
+            "dropParam": {
+              "1": 520004
+            },
+            "dropType": 2
+          },
+          "targets": [
+            {
+              "groupId": 520004,
+              "members": {
+                "1": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 1,
+                  "itemId": 5000013
+                },
+                "2": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 2,
+                  "itemId": 5000014
+                },
+                "3": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 3,
+                  "itemId": 5000015
+                },
+                "4": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 4,
+                  "itemId": 5000016
+                },
+                "5": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 5,
+                  "itemId": 5000113
+                },
+                "6": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 6,
+                  "itemId": 5000114
+                },
+                "7": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 7,
+                  "itemId": 5000115
+                },
+                "8": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 8,
+                  "itemId": 5000116
+                },
+                "9": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 9,
+                  "itemId": 5000213
+                },
+                "10": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 10,
+                  "itemId": 5000214
+                },
+                "11": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 11,
+                  "itemId": 5000215
+                },
+                "12": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 12,
+                  "itemId": 5000216
+                },
+                "13": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 13,
+                  "itemId": 5000313
+                },
+                "14": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 14,
+                  "itemId": 5000314
+                },
+                "15": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 15,
+                  "itemId": 5000315
+                },
+                "16": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 16,
+                  "itemId": 5000316
+                },
+                "17": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 17,
+                  "itemId": 5000401
+                },
+                "18": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 18,
+                  "itemId": 5000402
+                },
+                "19": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 19,
+                  "itemId": 5000403
+                },
+                "20": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 20,
+                  "itemId": 5000404
+                }
+              },
+              "memberQualities": [
+                4
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "chestId": 2004,
+      "editorName": "华丽铁箱",
+      "containerQuality": 5,
+      "difficulty": 5,
+      "rewardGroup": [
+        {
+          "dropId": 15101203,
+          "dropData": {
+            "dropParam": {
+              "1": 5104205,
+              "2": 5104206
+            },
+            "dropType": 3
+          },
+          "targets": [
+            {
+              "packageId": 5104205,
+              "contents": {
+                "1": {}
+              }
+            },
+            {
+              "packageId": 5104206,
+              "contents": {
+                "1": {}
+              }
+            }
+          ]
+        }
+      ],
+      "rewardGroup2": [
+        {
+          "dropId": 15101212,
+          "dropData": {
+            "dropParam": {
+              "1": 520004
+            },
+            "dropType": 2
+          },
+          "targets": [
+            {
+              "groupId": 520004,
+              "members": {
+                "1": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 1,
+                  "itemId": 5000013
+                },
+                "2": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 2,
+                  "itemId": 5000014
+                },
+                "3": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 3,
+                  "itemId": 5000015
+                },
+                "4": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 4,
+                  "itemId": 5000016
+                },
+                "5": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 5,
+                  "itemId": 5000113
+                },
+                "6": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 6,
+                  "itemId": 5000114
+                },
+                "7": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 7,
+                  "itemId": 5000115
+                },
+                "8": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 8,
+                  "itemId": 5000116
+                },
+                "9": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 9,
+                  "itemId": 5000213
+                },
+                "10": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 10,
+                  "itemId": 5000214
+                },
+                "11": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 11,
+                  "itemId": 5000215
+                },
+                "12": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 12,
+                  "itemId": 5000216
+                },
+                "13": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 13,
+                  "itemId": 5000313
+                },
+                "14": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 14,
+                  "itemId": 5000314
+                },
+                "15": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 15,
+                  "itemId": 5000315
+                },
+                "16": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 16,
+                  "itemId": 5000316
+                },
+                "17": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 17,
+                  "itemId": 5000401
+                },
+                "18": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 18,
+                  "itemId": 5000402
+                },
+                "19": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 19,
+                  "itemId": 5000403
+                },
+                "20": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 20,
+                  "itemId": 5000404
+                }
+              },
+              "memberQualities": [
+                4
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "chestId": 2004,
+      "editorName": "华丽铁箱",
+      "containerQuality": 5,
+      "difficulty": 6,
+      "rewardGroup": [
+        {
+          "dropId": 15101303,
+          "dropData": {
+            "dropParam": {
+              "1": 5104305,
+              "2": 5104306
+            },
+            "dropType": 3
+          },
+          "targets": [
+            {
+              "packageId": 5104305,
+              "contents": {
+                "1": {}
+              }
+            },
+            {
+              "packageId": 5104306,
+              "contents": {
+                "1": {}
+              }
+            }
+          ]
+        }
+      ],
+      "rewardGroup2": [
+        {
+          "dropId": 15101310,
+          "dropData": {
+            "dropParam": {
+              "1": 520005
+            },
+            "dropType": 2
+          },
+          "targets": [
+            {
+              "groupId": 520005,
+              "members": {
+                "1": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 1,
+                  "itemId": 5000017
+                },
+                "2": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 2,
+                  "itemId": 5000018
+                },
+                "3": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 3,
+                  "itemId": 5000019
+                },
+                "4": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 4,
+                  "itemId": 5000020
+                },
+                "5": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 5,
+                  "itemId": 5000021
+                },
+                "6": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 6,
+                  "itemId": 5000117
+                },
+                "7": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 7,
+                  "itemId": 5000118
+                },
+                "8": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 8,
+                  "itemId": 5000119
+                },
+                "9": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 9,
+                  "itemId": 5000120
+                },
+                "10": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 10,
+                  "itemId": 5000121
+                },
+                "11": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 11,
+                  "itemId": 5000217
+                },
+                "12": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 12,
+                  "itemId": 5000219
+                },
+                "13": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 13,
+                  "itemId": 5000220
+                },
+                "14": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 14,
+                  "itemId": 5000317
+                },
+                "15": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 15,
+                  "itemId": 5000318
+                },
+                "16": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 16,
+                  "itemId": 5000319
+                },
+                "17": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 17,
+                  "itemId": 5000320
+                },
+                "18": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 18,
+                  "itemId": 5000321
+                },
+                "19": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 19,
+                  "itemId": 5000405
+                },
+                "20": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 20,
+                  "itemId": 5000406
+                },
+                "21": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 21,
+                  "itemId": 5000407
+                },
+                "22": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 22,
+                  "itemId": 5000408
+                },
+                "23": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 23,
+                  "itemId": 5000409
+                },
+                "24": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 24,
+                  "itemId": 5000410
+                }
+              },
+              "memberQualities": [
+                5
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "chestId": 2005,
+      "editorName": "圆盘箱子",
+      "containerQuality": 4,
+      "difficulty": 5,
+      "rewardGroup": [
+        {
+          "dropId": 15101202,
+          "dropData": {
+            "dropParam": {
+              "1": 5104203,
+              "2": 5104204
+            },
+            "dropType": 3
+          },
+          "targets": [
+            {
+              "packageId": 5104203,
+              "contents": {
+                "1": {}
+              }
+            },
+            {
+              "packageId": 5104204,
+              "contents": {
+                "1": {}
+              }
+            }
+          ]
+        }
+      ],
+      "rewardGroup2": [
+        {
+          "dropId": 15101218,
+          "dropData": {
+            "dropParam": {
+              "1": 520003
+            },
+            "dropType": 2
+          },
+          "targets": [
+            {
+              "groupId": 520003,
+              "members": {
+                "1": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 1,
+                  "itemId": 5000009
+                },
+                "2": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 2,
+                  "itemId": 5000010
+                },
+                "3": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 3,
+                  "itemId": 5000011
+                },
+                "4": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 4,
+                  "itemId": 5000012
+                },
+                "5": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 5,
+                  "itemId": 5000109
+                },
+                "6": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 6,
+                  "itemId": 5000110
+                },
+                "7": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 7,
+                  "itemId": 5000111
+                },
+                "8": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 8,
+                  "itemId": 5000112
+                },
+                "9": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 9,
+                  "itemId": 5000209
+                },
+                "10": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 10,
+                  "itemId": 5000210
+                },
+                "11": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 11,
+                  "itemId": 5000211
+                },
+                "12": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 12,
+                  "itemId": 5000212
+                },
+                "13": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 13,
+                  "itemId": 5000309
+                },
+                "14": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 14,
+                  "itemId": 5000310
+                },
+                "15": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 15,
+                  "itemId": 5000311
+                },
+                "16": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 16,
+                  "itemId": 5000312
+                }
+              },
+              "memberQualities": [
+                3
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "chestId": 2005,
+      "editorName": "圆盘箱子",
+      "containerQuality": 4,
+      "difficulty": 6,
+      "rewardGroup": [
+        {
+          "dropId": 15101302,
+          "dropData": {
+            "dropParam": {
+              "1": 5104303,
+              "2": 5104304
+            },
+            "dropType": 3
+          },
+          "targets": [
+            {
+              "packageId": 5104303,
+              "contents": {
+                "1": {}
+              }
+            },
+            {
+              "packageId": 5104304,
+              "contents": {
+                "1": {}
+              }
+            }
+          ]
+        }
+      ],
+      "rewardGroup2": [
+        {
+          "dropId": 15101309,
+          "dropData": {
+            "dropParam": {
+              "1": 520004
+            },
+            "dropType": 2
+          },
+          "targets": [
+            {
+              "groupId": 520004,
+              "members": {
+                "1": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 1,
+                  "itemId": 5000013
+                },
+                "2": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 2,
+                  "itemId": 5000014
+                },
+                "3": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 3,
+                  "itemId": 5000015
+                },
+                "4": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 4,
+                  "itemId": 5000016
+                },
+                "5": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 5,
+                  "itemId": 5000113
+                },
+                "6": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 6,
+                  "itemId": 5000114
+                },
+                "7": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 7,
+                  "itemId": 5000115
+                },
+                "8": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 8,
+                  "itemId": 5000116
+                },
+                "9": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 9,
+                  "itemId": 5000213
+                },
+                "10": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 10,
+                  "itemId": 5000214
+                },
+                "11": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 11,
+                  "itemId": 5000215
+                },
+                "12": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 12,
+                  "itemId": 5000216
+                },
+                "13": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 13,
+                  "itemId": 5000313
+                },
+                "14": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 14,
+                  "itemId": 5000314
+                },
+                "15": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 15,
+                  "itemId": 5000315
+                },
+                "16": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 16,
+                  "itemId": 5000316
+                },
+                "17": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 17,
+                  "itemId": 5000401
+                },
+                "18": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 18,
+                  "itemId": 5000402
+                },
+                "19": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 19,
+                  "itemId": 5000403
+                },
+                "20": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 20,
+                  "itemId": 5000404
+                }
+              },
+              "memberQualities": [
+                4
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "chestId": 2006,
+      "editorName": "朴素石棺",
+      "containerQuality": 4,
+      "difficulty": 5,
+      "rewardGroup": [
+        {
+          "dropId": 15101202,
+          "dropData": {
+            "dropParam": {
+              "1": 5104203,
+              "2": 5104204
+            },
+            "dropType": 3
+          },
+          "targets": [
+            {
+              "packageId": 5104203,
+              "contents": {
+                "1": {}
+              }
+            },
+            {
+              "packageId": 5104204,
+              "contents": {
+                "1": {}
+              }
+            }
+          ]
+        }
+      ],
+      "rewardGroup2": [
+        {
+          "dropId": 15101218,
+          "dropData": {
+            "dropParam": {
+              "1": 520003
+            },
+            "dropType": 2
+          },
+          "targets": [
+            {
+              "groupId": 520003,
+              "members": {
+                "1": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 1,
+                  "itemId": 5000009
+                },
+                "2": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 2,
+                  "itemId": 5000010
+                },
+                "3": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 3,
+                  "itemId": 5000011
+                },
+                "4": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 4,
+                  "itemId": 5000012
+                },
+                "5": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 5,
+                  "itemId": 5000109
+                },
+                "6": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 6,
+                  "itemId": 5000110
+                },
+                "7": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 7,
+                  "itemId": 5000111
+                },
+                "8": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 8,
+                  "itemId": 5000112
+                },
+                "9": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 9,
+                  "itemId": 5000209
+                },
+                "10": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 10,
+                  "itemId": 5000210
+                },
+                "11": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 11,
+                  "itemId": 5000211
+                },
+                "12": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 12,
+                  "itemId": 5000212
+                },
+                "13": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 13,
+                  "itemId": 5000309
+                },
+                "14": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 14,
+                  "itemId": 5000310
+                },
+                "15": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 15,
+                  "itemId": 5000311
+                },
+                "16": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 16,
+                  "itemId": 5000312
+                }
+              },
+              "memberQualities": [
+                3
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "chestId": 2006,
+      "editorName": "朴素石棺",
+      "containerQuality": 4,
+      "difficulty": 6,
+      "rewardGroup": [
+        {
+          "dropId": 15101302,
+          "dropData": {
+            "dropParam": {
+              "1": 5104303,
+              "2": 5104304
+            },
+            "dropType": 3
+          },
+          "targets": [
+            {
+              "packageId": 5104303,
+              "contents": {
+                "1": {}
+              }
+            },
+            {
+              "packageId": 5104304,
+              "contents": {
+                "1": {}
+              }
+            }
+          ]
+        }
+      ],
+      "rewardGroup2": [
+        {
+          "dropId": 15101309,
+          "dropData": {
+            "dropParam": {
+              "1": 520004
+            },
+            "dropType": 2
+          },
+          "targets": [
+            {
+              "groupId": 520004,
+              "members": {
+                "1": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 1,
+                  "itemId": 5000013
+                },
+                "2": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 2,
+                  "itemId": 5000014
+                },
+                "3": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 3,
+                  "itemId": 5000015
+                },
+                "4": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 4,
+                  "itemId": 5000016
+                },
+                "5": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 5,
+                  "itemId": 5000113
+                },
+                "6": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 6,
+                  "itemId": 5000114
+                },
+                "7": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 7,
+                  "itemId": 5000115
+                },
+                "8": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 8,
+                  "itemId": 5000116
+                },
+                "9": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 9,
+                  "itemId": 5000213
+                },
+                "10": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 10,
+                  "itemId": 5000214
+                },
+                "11": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 11,
+                  "itemId": 5000215
+                },
+                "12": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 12,
+                  "itemId": 5000216
+                },
+                "13": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 13,
+                  "itemId": 5000313
+                },
+                "14": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 14,
+                  "itemId": 5000314
+                },
+                "15": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 15,
+                  "itemId": 5000315
+                },
+                "16": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 16,
+                  "itemId": 5000316
+                },
+                "17": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 17,
+                  "itemId": 5000401
+                },
+                "18": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 18,
+                  "itemId": 5000402
+                },
+                "19": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 19,
+                  "itemId": 5000403
+                },
+                "20": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 20,
+                  "itemId": 5000404
+                }
+              },
+              "memberQualities": [
+                4
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "chestId": 2007,
+      "editorName": "华丽石棺",
+      "containerQuality": 5,
+      "difficulty": 5,
+      "rewardGroup": [
+        {
+          "dropId": 15101203,
+          "dropData": {
+            "dropParam": {
+              "1": 5104205,
+              "2": 5104206
+            },
+            "dropType": 3
+          },
+          "targets": [
+            {
+              "packageId": 5104205,
+              "contents": {
+                "1": {}
+              }
+            },
+            {
+              "packageId": 5104206,
+              "contents": {
+                "1": {}
+              }
+            }
+          ]
+        }
+      ],
+      "rewardGroup2": [
+        {
+          "dropId": 15101212,
+          "dropData": {
+            "dropParam": {
+              "1": 520004
+            },
+            "dropType": 2
+          },
+          "targets": [
+            {
+              "groupId": 520004,
+              "members": {
+                "1": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 1,
+                  "itemId": 5000013
+                },
+                "2": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 2,
+                  "itemId": 5000014
+                },
+                "3": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 3,
+                  "itemId": 5000015
+                },
+                "4": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 4,
+                  "itemId": 5000016
+                },
+                "5": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 5,
+                  "itemId": 5000113
+                },
+                "6": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 6,
+                  "itemId": 5000114
+                },
+                "7": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 7,
+                  "itemId": 5000115
+                },
+                "8": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 8,
+                  "itemId": 5000116
+                },
+                "9": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 9,
+                  "itemId": 5000213
+                },
+                "10": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 10,
+                  "itemId": 5000214
+                },
+                "11": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 11,
+                  "itemId": 5000215
+                },
+                "12": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 12,
+                  "itemId": 5000216
+                },
+                "13": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 13,
+                  "itemId": 5000313
+                },
+                "14": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 14,
+                  "itemId": 5000314
+                },
+                "15": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 15,
+                  "itemId": 5000315
+                },
+                "16": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 16,
+                  "itemId": 5000316
+                },
+                "17": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 17,
+                  "itemId": 5000401
+                },
+                "18": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 18,
+                  "itemId": 5000402
+                },
+                "19": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 19,
+                  "itemId": 5000403
+                },
+                "20": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 20,
+                  "itemId": 5000404
+                }
+              },
+              "memberQualities": [
+                4
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "chestId": 2007,
+      "editorName": "华丽石棺",
+      "containerQuality": 5,
+      "difficulty": 6,
+      "rewardGroup": [
+        {
+          "dropId": 15101303,
+          "dropData": {
+            "dropParam": {
+              "1": 5104305,
+              "2": 5104306
+            },
+            "dropType": 3
+          },
+          "targets": [
+            {
+              "packageId": 5104305,
+              "contents": {
+                "1": {}
+              }
+            },
+            {
+              "packageId": 5104306,
+              "contents": {
+                "1": {}
+              }
+            }
+          ]
+        }
+      ],
+      "rewardGroup2": [
+        {
+          "dropId": 15101310,
+          "dropData": {
+            "dropParam": {
+              "1": 520005
+            },
+            "dropType": 2
+          },
+          "targets": [
+            {
+              "groupId": 520005,
+              "members": {
+                "1": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 1,
+                  "itemId": 5000017
+                },
+                "2": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 2,
+                  "itemId": 5000018
+                },
+                "3": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 3,
+                  "itemId": 5000019
+                },
+                "4": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 4,
+                  "itemId": 5000020
+                },
+                "5": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 5,
+                  "itemId": 5000021
+                },
+                "6": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 6,
+                  "itemId": 5000117
+                },
+                "7": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 7,
+                  "itemId": 5000118
+                },
+                "8": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 8,
+                  "itemId": 5000119
+                },
+                "9": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 9,
+                  "itemId": 5000120
+                },
+                "10": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 10,
+                  "itemId": 5000121
+                },
+                "11": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 11,
+                  "itemId": 5000217
+                },
+                "12": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 12,
+                  "itemId": 5000219
+                },
+                "13": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 13,
+                  "itemId": 5000220
+                },
+                "14": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 14,
+                  "itemId": 5000317
+                },
+                "15": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 15,
+                  "itemId": 5000318
+                },
+                "16": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 16,
+                  "itemId": 5000319
+                },
+                "17": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 17,
+                  "itemId": 5000320
+                },
+                "18": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 18,
+                  "itemId": 5000321
+                },
+                "19": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 19,
+                  "itemId": 5000405
+                },
+                "20": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 20,
+                  "itemId": 5000406
+                },
+                "21": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 21,
+                  "itemId": 5000407
+                },
+                "22": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 22,
+                  "itemId": 5000408
+                },
+                "23": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 23,
+                  "itemId": 5000409
+                },
+                "24": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 24,
+                  "itemId": 5000410
+                }
+              },
+              "memberQualities": [
+                5
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "chestId": 2008,
+      "editorName": "普通遗迹箱",
+      "containerQuality": 3,
+      "difficulty": 5,
+      "rewardGroup": [
+        {
+          "dropId": 15101201,
+          "dropData": {
+            "dropParam": {
+              "1": 5104201,
+              "2": 5104202
+            },
+            "dropType": 3
+          },
+          "targets": [
+            {
+              "packageId": 5104201,
+              "contents": {
+                "1": {}
+              }
+            },
+            {
+              "packageId": 5104202,
+              "contents": {
+                "1": {}
+              }
+            }
+          ]
+        }
+      ],
+      "rewardGroup2": []
+    },
+    {
+      "chestId": 2008,
+      "editorName": "普通遗迹箱",
+      "containerQuality": 3,
+      "difficulty": 6,
+      "rewardGroup": [
+        {
+          "dropId": 15101301,
+          "dropData": {
+            "dropParam": {
+              "1": 5104301,
+              "2": 5104302
+            },
+            "dropType": 3
+          },
+          "targets": [
+            {
+              "packageId": 5104301,
+              "contents": {
+                "1": {}
+              }
+            },
+            {
+              "packageId": 5104302,
+              "contents": {
+                "1": {}
+              }
+            }
+          ]
+        }
+      ],
+      "rewardGroup2": []
+    },
+    {
+      "chestId": 2009,
+      "editorName": "精致遗迹箱",
+      "containerQuality": 4,
+      "difficulty": 5,
+      "rewardGroup": [
+        {
+          "dropId": 15101202,
+          "dropData": {
+            "dropParam": {
+              "1": 5104203,
+              "2": 5104204
+            },
+            "dropType": 3
+          },
+          "targets": [
+            {
+              "packageId": 5104203,
+              "contents": {
+                "1": {}
+              }
+            },
+            {
+              "packageId": 5104204,
+              "contents": {
+                "1": {}
+              }
+            }
+          ]
+        }
+      ],
+      "rewardGroup2": [
+        {
+          "dropId": 15101218,
+          "dropData": {
+            "dropParam": {
+              "1": 520003
+            },
+            "dropType": 2
+          },
+          "targets": [
+            {
+              "groupId": 520003,
+              "members": {
+                "1": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 1,
+                  "itemId": 5000009
+                },
+                "2": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 2,
+                  "itemId": 5000010
+                },
+                "3": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 3,
+                  "itemId": 5000011
+                },
+                "4": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 4,
+                  "itemId": 5000012
+                },
+                "5": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 5,
+                  "itemId": 5000109
+                },
+                "6": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 6,
+                  "itemId": 5000110
+                },
+                "7": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 7,
+                  "itemId": 5000111
+                },
+                "8": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 8,
+                  "itemId": 5000112
+                },
+                "9": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 9,
+                  "itemId": 5000209
+                },
+                "10": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 10,
+                  "itemId": 5000210
+                },
+                "11": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 11,
+                  "itemId": 5000211
+                },
+                "12": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 12,
+                  "itemId": 5000212
+                },
+                "13": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 13,
+                  "itemId": 5000309
+                },
+                "14": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 14,
+                  "itemId": 5000310
+                },
+                "15": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 15,
+                  "itemId": 5000311
+                },
+                "16": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 16,
+                  "itemId": 5000312
+                }
+              },
+              "memberQualities": [
+                3
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "chestId": 2009,
+      "editorName": "精致遗迹箱",
+      "containerQuality": 4,
+      "difficulty": 6,
+      "rewardGroup": [
+        {
+          "dropId": 15101302,
+          "dropData": {
+            "dropParam": {
+              "1": 5104303,
+              "2": 5104304
+            },
+            "dropType": 3
+          },
+          "targets": [
+            {
+              "packageId": 5104303,
+              "contents": {
+                "1": {}
+              }
+            },
+            {
+              "packageId": 5104304,
+              "contents": {
+                "1": {}
+              }
+            }
+          ]
+        }
+      ],
+      "rewardGroup2": [
+        {
+          "dropId": 15101309,
+          "dropData": {
+            "dropParam": {
+              "1": 520004
+            },
+            "dropType": 2
+          },
+          "targets": [
+            {
+              "groupId": 520004,
+              "members": {
+                "1": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 1,
+                  "itemId": 5000013
+                },
+                "2": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 2,
+                  "itemId": 5000014
+                },
+                "3": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 3,
+                  "itemId": 5000015
+                },
+                "4": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 4,
+                  "itemId": 5000016
+                },
+                "5": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 5,
+                  "itemId": 5000113
+                },
+                "6": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 6,
+                  "itemId": 5000114
+                },
+                "7": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 7,
+                  "itemId": 5000115
+                },
+                "8": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 8,
+                  "itemId": 5000116
+                },
+                "9": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 9,
+                  "itemId": 5000213
+                },
+                "10": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 10,
+                  "itemId": 5000214
+                },
+                "11": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 11,
+                  "itemId": 5000215
+                },
+                "12": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 12,
+                  "itemId": 5000216
+                },
+                "13": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 13,
+                  "itemId": 5000313
+                },
+                "14": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 14,
+                  "itemId": 5000314
+                },
+                "15": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 15,
+                  "itemId": 5000315
+                },
+                "16": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 16,
+                  "itemId": 5000316
+                },
+                "17": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 17,
+                  "itemId": 5000401
+                },
+                "18": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 18,
+                  "itemId": 5000402
+                },
+                "19": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 19,
+                  "itemId": 5000403
+                },
+                "20": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 20,
+                  "itemId": 5000404
+                }
+              },
+              "memberQualities": [
+                4
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "chestId": 2010,
+      "editorName": "豪华遗迹箱",
+      "containerQuality": 5,
+      "difficulty": 5,
+      "rewardGroup": [
+        {
+          "dropId": 15101203,
+          "dropData": {
+            "dropParam": {
+              "1": 5104205,
+              "2": 5104206
+            },
+            "dropType": 3
+          },
+          "targets": [
+            {
+              "packageId": 5104205,
+              "contents": {
+                "1": {}
+              }
+            },
+            {
+              "packageId": 5104206,
+              "contents": {
+                "1": {}
+              }
+            }
+          ]
+        }
+      ],
+      "rewardGroup2": [
+        {
+          "dropId": 15101212,
+          "dropData": {
+            "dropParam": {
+              "1": 520004
+            },
+            "dropType": 2
+          },
+          "targets": [
+            {
+              "groupId": 520004,
+              "members": {
+                "1": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 1,
+                  "itemId": 5000013
+                },
+                "2": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 2,
+                  "itemId": 5000014
+                },
+                "3": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 3,
+                  "itemId": 5000015
+                },
+                "4": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 4,
+                  "itemId": 5000016
+                },
+                "5": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 5,
+                  "itemId": 5000113
+                },
+                "6": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 6,
+                  "itemId": 5000114
+                },
+                "7": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 7,
+                  "itemId": 5000115
+                },
+                "8": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 8,
+                  "itemId": 5000116
+                },
+                "9": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 9,
+                  "itemId": 5000213
+                },
+                "10": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 10,
+                  "itemId": 5000214
+                },
+                "11": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 11,
+                  "itemId": 5000215
+                },
+                "12": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 12,
+                  "itemId": 5000216
+                },
+                "13": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 13,
+                  "itemId": 5000313
+                },
+                "14": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 14,
+                  "itemId": 5000314
+                },
+                "15": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 15,
+                  "itemId": 5000315
+                },
+                "16": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 16,
+                  "itemId": 5000316
+                },
+                "17": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 17,
+                  "itemId": 5000401
+                },
+                "18": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 18,
+                  "itemId": 5000402
+                },
+                "19": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 19,
+                  "itemId": 5000403
+                },
+                "20": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 20,
+                  "itemId": 5000404
+                }
+              },
+              "memberQualities": [
+                4
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "chestId": 2010,
+      "editorName": "豪华遗迹箱",
+      "containerQuality": 5,
+      "difficulty": 6,
+      "rewardGroup": [
+        {
+          "dropId": 15101303,
+          "dropData": {
+            "dropParam": {
+              "1": 5104305,
+              "2": 5104306
+            },
+            "dropType": 3
+          },
+          "targets": [
+            {
+              "packageId": 5104305,
+              "contents": {
+                "1": {}
+              }
+            },
+            {
+              "packageId": 5104306,
+              "contents": {
+                "1": {}
+              }
+            }
+          ]
+        }
+      ],
+      "rewardGroup2": [
+        {
+          "dropId": 15101310,
+          "dropData": {
+            "dropParam": {
+              "1": 520005
+            },
+            "dropType": 2
+          },
+          "targets": [
+            {
+              "groupId": 520005,
+              "members": {
+                "1": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 1,
+                  "itemId": 5000017
+                },
+                "2": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 2,
+                  "itemId": 5000018
+                },
+                "3": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 3,
+                  "itemId": 5000019
+                },
+                "4": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 4,
+                  "itemId": 5000020
+                },
+                "5": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 5,
+                  "itemId": 5000021
+                },
+                "6": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 6,
+                  "itemId": 5000117
+                },
+                "7": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 7,
+                  "itemId": 5000118
+                },
+                "8": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 8,
+                  "itemId": 5000119
+                },
+                "9": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 9,
+                  "itemId": 5000120
+                },
+                "10": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 10,
+                  "itemId": 5000121
+                },
+                "11": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 11,
+                  "itemId": 5000217
+                },
+                "12": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 12,
+                  "itemId": 5000219
+                },
+                "13": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 13,
+                  "itemId": 5000220
+                },
+                "14": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 14,
+                  "itemId": 5000317
+                },
+                "15": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 15,
+                  "itemId": 5000318
+                },
+                "16": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 16,
+                  "itemId": 5000319
+                },
+                "17": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 17,
+                  "itemId": 5000320
+                },
+                "18": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 18,
+                  "itemId": 5000321
+                },
+                "19": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 19,
+                  "itemId": 5000405
+                },
+                "20": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 20,
+                  "itemId": 5000406
+                },
+                "21": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 21,
+                  "itemId": 5000407
+                },
+                "22": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 22,
+                  "itemId": 5000408
+                },
+                "23": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 23,
+                  "itemId": 5000409
+                },
+                "24": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 24,
+                  "itemId": 5000410
+                }
+              },
+              "memberQualities": [
+                5
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "chestId": 2011,
+      "editorName": "金色石棺",
+      "containerQuality": 5,
+      "difficulty": 5,
+      "rewardGroup": [
+        {
+          "dropId": 15101208,
+          "dropData": {
+            "dropParam": {
+              "1": 5104211
+            },
+            "dropType": 3
+          },
+          "targets": [
+            {
+              "packageId": 5104211,
+              "contents": {
+                "1": {}
+              }
+            }
+          ]
+        }
+      ],
+      "rewardGroup2": [
+        {
+          "dropId": 15101216,
+          "dropData": {
+            "dropParam": {
+              "1": 520005
+            },
+            "dropType": 2
+          },
+          "targets": [
+            {
+              "groupId": 520005,
+              "members": {
+                "1": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 1,
+                  "itemId": 5000017
+                },
+                "2": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 2,
+                  "itemId": 5000018
+                },
+                "3": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 3,
+                  "itemId": 5000019
+                },
+                "4": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 4,
+                  "itemId": 5000020
+                },
+                "5": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 5,
+                  "itemId": 5000021
+                },
+                "6": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 6,
+                  "itemId": 5000117
+                },
+                "7": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 7,
+                  "itemId": 5000118
+                },
+                "8": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 8,
+                  "itemId": 5000119
+                },
+                "9": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 9,
+                  "itemId": 5000120
+                },
+                "10": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 10,
+                  "itemId": 5000121
+                },
+                "11": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 11,
+                  "itemId": 5000217
+                },
+                "12": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 12,
+                  "itemId": 5000219
+                },
+                "13": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 13,
+                  "itemId": 5000220
+                },
+                "14": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 14,
+                  "itemId": 5000317
+                },
+                "15": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 15,
+                  "itemId": 5000318
+                },
+                "16": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 16,
+                  "itemId": 5000319
+                },
+                "17": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 17,
+                  "itemId": 5000320
+                },
+                "18": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 18,
+                  "itemId": 5000321
+                },
+                "19": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 19,
+                  "itemId": 5000405
+                },
+                "20": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 20,
+                  "itemId": 5000406
+                },
+                "21": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 21,
+                  "itemId": 5000407
+                },
+                "22": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 22,
+                  "itemId": 5000408
+                },
+                "23": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 23,
+                  "itemId": 5000409
+                },
+                "24": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 24,
+                  "itemId": 5000410
+                }
+              },
+              "memberQualities": [
+                5
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "chestId": 2011,
+      "editorName": "金色石棺",
+      "containerQuality": 5,
+      "difficulty": 6,
+      "rewardGroup": [
+        {
+          "dropId": 15101308,
+          "dropData": {
+            "dropParam": {
+              "1": 5104311
+            },
+            "dropType": 3
+          },
+          "targets": [
+            {
+              "packageId": 5104311,
+              "contents": {
+                "1": {}
+              }
+            }
+          ]
+        }
+      ],
+      "rewardGroup2": [
+        {
+          "dropId": 15101314,
+          "dropData": {
+            "dropParam": {
+              "1": 520005
+            },
+            "dropType": 2
+          },
+          "targets": [
+            {
+              "groupId": 520005,
+              "members": {
+                "1": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 1,
+                  "itemId": 5000017
+                },
+                "2": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 2,
+                  "itemId": 5000018
+                },
+                "3": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 3,
+                  "itemId": 5000019
+                },
+                "4": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 4,
+                  "itemId": 5000020
+                },
+                "5": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 5,
+                  "itemId": 5000021
+                },
+                "6": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 6,
+                  "itemId": 5000117
+                },
+                "7": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 7,
+                  "itemId": 5000118
+                },
+                "8": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 8,
+                  "itemId": 5000119
+                },
+                "9": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 9,
+                  "itemId": 5000120
+                },
+                "10": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 10,
+                  "itemId": 5000121
+                },
+                "11": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 11,
+                  "itemId": 5000217
+                },
+                "12": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 12,
+                  "itemId": 5000219
+                },
+                "13": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 13,
+                  "itemId": 5000220
+                },
+                "14": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 14,
+                  "itemId": 5000317
+                },
+                "15": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 15,
+                  "itemId": 5000318
+                },
+                "16": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 16,
+                  "itemId": 5000319
+                },
+                "17": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 17,
+                  "itemId": 5000320
+                },
+                "18": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 18,
+                  "itemId": 5000321
+                },
+                "19": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 19,
+                  "itemId": 5000405
+                },
+                "20": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 20,
+                  "itemId": 5000406
+                },
+                "21": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 21,
+                  "itemId": 5000407
+                },
+                "22": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 22,
+                  "itemId": 5000408
+                },
+                "23": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 23,
+                  "itemId": 5000409
+                },
+                "24": {
+                  "dropMaxNum": 1,
+                  "dropMinNum": 1,
+                  "index": 24,
+                  "itemId": 5000410
+                }
+              },
+              "memberQualities": [
+                5
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "dropUtils": {
+    "member": "xfs/luascripts/Common/Utils/DropUtils.lua",
+    "sha256": "935f3d65ff32aeab1bba4f70f0c6b3a50c724173991a5e69c13683ba6b134007",
+    "relevantSymbols": [
+      "_genSingleGroupDrop",
+      "_genSinglePackageDrop",
+      "_selectSubPackage",
+      "dropRatio",
+      "extractMode",
+      "genDropItemsNumberRange",
+      "getProportionList",
+      "groups",
+      "weightedchoice"
+    ]
+  },
+  "localProbabilityConclusion": "Chest reward IDs and some possible item groups are present; package contents and extraction weights are missing. Exact chest-item probabilities cannot be derived from these snapshots. Server-side configuration is consistent with this evidence, but server code was not inspected.",
+  "webSources": [
+    {
+      "url": "https://aniimotools.dev/db/items/ancient-relic/",
+      "finding": "Ground pickup points have probabilities. Containers section states loot-table contents are server-decided and does not list container-to-item contents. Difficulty changes the table."
+    },
+    {
+      "url": "https://aniimotools.dev/map/lost-sanctum/",
+      "finding": "Key-room nest generation and guard probabilities; not chest-item probabilities."
+    },
+    {
+      "url": "https://www.aniimo.com/newslist/detail/100145",
+      "finding": "Chaos has higher Prismana Egg and Prismatic Collectible drop rates; no numerical percentages in the announcement."
+    },
+    {
+      "url": "https://www.aniimo.com/zh-tw/formula-multipliers",
+      "finding": "Capture, held-item boss and Sparkling-style probabilities; no Chaos chest-item probability table."
+    }
+  ]
+}

@@ -183,11 +183,14 @@
   "manual.upRight": "Arriba a la derecha",
   "manual.help": "El reconocimiento está desactivado por defecto. Usa Elegir salida para indicar su dirección respecto a la entrada. Si hay varios mapas en la misma dirección, compara sus terrenos y portales. Reelegir en la superposición abre la selección y desactiva el reconocimiento.",
   "loot.button": "Clasificación por valor del botín",
-  "loot.hint": "Ordenado por precio de venta ÷ peso, de mayor a menor. Útil cuando queda poco espacio. Los valores iguales comparten puesto; se muestran hasta dos decimales.",
+  "loot.hint": "25 espacios / 70 kg; un objeto por espacio, con una media de 2,8 kg. CP de mochila = precio de venta ÷ max(1, peso ÷ 2,8), de mayor a menor, con empates. Hasta 2,8 kg se compara el precio por espacio; los objetos más pesados se ajustan por peso.",
   "loot.scope": "Incluye objetos dorados, Esencia púrpura, dos piedras de energía básicas y objetos morados con un valor por peso superior a 7000, incluidas ambas llaves. Excluye mochilas, amplificadores de ataque, chips y armazones defensivos.",
   "loot.rank": "Puesto",
   "loot.item": "Objeto",
-  "loot.weight": "Peso",
+  "loot.weight": "Peso (kg)",
   "loot.price": "Precio de venta",
-  "loot.value": "Valor por peso"
+  "loot.value": "CP de mochila",
+  "loot.limits": "El cálculo con un solo tipo de objeto usa unidades enteras y supone suficientes copias. Se desconocen las probabilidades de aparición; el total no es una ganancia esperada por partida. Al mezclar objetos, considera los espacios y el peso restantes.",
+  "loot.pack": "Valor con objetos iguales",
+  "loot.packDetails": "{count} objetos · {weight} kg"
 }
