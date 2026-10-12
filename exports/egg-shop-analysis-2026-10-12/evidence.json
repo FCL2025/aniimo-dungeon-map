@@ -1,0 +1,1170 @@
+{
+  "checkedAt": "2026-10-12T14:34:39.339091+00:00",
+  "source": {
+    "archive": "F:\\Pawprint\\Aniimo\\game\\Aniimo_Data\\cvs\\res\\lua\\LuaScripts.xdf",
+    "member": "xfs/luascripts/Common/Data/pmdata.bin",
+    "pmdataSha256": "e7cf9bd743f39c7c07e5d82c4e166766583eb9376bd590e40556638c6f41ee32"
+  },
+  "assumptions": {
+    "revenuePerTicket": 300000,
+    "successfulRunsOnly": true,
+    "revenueBeforeTicketCost": true,
+    "otherExpensesIncluded": false,
+    "eggAndOtherNoncashRewardsValued": false,
+    "freeTicketsAndOtherIncomeIncluded": false,
+    "timeCostIncluded": false
+  },
+  "thresholdSemantics": "First purchase ordinal charged at the new price; inclusive.",
+  "items": {
+    "5200002": {
+      "name": "混沌船票",
+      "description": "前往<style=Hint_BgL>小隊摸蛋混沌難度</style>所需的憑證。",
+      "item": {
+        "bindType": 1,
+        "displayType": 9000,
+        "funcRep": 1389256099,
+        "holdMax": 9999999,
+        "icon": "$ui_item_Chaos_Ticket.png",
+        "invId": 11,
+        "itemName": 1781200539,
+        "lvReq": 1,
+        "lvTop": 150,
+        "notCanBringIn": 1,
+        "paginationId": 1,
+        "quality": 5,
+        "rmbValue": 1000,
+        "sellPrice": 50000,
+        "source": {
+          "1": 747
+        },
+        "spellTime": 0,
+        "stackcount": 9999999,
+        "type": 1,
+        "weight": 1
+      },
+      "effect": null,
+      "commodityId": 3501001,
+      "commodity": {
+        "condition": 91004,
+        "cost": {
+          "1": {
+            "1": 1014,
+            "2": 20000
+          }
+        },
+        "itemId": 5200002,
+        "itemNum": 1,
+        "levelCost": {
+          "1": {
+            "1": 2,
+            "2": 50000
+          },
+          "2": {
+            "1": 3,
+            "2": 70000
+          },
+          "3": {
+            "1": 4,
+            "2": 100000
+          },
+          "4": {
+            "1": 7,
+            "2": 200000
+          },
+          "5": {
+            "1": 11,
+            "2": 300000
+          },
+          "6": {
+            "1": 16,
+            "2": 400000
+          }
+        },
+        "levelCostType": 1,
+        "limitNum": 20,
+        "limitType": 1,
+        "onSale": 1,
+        "paginationId": 101,
+        "sort": 4,
+        "source": 821,
+        "tag": 35
+      },
+      "purchases": [
+        {
+          "ordinal": 1,
+          "price": 20000,
+          "cumulativeCost": 20000,
+          "marginalNet": 280000,
+          "cumulativeRevenue": 300000,
+          "cumulativeNet": 280000
+        },
+        {
+          "ordinal": 2,
+          "price": 50000,
+          "cumulativeCost": 70000,
+          "marginalNet": 250000,
+          "cumulativeRevenue": 600000,
+          "cumulativeNet": 530000
+        },
+        {
+          "ordinal": 3,
+          "price": 70000,
+          "cumulativeCost": 140000,
+          "marginalNet": 230000,
+          "cumulativeRevenue": 900000,
+          "cumulativeNet": 760000
+        },
+        {
+          "ordinal": 4,
+          "price": 100000,
+          "cumulativeCost": 240000,
+          "marginalNet": 200000,
+          "cumulativeRevenue": 1200000,
+          "cumulativeNet": 960000
+        },
+        {
+          "ordinal": 5,
+          "price": 100000,
+          "cumulativeCost": 340000,
+          "marginalNet": 200000,
+          "cumulativeRevenue": 1500000,
+          "cumulativeNet": 1160000
+        },
+        {
+          "ordinal": 6,
+          "price": 100000,
+          "cumulativeCost": 440000,
+          "marginalNet": 200000,
+          "cumulativeRevenue": 1800000,
+          "cumulativeNet": 1360000
+        },
+        {
+          "ordinal": 7,
+          "price": 200000,
+          "cumulativeCost": 640000,
+          "marginalNet": 100000,
+          "cumulativeRevenue": 2100000,
+          "cumulativeNet": 1460000
+        },
+        {
+          "ordinal": 8,
+          "price": 200000,
+          "cumulativeCost": 840000,
+          "marginalNet": 100000,
+          "cumulativeRevenue": 2400000,
+          "cumulativeNet": 1560000
+        },
+        {
+          "ordinal": 9,
+          "price": 200000,
+          "cumulativeCost": 1040000,
+          "marginalNet": 100000,
+          "cumulativeRevenue": 2700000,
+          "cumulativeNet": 1660000
+        },
+        {
+          "ordinal": 10,
+          "price": 200000,
+          "cumulativeCost": 1240000,
+          "marginalNet": 100000,
+          "cumulativeRevenue": 3000000,
+          "cumulativeNet": 1760000
+        },
+        {
+          "ordinal": 11,
+          "price": 300000,
+          "cumulativeCost": 1540000,
+          "marginalNet": 0,
+          "cumulativeRevenue": 3300000,
+          "cumulativeNet": 1760000
+        },
+        {
+          "ordinal": 12,
+          "price": 300000,
+          "cumulativeCost": 1840000,
+          "marginalNet": 0,
+          "cumulativeRevenue": 3600000,
+          "cumulativeNet": 1760000
+        },
+        {
+          "ordinal": 13,
+          "price": 300000,
+          "cumulativeCost": 2140000,
+          "marginalNet": 0,
+          "cumulativeRevenue": 3900000,
+          "cumulativeNet": 1760000
+        },
+        {
+          "ordinal": 14,
+          "price": 300000,
+          "cumulativeCost": 2440000,
+          "marginalNet": 0,
+          "cumulativeRevenue": 4200000,
+          "cumulativeNet": 1760000
+        },
+        {
+          "ordinal": 15,
+          "price": 300000,
+          "cumulativeCost": 2740000,
+          "marginalNet": 0,
+          "cumulativeRevenue": 4500000,
+          "cumulativeNet": 1760000
+        },
+        {
+          "ordinal": 16,
+          "price": 400000,
+          "cumulativeCost": 3140000,
+          "marginalNet": -100000,
+          "cumulativeRevenue": 4800000,
+          "cumulativeNet": 1660000
+        },
+        {
+          "ordinal": 17,
+          "price": 400000,
+          "cumulativeCost": 3540000,
+          "marginalNet": -100000,
+          "cumulativeRevenue": 5100000,
+          "cumulativeNet": 1560000
+        },
+        {
+          "ordinal": 18,
+          "price": 400000,
+          "cumulativeCost": 3940000,
+          "marginalNet": -100000,
+          "cumulativeRevenue": 5400000,
+          "cumulativeNet": 1460000
+        },
+        {
+          "ordinal": 19,
+          "price": 400000,
+          "cumulativeCost": 4340000,
+          "marginalNet": -100000,
+          "cumulativeRevenue": 5700000,
+          "cumulativeNet": 1360000
+        },
+        {
+          "ordinal": 20,
+          "price": 400000,
+          "cumulativeCost": 4740000,
+          "marginalNet": -100000,
+          "cumulativeRevenue": 6000000,
+          "cumulativeNet": 1260000
+        }
+      ]
+    },
+    "5200011": {
+      "name": "謎之蛋盒",
+      "description": "打開後隨機獲得一顆伊莫蛋。有一定機率出現稀有的<style=Q_5>幽黯伊莫蛋</style>或極其罕見的<style=Q_6>虹彩伊莫蛋</style>。",
+      "item": {
+        "bindType": 1,
+        "displayType": 801,
+        "funcRep": 1847368431,
+        "holdMax": 9999999,
+        "icon": "$ui_item_5200010.png",
+        "invId": 4,
+        "itemName": 1621530925,
+        "lvReq": 1,
+        "lvTop": 150,
+        "notCanBringIn": 1,
+        "quality": 5,
+        "rmbValue": 1000,
+        "spellTime": 0,
+        "stackcount": 9999999,
+        "type": 2
+      },
+      "effect": {
+        "autoUse": 0,
+        "canUseInBag": 1,
+        "id": 5200011,
+        "sType": 14
+      },
+      "commodityId": 3510001,
+      "commodity": {
+        "condition": 91006,
+        "cost": {
+          "1": {
+            "1": 1014,
+            "2": 500000
+          }
+        },
+        "itemId": 5200011,
+        "itemNum": 1,
+        "levelCost": {
+          "1": {
+            "1": 10,
+            "2": 800000
+          },
+          "2": {
+            "1": 20,
+            "2": 1000000
+          }
+        },
+        "levelCostType": 2,
+        "limitNum": 30,
+        "limitType": 2,
+        "onSale": 1,
+        "paginationId": 100,
+        "sort": 13,
+        "source": 821,
+        "tag": 35
+      },
+      "purchases": [
+        {
+          "ordinal": 1,
+          "price": 500000,
+          "cumulativeCost": 500000
+        },
+        {
+          "ordinal": 2,
+          "price": 500000,
+          "cumulativeCost": 1000000
+        },
+        {
+          "ordinal": 3,
+          "price": 500000,
+          "cumulativeCost": 1500000
+        },
+        {
+          "ordinal": 4,
+          "price": 500000,
+          "cumulativeCost": 2000000
+        },
+        {
+          "ordinal": 5,
+          "price": 500000,
+          "cumulativeCost": 2500000
+        },
+        {
+          "ordinal": 6,
+          "price": 500000,
+          "cumulativeCost": 3000000
+        },
+        {
+          "ordinal": 7,
+          "price": 500000,
+          "cumulativeCost": 3500000
+        },
+        {
+          "ordinal": 8,
+          "price": 500000,
+          "cumulativeCost": 4000000
+        },
+        {
+          "ordinal": 9,
+          "price": 500000,
+          "cumulativeCost": 4500000
+        },
+        {
+          "ordinal": 10,
+          "price": 800000,
+          "cumulativeCost": 5300000
+        },
+        {
+          "ordinal": 11,
+          "price": 800000,
+          "cumulativeCost": 6100000
+        },
+        {
+          "ordinal": 12,
+          "price": 800000,
+          "cumulativeCost": 6900000
+        },
+        {
+          "ordinal": 13,
+          "price": 800000,
+          "cumulativeCost": 7700000
+        },
+        {
+          "ordinal": 14,
+          "price": 800000,
+          "cumulativeCost": 8500000
+        },
+        {
+          "ordinal": 15,
+          "price": 800000,
+          "cumulativeCost": 9300000
+        },
+        {
+          "ordinal": 16,
+          "price": 800000,
+          "cumulativeCost": 10100000
+        },
+        {
+          "ordinal": 17,
+          "price": 800000,
+          "cumulativeCost": 10900000
+        },
+        {
+          "ordinal": 18,
+          "price": 800000,
+          "cumulativeCost": 11700000
+        },
+        {
+          "ordinal": 19,
+          "price": 800000,
+          "cumulativeCost": 12500000
+        },
+        {
+          "ordinal": 20,
+          "price": 1000000,
+          "cumulativeCost": 13500000
+        },
+        {
+          "ordinal": 21,
+          "price": 1000000,
+          "cumulativeCost": 14500000
+        },
+        {
+          "ordinal": 22,
+          "price": 1000000,
+          "cumulativeCost": 15500000
+        },
+        {
+          "ordinal": 23,
+          "price": 1000000,
+          "cumulativeCost": 16500000
+        },
+        {
+          "ordinal": 24,
+          "price": 1000000,
+          "cumulativeCost": 17500000
+        },
+        {
+          "ordinal": 25,
+          "price": 1000000,
+          "cumulativeCost": 18500000
+        },
+        {
+          "ordinal": 26,
+          "price": 1000000,
+          "cumulativeCost": 19500000
+        },
+        {
+          "ordinal": 27,
+          "price": 1000000,
+          "cumulativeCost": 20500000
+        },
+        {
+          "ordinal": 28,
+          "price": 1000000,
+          "cumulativeCost": 21500000
+        },
+        {
+          "ordinal": 29,
+          "price": 1000000,
+          "cumulativeCost": 22500000
+        },
+        {
+          "ordinal": 30,
+          "price": 1000000,
+          "cumulativeCost": 23500000
+        }
+      ]
+    }
+  },
+  "bytecodeEvidence": {
+    "xfs/luascripts/Guis/Panels/Shop/Component/ShopBuyComponent.lua": {
+      "sha256": "1c63b619efab29f1140150a72392e813ad9d8dc130a496bb3f0a1ada0821d518",
+      "prototypes": {
+        "45": {
+          "constants": [
+            "%d+",
+            "cost",
+            "insert",
+            "table",
+            "%d-%d",
+            "format",
+            "string",
+            "levelCost",
+            "getShopItemConfig",
+            "model",
+            "curShopItemId"
+          ],
+          "numbers": [
+            0,
+            1
+          ],
+          "upvalues": [],
+          "params": 1,
+          "frame_size": 15,
+          "bytecode": "360100000b010000580101804b0001003601010012030100360102013604000042010302360203010a02000058020480360203011502020007020000580201804b00010035020000290301003604030115040400290501004d034780360703013b0706072b08000007060100580916803909040036090509270b0600290c0100370d0107170d010d42090402120809003909070036090809120b0200350c0400360d0901370d010d400d010c360d0901370d010d370d020d400d020c4008030c420903015809168036090301170a01063b090a09390a0400360a050a270c0600370d0109370e0107170e010e420a040212080a00390a0700360a080a120c0200350d0400360e0901370e010e400e010d370e0209400e020d4008030d420a0301360903011509090009060900580911803909040036090509270b0a00370c010742090302120809003909070036090809120b0200350c0400360d0901370d010d400d010c370d0207400d020c4008030c420903014f03b97f4b000100"
+        }
+      }
+    },
+    "xfs/luascripts/Guis/Panels/Shop/ShopBaseModel.lua": {
+      "sha256": "264f454ae3c7a44d5b6f4b245c21d9451b9a99cc3fd765016f022dc94f4ca7de",
+      "prototypes": {
+        "26": {
+          "constants": [
+            "calcPriceOnRogue",
+            "min",
+            "math",
+            "insert",
+            "table",
+            "levelCost",
+            "shopLevelCounts",
+            "me",
+            "pg",
+            "cost",
+            "deepCopyTable",
+            "isShopItemInSpecialTime",
+            "specialCost",
+            "getShopItemConfig"
+          ],
+          "numbers": [
+            0,
+            1
+          ],
+          "upvalues": [
+            49168
+          ],
+          "params": 3,
+          "frame_size": 24,
+          "bytecode": "12050000360300001206010042030302360401030a04000058041780120600003604020012070300420403020f00040058051180300400003604030436060103420402022905010015060400290701004d0506803b0908043b0a0804370a020a220a020a400a02094f05fa7f12050400360604034a050300360404030a04000058040480360404031504040007040000580402802b0400004c040200300400003604030436060403420402023905050036050605360507053b0501050e000500580601802905000020060205360708030a07000058070980360708031507070006070000580705803607080337070107370701070106070058070b802907010015080400290901004d0706803b0b0a043b0c0a04370c020c220c020c400c020b4f07fa7f580757802b0700003508000029090100360a0403150a0a00290b01004d090680390d0900360d0a0d120f080029100000420d03014f09fa7f3609080315090900290a0100120b0900290c01004d0a3c80360e08033b0e0d0e370f010e01050f005810278039100b0036100c10121202002113050f17130113421003020b07000058110e80291101003612040315121200291301004d1108803b151408361604033b1614163716021622161016201516153e1514084f11f87f58110c802911020015120700291301004d11088017150114171601143b1616083b17140722171017201617163e1615084f11f87f20051005210210020702000058110180580a108012070e00090d090058100c802910020015110700291201004d10088017140113171501133b1515083b16130722160216201516153e1514084f10f87f4f0ac47f290a0100150b0400290c01004d0a04803b0e0d043b0f0d08400f020e4f0afc7f2907010015080400290901004d070580120d0000360b0d003b0e0a04420b03014f07fb7f4c040200"
+        }
+      }
+    }
+  },
+  "limitTypeEnum": {
+    "DAY": 1,
+    "MONTH": 3,
+    "NONE": 0,
+    "WEEK": 2
+  },
+  "chestUseType": 14,
+  "patches": [
+    {
+      "version": "3584014",
+      "pmdataSha256": "3b7b1db4e204e48ccff6d0ceb212dcfae480ef73ea0d79f9fc2f51eee618c7ca",
+      "shopRows": {
+        "3501001": {
+          "condition": 91004,
+          "cost": {
+            "1": {
+              "1": 1014,
+              "2": 20000
+            }
+          },
+          "itemId": 5200002,
+          "itemNum": 1,
+          "levelCost": {
+            "1": {
+              "1": 2,
+              "2": 50000
+            },
+            "2": {
+              "1": 3,
+              "2": 70000
+            },
+            "3": {
+              "1": 4,
+              "2": 100000
+            },
+            "4": {
+              "1": 7,
+              "2": 200000
+            },
+            "5": {
+              "1": 11,
+              "2": 300000
+            },
+            "6": {
+              "1": 16,
+              "2": 400000
+            }
+          },
+          "levelCostType": 1,
+          "limitNum": 20,
+          "limitType": 1,
+          "onSale": 1,
+          "paginationId": 101,
+          "sort": 4,
+          "source": 821,
+          "tag": 35
+        },
+        "3510001": {
+          "condition": 91006,
+          "cost": {
+            "1": {
+              "1": 1014,
+              "2": 500000
+            }
+          },
+          "itemId": 5200011,
+          "itemNum": 1,
+          "levelCost": {
+            "1": {
+              "1": 10,
+              "2": 800000
+            },
+            "2": {
+              "1": 20,
+              "2": 1000000
+            }
+          },
+          "levelCostType": 2,
+          "limitNum": 30,
+          "limitType": 2,
+          "onSale": 1,
+          "paginationId": 100,
+          "sort": 13,
+          "source": 821,
+          "tag": 35
+        }
+      }
+    },
+    {
+      "version": "3634150",
+      "pmdataSha256": "14552ae57c7d99279ac3791e732ca74ae5dc8cc6db38c01d0e4e0b0134fc77bb",
+      "shopRows": {
+        "3501001": {
+          "condition": 91004,
+          "cost": {
+            "1": {
+              "1": 1014,
+              "2": 20000
+            }
+          },
+          "itemId": 5200002,
+          "itemNum": 1,
+          "levelCost": {
+            "1": {
+              "1": 2,
+              "2": 50000
+            },
+            "2": {
+              "1": 3,
+              "2": 70000
+            },
+            "3": {
+              "1": 4,
+              "2": 100000
+            },
+            "4": {
+              "1": 7,
+              "2": 200000
+            },
+            "5": {
+              "1": 11,
+              "2": 300000
+            },
+            "6": {
+              "1": 16,
+              "2": 400000
+            }
+          },
+          "levelCostType": 1,
+          "limitNum": 20,
+          "limitType": 1,
+          "onSale": 1,
+          "paginationId": 101,
+          "sort": 4,
+          "source": 821,
+          "tag": 35
+        },
+        "3510001": {
+          "condition": 91006,
+          "cost": {
+            "1": {
+              "1": 1014,
+              "2": 500000
+            }
+          },
+          "itemId": 5200011,
+          "itemNum": 1,
+          "levelCost": {
+            "1": {
+              "1": 10,
+              "2": 800000
+            },
+            "2": {
+              "1": 20,
+              "2": 1000000
+            }
+          },
+          "levelCostType": 2,
+          "limitNum": 30,
+          "limitType": 2,
+          "onSale": 1,
+          "paginationId": 100,
+          "sort": 13,
+          "source": 821,
+          "tag": 35
+        }
+      }
+    },
+    {
+      "version": "3668494",
+      "pmdataSha256": "e7cf9bd743f39c7c07e5d82c4e166766583eb9376bd590e40556638c6f41ee32",
+      "shopRows": {
+        "3501001": {
+          "condition": 91004,
+          "cost": {
+            "1": {
+              "1": 1014,
+              "2": 20000
+            }
+          },
+          "itemId": 5200002,
+          "itemNum": 1,
+          "levelCost": {
+            "1": {
+              "1": 2,
+              "2": 50000
+            },
+            "2": {
+              "1": 3,
+              "2": 70000
+            },
+            "3": {
+              "1": 4,
+              "2": 100000
+            },
+            "4": {
+              "1": 7,
+              "2": 200000
+            },
+            "5": {
+              "1": 11,
+              "2": 300000
+            },
+            "6": {
+              "1": 16,
+              "2": 400000
+            }
+          },
+          "levelCostType": 1,
+          "limitNum": 20,
+          "limitType": 1,
+          "onSale": 1,
+          "paginationId": 101,
+          "sort": 4,
+          "source": 821,
+          "tag": 35
+        },
+        "3510001": {
+          "condition": 91006,
+          "cost": {
+            "1": {
+              "1": 1014,
+              "2": 500000
+            }
+          },
+          "itemId": 5200011,
+          "itemNum": 1,
+          "levelCost": {
+            "1": {
+              "1": 10,
+              "2": 800000
+            },
+            "2": {
+              "1": 20,
+              "2": 1000000
+            }
+          },
+          "levelCostType": 2,
+          "limitNum": 30,
+          "limitType": 2,
+          "onSale": 1,
+          "paginationId": 100,
+          "sort": 13,
+          "source": 821,
+          "tag": 35
+        }
+      }
+    }
+  ],
+  "probabilityAudit": {
+    "boxReferences": {
+      "tableFamilies": [
+        "ParmonDyeData.dye_config_data",
+        "activity_reunion_reward_data",
+        "ark_chest_refresh_data",
+        "ark_mmoitem_condition_index",
+        "ark_send_reward_data",
+        "avatar_hair_resId_to_config",
+        "badge_config_data",
+        "body_shape_effect_config_data",
+        "book_progress_reward_data",
+        "boss_gameplay_config_data",
+        "bossrush_reward_data",
+        "bossrush_season_reward_data",
+        "buff_config_data",
+        "buff_series_to_extra_random_buff",
+        "cast_item_data",
+        "catch_config_data",
+        "catch_lucky_reward_display_data",
+        "catch_prob_ai_state_data",
+        "catch_prob_ai_tag_data",
+        "catch_prob_buff_tag_data",
+        "catch_prob_data",
+        "catch_prob_entity_tag_data",
+        "catch_rogue_reward_data",
+        "chest_data",
+        "collect_item_data",
+        "common_time_config_data",
+        "country_config_data",
+        "daily_reward_data",
+        "death_panel_config_data",
+        "death_reason_config_data",
+        "design_workshop_consume_data",
+        "design_workshop_data",
+        "digong_config_data",
+        "digong_reward_data",
+        "drop_data",
+        "drop_group_data",
+        "drop_package_data",
+        "dynamic_mark_config_data",
+        "egg_book_Collection_data",
+        "egg_book_antique_data",
+        "egg_book_group_data",
+        "egg_book_reward_data",
+        "egg_id_to_model_res_data",
+        "egg_limit_time_refresh_data",
+        "egg_limit_time_reward_box_data",
+        "egg_limit_time_reward_data",
+        "egg_pattern_color_data",
+        "egg_pet_equip_hh_data",
+        "egg_prompt_intercept_data",
+        "egg_random_model_id_data",
+        "egg_rank_base_data",
+        "egg_rank_daily_box_data",
+        "egg_rank_evaluation_data",
+        "egg_rank_point_data",
+        "egg_rank_reward_data",
+        "egg_reward_data",
+        "event_pet_egg_data",
+        "extra_random_buff",
+        "extra_random_buff_condition",
+        "fashion_reward_data",
+        "fishing_capture_config_data",
+        "fishing_capture_reward_progress_data",
+        "fishing_reward_statistics_data",
+        "func_index_config_data",
+        "gamepad_menu_item_data",
+        "gamepad_menu_item_fun_data",
+        "gamepad_menu_item_order_data",
+        "gamestring_config_data",
+        "guidence_item_data",
+        "guidence_sub_item_data",
+        "handbook_vb_config_data",
+        "hold_ent_panel_config_data",
+        "hold_item_data",
+        "home_handbook_grade_reward_data",
+        "home_handbook_item_category_index",
+        "home_handbook_season_item_index",
+        "home_item_release_data",
+        "home_season_celebration_chest_data",
+        "home_season_collection_item_data",
+        "home_season_collection_reward_data",
+        "home_season_config_data",
+        "home_season_mutation_collection_reward_by_season_data",
+        "home_season_mutation_collection_reward_data",
+        "homeland_config_data",
+        "homeland_food_item",
+        "homeland_formula_random_add_data",
+        "homeland_formula_random_data",
+        "homeland_formula_random_reverse_data",
+        "homeland_formula_random_type_data",
+        "homeland_item_to_material_data",
+        "homeland_lottery_reward_data",
+        "homeland_material_config_data",
+        "homeland_material_shop_data",
+        "homeland_zone_unlock_config_data",
+        "info_stamp_animation_config_data",
+        "info_stamp_cost_config_data",
+        "info_stamp_custom_bubble_config_data",
+        "info_stamp_unit_config_data",
+        "item_acquire_limit_data",
+        "item_action_data",
+        "item_attach_data",
+        "item_batch_notify_dont_interrupt_data",
+        "item_batch_notify_full_data",
+        "item_batch_notify_light_data",
+        "item_batch_notify_side_data",
+        "item_batch_notify_special_data",
+        "item_cd_map",
+        "item_compound_data",
+        "item_compound_material2id",
+        "item_compound_product2id",
+        "item_condition_convert_data",
+        "item_const_source_data",
+        "item_data",
+        "item_debug_data",
+        "item_effect_data",
+        "item_entity_data",
+        "item_form_change_map",
+        "item_object_binding_data",
+        "item_quality",
+        "item_select_data",
+        "item_select_tab_data",
+        "item_shop_data",
+        "item_source_data",
+        "item_third_page_data",
+        "item_type_show_data",
+        "item_use_type_map",
+        "item_viewer_data",
+        "level_item_config_data",
+        "level_item_event_data",
+        "level_item_prefab_data",
+        "level_item_subtype_data",
+        "level_reward_dungeon_revert_data",
+        "level_reward_linked_data",
+        "level_reward_rogue",
+        "level_reward_rouge",
+        "level_timeout_item_id_data",
+        "leylineflower_config_data",
+        "leylineflower_quality_random_data",
+        "map_area_config_data",
+        "map_block_config_data",
+        "map_custom_area_config_data",
+        "map_filtrate_config_data",
+        "map_level_config_data",
+        "map_level_config_load_data",
+        "map_line_config_data",
+        "map_mark_id_to_config_id",
+        "mark_point_reward_linked_data",
+        "nation_config_data",
+        "new_homeland_zone_unlock_config_data",
+        "npc_func_config_data",
+        "npc_hide_show_config_data",
+        "order_shop_desc_data",
+        "order_shop_type_data",
+        "pack_download_item",
+        "pet_ball_config_data",
+        "pet_behavior_config_data",
+        "pet_config_data",
+        "pet_evolve_item_sub_data",
+        "pet_feed_item_data",
+        "pet_handbook_config_data",
+        "pet_hatch_egg_cube_data",
+        "pet_hatch_egg_data",
+        "pet_hatch_egg_label_data",
+        "pet_random_text_data",
+        "pet_research_reward_data",
+        "pet_talent_random_group_data",
+        "pieces_item_special_data",
+        "player_random_name_data",
+        "pvp_template_pet_all_config_data",
+        "pvp_template_pet_config_data",
+        "pvp_template_pet_skill_config_data",
+        "quest_chapter_progress_reward_data",
+        "quest_reward",
+        "quiz_bank_config_data",
+        "quiz_bank_config_revert_data",
+        "quiz_multi_config_data",
+        "quiz_one_config_data",
+        "race_dungeon_config_data",
+        "random_buff_data",
+        "random_buff_rarity",
+        "random_buff_series_name",
+        "random_shop_data",
+        "random_shop_goods_pool_data",
+        "random_shop_goods_pool_index_data",
+        "random_shop_pos_data",
+        "rank_reward_data",
+        "region_sync_config_data",
+        "revive_button_config_data",
+        "rob_egg_accessory_data",
+        "rob_egg_base_data",
+        "rob_egg_born_data",
+        "rob_egg_chest_data",
+        "rob_egg_chest_quality_to_qte_id",
+        "rob_egg_collection_calcine_data",
+        "rob_egg_collection_calcine_rank_data",
+        "rob_egg_collection_tag_data",
+        "rob_egg_collection_variant_model_data",
+        "rob_egg_item_in",
+        "rob_egg_item_out",
+        "rob_egg_limit_time_refresh_group",
+        "rob_egg_slot_type",
+        "rob_egg_talent_data",
+        "robegg_chip_data",
+        "robegg_chip_slot_data",
+        "robegg_equip_data",
+        "robegg_repair_kit_data",
+        "robegg_weapon_durability_consume_date",
+        "rogue_daily_reward_data",
+        "rogue_random_event_data",
+        "rogue_random_event_option_data",
+        "rogue_week_boss_reward_data",
+        "rouge_buff_and_item_mapping",
+        "sandbox_config_data",
+        "shop_classify_data",
+        "shop_commodity_data",
+        "shop_commodity_limitId_revert_data",
+        "shop_event_data",
+        "shop_tag_data",
+        "shop_tag_mapping_data",
+        "shopmall_appearance",
+        "shopmall_commodity_data",
+        "shopmall_commodity_tab_data",
+        "shopmall_constant_data",
+        "shopmall_exchange_shops_data",
+        "shopmall_filter_data",
+        "shopmall_gift_data",
+        "shopmall_pet_appearance",
+        "shopmall_rechargeTypeSet_data",
+        "shopmall_recharge_data",
+        "shopmall_recommendation_data",
+        "shopmall_tab_data",
+        "shopmall_tab_group_data",
+        "spawner_item_group_data",
+        "sys_config_data",
+        "text_tag_config_data",
+        "tide_config_data",
+        "timer_config_data",
+        "trade_items_data",
+        "viewable_item_data",
+        "volume_config_data",
+        "waterfall_config_data"
+      ],
+      "decodedTables": 76447,
+      "matches": [
+        {
+          "path": [
+            "drop_data",
+            5006008,
+            "displayReward",
+            2,
+            1
+          ],
+          "match": "value"
+        },
+        {
+          "path": [
+            "drop_data",
+            5006008,
+            "fixedDrop",
+            2,
+            1
+          ],
+          "match": "value"
+        },
+        {
+          "path": [
+            "drop_data",
+            5006010,
+            "displayReward",
+            2,
+            1
+          ],
+          "match": "value"
+        },
+        {
+          "path": [
+            "drop_data",
+            5006010,
+            "fixedDrop",
+            2,
+            1
+          ],
+          "match": "value"
+        },
+        {
+          "path": [
+            "item_cd_map",
+            5200011
+          ],
+          "match": "key"
+        },
+        {
+          "path": [
+            "item_cd_map",
+            5200011,
+            1
+          ],
+          "match": "value"
+        },
+        {
+          "path": [
+            "item_data",
+            5200011
+          ],
+          "match": "key"
+        },
+        {
+          "path": [
+            "item_effect_data",
+            5200011
+          ],
+          "match": "key"
+        },
+        {
+          "path": [
+            "item_effect_data",
+            5200011,
+            "id"
+          ],
+          "match": "value"
+        },
+        {
+          "path": [
+            "item_shop_data",
+            5200011
+          ],
+          "match": "key"
+        },
+        {
+          "path": [
+            "item_use_type_map",
+            14,
+            85
+          ],
+          "match": "value"
+        },
+        {
+          "path": [
+            "shop_commodity_data",
+            3510001,
+            "itemId"
+          ],
+          "match": "value"
+        }
+      ]
+    },
+    "packageCount": 395,
+    "subtableCount": 652,
+    "nonemptySubtables": 0,
+    "confirmed": "Item description says one random egg, with possible Umbral and Prismana eggs.",
+    "unresolved": "No usable box reward link, numeric odds, or pity rule found in the inspected client data. Do not interpret missing client configuration as proof that server-side pity is absent.",
+    "officialProbabilityPage": "https://www.aniimo.com/zh-tw/formula-multipliers",
+    "officialPageFinding": "No Mystery Egg Box opening odds listed on the page checked on 2026-10-12."
+  },
+  "recommendation": {
+    "boxLowPriceTierCount": 9,
+    "boxLowPriceTierCost": 4500000,
+    "boxRecommendationCondition": "Price-tier budget recommendation assuming same reward distribution for the identical item; not a proven expected-value optimum.",
+    "ticketFewestRunsForMaximumCashNet": 10,
+    "ticketMaximumDailyCashNet": 1760000,
+    "ticketMaximumNetPlateau": [
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+    ],
+    "practicalLowerTimeOption": 6,
+    "weeklyScenarios": [
+      {
+        "ticketsPerDay": 3,
+        "weeklyTicketCost": 980000,
+        "weeklyNetBeforeBoxes": 5320000,
+        "weeklyNetAfterNineBoxes": 820000
+      },
+      {
+        "ticketsPerDay": 6,
+        "weeklyTicketCost": 3080000,
+        "weeklyNetBeforeBoxes": 9520000,
+        "weeklyNetAfterNineBoxes": 5020000
+      },
+      {
+        "ticketsPerDay": 10,
+        "weeklyTicketCost": 8680000,
+        "weeklyNetBeforeBoxes": 12320000,
+        "weeklyNetAfterNineBoxes": 7820000
+      }
+    ]
+  }
+}
