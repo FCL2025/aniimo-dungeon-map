@@ -44,7 +44,7 @@
   function preferences() {
     return { locale: I18n.locale, map: el('map').value, difficulty: el('difficulty').value, iconSize: Number(el('icon-size').value),
       supplements: el('supplements').checked, bestRoute: el('best-route').checked,
-      routeStart: el('route-start').value, routeNumber: el('route-number').value, debugLog: el('debug-log').checked,
+      routeStart: el('route-start').value, routeNumber: el('route-number').value,
       categories: [...document.querySelectorAll('[data-category]:checked')].map(e => e.dataset.category),
       topmost, compact: false, sidebarCollapsed };
   }
@@ -59,7 +59,6 @@
     if (!events || !mapOverlay) return;
     events.emitTo('map-overlay', 'map-view-state', { ...preferences(), tracking: window.getTrackingSnapshot?.() || null,
       status: el('live-status').textContent, statusTitle: el('live-status').title, statusState: el('live-status').dataset.state, statusKey: el('live-status').dataset.statusKey,
-      recognition: el('recognition-button').getAttribute('aria-checked') === 'true', recognitionBusy: el('recognition-button').disabled,
       trackingEnabled: el('tracking-button').getAttribute('aria-checked') === 'true', trackingBusy: el('tracking-button').disabled
     }).catch(() => {});
   }
@@ -81,7 +80,7 @@
     el('compact').disabled = true;
     try {
       mapOverlay = value; overlayPaused = false; hotkeyError = ''; renderButtons();
-      const placement = await invoke('set_map_overlay', { enabled: value, gameWindowId: window.recognitionStatus?.().gameWindowId || null });
+      const placement = await invoke('set_map_overlay', { enabled: value, gameWindowId: window.trackingStatus?.().gameWindowId || null });
       if (value) {
         hotkeyError = placement?.hotkeyError || ''; renderButtons(); publishOverlay();
         report(hotkeyError ? I18n.error(hotkeyError) : msg('help.overlay'), hotkeyError ? 10000 : 5000);
@@ -98,7 +97,6 @@
         report(msg(payload ? 'overlay.hidden' : 'overlay.openHint'));
       }),
       events.listen('map-overlay-action', ({ payload }) => {
-        if (payload === 'recognition') el('recognition-button').click();
         if (payload === 'tracking') el('tracking-button').click();
         publishOverlay();
       }),
@@ -113,7 +111,7 @@
       events.listen('map-overlay-size-selected', ({ payload }) => selectOverlaySize(Number(payload), false))
     ]).catch(error => report(msg('error.operation', { error: I18n.error(error) })));
   }
-  for (const name of ['tracking-update', 'tracking-stale', 'recognition-ui']) window.addEventListener(name, publishOverlay);
+  for (const name of ['tracking-update', 'tracking-stale', 'tracking-ui']) window.addEventListener(name, publishOverlay);
   window.addEventListener('languagechange', save);
   el('topmost').addEventListener('click', () => setPinned(!topmost));
   el('compact').addEventListener('click', async () => { await window.overlayBridgeReady; await setMapMode(!mapOverlay); });
@@ -137,7 +135,6 @@
         el('best-route').checked = settings.bestRoute === true;
         if (['auto', 'entrance', 'exit'].includes(settings.routeStart)) el('route-start').value = settings.routeStart;
         if (['1', '2'].includes(settings.routeNumber)) el('route-number').value = settings.routeNumber;
-        el('debug-log').checked = settings.debugLog === true;
         sidebarCollapsed = settings.sidebarCollapsed === true;
         renderSidebar();
         if (Number.isFinite(settings.iconSize)) el('icon-size').value = String(Math.min(250, Math.max(75, settings.iconSize)));

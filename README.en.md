@@ -2,7 +2,7 @@
 
 [繁體中文](README.md) | **English**
 
-A Windows map companion for Aniimo's Egg Scramble mode. Covers 7 dungeons on Nightmare and Chaos, with chest and egg-nest markers, manual map selection, automatic recognition, player tracking, and a transparent map overlay.
+A Windows map companion for Aniimo's Egg Scramble mode. Covers 7 dungeons on Nightmare and Chaos, with chest and egg-nest markers, manual map selection, player tracking, and a transparent map overlay.
 
 **[Download the latest EXE](https://github.com/FCL2025/aniimo-dungeon-map/releases/latest/download/AniimoDungeonMap.exe)** · [Release notes and ZIP download](https://github.com/FCL2025/aniimo-dungeon-map/releases/latest)
 
@@ -33,11 +33,9 @@ Screenshots 2 and 3 show an older interface. Buttons and messages may differ in 
 3. Choose the difficulty and visible markers in the sidebar. Click **Overlay** to show the transparent map over the game.
 4. For the next run, click **Reselect** on the overlay to choose another map without returning to the main window.
 
-Recognition is off by default. To select a map automatically, turn on **Recognize** and keep the game's M-map fully zoomed out. Toggle recognition off and on for a new run. Opening manual selection turns recognition off.
-
 To track your position, select a map, turn on **Track**, then close the game's M-map and return to gameplay.
 
-Set **Game resolution** in the sidebar to 1920×1080 for 16:9 (including 2560×1440), or 3440×1440 for 21:9. The setting is saved; changing it resets recognition and tracking. At 1440p, the overlay defaults to about 790×790.
+Set **Game resolution** in the sidebar to 1920×1080 for 16:9 (including 2560×1440), or 3440×1440 for 21:9. The setting is saved; changing it resets tracking. At 1440p, the overlay defaults to about 790×790.
 
 ## Common controls
 
@@ -54,13 +52,15 @@ For two-player chest routes, enable **Show suggested route**, use the same **Sho
 
 ## Before you play
 
-- Supports Windows 10/11 x64; recognition and tracking require Windows 10 version 1903 or later. Install [WebView2 Runtime](https://developer.microsoft.com/microsoft-edge/webview2/) if it is missing.
+- Supports Windows 10/11 x64; tracking requires Windows 10 version 1903 or later. Install [WebView2 Runtime](https://developer.microsoft.com/microsoft-edge/webview2/) if it is missing.
 - Use windowed or borderless mode. Press **Alt** first if the game locks the cursor. You can minimize the main window while the overlay is open.
 - Close the old version before updating. Map, language, route, and other settings are retained for the same Windows account.
-- Markers indicate possible spawns, not guaranteed ones. Opened chests are not recorded automatically. Fog can affect recognition and tracking; floor detection is not supported.
+- Markers indicate possible spawns, not guaranteed ones. Opened chests are not recorded automatically. Fog can affect player tracking; player floor tracking is not supported. Higher chest markers carry a 2F badge.
 
 For more controls, open **Help** at the bottom of the sidebar.
 
-Open **Loot value ranking** above the marker filters to compare 24 gold chest treasures, two high-grade energy stones, Gold Essence, the Gilded Key, Purple Essence, two basic energy stones, and three purple items worth strictly more than 7,000 per weight: the Silver-Plated Key and two medium-grade energy stones. Backpacks, attack amplifiers, chips, and defense chassis are excluded. Ranking assumes **25 slots, 70 kg, and one item per slot**: **bag CP = sale price ÷ max(1, weight ÷ 2.8)**, highest first with ties. Items up to 2.8 kg compete on price per slot; heavier items are discounted for weight.
+Open **Loot value ranking** above Help to compare 24 gold chest treasures, two high-grade energy stones, Gold Essence, the Gilded Key, Purple Essence, two basic energy stones, and three purple items worth strictly more than 7,000 per weight: the Silver-Plated Key and two medium-grade energy stones. Backpacks, attack amplifiers, chips, and defense chassis are excluded. Ranking assumes **25 slots, 70 kg, and one item per slot**: **bag CP = sale price ÷ max(1, weight ÷ 2.8)**, highest first with ties. Items up to 2.8 kg compete on price per slot; heavier items are discounted for weight.
+
+The same sidebar section includes daily Chaos Ticket and Mystery Egg Box purchase guides. Assuming 300,000 Shell Coins from each successful Chaos run, buying and using 10 tickets yields the maximum daily cash net of 1,760,000. Tickets 11–15 leave it unchanged; ticket 16 onward lowers it. The first nine boxes cost 500,000 each, or 4,500,000 total. Their opening odds are unknown, so nine is a price-tier budget suggestion.
 
 The table shows original game icons, weight, sale price, bag CP, and a same-item packing estimate with whole-item count, total weight, and total sale value. For example, a 1 kg basic energy stone worth 7,000 fits 25 times for 175,000, while a 3 kg Rainbow Diamond worth 34,560 fits 23 times for 794,880. These estimates assume enough copies. Drop rates are unknown, so totals are not expected earnings per run; mixed bags still require checking remaining slots and weight. Item names use the game's translations for the selected language, with English as a fallback when unavailable.

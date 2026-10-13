@@ -1,0 +1,7 @@
+.shop-dialog{width:min(660px,calc(100vw - 32px));max-width:none;max-height:85vh;overflow:auto}
+.shop-dialog h2{color:var(--gold)}.shop-dialog p{font-size:13px;line-height:1.7}
+.shop-table{width:100%;margin:15px 0;border-collapse:collapse;font-size:12px;font-variant-numeric:tabular-nums}
+.shop-table th,.shop-table td{padding:9px 6px;border-bottom:1px solid var(--line);text-align:right}
+.shop-table th:first-child,.shop-table td:first-child{text-align:left}
+.shop-table th{color:var(--muted);font-weight:500}
+.shop-dialog .shop-close{float:right;margin-top:12px}

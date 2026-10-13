@@ -6,6 +6,7 @@ from app_icons import stage_app_icons
 from build_routes import build as build_routes
 from build_i18n import stage_i18n
 from build_loot_ranking import stage_loot_ranking
+from build_shop_advice import stage_shop_advice
 
 ROOT = Path(__file__).resolve().parent.parent
 SOURCE = ROOT / 'exports/grab-eggs-data'
@@ -18,6 +19,9 @@ CATEGORIES = {
 # It shares quality 5 with gold chests, so quality alone cannot distinguish it.
 CHEST_CATEGORIES = {2004: 'chest_gold', 2007: 'chest_gold',
                     2010: 'chest_gold', 2011: 'chest_glass'}
+# Dungeon rooms share a 0 m origin. Chest candidates below 3 m cluster at
+# ground/platform heights (0.4–2.5 m); the upper cluster begins at 3.46 m.
+UPPER_FLOOR_MIN_Y = 3.0
 
 
 def display_pins(pins):
@@ -28,7 +32,8 @@ def display_pins(pins):
             continue
         item = dict(pin, category=category)
         if pin['category'] == 'chest':
-            item.update(name=CATEGORIES[category], originalName=pin['name'])
+            item.update(name=CATEGORIES[category], originalName=pin['name'],
+                        floor=2 if pin['world'][1] >= UPPER_FLOOR_MIN_Y else 1)
         result.append(item)
     return result
 
@@ -73,6 +78,7 @@ def build(source=SOURCE):
     stage_app_icons(source)
     stage_i18n(source)
     stage_loot_ranking(source)
+    stage_shop_advice(source)
     print(f'Viewer: {len(maps)} maps, {sum(len(m["pins"]) for m in maps)} candidates')
 
 

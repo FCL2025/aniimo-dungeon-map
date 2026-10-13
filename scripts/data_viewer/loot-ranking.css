@@ -1,4 +1,4 @@
-#loot-ranking-button{width:100%;background:var(--panel);text-align:left}
+.sidebar-guides{display:grid;gap:8px;margin-top:14px}.sidebar-guides button{width:100%;background:var(--panel);text-align:left}
 #loot-ranking-dialog{width:min(980px,calc(100vw - 32px));max-width:none;max-height:85vh;padding:0;color:var(--text);background:var(--panel);border:1px solid var(--line);border-radius:10px;overflow:auto;line-height:1.6}
 #loot-ranking-dialog::backdrop{background:#08151bbf}
 .loot-heading{padding:22px 24px 16px;border-bottom:1px solid var(--line)}

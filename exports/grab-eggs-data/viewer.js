@@ -2,6 +2,7 @@
 const data=window.DUNGEON_DATA;
 const categories=Object.fromEntries(Object.entries(data.categories).filter(([key])=>!['pot','cache'].includes(key)));
 const $=id=>document.getElementById(id);
+const {msg,bind}=window.I18n;
 const colors={egg:'#f3d76d',chest_gold:'#dfb65b',chest_glass:'#9de9f4',stellarys_boss:'#87dcff',entrance:'#79e1c0',exit:'#ff8798',key_orange:'#ffb46e',challenge:'#82d2e5'};
 const canvas=$('map-canvas'), ctx=canvas.getContext('2d');
 const mapLayer=document.createElement('canvas'),mapContext=mapLayer.getContext('2d');
@@ -12,6 +13,8 @@ let current, image, visible=[], selected=null, scale=1, tx=0, ty=0, width=1, hei
 let loadToken=0;
 let tracking=null;
 let route=null;
+let languageViewport=null;
+window.addEventListener('languagechange',()=>{const box=canvas.getBoundingClientRect();languageViewport={width:box.width,height:box.height};});
 window.getRouteSnapshot=()=>$('best-route')?.checked&&route?{mapId:current.id,...structuredClone(route)}:null;
 window.getTrackingSnapshot=()=>tracking?structuredClone(tracking):null;
 function renderTrackingStatus(){
@@ -20,8 +23,9 @@ function renderTrackingStatus(){
   button.disabled=!valid;
   button.hidden=!valid;
   label.dataset.state=valid?(tracking.stale?'stale':'live'):'waiting';
-  label.textContent=valid?(tracking.stale?'最後位置 · 追蹤中斷':'人物位置（估計）'):$('tracking-button')?.getAttribute('aria-checked')==='true'?'等待人物定位':'追蹤已關閉';
-  button.title=!valid?'尚未取得人物位置':tracking.stale?'置中到最後位置':'置中到人物位置';
+  bind(label,msg(valid?(tracking.stale?'tracking.stale':'tracking.position'):$('tracking-button')?.getAttribute('aria-checked')==='true'?'tracking.wait':'tracking.off'));
+  bind(button,msg(!valid?'tracking.noPosition':tracking.stale?'tracking.centerLast':'tracking.center'),'title');
+  bind(button,msg(!valid?'tracking.noPosition':tracking.stale?'tracking.centerLast':'tracking.center'),'attr:aria-label');
 }
 window.addEventListener('tracking-update',event=>{
   const next=event.detail;
@@ -37,20 +41,20 @@ $('locate-player')?.addEventListener('click',()=>{if(tracking&&tracking.mapId===
 const iconImages=new Map();
 for(const [key,asset] of Object.entries(data.icons.assets)){
   const icon=new Image();icon.onload=()=>draw();
-  icon.onerror=()=>{$('icon-status').textContent='部分圖示載入失敗，請重新解壓完整的應用檔案。';};
+  icon.onerror=()=>bind($('icon-status'),msg('error.assets'));
   iconImages.set(key,icon);icon.src=asset.image;
 }
 function iconElement(key){const icon=document.createElement('img');icon.className='marker-icon';icon.src=data.icons.assets[key].image;icon.alt='';icon.setAttribute('aria-hidden','true');return icon;}
 function pinSize(pin){const primary=['egg','entrance','exit','stellarys_boss'].includes(pin.category);const categoryScale=pin.category==='key_orange'?1.5:1;const overlayScale=document.body.classList.contains('overlay')?(window.overlaySizeRatio||1):1;return (primary?28:Math.min(22,Math.max(14,20*Math.sqrt(scale))))*Number($('icon-size').value)/100*categoryScale*overlayScale;}
 window.addEventListener('overlay-size-changed',()=>draw());
 function renderIconSize(){const value=$('icon-size').value+'%';$('icon-size-value').value=value;$('icon-size').setAttribute('aria-valuetext',value);draw();}
-for(const map of data.maps){const option=document.createElement('option');option.value=map.id;option.textContent=`地宮 ${map.id}`;$('map').append(option);}
-for(const [key,name] of Object.entries(categories)){
+for(const map of data.maps){const option=document.createElement('option');option.value=map.id;bind(option,msg('map.name',{id:map.id}));$('map').append(option);}
+for(const key of Object.keys(categories)){
   const label=document.createElement('label');label.className='check';
   const input=document.createElement('input');input.type='checkbox';input.checked=true;input.dataset.category=key;input.addEventListener('change',update);
   const swatch=iconElement(data.icons.categories[key]);
   swatch.dataset.categoryIcon=key;
-  const text=document.createElement('span');text.textContent=name;
+  const text=document.createElement('span');bind(text,msg('category.'+key));
   const count=document.createElement('span');count.className='count';count.id='count-'+key;
   label.append(input,swatch,text,count);$('filters').append(label);
 }
@@ -59,22 +63,11 @@ function update(){
   if(!current)return;
   const routes=current.routes?.[$('supplements').checked?'supplements':'direct'];
   route=routes?.selections?.[$('route-start').value]?.[$('route-number').value]||null;
-  const routeSummary=$('route-summary'),showRoute=$('best-route')?.checked;
-  if(routeSummary){
-    routeSummary.hidden=!showRoute;
-    const portal=kind=>kind==='entrance'?'入口':'出口';
-    routeSummary.textContent=route?`路線 ${route.routeNumber} · ${portal(route.start)}出發 → ${route.chestCount} 個琉璃候選 → ${portal(route.end)}離開 · ${route.optionalDoor?'鑰匙房 1 間（另有 1 個琉璃候選）':'鑰匙房 0 間'}${route.stairs?.length?' · 點線處走階梯':''}`:'這張地圖尚無建議路線。';
-  }
   const enabled=new Set([...document.querySelectorAll('[data-category]:checked')].map(x=>x.dataset.category));
   const candidates=candidatePins();visible=candidates.filter(p=>enabled.has(p.category)).sort((a,b)=>Number(b.category.startsWith('chest_'))-Number(a.category.startsWith('chest_')));
   for(const key of Object.keys(categories))$('count-'+key).textContent=candidates.filter(p=>p.category===key).length;
-  $('filter-total').textContent=visible.length+' 個候選';
+  bind($('filter-total'),msg('filters.total',{count:visible.length}));
   if(selected&&!visible.some(p=>p.id===selected.id))selected=null;
-  const prefix=$('difficulty').value==='5'?'Nightmare':'Chaos', room=data.rewardRules[prefix+'-room'], hall=data.rewardRules[prefix+'-hallway'];
-  $('rules').replaceChildren();
-  const p=document.createElement('p');p.textContent=`蛋巢設定：EggCount ${room.EggCount} / EggProbability ${room.EggProbability}。`;$('rules').append(p);
-  const table=document.createElement('table');table.innerHTML='<thead><tr><th>群組</th><th>房間</th><th>通道</th></tr></thead>';
-  const body=document.createElement('tbody');for(const key of ['G-All','G0','G1','G2','G3','G4','G5','G6']){const tr=document.createElement('tr');for(const value of [key,room[key]??'—',hall[key]??'—']){const td=document.createElement('td');td.textContent=value;tr.append(td);}body.append(tr);}table.append(body);$('rules').append(table);
   draw();
 }
 function fit(){if(!current)return;const [x1,y1,x2,y2]=current.bounds,padding=document.body.classList.contains('overlay')?28:64;scale=Math.min((width-padding)/(x2-x1),(height-padding)/(y2-y1));scale=Math.max(.05,scale);tx=(width-(x1+x2)*scale)/2;ty=(height-(y1+y2)*scale)/2;draw();}
@@ -133,13 +126,21 @@ function paintPins(ctx){
     const x=pin.pixel[0]*scale+tx,y=pin.pixel[1]*scale+ty;
     const size=pinSize(pin),r=size/2,icon=iconImages.get(pin.iconKey);
     if(x<-size||y<-size||x>width+size||y>height+size)continue;
-    if(icon?.complete&&icon.naturalWidth){
-      const ratio=Math.min(size/icon.naturalWidth,size/icon.naturalHeight),w=icon.naturalWidth*ratio,h=icon.naturalHeight*ratio;
+    const iconWidth=icon?.naturalWidth||icon?.width,iconHeight=icon?.naturalHeight||icon?.height;
+    if(iconWidth&&iconHeight){
+      const ratio=Math.min(size/iconWidth,size/iconHeight),w=iconWidth*ratio,h=iconHeight*ratio;
       ctx.save();ctx.shadowColor='#07131f';ctx.shadowBlur=3;ctx.shadowOffsetY=1;
       ctx.drawImage(icon,x-w/2,y-h/2,w,h);ctx.restore();
     }
     ctx.lineWidth=1.2;
     if(pin.category.startsWith('chest_')){ctx.strokeStyle=colors[pin.category];ctx.beginPath();ctx.arc(x,y,r+1,0,Math.PI*2);ctx.stroke();}
+    if(pin.category.startsWith('chest_')&&pin.floor===2){
+      const bx=x+r-10,by=y+r-8;
+      ctx.fillStyle='#102630';ctx.strokeStyle='#d7f6fb';ctx.lineWidth=1;
+      ctx.beginPath();ctx.roundRect(bx,by,18,13,4);ctx.fill();ctx.stroke();
+      ctx.fillStyle='#f4fbff';ctx.font='700 9px "Segoe UI",sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';
+      ctx.fillText('2F',bx+9,by+6.5);
+    }
     if(pin.provenance==='template_supplement'){ctx.strokeStyle=colors[pin.category];ctx.setLineDash([2,2]);ctx.beginPath();ctx.arc(x,y,r+3,0,Math.PI*2);ctx.stroke();ctx.setLineDash([]);}
   }
   if(selected){ctx.strokeStyle='#ffffff';ctx.lineWidth=2;ctx.beginPath();ctx.arc(selected.pixel[0]*scale+tx,selected.pixel[1]*scale+ty,pinSize(selected)/2+4,0,Math.PI*2);ctx.stroke();}
@@ -192,12 +193,10 @@ function selectPin(pin){
 function loadMap(){
   current=data.maps.find(m=>m.id===Number($('map').value));selected=null;image=null;
   if(tracking&&tracking.mapId!==current.id)tracking=null;renderTrackingStatus();
-  $('map-id').textContent='搶蛋大作戰';$('map-title').textContent='地宮 '+current.id;
-  const missing=data.validation.missingReferences.filter(v=>v[0]===current.id).length;
-  $('gaps').textContent=missing?`此圖有 ${missing} 筆房間引用，在目前資料中缺少對應模組；這些項目尚無法解析。`:'此圖的房間引用均找到對應資料。';
-  $('load-status').textContent='載入底圖…';const token=++loadToken;const nextImage=new Image();
+  bind($('map-id'),msg('app.mode'));bind($('map-title'),msg('map.name',{id:current.id}));
+  bind($('load-status'),msg('map.loading'));const token=++loadToken;const nextImage=new Image();
   nextImage.onload=()=>{if(token!==loadToken)return;image=nextImage;$('load-status').textContent='';fit();};
-  nextImage.onerror=()=>{if(token!==loadToken)return;$('load-status').textContent='找不到底圖，請保留 grab-eggs-dungeons 與本資料夾的相對位置。';};
+  nextImage.onerror=()=>{if(token!==loadToken)return;bind($('load-status'),msg('error.assets'));};
   nextImage.src=current.image;update();fit();
 }
 $('map').addEventListener('change',loadMap);
@@ -232,5 +231,13 @@ canvas.addEventListener('pointerup',event=>{
 });
 canvas.addEventListener('pointercancel',()=>{drag=null;canvas.classList.remove('dragging');});
 canvas.addEventListener('keydown',event=>{if(['+','=','-','ArrowUp','ArrowDown','ArrowLeft','ArrowRight','0'].includes(event.key))event.preventDefault();if(event.key==='+'||event.key==='=')zoom(1.2);else if(event.key==='-')zoom(1/1.2);else if(event.key==='0')fit();else if(event.key==='ArrowUp')ty+=30;else if(event.key==='ArrowDown')ty-=30;else if(event.key==='ArrowLeft')tx+=30;else if(event.key==='ArrowRight')tx-=30;draw();});
-new ResizeObserver(()=>{const box=canvas.getBoundingClientRect();width=box.width;height=box.height;const ratio=window.devicePixelRatio||1;const pixelWidth=Math.round(width*ratio),pixelHeight=Math.round(height*ratio);if(canvas.width!==pixelWidth)canvas.width=pixelWidth;if(canvas.height!==pixelHeight)canvas.height=pixelHeight;ctx.setTransform(ratio,0,0,ratio,0,0);fit();if(frameRequest){cancelAnimationFrame(frameRequest);frameRequest=0;}renderFrame();}).observe(canvas);
+new ResizeObserver(()=>{
+  const box=canvas.getBoundingClientRect(),keepView=languageViewport&&box.width===languageViewport.width&&box.height===languageViewport.height;
+  if(keepView){tx+=(box.width-width)/2;ty+=(box.height-height)/2;}
+  languageViewport=null;width=box.width;height=box.height;
+  const ratio=window.devicePixelRatio||1,pixelWidth=Math.round(width*ratio),pixelHeight=Math.round(height*ratio);
+  if(canvas.width!==pixelWidth)canvas.width=pixelWidth;if(canvas.height!==pixelHeight)canvas.height=pixelHeight;
+  ctx.setTransform(ratio,0,0,ratio,0,0);if(keepView)mapDirty=true;else fit();
+  if(frameRequest){cancelAnimationFrame(frameRequest);frameRequest=0;}renderFrame();
+}).observe(canvas);
 loadMap();

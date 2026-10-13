@@ -8,7 +8,6 @@
     noticeTimer = setTimeout(() => { el('app-status').hidden = true; el('app-status').textContent = ''; }, 5000);
   }
   document.querySelector('.notice').hidden = true;
-  bind(el('recognition-button'), msg('recognition'));
   bind(el('tracking-button'), msg('tracking'));
   const size = el('overlay-size'), sizeKey = 'aniimo-overlay-size-v1';
   const savedSize = Number(localStorage.getItem(sizeKey));
@@ -48,10 +47,6 @@
   const sizeListener = event.listen('map-overlay-size-request', ({ payload }) => resizeOverlay(Number(payload), false));
   resizeOverlay(Number(size.value), false);
   el('overlay-close').onclick = () => core.invoke('set_map_overlay', { enabled: false }).catch(error => notice(String(error)));
-  el('recognition-button').onclick = () => {
-    el('recognition-button').disabled = true;
-    event.emitTo('main', 'map-overlay-action', 'recognition').catch(error => { el('recognition-button').disabled = false; notice(String(error)); });
-  };
   el('tracking-button').onclick = () => {
     el('tracking-button').disabled = true;
     event.emitTo('main', 'map-overlay-action', 'tracking').catch(error => { el('tracking-button').disabled = false; notice(String(error)); });
@@ -79,13 +74,9 @@
     el('live-status').textContent = manualSelection ? '' : state.status;
     el('live-status').title = manualSelection ? '' : state.statusTitle;
     el('live-status').dataset.state = state.statusState || 'waiting';
-    el('recognition-button').setAttribute('aria-checked', String(state.recognition));
-    bind(el('recognition-button'), msg(state.recognition ? 'recognition.disable' : 'recognition.enable'), 'title');
-    el('recognition-button').disabled = state.recognitionBusy;
     el('tracking-button').setAttribute('aria-checked', String(!!state.trackingEnabled));
     bind(el('tracking-button'), msg(state.trackingEnabled ? 'tracking.disable' : 'tracking.enable'), 'title');
     el('tracking-button').disabled = state.trackingBusy;
-    window.dispatchEvent(new Event('recognition-ui'));
     window.dispatchEvent(new Event('tracking-ui'));
     const noticeKey = JSON.stringify([state.map, state.status, state.statusState]);
     if (noticeKey !== lastNotice && state.statusTitle && !manualSelection) notice(state.statusTitle);

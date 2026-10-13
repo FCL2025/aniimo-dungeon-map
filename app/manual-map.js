@@ -135,9 +135,6 @@
   dialog.addEventListener('close', () => el('manual-map-button').focus());
   el('manual-map-all').onclick = () => { filter = 'all'; renderCandidates(); el('manual-map-result-title').focus(); };
   el('manual-map-back').onclick = () => { filter = null; renderCandidates(); dialog.scrollTop = 0; directionButtons.find(button => !button.disabled)?.focus(); };
-  window.addEventListener('recognition-ui', () => {
-    if (!busy && el('recognition-button').getAttribute('aria-checked') === 'true' && dialog.open) dialog.close();
-  });
   if (overlay) {
     window.manualMapReady = window.__TAURI__.event.listen('map-overlay-manual-result', ({ payload }) => {
       if (pending?.requestId !== payload.requestId) return;
