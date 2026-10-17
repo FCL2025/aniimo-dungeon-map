@@ -45,6 +45,12 @@ async function pageAt(port, overlay = false) {
     main = await connect((await pageAt(port)).webSocketDebuggerUrl);
     await main.until('!!window.desktopReady && !!window.trackingStatus && !!window.SHOP_ADVICE');
     await main.evaluate('window.desktopReady');
+    const updateUi = await main.evaluate(`(async () => ({
+      button: !!document.getElementById('check-update'),
+      dialog: !!document.getElementById('update-dialog'),
+      hiddenCheck: await window.__TAURI__.core.invoke('check_for_update')
+    }))()`);
+    assert(updateUi.button && updateUi.dialog && updateUi.hiddenCheck === null, `Update UI: ${JSON.stringify(updateUi)}`);
     const ui = await main.evaluate(`(() => {
       const el = id => document.getElementById(id), selectors = document.querySelector('.map-selectors'), guides = document.querySelector('.sidebar-guides');
       const map = el('map').getBoundingClientRect(), difficulty = el('difficulty').getBoundingClientRect();

@@ -4,7 +4,7 @@
 
 A Windows map companion for Aniimo's Egg Scramble mode. Covers 7 dungeons on Nightmare and Chaos, with chest and egg-nest markers, manual map selection, player tracking, and a transparent map overlay.
 
-**[Download the latest EXE](https://github.com/FCL2025/aniimo-dungeon-map/releases/latest/download/AniimoDungeonMap.exe)** · [Release notes and ZIP download](https://github.com/FCL2025/aniimo-dungeon-map/releases/latest)
+**[Download Windows installer (automatic updates)](https://github.com/FCL2025/aniimo-dungeon-map/releases/latest/download/AniimoDungeonMap-Setup.exe)** · [Download portable EXE](https://github.com/FCL2025/aniimo-dungeon-map/releases/latest/download/AniimoDungeonMap.exe) · [Release notes and ZIP](https://github.com/FCL2025/aniimo-dungeon-map/releases/latest)
 
 **[Download the Android test APK](https://github.com/FCL2025/aniimo-dungeon-map/releases/download/android-v0.1.0/AniimoDungeonMap-0.1.0-android-test.apk)** · [Android release](https://github.com/FCL2025/aniimo-dungeon-map/releases/tag/android-v0.1.0) · [Mobile guide (Traditional Chinese)](mobile/README.md)
 
@@ -32,7 +32,7 @@ Screenshots 2 and 3 show an older interface. Buttons and messages may differ in 
 
 ## Getting started
 
-1. Download and run `AniimoDungeonMap.exe`; no installation is needed. If using the ZIP, extract it first. Select **English** from the language menu at the top of the sidebar.
+1. Run `AniimoDungeonMap-Setup.exe` to install the app. For the portable edition, run `AniimoDungeonMap.exe` directly or extract the ZIP first. Select **English** from the language menu at the top of the sidebar.
 2. Press **M** in the game and find the exit relative to the entrance. Click **Choose exit** in the app. If multiple maps share a direction, compare their previews; use **Show all maps** if unsure.
 3. Choose the difficulty and visible markers in the sidebar. Click **Overlay** to show the transparent map over the game.
 4. For the next run, click **Reselect** on the overlay to choose another map without returning to the main window.
@@ -58,7 +58,7 @@ For two-player chest routes, enable **Show suggested route**, use the same **Sho
 
 - Supports Windows 10/11 x64; tracking requires Windows 10 version 1903 or later. Install [WebView2 Runtime](https://developer.microsoft.com/microsoft-edge/webview2/) if it is missing.
 - Use windowed or borderless mode. Press **Alt** first if the game locks the cursor. You can minimize the main window while the overlay is open.
-- Close the old version before updating. Map, language, route, and other settings are retained for the same Windows account.
+- The installed app checks GitHub Releases at launch and can download and install updates in place. The portable EXE offers a download link; close the old app before replacing it. Map, language, route, and other settings are retained for the same Windows account.
 - Markers indicate possible spawns, not guaranteed ones. Opened chests are not recorded automatically. Fog can affect player tracking; player floor tracking is not supported. Higher chest markers carry a 2F badge.
 
 For more controls, open **Help** at the bottom of the sidebar.

@@ -1,0 +1,6 @@
+#update-dialog{width:min(440px,90vw)}
+#update-notes{white-space:pre-wrap;max-height:30vh;overflow:auto;color:var(--muted)}
+#update-progress{color:var(--accent)}
+.update-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:18px}
+.update-actions button{float:none}
+#check-update{width:100%;margin-top:7px;text-align:left}

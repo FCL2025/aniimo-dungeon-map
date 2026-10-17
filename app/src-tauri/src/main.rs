@@ -6,6 +6,7 @@ mod capture_timing;
 mod capture_region;
 mod profile;
 mod overlay;
+mod updater;
 
 #[tauri::command]
 fn set_topmost(window: WebviewWindow, enabled: bool) -> Result<bool, String> {
@@ -15,6 +16,7 @@ fn set_topmost(window: WebviewWindow, enabled: bool) -> Result<bool, String> {
 
 fn main() {
     let result = tauri::Builder::default()
+        .plugin(tauri_plugin_updater::Builder::new().build())
         .manage(capture::CaptureState::default())
         .manage(overlay::FollowState::default())
         .on_window_event(|window, event| {
@@ -29,7 +31,8 @@ fn main() {
             }
         })
         .invoke_handler(tauri::generate_handler![set_topmost, overlay::set_map_overlay, overlay::set_overlay_scale, overlay::drag_window, capture::game_windows,
-            capture::start_capture, capture::stop_capture, capture::configure_capture, capture::capture_frame])
+            capture::start_capture, capture::stop_capture, capture::configure_capture, capture::capture_frame,
+            updater::check_for_update, updater::install_update, updater::open_portable_download])
         .setup(|app| {
             let exe = std::env::current_exe()?;
             let folder = exe.parent().ok_or("Cannot find executable directory")?;
@@ -45,7 +48,7 @@ fn main() {
             let hide_overlay = hidden && std::env::var_os("ANIIMO_TEST_SHOW_OVERLAY").is_none();
             app.manage(overlay::OverlayConfig { profile: profile.clone(), hidden: hide_overlay, browser_args: browser_args.clone() });
             let mut window = WebviewWindowBuilder::new(app, "main", WebviewUrl::App("index.html".into()))
-                .title(concat!("伊莫地城地圖 · 可攜版 ", env!("CARGO_PKG_VERSION")))
+                .title(concat!("伊莫地城地圖 ", env!("CARGO_PKG_VERSION")))
                 .inner_size(1220.0, 820.0)
                 .min_inner_size(460.0, 360.0)
                 .center()

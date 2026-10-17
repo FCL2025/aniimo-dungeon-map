@@ -1,6 +1,6 @@
 [package]
 name = "aniimo-dungeon-map"
-version = "0.2.41"
+version = "0.2.42"
 description = "Portable Aniimo dungeon map companion"
 edition = "2021"
 
@@ -15,10 +15,12 @@ windows-sys = { version = "0.61", features = ["Win32_UI_Shell", "Win32_UI_Window
 windows-capture = "=2.0.1"
 image = { version = "=0.25.10", default-features = false, features = ["jpeg"] }
 base64 = "=0.22.1"
+tauri-plugin-updater = "=2.10.0"
 
 [features]
 default = ["custom-protocol"]
 custom-protocol = ["tauri/custom-protocol"]
+installer = []
 
 [profile.release]
 strip = true

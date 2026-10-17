@@ -41,6 +41,18 @@ python -m venv .venv
 
 ## GitHub Release
 
+從 v0.2.42 起，安裝版在啟動時使用 Tauri updater 檢查 GitHub Releases 的 `latest.json`，下載後驗證更新簽章，再透過 NSIS 安裝並重開。可攜版使用相同更新資訊提示新版，但只提供下載連結，避免把安裝程式套到舊的單檔 EXE。兩種版本共用 `%LOCALAPPDATA%\local.aniimo.dungeonmap\WebView2` 設定。原有 v0.2.41 及更早的可攜版未內建檢查功能，需手動下載一次新版。
+
+目前的更新簽章私鑰位於本機 `%USERPROFILE%\.tauri\aniimo-dungeon-map.key`，對應公鑰已寫入 `tauri.conf.json`。其他建置電腦須安全移入**同一把**私鑰與 `.pub`；建置腳本會核對公鑰。私鑰不可上傳到 Git 或 Release，請安全備份；遺失後，既有安裝版無法驗證後續更新。若私鑰有密碼，建置前設定 `TAURI_SIGNING_PRIVATE_KEY_PASSWORD`。Windows 程式碼簽章憑證是另一件事，並非 Tauri 更新簽章的必要條件。
+
+準備發行時執行：
+
+```powershell
+.\scripts\build_updater.ps1 -ReleaseNotes '本版更新摘要'
+```
+
+腳本先建置可攜版 EXE／ZIP，再用 `@tauri-apps/cli@2.10.1` 建置已簽章的 NSIS 安裝包，最後輸出 `dist/github-release-v<版本>/`。其中 `latest.json` 的下載網址固定到該版本 tag，且內含安裝包 `.sig` 的**內容**。發布時同一個 GitHub Release 必須上傳資料夾內全部檔案，再確認 `releases/latest/download/latest.json` 與安裝包都能取得；不要先發布只有 manifest 的 Release。新版本號須同時更新 `tauri.conf.json` 與 `Cargo.toml`。舊簽章私鑰必須沿用，不能每版重產。
+
 v0.2.41 加入混沌船票每日與謎之蛋盒購買建議，精簡側欄並移除地圖辨識。寶箱以原始圖示及金色／淺藍色外框區分，較高的候選寶箱標示 2F。手動選圖及人物追蹤保留。
 
 v0.2.34 新增出口方向手動選圖與覆蓋地圖「重選」。同方向候選用地形縮圖及門位區分；小型覆蓋視窗使用可返回的兩步選擇。
@@ -49,6 +61,8 @@ v0.2.33 提供「路線 1／路線 2」分工：琉璃候選與可選鑰匙房�
 
 GitHub Release 發布以下附件：
 
+- `AniimoDungeonMap-Setup.exe`：Windows NSIS 安裝包，供自動更新使用。
+- `AniimoDungeonMap-Setup.exe.sig` 與 `latest.json`：Tauri 更新簽章和版本資訊。
 - `AniimoDungeonMap.exe`
 - `AniimoDungeonMap-<版本>-windows-x64-portable.zip`：包含 EXE、使用說明與第三方授權。
 - `README.zh-TW.txt`：使用說明採英文檔名，避免 GitHub 自動重新命名。

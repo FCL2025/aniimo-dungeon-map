@@ -4,7 +4,7 @@
 
 伊莫「搶蛋大作戰」的 Windows 地圖工具，支援惡夢與混沌的 7 張地宮，提供寶箱／蛋巢標記、手動選圖、人物追蹤與透明覆蓋小地圖。
 
-**[下載最新版 EXE](https://github.com/FCL2025/aniimo-dungeon-map/releases/latest/download/AniimoDungeonMap.exe)** · [版本更新與 ZIP 下載](https://github.com/FCL2025/aniimo-dungeon-map/releases/latest)
+**[下載 Windows 安裝版（可自動更新）](https://github.com/FCL2025/aniimo-dungeon-map/releases/latest/download/AniimoDungeonMap-Setup.exe)** · [下載可攜版 EXE](https://github.com/FCL2025/aniimo-dungeon-map/releases/latest/download/AniimoDungeonMap.exe) · [版本更新與 ZIP 下載](https://github.com/FCL2025/aniimo-dungeon-map/releases/latest)
 
 **[下載 Android 測試版 APK](https://github.com/FCL2025/aniimo-dungeon-map/releases/download/android-v0.1.0/AniimoDungeonMap-0.1.0-android-test.apk)** · [Android 發布頁](https://github.com/FCL2025/aniimo-dungeon-map/releases/tag/android-v0.1.0) · [安裝與操作說明](mobile/README.md)
 
@@ -32,7 +32,7 @@ Android 8.0 以上可用：拖曳浮動按鈕、點擊展開／收合七張離�
 
 ## 開始使用
 
-1. 下載並執行 `AniimoDungeonMap.exe`，不需安裝；使用 ZIP 時請先完整解壓。
+1. 執行 `AniimoDungeonMap-Setup.exe` 完成安裝；若選擇可攜版，直接執行 `AniimoDungeonMap.exe`，使用 ZIP 時請先完整解壓。
 2. 在遊戲按 **M**，以入口為中心確認出口方向，再按工具的「選擇出口」。同方向有多張時，比對縮圖選擇；不確定可按「顯示全部地圖」。
 3. 在側欄選擇難度與要顯示的標記，按「地圖模式」即可在遊戲上方顯示透明小地圖。
 4. 進入下一場時，按小地圖上的「重選」重新選圖，不需回到主視窗。
@@ -58,7 +58,7 @@ Android 8.0 以上可用：拖曳浮動按鈕、點擊展開／收合七張離�
 
 - 支援 Windows 10／11 x64；人物追蹤需要 Windows 10 1903 以上。若缺少 [WebView2 Runtime](https://developer.microsoft.com/microsoft-edge/webview2/)，請先安裝。
 - 遊戲建議使用視窗或無邊框模式；滑鼠被鎖住時先按 **Alt**。覆蓋地圖開啟後，主視窗可最小化。
-- 更新前先關閉舊版；同一個 Windows 帳號會保留選圖、語言、路線與其他設定。
+- 安裝版會在啟動時檢查 GitHub Releases；有新版時可在應用內下載並安裝。可攜版會提示下載新版 EXE，替換檔案前請先關閉舊版。同一個 Windows 帳號會保留選圖、語言、路線與其他設定。
 - 標記是候選位置，不保證每場生成，也不會自動記錄已開寶箱。寶箱使用原始圖示，以金色／淺藍色外框區分類型；較高的寶箱候選點加註 **2F**。人物追蹤可能受迷霧影響，目前不判斷人物所在樓層。
 
 更多操作可查看側欄底部的「說明」。

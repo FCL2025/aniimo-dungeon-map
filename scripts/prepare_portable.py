@@ -57,15 +57,15 @@ data = dict(categories=CATEGORIES, icons=display_icons(icon_catalog), difficulti
 (OUTPUT/'data.js').write_text('window.DUNGEON_DATA='+json.dumps(data, ensure_ascii=False, separators=(',', ':')).replace('</', '<\\/')+';', encoding='utf8')
 for name in ('viewer.js', 'viewer.css', 'i18n.js', 'i18n.css', 'loot-ranking.js', 'loot-ranking.css', 'shop-advice.js', 'shop-advice.css'):
     shutil.copyfile(ROOT/'scripts/data_viewer'/name, OUTPUT/name)
-for name in ('desktop.js', 'overlay.js', 'desktop.css', 'manual-map.js', 'manual-map-core.js', 'manual-map.css', 'tracking.js', 'recognition.css', 'recognition-core.js', 'recognition-vision.js', 'tracking-core.js', 'tracking-worker.js', 'map-header.js', 'recognition-screen.js'):
+for name in ('desktop.js', 'overlay.js', 'desktop.css', 'update.js', 'update.css', 'manual-map.js', 'manual-map-core.js', 'manual-map.css', 'tracking.js', 'recognition.css', 'recognition-core.js', 'recognition-vision.js', 'tracking-core.js', 'tracking-worker.js', 'map-header.js', 'recognition-screen.js'):
     shutil.copyfile(ROOT/'app'/name, OUTPUT/name)
 shutil.copytree(ROOT/'app/vendor', OUTPUT/'vendor', dirs_exist_ok=True)
 html = (ROOT/'scripts/data_viewer/index.html').read_text(encoding='utf8')
-html = html.replace('<title>搶蛋地圖 · 點位解析</title>', '<title>伊莫地城地圖 · 可攜版</title>')
+html = html.replace('<title>搶蛋地圖 · 點位解析</title>', '<title>伊莫地城地圖</title>')
 html = html.replace('<body>', '<body class="desktop-app">')
-html = html.replace('<link rel="stylesheet" href="viewer.css">', '<link rel="stylesheet" href="viewer.css"><link rel="stylesheet" href="desktop.css"><link rel="stylesheet" href="recognition.css"><link rel="stylesheet" href="manual-map.css">')
+html = html.replace('<link rel="stylesheet" href="viewer.css">', '<link rel="stylesheet" href="viewer.css"><link rel="stylesheet" href="desktop.css"><link rel="stylesheet" href="update.css"><link rel="stylesheet" href="recognition.css"><link rel="stylesheet" href="manual-map.css">')
 html = html.replace('<aside>', '<aside id="sidebar" aria-label="地圖與篩選設定">')
-html = html.replace('資源版本 3595896 · 本機資料', f'可攜版 {VERSION} · 資源 3595896')
+html = html.replace('資源版本 3595896 · 本機資料', f'版本 {VERSION} · 資源 3595896')
 html = html.replace('<footer>', '<button id="help-button" type="button">說明</button><footer>', 1)
 html = html.replace('<div><span class="eyebrow" id="map-id"></span><h2 id="map-title"></h2></div>', '''<div class="mapbar-start"><button id="sidebar-toggle" aria-expanded="true" aria-controls="sidebar" aria-label="收合側欄" title="收合側欄"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 4v16"/><path class="sidebar-arrow" d="m16 9-3 3 3 3"/></svg></button><div class="map-heading"><span class="eyebrow" id="map-id"></span><div class="session-heading"><h2 id="map-title"></h2><span id="live-status" role="status"></span></div></div></div>''')
 html = html.replace('<div class="tools">', '<div class="tools"><button id="manual-map-button" type="button" aria-haspopup="dialog" aria-controls="manual-map-dialog"></button><button id="tracking-button" class="live-switch" role="switch" aria-checked="false">追蹤：關</button><button id="topmost" aria-pressed="true">置頂：開</button><button id="compact" aria-pressed="false">地圖模式</button>')
@@ -88,6 +88,9 @@ overlay_html = overlay_html.replace('<button id="zoom-in" aria-label="放大地�
 overlay_html = overlay_html.replace('<button id="overlay-close"', '<button id="overlay-drag" title="拖曳移動覆蓋地圖" aria-label="拖曳移動覆蓋地圖">⠿</button><button id="overlay-close"')
 overlay_html = overlay_html.replace('<script src="desktop.js"></script><script src="map-header.js"></script><script src="recognition-screen.js"></script><script src="tracking.js"></script>', '<script src="overlay.js"></script>')
 main_html = html.replace('<button id="compact" aria-pressed="false">地圖模式</button>', '''<button id="compact" aria-pressed="false">地圖模式</button><label id="main-overlay-size-control" for="main-overlay-size" title="調整覆蓋地圖視窗大小">覆蓋大小 <input type="range" id="main-overlay-size" min="50" max="150" step="10" value="100" aria-label="覆蓋地圖大小" aria-valuetext="100%"><output id="main-overlay-size-value" for="main-overlay-size">100%</output></label><button id="main-overlay-size-reset" type="button" title="將覆蓋地圖大小重置為 100%">重置大小</button>''')
+main_html = main_html.replace('<button id="help-button" type="button">說明</button>', '<button id="help-button" type="button">說明</button><button id="check-update" type="button" data-i18n="update.check">檢查更新</button>', 1)
+main_html = main_html.replace('<noscript>', (ROOT/'app/update.html').read_text(encoding='utf8')+'<noscript>', 1)
+main_html = main_html.replace('</body>', '<script src="update.js"></script></body>', 1)
 main_html = main_html.replace('<button id="zoom-out" aria-label="縮小地圖">−</button>', '', 1)
 main_html = main_html.replace('<button id="zoom-in" aria-label="放大地圖">＋</button>', '', 1)
 main_html = main_html.replace('<div class="sidebar-guides">', '''<label for="game-resolution">遊戲解析度</label><select id="game-resolution" aria-describedby="resolution-hint"><option value="16:9">1920×1080</option><option value="21:9">3440×1440</option></select>
