@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>伊莫 · 手機浮窗互動預覽</title>
+  <link rel="stylesheet" href="mobile-preview.css">
+</head>
+<body>
+  <main class="preview">
+    <header class="intro">
+      <span class="eyebrow">伊莫搶蛋地圖 / 手機互動預覽</span>
+      <h1>隨手看圖，<br>收起繼續玩。</h1>
+      <p>拖動蛋形按鈕，放到順手的位置。<br>點一下展開地圖，再點地圖收起。</p>
+      <div class="legend"><span class="dot"></span><span id="status" role="status">點擊畫面中的蛋形按鈕</span></div>
+    </header>
+
+    <section class="demo" aria-label="手機遊戲浮窗互動示意">
+      <div class="screen" id="screen">
+        <div class="game-art" aria-hidden="true"></div>
+        <div class="game-top"><span>搶蛋大作戰</span><small>遊戲畫面示意</small></div>
+        <span class="game-note">探索失落地宮</span>
+        <button class="game-control joystick" id="joystick" aria-label="測試地圖外的遊戲操作">✧</button>
+        <button class="game-control action" id="game-action" aria-label="測試地圖外的遊戲操作">探索</button>
+        <span class="game-feedback" id="game-feedback" role="status">地圖以外仍可操作</span>
+
+        <button id="bubble" class="bubble" aria-label="展開小地圖，可拖曳移動；方向鍵調整位置" aria-expanded="false" aria-controls="map-panel">
+          <img src="frontend/icons/Img_Map_Mark_GrabEgg_Lair.png" alt="" draggable="false">
+        </button>
+
+        <section id="map-panel" class="map-panel" aria-label="浮動小地圖" hidden>
+          <header class="map-toolbar">
+            <span id="map-title">地宮</span>
+            <button id="fit" aria-label="顯示整張地圖" title="顯示整張地圖">⊞</button>
+            <button id="collapse" aria-label="收合小地圖" title="收合小地圖">↙</button>
+          </header>
+          <canvas id="map-canvas" tabindex="0" role="img" aria-label="地宮地圖。單點收合，拖曳平移，雙指或滾輪縮放。"></canvas>
+          <footer>單點收合 · 拖曳移動地圖 · 雙指縮放</footer>
+        </section>
+      </div>
+
+      <div class="preview-controls">
+        <div class="control-group"><span>試試位置</span><button id="place-left">靠左</button><button id="place-right">靠右</button><button id="orientation">改為直向</button></div>
+        <label class="check"><input type="checkbox" id="snap">放開後靠邊吸附</label>
+      </div>
+      <div class="map-settings">
+        <label>地圖<select id="map-choice" aria-label="選擇地宮"></select></label>
+        <label>難度<select id="difficulty"><option value="5">惡夢</option><option value="6">混沌</option></select></label>
+        <label class="opacity">地圖底色<input id="opacity" type="range" min="0" max="95" value="82" aria-label="地圖底色不透明度"><output id="opacity-value">82%</output></label>
+      </div>
+      <p class="scope-note">這是瀏覽器內的操作原型，尚未連接 Android 跨 App 浮窗。使用現有七張地宮與候選點位；手機版只看地圖，不追蹤人物。</p>
+      <p id="asset-error" role="alert" hidden>地圖資料尚未準備好，請使用已打包的「手機浮窗互動預覽.html」。</p>
+    </section>
+  </main>
+  <script src="frontend/data.js"></script>
+  <script src="manual-map-core.js"></script>
+  <script src="mobile-preview.js"></script>
+</body>
+</html>

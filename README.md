@@ -6,6 +6,10 @@
 
 **[下載最新版 EXE](https://github.com/FCL2025/aniimo-dungeon-map/releases/latest/download/AniimoDungeonMap.exe)** · [版本更新與 ZIP 下載](https://github.com/FCL2025/aniimo-dungeon-map/releases/latest)
 
+**[下載 Android 測試版 APK](https://github.com/FCL2025/aniimo-dungeon-map/releases/download/android-v0.1.0/AniimoDungeonMap-0.1.0-android-test.apk)** · [Android 發布頁](https://github.com/FCL2025/aniimo-dungeon-map/releases/tag/android-v0.1.0) · [安裝與操作說明](mobile/README.md)
+
+Android 8.0 以上可用：拖曳浮動按鈕、點擊展開／收合七張離線地圖，僅供手動看圖、不追蹤人物。Android 版使用獨立版本編號，目前為測試版。
+
 ## 功能預覽
 
 **1. 支援各國語言（13 種）**

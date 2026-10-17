@@ -6,6 +6,10 @@ A Windows map companion for Aniimo's Egg Scramble mode. Covers 7 dungeons on Nig
 
 **[Download the latest EXE](https://github.com/FCL2025/aniimo-dungeon-map/releases/latest/download/AniimoDungeonMap.exe)** · [Release notes and ZIP download](https://github.com/FCL2025/aniimo-dungeon-map/releases/latest)
 
+**[Download the Android test APK](https://github.com/FCL2025/aniimo-dungeon-map/releases/download/android-v0.1.0/AniimoDungeonMap-0.1.0-android-test.apk)** · [Android release](https://github.com/FCL2025/aniimo-dungeon-map/releases/tag/android-v0.1.0) · [Mobile guide (Traditional Chinese)](mobile/README.md)
+
+The separate Android app supports Android 8.0 and later, with a draggable floating button and seven offline maps. It provides manual map viewing without player tracking. Android uses its own version numbers and is currently a test release with a Traditional Chinese interface.
+
 ## Feature preview
 
 **1. Support for 13 languages**

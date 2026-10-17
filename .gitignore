@@ -9,4 +9,9 @@ app/smoke-run*/
 app/capture-timing-tests.exe
 app/capture-timing-tests.pdb
 dist/
+mobile/android/.gradle/
+mobile/android/**/build/
+mobile/android/local.properties
+mobile/android/app/src/main/assets/generated/
+mobile/android/app/src/main/res/drawable-nodpi/generated_*.png
 範例地圖/

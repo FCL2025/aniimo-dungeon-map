@@ -1,0 +1,10 @@
+plugins {
+    id 'com.android.application' version '9.2.0' apply false
+}
+
+// An ASCII output path avoids Gradle test-worker class loading failures on Windows.
+subprojects {
+    if (providers.gradleProperty('aniimoBuildRoot').isPresent()) {
+        layout.buildDirectory = file(providers.gradleProperty('aniimoBuildRoot').get() + '/' + project.name)
+    }
+}

@@ -75,6 +75,18 @@ GitHub Release 發布以下附件：
 
 ## 技術資料
 
+### 手機浮窗互動原型
+
+可安裝的 Android 原生版已放在 [`mobile/android`](../mobile/android)，包含跨 App 浮窗、權限、服務、手動選圖與地圖手勢。建置及使用方式見 [手機版說明](../mobile/README.md)。以下檔案保留作為瀏覽器互動原型。
+
+`mobile-preview.html`、`mobile-preview.css` 與 `mobile-preview.js` 是獨立的瀏覽器互動原型，使用現有七張地宮及候選點位，不載入人物追蹤、畫面擷取或 OpenCV。它尚未實作 Android 跨 App 浮窗，也不是可安裝的 APK。
+
+在已有 `app/frontend` 建置資料的環境執行 `python scripts/build_mobile_preview.py`，產生 `dist/mobile-preview/手機浮窗互動預覽.html`。雙擊此單檔即可離線操作；缺少前端資料時，先依正常建置流程執行 `scripts/prepare_portable.py`。互動設定使用獨立的 `aniimo-mobile-preview-v1`，不讀寫桌面版偏好。
+
+原型支援拖曳按鈕、依左右位置向內展開、單點地圖收合、地圖平移與雙指縮放、可選靠邊吸附、底色透明度，以及橫直向預覽。拖曳、長按及雙指手勢不觸發單點收合；鍵盤 Enter 可展開、Esc 可收合，並尊重減少動態效果設定。
+
+Android 版使用原生浮窗承載地圖，依按鈕／地圖尺寸調整實際視窗範圍，讓範圍外觸控交給遊戲。已實作浮窗權限、服務生命週期、旋轉與安全邊界，使用者已回報手機測試正常；不同手機與遊戲版本仍須個別確認。手機需求僅為看圖，不申請畫面擷取權限；系統 PiP 的點擊行為不適合直接套用此自訂互動。
+
 ### 手動選圖驗證
 
 `app/manual-map-core.js` 依入口至出口的像素向量分組八方向，資料取自內嵌七張地圖的 `portalGeometry`。沒有以人物位置或地圖中心推算方向，也不需要擷取遊戲畫面。`manual-map.js` 在主視窗與覆蓋視窗共用介面；覆蓋視窗經事件送交主視窗套用並等待結果。
