@@ -51,6 +51,22 @@ async function pageAt(port, overlay = false) {
       hiddenCheck: await window.__TAURI__.core.invoke('check_for_update')
     }))()`);
     assert(updateUi.button && updateUi.dialog && updateUi.hiddenCheck === null, `Update UI: ${JSON.stringify(updateUi)}`);
+    const trackingSource = await main.evaluate("fetch('tracking-core.js').then(response=>response.text())");
+    assert(trackingSource === fs.readFileSync(path.join(root,'app/tracking-core.js'),'utf8'), 'Packaged tracking core differs from tested source');
+    await main.evaluate(trackingSource);
+    const motion = await main.evaluate(`(() => [100,250,400,600].map(interval => {
+      const gate = new MapTracking.PositionGate(); gate.accept([200,200],1000);
+      return {interval, accepted:[1,2,3].map(i=>gate.accept([200+.8*interval*i,200],1000+interval*i))};
+    }))()`);
+    assert(motion.every(row=>JSON.stringify(row.accepted)==='[false,false,true]'), `Packaged moving confirmation: ${JSON.stringify(motion)}`);
+    const fixtures = Object.fromEntries(['minimap-0.jpg','minimap-1.jpg','minimap-2.jpg','minimap-3.jpg','blank.png'].map(name=>[
+      name, `data:image/${name.endsWith('.png')?'png':'jpeg'};base64,`+fs.readFileSync(path.join(root,'exports/recognition-fixtures',name)).toString('base64')
+    ]));
+    await main.evaluate('window.trackingFixtureOverrides='+JSON.stringify(fixtures));
+    await main.evaluate(fs.readFileSync(path.join(__dirname,'overlay-position-browser.js'),'utf8'));
+    await main.until('window.overlayPositionChecks?.done');
+    const tracking = await main.evaluate('window.overlayPositionChecks');
+    assert(!tracking.error, `Packaged OpenCV tracking: ${tracking.error}`);
     const ui = await main.evaluate(`(() => {
       const el = id => document.getElementById(id), selectors = document.querySelector('.map-selectors'), guides = document.querySelector('.sidebar-guides');
       const map = el('map').getBoundingClientRect(), difficulty = el('difficulty').getBoundingClientRect();
@@ -103,7 +119,7 @@ async function pageAt(port, overlay = false) {
     const overlayUi = await overlay.evaluate(`({recognition:!!document.getElementById('recognition-button'),tracking:!!document.getElementById('tracking-button'),manual:!!document.getElementById('manual-map-button')})`);
     assert(!overlayUi.recognition && overlayUi.tracking && overlayUi.manual, 'Overlay controls');
     assert(!main.errors.length && !overlay.errors.length, `Browser errors: ${JSON.stringify([main.errors, overlay.errors])}`);
-    console.log(JSON.stringify({version, ui, shop:{ticketRows:shop.ticketRows,eggRows:shop.eggRows}, floorUi, overlay:overlayUi}, null, 2));
+    console.log(JSON.stringify({version, updateUi, motion, tracking, ui, shop:{ticketRows:shop.ticketRows,eggRows:shop.eggRows}, floorUi, overlay:overlayUi}, null, 2));
   } finally {
     overlay?.socket.close(); main?.socket.close();
     const exited = new Promise(resolve => child.once('exit', resolve)); child.kill(); await Promise.race([exited, wait(5000)]);

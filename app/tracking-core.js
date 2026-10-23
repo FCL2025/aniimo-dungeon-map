@@ -11,8 +11,21 @@
       // Two distinct consistent observations can still reacquire after a teleport.
       const elapsed=this.last?at-this.last.at:Infinity,limit=Math.min(160,32+elapsed*.24);
       if(confirm||this.last&&elapsed<5000&&distance(pixel,this.last.pixel)>limit){
-        if(!this.pending||at<=this.pending.at||at-this.pending.at>600||distance(pixel,this.pending.pixel)>45){
-          if(!this.pending||at>this.pending.at)this.pending={pixel:[...pixel],at};return false;
+        const pending=this.pending;
+        if(pending&&at<=pending.at)return false;
+        const dt=pending?at-pending.at:Infinity;
+        const step=pending?distance(pixel,pending.pixel):Infinity;
+        // Keep two nearby observations for stationary reacquisition. Moving
+        // candidates need three frames with bounded speed and consistent velocity.
+        // Units are 2048px base-map pixels and capture-time milliseconds.
+        // Bound distance by capture time (at most 600px), so skipped frames do
+        // not reject the same velocity merely for exceeding a fixed step size.
+        const moving=!confirm&&pending&&!pending.confirm&&dt<=600&&step/dt<=1;
+        const velocity=moving?pixel.map((v,i)=>(v-pending.pixel[i])/dt):null;
+        const coherent=velocity&&pending.velocity&&
+          Math.hypot(...velocity.map((v,i)=>(v-pending.velocity[i])*dt))<=Math.max(12,step*.25);
+        if(!(pending&&dt<=600&&step<=45)&&!coherent){
+          this.pending={pixel:[...pixel],at,velocity,confirm};return false;
         }
       }
       this.last={pixel:[...pixel],at};this.pending=null;return true;
