@@ -213,11 +213,8 @@
   "update.checking": "正在检查更新…",
   "update.current": "当前已是最新版本。",
   "update.available": "新版本 {version} 已发布。",
-  "update.install": "更新并重新启动",
   "update.download": "下载新版 EXE",
   "update.later": "稍后",
-  "update.downloading": "正在下载更新：{percent}%",
-  "update.installing": "正在安装更新…",
   "update.failed": "更新失败：{error}",
   "update.portableHint": "下载完成后请先关闭程序，再用新版 EXE 替换旧版。"
 }

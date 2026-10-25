@@ -16,7 +16,6 @@ fn set_topmost(window: WebviewWindow, enabled: bool) -> Result<bool, String> {
 
 fn main() {
     let result = tauri::Builder::default()
-        .plugin(tauri_plugin_updater::Builder::new().build())
         .manage(capture::CaptureState::default())
         .manage(overlay::FollowState::default())
         .on_window_event(|window, event| {
@@ -32,7 +31,7 @@ fn main() {
         })
         .invoke_handler(tauri::generate_handler![set_topmost, overlay::set_map_overlay, overlay::set_overlay_scale, overlay::drag_window, capture::game_windows,
             capture::start_capture, capture::stop_capture, capture::configure_capture, capture::capture_frame,
-            updater::check_for_update, updater::install_update, updater::open_portable_download])
+            updater::check_for_update, updater::open_portable_download])
         .setup(|app| {
             let exe = std::env::current_exe()?;
             let folder = exe.parent().ok_or("Cannot find executable directory")?;

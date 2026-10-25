@@ -213,11 +213,8 @@
   "update.checking": "Проверка обновлений…",
   "update.current": "У вас последняя версия.",
   "update.available": "Доступна версия {version}.",
-  "update.install": "Обновить и перезапустить",
   "update.download": "Скачать новый EXE",
   "update.later": "Позже",
-  "update.downloading": "Загрузка обновления: {percent}%",
-  "update.installing": "Установка обновления…",
   "update.failed": "Ошибка обновления: {error}",
   "update.portableHint": "Закройте приложение перед заменой старого EXE новым."
 }

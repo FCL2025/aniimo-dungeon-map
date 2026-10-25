@@ -213,11 +213,8 @@
   "update.checking": "Đang kiểm tra cập nhật…",
   "update.current": "Bạn đang dùng phiên bản mới nhất.",
   "update.available": "Đã có phiên bản {version}.",
-  "update.install": "Cập nhật và khởi động lại",
   "update.download": "Tải EXE mới",
   "update.later": "Để sau",
-  "update.downloading": "Đang tải bản cập nhật: {percent}%",
-  "update.installing": "Đang cài đặt bản cập nhật…",
   "update.failed": "Cập nhật thất bại: {error}",
   "update.portableHint": "Đóng ứng dụng trước khi thay EXE cũ bằng tệp mới."
 }

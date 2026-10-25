@@ -213,11 +213,8 @@
   "update.checking": "Verificando atualizações…",
   "update.current": "Você já tem a versão mais recente.",
   "update.available": "A versão {version} está disponível.",
-  "update.install": "Atualizar e reiniciar",
   "update.download": "Baixar novo EXE",
   "update.later": "Mais tarde",
-  "update.downloading": "Baixando atualização: {percent}%",
-  "update.installing": "Instalando atualização…",
   "update.failed": "Falha na atualização: {error}",
   "update.portableHint": "Feche o aplicativo antes de substituir o EXE antigo pelo novo."
 }

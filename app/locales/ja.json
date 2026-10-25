@@ -213,11 +213,8 @@
   "update.checking": "更新を確認しています…",
   "update.current": "最新版を使用中です。",
   "update.available": "バージョン {version} が公開されました。",
-  "update.install": "更新して再起動",
   "update.download": "新しい EXE をダウンロード",
   "update.later": "後で",
-  "update.downloading": "更新をダウンロード中：{percent}%",
-  "update.installing": "更新をインストール中…",
   "update.failed": "更新に失敗しました：{error}",
   "update.portableHint": "ダウンロード後にアプリを終了し、古い EXE を新しいものに置き換えてください。"
 }

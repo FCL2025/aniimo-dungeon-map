@@ -39,7 +39,7 @@ readme = rf'''伊莫地城地圖　可攜版 {VERSION}
 - 側欄「說明」可查看操作方式。語言選單提供 13 種語言。
 
 設定與更新
-設定儲存在 %LOCALAPPDATA%\local.aniimo.dungeonmap\WebView2；同一 Windows 帳號更新版本後沿用。首次升級前請先關閉舊版。畫面只在本機記憶體處理，不上傳或自動保存截圖。
+設定儲存在 %LOCALAPPDATA%\local.aniimo.dungeonmap\WebView2；同一 Windows 帳號更新版本後沿用。程式會提示 GitHub 新版，下載後請先關閉舊版，再以新版 EXE 替換。畫面只在本機記憶體處理，不上傳或自動保存截圖。
 地圖資料來源版本：3595896；道具圖示來源版本：3634150。
 SHA256SUMS.txt 可用於核對發行檔案。
 '''

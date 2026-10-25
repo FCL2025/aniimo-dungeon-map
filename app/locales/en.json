@@ -213,11 +213,8 @@
   "update.checking": "Checking for updates…",
   "update.current": "You have the latest version.",
   "update.available": "Version {version} is available.",
-  "update.install": "Update and restart",
   "update.download": "Download new EXE",
   "update.later": "Later",
-  "update.downloading": "Downloading update: {percent}%",
-  "update.installing": "Installing update…",
   "update.failed": "Update failed: {error}",
   "update.portableHint": "Close this app before replacing the old EXE with the download."
 }

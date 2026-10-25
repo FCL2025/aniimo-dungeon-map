@@ -213,11 +213,8 @@
   "update.checking": "업데이트 확인 중…",
   "update.current": "최신 버전을 사용 중입니다.",
   "update.available": "버전 {version}이 출시되었습니다.",
-  "update.install": "업데이트 후 다시 시작",
   "update.download": "새 EXE 다운로드",
   "update.later": "나중에",
-  "update.downloading": "업데이트 다운로드 중: {percent}%",
-  "update.installing": "업데이트 설치 중…",
   "update.failed": "업데이트 실패: {error}",
   "update.portableHint": "다운로드 후 앱을 종료하고 이전 EXE를 새 파일로 교체하세요."
 }

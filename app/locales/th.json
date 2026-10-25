@@ -213,11 +213,8 @@
   "update.checking": "กำลังตรวจสอบอัปเดต…",
   "update.current": "คุณใช้เวอร์ชันล่าสุดแล้ว",
   "update.available": "เวอร์ชัน {version} พร้อมใช้งาน",
-  "update.install": "อัปเดตและเริ่มใหม่",
   "update.download": "ดาวน์โหลด EXE ใหม่",
   "update.later": "ภายหลัง",
-  "update.downloading": "กำลังดาวน์โหลดอัปเดต: {percent}%",
-  "update.installing": "กำลังติดตั้งอัปเดต…",
   "update.failed": "อัปเดตไม่สำเร็จ: {error}",
   "update.portableHint": "ปิดแอปก่อนแทนที่ EXE เก่าด้วยไฟล์ใหม่"
 }

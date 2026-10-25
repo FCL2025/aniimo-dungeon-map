@@ -213,11 +213,8 @@
   "update.checking": "Memeriksa pembaruan…",
   "update.current": "Anda sudah memakai versi terbaru.",
   "update.available": "Versi {version} tersedia.",
-  "update.install": "Perbarui dan mulai ulang",
   "update.download": "Unduh EXE baru",
   "update.later": "Nanti",
-  "update.downloading": "Mengunduh pembaruan: {percent}%",
-  "update.installing": "Memasang pembaruan…",
   "update.failed": "Pembaruan gagal: {error}",
   "update.portableHint": "Tutup aplikasi sebelum mengganti EXE lama dengan yang baru."
 }
