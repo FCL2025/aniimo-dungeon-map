@@ -19,9 +19,8 @@
   bind(el('manual-map-back'), msg('manual.back'), 'attr:aria-label');
   bind(el('manual-map-back'), msg('manual.back'), 'title');
   function positionDialog() {
-    // A modal lives in the top layer, so its default center ignores the sidebar.
-    const bounds = overlay ? { left:0, top:0, right:innerWidth, bottom:innerHeight, width:innerWidth, height:innerHeight }
-      : document.querySelector('.stage').getBoundingClientRect();
+    // Center the picker over the map area while leaving the toolbar and sidebar usable.
+    const bounds = document.querySelector('.stage').getBoundingClientRect();
     dialog.style.setProperty('--manual-map-inset', `${bounds.top}px ${innerWidth - bounds.right}px ${innerHeight - bounds.bottom}px ${bounds.left}px`);
     dialog.style.setProperty('--manual-map-width', `${Math.max(0, bounds.width - 16)}px`);
     dialog.style.setProperty('--manual-map-height', `${Math.max(0, bounds.height - 16)}px`);
@@ -117,11 +116,11 @@
     if (busy) return;
     filter = null; renderCandidates(); el('manual-map-message').textContent = '';
     positionDialog();
-    if (!dialog.open) dialog.showModal();
+    if (!dialog.open) dialog.show();
     setBusy(true);
     try { await enterManualMode(); }
     catch (error) { bind(el('manual-map-message'), I18n.error(error)); }
-    finally { setBusy(false); if (dialog.open) directionButtons.find(button => !button.disabled)?.focus(); }
+    finally { setBusy(false); if (dialog.open && dialog.contains(document.activeElement)) directionButtons.find(button => !button.disabled)?.focus(); }
   }
   async function choose(mapId) {
     if (busy) return;
@@ -133,6 +132,11 @@
   el('manual-map-button').onclick = () => void open();
   el('manual-map-close').onclick = () => dialog.close();
   dialog.addEventListener('close', () => el('manual-map-button').focus());
+  document.addEventListener('keydown', event => {
+    if (event.key !== 'Escape' || event.defaultPrevented || !dialog.open || document.querySelector('dialog:modal')) return;
+    event.preventDefault();
+    dialog.close();
+  });
   el('manual-map-all').onclick = () => { filter = 'all'; renderCandidates(); el('manual-map-result-title').focus(); };
   el('manual-map-back').onclick = () => { filter = null; renderCandidates(); dialog.scrollTop = 0; directionButtons.find(button => !button.disabled)?.focus(); };
   if (overlay) {

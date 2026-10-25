@@ -1,4 +1,4 @@
-#manual-map-dialog{position:fixed;inset:var(--manual-map-inset,0);margin:auto;box-sizing:border-box;width:280px;max-width:var(--manual-map-width,calc(100vw - 16px));max-height:var(--manual-map-height,calc(100vh - 16px));padding:8px;background:transparent;border:0;outline:none;box-shadow:none;color:var(--text);text-shadow:0 1px 3px #07131f,0 0 2px #07131f;line-height:1.5}
+#manual-map-dialog{position:fixed;z-index:4;inset:var(--manual-map-inset,0);margin:auto;box-sizing:border-box;width:280px;max-width:var(--manual-map-width,calc(100vw - 16px));max-height:var(--manual-map-height,calc(100vh - 16px));padding:8px;background:transparent;border:0;outline:none;box-shadow:none;color:var(--text);text-shadow:0 1px 3px #07131f,0 0 2px #07131f;line-height:1.5}
 #manual-map-dialog::backdrop{background:transparent}
 #manual-map-dialog.has-candidates{width:574px}
 /* Hide the map without changing its layout, zoom or live position. Closing restores it. */
