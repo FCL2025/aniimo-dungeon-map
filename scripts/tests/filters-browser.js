@@ -5,7 +5,7 @@
   const change = (id, value) => { el(id).value = value; el(id).dispatchEvent(new Event('change', { bubbles: true })); };
   const wheel = (id, deltaY, options = {}) => el(id).dispatchEvent(new WheelEvent('wheel', { deltaY, bubbles: true, cancelable: true, ...options }));
   await window.desktopReady;
-  assert(DUNGEON_DATA.maps.length === 7, 'Expected seven maps');
+  assert(DUNGEON_DATA.maps.length === 12, 'Expected twelve maps');
   assert(document.querySelectorAll('[data-category]').length === 8, 'Expected eight categories');
   assert(!el('quality'), 'Quality selector still present');
   assert(!document.querySelector('[data-category="chest"], [data-category="key_blue"], [data-category="key_purple"]'), 'Old categories remain');

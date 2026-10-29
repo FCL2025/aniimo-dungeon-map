@@ -1,4 +1,4 @@
-"""Read-only decoder for Aniimo resource version 3595896's pooled data tables.
+"""Read-only decoder for Aniimo's pooled data tables.
 
 Format inferred from local structural invariants: six pools + 76-byte footer;
 each table references a 12-byte schema (keys, value types, relative offsets).
@@ -9,7 +9,7 @@ from functools import lru_cache
 import struct
 import zipfile
 
-DEFAULT_ARCHIVE = r'F:\Pawprint\Aniimo\game\Aniimo_Data\cvs\res\lua\LuaScripts.xdf'
+DEFAULT_ARCHIVE = r'F:\Steam\steamapps\common\Aniimo\Aniimo_Data\cvs\res\lua\LuaScripts.xdf'
 MEMBER = 'xfs/luascripts/Common/Data/pmdata.bin'
 FORMATS = {0:'d',1:'B',2:'b',3:'H',4:'h',5:'I',6:'i'}
 

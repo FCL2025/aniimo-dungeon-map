@@ -14,6 +14,7 @@ from build_shop_advice import stage_shop_advice
 ROOT = Path(__file__).resolve().parent.parent
 OUTPUT = ROOT/'app/frontend'
 VERSION = json.loads((ROOT/'app/src-tauri/tauri.conf.json').read_text(encoding='utf8'))['version']
+RESOURCE_VERSION = json.loads((ROOT/'exports/grab-eggs-data/source.json').read_text(encoding='utf8'))['resourceVersion']
 assert OUTPUT.resolve() == (ROOT/'app/frontend').resolve()
 if OUTPUT.exists():
     shutil.rmtree(OUTPUT)
@@ -65,7 +66,7 @@ html = html.replace('<title>搶蛋地圖 · 點位解析</title>', '<title>伊�
 html = html.replace('<body>', '<body class="desktop-app">')
 html = html.replace('<link rel="stylesheet" href="viewer.css">', '<link rel="stylesheet" href="viewer.css"><link rel="stylesheet" href="desktop.css"><link rel="stylesheet" href="update.css"><link rel="stylesheet" href="recognition.css"><link rel="stylesheet" href="manual-map.css">')
 html = html.replace('<aside>', '<aside id="sidebar" aria-label="地圖與篩選設定">')
-html = html.replace('資源版本 3595896 · 本機資料', f'版本 {VERSION} · 資源 3595896')
+html = html.replace('資源版本 3595896 · 本機資料', f'版本 {VERSION} · 資源 {RESOURCE_VERSION}')
 html = html.replace('<footer>', '<button id="help-button" type="button">說明</button><footer>', 1)
 html = html.replace('<div><span class="eyebrow" id="map-id"></span><h2 id="map-title"></h2></div>', '''<div class="mapbar-start"><button id="sidebar-toggle" aria-expanded="true" aria-controls="sidebar" aria-label="收合側欄" title="收合側欄"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 4v16"/><path class="sidebar-arrow" d="m16 9-3 3 3 3"/></svg></button><div class="map-heading"><span class="eyebrow" id="map-id"></span><div class="session-heading"><h2 id="map-title"></h2><span id="live-status" role="status"></span></div></div></div>''')
 html = html.replace('<div class="tools">', '<div class="tools"><button id="manual-map-button" type="button" aria-haspopup="dialog" aria-controls="manual-map-dialog"></button><button id="tracking-button" class="live-switch" role="switch" aria-checked="false">追蹤：關</button><button id="topmost" aria-pressed="true">置頂：開</button><button id="compact" aria-pressed="false">地圖模式</button>')

@@ -30,7 +30,7 @@
   };
   assert(document.querySelectorAll('[data-category]').length === 8, 'Expected 8 filter options');
   assert(!document.querySelector('[data-category="pot"], [data-category="cache"]'), 'Removed options still present');
-  assert(DUNGEON_DATA.maps.length === 7, 'Incorrect dungeon map pool');
+  assert(DUNGEON_DATA.maps.length === 12, 'Incorrect dungeon map pool');
   assert(element('supplements') && DUNGEON_DATA.maps.some(m => m.pins.some(p => p.provenance === 'template_supplement')), 'Supplement controls or data missing');
   assert(DUNGEON_DATA.maps.every(m => m.pins.every(p => !['pot', 'cache'].includes(p.category))), 'Removed markers still embedded');
   assert(JSON.parse(localStorage.getItem('aniimo-capture-regions-v1')).mini[0] === .75, 'Capture region not carried over');

@@ -9,7 +9,7 @@ import UnityPy
 from extract_maps import read_manifest
 
 
-def export_icons(root, output, mark_categories, boss_type_id):
+def export_icons(root, output, mark_categories, boss_type_id, game=None, version=None):
     marks = root['default_map_mark_data']
     rewards = {}
     evidence = {}
@@ -27,7 +27,7 @@ def export_icons(root, output, mark_categories, boss_type_id):
                       cache=rewards[3001], stellarys_boss=boss_icon,
                       **{category: mark_icons[k] for k, category in mark_categories.items()})
     names = set(rewards.values()) | set(mark_icons.values()) | {boss_icon}
-    assets, bundles, source = read_manifest()
+    assets, bundles, source = read_manifest(game, version) if game and version else read_manifest()
     selected = defaultdict(list)
     for name in sorted(names):
         matches = [a for a in assets if a['path'].startswith('Assets/Res/XGUI/')

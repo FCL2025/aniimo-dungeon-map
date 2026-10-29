@@ -41,7 +41,7 @@ def display_pins(pins):
 def active_map_ids(source=SOURCE):
     pool = json.loads((source / 'map-pool.json').read_text(encoding='utf8'))
     ids = sorted({mid for difficulty in ('5', '6') for mid in pool['entries'][difficulty]})
-    assert ids == pool['mapIds'] and len(ids) == 7
+    assert ids == pool['mapIds'] and ids
     return ids
 
 

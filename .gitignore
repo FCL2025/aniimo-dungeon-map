@@ -9,6 +9,7 @@ app/smoke-run*/
 app/capture-timing-tests.exe
 app/capture-timing-tests.pdb
 dist/
+exports/grab-eggs-dungeons-3846247/
 mobile/android/.gradle/
 mobile/android/**/build/
 mobile/android/local.properties

@@ -1,0 +1,55 @@
+{
+  "resourceVersion": 3846247,
+  "manifestSha256": "58813191f11decbc5caa61fd04c2db51bcff8ce1a73998129769993574b5738f",
+  "sourceManifest": "F:\\Steam\\steamapps\\common\\Aniimo\\Aniimo_Data\\StreamingAssets\\cvs\\res\\uab\\win\\DefaultPackage\\PackageManifest_DefaultPackage_3846247.bytes",
+  "maps": {
+    "20031": {
+      "tiles": 64,
+      "imageSha256": "b7e4c2ba40d10a2b31b3e380e7b9b0078ecf788497d76d45093a34b36514decd"
+    },
+    "20032": {
+      "tiles": 64,
+      "imageSha256": "a82e492d897d5faf0a8b199153f63dfcde89c5f96cacaa9434f3b720bfffd537"
+    },
+    "20033": {
+      "tiles": 64,
+      "imageSha256": "490bc98512e6b9818f71480e905025d80a712bb68450f83e79dcad7c1a4752e9"
+    },
+    "20034": {
+      "tiles": 64,
+      "imageSha256": "df09650da8d3bd5f2c6097ddba7633cdd2ed45f0222ab0fa5d08cf123e78f6c4"
+    },
+    "20035": {
+      "tiles": 64,
+      "imageSha256": "c35375db269ac9e2cf3da369c46594ccdb1c1cf6a40827b07094c0c62a59d8d6"
+    },
+    "20036": {
+      "tiles": 64,
+      "imageSha256": "b2278e2392fcb2feac7f2037dec8b461b85df858482afa51afae2432988f336c"
+    },
+    "20037": {
+      "tiles": 64,
+      "imageSha256": "95e74a97227a2105f327c2f891dce29fe550f852d268021a3a8b04540270cf10"
+    },
+    "20038": {
+      "tiles": 64,
+      "imageSha256": "cd1233f18464b61f83c0a92155ec72af34575d5705ed17539168a7f0b14ae5cb"
+    },
+    "20039": {
+      "tiles": 64,
+      "imageSha256": "68e1daafadd78543aac7d4f669a202ffb754a08905464df45475c7834fc4639d"
+    },
+    "20040": {
+      "tiles": 64,
+      "imageSha256": "8922433dcd4bf8f737fdce5e193c73ed3a3c926d36c81017bd6085d7614f361a"
+    },
+    "20061": {
+      "tiles": 64,
+      "imageSha256": "b1d407c76751bb1ca40d494b4a613c60454ee1da16e2bffef115347cc3936cc0"
+    },
+    "20062": {
+      "tiles": 64,
+      "imageSha256": "d95431084e746dd8643ffd911f53c8c9c24e59c617dc74abe2589235ebacea73"
+    }
+  }
+}

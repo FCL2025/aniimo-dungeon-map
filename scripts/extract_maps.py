@@ -13,7 +13,7 @@ import struct
 import UnityPy
 
 ROOT = Path(__file__).resolve().parents[1]
-GAME = Path(r"F:\Pawprint\Aniimo\game")
+GAME = Path(r"F:\Steam\steamapps\common\Aniimo")
 PREFIX = "Assets/Res/XGUI/Panel/MapRes/Texture/"
 
 
@@ -38,9 +38,12 @@ class Reader:
         return [self.num("i") for _ in range(self.num("H"))]
 
 
-def read_manifest(game=GAME, version="3595896"):
+def read_manifest(game=GAME, version="3846247"):
     package = game / "Aniimo_Data/cvs/res/uab/win/DefaultPackage"
     source = package / f"ManifestFiles/PackageManifest_DefaultPackage_{version}.bytes"
+    built_in = game / "Aniimo_Data/StreamingAssets/cvs/res/uab/win/DefaultPackage"
+    if not source.exists():
+        source = built_in / f"PackageManifest_DefaultPackage_{version}.bytes"
     raw = source.read_bytes()
     r = Reader(raw)
     if r.take(4) != b"OOY\0" or r.string() != "1.4.17":
@@ -59,7 +62,9 @@ def read_manifest(game=GAME, version="3595896"):
         bundle = dict(name=r.string("B"), hash=r.take(16).hex(),
                       crc=r.num("I"), size=r.num("I"), references=r.ids())
         h = bundle["hash"]
-        bundle["file"] = str(package / "CacheBundleFiles" / h[:2] / h / "cdata.uab")
+        cached = package / "CacheBundleFiles" / h[:2] / h / "cdata.uab"
+        preloaded = built_in / f"{bundle['name'].removesuffix('.uab')}_{h}.uab"
+        bundle["file"] = str(cached if cached.exists() else preloaded)
         bundles.append(bundle)
     if r.pos != len(raw):
         raise ValueError(f"Unexpected trailing bytes: {len(raw) - r.pos}")
@@ -74,7 +79,7 @@ def read_manifest(game=GAME, version="3595896"):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--game", type=Path, default=GAME)
-    parser.add_argument("--version", default="3595896")
+    parser.add_argument("--version", default="3846247")
     parser.add_argument("--groups", nargs="+", default=["3004", "3004_1", "3004_2"])
     parser.add_argument("--output", type=Path, default=ROOT / "exports/grab-eggs")
     parser.add_argument("--catalog-only", action="store_true")

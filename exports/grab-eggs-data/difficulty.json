@@ -5,30 +5,30 @@
   },
   "enums": [
     {
-      "Dummy": 0,
       "PveChaos": 5,
       "Pvp": 4,
       "PveNightmare": 3,
       "PveHard": 2,
-      "PveNormal": 1
+      "PveNormal": 1,
+      "Dummy": 0
     },
     {
+      "NEWBIEGUIDE": 1,
       "CHAOS": 6,
       "NIGHTMARE": 5,
       "HARD": 4,
       "EASY": 2,
-      "NEWBIEGUIDE": 1,
       "NORMAL": 3,
       "PVP": 99
     }
   ],
   "roomTypes": {
-    "Aisle": 2,
     "Normal": 1,
     "EggNest": 6,
     "Reward": 5,
     "Entry2": 4,
-    "Entry": 3
+    "Entry": 3,
+    "Aisle": 2
   },
   "pveSceneId": 3005,
   "pvpSceneId": 3004,

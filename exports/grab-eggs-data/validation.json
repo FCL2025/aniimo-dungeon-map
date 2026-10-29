@@ -1,6 +1,72 @@
 {
   "missingReferences": [
     [
+      20031,
+      2,
+      "sandbox",
+      91559109
+    ],
+    [
+      20031,
+      6,
+      "sandbox",
+      91559082
+    ],
+    [
+      20031,
+      37,
+      "sandbox",
+      91559109
+    ],
+    [
+      20031,
+      38,
+      "sandbox",
+      91349053
+    ],
+    [
+      20031,
+      46,
+      "sandbox",
+      91349053
+    ],
+    [
+      20031,
+      56,
+      "sandbox",
+      91454885
+    ],
+    [
+      20031,
+      56,
+      "sandbox",
+      91455048
+    ],
+    [
+      20031,
+      58,
+      "sandbox",
+      91454885
+    ],
+    [
+      20031,
+      58,
+      "sandbox",
+      91455048
+    ],
+    [
+      20031,
+      60,
+      "sandbox",
+      91349053
+    ],
+    [
+      20031,
+      61,
+      "sandbox",
+      91349053
+    ],
+    [
       20032,
       6,
       "sandbox",
@@ -29,6 +95,24 @@
       5,
       "sandbox",
       91327625
+    ],
+    [
+      20033,
+      30,
+      "sandbox",
+      91559082
+    ],
+    [
+      20033,
+      31,
+      "sandbox",
+      91559082
+    ],
+    [
+      20033,
+      36,
+      "sandbox",
+      91559082
     ],
     [
       20034,
@@ -71,6 +155,24 @@
       41,
       "sandbox",
       91145853
+    ],
+    [
+      20038,
+      20,
+      "sandbox",
+      91558974
+    ],
+    [
+      20038,
+      42,
+      "sandbox",
+      91558974
+    ],
+    [
+      20038,
+      56,
+      "sandbox",
+      91559109
     ],
     [
       20040,
@@ -161,14 +263,50 @@
       46,
       "sandbox",
       91327625
+    ],
+    [
+      20061,
+      6,
+      "sandbox",
+      91559082
+    ],
+    [
+      20061,
+      14,
+      "sandbox",
+      91558974
+    ],
+    [
+      20061,
+      25,
+      "sandbox",
+      91558974
+    ],
+    [
+      20061,
+      37,
+      "sandbox",
+      91327625
+    ],
+    [
+      20062,
+      14,
+      "sandbox",
+      91559109
+    ],
+    [
+      20062,
+      39,
+      "sandbox",
+      91559082
     ]
   ],
   "outsideImage": [],
   "mapChecks": [
     {
       "mapId": 20031,
-      "rooms": 37,
-      "pins": 489,
+      "rooms": 75,
+      "pins": 624,
       "portals": [
         {
           "kind": "entrance",
@@ -205,8 +343,8 @@
     },
     {
       "mapId": 20033,
-      "rooms": 35,
-      "pins": 586,
+      "rooms": 52,
+      "pins": 753,
       "portals": [
         {
           "kind": "entrance",
@@ -300,8 +438,8 @@
     },
     {
       "mapId": 20038,
-      "rooms": 59,
-      "pins": 683,
+      "rooms": 66,
+      "pins": 668,
       "portals": [
         {
           "kind": "entrance",
@@ -736,6 +874,44 @@
       ]
     },
     {
+      "mapId": 20061,
+      "rooms": 43,
+      "pins": 506,
+      "portals": [
+        {
+          "kind": "entrance",
+          "instanceId": 9104289001,
+          "roomId": 1,
+          "valid": true
+        },
+        {
+          "kind": "exit",
+          "instanceId": 9104293429,
+          "roomId": 29,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "mapId": 20062,
+      "rooms": 68,
+      "pins": 587,
+      "portals": [
+        {
+          "kind": "entrance",
+          "instanceId": 9104289001,
+          "roomId": 1,
+          "valid": true
+        },
+        {
+          "kind": "exit",
+          "instanceId": 9104293436,
+          "roomId": 36,
+          "valid": true
+        }
+      ]
+    },
+    {
       "mapId": 29999,
       "rooms": 9,
       "pins": 249,
@@ -756,103 +932,6 @@
     }
   ],
   "templateMatches": [
-    {
-      "mapId": 20031,
-      "roomId": 2,
-      "templateId": 91062057,
-      "jaccard": 0.9642857142857143,
-      "addedSandboxIds": [
-        91389627
-      ]
-    },
-    {
-      "mapId": 20031,
-      "roomId": 5,
-      "templateId": 91291249,
-      "jaccard": 0.8181818181818182,
-      "addedSandboxIds": [
-        91375990,
-        91375997,
-        91376002,
-        91389646
-      ]
-    },
-    {
-      "mapId": 20031,
-      "roomId": 6,
-      "templateId": 91062053,
-      "jaccard": 0.9375,
-      "addedSandboxIds": [
-        91406864
-      ]
-    },
-    {
-      "mapId": 20031,
-      "roomId": 7,
-      "templateId": 91051617,
-      "jaccard": 0.8947368421052632,
-      "addedSandboxIds": [
-        91389608,
-        91407026
-      ]
-    },
-    {
-      "mapId": 20031,
-      "roomId": 10,
-      "templateId": 91051617,
-      "jaccard": 0.8947368421052632,
-      "addedSandboxIds": [
-        91389608,
-        91407026
-      ]
-    },
-    {
-      "mapId": 20031,
-      "roomId": 14,
-      "templateId": 91051617,
-      "jaccard": 0.8947368421052632,
-      "addedSandboxIds": [
-        91389608,
-        91407026
-      ]
-    },
-    {
-      "mapId": 20031,
-      "roomId": 25,
-      "templateId": 91043247,
-      "jaccard": 0.9333333333333333,
-      "addedSandboxIds": [
-        91406514
-      ]
-    },
-    {
-      "mapId": 20031,
-      "roomId": 27,
-      "templateId": 91051617,
-      "jaccard": 0.8947368421052632,
-      "addedSandboxIds": [
-        91389608,
-        91407026
-      ]
-    },
-    {
-      "mapId": 20031,
-      "roomId": 34,
-      "templateId": 91062037,
-      "jaccard": 0.9642857142857143,
-      "addedSandboxIds": [
-        91389306
-      ]
-    },
-    {
-      "mapId": 20031,
-      "roomId": 37,
-      "templateId": 91293249,
-      "jaccard": 0.95,
-      "addedSandboxIds": [
-        91380848
-      ]
-    },
     {
       "mapId": 20032,
       "roomId": 3,
@@ -915,69 +994,6 @@
       "jaccard": 0.9333333333333333,
       "addedSandboxIds": [
         91406455
-      ]
-    },
-    {
-      "mapId": 20033,
-      "roomId": 18,
-      "templateId": 91305276,
-      "jaccard": 0.9411764705882353,
-      "addedSandboxIds": [
-        91380988
-      ]
-    },
-    {
-      "mapId": 20033,
-      "roomId": 27,
-      "templateId": 91043247,
-      "jaccard": 0.9333333333333333,
-      "addedSandboxIds": [
-        91406514
-      ]
-    },
-    {
-      "mapId": 20033,
-      "roomId": 29,
-      "templateId": 91043276,
-      "jaccard": 0.9333333333333333,
-      "addedSandboxIds": [
-        91406455
-      ]
-    },
-    {
-      "mapId": 20033,
-      "roomId": 30,
-      "templateId": 91062053,
-      "jaccard": 0.9375,
-      "addedSandboxIds": [
-        91406864
-      ]
-    },
-    {
-      "mapId": 20033,
-      "roomId": 31,
-      "templateId": 91062053,
-      "jaccard": 0.9375,
-      "addedSandboxIds": [
-        91406864
-      ]
-    },
-    {
-      "mapId": 20033,
-      "roomId": 32,
-      "templateId": 91043276,
-      "jaccard": 0.9333333333333333,
-      "addedSandboxIds": [
-        91406455
-      ]
-    },
-    {
-      "mapId": 20033,
-      "roomId": 36,
-      "templateId": 91062053,
-      "jaccard": 0.9375,
-      "addedSandboxIds": [
-        91406864
       ]
     },
     {
@@ -1262,51 +1278,6 @@
       "jaccard": 0.9333333333333333,
       "addedSandboxIds": [
         91406455
-      ]
-    },
-    {
-      "mapId": 20038,
-      "roomId": 1,
-      "templateId": 91058959,
-      "jaccard": 0.9666666666666667,
-      "addedSandboxIds": [
-        91389320
-      ]
-    },
-    {
-      "mapId": 20038,
-      "roomId": 24,
-      "templateId": 91062037,
-      "jaccard": 0.9642857142857143,
-      "addedSandboxIds": [
-        91389306
-      ]
-    },
-    {
-      "mapId": 20038,
-      "roomId": 55,
-      "templateId": 91062057,
-      "jaccard": 0.9642857142857143,
-      "addedSandboxIds": [
-        91389627
-      ]
-    },
-    {
-      "mapId": 20038,
-      "roomId": 56,
-      "templateId": 91293249,
-      "jaccard": 0.95,
-      "addedSandboxIds": [
-        91380848
-      ]
-    },
-    {
-      "mapId": 20038,
-      "roomId": 57,
-      "templateId": 91062037,
-      "jaccard": 0.9642857142857143,
-      "addedSandboxIds": [
-        91389306
       ]
     },
     {
@@ -2156,17 +2127,17 @@
     }
   ],
   "coordinateMethod": "room yaw/translation -> scene two-point calibration -> negate UI y",
-  "mapCount": 31,
+  "mapCount": 33,
   "counts": {
-    "entrance": 31,
-    "chest": 10917,
-    "egg": 221,
-    "stellarys_boss": 108,
-    "pot": 275,
-    "cache": 1139,
-    "challenge": 29,
-    "exit": 31,
-    "key_orange": 27,
+    "entrance": 33,
+    "chest": 12114,
+    "cache": 1225,
+    "pot": 321,
+    "egg": 246,
+    "stellarys_boss": 124,
+    "challenge": 31,
+    "exit": 33,
+    "key_orange": 31,
     "key_purple": 12,
     "key_blue": 11
   },
@@ -2174,20 +2145,26 @@
     11001200090
   ],
   "bossCandidatesByDifficulty": {
-    "5": 54,
-    "6": 54
+    "5": 62,
+    "6": 62
   },
-  "candidateCount": 12801,
+  "candidateCount": 14181,
   "provenanceCounts": {
-    "scene_reference": 12543,
-    "template_supplement": 258
+    "scene_reference": 13965,
+    "template_supplement": 216
   },
   "missingSandboxIds": [
     91144958,
     91145818,
     91145853,
-    91327625
+    91327625,
+    91349053,
+    91454885,
+    91455048,
+    91558974,
+    91559082,
+    91559109
   ],
   "status": "complete_with_source_gaps",
-  "uniqueCandidateIds": 12801
+  "uniqueCandidateIds": 14181
 }

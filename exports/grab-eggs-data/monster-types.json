@@ -157,6 +157,7 @@
       "propId5": 200055,
       "propId6": 200055,
       "puppetDmgIncModifier": -0.25,
+      "quality": 4,
       "randomFormula": 105,
       "recommendEquipment": {
         "1": 551002,

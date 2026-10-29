@@ -2,7 +2,7 @@
 
 玩家操作方式見 [使用指南](../README.md)。本文件說明本地建置、封裝與驗證流程。
 
-應用使用 Rust + Tauri 2，目標平台為 Windows x64。建置資料來源為 `exports/grab-eggs-data` 與 `exports/grab-eggs-dungeons`，惡夢／混沌地圖池的 7 張地宮底圖、直接引用點位、房間模組補充點與人物追蹤所需檔案會內嵌於 EXE。
+應用使用 Rust + Tauri 2，目標平台為 Windows x64。建置資料來源為 `exports/grab-eggs-data` 與 `exports/grab-eggs-dungeons`，惡夢／混沌地圖池的 12 張地宮底圖、直接引用點位、房間模組補充點與人物追蹤所需檔案會內嵌於 EXE。
 
 ## 建置環境
 
@@ -89,7 +89,7 @@ GitHub Release 發布以下附件：
 
 可安裝的 Android 原生版已放在 [`mobile/android`](../mobile/android)，包含跨 App 浮窗、權限、服務、手動選圖與地圖手勢。建置及使用方式見 [手機版說明](../mobile/README.md)。以下檔案保留作為瀏覽器互動原型。
 
-`mobile-preview.html`、`mobile-preview.css` 與 `mobile-preview.js` 是獨立的瀏覽器互動原型，使用現有七張地宮及候選點位，不載入人物追蹤、畫面擷取或 OpenCV。它尚未實作 Android 跨 App 浮窗，也不是可安裝的 APK。
+`mobile-preview.html`、`mobile-preview.css` 與 `mobile-preview.js` 是獨立的瀏覽器互動原型，使用現有 12 張地宮及候選點位，不載入人物追蹤、畫面擷取或 OpenCV。它尚未實作 Android 跨 App 浮窗，也不是可安裝的 APK。
 
 在已有 `app/frontend` 建置資料的環境執行 `python scripts/build_mobile_preview.py`，產生 `dist/mobile-preview/手機浮窗互動預覽.html`。雙擊此單檔即可離線操作；缺少前端資料時，先依正常建置流程執行 `scripts/prepare_portable.py`。互動設定使用獨立的 `aniimo-mobile-preview-v1`，不讀寫桌面版偏好。
 
@@ -99,9 +99,9 @@ Android 版使用原生浮窗承載地圖，依按鈕／地圖尺寸調整實際
 
 ### 手動選圖驗證
 
-`app/manual-map-core.js` 依入口至出口的像素向量分組八方向，資料取自內嵌七張地圖的 `portalGeometry`。沒有以人物位置或地圖中心推算方向，也不需要擷取遊戲畫面。`manual-map.js` 在主視窗與覆蓋視窗共用介面；覆蓋視窗經事件送交主視窗套用並等待結果。
+`app/manual-map-core.js` 依入口至出口的像素向量分組八方向，資料取自內嵌 12 張地圖的 `portalGeometry`。沒有以人物位置或地圖中心推算方向，也不需要擷取遊戲畫面。`manual-map.js` 在主視窗與覆蓋視窗共用介面；覆蓋視窗經事件送交主視窗套用並等待結果。
 
-`node --test scripts/tests/manual-map.test.cjs` 核對七張地圖的方向及左側兩張候選。`node scripts/tests/manual-map-native.cjs` 以隔離 profile、隱藏視窗驗證首次啟動、七張選圖、13 語言、原生覆蓋同步、重新啟動保存，以及 590／400／295 像素視窗中的真實滑鼠點擊；截圖與結果輸出到 `dist/manual-map-preview/`。其中辨識延遲回傳、原生擷取啟動中的取消，以及同圖重選的追蹤重置，透過 `tracking-controls-browser.js` 的假擷取邊界測試，不連接遊戲。
+`node --test scripts/tests/manual-map.test.cjs` 核對原有七張地圖的方向及左側兩張候選。`node scripts/tests/manual-map-native.cjs` 以隔離 profile、隱藏視窗驗證首次啟動、12 張選圖（含新增五張）、13 語言、原生覆蓋同步、重新啟動保存，以及 590／400／295 像素視窗中的真實滑鼠點擊；截圖與結果輸出到 `dist/manual-map-preview/`。有畫面擷取控制項的版本另執行 `tracking-controls-browser.js` 的假擷取邊界測試，不連接遊戲。
 
 ### 多語介面
 

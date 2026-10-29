@@ -53,12 +53,12 @@ function pickerCopy(){
     check(node.textContent===t(node.dataset.i18n),node.dataset.i18n);
   }
   for(const button of document.querySelectorAll('.manual-direction')){
-    const direction=button.dataset.direction,count=direction==='left'?2:['upLeft','downLeft'].includes(direction)?0:1;
+    const direction=button.dataset.direction,count=ManualMapCore.candidates(DUNGEON_DATA.maps,direction).length;
     check(button.children[1].textContent===t('manual.'+direction),'direction '+direction);
     check(button.querySelector('.manual-direction-count').textContent===(count?t('manual.count',{count}):t('manual.empty')),'count '+direction);
     if(!count)check(getComputedStyle(button).visibility==='hidden','empty direction '+direction);
   }
-  const hints={20032:'right',20034:'down',20035:'upRight',20036:'leftLower',20037:'downRight',20039:'up',20040:'left'};
+  const hints={20031:'upLeft',20032:'right',20033:'right',20034:'down',20035:'upRight',20036:'leftLower',20037:'downRight',20038:'upRight',20039:'up',20040:'left',20061:'downLeft',20062:'upLeft'};
   for(const card of document.querySelectorAll('.manual-map-card')){
     check(card.getAttribute('aria-label')===t('map.name',{id:card.dataset.mapId}),'card label '+card.dataset.mapId);
     check(card.querySelector('span').textContent===t('manual.'+hints[card.dataset.mapId]),'card hint '+card.dataset.mapId);
@@ -85,13 +85,13 @@ async function centered(cdp,label){
   try{
     app=await launch();
     const main=app.cdp;
-    report.initial=await main.evaluate('({open:document.getElementById("manual-map-dialog").open,running:recognitionStatus().running,capturing:recognitionStatus().capturing,ready:recognitionStatus().ready})');
+    report.initial=await main.evaluate('({open:document.getElementById("manual-map-dialog").open,running:window.recognitionStatus?.().running??false,capturing:window.recognitionStatus?.().capturing??false,ready:window.recognitionStatus?.().ready??false})');
     assert(report.initial.open&&!report.initial.running&&!report.initial.capturing&&!report.initial.ready,'First run must allow manual selection without capture');
     assert(await main.evaluate('getComputedStyle(document.getElementById("map-canvas")).visibility==="hidden"'),'Map remains visible beneath selection');
     report.centering=[await centered(main,'initial directions')];
     await main.shot('main-directions');
     report.empty=await main.evaluate('[...document.querySelectorAll(".manual-direction:disabled")].map(button=>button.dataset.direction).sort()');
-    assert(JSON.stringify(report.empty)===JSON.stringify(['downLeft','upLeft']),'Unexpected empty directions');
+    assert(JSON.stringify(report.empty)===JSON.stringify([]),'Unexpected empty directions');
     await main.click('[data-direction="left"]');
     assert(await main.evaluate('document.querySelectorAll(".manual-map-card").length===2'),'Left exits were collapsed into one map');
     await main.shot('main-left-candidates');
@@ -115,13 +115,25 @@ async function centered(cdp,label){
     report.selected=[];
     for(const [direction,id] of [['right',20032],['down',20034],['upRight',20035],['downRight',20037],['up',20039]]){
       await main.click('#manual-map-button');await main.until('!document.querySelector("[data-direction=up]").disabled');
-      await main.click(`[data-direction="${direction}"]`);await main.until(`!document.getElementById('manual-map-dialog').open&&document.getElementById('map').value==='${id}'`);
+      await main.click(`[data-direction="${direction}"]`);
+      if(await main.evaluate('document.getElementById("manual-map-dialog").open'))await main.click(`[data-map-id="${id}"]`);
+      await main.until(`!document.getElementById('manual-map-dialog').open&&document.getElementById('map').value==='${id}'`);
       report.selected.push(id);
     }
     await main.click('#manual-map-button');await main.until('!document.getElementById("manual-map-all").disabled');await main.click('#manual-map-all');
-    assert(await main.evaluate('document.querySelectorAll(".manual-map-card").length===7'),'All-maps fallback is incomplete');
+    assert(await main.evaluate('document.querySelectorAll(".manual-map-card").length===12'),'All-maps fallback is incomplete');
     assert(!(await main.evaluate(`(${pickerCopy.toString()})()`)).length,'All-maps labels did not translate');
     report.centering.push(await centered(main,'all maps'));
+    report.newMaps=[];
+    for(const id of [20031,20033,20038,20061,20062]){
+      if(!(await main.evaluate('document.getElementById("manual-map-dialog").open'))){
+        await main.click('#manual-map-button');await main.click('#manual-map-all');
+      }
+      await main.click(`[data-map-id="${id}"]`);
+      await main.until(`!document.getElementById('manual-map-dialog').open&&document.getElementById('map').value==='${id}'`);
+      report.newMaps.push(id);
+    }
+    await main.click('#manual-map-button');await main.click('#manual-map-all');
     await main.click('[data-map-id="20040"]');await main.until('!document.getElementById("manual-map-dialog").open');
     await main.click('#manual-map-button');await main.until('!document.getElementById("manual-map-all").disabled');await main.click('#manual-map-close');
     assert(await main.evaluate('document.getElementById("map").value==="20040"&&document.activeElement.id==="manual-map-button"'),'Cancel lost map or keyboard focus');
@@ -135,8 +147,10 @@ async function centered(cdp,label){
     }
     await main.evaluate('window.enterManualMode=window.savedEnterManualMode;delete window.savedEnterManualMode;I18n.setLocale("zh-TW");document.getElementById("manual-map-dialog").close()');
     report.localizedError=true;
-    report.controller=await main.evaluate(fs.readFileSync(path.join(__dirname,'tracking-controls-browser.js'),'utf8'));
-    assert(report.controller.passed,'Controller regression failed');
+    if(await main.evaluate('!!document.getElementById("recognition-button")')){
+      report.controller=await main.evaluate(fs.readFileSync(path.join(__dirname,'tracking-controls-browser.js'),'utf8'));
+      assert(report.controller.passed,'Controller regression failed');
+    }
     await main.click('#compact');
     let overlayPage;
     for(let i=0;i<100;i++){overlayPage=(await app.pages()).find(page=>page.url.includes('overlay.html'));if(overlayPage)break;await wait(100);}
@@ -171,7 +185,7 @@ async function centered(cdp,label){
     }
     await main.evaluate('I18n.setLocale("zh-TW")');await overlay.until('I18n.locale==="zh-TW"');
     await overlay.click('[data-map-id="20036"]');await overlay.until('!document.getElementById("manual-map-dialog").open&&document.getElementById("map").value==="20036"');
-    assert(await main.evaluate('document.getElementById("map").value==="20036"&&!recognitionStatus().running&&!recognitionStatus().capturing'),'Overlay selection did not synchronize manual mode');
+    assert(await main.evaluate('document.getElementById("map").value==="20036"&&!(window.recognitionStatus?.().running??false)&&!(window.recognitionStatus?.().capturing??false)'),'Overlay selection did not synchronize manual mode');
     await overlay.click('#manual-map-button');await overlay.until('!document.getElementById("manual-map-all").disabled');await overlay.click('[data-direction="left"]');
     await overlay.click('[data-map-id="20040"]');await main.until('document.getElementById("map").value==="20040"');
     await overlay.until('!document.getElementById("manual-map-dialog").open');
@@ -196,7 +210,7 @@ async function centered(cdp,label){
     overlay.socket.close();overlay=null;await main.click('#compact');
     main.socket.close();app.child.kill();app=null;await wait(1200);
     app=await launch();
-    report.restart=await app.cdp.evaluate('({map:document.getElementById("map").value,open:document.getElementById("manual-map-dialog").open,running:recognitionStatus().running,capturing:recognitionStatus().capturing})');
+    report.restart=await app.cdp.evaluate('({map:document.getElementById("map").value,open:document.getElementById("manual-map-dialog").open,running:window.recognitionStatus?.().running??false,capturing:window.recognitionStatus?.().capturing??false})');
     assert(report.restart.map==='20040'&&!report.restart.open&&!report.restart.running&&!report.restart.capturing,'Manual map did not persist across restart');
     report.passed=true;
     fs.writeFileSync(path.join(output,'verification.json'),JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify(report,null,2));

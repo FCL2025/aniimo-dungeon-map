@@ -1,10 +1,10 @@
 {
   "source": {
-    "version": "3595896",
-    "source": "F:\\Pawprint\\Aniimo\\game\\Aniimo_Data\\cvs\\res\\uab\\win\\DefaultPackage\\ManifestFiles\\PackageManifest_DefaultPackage_3595896.bytes",
-    "sha256": "bab7563fd1c5f87e1ef010063c29626f2c93344f0798c8b0ec36f3f27d2134e6",
-    "asset_count": 252416,
-    "bundle_count": 2077
+    "version": "3846247",
+    "source": "F:\\Steam\\steamapps\\common\\Aniimo\\Aniimo_Data\\StreamingAssets\\cvs\\res\\uab\\win\\DefaultPackage\\PackageManifest_DefaultPackage_3846247.bytes",
+    "sha256": "58813191f11decbc5caa61fd04c2db51bcff8ce1a73998129769993574b5738f",
+    "asset_count": 285447,
+    "bundle_count": 11292
   },
   "assets": {
     "Img_Map_Mark_GrabEgg_Icon_Intrigue.png": {
@@ -14,9 +14,20 @@
         100
       ],
       "resourcePath": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/Img_Map_Mark_GrabEgg_Icon_Intrigue.png",
-      "sourceBundle": "xgui_texture_icon.uab",
-      "sourceBundleHash": "5976f87e6bef08113d6d64dd30279d24",
+      "sourceBundle": "mres_xgui_texture_expng_0.uab",
+      "sourceBundleHash": "0c6a10358a39f9dfe0718838be7c4345",
       "sha256": "9d8a8b03ae1db7bd7d6c75518bbbb0909fd3d4c548529f10e8b9f64dd3d525a9"
+    },
+    "UI_Icon_MarkPoint_Chest.png": {
+      "image": "icons/UI_Icon_MarkPoint_Chest.png",
+      "size": [
+        100,
+        100
+      ],
+      "resourcePath": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/UI_Icon_MarkPoint_Chest.png",
+      "sourceBundle": "mres_xgui_texture_expng_0.uab",
+      "sourceBundleHash": "0c6a10358a39f9dfe0718838be7c4345",
+      "sha256": "a797f3d810f28fce6fb9ac2b6dd0fb6bbab5a3a09b967f3a58c3a283f0be4307"
     },
     "Img_Map_Mark_GrabEgg_Lair.png": {
       "image": "icons/Img_Map_Mark_GrabEgg_Lair.png",
@@ -25,42 +36,9 @@
         100
       ],
       "resourcePath": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/Img_Map_Mark_GrabEgg_Lair.png",
-      "sourceBundle": "xgui_texture_icon.uab",
-      "sourceBundleHash": "5976f87e6bef08113d6d64dd30279d24",
+      "sourceBundle": "mres_xgui_texture_expng_1.uab",
+      "sourceBundleHash": "303746dfdf5c75c7f23a43fbc9d34f40",
       "sha256": "f874e9b16c89d87c1c2d5bb8c914c60b9602362beae8ae4b96613fd50eef0f64"
-    },
-    "Img_Map_Mark_Uderground_Begin.png": {
-      "image": "icons/Img_Map_Mark_Uderground_Begin.png",
-      "size": [
-        100,
-        100
-      ],
-      "resourcePath": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/Img_Map_Mark_Uderground_Begin.png",
-      "sourceBundle": "xgui_texture_icon.uab",
-      "sourceBundleHash": "5976f87e6bef08113d6d64dd30279d24",
-      "sha256": "6d35a7f196cca269f99f72a2032a9a72eae05456bd3baf04b5bdb6d6392987d3"
-    },
-    "Img_Map_Mark_Uderground_Front_Door.png": {
-      "image": "icons/Img_Map_Mark_Uderground_Front_Door.png",
-      "size": [
-        100,
-        100
-      ],
-      "resourcePath": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/Img_Map_Mark_Uderground_Front_Door.png",
-      "sourceBundle": "xgui_texture_icon.uab",
-      "sourceBundleHash": "5976f87e6bef08113d6d64dd30279d24",
-      "sha256": "d7d951fb334761ee4ce7654b1b69f4aa7be27bb1dd4b7aeee33eada5adac2213"
-    },
-    "Img_Map_Mark_Uderground_Key_Blue.png": {
-      "image": "icons/Img_Map_Mark_Uderground_Key_Blue.png",
-      "size": [
-        100,
-        100
-      ],
-      "resourcePath": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/Img_Map_Mark_Uderground_Key_Blue.png",
-      "sourceBundle": "xgui_texture_icon.uab",
-      "sourceBundleHash": "5976f87e6bef08113d6d64dd30279d24",
-      "sha256": "f2cc176ef4b5452a81e2f8ed68f4d424c51baf0ed9dfe40c1612c99d523cf5ad"
     },
     "Img_Map_Mark_Uderground_Key_Orange.png": {
       "image": "icons/Img_Map_Mark_Uderground_Key_Orange.png",
@@ -69,8 +47,8 @@
         100
       ],
       "resourcePath": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/Img_Map_Mark_Uderground_Key_Orange.png",
-      "sourceBundle": "xgui_texture_icon.uab",
-      "sourceBundleHash": "5976f87e6bef08113d6d64dd30279d24",
+      "sourceBundle": "mres_xgui_texture_expng_1.uab",
+      "sourceBundleHash": "303746dfdf5c75c7f23a43fbc9d34f40",
       "sha256": "6154cb59ea285aa7d9ccc56c7bee8a10dcee4cda099370c50ca24b8805151456"
     },
     "Img_Map_Mark_Uderground_Key_Purple.png": {
@@ -80,20 +58,42 @@
         100
       ],
       "resourcePath": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/Img_Map_Mark_Uderground_Key_Purple.png",
-      "sourceBundle": "xgui_texture_icon.uab",
-      "sourceBundleHash": "5976f87e6bef08113d6d64dd30279d24",
+      "sourceBundle": "mres_xgui_texture_expng_1.uab",
+      "sourceBundleHash": "303746dfdf5c75c7f23a43fbc9d34f40",
       "sha256": "ae73eb03813f2c80611204446e8298b763f6934fe4042b67deb80549f0c9c8a2"
     },
-    "UI_Icon_MarkPoint_Chest.png": {
-      "image": "icons/UI_Icon_MarkPoint_Chest.png",
+    "Img_Map_Mark_Uderground_Begin.png": {
+      "image": "icons/Img_Map_Mark_Uderground_Begin.png",
       "size": [
         100,
         100
       ],
-      "resourcePath": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/UI_Icon_MarkPoint_Chest.png",
-      "sourceBundle": "xgui_texture_icon.uab",
-      "sourceBundleHash": "5976f87e6bef08113d6d64dd30279d24",
-      "sha256": "a797f3d810f28fce6fb9ac2b6dd0fb6bbab5a3a09b967f3a58c3a283f0be4307"
+      "resourcePath": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/Img_Map_Mark_Uderground_Begin.png",
+      "sourceBundle": "mres_xgui_texture_expng_2.uab",
+      "sourceBundleHash": "d49efcec02f5e6a6ef78a305aadd9bd6",
+      "sha256": "6d35a7f196cca269f99f72a2032a9a72eae05456bd3baf04b5bdb6d6392987d3"
+    },
+    "Img_Map_Mark_Uderground_Front_Door.png": {
+      "image": "icons/Img_Map_Mark_Uderground_Front_Door.png",
+      "size": [
+        100,
+        100
+      ],
+      "resourcePath": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/Img_Map_Mark_Uderground_Front_Door.png",
+      "sourceBundle": "mres_xgui_texture_expng_3.uab",
+      "sourceBundleHash": "e710350e41ad10870b177f948006e5fd",
+      "sha256": "d7d951fb334761ee4ce7654b1b69f4aa7be27bb1dd4b7aeee33eada5adac2213"
+    },
+    "Img_Map_Mark_Uderground_Key_Blue.png": {
+      "image": "icons/Img_Map_Mark_Uderground_Key_Blue.png",
+      "size": [
+        100,
+        100
+      ],
+      "resourcePath": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/Img_Map_Mark_Uderground_Key_Blue.png",
+      "sourceBundle": "mres_xgui_texture_expng_3.uab",
+      "sourceBundleHash": "e710350e41ad10870b177f948006e5fd",
+      "sha256": "f2cc176ef4b5452a81e2f8ed68f4d424c51baf0ed9dfe40c1612c99d523cf5ad"
     },
     "UI_Icon_MarkPoint_TreasureChest.png": {
       "image": "icons/UI_Icon_MarkPoint_TreasureChest.png",
@@ -102,8 +102,8 @@
         100
       ],
       "resourcePath": "Assets/Res/XGUI/Texture/Icon/Map_MarkPoint/UI_Icon_MarkPoint_TreasureChest.png",
-      "sourceBundle": "xgui_texture_icon.uab",
-      "sourceBundleHash": "5976f87e6bef08113d6d64dd30279d24",
+      "sourceBundle": "mres_xgui_texture_expng_3.uab",
+      "sourceBundleHash": "e710350e41ad10870b177f948006e5fd",
       "sha256": "f69132edbd88d75df7658271a0de3e59f2e781b1060d7c048951dbf6a5b6c84e"
     },
     "UI_PetHead_10012.png": {
@@ -113,8 +113,8 @@
         256
       ],
       "resourcePath": "Assets/Res/XGUI/Texture/Image/Pet_head/UI_PetHead_10012.png",
-      "sourceBundle": "xgui_texture_image_pet_head.uab",
-      "sourceBundleHash": "b3808170a9a9564d142ccda88ed34999",
+      "sourceBundle": "ar_xgui_image_pet_he_8a565150_png_4.uab",
+      "sourceBundleHash": "990d98859aea04b811bd3eb7c2e9bb41",
       "sha256": "cd8f2ed2b801b2b7ffce58a763a44fb1d5aeeabe51070155d54dabe93c52233e"
     }
   },

@@ -15,7 +15,9 @@ from pathlib import Path
 from PIL import Image, ImageDraw, ImageFont
 
 ROOT = Path(__file__).resolve().parent.parent
-MAP_IDS = (20032, 20034, 20035, 20036, 20037, 20039, 20040)
+def active_map_ids():
+    pool = json.loads((ROOT/'exports/grab-eggs-data/map-pool.json').read_text(encoding='utf8'))
+    return pool['mapIds']
 STEP = 8
 EXTRA_BUDGET = .15
 DOOR_BUDGET = .15
@@ -385,7 +387,7 @@ def plan_variants(record, floor, supplements):
 
 def build(output=ROOT/'app/routes.json', previews=None):
     routes = {}
-    for mid in MAP_IDS:
+    for mid in active_map_ids():
         record_path = ROOT/f'exports/grab-eggs-data/maps/{mid}.json'
         image_path = ROOT/f'exports/grab-eggs-dungeons/preview/UI_Img_Map_{mid}.png'
         record = json.loads(record_path.read_text(encoding='utf8'))

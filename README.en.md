@@ -2,13 +2,13 @@
 
 [繁體中文](README.md) | **English**
 
-A Windows map companion for Aniimo's Egg Scramble mode. Covers 7 dungeons on Nightmare and Chaos, with chest and egg-nest markers, manual map selection, player tracking, and a transparent map overlay.
+A Windows map companion for Aniimo's Egg Scramble mode. Covers 12 dungeons on Nightmare and Chaos, with chest and egg-nest markers, manual map selection, player tracking, and a transparent map overlay. Map data comes from game resource version 3846247.
 
 **[Download Windows portable EXE](https://github.com/FCL2025/aniimo-dungeon-map/releases/latest/download/AniimoDungeonMap.exe)** · [Release notes and ZIP](https://github.com/FCL2025/aniimo-dungeon-map/releases/latest)
 
-**[Download the Android test APK](https://github.com/FCL2025/aniimo-dungeon-map/releases/download/android-v0.1.0/AniimoDungeonMap-0.1.0-android-test.apk)** · [Android release](https://github.com/FCL2025/aniimo-dungeon-map/releases/tag/android-v0.1.0) · [Mobile guide (Traditional Chinese)](mobile/README.md)
+**[Download the Android test APK](https://github.com/FCL2025/aniimo-dungeon-map/releases/download/android-v0.1.1/AniimoDungeonMap-0.1.1-android-test.apk)** · [Android release](https://github.com/FCL2025/aniimo-dungeon-map/releases/tag/android-v0.1.1) · [Mobile guide (Traditional Chinese)](mobile/README.md)
 
-The separate Android app supports Android 8.0 and later, with a draggable floating button and seven offline maps. It provides manual map viewing without player tracking. Android uses its own version numbers and is currently a test release with a Traditional Chinese interface.
+The separate Android app supports Android 8.0 and later, with a draggable floating button and 12 offline maps. It provides manual map viewing without player tracking. Android uses its own version numbers and is currently a test release with a Traditional Chinese interface.
 
 ## Feature preview
 

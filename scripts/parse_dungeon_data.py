@@ -13,7 +13,7 @@ from pmdata import PMData, plain, DEFAULT_ARCHIVE, MEMBER
 from luajit_constants import constants
 from extract_marker_icons import export_icons
 
-MAP_IDS = [*range(20031, 20061), 29999]
+MAP_IDS = [*range(20031, 20063), 29999]
 DIFFICULTIES = {5: '惡夢', 6: '混沌'}
 BOSS_STELLARYS_TYPE_ID = 11001200090
 CATEGORIES = {
@@ -132,7 +132,10 @@ def export(archive, output):
     if BOSS_STELLARYS_TYPE_ID not in monster_types:
         raise ValueError('Requested dungeon boss not found; recheck game version and puppet data')
     mark_types = root['default_map_mark_data']
-    icon_catalog = export_icons(root, output, MARK_CATEGORIES, BOSS_STELLARYS_TYPE_ID)
+    game = Path(archive).resolve().parents[4]
+    version = (game / 'verlist.txt').read_text(encoding='utf8').split(',', 1)[0]
+    icon_catalog = export_icons(root, output, MARK_CATEGORIES, BOSS_STELLARYS_TYPE_ID,
+                                game=game, version=version)
     template_rooms = root['Scene.10000.scene_room_data']
     templates_by_prefab = defaultdict(list)
     for tid, template in template_rooms.items():
@@ -150,7 +153,7 @@ def export(archive, output):
     reward_rules = {k: plain(v) for k, v in root['digong_reward_data'].items()
                     if k.startswith(('Nightmare-', 'Chaos-'))}
     difficulty_records = {k: plain(root['dungeon_difficult_level_data'][3005][k]) for k in DIFFICULTIES}
-    source = dict(archive=str(archive), resourceVersion=3595896, sha256=hashes,
+    source = dict(archive=str(archive), resourceVersion=int(version), sha256=hashes,
                   rootTableCount=len(root), rootTableOffset=pm.root.pos,
                   sourceScene=10000, offlineOnly=True, scope=SCOPE)
     dump(output/'source.json', source)
