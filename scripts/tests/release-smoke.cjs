@@ -74,7 +74,32 @@ async function pageAt(port, overlay = false) {
         row:Math.abs(map.top-difficulty.top)<3 && map.right<difficulty.left, guidesAboveHelp:guides.compareDocumentPosition(el('help-button'))&Node.DOCUMENT_POSITION_FOLLOWING,
         guideButtons:[...guides.querySelectorAll('button')].map(node=>node.id), maps:el('map').options.length };
     })()`);
-    assert(!ui.header && !ui.recognition && !ui.summary && !ui.hint && ui.row && ui.guidesAboveHelp && ui.maps === 7, `Main layout: ${JSON.stringify(ui)}`);
+    assert(!ui.header && !ui.recognition && !ui.summary && !ui.hint && ui.row && ui.guidesAboveHelp && ui.maps === 12, `Main layout: ${JSON.stringify(ui)}`);
+    const rockBoss = await main.evaluate(`(() => {
+      const filter=document.querySelector('[data-category="rock_boss"]');
+      const icon=document.querySelector('[data-category-icon="rock_boss"]');
+      const maps=window.DUNGEON_DATA.maps.filter(map=>map.pins.some(pin=>pin.category==='rock_boss'));
+      return {filter:!!filter,icon:!!icon,ids:maps.map(map=>map.id),
+        valid:maps.every(map=>map.pins.filter(pin=>pin.category==='rock_boss').length===1 &&
+          map.pins.find(pin=>pin.category==='rock_boss').difficultyCandidates.join(',')==='5,6')};
+    })()`);
+    assert(rockBoss.filter && rockBoss.icon && rockBoss.valid &&
+      rockBoss.ids.join(',')==='20031,20033,20038,20061,20062', `Rock boss filter: ${JSON.stringify(rockBoss)}`);
+    const rockFilter = await main.evaluate(`(() => {
+      const map=document.getElementById('map'), difficulty=document.getElementById('difficulty');
+      map.value='20031'; map.dispatchEvent(new Event('change',{bubbles:true}));
+      document.getElementById('none').click(); document.querySelector('[data-category="rock_boss"]').click();
+      const nightmare=visible.map(pin=>pin.typeId);
+      difficulty.value='6'; difficulty.dispatchEvent(new Event('change',{bubbles:true}));
+      const chaos=visible.map(pin=>pin.typeId);
+      map.value='20032'; map.dispatchEvent(new Event('change',{bubbles:true}));
+      const absent=visible.length;
+      document.getElementById('all').click();
+      return {nightmare,chaos,absent};
+    })()`);
+    assert(rockFilter.nightmare.join(',')==='11080000101' &&
+      rockFilter.chaos.join(',')==='11080000101' && rockFilter.absent===0,
+      `Rock boss toggle: ${JSON.stringify(rockFilter)}`);
     assert(ui.guideButtons.join(',') === 'loot-ranking-button,ticket-advice-button,egg-advice-button', 'Guide order');
     const shop = await main.evaluate(`(() => {
       document.getElementById('ticket-advice-button').click();

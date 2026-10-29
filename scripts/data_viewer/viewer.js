@@ -3,7 +3,7 @@ const data=window.DUNGEON_DATA;
 const categories=Object.fromEntries(Object.entries(data.categories).filter(([key])=>!['pot','cache'].includes(key)));
 const $=id=>document.getElementById(id);
 const {msg,bind}=window.I18n;
-const colors={egg:'#f3d76d',chest_gold:'#dfb65b',chest_glass:'#9de9f4',stellarys_boss:'#87dcff',entrance:'#79e1c0',exit:'#ff8798',key_orange:'#ffb46e',challenge:'#82d2e5'};
+const colors={egg:'#f3d76d',chest_gold:'#dfb65b',chest_glass:'#9de9f4',stellarys_boss:'#87dcff',rock_boss:'#e9a66f',entrance:'#79e1c0',exit:'#ff8798',key_orange:'#ffb46e',challenge:'#82d2e5'};
 const canvas=$('map-canvas'), ctx=canvas.getContext('2d');
 const mapLayer=document.createElement('canvas'),mapContext=mapLayer.getContext('2d');
 const pinLayer=document.createElement('canvas'),pinContext=pinLayer.getContext('2d');
@@ -45,7 +45,7 @@ for(const [key,asset] of Object.entries(data.icons.assets)){
   iconImages.set(key,icon);icon.src=asset.image;
 }
 function iconElement(key){const icon=document.createElement('img');icon.className='marker-icon';icon.src=data.icons.assets[key].image;icon.alt='';icon.setAttribute('aria-hidden','true');return icon;}
-function pinSize(pin){const primary=['egg','entrance','exit','stellarys_boss'].includes(pin.category);const categoryScale=pin.category==='key_orange'?1.5:1;const overlayScale=document.body.classList.contains('overlay')?(window.overlaySizeRatio||1):1;return (primary?28:Math.min(22,Math.max(14,20*Math.sqrt(scale))))*Number($('icon-size').value)/100*categoryScale*overlayScale;}
+function pinSize(pin){const primary=['egg','entrance','exit','stellarys_boss','rock_boss'].includes(pin.category);const categoryScale=pin.category==='key_orange'?1.5:1;const overlayScale=document.body.classList.contains('overlay')?(window.overlaySizeRatio||1):1;return (primary?28:Math.min(22,Math.max(14,20*Math.sqrt(scale))))*Number($('icon-size').value)/100*categoryScale*overlayScale;}
 window.addEventListener('overlay-size-changed',()=>draw());
 function renderIconSize(){const value=$('icon-size').value+'%';$('icon-size-value').value=value;$('icon-size').setAttribute('aria-valuetext',value);draw();}
 for(const map of data.maps){const option=document.createElement('option');option.value=map.id;bind(option,msg('map.name',{id:map.id}));$('map').append(option);}

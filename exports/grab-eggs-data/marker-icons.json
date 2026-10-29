@@ -116,6 +116,17 @@
       "sourceBundle": "ar_xgui_image_pet_he_8a565150_png_4.uab",
       "sourceBundleHash": "990d98859aea04b811bd3eb7c2e9bb41",
       "sha256": "cd8f2ed2b801b2b7ffce58a763a44fb1d5aeeabe51070155d54dabe93c52233e"
+    },
+    "UI_PetHead_10454.png": {
+      "image": "icons/UI_PetHead_10454.png",
+      "size": [
+        256,
+        256
+      ],
+      "resourcePath": "Assets/Res/XGUI/Texture/Image/Pet_head/UI_PetHead_10454.png",
+      "sourceBundle": "ar_xgui_image_pet_he_8a565150_png_4.uab",
+      "sourceBundleHash": "990d98859aea04b811bd3eb7c2e9bb41",
+      "sha256": "4218e9036251e6ad697bcdd41965749ebbb935c6654c16cc75cc73eac645db28"
     }
   },
   "categories": {
@@ -124,6 +135,7 @@
     "pot": "UI_Icon_MarkPoint_Chest.png",
     "cache": "UI_Icon_MarkPoint_Chest.png",
     "stellarys_boss": "UI_PetHead_10012.png",
+    "rock_boss": "UI_PetHead_10454.png",
     "entrance": "Img_Map_Mark_Uderground_Front_Door.png",
     "exit": "Img_Map_Mark_Uderground_Begin.png",
     "key_blue": "Img_Map_Mark_Uderground_Key_Blue.png",
@@ -371,11 +383,19 @@
       "source": "rob_egg_chest_data.icon"
     }
   },
-  "boss": {
-    "typeId": 11001200090,
-    "iconName": "10012",
-    "icon": "UI_PetHead_10012.png",
-    "usage": "Game character portrait; not a verified dungeon map boss marker"
+  "bosses": {
+    "stellarys_boss": {
+      "typeId": 11001200090,
+      "iconName": "10012",
+      "icon": "UI_PetHead_10012.png",
+      "usage": "Game character portrait; not a verified dungeon map boss marker"
+    },
+    "rock_boss": {
+      "typeId": 11080000101,
+      "iconName": "10454",
+      "icon": "UI_PetHead_10454.png",
+      "usage": "Game character portrait; not a verified dungeon map boss marker"
+    }
   },
   "note": "Pot and cache configs share the generic chest icon. Original textures are not recolored."
 }

@@ -24,7 +24,7 @@ source = ROOT/'exports/grab-eggs-data'
 scenes = json.loads((source/'source-tables.json').read_text(encoding='utf8'))['scenes']
 policy = json.loads((source/'display-policy.json').read_text(encoding='utf8'))['scope']
 assert policy['kind'] == 'dungeon' and policy['loadLayerTextures'] is False
-assert policy['monsterTypeIds'] == [11001200090]
+assert policy['monsterTypeIds'] == [11001200090, 11080000101]
 allowed = set(active_map_ids(source))
 map_output = (OUTPUT/'maps').resolve()
 for old_map in (OUTPUT/'maps').glob('*.png'):

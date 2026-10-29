@@ -15,7 +15,7 @@ class ChestPolicyTests(unittest.TestCase):
         cls.sources = json.loads((SOURCE / 'source-tables.json').read_text(encoding='utf8'))
 
     def test_all_maps_keep_only_high_tier_chests_and_supported_keys(self):
-        self.assertEqual(len(self.maps), 31)
+        self.assertEqual(len(self.maps), 33)
         for record in self.maps:
             original = {p['id']: p for p in record['pins']}
             for pin in display_pins(record['pins']):

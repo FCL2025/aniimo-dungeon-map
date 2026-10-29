@@ -15,17 +15,17 @@ from extract_marker_icons import export_icons
 
 MAP_IDS = [*range(20031, 20063), 29999]
 DIFFICULTIES = {5: '惡夢', 6: '混沌'}
-BOSS_STELLARYS_TYPE_ID = 11001200090
+BOSS_TYPES = {11001200090: 'stellarys_boss', 11080000101: 'rock_boss'}
 CATEGORIES = {
     'egg': '蛋巢', 'chest': '寶箱', 'pot': '陶罐', 'cache': '其他搜刮點',
-    'stellarys_boss': '首領級幽黯星法師',
+    'stellarys_boss': '首領級幽黯星法師', 'rock_boss': '頭目級岩球郎',
     'entrance': '入口', 'exit': '出口', 'key_blue': '藍色鑰匙標記',
     'key_purple': '紫色鑰匙標記', 'key_orange': '橙色鑰匙標記', 'challenge': '限時挑戰',
 }
 SCOPE = dict(kind='dungeon', sceneIds=MAP_IDS, displayMode='single_base_map',
              loadLayerTextures=False, floorDetection='not_implemented',
              markerHeightPolicy='project_all_heights_to_xz',
-             monsterTypeIds=[BOSS_STELLARYS_TYPE_ID])
+             monsterTypeIds=sorted(BOSS_TYPES))
 MARK_CATEGORIES = {1009: 'entrance', 1008: 'exit', 1996: 'key_blue',
                    1997: 'key_purple', 1998: 'key_orange', 1999: 'challenge'}
 
@@ -119,22 +119,21 @@ def export(archive, output):
     marks = root['Scene.10000.scene_mark_point_data']
     chest_types = root['rob_egg_chest_data']
     puppets = root['puppet_data']
-    # Only the explicitly requested dungeon boss, not ordinary Stellarys or other monsters.
+    # Keep only boss-class dungeon monsters; ordinary enemies do not get map markers.
     monster_types = {}
     for entity in entities.values():
         if entity['subType'] != 'Puppet':
             continue
         type_id = int(entity['idInType'])
         cfg = puppets.get(type_id, {})
-        if (type_id == BOSS_STELLARYS_TYPE_ID and cfg.get('monsterType') == 2
-                and cfg.get('baseFormPet') == 1001200 and '星法師' in loc(cfg.get('name'))):
+        if type_id in BOSS_TYPES and cfg.get('monsterType') == 2:
             monster_types[type_id] = cfg
-    if BOSS_STELLARYS_TYPE_ID not in monster_types:
-        raise ValueError('Requested dungeon boss not found; recheck game version and puppet data')
+    if set(monster_types) != set(BOSS_TYPES):
+        raise ValueError('Dungeon boss type missing; recheck game version and puppet data')
     mark_types = root['default_map_mark_data']
     game = Path(archive).resolve().parents[4]
     version = (game / 'verlist.txt').read_text(encoding='utf8').split(',', 1)[0]
-    icon_catalog = export_icons(root, output, MARK_CATEGORIES, BOSS_STELLARYS_TYPE_ID,
+    icon_catalog = export_icons(root, output, MARK_CATEGORIES, BOSS_TYPES,
                                 game=game, version=version)
     template_rooms = root['Scene.10000.scene_room_data']
     templates_by_prefab = defaultdict(list)
@@ -264,7 +263,8 @@ def export(archive, output):
                 for entity_id, entity in monsters_by_sandbox[sandbox_id]:
                     type_id = int(entity['idInType'])
                     cfg = monster_types[type_id]
-                    pin = base_pin(entity_id, entity['position'], 'stellarys_boss', loc(cfg['name']), 'entity')
+                    category = BOSS_TYPES[type_id]
+                    pin = base_pin(entity_id, entity['position'], category, loc(cfg['name']), 'entity')
                     spawner_id = entity.get('spawnerId', 0)
                     spawner = spawners.get(spawner_id)
                     if spawner_id and spawner is None:
@@ -273,7 +273,7 @@ def export(archive, output):
                         dict(id=int(gid), weight=group.get('weight'))
                         for gid, group in spawner.get('spawnGroups', {}).items()
                         if entity_id in group.get('spawnIds', {}).values()]
-                    pin.update(typeId=type_id, iconKey=icon_catalog['boss']['icon'], englishName=loc_en(cfg['name']),
+                    pin.update(typeId=type_id, iconKey=icon_catalog['bosses'][category]['icon'], englishName=loc_en(cfg['name']),
                                monsterType=cfg.get('monsterType'), isBoss=cfg.get('monsterType') == 2,
                                spawnerId=spawner_id, spawnType=spawner.get('spawnType') if spawner else None,
                                spawnGroupCandidates=groups)
@@ -330,9 +330,14 @@ def export(archive, output):
         spawners={k: scrub(plain(v)) for k, v in spawners.items() if v['sandboxId'] in used_sandbox_ids},
         marks={k: scrub(plain(v)) for k, v in marks.items() if v['sandboxId'] in used_sandbox_ids},
         portalConfigs={k: plain(root['digong_config_data'][k]) for k in MAP_IDS}))
+    discovered_boss_types = {int(entity['idInType']) for entity in entities.values()
+                             if entity['subType'] == 'Puppet' and entity['sandboxId'] in used_sandbox_ids
+                             and puppets.get(int(entity['idInType']), {}).get('monsterType') == 2}
+    if discovered_boss_types != set(BOSS_TYPES):
+        raise ValueError(f'Uncatalogued dungeon boss types: {sorted(discovered_boss_types - set(BOSS_TYPES))}')
     validations.update(mapCount=len(map_records), counts=total_counts,
                        monsterTypeIds=sorted(monster_types),
-                       bossCandidatesByDifficulty={d: sum(p['category'] == 'stellarys_boss'
+                       bossCandidatesByDifficulty={d: sum(p['category'] in BOSS_TYPES.values()
                            and d in p['difficultyCandidates'] for m in map_records for p in m['pins'])
                            for d in DIFFICULTIES},
                        candidateCount=sum(total_counts.values()),

@@ -6,7 +6,18 @@
   const wheel = (id, deltaY, options = {}) => el(id).dispatchEvent(new WheelEvent('wheel', { deltaY, bubbles: true, cancelable: true, ...options }));
   await window.desktopReady;
   assert(DUNGEON_DATA.maps.length === 12, 'Expected twelve maps');
-  assert(document.querySelectorAll('[data-category]').length === 8, 'Expected eight categories');
+  assert(document.querySelectorAll('[data-category]').length === 9, 'Expected nine categories');
+  for (const difficulty of ['5', '6']) {
+    change('map', '20031'); change('difficulty', difficulty);
+    el('none').click(); document.querySelector('[data-category="rock_boss"]').click();
+    assert(visible.length === 1 && visible[0].typeId === 11080000101, 'Rock boss filter missing or incorrect');
+  }
+  for (const mapId of ['20033', '20038', '20061', '20062']) {
+    change('map', mapId);
+    assert(visible.length === 1 && visible[0].category === 'rock_boss', `Rock boss missing on ${mapId}`);
+  }
+  change('map', '20032');
+  assert(visible.length === 0, 'Rock boss appears on an unlisted map');
   assert(!el('quality'), 'Quality selector still present');
   assert(!document.querySelector('[data-category="chest"], [data-category="key_blue"], [data-category="key_purple"]'), 'Old categories remain');
   change('map', '20037'); change('difficulty', '5');
@@ -46,7 +57,7 @@
   drag = { x: point.clientX, y: point.clientY, tx, ty };
   el('map-canvas').dispatchEvent(new PointerEvent('pointerup', point));
   assert(selected?.id === target.id, 'Enlarged hit area failed');
-  const summary = { maps: 0, combinations: 0, categories: 8, wheel: true, iconScale: true, enlargedHitArea: true };
+  const summary = { maps: 0, combinations: 0, categories: 9, wheel: true, iconScale: true, enlargedHitArea: true };
   for (const map of DUNGEON_DATA.maps) {
     change('map', map.id);
     const loaded = new Image(); loaded.src = map.image; await loaded.decode();

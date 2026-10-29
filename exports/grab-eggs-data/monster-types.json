@@ -270,5 +270,250 @@
       "walkspeed_v": 1.44,
       "weight": 7
     }
+  },
+  "11080000101": {
+    "name": "頭目級岩球郎",
+    "englishName": "Alpha Bouldus",
+    "config": {
+      "BMI": 35,
+      "BossShowName": 1208658060,
+      "BrackerWidth": {
+        "1": -70,
+        "2": 70
+      },
+      "ElitePropId": 10011,
+      "EliteShowName": 1893038899,
+      "Param_ST_Alert": "PBT_Vision_Alert",
+      "Param_ST_Combat_Prepare": "PBT_Noop",
+      "Param_ST_Monster_AutoCombat": "ST_Monster_AutoCombat_Boss_10454_Egg",
+      "Param_ST_Sensed": "PBT_ReadyToFight",
+      "aggressiveness": 2,
+      "animController": "Map_Parmon_10454",
+      "animScaleInLowGravity": 4,
+      "atkCdInterval": 0,
+      "attackType": 2,
+      "attackWeight": 50,
+      "bTree": "SM_Monster_Root",
+      "babyCatchedBrotherEnterCombatType": 0,
+      "babySensedBrotherEnterCombatType": 0,
+      "baseFormPet": 1045400,
+      "behavGroupId": "BG_Wild_Common_VisionValue_Combat",
+      "bodyHeight": 1.6,
+      "bodyMatType": "flesh",
+      "bodySize": 0.7,
+      "brotherSensedEnterCombatType": 0,
+      "callFriendsMaxRange": 30,
+      "cameraDistModeId": 1,
+      "canBeCallFriends": 1,
+      "canBeLookAt": true,
+      "canJumpBack": true,
+      "canKnockFly": 1,
+      "canNotPush": 1,
+      "canWalkBack": true,
+      "canWalkLeftOrRight": true,
+      "capturedBossModelScale": 1.2,
+      "catchOwnerCondInfo": {
+        "1": "Shiny",
+        "2": "Demonic",
+        "3": "TE_Wild_OneTime"
+      },
+      "catchOwnerType": 2,
+      "catchProbGroup": 403,
+      "combatBgm": "BGM_Boss_Bouldus_Loop",
+      "commonMountKey": "M_Parmon_10454Avatar",
+      "dangerousValue": 10,
+      "defaultPet": 1045400,
+      "default_addprop": 8,
+      "delayDestroy": 2,
+      "destroyEffect": "Eff_Parmon_Die",
+      "disengageNoHitTime": 5,
+      "disengageView": 25,
+      "ecsBodyMaterialId": 69783666,
+      "editorDisplayPriority": 1,
+      "editorName": "BossRush岩球郎头目",
+      "effectOffsetDemonic": {
+        "1": 0,
+        "2": 0,
+        "3": 0
+      },
+      "effectOffsetShiny": {
+        "1": 0,
+        "2": 0,
+        "3": 0
+      },
+      "effectResIDDemonic": "Eff_Pamon_Demonic_Mid",
+      "effectResIDShiny": "Eff_Parmon_Shine_Mid",
+      "effectScaleDemonic": 1,
+      "effectScaleShiny": 1,
+      "elementLevel": 3,
+      "elementLevels": {
+        "Rock": 3
+      },
+      "elementType": {
+        "8": true
+      },
+      "enablePresetBySubstr": "Eye",
+      "engageView": 25,
+      "enterClimbMinHeight": 1.5,
+      "ethnicGroup": 1045,
+      "ethnicGroupVisionType": 0,
+      "fightCdInterval": 0,
+      "followRadius": 25,
+      "followWarnRadius": 2,
+      "formId": 1,
+      "functionId": "SUP",
+      "genderRatio": {
+        "1": 0.5,
+        "2": 0.5
+      },
+      "goBackCd": 5,
+      "hateCoefficient": 0,
+      "height": 1.4,
+      "hitPosYByAttackBox": true,
+      "homeAbility": {
+        "1003": 3,
+        "1100": 3
+      },
+      "homeFoodCostSpeed": 10,
+      "iconName": "10454",
+      "isCombatPrepareTrigger": false,
+      "label": 18,
+      "lvType": 1,
+      "mainElementType": 8,
+      "mass": 45,
+      "maxAttackHeight": 1,
+      "maxKeepBoxDist": 8,
+      "maxSkillCastDistance": 40,
+      "modelHeight": 1.4,
+      "modelInfoRef": "$Parmon_10454.bytes",
+      "modelScaleRange": {
+        "1": 1.5,
+        "2": 1.5,
+        "3": 1.5
+      },
+      "monsterType": 2,
+      "moveLevel": 1,
+      "name": 1482115556,
+      "natureRatio": {
+        "1": 0.5,
+        "7": 0.5
+      },
+      "nolmpPerceptGroupId": "PG_Simple_Circle_10",
+      "normalAtkAbilityId": 14540004,
+      "npcType": 1,
+      "partnerEnterCombatDis": 10,
+      "partnerEnterCombatType": 0,
+      "patrolRange": 5,
+      "perceptGroupId": "PG_GrabEggs_BirdGuardSense",
+      "petPrototypeId": 1045400,
+      "photoIdentifyIds": {},
+      "prefabResID": "$P_Parmon_10454.prefab",
+      "preset": "BossRush_RedEyes_Frenel",
+      "propId": 20005,
+      "propId2": 20005,
+      "propId3": 200053,
+      "propId4": 20005,
+      "propId5": 200055,
+      "propId6": 200055,
+      "puppetDmgDecModifier": 0.3,
+      "quality": 4,
+      "randomFormula": 105,
+      "recommendEquipment": {
+        "1": 551004,
+        "2": 552004,
+        "3": 553004,
+        "4": 551016,
+        "5": 552016,
+        "6": 553016
+      },
+      "recommendGemId": {
+        "1": 554010,
+        "2": 554022,
+        "3": 554034,
+        "4": 554046
+      },
+      "recommendGemType": {
+        "1": 3,
+        "2": 3,
+        "3": 3,
+        "4": 3,
+        "5": 1,
+        "6": 2
+      },
+      "recommendPartners": {
+        "1": 1045300
+      },
+      "recommend_addprop": {
+        "1": 8,
+        "2": 1,
+        "3": 7
+      },
+      "recommend_attr": {
+        "1": 2,
+        "2": 3
+      },
+      "recommend_userpercent": {
+        "1": 80,
+        "2": 15,
+        "3": 5
+      },
+      "refId": 11045400,
+      "resId": 10454,
+      "rigidbody": "Parmon_10454",
+      "runspeedRange": {
+        "1": 4,
+        "2": 8
+      },
+      "runspeed_v": 4.7,
+      "scaleBoss": 1.8,
+      "scaleElite": 2,
+      "scanPetPosition": {
+        "1": 2104540001
+      },
+      "shinyStyleColorId": "P_Parmon_1045302",
+      "shiny_rate": 5e-05,
+      "sideWalkWeight": 50,
+      "sidewalkspeedRange": {
+        "1": 1,
+        "2": 2.5
+      },
+      "sidewalkspeed_v": 1.2,
+      "sizeLevel": 1005,
+      "skillCdInterval": 0,
+      "skillList": {
+        "1": 14540101,
+        "2": 14540202,
+        "3": 14540301,
+        "4": 14540400
+      },
+      "sleepDayTime": 2,
+      "species": 1,
+      "species_atk_mag_v": 114,
+      "species_atk_v": 114,
+      "species_bp_atk_v": 52,
+      "species_def_mag_v": 54,
+      "species_def_v": 101,
+      "species_ep_regen_force_v": 104,
+      "species_hp_max_v": 91,
+      "spriteIdAfterCatch": 1045400,
+      "stage": 3,
+      "stepHeightDown": 0.5,
+      "stepHeightUp": 0.5,
+      "turnSpeed": 300,
+      "uiName": "THUNTEN",
+      "useShinyModel": 1,
+      "use_randomtxt": 0,
+      "walkbackspeedRange": {
+        "1": 1,
+        "2": 2.5
+      },
+      "walkbackspeed_v": 1.2,
+      "walkspeedRange": {
+        "1": 1,
+        "2": 2.5
+      },
+      "walkspeed_v": 1.2,
+      "weight": 6
+    }
   }
 }

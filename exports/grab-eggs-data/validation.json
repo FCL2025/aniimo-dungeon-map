@@ -306,7 +306,7 @@
     {
       "mapId": 20031,
       "rooms": 75,
-      "pins": 624,
+      "pins": 625,
       "portals": [
         {
           "kind": "entrance",
@@ -344,7 +344,7 @@
     {
       "mapId": 20033,
       "rooms": 52,
-      "pins": 753,
+      "pins": 754,
       "portals": [
         {
           "kind": "entrance",
@@ -439,7 +439,7 @@
     {
       "mapId": 20038,
       "rooms": 66,
-      "pins": 668,
+      "pins": 669,
       "portals": [
         {
           "kind": "entrance",
@@ -876,7 +876,7 @@
     {
       "mapId": 20061,
       "rooms": 43,
-      "pins": 506,
+      "pins": 507,
       "portals": [
         {
           "kind": "entrance",
@@ -895,7 +895,7 @@
     {
       "mapId": 20062,
       "rooms": 68,
-      "pins": 587,
+      "pins": 588,
       "portals": [
         {
           "kind": "entrance",
@@ -2136,21 +2136,23 @@
     "egg": 246,
     "stellarys_boss": 124,
     "challenge": 31,
+    "rock_boss": 5,
     "exit": 33,
     "key_orange": 31,
     "key_purple": 12,
     "key_blue": 11
   },
   "monsterTypeIds": [
-    11001200090
+    11001200090,
+    11080000101
   ],
   "bossCandidatesByDifficulty": {
-    "5": 62,
-    "6": 62
+    "5": 67,
+    "6": 67
   },
-  "candidateCount": 14181,
+  "candidateCount": 14186,
   "provenanceCounts": {
-    "scene_reference": 13965,
+    "scene_reference": 13970,
     "template_supplement": 216
   },
   "missingSandboxIds": [
@@ -2166,5 +2168,5 @@
     91559109
   ],
   "status": "complete_with_source_gaps",
-  "uniqueCandidateIds": 14181
+  "uniqueCandidateIds": 14186
 }

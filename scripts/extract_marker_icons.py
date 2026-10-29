@@ -9,7 +9,7 @@ import UnityPy
 from extract_maps import read_manifest
 
 
-def export_icons(root, output, mark_categories, boss_type_id, game=None, version=None):
+def export_icons(root, output, mark_categories, boss_types, game=None, version=None):
     marks = root['default_map_mark_data']
     rewards = {}
     evidence = {}
@@ -21,12 +21,14 @@ def export_icons(root, output, mark_categories, boss_type_id, game=None, version
                                      source='default_map_mark_data.icon' if mark_id else 'rob_egg_chest_data.icon')
     mark_icons = {k: marks[k]['icon'].lstrip('$') for k in mark_categories}
     # A character portrait from the game's own iconName, not an invented boss emblem.
-    boss = root['puppet_data'][boss_type_id]
-    boss_icon = f'UI_PetHead_{boss["iconName"]}.png'
+    bosses = {category: dict(typeId=type_id, iconName=root['puppet_data'][type_id]['iconName'],
+              icon=f'UI_PetHead_{root["puppet_data"][type_id]["iconName"]}.png',
+              usage='Game character portrait; not a verified dungeon map boss marker')
+              for type_id, category in boss_types.items()}
     categories = dict(egg=rewards[10], chest=rewards[2001], pot=rewards[1000],
-                      cache=rewards[3001], stellarys_boss=boss_icon,
+                      cache=rewards[3001], **{category: boss['icon'] for category, boss in bosses.items()},
                       **{category: mark_icons[k] for k, category in mark_categories.items()})
-    names = set(rewards.values()) | set(mark_icons.values()) | {boss_icon}
+    names = set(rewards.values()) | set(mark_icons.values()) | {boss['icon'] for boss in bosses.values()}
     assets, bundles, source = read_manifest(game, version) if game and version else read_manifest()
     selected = defaultdict(list)
     for name in sorted(names):
@@ -63,8 +65,7 @@ def export_icons(root, output, mark_categories, boss_type_id, game=None, version
         del env
     result = dict(source=source, assets=records, categories=categories,
                   rewardTypes=rewards, markTypes=mark_icons, rewardEvidence=evidence,
-                  boss=dict(typeId=boss_type_id, iconName=boss['iconName'], icon=boss_icon,
-                            usage='Game character portrait; not a verified dungeon map boss marker'),
+                  bosses=bosses,
                   note='Pot and cache configs share the generic chest icon. Original textures are not recolored.')
     (output/'marker-icons.json').write_text(json.dumps(result, ensure_ascii=False, indent=2), encoding='utf8')
     return result

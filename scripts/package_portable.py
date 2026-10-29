@@ -56,7 +56,7 @@ report = dict(version=VERSION, executable=str(files[0].relative_to(ROOT)),
               archive=None,
               requiresWebView2=True,
               embeddedMaps=json.loads((ROOT/'app/asset-manifest.json').read_text(encoding='utf8'))['maps'],
-              difficultyIds=[5,6], monsterTypeIds=[11001200090])
+              difficultyIds=[5,6], monsterTypeIds=[11001200090,11080000101])
 if args.zip:
     archive = DIST/f'{NAME}.zip'
     with zipfile.ZipFile(archive, 'w', compression=zipfile.ZIP_DEFLATED, compresslevel=9) as z:

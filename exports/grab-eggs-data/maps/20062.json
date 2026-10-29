@@ -2163,6 +2163,7 @@
     "egg": 11,
     "stellarys_boss": 8,
     "pot": 18,
+    "rock_boss": 1,
     "challenge": 1,
     "exit": 1,
     "key_orange": 2
@@ -16567,6 +16568,56 @@
           "1": 15101303
         }
       }
+    },
+    {
+      "id": "20062:15:entity:91567614",
+      "category": "rock_boss",
+      "name": "頭目級岩球郎",
+      "roomId": 15,
+      "sourceId": 91567614,
+      "instanceId": 9156761415,
+      "sourceTable": "entity",
+      "sandboxId": 91567610,
+      "sandboxInstanceId": 9156761015,
+      "sandboxConfigType": 0,
+      "sandboxLevel": 0,
+      "graphId": 91568263,
+      "difficultyCandidates": [
+        5,
+        6
+      ],
+      "groupConfig": null,
+      "local": [
+        0.46,
+        0.5,
+        1.39
+      ],
+      "world": [
+        343.46,
+        0.5,
+        -147.61
+      ],
+      "pixel": [
+        1531.5515,
+        1109.733
+      ],
+      "provenance": "scene_reference",
+      "templateId": null,
+      "status": "candidate",
+      "spawnConfirmed": false,
+      "typeId": 11080000101,
+      "iconKey": "UI_PetHead_10454.png",
+      "englishName": "Alpha Bouldus",
+      "monsterType": 2,
+      "isBoss": true,
+      "spawnerId": 91567615,
+      "spawnType": 0,
+      "spawnGroupCandidates": [
+        {
+          "id": 1,
+          "weight": 1
+        }
+      ]
     },
     {
       "id": "20062:20:mark:91318111",

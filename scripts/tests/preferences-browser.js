@@ -28,7 +28,7 @@
     map: '20036', difficulty: '5', iconSize: 175, supplements: false,
     categories: [], topmost: true, compact: false, sidebarCollapsed: false,
   };
-  assert(document.querySelectorAll('[data-category]').length === 8, 'Expected 8 filter options');
+  assert(document.querySelectorAll('[data-category]').length === 9, 'Expected 9 filter options');
   assert(!document.querySelector('[data-category="pot"], [data-category="cache"]'), 'Removed options still present');
   assert(DUNGEON_DATA.maps.length === 12, 'Incorrect dungeon map pool');
   assert(element('supplements') && DUNGEON_DATA.maps.some(m => m.pins.some(p => p.provenance === 'template_supplement')), 'Supplement controls or data missing');
@@ -42,7 +42,7 @@
       categories: ['egg', 'chest_gold', 'chest_glass', 'stellarys_boss', 'exit'], topmost: false, compact: false, sidebarCollapsed: false,
     });
     element('all').click();
-    assert(selected().length === 8, 'All must enable only supported categories');
+    assert(selected().length === 9, 'All must enable only supported categories');
     element('none').click();
     assert(element('filter-total').textContent === '0 個候選', 'Hidden filters still render markers');
     set('map', '20036'); set('difficulty', '5'); set('icon-size', '175');
@@ -60,5 +60,5 @@
     throw new Error('Unknown test phase');
   }
   assert(same(JSON.parse(localStorage.getItem('aniimo-dungeon-preferences-v1')), state()), 'Saved state differs from controls');
-  return { phase, passed: true, state: state(), categories: 8, maps: 7 };
+  return { phase, passed: true, state: state(), categories: 9, maps: 12 };
 })()

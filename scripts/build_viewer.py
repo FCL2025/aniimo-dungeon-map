@@ -12,7 +12,8 @@ ROOT = Path(__file__).resolve().parent.parent
 SOURCE = ROOT / 'exports/grab-eggs-data'
 CATEGORIES = {
     'egg': '蛋巢', 'chest_gold': '金色寶箱', 'chest_glass': '琉璃寶箱',
-    'stellarys_boss': '首領級幽黯星法師', 'entrance': '入口', 'exit': '出口',
+    'stellarys_boss': '首領級幽黯星法師', 'rock_boss': '頭目級岩球郎',
+    'entrance': '入口', 'exit': '出口',
     'key_orange': '橙色鑰匙標記', 'challenge': '限時挑戰',
 }
 # 2011 is the single-object chest in 20037's key rooms and the G6 reward.

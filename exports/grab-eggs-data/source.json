@@ -58,7 +58,8 @@
     "floorDetection": "not_implemented",
     "markerHeightPolicy": "project_all_heights_to_xz",
     "monsterTypeIds": [
-      11001200090
+      11001200090,
+      11080000101
     ]
   }
 }

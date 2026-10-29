@@ -1,12 +1,12 @@
 # Android 浮動地圖
 
-獨立 Android App，最低 Android 8.0（API 26）。以原生 Java／Canvas 顯示 12 張地宮與 1,321 個候選點；與桌面 Tauri 版共用已解析的地圖資料，手機介面、設定與服務分開。沒有 WebView、網路權限、畫面擷取、人物辨識或追蹤工作執行緒。
+獨立 Android App，最低 Android 8.0（API 26）。以原生 Java／Canvas 顯示 12 張地宮與 1,326 個候選點；與桌面 Tauri 版共用已解析的地圖資料，手機介面、設定與服務分開。沒有 WebView、網路權限、畫面擷取、人物辨識或追蹤工作執行緒。
 
 ## 安裝與操作
 
-**[下載 Android v0.1.1 測試版 APK](https://github.com/FCL2025/aniimo-dungeon-map/releases/download/android-v0.1.1/AniimoDungeonMap-0.1.1-android-test.apk)** · [GitHub Release／校驗碼](https://github.com/FCL2025/aniimo-dungeon-map/releases/tag/android-v0.1.1)
+**[下載 Android v0.1.2 測試版 APK](https://github.com/FCL2025/aniimo-dungeon-map/releases/download/android-v0.1.2/AniimoDungeonMap-0.1.2-android-test.apk)** · [GitHub Release／校驗碼](https://github.com/FCL2025/aniimo-dungeon-map/releases/tag/android-v0.1.2)
 
-本地建置輸出：`dist/android/AniimoDungeonMap-0.1.1-android-test.apk`。這是本機 debug 金鑰簽署的測試 APK，未上架商店；安裝步驟見 [INSTALL.txt](INSTALL.txt)。
+本地建置輸出：`dist/android/AniimoDungeonMap-0.1.2-android-test.apk`。這是本機 debug 金鑰簽署的測試 APK，未上架商店；安裝步驟見 [INSTALL.txt](INSTALL.txt)。
 
 - 按「開啟浮動地圖」，授予顯示在其他應用程式上層的權限，再切回遊戲。
 - 拖曳蛋形按鈕，點一下向畫面內側展開；左側向右、右側向左，收合回原位置。
