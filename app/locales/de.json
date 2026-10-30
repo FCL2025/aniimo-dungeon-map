@@ -217,5 +217,17 @@
   "update.download": "Neue EXE herunterladen",
   "update.later": "Später",
   "update.failed": "Update fehlgeschlagen: {error}",
-  "update.portableHint": "Schließe die App, bevor du die alte EXE durch die neue ersetzt."
+  "update.portableHint": "Schließe die App, bevor du die alte EXE durch die neue ersetzt.",
+  "mode.pve": "PVE",
+  "mode.pvp": "PVP",
+  "pvp.mapName": "Eierkampf · Insel",
+  "category.cocoon": "Quellkokon",
+  "category.pvp_chest": "Seltene Truhe (Gold)",
+  "category.pvp_purple_chest": "Vorzügliche Relikttruhe (Violett)",
+  "category.team_pink": "Rosa Sammelpunkt",
+  "category.team_yellow": "Gelber Sammelpunkt",
+  "category.team_blue": "Türkiser Sammelpunkt",
+  "pvp.markerHint": "Markierungen sind mögliche Positionen aus den Spieldaten. Sie können je nach Spiel variieren.",
+  "mode.select": "Spielmodus",
+  "pvp.imageOnly": "Für diesen Dungeon ist derzeit nur die Karte verfügbar; Markerkoordinaten sind noch nicht geprüft."
 }

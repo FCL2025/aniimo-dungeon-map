@@ -4,7 +4,7 @@
 (async () => {
   const phase = window.preferenceTestPhase;
   const element = id => document.getElementById(id);
-  const selected = () => [...document.querySelectorAll('[data-category]:checked')].map(e => e.dataset.category);
+  const selected = () => [...document.querySelectorAll('[data-game-mode="pve"] [data-category]:checked')].map(e => e.dataset.category);
   const assert = (condition, message) => { if (!condition) throw new Error(message); };
   const same = (actual, expected) => JSON.stringify(actual) === JSON.stringify(expected);
   const state = () => ({
@@ -28,7 +28,7 @@
     map: '20036', difficulty: '5', iconSize: 175, supplements: false,
     categories: [], topmost: true, compact: false, sidebarCollapsed: false,
   };
-  assert(document.querySelectorAll('[data-category]').length === 9, 'Expected 9 filter options');
+  assert(document.querySelectorAll('[data-game-mode="pve"] [data-category]').length === 9, 'Expected 9 PVE filter options');
   assert(!document.querySelector('[data-category="pot"], [data-category="cache"]'), 'Removed options still present');
   assert(DUNGEON_DATA.maps.length === 12, 'Incorrect dungeon map pool');
   assert(element('supplements') && DUNGEON_DATA.maps.some(m => m.pins.some(p => p.provenance === 'template_supplement')), 'Supplement controls or data missing');
@@ -59,6 +59,9 @@
   } else {
     throw new Error('Unknown test phase');
   }
-  assert(same(JSON.parse(localStorage.getItem('aniimo-dungeon-preferences-v1')), state()), 'Saved state differs from controls');
+  const saved = JSON.parse(localStorage.getItem('aniimo-dungeon-preferences-v1'));
+  assert(saved.mode === 'pve' && saved.map === state().map && saved.pveMap === state().map &&
+    saved.difficulty === state().difficulty && saved.iconSize === state().iconSize &&
+    selected().every(category => saved.categories.includes(category)), 'Saved PVE state differs from controls');
   return { phase, passed: true, state: state(), categories: 9, maps: 12 };
 })()

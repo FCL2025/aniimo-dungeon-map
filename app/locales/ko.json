@@ -217,5 +217,17 @@
   "update.download": "새 EXE 다운로드",
   "update.later": "나중에",
   "update.failed": "업데이트 실패: {error}",
-  "update.portableHint": "다운로드 후 앱을 종료하고 이전 EXE를 새 파일로 교체하세요."
+  "update.portableHint": "다운로드 후 앱을 종료하고 이전 EXE를 새 파일로 교체하세요.",
+  "mode.pve": "PVE",
+  "mode.pvp": "PVP",
+  "pvp.mapName": "알 쟁탈전 · 섬",
+  "category.cocoon": "근원의 고치",
+  "category.pvp_chest": "희귀 보물상자 (금)",
+  "category.pvp_purple_chest": "정교한 유적상자 (보라)",
+  "category.team_pink": "분홍 집결지",
+  "category.team_yellow": "노랑 집결지",
+  "category.team_blue": "청록 집결지",
+  "pvp.markerHint": "표시는 게임 데이터의 후보 지점입니다. 실제 출현은 경기마다 다를 수 있습니다.",
+  "mode.select": "게임 모드",
+  "pvp.imageOnly": "이 던전은 현재 기본 지도만 제공합니다. 표시 위치는 아직 확인되지 않았습니다."
 }

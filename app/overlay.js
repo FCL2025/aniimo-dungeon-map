@@ -54,8 +54,9 @@
   el('overlay-drag').onmousedown = e => { if (e.button === 0) { e.preventDefault(); core.invoke('drag_window').catch(error => notice(String(error))); } };
   window.overlayReady = Promise.all([sizeListener, event.listen('map-view-state', ({ payload: state }) => {
     I18n.setLocale(state.locale, { persist: false });
-    const nextKey = JSON.stringify([state.map, state.difficulty, state.iconSize, state.supplements, state.bestRoute, state.routeStart, state.routeNumber, state.categories]);
+    const nextKey = JSON.stringify([state.mode, state.map, state.difficulty, state.iconSize, state.supplements, state.bestRoute, state.routeStart, state.routeNumber, state.categories]);
     if (nextKey !== viewKey) {
+      if (window.getGameMode?.() !== state.mode) window.setGameMode(state.mode === 'pvp' ? 'pvp' : 'pve');
       const mapChanged = el('map').value !== String(state.map);
       for (const id of ['map', 'difficulty']) if ([...el(id).options].some(o => o.value === String(state[id]))) el(id).value = String(state[id]);
       el('icon-size').value = String(Number.isFinite(state.iconSize) ? state.iconSize : 150);

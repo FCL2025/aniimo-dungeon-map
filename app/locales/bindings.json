@@ -1,4 +1,5 @@
 [
+  [".game-mode-tabs", "mode.select", "aria-label"],
   ["label[for=map]", "map.select"],
   ["#map, #difficulty", "select.hint", "title"],
   ["label[for=difficulty]", "difficulty"],

@@ -1,0 +1,47 @@
+// Evaluate in the staged main page or offline viewer. No game capture required.
+(async () => {
+  const el = id => document.getElementById(id);
+  const assert = (ok, message) => { if (!ok) throw Error(message); };
+  const wait = ms => new Promise(resolve => setTimeout(resolve, ms));
+  if (window.desktopReady) await window.desktopReady;
+  el('manual-map-dialog')?.open && el('manual-map-dialog').close();
+  window.setGameMode('pve');
+  el('map').value = '20040'; el('map').dispatchEvent(new Event('change', { bubbles: true }));
+  window.rememberPvpMap('41003');
+  el('mode-pvp').click();
+  assert(el('mode-pvp').getAttribute('aria-selected') === 'true', 'PVP tab did not activate');
+  assert(el('map').value === '41003' && el('map').options.length === 6, 'Wrong PVP region list');
+  assert(el('map').options[0].textContent === '古代港口', 'Wrong first region name');
+  assert(document.querySelectorAll('[data-game-mode="pvp"] [data-category]').length === 6, 'Wrong PVP filters');
+  assert(document.querySelector('[data-game-mode="pvp"] [data-category="pvp_chest"]').parentElement.textContent.includes('珍稀寶箱(金)'), 'Gold chest color label missing');
+  assert(document.querySelector('[data-game-mode="pvp"] [data-category="pvp_purple_chest"]').parentElement.textContent.includes('精緻遺跡寶箱 (紫)'), 'Purple chest color label missing');
+  assert(getComputedStyle(document.querySelector('.sidebar-guides')).display === 'none', 'PVE guides visible in PVP');
+  if (el('help-button')) assert(getComputedStyle(el('help-button')).display === 'none', 'Help visible in PVP');
+  el('all').click();
+  assert(visible.length === 29 && visible.filter(pin => pin.category === 'pvp_purple_chest').length === 15, 'Wrong harbor marker count');
+  assert(DUNGEON_DATA.pvpMaps.every(map => map.mapKind === 'region' && map.regionPolygon.length > 50), 'PVP region geometry missing');
+  assert(DUNGEON_DATA.pvpMaps.reduce((count, map) => count + map.pins.length, 0) === 59, 'Wrong total PVP markers');
+  el('none').click();
+  document.querySelector('[data-category="team_pink"]').click();
+  assert(visible.length === 1 && visible.every(pin => pin.category === 'team_pink'), 'PVP filter leaked other markers');
+  el('map').value = '41004'; el('map').dispatchEvent(new Event('change', { bubbles: true }));
+  assert(visible.length === 1 && current.names['zh-TW'] === '幽林廢墟', 'Second region selection failed');
+  await wait(300);
+  assert(image?.naturalWidth === 6144 && image?.naturalHeight === 4096, 'Wrong region map image: ' + JSON.stringify({ width: image?.naturalWidth, status: el('load-status').textContent, map: current.id }));
+  assert(getComputedStyle(document.querySelector('.route-setting')).display === 'none', 'PVE routes visible in PVP');
+  if (el('tracking-button')) assert(getComputedStyle(el('tracking-button')).display === 'none', 'PVE tracking visible in PVP');
+  el('mode-pve').click(); await wait(100);
+  assert(el('map').value === '20040' && el('map').options.length === 12, 'PVE map was not restored');
+  assert(getComputedStyle(el('difficulty').parentElement).display !== 'none', 'PVE difficulty hidden');
+  assert(getComputedStyle(document.querySelector('.sidebar-guides')).display !== 'none', 'PVE guides did not return');
+  if (el('help-button')) assert(getComputedStyle(el('help-button')).display !== 'none', 'PVE help did not return');
+  el('all').click();
+  assert(visible.length > 0 && visible.every(pin => pin.difficultyCandidates.includes(Number(el('difficulty').value))), 'PVE filters did not recover');
+  el('mode-pvp').click();
+  assert(el('map').value === '41004', 'PVP region selection was not retained');
+  el('map').value = '41003'; el('map').dispatchEvent(new Event('change', { bubbles: true }));
+  assert(visible.length === 1, 'PVP filter selection was not retained');
+  el('all').click();
+  if (window.desktopReady) assert(JSON.parse(localStorage.getItem('aniimo-dungeon-preferences-v1')).mode === 'pvp', 'PVP preference was not saved');
+  return { passed: true, pveMaps: 12, pvpMaps: 6, pvpMarkers: 59 };
+})()

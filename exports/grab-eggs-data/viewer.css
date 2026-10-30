@@ -1,4 +1,16 @@
 :root{color-scheme:dark;--bg:#172731;--panel:#203542;--line:#3b505b;--text:#e8edf0;--muted:#a5bac4;--accent:#79cabe;--gold:#dfb65b;font-family:"Segoe UI","Microsoft JhengHei",sans-serif;font-size:14px}
+.game-mode-tabs{display:grid;grid-template-columns:1fr 1fr;gap:4px;padding:4px;margin-bottom:16px;background:#152630;border:1px solid var(--line);border-radius:7px}
+.game-mode-tabs button{border:0;background:transparent;color:var(--muted);padding:8px 4px;font-size:12px;font-weight:700;letter-spacing:.1em}
+.game-mode-tabs button[aria-selected="true"]{background:#30505b;color:#e8fbf7;box-shadow:inset 0 0 0 1px #79cabe88}
+.game-mode-tabs #mode-pvp[aria-selected="true"]{background:#544540;color:#ffe2a7;box-shadow:inset 0 0 0 1px #dfb65b88}
+.mode-pvp .map-selectors{grid-template-columns:1fr}.mode-pvp .map-selectors>div:nth-child(2){display:none}
+#filters>[data-game-mode="pvp"],.mode-pvp #filters>[data-game-mode="pve"]{display:none}.mode-pvp #filters>[data-game-mode="pvp"]{display:flex}
+.pvp-note{display:none;color:var(--muted);line-height:1.5;font-size:12px;margin:10px 0 0}.mode-pvp .pvp-note{display:block}
+.pvp-image-only #pvp-map-note{display:block}#pvp-map-note{display:none;color:var(--muted);line-height:1.55;font-size:12px;margin:10px 0 0}
+.mode-pvp.pvp-image-only fieldset,.mode-pvp.pvp-image-only label[for="icon-size"],.mode-pvp.pvp-image-only #icon-size{display:none}
+.mode-pvp .route-setting,.mode-pvp .floor-legend,.mode-pvp .supplemental,.mode-pvp .supplemental+.small,.mode-pvp .sidebar-guides{display:none}
+.desktop-app.mode-pvp .notice{display:none}
+.marker-icon[data-category-icon="pvp_purple_chest"]{outline:1px solid #bc92ee;border-radius:50%}
 .route-setting{border-block:1px solid var(--line);padding:12px 0;margin:12px 0 16px}.route-setting .check{color:#b5eff7;font-weight:600}.route-setting label[for="route-start"],.route-setting label[for="route-number"]{margin:8px 0 5px}.route-setting select{padding:7px 8px;font-size:12px}.route-setting input{accent-color:#87e4f4}
 .map-selectors{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.7fr);gap:9px}.map-selectors>div{min-width:0}.map-selectors label{margin-top:0}.map-selectors select{min-width:0}
 #icon-size{width:100%;margin:4px 0 8px;accent-color:var(--accent);cursor:pointer}

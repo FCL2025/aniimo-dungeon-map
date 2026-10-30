@@ -217,5 +217,17 @@
   "update.download": "下載新版 EXE",
   "update.later": "稍後",
   "update.failed": "更新失敗：{error}",
-  "update.portableHint": "下載完成後請先關閉程式，再用新版 EXE 取代舊版。"
+  "update.portableHint": "下載完成後請先關閉程式，再用新版 EXE 取代舊版。",
+  "mode.pve": "PVE",
+  "mode.pvp": "PVP",
+  "pvp.mapName": "搶蛋大作戰 · 島嶼",
+  "category.cocoon": "脈源之繭",
+  "category.pvp_chest": "珍稀寶箱(金)",
+  "category.pvp_purple_chest": "精緻遺跡寶箱 (紫)",
+  "category.team_pink": "粉色集結點",
+  "category.team_yellow": "黃色集結點",
+  "category.team_blue": "青色集結點",
+  "pvp.markerHint": "標記為遊戲資源中的候選點；實際出現情況會隨對局改變。",
+  "mode.select": "遊戲模式",
+  "pvp.imageOnly": "這張地宮目前提供底圖；尚無可核對的點位座標。"
 }

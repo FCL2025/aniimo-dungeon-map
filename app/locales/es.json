@@ -217,5 +217,17 @@
   "update.download": "Descargar el nuevo EXE",
   "update.later": "Más tarde",
   "update.failed": "Error al actualizar: {error}",
-  "update.portableHint": "Cierra la aplicación antes de reemplazar el EXE anterior por el nuevo."
+  "update.portableHint": "Cierra la aplicación antes de reemplazar el EXE anterior por el nuevo.",
+  "mode.pve": "PVE",
+  "mode.pvp": "PVP",
+  "pvp.mapName": "Batalla de huevos · Isla",
+  "category.cocoon": "Capullo de origen",
+  "category.pvp_chest": "Cofre raro (Dorado)",
+  "category.pvp_purple_chest": "Cofre de reliquia exquisito (Morado)",
+  "category.team_pink": "Punto de reunión rosa",
+  "category.team_yellow": "Punto de reunión amarillo",
+  "category.team_blue": "Punto de reunión cian",
+  "pvp.markerHint": "Los marcadores indican posibles ubicaciones de los datos del juego. Su presencia varía por partida.",
+  "mode.select": "Modo de juego",
+  "pvp.imageOnly": "Este calabozo solo tiene el mapa base por ahora; aún no se han verificado las coordenadas de los marcadores."
 }

@@ -217,5 +217,17 @@
   "update.download": "新しい EXE をダウンロード",
   "update.later": "後で",
   "update.failed": "更新に失敗しました：{error}",
-  "update.portableHint": "ダウンロード後にアプリを終了し、古い EXE を新しいものに置き換えてください。"
+  "update.portableHint": "ダウンロード後にアプリを終了し、古い EXE を新しいものに置き換えてください。",
+  "mode.pve": "PVE",
+  "mode.pvp": "PVP",
+  "pvp.mapName": "エッグバトル · 島",
+  "category.cocoon": "源の繭",
+  "category.pvp_chest": "レア宝箱 (金)",
+  "category.pvp_purple_chest": "精巧遺跡宝箱 (紫)",
+  "category.team_pink": "ピンクの集合地点",
+  "category.team_yellow": "黄色の集合地点",
+  "category.team_blue": "青色の集合地点",
+  "pvp.markerHint": "マーカーはゲームデータ上の候補です。出現状況は試合によって異なります。",
+  "mode.select": "ゲームモード",
+  "pvp.imageOnly": "このダンジョンは現在、地図のみ表示します。マーカー座標は未確認です。"
 }

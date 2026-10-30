@@ -217,5 +217,17 @@
   "update.download": "Baixar novo EXE",
   "update.later": "Mais tarde",
   "update.failed": "Falha na atualização: {error}",
-  "update.portableHint": "Feche o aplicativo antes de substituir o EXE antigo pelo novo."
+  "update.portableHint": "Feche o aplicativo antes de substituir o EXE antigo pelo novo.",
+  "mode.pve": "PVE",
+  "mode.pvp": "PVP",
+  "pvp.mapName": "Batalha dos ovos · Ilha",
+  "category.cocoon": "Casulo da origem",
+  "category.pvp_chest": "Baú raro (Dourado)",
+  "category.pvp_purple_chest": "Baú de Relíquias Refinado (Roxo)",
+  "category.team_pink": "Ponto de encontro rosa",
+  "category.team_yellow": "Ponto de encontro amarelo",
+  "category.team_blue": "Ponto de encontro ciano",
+  "pvp.markerHint": "Os marcadores indicam locais possíveis dos dados do jogo. Sua presença varia por partida.",
+  "mode.select": "Modo de jogo",
+  "pvp.imageOnly": "Esta masmorra tem apenas o mapa base no momento; as coordenadas dos marcadores ainda não foram verificadas."
 }

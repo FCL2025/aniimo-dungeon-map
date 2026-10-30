@@ -2,7 +2,7 @@
 
 [繁體中文](README.md) | **English**
 
-A Windows map companion for Aniimo's Egg Scramble mode. Covers 12 dungeons on Nightmare and Chaos, with chest, egg-nest, and boss markers, manual map selection, player tracking, and a transparent map overlay. Map data comes from game resource version 3846247.
+A Windows map companion for Aniimo's egg modes. The sidebar separates PVE and PVP: PVE covers 12 Nightmare and Chaos dungeons with chest, egg-nest, and boss markers, manual map selection, and player tracking. PVP shows six Egg Battle region maps with Source Cocoons, rare chests, Exquisite Relic Chests, and three team rally point types. Both modes support the transparent map overlay. Map data comes from game resource version 3846247.
 
 **[Download Windows portable EXE](https://github.com/FCL2025/aniimo-dungeon-map/releases/latest/download/AniimoDungeonMap.exe)** · [Release notes and ZIP](https://github.com/FCL2025/aniimo-dungeon-map/releases/latest)
 

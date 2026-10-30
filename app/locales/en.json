@@ -217,5 +217,17 @@
   "update.download": "Download new EXE",
   "update.later": "Later",
   "update.failed": "Update failed: {error}",
-  "update.portableHint": "Close this app before replacing the old EXE with the download."
+  "update.portableHint": "Close this app before replacing the old EXE with the download.",
+  "mode.pve": "PVE",
+  "mode.pvp": "PVP",
+  "pvp.mapName": "Egg Battle · Island",
+  "category.cocoon": "Source Cocoon",
+  "category.pvp_chest": "Rare Chest (Gold)",
+  "category.pvp_purple_chest": "Exquisite Relic Chest (Purple)",
+  "category.team_pink": "Pink Rally Point",
+  "category.team_yellow": "Yellow Rally Point",
+  "category.team_blue": "Cyan Rally Point",
+  "pvp.markerHint": "Markers are candidates from game resources. Availability may vary by match.",
+  "mode.select": "Game mode",
+  "pvp.imageOnly": "This dungeon currently has a base map only; marker coordinates have not been verified."
 }

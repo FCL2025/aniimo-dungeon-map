@@ -2,7 +2,7 @@
 
 **繁體中文** | [English](README.en.md)
 
-伊莫「搶蛋大作戰」的 Windows 地圖工具，支援惡夢與混沌的 12 張地宮，提供寶箱／蛋巢／頭目標記、手動選圖、人物追蹤與透明覆蓋小地圖。地圖資料使用遊戲資源版本 3846247。
+伊莫搶蛋模式的 Windows 地圖工具。側欄可切換 PVE 與 PVP：PVE 支援惡夢與混沌的 12 張地宮，以及寶箱／蛋巢／頭目標記、手動選圖與人物追蹤；PVP 將「搶蛋大作戰」分為六張區域地圖，顯示脈源之繭、珍稀寶箱、精緻遺跡寶箱及三色小隊集結點。兩種模式都可使用透明覆蓋地圖。地圖資料使用遊戲資源版本 3846247。
 
 **[下載 Windows 免安裝版 EXE](https://github.com/FCL2025/aniimo-dungeon-map/releases/latest/download/AniimoDungeonMap.exe)** · [版本更新與 ZIP 下載](https://github.com/FCL2025/aniimo-dungeon-map/releases/latest)
 

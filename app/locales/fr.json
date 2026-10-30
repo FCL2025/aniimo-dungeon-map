@@ -217,5 +217,17 @@
   "update.download": "Télécharger le nouvel EXE",
   "update.later": "Plus tard",
   "update.failed": "Échec de la mise à jour : {error}",
-  "update.portableHint": "Fermez l’application avant de remplacer l’ancien EXE par le nouveau."
+  "update.portableHint": "Fermez l’application avant de remplacer l’ancien EXE par le nouveau.",
+  "mode.pve": "PVE",
+  "mode.pvp": "PVP",
+  "pvp.mapName": "Bataille des œufs · Île",
+  "category.cocoon": "Cocon originel",
+  "category.pvp_chest": "Coffre rare (Or)",
+  "category.pvp_purple_chest": "Coffre de relique exquis (Violet)",
+  "category.team_pink": "Point de ralliement rose",
+  "category.team_yellow": "Point de ralliement jaune",
+  "category.team_blue": "Point de ralliement cyan",
+  "pvp.markerHint": "Les marqueurs indiquent des positions possibles selon les données du jeu. Leur présence varie selon la partie.",
+  "mode.select": "Mode de jeu",
+  "pvp.imageOnly": "Seule la carte de ce donjon est disponible pour le moment ; les coordonnées des marqueurs ne sont pas vérifiées."
 }

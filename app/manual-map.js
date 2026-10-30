@@ -149,6 +149,7 @@
     window.manualMapReady = Promise.resolve(window.desktopReady).then(() => {
       let saved;
       try { saved = JSON.parse(localStorage.getItem('aniimo-dungeon-preferences-v1')); } catch { /* First run. */ }
+      if (saved?.mode === 'pvp') return;
       if (!maps.some(map => String(map.id) === String(saved?.map))) return open();
     });
   }

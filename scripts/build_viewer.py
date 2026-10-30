@@ -1,4 +1,5 @@
 """Build the viewer from the audited exports without reading the game again."""
+import hashlib
 import json
 from pathlib import Path
 import shutil
@@ -23,6 +24,10 @@ CHEST_CATEGORIES = {2004: 'chest_gold', 2007: 'chest_gold',
 # Dungeon rooms share a 0 m origin. Chest candidates below 3 m cluster at
 # ground/platform heights (0.4–2.5 m); the upper cluster begins at 3.46 m.
 UPPER_FLOOR_MIN_Y = 3.0
+PVP_CATEGORIES = {'cocoon': '脈源之繭', 'pvp_chest': '珍稀寶箱(金)',
+                  'pvp_purple_chest': '精緻遺跡寶箱 (紫)',
+                  'team_pink': '粉色集結點', 'team_yellow': '黃色集結點',
+                  'team_blue': '青色集結點'}
 
 
 def display_pins(pins):
@@ -55,6 +60,36 @@ def display_icons(catalog):
     return dict(categories=categories, assets={k: {'image': v['image']} for k, v in catalog['assets'].items()})
 
 
+def stage_pvp(output):
+    source = ROOT / 'exports/pvp-map'
+    record = json.loads((source / 'map.json').read_text(encoding='utf8'))
+    assert record['id'] == 3004 and record['mode'] == 'pvp'
+    assert set(pin['category'] for pin in record['pins']) == set(PVP_CATEGORIES)
+    assert hashlib.sha256((source / record['image']).read_bytes()).hexdigest() == record['source']['imageSha256']
+    (output / 'maps').mkdir(exist_ok=True)
+    (output / 'icons').mkdir(exist_ok=True)
+    shutil.copyfile(source / record['image'], output / 'maps/pvp-3004.png')
+    assets = {}
+    for name, asset in record['icons'].items():
+        icon = source / asset['image']
+        assert hashlib.sha256(icon.read_bytes()).hexdigest() == asset['sha256']
+        shutil.copyfile(icon, output / 'icons' / name)
+        assets[name] = {'image': 'icons/' + name}
+    categories = {pin['category']: pin['iconKey'] for pin in record['pins']}
+    pvp_maps = []
+    for area in record['areas']:
+        pins = [pin for pin in record['pins'] if pin['areaId'] == area['id']]
+        pvp_maps.append(dict(id=area['id'], mode='pvp', mapKind='region',
+                             sceneId=record['id'], names=area['names'],
+                             size=record['size'], bounds=area['bounds'],
+                             regionPolygon=area['polygon'], pins=pins,
+                             image='maps/pvp-3004.png'))
+    assert len(pvp_maps) == 6
+    assert sum(len(item['pins']) for item in pvp_maps) == len(record['pins'])
+    assert len({item['id'] for item in pvp_maps}) == len(pvp_maps)
+    return pvp_maps, dict(categories=categories, assets=assets)
+
+
 def build(source=SOURCE):
     def read(name):
         return json.loads((source / name).read_text(encoding='utf8'))
@@ -68,7 +103,11 @@ def build(source=SOURCE):
         record['routes'] = routes[str(mid)]['variants']
         maps.append(record)
     difficulty = read('difficulty.json')
-    data = dict(categories=CATEGORIES, icons=display_icons(read('marker-icons.json')),
+    pvp_maps, pvp_icons = stage_pvp(source)
+    icons = display_icons(read('marker-icons.json'))
+    icons['assets'].update(pvp_icons['assets'])
+    data = dict(categories=CATEGORIES, pvpCategories=PVP_CATEGORIES, pvpMaps=pvp_maps,
+                pvpIcons=pvp_icons, icons=icons,
                 difficulties=difficulty['difficulties'], rewardRules=difficulty['rewardRules'],
                 maps=maps, source=read('source.json'), validation=read('validation.json'), scope=policy)
     (source / 'data.js').write_text('window.DUNGEON_DATA=' + json.dumps(data, ensure_ascii=False,

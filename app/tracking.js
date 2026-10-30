@@ -17,7 +17,7 @@
     bind(el('tracking-button'), msg('switch', { label:msg('tracking'), state:msg(enabled ? 'on' : 'off') }));
     bind(el('tracking-button'), msg(enabled ? 'tracking.disable' : 'tracking.enable'), 'title');
     el('tracking-button').setAttribute('aria-checked', String(enabled));
-    el('tracking-button').disabled = busy;
+    el('tracking-button').disabled = busy || window.getGameMode?.() === 'pvp';
     window.dispatchEvent(new Event('tracking-ui'));
   }
   function clearPosition() {
@@ -28,7 +28,7 @@
     worker?.terminate(); worker = null; ready = false; workerBusy = false; pending = null; activeMap = null;
   }
   function initializeWorker() {
-    if (!enabled) return;
+    if (!enabled || window.getGameMode?.() === 'pvp') return;
     const map = DUNGEON_DATA.maps.find(item => item.id === Number(el('map').value));
     if (!map || worker && activeMap === map.id) return;
     disposeWorker(); clearPosition(); activeMap = map.id;
@@ -96,16 +96,17 @@
     try { await syncCapture(); } catch {}
   }
   async function toggle() {
-    if (busy) return;
+    if (busy || window.getGameMode?.() === 'pvp' && !enabled) return;
     busy = true; enabled = !enabled; render();
     try {
       if (!invoke) throw msg('error.desktop');
       if (enabled) initializeWorker(); else { disposeWorker(); clearPosition(); }
       await syncCapture();
     } catch (error) { await fail(error); }
-    finally { busy = false; render(); }
+    finally { busy = false; render(); if (enabled && window.getGameMode?.() === 'pvp') queueMicrotask(toggle); }
   }
   el('tracking-button').onclick = toggle;
+  window.addEventListener('game-mode-change', () => { if (enabled && window.getGameMode?.() === 'pvp') void toggle(); else render(); });
   window.enterManualMode = async id => {
     if (id !== undefined && !DUNGEON_DATA.maps.some(map => map.id === Number(id))) throw msg('manual.retry');
     if (id !== undefined) {

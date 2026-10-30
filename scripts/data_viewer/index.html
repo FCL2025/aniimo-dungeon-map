@@ -11,7 +11,11 @@
 <link rel="stylesheet" href="shop-advice.css">
 <body>
 <aside>
+  <div class="game-mode-tabs" role="tablist" aria-label="遊戲模式"><button id="mode-pve" type="button" role="tab" aria-selected="true" aria-controls="map-panel" data-i18n="mode.pve">PVE</button><button id="mode-pvp" type="button" role="tab" aria-selected="false" aria-controls="map-panel" tabindex="-1" data-i18n="mode.pvp">PVP</button></div>
+  <div id="map-panel" role="tabpanel" aria-labelledby="mode-pve">
   <div class="map-selectors"><div><label for="map">選擇地圖</label><select id="map" title="滑鼠停在選單上，滾輪可切換地圖"></select></div><div><label for="difficulty">難度</label><select id="difficulty" title="滑鼠停在選單上，滾輪可切換難度"><option value="5">惡夢</option><option value="6">混沌</option></select></div></div>
+  </div>
+  <p id="pvp-map-note" data-i18n="pvp.imageOnly"></p>
   <div class="route-setting">
     <label class="check"><input type="checkbox" id="best-route"><span>顯示最佳路徑</span></label>
     <label for="route-number">選擇路線</label>
@@ -19,13 +23,13 @@
     <label for="route-start">路線出發點</label>
     <select id="route-start"><option value="auto">自動選擇較順路的起點</option><option value="entrance">從入口出發</option><option value="exit">從出口出發</option></select>
   </div>
-  <fieldset><legend>顯示類型 <span id="filter-total"></span></legend><div id="filters"></div><p class="floor-legend"><strong>2F</strong> <span data-i18n="map.secondFloorLegend">表示二樓寶箱</span></p><div class="actions"><button id="all">全部顯示</button><button id="none">全部隱藏</button></div></fieldset>
+  <fieldset><legend>顯示類型 <span id="filter-total"></span></legend><div id="filters"></div><p class="floor-legend"><strong>2F</strong> <span data-i18n="map.secondFloorLegend">表示二樓寶箱</span></p><p class="pvp-note" data-i18n="pvp.markerHint"></p><div class="actions"><button id="all">全部顯示</button><button id="none">全部隱藏</button></div></fieldset>
   <label for="icon-size">圖示大小 <output id="icon-size-value" for="icon-size">150%</output></label>
   <input type="range" id="icon-size" min="75" max="250" step="25" value="150" aria-valuetext="150%">
   <label class="check supplemental"><input type="checkbox" id="supplements" checked><span>顯示房間模組補充點</span></label>
   <p class="small">虛線外圈表示依同房間模板補出的候選位置，尚待遊戲畫面核對；星法師肖像為首領候選點。</p>
   <div class="sidebar-guides"><button id="loot-ranking-button" type="button" data-i18n="loot.button" aria-haspopup="dialog" aria-controls="loot-ranking-dialog">道具價值排名</button><button id="ticket-advice-button" type="button" data-i18n="shop.ticketButton" aria-haspopup="dialog" aria-controls="ticket-advice-dialog">混沌船票每日購買建議</button><button id="egg-advice-button" type="button" data-i18n="shop.eggButton" aria-haspopup="dialog" aria-controls="egg-advice-dialog">謎之蛋盒購買</button></div>
-  <footer>資源版本 3595896 · 本機資料</footer>
+  <footer>PVE 資源 3595896 · PVP 資源 3846247</footer>
 </aside>
 <main>
   <div class="mapbar"><div><span class="eyebrow" id="map-id"></span><h2 id="map-title"></h2></div><div class="tools"><button id="zoom-out" aria-label="縮小地圖">−</button><button id="fit">符合視窗</button><button id="zoom-in" aria-label="放大地圖">＋</button></div></div>

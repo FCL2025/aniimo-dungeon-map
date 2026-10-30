@@ -217,5 +217,17 @@
   "update.download": "下载新版 EXE",
   "update.later": "稍后",
   "update.failed": "更新失败：{error}",
-  "update.portableHint": "下载完成后请先关闭程序，再用新版 EXE 替换旧版。"
+  "update.portableHint": "下载完成后请先关闭程序，再用新版 EXE 替换旧版。",
+  "mode.pve": "PVE",
+  "mode.pvp": "PVP",
+  "pvp.mapName": "抢蛋大作战 · 岛屿",
+  "category.cocoon": "脉源之茧",
+  "category.pvp_chest": "珍稀宝箱 (金)",
+  "category.pvp_purple_chest": "精致遗迹箱 (紫)",
+  "category.team_pink": "粉色集结点",
+  "category.team_yellow": "黄色集结点",
+  "category.team_blue": "青色集结点",
+  "pvp.markerHint": "标记为游戏资源中的候选点；实际出现情况会随对局改变。",
+  "mode.select": "游戏模式",
+  "pvp.imageOnly": "这张地宫目前提供底图；尚无可核对的点位坐标。"
 }

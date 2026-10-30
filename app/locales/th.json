@@ -217,5 +217,17 @@
   "update.download": "ดาวน์โหลด EXE ใหม่",
   "update.later": "ภายหลัง",
   "update.failed": "อัปเดตไม่สำเร็จ: {error}",
-  "update.portableHint": "ปิดแอปก่อนแทนที่ EXE เก่าด้วยไฟล์ใหม่"
+  "update.portableHint": "ปิดแอปก่อนแทนที่ EXE เก่าด้วยไฟล์ใหม่",
+  "mode.pve": "PVE",
+  "mode.pvp": "PVP",
+  "pvp.mapName": "ศึกชิงไข่ · เกาะ",
+  "category.cocoon": "รังไหมต้นกำเนิด",
+  "category.pvp_chest": "หีบสมบัติหายาก (ทอง)",
+  "category.pvp_purple_chest": "กล่องเรลิควิจิตร (ม่วง)",
+  "category.team_pink": "จุดรวมพลสีชมพู",
+  "category.team_yellow": "จุดรวมพลสีเหลือง",
+  "category.team_blue": "จุดรวมพลสีฟ้า",
+  "pvp.markerHint": "เครื่องหมายแสดงตำแหน่งที่เป็นไปได้จากข้อมูลเกม การปรากฏอาจต่างกันในแต่ละรอบ",
+  "mode.select": "โหมดเกม",
+  "pvp.imageOnly": "ดันเจียนนี้มีเพียงแผนที่พื้นฐานในตอนนี้ ยังไม่ได้ตรวจสอบพิกัดเครื่องหมาย"
 }

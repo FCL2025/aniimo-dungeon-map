@@ -138,13 +138,18 @@ async function pageAt(port, overlay = false) {
       await wait(300);
       fs.writeFileSync(path.join(root,'dist','chest-floor-preview.png'), await main.screenshot());
     }
+    const pvp = await main.evaluate(fs.readFileSync(path.join(__dirname,'pvp-mode-browser.js'),'utf8'));
+    assert(pvp.passed && pvp.pvpMaps === 6 && pvp.pvpMarkers === 59, `Packaged PVP regions: ${JSON.stringify(pvp)}`);
+    fs.writeFileSync(path.join(root,'dist','pvp-region-preview.png'), await main.screenshot());
     await main.evaluate('document.getElementById("compact").click()');
     overlay = await connect((await pageAt(port, true)).webSocketDebuggerUrl);
     await overlay.until('!!window.overlayReady');
+    await overlay.until('window.getGameMode?.()==="pvp" && document.getElementById("map").value==="41003"');
     const overlayUi = await overlay.evaluate(`({recognition:!!document.getElementById('recognition-button'),tracking:!!document.getElementById('tracking-button'),manual:!!document.getElementById('manual-map-button')})`);
     assert(!overlayUi.recognition && overlayUi.tracking && overlayUi.manual, 'Overlay controls');
+    assert(await overlay.evaluate('visible.length') === 29, 'PVP region markers did not reach overlay');
     assert(!main.errors.length && !overlay.errors.length, `Browser errors: ${JSON.stringify([main.errors, overlay.errors])}`);
-    console.log(JSON.stringify({version, updateUi, motion, tracking, ui, shop:{ticketRows:shop.ticketRows,eggRows:shop.eggRows}, floorUi, overlay:overlayUi}, null, 2));
+    console.log(JSON.stringify({version, updateUi, motion, tracking, ui, shop:{ticketRows:shop.ticketRows,eggRows:shop.eggRows}, floorUi, pvp, overlay:overlayUi}, null, 2));
   } finally {
     overlay?.socket.close(); main?.socket.close();
     const exited = new Promise(resolve => child.once('exit', resolve)); child.kill(); await Promise.race([exited, wait(5000)]);

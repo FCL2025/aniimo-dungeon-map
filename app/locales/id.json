@@ -217,5 +217,17 @@
   "update.download": "Unduh EXE baru",
   "update.later": "Nanti",
   "update.failed": "Pembaruan gagal: {error}",
-  "update.portableHint": "Tutup aplikasi sebelum mengganti EXE lama dengan yang baru."
+  "update.portableHint": "Tutup aplikasi sebelum mengganti EXE lama dengan yang baru.",
+  "mode.pve": "PVE",
+  "mode.pvp": "PVP",
+  "pvp.mapName": "Pertempuran Telur · Pulau",
+  "category.cocoon": "Kepompong Sumber",
+  "category.pvp_chest": "Peti Langka (Emas)",
+  "category.pvp_purple_chest": "Peti Relik Luar Biasa (Ungu)",
+  "category.team_pink": "Titik Kumpul Merah Muda",
+  "category.team_yellow": "Titik Kumpul Kuning",
+  "category.team_blue": "Titik Kumpul Biru Muda",
+  "pvp.markerHint": "Penanda menunjukkan lokasi yang mungkin dari data game. Kemunculannya dapat berbeda setiap pertandingan.",
+  "mode.select": "Mode permainan",
+  "pvp.imageOnly": "Ruang bawah tanah ini saat ini hanya memiliki peta dasar; koordinat penanda belum diverifikasi."
 }

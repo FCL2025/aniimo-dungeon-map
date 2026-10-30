@@ -4,7 +4,7 @@ import json
 from pathlib import Path
 import shutil
 from app_icons import stage_app_icons
-from build_viewer import CATEGORIES, active_map_ids, display_pins, display_icons
+from build_viewer import CATEGORIES, PVP_CATEGORIES, active_map_ids, display_pins, display_icons, stage_pvp
 from analyze_portal_geometry import portal_geometry
 from build_routes import build as build_routes
 from build_i18n import stage_i18n
@@ -15,6 +15,7 @@ ROOT = Path(__file__).resolve().parent.parent
 OUTPUT = ROOT/'app/frontend'
 VERSION = json.loads((ROOT/'app/src-tauri/tauri.conf.json').read_text(encoding='utf8'))['version']
 RESOURCE_VERSION = json.loads((ROOT/'exports/grab-eggs-data/source.json').read_text(encoding='utf8'))['resourceVersion']
+PVP_RESOURCE_VERSION = json.loads((ROOT/'exports/pvp-map/map.json').read_text(encoding='utf8'))['source']['resourceVersion']
 assert OUTPUT.resolve() == (ROOT/'app/frontend').resolve()
 if OUTPUT.exists():
     shutil.rmtree(OUTPUT)
@@ -53,7 +54,11 @@ for asset in icon_catalog['assets'].values():
     assert hashlib.sha256(icon.read_bytes()).hexdigest() == asset['sha256']
     shutil.copyfile(icon, OUTPUT/asset['image'])
 assert all(p['iconKey'] in icon_catalog['assets'] for m in maps for p in m['pins'])
-data = dict(categories=CATEGORIES, icons=display_icons(icon_catalog), difficulties=difficulty['difficulties'], rewardRules=difficulty['rewardRules'],
+pvp_maps, pvp_icons = stage_pvp(OUTPUT)
+icons = display_icons(icon_catalog)
+icons['assets'].update(pvp_icons['assets'])
+data = dict(categories=CATEGORIES, icons=icons, difficulties=difficulty['difficulties'], rewardRules=difficulty['rewardRules'],
+            pvpCategories=PVP_CATEGORIES, pvpIcons=pvp_icons, pvpMaps=pvp_maps,
             maps=maps, validation={'missingReferences': validation['missingReferences']}, scope=policy)
 (OUTPUT/'data.js').write_text('window.DUNGEON_DATA='+json.dumps(data, ensure_ascii=False, separators=(',', ':')).replace('</', '<\\/')+';', encoding='utf8')
 for name in ('viewer.js', 'viewer.css', 'i18n.js', 'i18n.css', 'loot-ranking.js', 'loot-ranking.css', 'shop-advice.js', 'shop-advice.css'):
@@ -66,7 +71,8 @@ html = html.replace('<title>搶蛋地圖 · 點位解析</title>', '<title>伊�
 html = html.replace('<body>', '<body class="desktop-app">')
 html = html.replace('<link rel="stylesheet" href="viewer.css">', '<link rel="stylesheet" href="viewer.css"><link rel="stylesheet" href="desktop.css"><link rel="stylesheet" href="update.css"><link rel="stylesheet" href="recognition.css"><link rel="stylesheet" href="manual-map.css">')
 html = html.replace('<aside>', '<aside id="sidebar" aria-label="地圖與篩選設定">')
-html = html.replace('資源版本 3595896 · 本機資料', f'版本 {VERSION} · 資源 {RESOURCE_VERSION}')
+html = html.replace('PVE 資源 3595896 · PVP 資源 3846247',
+                    f'版本 {VERSION} · PVE {RESOURCE_VERSION} · PVP {PVP_RESOURCE_VERSION}')
 html = html.replace('<footer>', '<button id="help-button" type="button">說明</button><footer>', 1)
 html = html.replace('<div><span class="eyebrow" id="map-id"></span><h2 id="map-title"></h2></div>', '''<div class="mapbar-start"><button id="sidebar-toggle" aria-expanded="true" aria-controls="sidebar" aria-label="收合側欄" title="收合側欄"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 4v16"/><path class="sidebar-arrow" d="m16 9-3 3 3 3"/></svg></button><div class="map-heading"><span class="eyebrow" id="map-id"></span><div class="session-heading"><h2 id="map-title"></h2><span id="live-status" role="status"></span></div></div></div>''')
 html = html.replace('<div class="tools">', '<div class="tools"><button id="manual-map-button" type="button" aria-haspopup="dialog" aria-controls="manual-map-dialog"></button><button id="tracking-button" class="live-switch" role="switch" aria-checked="false">追蹤：關</button><button id="topmost" aria-pressed="true">置頂：開</button><button id="compact" aria-pressed="false">地圖模式</button>')
@@ -106,6 +112,6 @@ stage_loot_ranking(OUTPUT)
 stage_shop_advice(OUTPUT)
 inventory = {str(p.relative_to(OUTPUT)).replace('\\','/'): hashlib.sha256(p.read_bytes()).hexdigest()
              for p in OUTPUT.rglob('*') if p.is_file()}
-(ROOT/'app/asset-manifest.json').write_text(json.dumps(dict(maps=len(maps), candidates=sum(len(m['pins']) for m in maps),
+(ROOT/'app/asset-manifest.json').write_text(json.dumps(dict(maps=len(maps), pvpMaps=len(pvp_maps), candidates=sum(len(m['pins']) for m in maps), pvpMarkers=sum(len(m['pins']) for m in pvp_maps),
     files=inventory), indent=2), encoding='utf8')
 print(f'Staged {len(maps)} dungeon maps, {sum(len(m["pins"]) for m in maps)} candidates, {len(inventory)} files')

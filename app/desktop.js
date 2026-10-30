@@ -42,7 +42,7 @@
     bind(el('compact'), mapOverlay ? hotkeyError ? I18n.error(hotkeyError) : msg('overlay.closeHint') : msg('overlay.openHint'), 'title');
   }
   function preferences() {
-    return { locale: I18n.locale, map: el('map').value, difficulty: el('difficulty').value, iconSize: Number(el('icon-size').value),
+    return { locale: I18n.locale, mode: window.getGameMode?.() || 'pve', map: el('map').value, pveMap: window.getPveMap?.() || el('map').value, pvpMap: window.getPvpMap?.() || '41003', difficulty: el('difficulty').value, iconSize: Number(el('icon-size').value),
       supplements: el('supplements').checked, bestRoute: el('best-route').checked,
       routeStart: el('route-start').value, routeNumber: el('route-number').value,
       categories: [...document.querySelectorAll('[data-category]:checked')].map(e => e.dataset.category),
@@ -113,6 +113,7 @@
   }
   for (const name of ['tracking-update', 'tracking-stale', 'tracking-ui']) window.addEventListener(name, publishOverlay);
   window.addEventListener('languagechange', save);
+  window.addEventListener('game-mode-change', save);
   el('topmost').addEventListener('click', () => setPinned(!topmost));
   el('compact').addEventListener('click', async () => { await window.overlayBridgeReady; await setMapMode(!mapOverlay); });
   overlaySize.addEventListener('input', () => selectOverlaySize(Number(overlaySize.value)));
@@ -128,9 +129,10 @@
     try {
       const settings = JSON.parse(localStorage.getItem(key) || 'null');
       if (settings) {
-        for (const id of ['map', 'difficulty']) {
-          if ([...el(id).options].some(o => o.value === String(settings[id]))) el(id).value = String(settings[id]);
-        }
+        window.rememberPvpMap(settings.pvpMap || (settings.mode === 'pvp' ? settings.map : null));
+        const pveMap = settings.mode === 'pvp' ? settings.pveMap : settings.map;
+        if ([...el('map').options].some(o => o.value === String(pveMap))) el('map').value = String(pveMap);
+        if ([...el('difficulty').options].some(o => o.value === String(settings.difficulty))) el('difficulty').value = String(settings.difficulty);
         if (typeof settings.supplements === 'boolean') el('supplements').checked = settings.supplements;
         el('best-route').checked = settings.bestRoute === true;
         if (['auto', 'entrance', 'exit'].includes(settings.routeStart)) el('route-start').value = settings.routeStart;
@@ -140,10 +142,12 @@
         if (Number.isFinite(settings.iconSize)) el('icon-size').value = String(Math.min(250, Math.max(75, settings.iconSize)));
         el('icon-size').dispatchEvent(new Event('input'));
         // The old chest checkbox covered both types, including with quality 5 selected.
-        if (Array.isArray(settings.categories)) for (const e of document.querySelectorAll('[data-category]')) {
+        if (Array.isArray(settings.categories)) for (const e of document.querySelectorAll('[data-game-mode="pve"] [data-category], [data-game-mode="pvp"] [data-category]')) {
+          if (e.closest('[data-game-mode]')?.dataset.gameMode === 'pvp' && !settings.categories.some(category => category.startsWith('team_') || ['cocoon', 'pvp_chest', 'pvp_purple_chest'].includes(category))) continue;
           e.checked = settings.categories.includes(e.dataset.category) ||
             (e.dataset.category.startsWith('chest_') && settings.categories.includes('chest'));
         }
+        if (settings.mode === 'pvp') window.setGameMode('pvp');
         el('map').dispatchEvent(new Event('change'));
         if (settings.topmost === false) await setPinned(false);
       }

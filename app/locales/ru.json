@@ -217,5 +217,17 @@
   "update.download": "Скачать новый EXE",
   "update.later": "Позже",
   "update.failed": "Ошибка обновления: {error}",
-  "update.portableHint": "Закройте приложение перед заменой старого EXE новым."
+  "update.portableHint": "Закройте приложение перед заменой старого EXE новым.",
+  "mode.pve": "PVE",
+  "mode.pvp": "PVP",
+  "pvp.mapName": "Битва за яйца · Остров",
+  "category.cocoon": "Кокон истока",
+  "category.pvp_chest": "Редкий сундук (Золотой)",
+  "category.pvp_purple_chest": "Изысканный сундук с реликвией (Фиолетовый)",
+  "category.team_pink": "Розовая точка сбора",
+  "category.team_yellow": "Жёлтая точка сбора",
+  "category.team_blue": "Голубая точка сбора",
+  "pvp.markerHint": "Метки показывают возможные точки из данных игры. Их наличие зависит от матча.",
+  "mode.select": "Режим игры",
+  "pvp.imageOnly": "Пока для этого подземелья доступна только карта; координаты меток ещё не проверены."
 }

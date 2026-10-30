@@ -217,5 +217,17 @@
   "update.download": "Tải EXE mới",
   "update.later": "Để sau",
   "update.failed": "Cập nhật thất bại: {error}",
-  "update.portableHint": "Đóng ứng dụng trước khi thay EXE cũ bằng tệp mới."
+  "update.portableHint": "Đóng ứng dụng trước khi thay EXE cũ bằng tệp mới.",
+  "mode.pve": "PVE",
+  "mode.pvp": "PVP",
+  "pvp.mapName": "Đại chiến trứng · Đảo",
+  "category.cocoon": "Kén nguồn",
+  "category.pvp_chest": "Rương hiếm (Vàng)",
+  "category.pvp_purple_chest": "Rương Di Vật Tuyệt Mỹ (Tím)",
+  "category.team_pink": "Điểm tập kết hồng",
+  "category.team_yellow": "Điểm tập kết vàng",
+  "category.team_blue": "Điểm tập kết xanh lam",
+  "pvp.markerHint": "Dấu bản đồ là vị trí có thể xuất hiện theo dữ liệu trò chơi. Mỗi trận có thể khác nhau.",
+  "mode.select": "Chế độ chơi",
+  "pvp.imageOnly": "Hầm ngục này hiện chỉ có bản đồ nền; tọa độ các dấu chưa được xác minh."
 }

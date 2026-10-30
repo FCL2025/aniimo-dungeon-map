@@ -1,15 +1,19 @@
 'use strict';
 const data=window.DUNGEON_DATA;
 const categories=Object.fromEntries(Object.entries(data.categories).filter(([key])=>!['pot','cache'].includes(key)));
+const pvpCategories=data.pvpCategories||{};
 const $=id=>document.getElementById(id);
 const {msg,bind}=window.I18n;
-const colors={egg:'#f3d76d',chest_gold:'#dfb65b',chest_glass:'#9de9f4',stellarys_boss:'#87dcff',rock_boss:'#e9a66f',entrance:'#79e1c0',exit:'#ff8798',key_orange:'#ffb46e',challenge:'#82d2e5'};
+const colors={egg:'#f3d76d',chest_gold:'#dfb65b',chest_glass:'#9de9f4',stellarys_boss:'#87dcff',rock_boss:'#e9a66f',entrance:'#79e1c0',exit:'#ff8798',key_orange:'#ffb46e',challenge:'#82d2e5',cocoon:'#e8cb78',pvp_chest:'#f4ca63',pvp_purple_chest:'#bc92ee',team_pink:'#fa96bc',team_yellow:'#f4df75',team_blue:'#89d8e4'};
 const canvas=$('map-canvas'), ctx=canvas.getContext('2d');
 const mapLayer=document.createElement('canvas'),mapContext=mapLayer.getContext('2d');
 const pinLayer=document.createElement('canvas'),pinContext=pinLayer.getContext('2d');
 const reducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)');
 let mapDirty=true,frameRequest=0,rippleTimer=0;
 let current, image, visible=[], selected=null, scale=1, tx=0, ty=0, width=1, height=1, drag=null;
+let gameMode='pve', lastPveMap='', lastPvpMap='41003';
+const activeCategories=()=>gameMode==='pvp'?pvpCategories:categories;
+const activeMaps=()=>gameMode==='pvp'?(data.pvpMaps||[]):data.maps;
 let loadToken=0;
 let tracking=null;
 let route=null;
@@ -45,27 +49,70 @@ for(const [key,asset] of Object.entries(data.icons.assets)){
   iconImages.set(key,icon);icon.src=asset.image;
 }
 function iconElement(key){const icon=document.createElement('img');icon.className='marker-icon';icon.src=data.icons.assets[key].image;icon.alt='';icon.setAttribute('aria-hidden','true');return icon;}
-function pinSize(pin){const primary=['egg','entrance','exit','stellarys_boss','rock_boss'].includes(pin.category);const categoryScale=pin.category==='key_orange'?1.5:1;const overlayScale=document.body.classList.contains('overlay')?(window.overlaySizeRatio||1):1;return (primary?28:Math.min(22,Math.max(14,20*Math.sqrt(scale))))*Number($('icon-size').value)/100*categoryScale*overlayScale;}
+function pinSize(pin){const primary=gameMode==='pvp'||['egg','entrance','exit','stellarys_boss','rock_boss'].includes(pin.category);const categoryScale=pin.category==='key_orange'?1.5:1;const overlayScale=document.body.classList.contains('overlay')?(window.overlaySizeRatio||1):1;return (primary?28:Math.min(22,Math.max(14,20*Math.sqrt(scale))))*Number($('icon-size').value)/100*categoryScale*overlayScale;}
 window.addEventListener('overlay-size-changed',()=>draw());
 function renderIconSize(){const value=$('icon-size').value+'%';$('icon-size-value').value=value;$('icon-size').setAttribute('aria-valuetext',value);draw();}
-for(const map of data.maps){const option=document.createElement('option');option.value=map.id;bind(option,msg('map.name',{id:map.id}));$('map').append(option);}
-for(const key of Object.keys(categories)){
+const mapLabel=map=>map.names?.[I18n.locale]||map.names?.['zh-TW']||msg('map.name',{id:map.id});
+window.addEventListener('languagechange',()=>{
+  if(gameMode!=='pvp')return;
+  for(const option of $('map').options){
+    const map=data.pvpMaps.find(item=>String(item.id)===option.value);
+    if(map)option.textContent=mapLabel(map);
+  }
+  if(current)$('map-title').textContent=mapLabel(current);
+});
+function fillMapOptions(selected){
+  $('map').replaceChildren();
+  for(const map of activeMaps()){
+    const option=document.createElement('option');option.value=map.id;
+    if(gameMode==='pvp')option.textContent=mapLabel(map);
+    else bind(option,msg('map.name',{id:map.id}));
+    $('map').append(option);
+  }
+  if(selected&&[...$('map').options].some(option=>option.value===String(selected)))$('map').value=String(selected);
+}
+for(const [mode,group] of [['pve',categories],['pvp',pvpCategories]])for(const key of Object.keys(group)){
   const label=document.createElement('label');label.className='check';
+  label.dataset.gameMode=mode;
   const input=document.createElement('input');input.type='checkbox';input.checked=true;input.dataset.category=key;input.addEventListener('change',update);
-  const swatch=iconElement(data.icons.categories[key]);
+  const swatch=iconElement(data.icons.categories[key]||data.pvpIcons.categories[key]);
   swatch.dataset.categoryIcon=key;
   const text=document.createElement('span');bind(text,msg('category.'+key));
   const count=document.createElement('span');count.className='count';count.id='count-'+key;
   label.append(input,swatch,text,count);$('filters').append(label);
 }
-function candidatePins(){return current.pins.filter(p=>categories[p.category]&&p.difficultyCandidates.includes(Number($('difficulty').value))&&($('supplements').checked||p.provenance==='scene_reference'));}
+function setGameMode(mode){
+  if(mode!=='pve'&&mode!=='pvp'||mode==='pvp'&&!data.pvpMaps?.length)return;
+  if(gameMode==='pve')lastPveMap=$('map').value;
+  else lastPvpMap=$('map').value;
+  gameMode=mode;
+  if(mode==='pvp'&&$('manual-map-dialog')?.open)$('manual-map-dialog').close();
+  document.body.classList.toggle('mode-pvp',mode==='pvp');
+  for(const name of ['pve','pvp']){$('mode-'+name).setAttribute('aria-selected',String(name===mode));$('mode-'+name).tabIndex=name===mode?0:-1;}
+  $('map-panel').setAttribute('aria-labelledby','mode-'+mode);
+  fillMapOptions(mode==='pve'?lastPveMap:lastPvpMap);
+  loadMap();
+  window.dispatchEvent(new CustomEvent('game-mode-change',{detail:{mode}}));
+}
+window.setGameMode=setGameMode;
+window.getGameMode=()=>gameMode;
+window.getPveMap=()=>gameMode==='pve'?$('map').value:lastPveMap;
+window.getPvpMap=()=>gameMode==='pvp'?$('map').value:lastPvpMap;
+window.rememberPvpMap=id=>{if(data.pvpMaps?.some(map=>String(map.id)===String(id)))lastPvpMap=String(id);};
+for(const mode of ['pve','pvp'])$('mode-'+mode).addEventListener('click',()=>setGameMode(mode));
+document.querySelector('.game-mode-tabs').addEventListener('keydown',event=>{
+  const next=event.key==='ArrowRight'||event.key==='End'?'pvp':event.key==='ArrowLeft'||event.key==='Home'?'pve':null;
+  if(!next)return;
+  event.preventDefault();$('mode-'+next).focus();setGameMode(next);
+});
+function candidatePins(){return current.pins.filter(p=>activeCategories()[p.category]&&(gameMode==='pvp'||p.difficultyCandidates.includes(Number($('difficulty').value))&&($('supplements').checked||p.provenance==='scene_reference')));}
 function update(){
   if(!current)return;
-  const routes=current.routes?.[$('supplements').checked?'supplements':'direct'];
+  const routes=gameMode==='pve'?current.routes?.[$('supplements').checked?'supplements':'direct']:null;
   route=routes?.selections?.[$('route-start').value]?.[$('route-number').value]||null;
-  const enabled=new Set([...document.querySelectorAll('[data-category]:checked')].map(x=>x.dataset.category));
+  const enabled=new Set([...document.querySelectorAll(`[data-game-mode="${gameMode}"] [data-category]:checked`)].map(x=>x.dataset.category));
   const candidates=candidatePins();visible=candidates.filter(p=>enabled.has(p.category)).sort((a,b)=>Number(b.category.startsWith('chest_'))-Number(a.category.startsWith('chest_')));
-  for(const key of Object.keys(categories))$('count-'+key).textContent=candidates.filter(p=>p.category===key).length;
+  for(const key of Object.keys(activeCategories()))$('count-'+key).textContent=candidates.filter(p=>p.category===key).length;
   bind($('filter-total'),msg('filters.total',{count:visible.length}));
   if(selected&&!visible.some(p=>p.id===selected.id))selected=null;
   draw();
@@ -78,11 +125,19 @@ function draw(mapChanged=true){
 }
 function paintMap(ctx){
   ctx.clearRect(0,0,width,height);
-  if(image)ctx.drawImage(image,tx,ty,current.size[0]*scale,current.size[1]*scale);
+  if(image){
+    if(current.regionPolygon?.length){
+      ctx.save();ctx.beginPath();
+      current.regionPolygon.forEach(([x,y],index)=>index?ctx.lineTo(x*scale+tx,y*scale+ty):ctx.moveTo(x*scale+tx,y*scale+ty));
+      ctx.closePath();ctx.clip();
+    }
+    ctx.drawImage(image,tx,ty,current.size[0]*scale,current.size[1]*scale);
+    if(current.regionPolygon?.length)ctx.restore();
+  }
   paintRoute(ctx);
 }
 function paintRoute(ctx){
-  if(!$('best-route')?.checked||!route)return;
+  if(gameMode==='pvp'||!$('best-route')?.checked||!route)return;
   const point=p=>[p[0]*scale+tx,p[1]*scale+ty];
   const stroke=(points,color,dash=[])=>{
     if(points.length<2)return;
@@ -108,7 +163,7 @@ function paintRoute(ctx){
   ctx.restore();
 }
 function paintRouteStops(ctx){
-  if(!$('best-route')?.checked||!route)return;
+  if(gameMode==='pvp'||!$('best-route')?.checked||!route)return;
   ctx.save();ctx.font='600 13px "Segoe UI",sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';
   route.stops.filter(s=>s.kind==='glass').forEach((stop,i)=>{
     const x=stop.pixel[0]*scale+tx+20,y=stop.pixel[1]*scale+ty-20;
@@ -133,7 +188,7 @@ function paintPins(ctx){
       ctx.drawImage(icon,x-w/2,y-h/2,w,h);ctx.restore();
     }
     ctx.lineWidth=1.2;
-    if(pin.category.startsWith('chest_')){ctx.strokeStyle=colors[pin.category];ctx.beginPath();ctx.arc(x,y,r+1,0,Math.PI*2);ctx.stroke();}
+    if(pin.category.startsWith('chest_')||pin.category==='pvp_chest'||pin.category==='pvp_purple_chest'){ctx.strokeStyle=colors[pin.category];ctx.beginPath();ctx.arc(x,y,r+1,0,Math.PI*2);ctx.stroke();}
     if(pin.category.startsWith('chest_')&&pin.floor===2){
       const bx=x+r-10,by=y+r-8;
       ctx.fillStyle='#102630';ctx.strokeStyle='#d7f6fb';ctx.lineWidth=1;
@@ -191,9 +246,14 @@ function selectPin(pin){
   selected=pin;draw();
 }
 function loadMap(){
-  current=data.maps.find(m=>m.id===Number($('map').value));selected=null;image=null;
+  current=activeMaps().find(m=>m.id===Number($('map').value));if(!current)return;selected=null;image=null;
+  if(gameMode==='pvp')lastPvpMap=$('map').value;
+  document.body.classList.toggle('pvp-image-only',gameMode==='pvp'&&current.mapKind==='dungeon');
   if(tracking&&tracking.mapId!==current.id)tracking=null;renderTrackingStatus();
-  bind($('map-id'),msg('app.mode'));bind($('map-title'),msg('map.name',{id:current.id}));
+  bind(document.querySelector('.notice'),msg(gameMode==='pvp'&&current.mapKind==='dungeon'?'pvp.imageOnly':gameMode==='pvp'?'pvp.markerHint':'notice'));
+  bind($('map-id'),msg(gameMode==='pvp'?'mode.pvp':'mode.pve'));
+  if(gameMode==='pvp')$('map-title').textContent=mapLabel(current);
+  else bind($('map-title'),msg('map.name',{id:current.id}));
   bind($('load-status'),msg('map.loading'));const token=++loadToken;const nextImage=new Image();
   nextImage.onload=()=>{if(token!==loadToken)return;image=nextImage;$('load-status').textContent='';fit();};
   nextImage.onerror=()=>{if(token!==loadToken)return;bind($('load-status'),msg('error.assets'));};
@@ -218,7 +278,7 @@ document.addEventListener('wheel',event=>{
   if(index<0||index>=select.options.length)return;
   select.selectedIndex=index;select.dispatchEvent(new Event('change',{bubbles:true}));
 },{passive:false});
-for(const [id,checked] of [['all',true],['none',false]])$(id).onclick=()=>{for(const x of document.querySelectorAll('[data-category]'))x.checked=checked;update();};
+for(const [id,checked] of [['all',true],['none',false]])$(id).onclick=()=>{for(const x of document.querySelectorAll(`[data-game-mode="${gameMode}"] [data-category]`))x.checked=checked;update();};
 $('zoom-in')?.addEventListener('click',()=>zoom(1.35));$('zoom-out')?.addEventListener('click',()=>zoom(1/1.35));$('fit').onclick=fit;
 canvas.addEventListener('wheel',event=>{event.preventDefault();const box=canvas.getBoundingClientRect();zoom(event.deltaY<0?1.12:1/1.12,event.clientX-box.left,event.clientY-box.top);},{passive:false});
 canvas.addEventListener('pointerdown',event=>{drag={x:event.clientX,y:event.clientY,tx,ty};canvas.setPointerCapture(event.pointerId);canvas.classList.add('dragging');});
@@ -240,4 +300,4 @@ new ResizeObserver(()=>{
   ctx.setTransform(ratio,0,0,ratio,0,0);if(keepView)mapDirty=true;else fit();
   if(frameRequest){cancelAnimationFrame(frameRequest);frameRequest=0;}renderFrame();
 }).observe(canvas);
-loadMap();
+fillMapOptions();loadMap();

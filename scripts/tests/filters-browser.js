@@ -6,7 +6,7 @@
   const wheel = (id, deltaY, options = {}) => el(id).dispatchEvent(new WheelEvent('wheel', { deltaY, bubbles: true, cancelable: true, ...options }));
   await window.desktopReady;
   assert(DUNGEON_DATA.maps.length === 12, 'Expected twelve maps');
-  assert(document.querySelectorAll('[data-category]').length === 9, 'Expected nine categories');
+  assert(document.querySelectorAll('[data-game-mode="pve"] [data-category]').length === 9, 'Expected nine PVE categories');
   for (const difficulty of ['5', '6']) {
     change('map', '20031'); change('difficulty', difficulty);
     el('none').click(); document.querySelector('[data-category="rock_boss"]').click();
@@ -31,7 +31,7 @@
   change('difficulty', '6');
   assert(visible.every(p => p.difficultyCandidates.includes(6)), 'Difficulty mismatch');
   const beforeScroll = document.querySelector('aside').scrollTop;
-  assert(wheel('map', 100) === false && el('map').value === '20039', 'Wheel down failed');
+  assert(wheel('map', 100) === false && el('map').value === '20038', 'Wheel down failed');
   wheel('map', -100); assert(el('map').value === '20037', 'Wheel up failed');
   assert(document.querySelector('aside').scrollTop === beforeScroll, 'Selector wheel scrolled sidebar');
   wheel('map', 100, { ctrlKey: true }); assert(el('map').value === '20037', 'Ctrl-wheel switched maps');
