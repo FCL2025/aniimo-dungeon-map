@@ -180,6 +180,9 @@
   el('manual-map-all').onclick = () => { filter = 'all'; renderCandidates(); dialog.scrollTop = 0; el('manual-map-result-title').focus(); };
   el('manual-map-back').onclick = () => { const previous = filter; filter = null; renderCandidates(); dialog.scrollTop = 0; (directionButtons.find(button => button.dataset.direction === previous) || directionButtons.find(button => !button.disabled))?.focus(); };
   for (const kind of ['portals', 'terrain']) el('manual-map-' + kind).onclick = () => { view = kind; renderCandidates(); };
+  window.addEventListener('recognition-ui', () => {
+    if (!busy && el('recognition-button')?.getAttribute('aria-checked') === 'true' && dialog.open) dialog.close();
+  });
   if (overlay) {
     window.manualMapReady = window.__TAURI__.event.listen('map-overlay-manual-result', ({ payload }) => {
       if (pending?.requestId !== payload.requestId) return;

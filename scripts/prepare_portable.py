@@ -63,7 +63,7 @@ data = dict(categories=CATEGORIES, icons=icons, difficulties=difficulty['difficu
 (OUTPUT/'data.js').write_text('window.DUNGEON_DATA='+json.dumps(data, ensure_ascii=False, separators=(',', ':')).replace('</', '<\\/')+';', encoding='utf8')
 for name in ('viewer.js', 'viewer.css', 'i18n.js', 'i18n.css', 'loot-ranking.js', 'loot-ranking.css', 'shop-advice.js', 'shop-advice.css'):
     shutil.copyfile(ROOT/'scripts/data_viewer'/name, OUTPUT/name)
-for name in ('desktop.js', 'overlay.js', 'desktop.css', 'update.js', 'update.css', 'manual-map.js', 'manual-map-core.js', 'manual-map.css', 'tracking.js', 'recognition.css', 'recognition-core.js', 'recognition-vision.js', 'tracking-core.js', 'tracking-flow.js', 'tracking-worker.js', 'map-header.js', 'recognition-screen.js'):
+for name in ('desktop.js', 'overlay.js', 'desktop.css', 'update.js', 'update.css', 'manual-map.js', 'manual-map-core.js', 'manual-map.css', 'tracking.js', 'recognition.js', 'recognition-worker.js', 'recognition-portals.js', 'recognition-search.js', 'recognition-fog.js', 'fog-references.json', 'recognition.css', 'recognition-core.js', 'recognition-vision.js', 'tracking-core.js', 'tracking-flow.js', 'tracking-worker.js', 'map-header.js', 'recognition-screen.js'):
     shutil.copyfile(ROOT/'app'/name, OUTPUT/name)
 shutil.copytree(ROOT/'app/vendor', OUTPUT/'vendor', dirs_exist_ok=True)
 html = (ROOT/'scripts/data_viewer/index.html').read_text(encoding='utf8')
@@ -75,7 +75,7 @@ html = html.replace('PVE 資源 3595896 · PVP 資源 3846247',
                     f'版本 {VERSION} · PVE {RESOURCE_VERSION} · PVP {PVP_RESOURCE_VERSION}')
 html = html.replace('<footer>', '<button id="help-button" type="button">說明</button><footer>', 1)
 html = html.replace('<div><span class="eyebrow" id="map-id"></span><h2 id="map-title"></h2></div>', '''<div class="mapbar-start"><button id="sidebar-toggle" aria-expanded="true" aria-controls="sidebar" aria-label="收合側欄" title="收合側欄"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 4v16"/><path class="sidebar-arrow" d="m16 9-3 3 3 3"/></svg></button><div class="map-heading"><span class="eyebrow" id="map-id"></span><div class="session-heading"><h2 id="map-title"></h2><span id="live-status" role="status"></span></div></div></div>''')
-html = html.replace('<div class="tools">', '<div class="tools"><button id="manual-map-button" type="button" aria-haspopup="dialog" aria-controls="manual-map-dialog"></button><button id="tracking-button" class="live-switch" role="switch" aria-checked="false">追蹤：關</button><button id="topmost" aria-pressed="true">置頂：開</button><button id="compact" aria-pressed="false">地圖模式</button>')
+html = html.replace('<div class="tools">', '<div class="tools"><button id="recognition-button" class="live-switch" role="switch" aria-checked="false">辨識：關</button><button id="manual-map-button" type="button" aria-haspopup="dialog" aria-controls="manual-map-dialog"></button><button id="tracking-button" class="live-switch" role="switch" aria-checked="false">追蹤：關</button><button id="topmost" aria-pressed="true">置頂：開</button><button id="compact" aria-pressed="false">地圖模式</button>')
 notice_start = html.index('  <p class="notice">')
 notice_end = html.index('</p>', notice_start) + len('</p>')
 notice = html[notice_start:notice_end]
@@ -87,8 +87,8 @@ html = html.replace('，或直接開啟 candidates.csv 檢視點位', '')
 overlay_html = html.replace('<body class="desktop-app">', '<body class="desktop-app compact overlay">')
 overlay_html = overlay_html.replace('<html lang="zh-Hant">', '<html lang="zh-Hant" class="overlay-root">')
 overlay_html = overlay_html.replace('<title>伊莫地城地圖 · 可攜版</title>', '<title>伊莫地圖 · 覆蓋視窗</title>')
-overlay_html = overlay_html.replace('<div class="tools"><button id="manual-map-button"',
-    '<div class="tools"><label id="overlay-size-control" for="overlay-size" title="以左下角為錨點調整覆蓋地圖大小">大小 <input type="range" id="overlay-size" min="50" max="150" step="10" value="100" aria-label="覆蓋地圖大小" aria-valuetext="100%"></label><button id="manual-map-button"')
+overlay_html = overlay_html.replace('<div class="tools"><button id="recognition-button"',
+    '<div class="tools"><label id="overlay-size-control" for="overlay-size" title="以左下角為錨點調整覆蓋地圖大小">大小 <input type="range" id="overlay-size" min="50" max="150" step="10" value="100" aria-label="覆蓋地圖大小" aria-valuetext="100%"></label><button id="recognition-button"')
 overlay_html = overlay_html.replace('<span id="live-status" role="status"></span>', '', 1)
 overlay_html = overlay_html.replace('<button id="tracking-button" class="live-switch" role="switch" aria-checked="false">追蹤：關</button>', '<button id="tracking-button" class="live-switch" role="switch" aria-checked="false">追蹤：關</button><span id="live-status" role="status"></span>')
 overlay_html = overlay_html.replace('<button id="zoom-in" aria-label="放大地圖">＋</button>', '<button id="zoom-in" aria-label="放大地圖">＋</button><button id="overlay-close" title="關閉覆蓋地圖，保留主視窗" aria-label="關閉覆蓋地圖">×</button>')
@@ -100,9 +100,8 @@ main_html = main_html.replace('<noscript>', (ROOT/'app/update.html').read_text(e
 main_html = main_html.replace('</body>', '<script src="update.js"></script></body>', 1)
 main_html = main_html.replace('<button id="zoom-out" aria-label="縮小地圖">−</button>', '', 1)
 main_html = main_html.replace('<button id="zoom-in" aria-label="放大地圖">＋</button>', '', 1)
-main_html = main_html.replace('<div class="sidebar-guides">', '''<label for="game-resolution">遊戲解析度</label><select id="game-resolution" aria-describedby="resolution-hint"><option value="16:9">1920×1080</option><option value="21:9">3440×1440</option></select>
-<p id="resolution-hint" class="small">2560×1440 等 16:9 解析度請選 1920×1080。</p>
-<div class="sidebar-guides">''', 1)
+main_html = main_html.replace('<div class="sidebar-guides">', (ROOT/'app/recognition.html').read_text(encoding='utf8')+'<div class="sidebar-guides">', 1)
+main_html = main_html.replace('<script src="tracking.js"></script>', '<script src="tracking.js"></script><script src="recognition.js"></script>')
 (OUTPUT/'index.html').write_text(main_html, encoding='utf8')
 (OUTPUT/'overlay.html').write_text(overlay_html, encoding='utf8')
 

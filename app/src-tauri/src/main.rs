@@ -8,6 +8,7 @@ mod profile;
 mod overlay;
 mod updater;
 mod tracking_log;
+mod recognition_log;
 
 #[tauri::command]
 fn set_topmost(window: WebviewWindow, enabled: bool) -> Result<bool, String> {
@@ -30,7 +31,7 @@ fn main() {
                 let _ = window.app_handle().emit_to("main", "map-overlay-closed", ());
             }
         })
-        .invoke_handler(tauri::generate_handler![set_topmost, overlay::set_map_overlay, overlay::set_overlay_scale, overlay::drag_window, capture::game_windows,
+        .invoke_handler(tauri::generate_handler![set_topmost, recognition_log::append_recognition_log, overlay::set_map_overlay, overlay::set_overlay_scale, overlay::drag_window, capture::game_windows,
             capture::start_capture, capture::stop_capture, capture::configure_capture, capture::capture_frame,
             updater::check_for_update, updater::open_portable_download, tracking_log::append_tracking_log])
         .setup(|app| {
@@ -41,6 +42,7 @@ fn main() {
                 std::env::var_os("ANIIMO_TEST_DATA_DIR").map(std::path::PathBuf::from)
             } else { None }.unwrap_or(app.path().app_local_data_dir()?);
             let profile = data_root.join("WebView2");
+            app.manage(recognition_log::RecognitionLogState::new(data_root.clone()));
             app.manage(tracking_log::TrackingLogState::new(data_root.clone()));
             profile::prepare_profile(&profile, folder)?;
             let browser_args = hidden.then(|| std::env::var("WEBVIEW2_ADDITIONAL_BROWSER_ARGUMENTS").ok()).flatten()

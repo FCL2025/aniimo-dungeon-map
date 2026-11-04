@@ -18,19 +18,20 @@
     if(name==='start_capture'){active=true;return;}if(name==='stop_capture'){active=false;return;}
     if(name==='capture_frame')return {running:active,frame:frames.shift()||null};
   }}};
+  el('recognition-settings').open=false;el('capture-details').open=false;
   w.addEventListener('tracking-update',e=>positions.push(e.detail));
   try{
-    await new Promise((resolve,reject)=>{
-      const script=d.createElement('script');script.src=new URL('recognition.js',location.href).href;
+    for(const file of ['tracking.js','recognition.js']) await new Promise((resolve,reject)=>{
+      const script=d.createElement('script');script.src=new URL(file,location.href).href;
       script.onload=resolve;script.onerror=()=>reject(Error('Controller script failed to load'));d.body.append(script);
     });
-    const state=()=>w.recognitionStatus(),count=name=>calls.filter(c=>c.name===name).length;
+    const state=()=>({...w.recognitionStatus(),trackingReady:w.trackingStatus().ready,trackingMap:w.trackingStatus().map,trackingQueueLength:w.trackingStatus().queueLength}),count=name=>calls.filter(c=>c.name===name).length;
     await el('tracking-button').onclick();await until(()=>state().trackingReady);
     assert(state().trackingRunning&&!state().running&&state().capturing,'Tracking-only startup failed');
     assert(workers.length===1&&workers[0].url==='tracking-worker.js','Tracking startup initialized 31-map recognition');
     let tracker=workers[0];const mapId=Number(el('map').value),time=Date.now();
     frames.push(...[0,1,2].map(i=>({sequence:i+1,capturedAt:time+i,image:'tracking-only-frame',sourceRegion:[.04,.03,.11,.20]})));
-    await until(()=>state().stats.captured===3);
+    await until(()=>calls.filter(c=>c.name==='capture_frame').length>=3&&frames.length===0);
     assert(state().trackingQueueLength===1,'Tracking queue grew beyond latest frame');
     const first=tracker.messages.find(m=>m.type==='track');tracker.reply({type:'result',request:first.request,mapId,capturedAt:first.capturedAt,location:null});
     const latest=tracker.messages.filter(m=>m.type==='track').at(-1);
@@ -65,7 +66,7 @@
     await el('tracking-button').onclick();assert(!state().capturing&&count('stop_capture')===1,'Both off did not stop capture');
     await el('recognition-button').onclick();await until(()=>state().ready);
     assert(state().pinned===null&&state().selected===null&&state().lastResult===null,'Recognition restart retained the old lock/results');
-    assert(!el('recognition-settings')&&!el('recognition-candidates'),'Removed recognition settings remain in the sidebar');
+    assert(el('recognition-settings')&&el('recognition-candidates'),'Recognition settings are missing');
     recognizer.reply({type:'result',request:0,ranked:[],locked:mapId,selected:mapId,observations:1,elapsedMs:1});
     assert(state().pinned===null,'A terminated recognizer relocked the previous map');
     await el('tracking-button').onclick();await el('tracking-button').onclick();
@@ -104,7 +105,7 @@
     assert(!state().capturing&&el('map').value==='20035'&&!state().running,'Native startup race restarted capture after manual choice');
     holdWindows=false;
     const resolution=el('game-resolution'),previousResolution=resolution.value;
-    assert(resolution&&!el('recognition-settings'),'Resolution must be available without diagnostic controls');
+    assert(resolution&&d.querySelectorAll('#game-resolution').length===1,'Resolution control must be unique');
     const setResolution=value=>{resolution.value=value;resolution.dispatchEvent(new w.Event('change'));};
     const checkRegion=expected=>{
       const region=calls.filter(c=>c.name==='configure_capture').at(-1).args.region;
@@ -138,7 +139,18 @@
       assert(state().pinned===null&&state().running&&!state().trackingRunning,'Changing resolution after a recognition-only lock did not resume capture');
       await el('recognition-button').onclick();
     }finally{setResolution(previousResolution);}
-    return {passed:true,languagePreservesWorkers:true,independentSwitches:true,oneCaptureSession:true,latestFrameOnly:true,positionsAfterRecognitionOff:true,manualMap:true,restartClearsLockAndPosition:true,lateResultIgnored:true,lockStopsCapture:true,manualOverridesAutomatic:true,sameMapResetsTracking:true,manualCancelsPendingStartup:true,resolutionRestartsWorkers:true,resolutionUpdatesNativeCrop:true};
+    // Switching to PVP during active PVE recognition must release both consumers.
+    await el('recognition-button').onclick();await el('tracking-button').onclick();
+    const pveWorker=workers.filter(x=>x.url==='recognition-worker.js').at(-1);
+    w.getGameMode=()=> 'pvp';w.dispatchEvent(new w.Event('game-mode-change'));
+    await until(()=>!state().running&&!state().trackingRunning&&!state().capturing);
+    assert(pveWorker.terminated&&el('recognition-button').disabled&&el('recognition-settings').hidden,'PVP retained recognition');
+    pveWorker.reply({type:'result',request:0,ranked:[],locked:20036,selected:20036,observations:1,elapsedMs:1});
+    assert(state().pinned===null,'Late PVE result changed PVP');
+    w.getGameMode=()=> 'pve';w.dispatchEvent(new w.Event('game-mode-change'));
+    await pause(30);
+    assert(!el('recognition-button').disabled&&!el('recognition-settings').hidden&&!state().capturing,'Returning to PVE did not restore idle controls');
+    return {passed:true,pvpStopsCapture:true,languagePreservesWorkers:true,independentSwitches:true,oneCaptureSession:true,latestFrameOnly:true,positionsAfterRecognitionOff:true,manualMap:true,restartClearsLockAndPosition:true,lateResultIgnored:true,lockStopsCapture:true,manualOverridesAutomatic:true,sameMapResetsTracking:true,manualCancelsPendingStartup:true,resolutionRestartsWorkers:true,resolutionUpdatesNativeCrop:true};
   }catch(error){throw Error(String(error)+' '+JSON.stringify({state:w.recognitionStatus?.(),calls,workers:workers.map(x=>({url:x.url,messages:x.messages,terminated:x.terminated})),message:el('recognition-message')?.textContent}));}
   finally{iframe.remove();}
 })()

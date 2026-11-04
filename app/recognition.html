@@ -2,7 +2,6 @@
   <summary>辨識、追蹤設定與候選</summary>
   <p class="small">確認地圖後立即鎖定並停止辨識。換地宮時，將辨識關閉再開啟即可重新判斷。</p>
   <p class="small">選定地圖後可關閉辨識、開啟「追蹤」。人物追蹤獨立運作，也支援手動選圖；只顯示目前位置。</p>
-  <p id="tracking-message" class="small" role="status">人物追蹤已關閉。</p>
   <label for="game-window">遊戲視窗</label><div class="recognition-row"><select id="game-window"><option value="">自動尋找伊莫</option></select><button id="refresh-game">重新整理</button></div>
   <label for="game-resolution">遊戲解析度</label><select id="game-resolution"><option value="16:9">1920×1080</option><option value="21:9">3440×1440</option></select>
   <p id="resolution-hint" class="small">2560×1440 等 16:9 解析度請選 1920×1080。</p>
@@ -13,4 +12,5 @@
     <label for="capture-region">辨識範圍</label><select id="capture-region"><option value="view">預覽畫面</option><option value="mini">框選小地圖</option><option value="map">框選 M 地圖</option></select><button id="reset-regions">還原範圍</button>
     <p class="small">青框為小地圖，黃框為 M 地圖。需要調整時選取範圍，再於預覽拖曳；變更範圍會重設本場。</p>
   </details>
+  <label class="check debug-log-control"><input type="checkbox" id="debug-log"><span>DEBUG LOG（辨識診斷）</span></label>
 </details>

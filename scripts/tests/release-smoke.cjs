@@ -74,7 +74,7 @@ async function pageAt(port, overlay = false) {
         row:Math.abs(map.top-difficulty.top)<3 && map.right<difficulty.left, guidesAboveHelp:guides.compareDocumentPosition(el('help-button'))&Node.DOCUMENT_POSITION_FOLLOWING,
         guideButtons:[...guides.querySelectorAll('button')].map(node=>node.id), maps:el('map').options.length };
     })()`);
-    assert(!ui.header && !ui.recognition && !ui.summary && !ui.hint && ui.row && ui.guidesAboveHelp && ui.maps === 12, `Main layout: ${JSON.stringify(ui)}`);
+    assert(!ui.header && ui.recognition && !ui.summary && !ui.hint && ui.row && ui.guidesAboveHelp && ui.maps === 12, `Main layout: ${JSON.stringify(ui)}`);
     const rockBoss = await main.evaluate(`(() => {
       const filter=document.querySelector('[data-category="rock_boss"]');
       const icon=document.querySelector('[data-category-icon="rock_boss"]');
@@ -146,7 +146,7 @@ async function pageAt(port, overlay = false) {
     await overlay.until('!!window.overlayReady');
     await overlay.until('window.getGameMode?.()==="pvp" && document.getElementById("map").value==="41003"');
     const overlayUi = await overlay.evaluate(`({recognition:!!document.getElementById('recognition-button'),tracking:!!document.getElementById('tracking-button'),manual:!!document.getElementById('manual-map-button')})`);
-    assert(!overlayUi.recognition && overlayUi.tracking && overlayUi.manual, 'Overlay controls');
+    assert(overlayUi.recognition && overlayUi.tracking && overlayUi.manual, 'Overlay controls');
     assert(await overlay.evaluate('visible.length') === 29, 'PVP region markers did not reach overlay');
     assert(!main.errors.length && !overlay.errors.length, `Browser errors: ${JSON.stringify([main.errors, overlay.errors])}`);
     console.log(JSON.stringify({version, updateUi, motion, tracking, ui, shop:{ticketRows:shop.ticketRows,eggRows:shop.eggRows}, floorUi, pvp, overlay:overlayUi}, null, 2));

@@ -37,10 +37,11 @@ async function connect(url){
     }
     await evaluate('window.fogBenchmarkRepeats=1;window.portalCheckBenchmarkRepeats=1;window.recognitionFixtureOverrides='+JSON.stringify(fixtures));
     for(const [file,state] of [['recognition-fog-browser.js','fogChecks'],['recognition-portals-browser.js','portalChecks'],['recognition-fog-unseen-browser.js','fogUnseenChecks']]){
+      if(process.argv.includes('--skip-image-suites')||process.argv.includes('--skip-fog')&&state!=='portalChecks')continue;
       await evaluate(fs.readFileSync(path.join(__dirname,file),'utf8'));
       await until(`window.${state}?.done`);
       const result=await evaluate(`window.${state}`);if(result.error)throw Error(result.error);
-      report[state]=result;
+      report[state]=result;console.log(state+": "+result.results.length+" cases passed");
     }
     // Exercise all supported full maps, including maps without fog samples.
     report.fullMaps=await evaluate(`(async()=>{
@@ -54,7 +55,7 @@ async function connect(url){
         for(const map of DUNGEON_DATA.maps){
           await send({type:'reset'},'reset');
           const r=await send({type:'analyze',request:++request,source:'import',image:new URL(map.image,location.href).href},'result');
-          if(r.selected!==map.id||r.locked&&r.locked!==map.id)throw Error('Incorrect full map: '+map.id);
+          if(r.selected!==map.id||r.locked&&r.locked!==map.id)throw Error('Incorrect full map: '+map.id+' '+JSON.stringify({selected:r.selected,locked:r.locked,ranked:r.ranked.map(c=>({id:c.id,inliers:c.inliers,cells:c.cells,support:c.support,error:c.error,coverage:c.coverage}))}));
           if(r.locked){
             const skipped=await send({type:'analyze',request:++request,source:'live',image:'invalid-image-that-must-not-be-decoded'},'result');
             if(skipped.locked!==map.id||skipped.search.evaluated!==0)throw Error('Locked worker continued recognition');
@@ -64,11 +65,13 @@ async function connect(url){
         return results;
       }finally{worker.terminate();}
     })()`,true);
-    for(const id of ids){
+    console.log("Full maps: "+report.fullMaps.length+" correct candidates");
+    report.controls=await evaluate(fs.readFileSync(path.join(__dirname,'tracking-controls-browser.js'),'utf8'),true);
+    for(const id of [...ids,20031,20033,20038,20061,20062]){
       const name=id===20040?'real-20040-sparse.png':`real-${id}-initial.png`;
       const started=Date.now();
       await evaluate(`(async()=>{
-        const blob=await(await fetch(window.recognitionFixtureOverrides[${JSON.stringify(name)}])).blob();
+        const blob=await(await fetch(window.recognitionFixtureOverrides[${JSON.stringify(name)}]||'maps/${id}.png')).blob();
         const transfer=new DataTransfer();transfer.items.add(new File([blob],${JSON.stringify(name)},{type:'image/png'}));
         const input=document.getElementById('map-screenshot');input.files=transfer.files;await input.onchange({target:input});
       })()`,true);
@@ -77,9 +80,31 @@ async function connect(url){
       if(actual.ready||actual.initializing||actual.busy||actual.queued)throw Error('Import lock retained recognition work');
       report.imports.push({id,totalMs:Date.now()-started,...actual});
     }
+    report.newMapTransforms=await evaluate(`(async()=>{
+      const worker=new Worker('recognition-worker.js');let pending,request=0;
+      const send=(message,expected)=>new Promise((resolve,reject)=>{pending={expected,resolve,reject};worker.postMessage(message);});
+      worker.onmessage=({data})=>{if(data.type==='error')pending.reject(Error(data.message));else if(data.type===pending.expected)pending.resolve(data);};
+      worker.onerror=e=>pending.reject(Error(e.message));
+      try{
+        await send({type:'init',maps:DUNGEON_DATA.maps.map(m=>({...m,image:new URL(m.image,location.href).href}))},'ready');
+        const results=[];
+        for(const id of [20031,20033,20038,20061,20062])for(const scale of [.45,.65]){
+          const img=new Image();img.src='maps/'+id+'.png';await img.decode();
+          const canvas=document.createElement('canvas');canvas.width=1920;canvas.height=1080;
+          const ctx=canvas.getContext('2d');ctx.fillStyle='#454d61';ctx.fillRect(0,0,1920,1080);
+          ctx.drawImage(img,250,55,img.width*scale,img.height*scale);
+          ctx.fillRect(250,55,img.width*scale*.25,img.height*scale);
+          await send({type:'reset'},'reset');
+          const r=await send({type:'analyze',request:++request,source:'import',image:canvas.toDataURL()},'result');
+          if(r.locked!==id)throw Error('New map scaled/partial view failed: '+id+' at '+scale+' -> '+r.locked);
+          results.push({id,scale,locked:r.locked,points:r.previewMatches});
+        }
+        return results;
+      }finally{worker.terminate();}
+    })()`,true);
     report.passed=true;
     fs.writeFileSync(process.argv[3]||path.join(root,'exports/recognition-fixtures/lock-native-verification.json'),JSON.stringify(report,null,2));
-    console.log(JSON.stringify({version:report.version,passed:true,fogCases:report.fogChecks.results.length,portalCases:report.portalChecks.results.length,
-      synthesizedCases:report.fogUnseenChecks.results.length,fullMaps:report.fullMaps,imports:report.imports.map(r=>({id:r.id,points:r.result.lockedMatches,reason:r.result.lockReason,processMs:r.result.elapsedMs,totalMs:r.totalMs}))},null,2));
+    console.log(JSON.stringify({version:report.version,passed:true,fogCases:report.fogChecks?.results.length,portalCases:report.portalChecks?.results.length,
+      synthesizedCases:report.fogUnseenChecks?.results.length,fullMaps:report.fullMaps,imports:report.imports.map(r=>({id:r.id,points:r.result.lockedMatches,reason:r.result.lockReason,processMs:r.result.elapsedMs,totalMs:r.totalMs}))},null,2));
   }finally{cdp?.socket.close();child.kill();}
 })().catch(error=>{console.error(error.stack||error);process.exitCode=1;});

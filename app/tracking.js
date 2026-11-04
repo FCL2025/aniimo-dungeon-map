@@ -12,7 +12,7 @@
   const miniRegion = () => mini || MapScreen.defaultMini(aspects[resolution]);
   let enabled = false, busy = false, capturing = false, worker = null, ready = false, workerBusy = false;
   let pending = null, request = 0, sequence = 0, token = 0, timer = null, activeMap = null, lastGameId = '', lastLocationAt = 0;
-  let configuration = Promise.resolve();
+  let configuration = Promise.resolve(), nextCaptureAt = 0;
   let workerStartedAt=0,workerSentAt=0,lastFrameAt=0,lastPollAt=0,capturePaused=false,recoveringCapture=false;
   let lastDiagnostic=null,diagnosticPath=null,logError=null,logBusy=false,lastLogAt=0;
   const logQueue=[],history=[],restarts={worker:[],capture:[]};
@@ -88,20 +88,22 @@
     configuration = configuration.catch(() => {}).then(async () => {
       if (!invoke) return;
       if(restart&&capturing){capturing=false;token++;clearTimeout(timer);await invoke('stop_capture');}
-      if (!enabled) {
+      const recognition=window.recognitionCapture;
+      if ((!enabled&&!recognition?.watchMap&&!recognition?.preview)||window.getGameMode?.()==='pvp') {
         if (capturing) { capturing = false; token++; clearTimeout(timer); await invoke('stop_capture'); }
         return;
       }
       const starting = !capturing;
       if (starting) {
         const windows = await invoke('game_windows');
-        const selected = windows.find(item => item.id === lastGameId) || windows[0];
+        const selected = windows.find(item => item.id === recognition?.windowId) || windows.find(item => item.id === lastGameId) || windows[0];
         if (!selected) throw msg('game.missing');
         await invoke('start_capture', { windowId:selected.id });
         lastGameId = selected.id; sequence = 0; capturing = true;
         lastFrameAt=Date.now();lastPollAt=lastFrameAt;capturePaused=false;record('capture-start');
       }
-      await invoke('configure_capture', { fast:true, watchMap:false, region:miniRegion() });
+      await invoke('configure_capture', { fast:enabled, watchMap:!!recognition?.watchMap, region:recognition?.watchMap||recognition?.preview?null:miniRegion() });
+      nextCaptureAt=0;
       if (starting) poll(++token);
     });
     return configuration;
@@ -110,7 +112,9 @@
     timer = null;
     if (!capturing || generation !== token) return;
     try {
-      const reply = await invoke('capture_frame', { after:sequence, requestFrame:true });
+      const now=Date.now(),requestFrame=enabled||now>=nextCaptureAt;
+      if(requestFrame)nextCaptureAt=now+(enabled?100:1000);
+      const reply = await invoke('capture_frame', { after:sequence, requestFrame });
       if (!capturing || generation !== token) return;
       if (!reply.running) throw reply.message || msg('capture.restart');
       lastPollAt=Date.now();capturePaused=!!reply.message&&!reply.frame;
@@ -119,6 +123,7 @@
         lastFrameAt=Date.now();capturePaused=false;
         sequence = reply.frame.sequence;
         if (enabled) { pending = reply.frame; pump(); }
+        if(window.recognitionCapture?.watchMap||window.recognitionCapture?.preview)window.recognitionCapture.onFrame?.(reply.frame);
       }
     } catch (error) { if (generation === token) fail(error); return; }
     if (capturing && generation === token) timer = setTimeout(() => poll(generation), 100);
@@ -126,6 +131,7 @@
   async function fail(error) {
     record('error',{message:String(error)});void flushLog();
     enabled = false; disposeWorker(); clearPosition(); render();
+    window.recognitionCapture?.onError?.(error);
     window.showMapNotice?.(msg('tracking.failed', { error:I18n.error(error) }));
     try { await syncCapture(); } catch {}
   }
@@ -137,6 +143,7 @@
     try {
       if (!invoke) throw msg('error.desktop');
       if (enabled) initializeWorker(); else { disposeWorker(); clearPosition(); }
+      if(window.recognitionCapture)window.recognitionCapture.preview=!!(document.getElementById('recognition-settings')?.open&&document.getElementById('capture-details')?.open&&(enabled||window.recognitionStatus?.().running));
       await syncCapture();
     } catch (error) { await fail(error); }
     finally { busy = false; render(); if (enabled && window.getGameMode?.() === 'pvp') queueMicrotask(toggle); }
@@ -176,7 +183,9 @@
       syncCapture(true).catch(fail).finally(()=>{recoveringCapture=false;});
     }
   },250);
-  window.trackingStatus = () => ({ enabled, capturing, ready, gameWindowId:lastGameId, map:activeMap,workerBusy,capturePaused,
+  window.syncGameCapture=syncCapture;
+  window.setTrackingRegion=value=>{mini=value;disposeWorker();clearPosition();if(enabled)initializeWorker();};
+  window.trackingStatus = () => ({ enabled, capturing, ready, gameWindowId:lastGameId, map:activeMap,workerBusy,capturePaused,queueLength:pending?1:0,
     diagnostic:lastDiagnostic,diagnosticPath,logError,history:history.slice(),restarts:{worker:restarts.worker.length,capture:restarts.capture.length} });
   render();
 })();

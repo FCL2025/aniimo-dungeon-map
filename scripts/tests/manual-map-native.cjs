@@ -176,6 +176,17 @@ async function centered(cdp,label){
     assert(overlayPage,'Native overlay did not open');overlay=await connect(overlayPage.webSocketDebuggerUrl);
     await overlay.until('!!window.overlayReady&&!!window.manualMapReady');await overlay.evaluate('Promise.all([window.overlayReady,window.manualMapReady])');
     await overlay.until('document.getElementById("map").value==="20040"');
+    await main.evaluate(`window.savedRecognitionClick=document.getElementById('recognition-button').onclick;
+      document.getElementById('recognition-button').onclick=()=>{
+        const button=document.getElementById('recognition-button');button.setAttribute('aria-checked',String(button.getAttribute('aria-checked')!=='true'));
+        window.dispatchEvent(new Event('recognition-ui'));
+      };`);
+    await overlay.click('#recognition-button');
+    await overlay.until('document.getElementById("recognition-button").getAttribute("aria-checked")==="true"');
+    await overlay.click('#recognition-button');
+    await overlay.until('document.getElementById("recognition-button").getAttribute("aria-checked")==="false"');
+    await main.evaluate("document.getElementById('recognition-button').onclick=window.savedRecognitionClick;delete window.savedRecognitionClick");
+    report.recognitionOverlayBridge=true;
     const viewportBefore=await overlay.evaluate('({scale,tx,ty})');
     await overlay.click('#manual-map-button');await overlay.until('!document.getElementById("manual-map-all").disabled');
     report.transparentPicker=await overlay.evaluate(`(()=>{

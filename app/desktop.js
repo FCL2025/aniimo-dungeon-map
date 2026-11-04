@@ -59,6 +59,7 @@
     if (!events || !mapOverlay) return;
     events.emitTo('map-overlay', 'map-view-state', { ...preferences(), tracking: window.getTrackingSnapshot?.() || null,
       status: el('live-status').textContent, statusTitle: el('live-status').title, statusState: el('live-status').dataset.state, statusKey: el('live-status').dataset.statusKey,
+      recognition: el('recognition-button').getAttribute('aria-checked') === 'true', recognitionBusy: el('recognition-button').disabled,
       trackingEnabled: el('tracking-button').getAttribute('aria-checked') === 'true', trackingBusy: el('tracking-button').disabled
     }).catch(() => {});
   }
@@ -97,6 +98,7 @@
         report(msg(payload ? 'overlay.hidden' : 'overlay.openHint'));
       }),
       events.listen('map-overlay-action', ({ payload }) => {
+        if (payload === 'recognition') el('recognition-button').click();
         if (payload === 'tracking') el('tracking-button').click();
         publishOverlay();
       }),
@@ -111,7 +113,7 @@
       events.listen('map-overlay-size-selected', ({ payload }) => selectOverlaySize(Number(payload), false))
     ]).catch(error => report(msg('error.operation', { error: I18n.error(error) })));
   }
-  for (const name of ['tracking-update', 'tracking-stale', 'tracking-ui']) window.addEventListener(name, publishOverlay);
+  for (const name of ['tracking-update', 'tracking-stale', 'tracking-ui', 'recognition-ui']) window.addEventListener(name, publishOverlay);
   window.addEventListener('languagechange', save);
   window.addEventListener('game-mode-change', save);
   el('topmost').addEventListener('click', () => setPinned(!topmost));
