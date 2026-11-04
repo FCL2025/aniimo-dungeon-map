@@ -182,7 +182,7 @@
   "manual.upLeft": "Links oben",
   "manual.up": "Oben",
   "manual.upRight": "Rechts oben",
-  "manual.help": "Use Choose exit to select by its direction from the entrance. When maps share a direction, compare the terrain previews and portals. Reselect on the overlay opens the picker again.",
+  "manual.help": "Mit Ausgang wählen grenzt du Karten nach der Richtung vom Eingang ein. An den Grenzen werden benachbarte Richtungen einbezogen. Vergleiche Portale oder Gelände und wähle die passende Karte. Portalbilder zeigen ausgerichtete Eingänge im gleichen Maßstab. Neu wählen im Overlay öffnet die Auswahl erneut.",
   "loot.button": "Wert-Rangliste der Beute",
   "loot.hint": "25 Plätze / 70 kg; ein Gegenstand je Platz, im Schnitt 2,8 kg. Taschen-CP = Verkaufspreis ÷ max(1, Gewicht ÷ 2,8), absteigend mit gleichen Rängen bei Gleichstand. Bis 2,8 kg zählt der Preis je Platz; schwerere Gegenstände werden nach Gewicht abgewertet.",
   "loot.scope": "Enthält goldene Gegenstände, Violettessenz, zwei einfache Energiesteine und violette Gegenstände mit einem Wert pro Gewicht über 7.000, einschließlich beider Schlüssel. Rucksäcke, Angriffsverstärker, Chips und Schutzgehäuse sind ausgeschlossen.",
@@ -229,5 +229,13 @@
   "category.team_blue": "Türkiser Sammelpunkt",
   "pvp.markerHint": "Markierungen sind mögliche Positionen aus den Spieldaten. Sie können je nach Spiel variieren.",
   "mode.select": "Spielmodus",
-  "pvp.imageOnly": "Für diesen Dungeon ist derzeit nur die Karte verfügbar; Markerkoordinaten sind noch nicht geprüft."
+  "pvp.imageOnly": "Für diesen Dungeon ist derzeit nur die Karte verfügbar; Markerkoordinaten sind noch nicht geprüft.",
+  "manual.view": "Karten vergleichen",
+  "manual.portals": "Portale",
+  "manual.terrain": "Gelände",
+  "manual.portalHint": "Eingänge ausgerichtet, gleicher Maßstab. Passende Karte wählen.",
+  "manual.terrainHint": "Gelände und Portale vergleichen, dann Karte wählen.",
+  "manual.nearby": "Benachbarte Richtung",
+  "manual.nearer": "Näher",
+  "manual.farther": "Weiter"
 }

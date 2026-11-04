@@ -182,7 +182,7 @@
   "manual.upLeft": "Acima à esquerda",
   "manual.up": "Cima",
   "manual.upRight": "Acima à direita",
-  "manual.help": "Use Choose exit to select by its direction from the entrance. When maps share a direction, compare the terrain previews and portals. Reselect on the overlay opens the picker again.",
+  "manual.help": "Escolha a direção da saída em relação à entrada para filtrar mapas. Direções vizinhas próximas dos limites também são incluídas. Compare portais ou terreno e escolha o mapa correspondente. Os diagramas alinham as entradas à mesma escala. Voltar a selecionar na sobreposição reabre a escolha.",
   "loot.button": "Classificação do valor do saque",
   "loot.hint": "25 espaços / 70 kg; um item por espaço, com média de 2,8 kg. CP da mochila = preço de venda ÷ max(1, peso ÷ 2,8), do maior ao menor, com empates. Até 2,8 kg, compara-se o preço por espaço; itens mais pesados são ajustados pelo peso.",
   "loot.scope": "Inclui itens dourados, Essência Roxa, duas pedras de energia básicas e itens roxos com valor por peso acima de 7.000, incluindo ambas as chaves. Exclui mochilas, amplificadores de ataque, chips e chassis defensivos.",
@@ -229,5 +229,13 @@
   "category.team_blue": "Ponto de encontro ciano",
   "pvp.markerHint": "Os marcadores indicam locais possíveis dos dados do jogo. Sua presença varia por partida.",
   "mode.select": "Modo de jogo",
-  "pvp.imageOnly": "Esta masmorra tem apenas o mapa base no momento; as coordenadas dos marcadores ainda não foram verificadas."
+  "pvp.imageOnly": "Esta masmorra tem apenas o mapa base no momento; as coordenadas dos marcadores ainda não foram verificadas.",
+  "manual.view": "Comparar mapas",
+  "manual.portals": "Portais",
+  "manual.terrain": "Terreno",
+  "manual.portalHint": "Entradas alinhadas, mesma escala. Escolha o mapa correspondente.",
+  "manual.terrainHint": "Compare terreno e portais, depois escolha um mapa.",
+  "manual.nearby": "Direção próxima",
+  "manual.nearer": "Mais perto",
+  "manual.farther": "Mais longe"
 }

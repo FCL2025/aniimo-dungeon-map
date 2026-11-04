@@ -182,7 +182,7 @@
   "manual.upLeft": "左上",
   "manual.up": "上",
   "manual.upRight": "右上",
-  "manual.help": "Use Choose exit to select by its direction from the entrance. When maps share a direction, compare the terrain previews and portals. Reselect on the overlay opens the picker again.",
+  "manual.help": "出口選択で入口から見た方向を絞り込みます。境界に近い隣接方向も候補に含まれます。入口・出口の配置や地形を比べ、一致するマップを選んでください。配置図は入口の位置を揃え、同じ縮尺で表示します。オーバーレイの再選択で選び直せます。",
   "loot.button": "アイテム価値ランキング",
   "loot.hint": "25枠／70 kg、1個につき1枠、1枠あたり平均2.8 kg。バッグCP＝売却価格 ÷ max(1, 重量 ÷ 2.8) の高い順で、同値は同順位。2.8 kg以下は1枠の売却価格で比較し、重い物は重量で補正します。",
   "loot.scope": "金品質アイテム、生命秘石、2種類の初級エネルギー石、重量あたりの価値が7,000を超える紫品質アイテムを収録。2種類の鍵を含み、バックパック・攻撃増幅器・チップ・防護機体は除きます。",
@@ -229,5 +229,13 @@
   "category.team_blue": "青色の集合地点",
   "pvp.markerHint": "マーカーはゲームデータ上の候補です。出現状況は試合によって異なります。",
   "mode.select": "ゲームモード",
-  "pvp.imageOnly": "このダンジョンは現在、地図のみ表示します。マーカー座標は未確認です。"
+  "pvp.imageOnly": "このダンジョンは現在、地図のみ表示します。マーカー座標は未確認です。",
+  "manual.view": "比較方法",
+  "manual.portals": "入口・出口",
+  "manual.terrain": "地形",
+  "manual.portalHint": "入口の位置を統一、縮尺は共通です。一致するマップを選択。",
+  "manual.terrainHint": "地形と入口・出口を比べて選択。",
+  "manual.nearby": "隣接方向",
+  "manual.nearer": "近い",
+  "manual.farther": "遠い"
 }

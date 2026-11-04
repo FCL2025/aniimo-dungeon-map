@@ -182,7 +182,7 @@
   "manual.upLeft": "Trên trái",
   "manual.up": "Trên",
   "manual.upRight": "Trên phải",
-  "manual.help": "Use Choose exit to select by its direction from the entrance. When maps share a direction, compare the terrain previews and portals. Reselect on the overlay opens the picker again.",
+  "manual.help": "Chọn hướng lối ra so với lối vào để lọc bản đồ. Các hướng lân cận gần ranh giới cũng được hiển thị. So sánh cổng hoặc địa hình rồi chọn bản đồ phù hợp. Sơ đồ căn các lối vào thẳng hàng với cùng tỷ lệ. Chọn lại trên lớp phủ để đổi bản đồ.",
   "loot.button": "Xếp hạng giá trị vật phẩm",
   "loot.hint": "25 ô / 70 kg; mỗi vật phẩm chiếm một ô, trung bình 2,8 kg mỗi ô. CP túi = giá bán ÷ max(1, trọng lượng ÷ 2,8), xếp giảm dần, bằng điểm thì cùng hạng. Đến 2,8 kg so sánh giá mỗi ô; vật phẩm nặng hơn được điều chỉnh theo trọng lượng.",
   "loot.scope": "Bao gồm vật phẩm vàng, Tinh Chất Tím, hai loại đá năng lượng sơ cấp và vật phẩm tím có giá trị trên mỗi đơn vị trọng lượng lớn hơn 7.000, kể cả hai loại chìa khóa. Loại trừ ba lô, bộ khuếch đại tấn công, chip và khung phòng thủ.",
@@ -229,5 +229,13 @@
   "category.team_blue": "Điểm tập kết xanh lam",
   "pvp.markerHint": "Dấu bản đồ là vị trí có thể xuất hiện theo dữ liệu trò chơi. Mỗi trận có thể khác nhau.",
   "mode.select": "Chế độ chơi",
-  "pvp.imageOnly": "Hầm ngục này hiện chỉ có bản đồ nền; tọa độ các dấu chưa được xác minh."
+  "pvp.imageOnly": "Hầm ngục này hiện chỉ có bản đồ nền; tọa độ các dấu chưa được xác minh.",
+  "manual.view": "So sánh bản đồ",
+  "manual.portals": "Cổng",
+  "manual.terrain": "Địa hình",
+  "manual.portalHint": "Các lối vào căn thẳng hàng, cùng tỷ lệ. Chọn bản đồ phù hợp.",
+  "manual.terrainHint": "So sánh địa hình và cổng, rồi chọn bản đồ.",
+  "manual.nearby": "Hướng lân cận",
+  "manual.nearer": "Gần hơn",
+  "manual.farther": "Xa hơn"
 }

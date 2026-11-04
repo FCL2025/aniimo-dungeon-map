@@ -3,13 +3,18 @@
   <div class="manual-map-layout">
     <div class="manual-map-directions">
       <div id="manual-map-compass"></div>
-      <button id="manual-map-all" type="button" data-i18n="manual.all"></button>
     </div>
     <section class="manual-map-results" aria-labelledby="manual-map-result-title" hidden>
       <div class="manual-map-results-heading"><button id="manual-map-back" type="button">←</button><h3 id="manual-map-result-title" tabindex="-1"></h3></div>
+      <div class="manual-map-views" role="group" aria-label="" id="manual-map-views">
+        <button id="manual-map-portals" type="button" data-i18n="manual.portals" aria-pressed="true" aria-controls="manual-map-candidates"></button>
+        <button id="manual-map-terrain" type="button" data-i18n="manual.terrain" aria-pressed="false" aria-controls="manual-map-candidates"></button>
+      </div>
+      <div id="manual-map-view-hint" class="manual-map-view-hint"></div>
       <div class="manual-map-legend"><span class="manual-map-entrance" data-i18n="category.entrance"></span><span class="manual-map-exit" data-i18n="category.exit"></span></div>
       <div id="manual-map-candidates"></div>
     </section>
   </div>
+  <button id="manual-map-all" type="button" data-i18n="manual.all"></button>
   <p id="manual-map-message" role="status"></p>
 </dialog>

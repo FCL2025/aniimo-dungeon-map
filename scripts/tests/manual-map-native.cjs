@@ -61,7 +61,10 @@ function pickerCopy(){
   const hints={20031:'upLeft',20032:'right',20033:'right',20034:'down',20035:'upRight',20036:'leftLower',20037:'downRight',20038:'upRight',20039:'up',20040:'left',20061:'downLeft',20062:'upLeft'};
   for(const card of document.querySelectorAll('.manual-map-card')){
     check(card.getAttribute('aria-label')===t('map.name',{id:card.dataset.mapId}),'card label '+card.dataset.mapId);
-    check(card.querySelector('span').textContent===t('manual.'+hints[card.dataset.mapId]),'card hint '+card.dataset.mapId);
+    check(card.querySelector('.manual-card-direction').textContent===t('manual.'+hints[card.dataset.mapId]),'card hint '+card.dataset.mapId);
+    const nearby=card.querySelector('.manual-card-nearby'),distance=card.querySelector('.manual-card-distance');
+    if(nearby)check(nearby.textContent===t('manual.nearby'),'nearby '+card.dataset.mapId);
+    if(distance)check(distance.textContent===t('manual.'+({20032:'nearer',20033:'farther',20035:'farther',20038:'nearer'}[card.dataset.mapId])),'distance '+card.dataset.mapId);
   }
   const filter=document.querySelector('.manual-direction[aria-pressed=true]')?.dataset.direction;
   const cards=document.querySelectorAll('.manual-map-card').length;
@@ -116,10 +119,26 @@ async function centered(cdp,label){
     for(const [direction,id] of [['right',20032],['down',20034],['upRight',20035],['downRight',20037],['up',20039]]){
       await main.click('#manual-map-button');await main.until('!document.querySelector("[data-direction=up]").disabled');
       await main.click(`[data-direction="${direction}"]`);
-      if(await main.evaluate('document.getElementById("manual-map-dialog").open'))await main.click(`[data-map-id="${id}"]`);
+      assert(await main.evaluate('document.getElementById("manual-map-dialog").open'),'Direction auto-selected a map: '+direction);
+      await main.click(`[data-map-id="${id}"]`);
       await main.until(`!document.getElementById('manual-map-dialog').open&&document.getElementById('map').value==='${id}'`);
       report.selected.push(id);
     }
+    await main.click('#manual-map-button');await main.until('!document.getElementById("manual-map-all").disabled');
+    await main.click('[data-direction="right"]');
+    report.nearbyRight=await main.evaluate('[...document.querySelectorAll(".manual-map-card")].map(card=>Number(card.dataset.mapId))');
+    assert(JSON.stringify(report.nearbyRight)==='[20032,20033,20037,20038]','Adjacent right candidates missing');
+    assert(await main.evaluate('document.getElementById("map").value==="20039"'),'Direction filter changed the active map');
+    report.portalComparison=await main.evaluate(`(()=>{const previews=[...document.querySelectorAll('.manual-map-preview')];return {boxes:previews.map(svg=>svg.getAttribute('viewBox')),entrances:previews.map(svg=>{const i=svg.querySelector('.manual-portal-entrance');return [Number(i.getAttribute('x'))+Number(i.getAttribute('width'))/2,Number(i.getAttribute('y'))+Number(i.getAttribute('height'))/2]})};})()`);
+    assert(new Set(report.portalComparison.boxes).size===1&&report.portalComparison.entrances.every(p=>p[0]===0&&p[1]===0),'Portal comparison entrances or scales are not aligned');
+    await main.shot('main-right-portals');
+    for(const code of report.locales){await main.evaluate(`I18n.setLocale(${JSON.stringify(code)})`);assert(!(await main.evaluate(`(${pickerCopy.toString()})()`)).length,'Adjacent/distance labels did not translate: '+code);}
+    await main.evaluate('I18n.setLocale("zh-TW")');
+    await main.click('#manual-map-terrain');
+    assert(await main.evaluate('document.querySelectorAll(".manual-map-terrain-image").length===4&&document.getElementById("map").value==="20039"'),'Terrain comparison changed selection or missed images');
+    await main.shot('main-right-terrain');
+    await main.click('#manual-map-portals');await main.click('[data-map-id="20037"]');
+    await main.until('!document.getElementById("manual-map-dialog").open&&document.getElementById("map").value==="20037"');
     await main.click('#manual-map-button');await main.until('!document.getElementById("manual-map-all").disabled');await main.click('#manual-map-all');
     assert(await main.evaluate('document.querySelectorAll(".manual-map-card").length===12'),'All-maps fallback is incomplete');
     assert(!(await main.evaluate(`(${pickerCopy.toString()})()`)).length,'All-maps labels did not translate');
@@ -201,11 +220,23 @@ async function centered(cdp,label){
       if(size<=400){
         await overlay.pointerClick('#manual-map-back');
         assert(await overlay.evaluate('!document.getElementById("manual-map-dialog").classList.contains("has-candidates")'),'Back did not restore directions');
+        assert(await overlay.evaluate('document.activeElement.dataset.direction==="left"'),'Back did not restore the selected direction focus');
         await overlay.pointerClick('[data-direction="left"]');
       }
       await overlay.pointerClick('[data-map-id="20040"]');await overlay.until('!document.getElementById("manual-map-dialog").open');
       assert(await overlay.evaluate('getComputedStyle(document.getElementById("map-canvas")).visibility==="visible"'),'Selection did not restore the overlay map');
+      await overlay.pointerClick('#manual-map-button');await overlay.until('!document.getElementById("manual-map-all").disabled');
+      await overlay.pointerClick('[data-direction="right"]');
+      assert(await overlay.evaluate('document.querySelectorAll(".manual-map-card").length===4&&document.getElementById("map").value==="20040"'),'Right candidates auto-selected or missing at '+size);
+      await overlay.shot('overlay-right-'+size);
+      await overlay.pointerClick('#manual-map-terrain');
+      assert(await overlay.evaluate('document.querySelectorAll(".manual-map-terrain-image").length===4'),'Terrain mode failed at '+size);
+      await overlay.pointerClick('[data-map-id="20038"]');await main.until('document.getElementById("map").value==="20038"');
+      await overlay.until('!document.getElementById("manual-map-dialog").open');
     }
+    await overlay.click('#manual-map-button');await overlay.until('!document.getElementById("manual-map-all").disabled');
+    await overlay.click('#manual-map-all');await overlay.click('[data-map-id="20040"]');await main.until('document.getElementById("map").value==="20040"');
+    await overlay.until('!document.getElementById("manual-map-dialog").open');
     await overlay.send('Emulation.clearDeviceMetricsOverride');
     overlay.socket.close();overlay=null;await main.click('#compact');
     main.socket.close();app.child.kill();app=null;await wait(1200);

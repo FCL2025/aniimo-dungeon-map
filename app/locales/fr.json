@@ -182,7 +182,7 @@
   "manual.upLeft": "En haut à gauche",
   "manual.up": "Haut",
   "manual.upRight": "En haut à droite",
-  "manual.help": "Use Choose exit to select by its direction from the entrance. When maps share a direction, compare the terrain previews and portals. Reselect on the overlay opens the picker again.",
+  "manual.help": "Choisissez la direction de la sortie par rapport à l’entrée pour filtrer les cartes. Les directions voisines proches des limites sont incluses. Comparez les portails ou le terrain, puis choisissez une carte. Les schémas alignent les entrées à la même échelle. Resélectionner dans la superposition rouvre le choix.",
   "loot.button": "Classement du butin par valeur",
   "loot.hint": "25 emplacements / 70 kg ; un objet par emplacement, soit 2,8 kg en moyenne. CP du sac = prix de vente ÷ max(1, poids ÷ 2,8), par ordre décroissant, ex æquo inclus. Jusqu’à 2,8 kg, on compare le prix par emplacement ; au-delà, le poids réduit le score.",
   "loot.scope": "Comprend les objets dorés, l’Essence violette, les deux pierres d’énergie élémentaires et les objets violets dont la valeur par poids dépasse 7 000, y compris les deux clés. Les sacs à dos, amplificateurs d’attaque, puces et châssis défensifs sont exclus.",
@@ -229,5 +229,13 @@
   "category.team_blue": "Point de ralliement cyan",
   "pvp.markerHint": "Les marqueurs indiquent des positions possibles selon les données du jeu. Leur présence varie selon la partie.",
   "mode.select": "Mode de jeu",
-  "pvp.imageOnly": "Seule la carte de ce donjon est disponible pour le moment ; les coordonnées des marqueurs ne sont pas vérifiées."
+  "pvp.imageOnly": "Seule la carte de ce donjon est disponible pour le moment ; les coordonnées des marqueurs ne sont pas vérifiées.",
+  "manual.view": "Comparer les cartes",
+  "manual.portals": "Portails",
+  "manual.terrain": "Terrain",
+  "manual.portalHint": "Entrées alignées, même échelle. Choisissez la bonne carte.",
+  "manual.terrainHint": "Comparez terrain et portails, puis choisissez une carte.",
+  "manual.nearby": "Direction voisine",
+  "manual.nearer": "Plus proche",
+  "manual.farther": "Plus loin"
 }

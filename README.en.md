@@ -33,7 +33,7 @@ Screenshots 2 and 3 show an older interface. Buttons and messages may differ in 
 ## Getting started
 
 1. Run the portable `AniimoDungeonMap.exe` directly, or extract the ZIP first. Select **English** from the language menu at the top of the sidebar.
-2. Press **M** in the game and find the exit relative to the entrance. Click **Choose exit** in the app. If multiple maps share a direction, compare their previews; use **Show all maps** if unsure.
+2. Press **M** in the game and find the exit relative to the entrance. Click **Choose exit** in the app. The direction grid includes nearby candidates at sector boundaries. Compare the **Portals** diagrams, which align the entrances at the same scale, or switch to **Terrain**, then click the matching map. Even a single candidate requires confirmation; use **Show all maps** if unsure.
 3. Choose the difficulty and visible markers in the sidebar. Click **Overlay** to show the transparent map over the game.
 4. For the next run, click **Reselect** on the overlay to choose another map without returning to the main window.
 

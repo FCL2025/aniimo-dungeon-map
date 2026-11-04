@@ -4,7 +4,7 @@
   const el = id => document.getElementById(id), dialog = el('manual-map-dialog');
   const overlay = document.body.classList.contains('overlay');
   const maps = DUNGEON_DATA.maps, directionButtons = [];
-  let filter = null, busy = false, pending = null, requestSequence = 0;
+  let filter = null, view = 'portals', busy = false, pending = null, requestSequence = 0;
   const symbols = [['upLeft','↖'],['up','↑'],['upRight','↗'],['left','←'],null,['right','→'],['downLeft','↙'],['down','↓'],['downRight','↘']];
   const node = (tag, key, className) => {
     const element = document.createElement(tag);
@@ -18,6 +18,16 @@
   bind(el('manual-map-close'), msg('close'), 'title');
   bind(el('manual-map-back'), msg('manual.back'), 'attr:aria-label');
   bind(el('manual-map-back'), msg('manual.back'), 'title');
+  bind(el('manual-map-views'), msg('manual.view'), 'attr:aria-label');
+  for (const kind of ['entrance', 'exit']) {
+    const icon = node('img');
+    icon.src = DUNGEON_DATA.icons.assets[DUNGEON_DATA.icons.categories[kind]].image;
+    icon.alt = '';
+    const label = dialog.querySelector('.manual-map-' + kind);
+    // Keep the translated text separate so switching language preserves the icon.
+    const wrapper = node('span', null, 'manual-map-legend-item');
+    label.replaceWith(wrapper); wrapper.append(icon, label);
+  }
   function positionDialog() {
     // Center the picker over the map area while leaving the toolbar and sidebar usable.
     const bounds = document.querySelector('.stage').getBoundingClientRect();
@@ -46,8 +56,7 @@
     bind(count, matches.length ? msg('manual.count', { count: matches.length }) : msg('manual.empty'));
     button.append(count); button.disabled = !matches.length;
     button.onclick = () => {
-      if (matches.length === 1) void choose(matches[0].id);
-      else { filter = direction; renderCandidates(); el('manual-map-result-title').focus(); }
+      filter = direction; renderCandidates(); dialog.scrollTop = 0; el('manual-map-result-title').focus();
     };
     directionButtons.push(button); el('manual-map-compass').append(button);
   }
@@ -56,15 +65,32 @@
     for (const [key, value] of Object.entries(attributes)) element.setAttribute(key, String(value));
     return element;
   }
-  function preview(map) {
-    const svg = svgNode('svg', { viewBox: `0 0 ${map.size[0]} ${map.size[1]}`, 'aria-hidden': 'true' });
-    svg.append(svgNode('image', { href: map.image, width: map.size[0], height: map.size[1] }));
-    const geometry = map.portalGeometry;
+  function comparisonFrame(matches) {
+    // Crop shared empty space, never fit each map independently: entrances and
+    // pixel scale must match across the candidates currently being compared.
+    const vectors = matches.map(map => ManualMapCore.vector(map)).filter(Boolean);
+    const xs = [0, ...vectors.map(v => v.dx)], ys = [0, ...vectors.map(v => v.dy)];
+    const left = Math.min(...xs), top = Math.min(...ys);
+    const width = Math.max(...xs) - left, height = Math.max(...ys) - top;
+    const padding = Math.max(1, width, height) * .18;
+    return { box:[left - padding, top - padding, width + padding * 2, height + padding * 2], iconSize:padding * 1.25 };
+  }
+  function preview(map, frame) {
+    const relative = view === 'portals' && ManualMapCore.vector(map);
+    const svg = svgNode('svg', { viewBox: relative ? frame.box.join(' ') : `0 0 ${map.size[0]} ${map.size[1]}`, 'aria-hidden': 'true', class:'manual-map-preview' });
+    if (relative) {
+      const [x, y, width, height] = frame.box;
+      svg.style.aspectRatio = `${width} / ${height}`;
+      svg.append(svgNode('path', { d:`M ${x} 0 H ${x + width} M 0 ${y} V ${y + height}`, stroke:'#79cabe26', 'stroke-width':5, fill:'none' }));
+    } else svg.append(svgNode('image', { href: map.image, width: map.size[0], height: map.size[1], class:'manual-map-terrain-image' }));
+    const geometry = relative ? { entrance:[0, 0], exit:[relative.dx, relative.dy] } : ManualMapCore.vector(map) && map.portalGeometry;
     if (geometry) {
       const [x, y] = geometry.entrance, [ex, ey] = geometry.exit;
-      svg.append(svgNode('line', { x1:x, y1:y, x2:ex, y2:ey, stroke:'#e8edf0', 'stroke-width':18, 'stroke-dasharray':'35 25' }));
-      for (const [point, color] of [[geometry.entrance, '#79cabe'], [geometry.exit, '#ff8798']]) {
-        svg.append(svgNode('circle', { cx:point[0], cy:point[1], r:65, fill:color, stroke:'#172731', 'stroke-width':22 }));
+      svg.append(svgNode('line', { x1:x, y1:y, x2:ex, y2:ey, stroke:'#e8edf099', 'stroke-width':14, 'stroke-dasharray':'35 25' }));
+      const iconSize = relative ? frame.iconSize : Math.max(...map.size) * .105;
+      for (const kind of ['entrance', 'exit']) {
+        const point = geometry[kind], icon = DUNGEON_DATA.icons.assets[DUNGEON_DATA.icons.categories[kind]].image;
+        svg.append(svgNode('image', { href:icon, x:point[0] - iconSize / 2, y:point[1] - iconSize / 2, width:iconSize, height:iconSize, class:'manual-portal-' + kind }));
       }
     }
     return svg;
@@ -76,20 +102,32 @@
     el('manual-map-candidates').replaceChildren();
     for (const button of directionButtons) button.setAttribute('aria-pressed', String(button.dataset.direction === filter));
     el('manual-map-all').setAttribute('aria-pressed', String(filter === 'all'));
+    el('manual-map-portals').setAttribute('aria-pressed', String(view === 'portals'));
+    el('manual-map-terrain').setAttribute('aria-pressed', String(view === 'terrain'));
+    bind(el('manual-map-view-hint'), msg(view === 'portals' ? 'manual.portalHint' : 'manual.terrainHint'));
     if (filter === null) return;
     const matches = candidates(maps, filter === 'all' ? null : filter);
+    const frame = comparisonFrame(matches);
     bind(el('manual-map-result-title'), msg('manual.results', { direction:msg(filter === 'all' ? 'manual.all' : 'manual.' + filter), count:matches.length }));
     for (const map of matches) {
       const button = node('button', null, 'manual-map-card');
       button.type = 'button'; button.dataset.mapId = map.id; button.disabled = busy;
       bind(button, msg('map.name', { id:map.id }), 'attr:aria-label');
-      button.append(preview(map));
+      button.append(preview(map, frame));
       const label = node('strong'); label.textContent = String(map.id); button.append(label);
       // Distinguish the two westward exits without screen-scale-dependent pixel distances.
       const direction = ManualMapCore.direction(map);
-      const geometry = map.portalGeometry;
-      const hint = direction === 'left' && geometry.exit[1] - geometry.entrance[1] > geometry.distance * .15 ? 'manual.leftLower' : 'manual.' + direction;
-      if (direction) button.append(node('span', hint));
+      const geometry = ManualMapCore.vector(map);
+      const hint = direction === 'left' && geometry.dy > geometry.distance * .15 ? 'manual.leftLower' : 'manual.' + direction;
+      const caption = node('span', null, 'manual-card-caption');
+      if (direction) caption.append(node('span', hint, 'manual-card-direction'));
+      const distanceHint = ManualMapCore.distanceHint(map, maps);
+      if (distanceHint) caption.append(node('span', 'manual.' + distanceHint, 'manual-card-distance'));
+      caption.id = `manual-card-caption-${map.id}`;
+      button.append(caption); button.setAttribute('aria-describedby', caption.id);
+      const nearby = filter !== 'all' && direction !== filter;
+      button.classList.toggle('manual-map-nearby', nearby);
+      if (nearby) caption.append(node('span', 'manual.nearby', 'manual-card-nearby'));
       button.onclick = () => void choose(map.id); el('manual-map-candidates').append(button);
     }
   }
@@ -98,6 +136,8 @@
     for (const button of directionButtons) button.disabled = value || !candidates(maps, button.dataset.direction).length;
     for (const button of el('manual-map-candidates').children) button.disabled = value;
     el('manual-map-all').disabled = value;
+    el('manual-map-portals').disabled = value;
+    el('manual-map-terrain').disabled = value;
   }
   async function enterManualMode(mapId) {
     if (!overlay) return window.enterManualMode(mapId);
@@ -114,7 +154,7 @@
   }
   async function open() {
     if (busy) return;
-    filter = null; renderCandidates(); el('manual-map-message').textContent = '';
+    filter = null; view = 'portals'; renderCandidates(); el('manual-map-message').textContent = '';
     positionDialog();
     if (!dialog.open) dialog.show();
     setBusy(true);
@@ -137,8 +177,9 @@
     event.preventDefault();
     dialog.close();
   });
-  el('manual-map-all').onclick = () => { filter = 'all'; renderCandidates(); el('manual-map-result-title').focus(); };
-  el('manual-map-back').onclick = () => { filter = null; renderCandidates(); dialog.scrollTop = 0; directionButtons.find(button => !button.disabled)?.focus(); };
+  el('manual-map-all').onclick = () => { filter = 'all'; renderCandidates(); dialog.scrollTop = 0; el('manual-map-result-title').focus(); };
+  el('manual-map-back').onclick = () => { const previous = filter; filter = null; renderCandidates(); dialog.scrollTop = 0; (directionButtons.find(button => button.dataset.direction === previous) || directionButtons.find(button => !button.disabled))?.focus(); };
+  for (const kind of ['portals', 'terrain']) el('manual-map-' + kind).onclick = () => { view = kind; renderCandidates(); };
   if (overlay) {
     window.manualMapReady = window.__TAURI__.event.listen('map-overlay-manual-result', ({ payload }) => {
       if (pending?.requestId !== payload.requestId) return;

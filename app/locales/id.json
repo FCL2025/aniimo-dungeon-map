@@ -182,7 +182,7 @@
   "manual.upLeft": "Kiri atas",
   "manual.up": "Atas",
   "manual.upRight": "Kanan atas",
-  "manual.help": "Use Choose exit to select by its direction from the entrance. When maps share a direction, compare the terrain previews and portals. Reselect on the overlay opens the picker again.",
+  "manual.help": "Pilih arah pintu keluar dari pintu masuk untuk menyaring peta. Arah bersebelahan di dekat batas juga disertakan. Bandingkan portal atau medan, lalu pilih peta yang cocok. Diagram menyelaraskan posisi pintu masuk dengan skala yang sama. Pilih ulang pada overlay untuk mengganti peta.",
   "loot.button": "Peringkat nilai jarahan",
   "loot.hint": "25 slot / 70 kg; satu item per slot, rata-rata 2,8 kg per slot. CP tas = harga jual ÷ max(1, berat ÷ 2,8), dari tertinggi dengan peringkat sama untuk nilai setara. Hingga 2,8 kg dibandingkan berdasarkan harga per slot; item lebih berat disesuaikan menurut berat.",
   "loot.scope": "Mencakup item emas, Esens Ungu, dua batu energi dasar, dan item ungu dengan nilai per berat di atas 7.000, termasuk kedua kunci. Tas ransel, penguat serangan, cip, dan rangka pertahanan tidak termasuk.",
@@ -229,5 +229,13 @@
   "category.team_blue": "Titik Kumpul Biru Muda",
   "pvp.markerHint": "Penanda menunjukkan lokasi yang mungkin dari data game. Kemunculannya dapat berbeda setiap pertandingan.",
   "mode.select": "Mode permainan",
-  "pvp.imageOnly": "Ruang bawah tanah ini saat ini hanya memiliki peta dasar; koordinat penanda belum diverifikasi."
+  "pvp.imageOnly": "Ruang bawah tanah ini saat ini hanya memiliki peta dasar; koordinat penanda belum diverifikasi.",
+  "manual.view": "Bandingkan peta",
+  "manual.portals": "Portal",
+  "manual.terrain": "Medan",
+  "manual.portalHint": "Posisi pintu masuk sejajar, skala sama. Pilih peta yang cocok.",
+  "manual.terrainHint": "Bandingkan medan dan portal, lalu pilih peta.",
+  "manual.nearby": "Arah terdekat",
+  "manual.nearer": "Lebih dekat",
+  "manual.farther": "Lebih jauh"
 }

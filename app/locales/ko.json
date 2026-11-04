@@ -182,7 +182,7 @@
   "manual.upLeft": "왼쪽 위",
   "manual.up": "위",
   "manual.upRight": "오른쪽 위",
-  "manual.help": "Use Choose exit to select by its direction from the entrance. When maps share a direction, compare the terrain previews and portals. Reselect on the overlay opens the picker again.",
+  "manual.help": "출구 선택으로 입구 기준 방향을 골라 후보를 좁힙니다. 경계에 가까운 인접 방향도 포함됩니다. 입구·출구 위치나 지형을 비교한 뒤 맞는 지도를 선택하세요. 위치도는 입구 위치를 맞추고 같은 축척으로 표시합니다. 오버레이의 다시 선택으로 변경할 수 있습니다.",
   "loot.button": "아이템 가치 순위",
   "loot.hint": "25칸 / 70 kg, 아이템당 1칸, 칸당 평균 2.8 kg입니다. 가방 CP = 판매 가격 ÷ max(1, 무게 ÷ 2.8), 내림차순이며 같은 값은 공동 순위입니다. 2.8 kg 이하는 칸당 가격을 비교하고, 무거운 아이템은 무게로 보정합니다.",
   "loot.scope": "금색 아이템, 생명의 신비석, 초급 에너지석 2종, 무게당 가치가 7,000을 넘는 보라색 아이템 및 두 열쇠를 포함합니다. 배낭, 공격 증폭기, 칩, 방호 기체는 제외합니다.",
@@ -229,5 +229,13 @@
   "category.team_blue": "청록 집결지",
   "pvp.markerHint": "표시는 게임 데이터의 후보 지점입니다. 실제 출현은 경기마다 다를 수 있습니다.",
   "mode.select": "게임 모드",
-  "pvp.imageOnly": "이 던전은 현재 기본 지도만 제공합니다. 표시 위치는 아직 확인되지 않았습니다."
+  "pvp.imageOnly": "이 던전은 현재 기본 지도만 제공합니다. 표시 위치는 아직 확인되지 않았습니다.",
+  "manual.view": "비교 방식",
+  "manual.portals": "입구·출구",
+  "manual.terrain": "지형",
+  "manual.portalHint": "입구 위치 통일, 축척은 동일합니다. 맞는 지도를 선택하세요.",
+  "manual.terrainHint": "지형과 입구·출구를 비교한 뒤 선택하세요.",
+  "manual.nearby": "인접 방향",
+  "manual.nearer": "가까움",
+  "manual.farther": "멀음"
 }
