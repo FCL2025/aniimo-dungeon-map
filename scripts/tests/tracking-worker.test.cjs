@@ -36,3 +36,25 @@ for(const interval of [100,250])test(`global fallback reacquires moving position
   assert.equal(searches.filter(s=>s==='global').length,7);
   assert.ok(searches.includes('local'));
 });
+
+test('worker bridges short map misses without extending the absolute anchor deadline',async()=>{
+  const results=[],anchors=[],resets=[];let at=1000;
+  const flow={begin:()=>({valid:at>1000&&at<=1600,reason:at>1600?'expired':'tracked',at,fromAt:at-100,anchorAt:1000,
+    model:{a:1,b:0,tx:100+(at-1000)/10,ty:100},pixel:[200+(at-1000)/5,200],observed:[],inliers:20,error:.1}),
+    commit:(model,points,anchor)=>anchors.push(anchor),reset:()=>resets.push(at)};
+  const context=vm.createContext({importScripts(){},self:{},MapTracking,performance:{now:()=>0},
+    decode:async()=>({close(){}}),postMessage:r=>results.push(r),
+    MapScreen:{inspect:()=>({mapOpen:false}),relativeRegion:()=>[],defaultMini:()=>[]},
+    crop:()=>({pixels:{},width:100,height:100}),features:()=>({points:Array(20),descriptors:{delete(){}}}),
+    MapRecognition:{consensus:p=>p,transform:model=>[model.tx,model.ty]},
+    score:()=>at===1000?{model:{a:1,b:0,tx:100,ty:100},inliers:14,cells:3,error:1,area:800}:null,
+    testFlow:flow});
+  vm.runInContext(fs.readFileSync(require.resolve('../../app/tracking-worker.js'),'utf8'),context);
+  vm.runInContext("reference={id:20036};nearbyReference=()=>null;flow=testFlow;",context);
+  for(at=1000;at<=1700;at+=100){context.self.onmessage({data:{type:'track',capturedAt:at,request:at}});await vm.runInContext('queue',context);}
+  assert.equal(results[0].location.method,'map');
+  assert.ok(results.slice(1,7).every(r=>r.location?.method==='flow'));
+  assert.equal(results[7].location,null);
+  assert.deepEqual(anchors,[1000,1000,1000,1000,1000,1000,1000]);
+  assert.deepEqual(resets,[1700]);
+});

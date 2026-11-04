@@ -7,6 +7,7 @@ mod capture_region;
 mod profile;
 mod overlay;
 mod updater;
+mod tracking_log;
 
 #[tauri::command]
 fn set_topmost(window: WebviewWindow, enabled: bool) -> Result<bool, String> {
@@ -31,7 +32,7 @@ fn main() {
         })
         .invoke_handler(tauri::generate_handler![set_topmost, overlay::set_map_overlay, overlay::set_overlay_scale, overlay::drag_window, capture::game_windows,
             capture::start_capture, capture::stop_capture, capture::configure_capture, capture::capture_frame,
-            updater::check_for_update, updater::open_portable_download])
+            updater::check_for_update, updater::open_portable_download, tracking_log::append_tracking_log])
         .setup(|app| {
             let exe = std::env::current_exe()?;
             let folder = exe.parent().ok_or("Cannot find executable directory")?;
@@ -40,6 +41,7 @@ fn main() {
                 std::env::var_os("ANIIMO_TEST_DATA_DIR").map(std::path::PathBuf::from)
             } else { None }.unwrap_or(app.path().app_local_data_dir()?);
             let profile = data_root.join("WebView2");
+            app.manage(tracking_log::TrackingLogState::new(data_root.clone()));
             profile::prepare_profile(&profile, folder)?;
             let browser_args = hidden.then(|| std::env::var("WEBVIEW2_ADDITIONAL_BROWSER_ARGUMENTS").ok()).flatten()
                 .map(|args| format!("--disable-features=msWebOOUI,msPdfOOUI,msSmartScreenProtection --autoplay-policy=no-user-gesture-required {args}"));

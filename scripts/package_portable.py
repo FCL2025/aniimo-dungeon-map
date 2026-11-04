@@ -42,6 +42,7 @@ readme = rf'''伊莫地城地圖　可攜版 {VERSION}
 
 設定與更新
 設定儲存在 %LOCALAPPDATA%\local.aniimo.dungeonmap\WebView2；同一 Windows 帳號更新版本後沿用。程式會提示 GitHub 新版，下載後請先關閉舊版，再以新版 EXE 替換。畫面只在本機記憶體處理，不上傳或自動保存截圖。
+追蹤開啟時會將數值診斷寫入 %LOCALAPPDATA%\local.aniimo.dungeonmap\logs\tracking.log，保留目前與上一份紀錄；不包含截圖。回報正常移動中遺失位置時，可提供發生時間與這兩份紀錄。二樓、背包與開箱造成的小地圖切換或遮蔽仍可能暫停定位。
 地圖資料來源版本：3846247；道具圖示來源版本：3634150。
 SHA256SUMS.txt 可用於核對發行檔案。
 '''

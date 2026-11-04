@@ -63,7 +63,7 @@ data = dict(categories=CATEGORIES, icons=icons, difficulties=difficulty['difficu
 (OUTPUT/'data.js').write_text('window.DUNGEON_DATA='+json.dumps(data, ensure_ascii=False, separators=(',', ':')).replace('</', '<\\/')+';', encoding='utf8')
 for name in ('viewer.js', 'viewer.css', 'i18n.js', 'i18n.css', 'loot-ranking.js', 'loot-ranking.css', 'shop-advice.js', 'shop-advice.css'):
     shutil.copyfile(ROOT/'scripts/data_viewer'/name, OUTPUT/name)
-for name in ('desktop.js', 'overlay.js', 'desktop.css', 'update.js', 'update.css', 'manual-map.js', 'manual-map-core.js', 'manual-map.css', 'tracking.js', 'recognition.css', 'recognition-core.js', 'recognition-vision.js', 'tracking-core.js', 'tracking-worker.js', 'map-header.js', 'recognition-screen.js'):
+for name in ('desktop.js', 'overlay.js', 'desktop.css', 'update.js', 'update.css', 'manual-map.js', 'manual-map-core.js', 'manual-map.css', 'tracking.js', 'recognition.css', 'recognition-core.js', 'recognition-vision.js', 'tracking-core.js', 'tracking-flow.js', 'tracking-worker.js', 'map-header.js', 'recognition-screen.js'):
     shutil.copyfile(ROOT/'app'/name, OUTPUT/name)
 shutil.copytree(ROOT/'app/vendor', OUTPUT/'vendor', dirs_exist_ok=True)
 html = (ROOT/'scripts/data_viewer/index.html').read_text(encoding='utf8')

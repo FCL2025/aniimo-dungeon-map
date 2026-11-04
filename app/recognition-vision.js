@@ -33,7 +33,7 @@ function crop(bitmap,region,maxWidth=1200,circle=false){
   if(!circle&&region[2]>.9){ctx.fillStyle='#14212c';ctx.fillRect(0,0,height*.32,height*.28);}
   return {pixels:!circle?ctx.getImageData(0,0,width,height):pixels,width,height,ratio,region:[x,y,w,h]};
 }
-function score(query,reference,estimate=MapRecognition.consensus){
+function score(query,reference,estimate=MapRecognition.consensus,includeObserved=false){
   if(query.descriptors.rows<6)return null;
   const matches=new cv.DMatchVectorVector(),pairs=[],used=new Set();
   try{
@@ -52,6 +52,6 @@ function score(query,reference,estimate=MapRecognition.consensus){
   if(!result)return null;
   const {model,inliers,cells,area,error}=result;
   const xs=inliers.map(p=>p.u),ys=inliers.map(p=>p.v);
-  return {id:reference.id,model,inliers:inliers.length,cells,area,error,support:inliers.length/query.points.length,score:inliers.length+Math.min(20,cells)*1.5,
+  return {id:reference.id,model,inliers:inliers.length,cells,area,error,...(includeObserved?{observed:inliers.map(p=>[p.x,p.y])}:{}),support:inliers.length/query.points.length,score:inliers.length+Math.min(20,cells)*1.5,
     spread:Math.max(...xs)-Math.min(...xs),coverage:Math.hypot(Math.max(...xs)-Math.min(...xs),Math.max(...ys)-Math.min(...ys))};
 }

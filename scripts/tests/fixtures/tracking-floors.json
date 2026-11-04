@@ -1,0 +1,35 @@
+{
+  "description": "User-supplied screenshots at the same planar location on different floors, 2026-11-04. Cropped to the minimap and map-header area; no player UID.",
+  "samples": [
+    {
+      "file": "tracking-floor-1.png",
+      "floor": 1,
+      "sourceSize": [
+        1920,
+        1080
+      ],
+      "crop": [
+        65,
+        25,
+        217,
+        217
+      ],
+      "sha256": "d995538b74f957bb706425becb9abf68d761208859b73fc9fd9ce2621f22526b"
+    },
+    {
+      "file": "tracking-floor-2.png",
+      "floor": 2,
+      "sourceSize": [
+        1920,
+        1080
+      ],
+      "crop": [
+        65,
+        25,
+        217,
+        217
+      ],
+      "sha256": "0d5577bdc33329bfc44e358effa3597301602b1ab3553ee0db52a370015cc621"
+    }
+  ]
+}

@@ -3,14 +3,18 @@
   class PositionGate {
     constructor(){this.reset();}
     reset(){this.last=null;this.pending=null;}
-    accept(pixel,at,confirm=false){
+    accept(pixel,at,confirm=false,motion=null){
       if(!Array.isArray(pixel)||pixel.length!==2||!pixel.every(v=>Number.isFinite(v)&&v>=0&&v<=2048)||!Number.isFinite(at))return false;
       if(this.last&&at<=this.last.at)return false;
       const distance=(a,b)=>Math.hypot(a[0]-b[0],a[1]-b[1]);
       // Losing one or two frames must not remove the protection against jumps.
       // Two distinct consistent observations can still reacquire after a teleport.
       const elapsed=this.last?at-this.last.at:Infinity,limit=Math.min(160,32+elapsed*.24);
-      if(confirm||this.last&&elapsed<5000&&distance(pixel,this.last.pixel)>limit){
+      const supported=!confirm&&this.last&&motion?.valid&&motion.at===at&&motion.fromAt===this.last.at&&
+        elapsed>0&&elapsed<=600&&Number.isFinite(motion.anchorAt)&&at-motion.anchorAt>=0&&at-motion.anchorAt<=600&&
+        Array.isArray(motion.pixel)&&motion.pixel.length===2&&motion.pixel.every(Number.isFinite)&&
+        distance(pixel,motion.pixel)<=12&&distance(pixel,this.last.pixel)/elapsed<=1;
+      if(confirm||!supported&&this.last&&elapsed<5000&&distance(pixel,this.last.pixel)>limit){
         const pending=this.pending;
         if(pending&&at<=pending.at)return false;
         const dt=pending?at-pending.at:Infinity;
