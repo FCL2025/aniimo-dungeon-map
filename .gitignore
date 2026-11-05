@@ -1,4 +1,5 @@
 .venv/
+/.vscode/
 __pycache__/
 *.py[cod]
 *.log
@@ -9,8 +10,19 @@ app/smoke-run*/
 app/capture-timing-tests.exe
 app/capture-timing-tests.pdb
 dist/
+# Local distribution cleanup utility
+/scripts/clean_dist_latest.ps1
 exports/grab-eggs-dungeons-3846247/
 exports/pvp-map-current/
+# Local egg movement research and PvP Aniimo recommendations
+/exports/egg-movement-*/
+/exports/egg-wind-*/
+/exports/pvp-survival/
+/scripts/analyze_egg_movement.py
+/scripts/analyze_egg_wind.py
+/scripts/analyze_pvp_survival.py
+/scripts/build_pvp_survival.py
+/scripts/verify_pvp_survival.py
 mobile/android/.gradle/
 mobile/android/**/build/
 mobile/android/local.properties

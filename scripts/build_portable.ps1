@@ -1,4 +1,8 @@
-param([switch]$Zip)
+param(
+    [switch]$Zip,
+    [string]$CertificateThumbprint = $env:ANIIMO_SIGNING_THUMBPRINT,
+    [switch]$RequireSignature
+)
 $ErrorActionPreference = 'Stop'
 $projectRoot = Split-Path -Parent $PSScriptRoot
 $pythonExe = Join-Path $projectRoot '.venv\Scripts\python.exe'
@@ -10,6 +14,9 @@ try {
     cargo build --release --locked
     if ($LASTEXITCODE -ne 0) { throw 'Rust 編譯失敗。' }
 } finally { Pop-Location }
+& (Join-Path $PSScriptRoot 'sign_windows.ps1') `
+    -Path (Join-Path $projectRoot 'app\src-tauri\target\x86_64-pc-windows-msvc\release\aniimo-dungeon-map.exe') `
+    -CertificateThumbprint $CertificateThumbprint -RequireSignature:$RequireSignature
 $packageArguments = @('-X', 'utf8', (Join-Path $PSScriptRoot 'package_portable.py'))
 if ($Zip) { $packageArguments += '--zip' }
 & $pythonExe @packageArguments

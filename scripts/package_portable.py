@@ -46,6 +46,10 @@ readme = rf'''伊莫地城地圖　可攜版 {VERSION}
 追蹤開啟時會將數值診斷寫入 %LOCALAPPDATA%\local.aniimo.dungeonmap\logs\tracking.log，保留目前與上一份紀錄；不包含截圖。回報正常移動中遺失位置時，可提供發生時間與這兩份紀錄。二樓、背包與開箱造成的小地圖切換或遮蔽仍可能暫停定位。
 地圖資料來源版本：3846247；道具圖示來源版本：3634150。
 SHA256SUMS.txt 可用於核對發行檔案。
+
+Windows 安全性提示
+若顯示「Windows 已保護您的電腦／不明的發行者」，可能是 SmartScreen 對未簽章或尚未建立信譽的下載檔案提出警告，不等於已偵測病毒。僅從本專案 GitHub Releases 下載，並以 PowerShell 的 Get-FileHash .\AniimoDungeonMap.exe -Algorithm SHA256 比對同一版 SHA256SUMS.txt。
+若 Windows 安全性列出 Trojan、PUA 等威脅名稱，或檔案遭隔離，請先停止使用並回報完整威脅名稱、版本、檔案 SHA-256 與 Defender 定義版本，以便查核及向 Microsoft 提交分析。請勿關閉防毒或加入排除清單。本機掃描通過並不保證其他電腦不會警告。
 '''
 (folder/'使用說明.txt').write_text(readme, encoding='utf-8-sig')
 notices = '\n\n'.join((ROOT/'app/vendor'/name).read_text(encoding='utf8')

@@ -31,7 +31,8 @@ python -m venv .venv
 
 1. `prepare_portable.py`：產生 `app/frontend`，檢查地城與首領範圍，記錄 `asset-manifest.json`。
 2. `cargo build --release --locked`：建置包含內嵌前端的 EXE。
-3. `package_portable.py`：輸出 `dist/AniimoDungeonMap-<版本>-windows-x64-portable/`，內含 EXE、使用說明、第三方授權與本地校驗檔。
+3. `sign_windows.ps1`：有指定憑證時，以 SHA-256 簽署並加入 RFC 3161 時間戳，驗證成功才繼續。未指定憑證的本地建置會明確提示未簽章。
+4. `package_portable.py`：輸出 `dist/AniimoDungeonMap-<版本>-windows-x64-portable/`，內含 EXE、使用說明、第三方授權與本地校驗檔。簽署在計算雜湊及 ZIP 封裝之前完成。
 
 預設只輸出可直接執行的本地應用。使用者明確需要 ZIP 時，才使用 `scripts/build_portable.ps1 -Zip`，或執行 `scripts/package_portable.py --zip`。封裝採用明確檔案清單，不收錄測試 profile 或 `Data`。`dist/portable-build.json` 記錄可執行檔大小及雜湊；未輸出 ZIP 時 `archive` 為 null。
 
@@ -46,10 +47,26 @@ python -m venv .venv
 準備發行時執行：
 
 ```powershell
+$env:ANIIMO_SIGNING_THUMBPRINT = '填入 Windows 憑證存放區中正式程式碼簽章憑證的指紋'
 .\scripts\build_release.ps1
 ```
 
-腳本建置可攜版 EXE／ZIP，輸出 `dist/github-release-v<版本>/` 的免安裝版附件。發布時上傳該資料夾內全部檔案，再確認 `releases/latest/download/AniimoDungeonMap.exe` 可以下載。新版本號須同時更新 `tauri.conf.json` 與 `Cargo.toml`。
+腳本建置可攜版 EXE／ZIP，驗證簽章、使用 Microsoft Defender 掃描，再輸出 `dist/github-release-v<版本>/` 的免安裝版附件。正式發版預設要求有效且有時間戳的簽章；目前沒有憑證、明確接受未簽章發行時，使用 `scripts/build_release.ps1 -AllowUnsignedRelease`，仍會掃描。這個選項不會消除 SmartScreen 警告。發布時上傳發行資料夾內全部檔案，再確認 `releases/latest/download/AniimoDungeonMap.exe` 可以下載。新版本號須同時更新 `tauri.conf.json` 與 `Cargo.toml`。
+
+簽章憑證須具有私鑰與 Code Signing 用途，存在 `Cert:\CurrentUser\My` 或 `Cert:\LocalMachine\My`；不將 PFX 密碼放進命令列，也不建立自簽憑證。`sign_windows.ps1 -TimestampServer <URL>` 可指定憑證供應商的 RFC 3161 服務。`Valid` 是本機信任鏈驗證結果，公開發行須使用公開受信任 CA 的憑證；私人 CA 即使在開發電腦受信任，也不能建立一般使用者的發行者信任。有效簽章仍可能需要累積下載信譽，不能保證新版本完全不顯示 SmartScreen。[Microsoft 說明](https://learn.microsoft.com/en-us/windows/apps/package-and-deploy/smartscreen-reputation)
+
+Defender 檢查要求 Normal 模式與 48 小時內的安全性情報，結果保存於 `dist/windows-security-v<版本>.json`；請先透過 Windows 安全性更新情報。掃描以 `MpCmdRun -Scan -ScanType 3 -DisableRemediation` 執行：這次自訂掃描會忽略檔案排除項目、檢查 ZIP，並保留原檔供分析，不變更即時防護設定。偵測、掃描失敗或要求的簽章無效時停止發版。`package_release.py` 另核對可攜資料夾校驗檔與 ZIP 每個檔案的內容，避免 ZIP 混入舊 EXE 或簽署後未重算雜湊；直接呼叫這個 Python 腳本只做一致性檢查，不取代完整發版安全檢查。
+
+既有檔案可以單獨查核：
+
+```powershell
+.\scripts\verify_windows_security.ps1 -Path '.\dist\github-release-v0.2.50\AniimoDungeonMap.exe' -ReportPath '.\dist\windows-security-check.json'
+.\.venv\Scripts\python.exe -X utf8 scripts\tests\release-integrity.test.py
+```
+
+無 `-RequireSignature` 時可記錄既有未簽章版本的掃描結果；有簽章但驗證失敗時仍會失敗。報告的 `passed` 只表示本次檢查通過，不代表 SmartScreen 或其他電腦已信任程式。重現下載警告需在乾淨 Windows 測試環境，以瀏覽器下載正式 Release 並保留來源標記後啟動；PowerShell 下載／本機編譯／`--hidden` 測試不能取代這項驗證。
+
+收到回報時先區分 SmartScreen 信譽、Smart App Control 與 Defender 惡意程式偵測。取得完整警告或威脅名稱、SHA-256、下載來源及安全性情報版本；若屬病毒或 PUA 偵測，核對檔案與程式行為後再向 [Microsoft Security Intelligence](https://www.microsoft.com/en-us/wdsi/filesubmission) 以 Software developer 身分提交原始被擋 EXE，附原始碼網址與視窗擷取／快捷鍵用途說明。不要先改名、重新壓縮或關閉防護來宣稱誤報已解決；未知下載信譽也不能宣稱可透過送審保證解除。
 
 v0.2.50 恢復 12 張 PVE 地宮辨識、截圖匯入、擷取設定與覆蓋視窗開關。`tracking.js` 統一管理原生擷取，`recognition.js` 只管理地圖辨識；鎖圖後釋放辨識 Worker，啟用的追蹤繼續運作並恢復小地圖裁切。新增 20031、20033、20038、20061、20062 與原 7 張同列第一輪搜尋；保留原 7 張初始迷霧參考，新 5 張目前以地形及門位比對。
 

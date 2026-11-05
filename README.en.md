@@ -63,6 +63,14 @@ For two-player chest routes, enable **Show suggested route**, use the same **Sho
 
 For more controls, open **Help** at the bottom of the sidebar.
 
+## Windows security warnings
+
+“Windows protected your PC” or “Unknown publisher” can be a **SmartScreen reputation warning**, rather than a malware detection. Unsigned and newly released files can trigger it. Locally built files usually lack the Internet-origin marker added by browsers, so a developer's local launch is not an equivalent test. See [Microsoft's explanation](https://learn.microsoft.com/en-us/windows/apps/package-and-deploy/smartscreen-reputation).
+
+Download only from this project's GitHub Releases. Run `Get-FileHash .\AniimoDungeonMap.exe -Algorithm SHA256` in PowerShell and compare against `SHA256SUMS.txt` from the same release. If Windows Security names a threat such as Trojan or PUA, or quarantines the file, stop using it and report the exact warning, app version, download URL, SHA-256 and Defender security intelligence version. Developers can request [Microsoft file analysis](https://www.microsoft.com/en-us/wdsi/filesubmission). Do not disable antivirus or add exclusions. Matching hashes establish file identity; a clean local scan does not guarantee every device will accept the file.
+
+## Loot and purchase advice
+
 Open **Loot value ranking** above Help to compare 24 gold chest treasures, two high-grade energy stones, Gold Essence, the Gilded Key, Purple Essence, two basic energy stones, and three purple items worth strictly more than 7,000 per weight: the Silver-Plated Key and two medium-grade energy stones. Backpacks, attack amplifiers, chips, and defense chassis are excluded. Ranking assumes **25 slots, 70 kg, and one item per slot**: **bag CP = sale price ÷ max(1, weight ÷ 2.8)**, highest first with ties. Items up to 2.8 kg compete on price per slot; heavier items are discounted for weight.
 
 The same sidebar section includes daily Chaos Ticket and Mystery Egg Box purchase guides. Assuming 300,000 Shell Coins from each successful Chaos run, buying and using 10 tickets yields the maximum daily cash net of 1,760,000. Tickets 11–15 leave it unchanged; ticket 16 onward lowers it. The first nine boxes cost 500,000 each, or 4,500,000 total. Their opening odds are unknown, so nine is a price-tier budget suggestion.
