@@ -19,7 +19,21 @@ function features(imageData,circle=false,engine=detector){
   }catch(error){descriptors.delete();throw error;}
   finally{rgba.delete();gray.delete();mask.delete();points.delete();}
 }
+// The start-room window: fog references cover 120 px around the entrance at
+// 1080p; the margin keeps those keypoints clear of ORB's pyramid border.
+const START_ROOM_WINDOW_1080=190;
+function windowFeatures(pixels,center,radius,engine=detector){
+  const x0=clamp(Math.round(center[0]-radius),0,pixels.width),y0=clamp(Math.round(center[1]-radius),0,pixels.height);
+  const x1=clamp(Math.round(center[0]+radius),0,pixels.width),y1=clamp(Math.round(center[1]+radius),0,pixels.height);
+  const width=x1-x0,height=y1-y0;if(width<48||height<48)return null;
+  const data=new Uint8ClampedArray(width*height*4);
+  for(let y=0;y<height;y++)data.set(pixels.data.subarray(((y0+y)*pixels.width+x0)*4,((y0+y)*pixels.width+x1)*4),y*width*4);
+  const result=features({width,height,data},false,engine);
+  result.points=result.points.map(([x,y])=>[x+x0,y+y0]);result.window=[x0,y0,width,height];
+  return result;
+}
 async function decode(source){
+  if(typeof ImageBitmap!=='undefined'&&source instanceof ImageBitmap)return source;
   const blob=await (await fetch(source)).blob();return createImageBitmap(blob);
 }
 function crop(bitmap,region,maxWidth=1200,circle=false){
@@ -30,8 +44,11 @@ function crop(bitmap,region,maxWidth=1200,circle=false){
   ctx.drawImage(bitmap,x,y,w,h,0,0,width,height);
   const pixels=ctx.getImageData(0,0,width,height);
   // Ignore HUD/minimap corners when looking for the full-screen M map.
-  if(!circle&&region[2]>.9){ctx.fillStyle='#14212c';ctx.fillRect(0,0,height*.32,height*.28);}
-  return {pixels:!circle?ctx.getImageData(0,0,width,height):pixels,width,height,ratio,region:[x,y,w,h]};
+  if(!circle&&region[2]>.9){
+    const right=Math.min(width,Math.round(height*.32)),bottom=Math.min(height,Math.round(height*.28)),data=pixels.data;
+    for(let yy=0;yy<bottom;yy++)for(let i=yy*width*4,end=i+right*4;i<end;i+=4){data[i]=0x14;data[i+1]=0x21;data[i+2]=0x2c;data[i+3]=255;}
+  }
+  return {pixels,width,height,ratio,region:[x,y,w,h]};
 }
 function score(query,reference,estimate=MapRecognition.consensus,includeObserved=false){
   if(query.descriptors.rows<6)return null;

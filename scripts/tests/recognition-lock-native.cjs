@@ -31,8 +31,9 @@ async function connect(url){
     };
     const until=async expression=>{for(let i=0;i<600;i++){const value=await evaluate(expression);if(value)return value;await wait(100);}throw Error('Timed out: '+expression);};
     await until('!!window.recognitionStatus');
-    const ids=[20032,20034,20035,20036,20037,20039,20040],fixtures={};
-    for(const name of [...ids.map(id=>id===20040?'real-20040-sparse.png':`real-${id}-initial.png`),'real-20040-initial.png','real-20040-explored.png']){
+    const ids=[20031,20032,20033,20034,20035,20036,20037,20038,20039,20040,20061],fixtures={};
+    const importName=id=>id===20040?'real-20040-sparse.png':id===20062?'synthetic-20062-initial.png':`real-${id}-initial.png`;
+    for(const name of [...ids.map(importName),'synthetic-20062-initial.png','real-20040-initial.png','real-20040-explored.png']){
       fixtures[name]='data:image/png;base64,'+fs.readFileSync(path.join(root,'exports/recognition-fixtures',name)).toString('base64');
     }
     await evaluate('window.fogBenchmarkRepeats=1;window.portalCheckBenchmarkRepeats=1;window.recognitionFixtureOverrides='+JSON.stringify(fixtures));
@@ -67,8 +68,8 @@ async function connect(url){
     })()`,true);
     console.log("Full maps: "+report.fullMaps.length+" correct candidates");
     report.controls=await evaluate(fs.readFileSync(path.join(__dirname,'tracking-controls-browser.js'),'utf8'),true);
-    for(const id of [...ids,20031,20033,20038,20061,20062]){
-      const name=id===20040?'real-20040-sparse.png':`real-${id}-initial.png`;
+    for(const id of [...ids,20062]){
+      const name=importName(id);
       const started=Date.now();
       await evaluate(`(async()=>{
         const blob=await(await fetch(window.recognitionFixtureOverrides[${JSON.stringify(name)}]||'maps/${id}.png')).blob();

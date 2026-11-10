@@ -11,8 +11,40 @@
       result[kind]=p.map((v,i)=>v*1024/size[i]);
     }
     const dx=result.exit[0]-result.entrance[0],dy=result.exit[1]-result.entrance[1];
-    return {...result,distance:Math.hypot(dx,dy),angle:Math.atan2(dy,dx),
-      defaultDistance1080:Number.isFinite(g.defaultDistance1080)&&g.defaultDistance1080>0?g.defaultDistance1080:null};
+    const defaultDistance1080=Number.isFinite(g.defaultDistance1080)&&g.defaultDistance1080>0?g.defaultDistance1080:null;
+    // Entrance-to-exit on a 1080p screen at the default farthest zoom, from the
+    // original map pixels so a non-square map keeps its true direction.
+    const ox=g.exit[0]-g.entrance[0],oy=g.exit[1]-g.entrance[1],original=Math.hypot(ox,oy);
+    return {...result,distance:Math.hypot(dx,dy),angle:Math.atan2(dy,dx),defaultDistance1080,
+      vector1080:defaultDistance1080&&original>0?[ox*defaultDistance1080/original,oy*defaultDistance1080/original]:null};
+  }
+  // Door-vector tolerance in 1080p pixels: icon centres are found at half
+  // resolution and the player's arrow covers part of the front door.
+  const vectorTolerance=vector=>Math.max(14,Math.hypot(...vector)*.03);
+  // Where each dungeon's front door must be, given the side door. Both doors are
+  // fixed map pins, so only the UI scale changes the vector between them; pans,
+  // window position and exploration do not. With a detected front door only
+  // dungeons whose vector agrees remain; otherwise every dungeon is a hypothesis.
+  function doorHypotheses(references,observed,uiScale){
+    if(!observed?.exit||!Number.isFinite(uiScale)||uiScale<=0)return {matched:false,items:[]};
+    const items=[];
+    for(const reference of references){
+      const v=reference.portals?.vector1080;if(!v)continue;
+      const entrance=[observed.exit[0]-v[0]*uiScale,observed.exit[1]-v[1]*uiScale];
+      const error=observed.entrance?Math.hypot(observed.entrance[0]-entrance[0],observed.entrance[1]-entrance[1])/uiScale:null;
+      items.push({id:reference.id,entrance,error,tolerance:vectorTolerance(v)});
+    }
+    const matched=items.filter(h=>h.error!==null&&h.error<=h.tolerance).sort((a,b)=>a.error-b.error);
+    return matched.length?{matched:true,items:matched}:{matched:false,items};
+  }
+  // Minimum separation between two dungeons' door vectors, in 1080p pixels.
+  function vectorSeparation(references){
+    let best=Infinity;
+    for(let i=0;i<references.length;i++)for(let j=i+1;j<references.length;j++){
+      const a=references[i].portals?.vector1080,b=references[j].portals?.vector1080;
+      if(a&&b)best=Math.min(best,Math.hypot(a[0]-b[0],a[1]-b[1]));
+    }
+    return best;
   }
   function defaultShortlist(references,observed,uiScale){
     if(!observed||!Number.isFinite(uiScale)||uiScale<=0||references.some(r=>!r.portals?.defaultDistance1080))return [];
@@ -102,19 +134,31 @@
       }catch{this.dispose();} // Optional hint: missing icons must not disable recognition.
     }
     dispose(){for(const t of this.templates)t.mat.delete();this.templates=[];}
-    detect(pixels,uiScale,partial=false){
+    // pixels: the frame at analysis size. original {image,region} (optional) is the
+    // decoded capture and the region pixels came from; drawing it directly avoids
+    // re-uploading the analysis pixels just to shrink them again.
+    detect(pixels,uiScale,partial=false,original=null){
       if(!this.templates.length||!Number.isFinite(uiScale)||uiScale<=0)return null;
       // Normalize UI size, retaining aspect ratio. The original capture may
       // already have been downscaled by the native capture backend.
       const ratio=Math.min(.5/uiScale,1200/pixels.width),width=Math.round(pixels.width*ratio),height=Math.round(pixels.height*ratio);
       if(width<48||height<48||ratio*uiScale<.4)return null;
-      const source=new OffscreenCanvas(pixels.width,pixels.height);source.getContext('2d').putImageData(pixels,0,0);
-      const canvas=new OffscreenCanvas(width,height),ctx=canvas.getContext('2d',{willReadFrequently:true});ctx.drawImage(source,0,0,width,height);
-      const image=ctx.getImageData(0,0,width,height),observed={};
+      const t0=performance.now(),timing=this.timing={};
+      const canvas=new OffscreenCanvas(width,height),ctx=canvas.getContext('2d',{willReadFrequently:true});
+      if(original){
+        ctx.drawImage(original.image,...original.region,0,0,width,height);
+        // Same HUD corner as crop() hides at analysis size.
+        if(original.maskHud){ctx.fillStyle='#14212c';ctx.fillRect(0,0,Math.round(height*.32),Math.round(height*.28));}
+      }else{
+        const source=new OffscreenCanvas(pixels.width,pixels.height);source.getContext('2d').putImageData(pixels,0,0);
+        ctx.drawImage(source,0,0,width,height);
+      }
+      const image=ctx.getImageData(0,0,width,height),observed={};timing.resize=performance.now()-t0;
       for(const kind of KINDS){
-        const mat=chroma(image,kind),hits=[];
+        let t=performance.now();const mat=chroma(image,kind),hits=[];timing[kind+'Chroma']=performance.now()-t;
         try{
-          for(const box of regions(mat,48)){
+          t=performance.now();const boxes=regions(mat,48);timing[kind+'Regions']=performance.now()-t;timing[kind+'Boxes']=boxes.length;t=performance.now();
+          for(const box of boxes){
             const roi=mat.roi(new cv.Rect(box.x,box.y,box.right-box.x,box.bottom-box.y));
             try{
               for(const t of this.templates.filter(t=>t.kind===kind)){
@@ -134,7 +178,7 @@
               }
             }finally{roi.delete();}
           }
-        }finally{mat.delete();}
+        }finally{mat.delete();timing[kind+'Match']=performance.now()-t;}
         hits.sort((a,b)=>b.score-a.score);const best=hits[0];if(!best){if(partial)continue;return null;}
         const second=hits.find(h=>Math.hypot(h.x-best.x,h.y-best.y)>24);
         // The partial gold template has a smaller score margin under occlusion;
@@ -145,6 +189,6 @@
       return observed.exit?observed:null;
     }
   }
-  const api={geometry,shortlist,defaultShortlist,agrees,Detector};
+  const api={geometry,shortlist,defaultShortlist,agrees,doorHypotheses,vectorSeparation,vectorTolerance,Detector};
   if(typeof module==='object'&&module.exports)module.exports=api;else root.MapPortals=api;
 })(typeof self==='object'?self:globalThis);

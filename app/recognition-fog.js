@@ -88,6 +88,25 @@
       }
       return {best:choose(verified,compare),evaluated:this.items.length};
     }
+    // Door hypotheses (MapPortals.doorHypotheses) checked against only their own
+    // start-room terrain. describe(entrance) returns ORB features of a small
+    // window around that point, so the whole frame is never described.
+    confirm(hypotheses,exit,uiScale,score,compare,describe){
+      if(!exit||!this.items.length)return {best:null,evaluated:0,windows:0};
+      const verified=[],windows=new Map();let evaluated=0;
+      try{
+        for(const h of hypotheses){
+          const reference=this.items.find(r=>r.id===h.id);if(!reference)continue;
+          const key=h.entrance.map(v=>Math.round(v/6)).join(',');
+          if(!windows.has(key))windows.set(key,describe(h.entrance));
+          const query=windows.get(key);if(!query)continue;
+          evaluated++;
+          const candidate=score(query,reference,pairs=>consensus(pairs,1/(PIXELS_PER_MAP_PIXEL_1080*2*uiScale)));
+          if(agrees(candidate,reference,exit,uiScale,this.geometry))verified.push(candidate);
+        }
+        return {best:choose(verified,compare),evaluated,windows:windows.size};
+      }finally{for(const q of windows.values())q?.descriptors.delete();}
+    }
   }
   const api={valid,sparse,consensus,agrees,choose,References};
   if(typeof module==='object'&&module.exports)module.exports=api;else root.MapFog=api;

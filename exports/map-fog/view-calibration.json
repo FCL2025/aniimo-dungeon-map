@@ -1,0 +1,257 @@
+{
+  "screen": [
+    1920,
+    1080
+  ],
+  "fogTint": [
+    0.8313,
+    0.89768,
+    0.85841
+  ],
+  "backdrop": [
+    50.43,
+    51.45,
+    55.0
+  ],
+  "reveal": {
+    "sigma": 23.875,
+    "low": 0.0372,
+    "high": 0.69
+  },
+  "revealLoss": 11.759,
+  "arrowOffset": [
+    1.44,
+    -3.26
+  ],
+  "arrowSamples": 9,
+  "uncoveredScreenPixels": 0,
+  "captures": [
+    {
+      "id": 20031,
+      "file": "exports/recognition-fixtures/real-20031-initial.png",
+      "sha256": "00171632d935f07edd0d85e95aa49a2510a1e6d1f0d16c7c52d29bb3dd6a28d3",
+      "cameraShift": [
+        0.0,
+        -0.31
+      ],
+      "revealCell": [
+        129,
+        162
+      ]
+    },
+    {
+      "id": 20032,
+      "file": "exports/recognition-fixtures/real-20032-initial.png",
+      "sha256": "fb0b328ca4be5d067a5dc586b6838571fc2677b2c182ac7c5022d46c021078d9",
+      "cameraShift": [
+        -0.12,
+        -3.74
+      ],
+      "revealCell": [
+        102,
+        123
+      ]
+    },
+    {
+      "id": 20033,
+      "file": "exports/recognition-fixtures/real-20033-initial.png",
+      "sha256": "547e148484bd071c84d0239e739bb778356d9a26471605636c92b683df91d3b2",
+      "cameraShift": [
+        -0.17,
+        -1.52
+      ],
+      "revealCell": [
+        96,
+        126
+      ]
+    },
+    {
+      "id": 20034,
+      "file": "exports/recognition-fixtures/real-20034-initial.png",
+      "sha256": "c40ed127f4b70e92da2040c2fd41d85b13a030a58750dfe62b4d717d8908ad6a",
+      "cameraShift": [
+        -0.18,
+        0.58
+      ],
+      "revealCell": [
+        105,
+        94
+      ]
+    },
+    {
+      "id": 20035,
+      "file": "exports/recognition-fixtures/real-20035-initial.png",
+      "sha256": "9a6d1dba5129eb511bab382b39405d9eab66b02c8e93460524dd8b2db59f0566",
+      "cameraShift": [
+        -0.19,
+        -0.38
+      ],
+      "revealCell": [
+        78,
+        141
+      ]
+    },
+    {
+      "id": 20037,
+      "file": "exports/recognition-fixtures/real-20037-initial.png",
+      "sha256": "37f9190adff33c6f15052cee4c8d6ca0a77c498b4a8fbd91b0522177ef4fd189",
+      "cameraShift": [
+        -0.08,
+        -4.28
+      ],
+      "revealCell": [
+        109,
+        127
+      ]
+    },
+    {
+      "id": 20038,
+      "file": "exports/recognition-fixtures/real-20038-initial.png",
+      "sha256": "2e914c39fb18540d51bdde73a47b938cef46a407d21c72a6ff4412c4365c46fe",
+      "cameraShift": [
+        -0.08,
+        -0.53
+      ],
+      "revealCell": [
+        102,
+        117
+      ]
+    },
+    {
+      "id": 20040,
+      "file": "exports/recognition-fixtures/real-20040-sparse.png",
+      "sha256": "73233676b802cc88aff2d58298405889d0bd1fc20a1a529315c3cc645cc3e9e9",
+      "cameraShift": [
+        0.3,
+        -0.96
+      ],
+      "revealCell": [
+        178,
+        133
+      ]
+    },
+    {
+      "id": 20061,
+      "file": "exports/recognition-fixtures/real-20061-initial.png",
+      "sha256": "e52ffd2982f15d22f366676e121bec599553fb82d90445a9d1c5ab98f60841ed",
+      "cameraShift": [
+        0.03,
+        0.28
+      ],
+      "revealCell": [
+        130,
+        101
+      ]
+    }
+  ],
+  "validation": {
+    "method": "leave-one-out screen layers; synthesized with the player on the entrance pin",
+    "results": [
+      {
+        "id": 20031,
+        "frameMeanAbs": 0.481,
+        "fogMedianAbs": 0.333,
+        "revealMeanAbs": 3.433,
+        "revealP95Abs": 14.0,
+        "playerOffsetPixels": [
+          0.0,
+          -0.31
+        ]
+      },
+      {
+        "id": 20032,
+        "frameMeanAbs": 1.389,
+        "fogMedianAbs": 0.333,
+        "revealMeanAbs": 6.867,
+        "revealP95Abs": 27.517,
+        "playerOffsetPixels": [
+          -0.12,
+          -3.74
+        ]
+      },
+      {
+        "id": 20033,
+        "frameMeanAbs": 0.788,
+        "fogMedianAbs": 0.333,
+        "revealMeanAbs": 3.748,
+        "revealP95Abs": 13.0,
+        "playerOffsetPixels": [
+          -0.17,
+          -1.52
+        ]
+      },
+      {
+        "id": 20034,
+        "frameMeanAbs": 1.115,
+        "fogMedianAbs": 0.333,
+        "revealMeanAbs": 5.593,
+        "revealP95Abs": 26.0,
+        "playerOffsetPixels": [
+          -0.18,
+          0.58
+        ]
+      },
+      {
+        "id": 20035,
+        "frameMeanAbs": 0.809,
+        "fogMedianAbs": 0.333,
+        "revealMeanAbs": 3.499,
+        "revealP95Abs": 13.333,
+        "playerOffsetPixels": [
+          -0.19,
+          -0.38
+        ]
+      },
+      {
+        "id": 20037,
+        "frameMeanAbs": 1.003,
+        "fogMedianAbs": 0.333,
+        "revealMeanAbs": 5.285,
+        "revealP95Abs": 16.333,
+        "playerOffsetPixels": [
+          -0.08,
+          -4.28
+        ]
+      },
+      {
+        "id": 20038,
+        "frameMeanAbs": 0.715,
+        "fogMedianAbs": 0.333,
+        "revealMeanAbs": 2.214,
+        "revealP95Abs": 8.667,
+        "playerOffsetPixels": [
+          -0.08,
+          -0.53
+        ]
+      },
+      {
+        "id": 20040,
+        "frameMeanAbs": 0.815,
+        "fogMedianAbs": 0.333,
+        "revealMeanAbs": 3.6,
+        "revealP95Abs": 12.0,
+        "playerOffsetPixels": [
+          0.3,
+          -0.96
+        ]
+      },
+      {
+        "id": 20061,
+        "frameMeanAbs": 0.421,
+        "fogMedianAbs": 0.333,
+        "revealMeanAbs": 1.429,
+        "revealP95Abs": 4.667,
+        "playerOffsetPixels": [
+          0.03,
+          0.28
+        ]
+      }
+    ]
+  },
+  "files": {
+    "screen-vignette.png": "b1b2950c16bba91758f72ae1410311cb777ea1dfe636fa4ad08d21e21dc643f8",
+    "screen-ui.png": "03db751af1ec93b51bef0a05c9a7fa2d90a9258fbd8d344e4e843b8e7e88fc88",
+    "player-arrow.png": "5625c5007f821e613b8b2a4b5623683063b85a63df75595de219803f35c0d5ec"
+  },
+  "note": "Screen layers are 1920x1080 only. Fog, grid, map and door icons come from exports/map-fog/source.json and game exports."
+}

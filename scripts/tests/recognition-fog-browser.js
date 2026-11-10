@@ -1,8 +1,9 @@
-// Real labelled captures plus synthetic resolution, UI, pan and missing-door cases.
+// Real captures of 11 dungeons against references built only from synthesized views,
+// plus resolution, UI, pan and missing-door variations of each capture.
 (()=>{
   const state=window.fogChecks={done:false,error:null,results:[],benchmark:[],initialization:[]},workers=[];
   const check=(ok,message)=>{if(!ok)throw Error(message);};
-  const ids=[20032,20034,20035,20036,20037,20039,20040];
+  const ids=[20031,20032,20033,20034,20035,20036,20037,20038,20039,20040,20061];
   const fixtureName=id=>id===20040?'real-20040-sparse.png':'real-'+id+'-initial.png';
   const source=new Map(),specs=new Map(DUNGEON_DATA.maps.map(m=>[m.id,m]));
   async function engine(enabled){
@@ -14,7 +15,7 @@
     const ready=await send({type:'init',fogReferences:enabled,maps:[...specs.values()].map(m=>({id:m.id,size:m.size,portalGeometry:m.portalGeometry,image:new URL(m.image,location.href).href})),
       portalIcons:Object.fromEntries(['entrance','exit'].map(k=>[k,new URL(DUNGEON_DATA.icons.assets[DUNGEON_DATA.icons.categories[k]].image,location.href).href]))},'ready');
     state.initialization.push({enabled,ms:Math.round(performance.now()-start),...ready});
-    check(ready.fogReferences===(enabled?ids.length:0),'Unexpected fog reference count');
+    check(ready.fogReferences===(enabled?DUNGEON_DATA.maps.length:0),'Unexpected fog reference count');
     return {reset:()=>send({type:'reset'},'reset'),analyze:image=>send({type:'analyze',request:++request,source:'live',image},'result')};
   }
   function altered(img,width=img.width,height=img.height,edit=()=>{}){
@@ -28,7 +29,7 @@
     for(let repeat=0;repeat<(window.fogBenchmarkRepeats??3);repeat++)for(const id of ids)for(const mode of repeat%2?['fast','old']:['old','fast']){
       const e=mode==='fast'?fast:old;await e.reset();const r=await e.analyze(source.get(id).src);
       state.benchmark.push({id,mode,repeat,...r});
-      if(mode==='fast')check(r.selected===id&&r.locked===id&&r.lockReason==='terrain-and-side-door'&&r.search.strategy==='fog-reference'&&r.search.loadedReferences===specs.size,'Original failed: '+id);
+      if(mode==='fast')check(r.selected===id&&r.locked===id&&r.lockReason==='terrain-and-side-door'&&r.search.strategy==='fog-reference'&&r.search.method==='door-vector','Original failed: '+id);
     }
     async function run(name,id,image,expectedFast=true){
       await fast.reset();const r=await fast.analyze(image);state.results.push({name,id,...r});

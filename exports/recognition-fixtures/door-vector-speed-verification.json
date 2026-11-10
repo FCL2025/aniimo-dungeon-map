@@ -1,0 +1,410 @@
+{
+ "date": "2026-11-11",
+ "method": "Hidden EXE, isolated WebView2 profile; the packaged recognition worker receives the same JPEG (quality 90, Pillow) frames as live capture: 11 committed real initial-fog captures, 12 synthesized views and real-20040-explored. 3 runs; init message as the app controller; per-frame round trip from postMessage to result. Not a game M-key-to-lock latency.",
+ "versions": {
+  "0.2.50": {
+   "exeSha256": "93e46aceea255ffb77a92f704793f048382f6e899ec1a2337a3a102e738ddf3a",
+   "readyMs": [
+    1448,
+    1453,
+    1417
+   ],
+   "frames": [
+    {
+     "frame": "explored-20040.jpg",
+     "expected": 20040,
+     "locked": 20040,
+     "selected": 20040,
+     "strategy": "portals",
+     "medianMs": 169
+    },
+    {
+     "frame": "real-20031.jpg",
+     "expected": 20031,
+     "locked": null,
+     "selected": 20036,
+     "strategy": "full",
+     "medianMs": 352
+    },
+    {
+     "frame": "real-20032.jpg",
+     "expected": 20032,
+     "locked": 20032,
+     "selected": 20032,
+     "strategy": "fog-reference",
+     "medianMs": 75
+    },
+    {
+     "frame": "real-20033.jpg",
+     "expected": 20033,
+     "locked": null,
+     "selected": 20033,
+     "strategy": "full",
+     "medianMs": 370
+    },
+    {
+     "frame": "real-20034.jpg",
+     "expected": 20034,
+     "locked": 20034,
+     "selected": 20034,
+     "strategy": "fog-reference",
+     "medianMs": 73
+    },
+    {
+     "frame": "real-20035.jpg",
+     "expected": 20035,
+     "locked": 20035,
+     "selected": 20035,
+     "strategy": "fog-reference",
+     "medianMs": 63
+    },
+    {
+     "frame": "real-20036.jpg",
+     "expected": 20036,
+     "locked": 20036,
+     "selected": 20036,
+     "strategy": "fog-reference",
+     "medianMs": 77
+    },
+    {
+     "frame": "real-20037.jpg",
+     "expected": 20037,
+     "locked": 20037,
+     "selected": 20037,
+     "strategy": "fog-reference",
+     "medianMs": 70
+    },
+    {
+     "frame": "real-20038.jpg",
+     "expected": 20038,
+     "locked": null,
+     "selected": 20038,
+     "strategy": "full",
+     "medianMs": 333
+    },
+    {
+     "frame": "real-20039.jpg",
+     "expected": 20039,
+     "locked": 20039,
+     "selected": 20039,
+     "strategy": "fog-reference",
+     "medianMs": 72
+    },
+    {
+     "frame": "real-20040.jpg",
+     "expected": 20040,
+     "locked": 20040,
+     "selected": 20040,
+     "strategy": "fog-reference",
+     "medianMs": 64
+    },
+    {
+     "frame": "real-20061.jpg",
+     "expected": 20061,
+     "locked": null,
+     "selected": 20037,
+     "strategy": "full",
+     "medianMs": 302
+    },
+    {
+     "frame": "synthetic-20031.jpg",
+     "expected": 20031,
+     "locked": null,
+     "selected": 20031,
+     "strategy": "full",
+     "medianMs": 337
+    },
+    {
+     "frame": "synthetic-20032.jpg",
+     "expected": 20032,
+     "locked": 20032,
+     "selected": 20032,
+     "strategy": "fog-reference",
+     "medianMs": 74
+    },
+    {
+     "frame": "synthetic-20033.jpg",
+     "expected": 20033,
+     "locked": null,
+     "selected": 20033,
+     "strategy": "full",
+     "medianMs": 359
+    },
+    {
+     "frame": "synthetic-20034.jpg",
+     "expected": 20034,
+     "locked": null,
+     "selected": 20039,
+     "strategy": "full",
+     "medianMs": 281
+    },
+    {
+     "frame": "synthetic-20035.jpg",
+     "expected": 20035,
+     "locked": 20035,
+     "selected": 20035,
+     "strategy": "fog-reference",
+     "medianMs": 68
+    },
+    {
+     "frame": "synthetic-20036.jpg",
+     "expected": 20036,
+     "locked": 20036,
+     "selected": 20036,
+     "strategy": "fog-reference",
+     "medianMs": 72
+    },
+    {
+     "frame": "synthetic-20037.jpg",
+     "expected": 20037,
+     "locked": 20037,
+     "selected": 20037,
+     "strategy": "fog-reference",
+     "medianMs": 66
+    },
+    {
+     "frame": "synthetic-20038.jpg",
+     "expected": 20038,
+     "locked": null,
+     "selected": 20038,
+     "strategy": "full",
+     "medianMs": 338
+    },
+    {
+     "frame": "synthetic-20039.jpg",
+     "expected": 20039,
+     "locked": 20039,
+     "selected": 20039,
+     "strategy": "fog-reference",
+     "medianMs": 67
+    },
+    {
+     "frame": "synthetic-20040.jpg",
+     "expected": 20040,
+     "locked": 20040,
+     "selected": 20040,
+     "strategy": "fog-reference",
+     "medianMs": 69
+    },
+    {
+     "frame": "synthetic-20061.jpg",
+     "expected": 20061,
+     "locked": null,
+     "selected": 20061,
+     "strategy": "full",
+     "medianMs": 301
+    },
+    {
+     "frame": "synthetic-20062.jpg",
+     "expected": 20062,
+     "locked": null,
+     "selected": null,
+     "strategy": "full",
+     "medianMs": 355
+    }
+   ]
+  },
+  "0.2.51": {
+   "exeSha256": "c6d62cf0f82a2d2e8f77f3654a836a128833aa6182e193e12d6fd4df82945e27",
+   "readyMs": [
+    290,
+    267,
+    275
+   ],
+   "frames": [
+    {
+     "frame": "explored-20040.jpg",
+     "expected": 20040,
+     "locked": 20040,
+     "selected": 20040,
+     "strategy": "fog-reference",
+     "medianMs": 68
+    },
+    {
+     "frame": "real-20031.jpg",
+     "expected": 20031,
+     "locked": 20031,
+     "selected": 20031,
+     "strategy": "fog-reference",
+     "medianMs": 34
+    },
+    {
+     "frame": "real-20032.jpg",
+     "expected": 20032,
+     "locked": 20032,
+     "selected": 20032,
+     "strategy": "fog-reference",
+     "medianMs": 28
+    },
+    {
+     "frame": "real-20033.jpg",
+     "expected": 20033,
+     "locked": 20033,
+     "selected": 20033,
+     "strategy": "fog-reference",
+     "medianMs": 30
+    },
+    {
+     "frame": "real-20034.jpg",
+     "expected": 20034,
+     "locked": 20034,
+     "selected": 20034,
+     "strategy": "fog-reference",
+     "medianMs": 28
+    },
+    {
+     "frame": "real-20035.jpg",
+     "expected": 20035,
+     "locked": 20035,
+     "selected": 20035,
+     "strategy": "fog-reference",
+     "medianMs": 24
+    },
+    {
+     "frame": "real-20036.jpg",
+     "expected": 20036,
+     "locked": 20036,
+     "selected": 20036,
+     "strategy": "fog-reference",
+     "medianMs": 30
+    },
+    {
+     "frame": "real-20037.jpg",
+     "expected": 20037,
+     "locked": 20037,
+     "selected": 20037,
+     "strategy": "fog-reference",
+     "medianMs": 26
+    },
+    {
+     "frame": "real-20038.jpg",
+     "expected": 20038,
+     "locked": 20038,
+     "selected": 20038,
+     "strategy": "fog-reference",
+     "medianMs": 26
+    },
+    {
+     "frame": "real-20039.jpg",
+     "expected": 20039,
+     "locked": 20039,
+     "selected": 20039,
+     "strategy": "fog-reference",
+     "medianMs": 34
+    },
+    {
+     "frame": "real-20040.jpg",
+     "expected": 20040,
+     "locked": 20040,
+     "selected": 20040,
+     "strategy": "fog-reference",
+     "medianMs": 25
+    },
+    {
+     "frame": "real-20061.jpg",
+     "expected": 20061,
+     "locked": 20061,
+     "selected": 20061,
+     "strategy": "fog-reference",
+     "medianMs": 26
+    },
+    {
+     "frame": "synthetic-20031.jpg",
+     "expected": 20031,
+     "locked": 20031,
+     "selected": 20031,
+     "strategy": "fog-reference",
+     "medianMs": 26
+    },
+    {
+     "frame": "synthetic-20032.jpg",
+     "expected": 20032,
+     "locked": 20032,
+     "selected": 20032,
+     "strategy": "fog-reference",
+     "medianMs": 27
+    },
+    {
+     "frame": "synthetic-20033.jpg",
+     "expected": 20033,
+     "locked": 20033,
+     "selected": 20033,
+     "strategy": "fog-reference",
+     "medianMs": 27
+    },
+    {
+     "frame": "synthetic-20034.jpg",
+     "expected": 20034,
+     "locked": 20034,
+     "selected": 20034,
+     "strategy": "fog-reference",
+     "medianMs": 24
+    },
+    {
+     "frame": "synthetic-20035.jpg",
+     "expected": 20035,
+     "locked": 20035,
+     "selected": 20035,
+     "strategy": "fog-reference",
+     "medianMs": 24
+    },
+    {
+     "frame": "synthetic-20036.jpg",
+     "expected": 20036,
+     "locked": 20036,
+     "selected": 20036,
+     "strategy": "fog-reference",
+     "medianMs": 28
+    },
+    {
+     "frame": "synthetic-20037.jpg",
+     "expected": 20037,
+     "locked": 20037,
+     "selected": 20037,
+     "strategy": "fog-reference",
+     "medianMs": 25
+    },
+    {
+     "frame": "synthetic-20038.jpg",
+     "expected": 20038,
+     "locked": 20038,
+     "selected": 20038,
+     "strategy": "fog-reference",
+     "medianMs": 25
+    },
+    {
+     "frame": "synthetic-20039.jpg",
+     "expected": 20039,
+     "locked": 20039,
+     "selected": 20039,
+     "strategy": "fog-reference",
+     "medianMs": 24
+    },
+    {
+     "frame": "synthetic-20040.jpg",
+     "expected": 20040,
+     "locked": 20040,
+     "selected": 20040,
+     "strategy": "fog-reference",
+     "medianMs": 25
+    },
+    {
+     "frame": "synthetic-20061.jpg",
+     "expected": 20061,
+     "locked": 20061,
+     "selected": 20061,
+     "strategy": "fog-reference",
+     "medianMs": 24
+    },
+    {
+     "frame": "synthetic-20062.jpg",
+     "expected": 20062,
+     "locked": 20062,
+     "selected": 20062,
+     "strategy": "fog-reference",
+     "medianMs": 28
+    }
+   ]
+  }
+ }
+}

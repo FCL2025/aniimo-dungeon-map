@@ -3,9 +3,13 @@ const Fog=require('../../app/recognition-fog.js'),Core=require('../../app/recogn
 const data=require('../../app/fog-references.json');
 const candidate={id:20034,inliers:13,cells:3,area:2000,error:1,score:17,model:{a:1.266667,b:0,tx:-200,ty:20}};
 const exit=[500,450],reference={id:20034,portals:{entrance:[100,100],exit:Core.transform(candidate.model,...exit)}};
-test('all seven labelled references have valid sparse terrain descriptors',()=>{
-  assert.deepEqual(data.samples.map(s=>s.id),[20032,20034,20035,20036,20037,20039,20040]);
-  for(const s of data.samples){assert.ok(Fog.valid(s));assert.deepEqual(s.source.size,[20036,20039].includes(s.id)?[1924,1082]:[1920,1080]);}
+test('every supported dungeon has a start-room reference from its synthesized view',()=>{
+  const pool=require('../../exports/grab-eggs-data/map-pool.json').mapIds;
+  assert.deepEqual(data.samples.map(s=>s.id),pool);
+  for(const s of data.samples){
+    assert.ok(Fog.valid(s));assert.deepEqual(s.source.size,[1920,1080]);
+    assert.equal(s.source.file,`exports/recognition-fixtures/synthetic-${s.id}-initial.png`);
+  }
 });
 test('incomplete, nonfinite and malformed reference data is rejected',()=>{
   const s=data.samples[0];

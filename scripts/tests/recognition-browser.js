@@ -27,14 +27,22 @@
       check(r.selected===20040&&r.locked===20040&&r.lockedMatches>=8,'Initial live fog must immediately lock 20040 using terrain and door evidence');
       await send({type:'reset'},'reset');
       r=await analyze('real-explored-live',fixture('real-20040-explored.png'),'live');
-      check(r.selected===20040&&r.locked===20040&&r.lockedMatches===184,'Explored terrain and doors must lock without a fixed count');
+      // Both doors are visible and the player is away from the front door, so the
+      // door vector plus the start-room check decides before any full-map search
+      // (the full search on this frame is covered by recognition-portals-browser.js).
+      check(r.selected===20040&&r.locked===20040&&r.lockReason==='terrain-and-side-door'&&r.search.method==='door-vector'&&r.search.doorMatched,'Explored doors must lock through the door vector');
       r=await analyze('duplicate-explored',fixture('real-20040-explored.png'),'live');
       check(r.locked===20040&&r.search.evaluated===0,'Locked map should skip all image processing');
-      await send({type:'reset'},'reset');
-      r=await analyze('strong-lock',new URL('maps/20040.png',location.href).href);
-      check(r.locked===20040&&r.lockReason==='terrain','Broad unambiguous terrain must lock without doors');
       r=await analyze('other-map-after-lock',new URL('maps/20036.png',location.href).href);
       check(r.locked===20040&&r.selected===20040,'Later other map must never change lock');
+      await send({type:'reset'},'reset');
+      r=await analyze('strong-lock',new URL('maps/20036.png',location.href).href);
+      check(r.locked===20036&&r.lockReason==='terrain','Broad unambiguous terrain must lock without doors');
+      await send({type:'reset'},'reset');
+      // Current 20040 shares much terrain with 20034 (689 vs 537 inliers), so the
+      // whole map alone stays a correct preview instead of locking.
+      r=await analyze('shared-terrain-preview',new URL('maps/20040.png',location.href).href);
+      check(r.selected===20040&&r.locked===null,'Shared terrain must preview 20040 without locking');
       await send({type:'reset'},'reset');
       r=await analyze('new-session-other-map',new URL('maps/20036.png',location.href).href);
       check(r.locked===20036,'New session must release lock');

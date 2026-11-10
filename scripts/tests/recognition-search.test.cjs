@@ -53,3 +53,9 @@ test('absent or repeated preferred IDs cannot hide remaining references',async()
   assert.equal(result.order[0],20040);assert.equal(result.order.length,33);
   assert.deepEqual(partition(refs,[]).other,refs);
 });
+test('an initial-fog view checks only the door shortlists, never every reference',async()=>{
+  const result=await run({near:[byId(20040)],direction:[byId(20050),byId(20040)],exhaustive:false});
+  assert.deepEqual(result.order,[20040,20050]);assert.equal(result.confirmed,false);
+  assert.deepEqual((await run({exhaustive:false})).order,[]);
+  assert.equal((await run()).order.length,refs.length);
+});

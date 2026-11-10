@@ -77,6 +77,10 @@ test('M burst queue is bounded and later gameplay cannot evict captured maps',()
   assert.equal(q.items.length,3);const ids=q.items.map(f=>f.id);q.push(frame(100,false));
   assert.deepEqual(q.items.map(f=>f.id),ids);assert.equal(q.items.at(-1).id,87);
 });
+test('the newest queued M frame is analysed first',()=>{
+  const q=new FrameQueue();for(const id of [3,6,9])q.push(frame(id));
+  assert.equal(q.latest().id,9);assert.equal(q.latest().id,6);assert.equal(q.items.length,1);
+});
 test('compression noise and duplicate M frames do not create queued work',()=>{
   const q=new FrameQueue(),a=frame(3),b=frame(3);b.signature[0]=8;
   assert.equal(similar(a.signature,b.signature),true);assert.equal(q.push(a),true);assert.equal(q.push(b),false);

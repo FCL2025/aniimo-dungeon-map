@@ -1,0 +1,327 @@
+{
+  "created_at": "2026-11-10T20:46:18.068443+00:00",
+  "offlineOnly": true,
+  "source": {
+    "manifest": {
+      "version": "3887621",
+      "source": "F:\\Pawprint\\Aniimo\\game\\Aniimo_Data\\cvs\\res\\uab\\win\\DefaultPackage\\ManifestFiles\\PackageManifest_DefaultPackage_3887621.bytes",
+      "sha256": "58fda3a9550b05af3b8344649b11610843cf39c389124735857894b52a23916a",
+      "asset_count": 285455,
+      "bundle_count": 11292
+    },
+    "material": "Assets/Res/XGUI/Panel/GameMod_GrabEggs/Mat/MI_UI_MapFog_GrabEgg.mat",
+    "materialBundle": "mres_xgui_panel_exmat_0.uab",
+    "shader": "Packages/xgui/Runtime/Renderer/Shader/MapFog.shader",
+    "texture": {
+      "property": "_ThickFogTex",
+      "name": "UI_Img_Map_Fog_Texture",
+      "path": "Assets/Res/XGUI/Common/Widget/Image/UI_Img_Map_Fog_Texture.png",
+      "bundle": "ar_xgui_widget_image_fba988c2_png_0.uab",
+      "bundleHash": "f7ba3815a8f20124b154a24cbb4dede5",
+      "size": [
+        2048,
+        2048
+      ],
+      "format": 25
+    },
+    "pmdata": {
+      "archive": "F:\\Pawprint\\Aniimo\\game\\Aniimo_Data\\cvs\\res\\patchv2\\lua\\ver\\3887621\\LuaScripts.xdf",
+      "member": "xfs/luascripts/Common/Data/pmdata.bin",
+      "sha256": "fa3b3d997c5c1b553830a5e8383d4a86a9a135e9196816e4789ad1d31f48c8ac"
+    },
+    "panelMasks": [
+      "Assets/Res/XGUI/Panel/Map/Image/UI_Img_Map_Mask.png",
+      "Assets/Res/XGUI/Panel/Map/Image/UI_Img_Map_Mask2.png",
+      "Assets/Res/XGUI/Panel/Map/Image/UI_Img_Map_SideMask.png",
+      "Assets/Res/XGUI/Panel/Map/Image/UI_Img_WorldMap_BgMask.png"
+    ]
+  },
+  "material": {
+    "textures": {
+      "_CampTex": {
+        "scale": [
+          1.0,
+          1.0
+        ],
+        "offset": [
+          0.0,
+          0.0
+        ],
+        "assigned": false
+      },
+      "_MainTex": {
+        "scale": [
+          1.0,
+          1.0
+        ],
+        "offset": [
+          0.0,
+          0.0
+        ],
+        "assigned": false
+      },
+      "_NoiseTex": {
+        "scale": [
+          1.0,
+          1.0
+        ],
+        "offset": [
+          0.0,
+          0.0
+        ],
+        "assigned": false
+      },
+      "_PointTex": {
+        "scale": [
+          1.0,
+          1.0
+        ],
+        "offset": [
+          0.0,
+          0.0
+        ],
+        "assigned": false
+      },
+      "_ThickFogBaseMap": {
+        "scale": [
+          1.0,
+          1.0
+        ],
+        "offset": [
+          0.0,
+          0.0
+        ],
+        "assigned": false
+      },
+      "_ThickFogTex": {
+        "scale": [
+          1.0,
+          1.0
+        ],
+        "offset": [
+          0.0,
+          0.0
+        ],
+        "assigned": true
+      }
+    },
+    "floats": {
+      "_AreaNum": 1.0,
+      "_AreaStatusDisplayToggle": 0.0,
+      "_BlurRadius": 0.5,
+      "_CampEdgeRadius": 0.25,
+      "_CampIsIDMap": 0.0,
+      "_DissolveProgress": 1.0,
+      "_DissolveSoftness": 0.05000000074505806,
+      "_EdgeThreshold": 0.30000001192092896,
+      "_HighlightOutPower": 10.0,
+      "_HighlightProgress": 0.0,
+      "_HighlightThreshold": 0.07000000029802322,
+      "_HoverIntensity": 1.0,
+      "_NoiseStrength": 1.0,
+      "_OutPower": 1.0,
+      "_OutlineToggle": 0.0,
+      "_UnlockAreaID": -1.0,
+      "_UsePadding": 1.0
+    },
+    "colors": {
+      "_AreaStateData": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "_CampTexUVScaleOffset": [
+        1.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      "_CampTex_ST": [
+        1.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      "_HighlightBaseColor": [
+        0.0,
+        0.4000000059604645,
+        0.4000000059604645,
+        0.20000000298023224
+      ],
+      "_HighlightColor": [
+        0.0,
+        2.299999952316284,
+        2.9000000953674316,
+        1.0
+      ],
+      "_MainTex_ST": [
+        1.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      "_NoiseTex_ST": [
+        1.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      "_OutlineColor": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "_SelectedBaseColor": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "_SelectedColor": [
+        1.3977199792861938,
+        1.3977199792861938,
+        1.3977199792861938,
+        1.0
+      ],
+      "_ThickFogColor": [
+        1.6540583372116089,
+        1.9811320304870605,
+        1.85160231590271,
+        0.3921568691730499
+      ],
+      "_ThickFogPointColor": [
+        0.3349056839942932,
+        0.5711074471473694,
+        1.0,
+        0.11764705926179886
+      ],
+      "_ThickFogPoint_ST": [
+        1.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      "_ThickFogTex_ST": [
+        1.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      "_ThinFogColor": [
+        0.2080366611480713,
+        0.2080366611480713,
+        0.5188679099082947,
+        0.3921568691730499
+      ],
+      "_ThinFogPointColor": [
+        0.32133322954177856,
+        0.32133322954177856,
+        0.7830188870429993,
+        0.3921568691730499
+      ],
+      "_ThinFogPoint_ST": [
+        1.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      "_TraveledBaseColor": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "_TraveledColor": [
+        1.0,
+        1.0,
+        1.0,
+        0.4000000059604645
+      ],
+      "_TraveledHoverBaseColor": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "_TraveledHoverColor": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "_UntraveledBaseColor": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "_UntraveledColor": [
+        1.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "_UntraveledHoverBaseColor": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "_UntraveledHoverColor": [
+        0.5028865933418274,
+        0.5028865933418274,
+        0.5028865933418274,
+        1.0
+      ]
+    },
+    "ints": {
+      "_AreaSelectedID": -1,
+      "_FogIndex": 0,
+      "_FogTileColumn": 1,
+      "_FogTileRow": 1,
+      "_HoverAreaID": -1,
+      "_PaddingSize": 2
+    },
+    "invalidKeywords": [
+      "MATERIAL_RECEIVE_DECAL",
+      "_USEPADDING_ON"
+    ],
+    "validKeywords": []
+  },
+  "fogGrid": {
+    "chunkResolution": 512,
+    "column": 8,
+    "desiredMapSize": {
+      "1": 4096,
+      "2": 4096
+    },
+    "explorePixelRadius": 10,
+    "frameHeight": 0,
+    "frameWidth": 0,
+    "row": 8,
+    "unitPixel": 16
+  },
+  "fogGridMapIds": [
+    20031,
+    20032,
+    20033,
+    20034,
+    20035,
+    20036,
+    20037,
+    20038,
+    20039,
+    20040,
+    20061,
+    20062
+  ],
+  "files": {
+    "UI_Img_Map_Fog_Texture.png": "7697e2171f47cca30fb458a76b0836fa570ab520165cb1005257ef928bb9a490"
+  },
+  "tool_versions": {
+    "UnityPy": "1.25.3"
+  },
+  "note": "The fog texture spans fogGrid.desiredMapSize map pixels centred on the 2048-pixel map image. Revealed cells are unitPixel map pixels wide; explorePixelRadius is counted in cells."
+}

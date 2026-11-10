@@ -16,7 +16,7 @@
       pending={expected,resolve,reject};worker.postMessage(message);
     });
     const started=performance.now();
-    const ready=await send({type:'init',fogReferences:false,priorityMaps:usePortals?undefined:[],maps:DUNGEON_DATA.maps.map(m=>({id:m.id,size:m.size,
+    const ready=await send({type:'init',fogReferences:false,preload:'all',priorityMaps:usePortals?undefined:[],maps:DUNGEON_DATA.maps.map(m=>({id:m.id,size:m.size,
       portalGeometry:usePortals==='miscalibrated'?{...m.portalGeometry,defaultDistance1080:m.id===20040?1000:m.id===20050?625:m.portalGeometry.defaultDistance1080}:m.portalGeometry,
       image:new URL(m.image,location.href).href})),
       portalIcons:usePortals?Object.fromEntries(['entrance','exit'].map(kind=>[kind,new URL(DUNGEON_DATA.icons.assets[DUNGEON_DATA.icons.categories[kind]].image,location.href).href])):undefined},'ready');
@@ -45,6 +45,9 @@
         // Alternate order to avoid always warming one path first.
         for(const mode of repeat%2?['fast','full']:['full','fast']){
           const e=mode==='fast'?fast:full;await e.reset();const r=await e.analyze(img.src);
+          // An initial-fog view shows one room: without door shortlists the
+          // exhaustive terrain search is skipped instead of producing a weak preview.
+          if(name==='initial'&&mode==='full'){check(r.selected===null&&r.search.evaluated===0&&r.search.method==='initial-view','initial full search must be skipped');state.benchmark.push({name,mode,repeat,...r});continue;}
           check(r.selected===20040&&(!r.locked||r.locked===20040),name+' '+mode+' changed selection');
           if(mode==='fast')check(r.locked===20040&&r.lockReason==='terrain-and-portals',name+' must lock from verified terrain and doors');
           // Validate selection and sufficient terrain evidence against the current assets, not historical exact keypoint counts.

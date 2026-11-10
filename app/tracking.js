@@ -111,12 +111,15 @@
   async function poll(generation) {
     timer = null;
     if (!capturing || generation !== token) return;
+    let delay = 100;
     try {
       const now=Date.now(),requestFrame=enabled||now>=nextCaptureAt;
       if(requestFrame)nextCaptureAt=now+(enabled?100:1000);
       const reply = await invoke('capture_frame', { after:sequence, requestFrame });
       if (!capturing || generation !== token) return;
       if (!reply.running) throw reply.message || msg('capture.restart');
+      // While the M-key burst runs, fetch each frame as soon as it is encoded.
+      if (reply.burstUntil > Date.now()) delay = 20;
       lastPollAt=Date.now();capturePaused=!!reply.message&&!reply.frame;
       if(capturePaused)lastFrameAt=lastPollAt;
       if (reply.frame) {
@@ -126,7 +129,7 @@
         if(window.recognitionCapture?.watchMap||window.recognitionCapture?.preview)window.recognitionCapture.onFrame?.(reply.frame);
       }
     } catch (error) { if (generation === token) fail(error); return; }
-    if (capturing && generation === token) timer = setTimeout(() => poll(generation), 100);
+    if (capturing && generation === token) timer = setTimeout(() => poll(generation), delay);
   }
   async function fail(error) {
     record('error',{message:String(error)});void flushLog();

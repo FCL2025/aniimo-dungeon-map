@@ -94,8 +94,9 @@
     watchMapWorker(worker);
   }
   function pumpMap(){
-    if(!mapWorker||!mapReady||mapBusy)return;const frame=frames.shift();if(!frame)return;mapBusy=true;stats.analyzed++;
-    mapRequestStartedAt=Date.now();mapWorker.postMessage({type:'analyze',request:++mapRequest,image:frame.image,capturedAt:frame.capturedAt,source:frame.source,bigRegion:regions.map,aspect:aspect()});
+    if(!mapWorker||!mapReady||mapBusy)return;const frame=frames.latest();if(!frame)return;mapBusy=true;stats.analyzed++;
+    mapRequestStartedAt=Date.now();mapWorker.postMessage({type:'analyze',request:++mapRequest,image:frame.image,capturedAt:frame.capturedAt,source:frame.source,bigRegion:regions.map,aspect:aspect(),
+      mapOpen:frame.mapOpen,headerScore:frame.headerScore});
     watchMapWorker(mapWorker);
   }
   const previewOpen=()=>!!(el('recognition-settings')?.open&&el('capture-details')?.open);

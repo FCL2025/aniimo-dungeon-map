@@ -8,7 +8,9 @@
     const ids=new Set(common.map(r=>r.id));
     return {common,other:references.filter(r=>!ids.has(r.id))};
   }
-  async function search({references,near,direction,evaluate,agrees,compare,priority=COMMON}){
+  // exhaustive=false stops after the door shortlists: an initial-fog view shows
+  // one room, which can never confirm a dungeon by terrain alone.
+  async function search({references,near,direction,evaluate,agrees,compare,priority=COMMON,exhaustive=true}){
     const groups=partition(references,priority),seen=new Set(),scores=[],order=[];
     const nearIds=new Set(near.map(r=>r.id)),directionIds=new Set(direction.map(r=>r.id));
     for(const group of ['common','other']){
@@ -16,7 +18,7 @@
       for(const [filter,items] of [
         ['default-distance',refs.filter(r=>nearIds.has(r.id))],
         ['direction',refs.filter(r=>directionIds.has(r.id))],
-        ['terrain',refs],
+        ['terrain',exhaustive?refs:[]],
       ]){
         let added=false;
         for(const r of items){

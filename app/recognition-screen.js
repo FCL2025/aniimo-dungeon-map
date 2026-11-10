@@ -69,6 +69,8 @@
       return true;
     }
     shift(){return this.items.shift();}
+    // Newest first: right after M, older frames may still show the opening map.
+    latest(){return this.items.pop();}
   }
   const api={inspect,similar,correlation,FrameQueue,relativeRegion,uiRegion,defaultMini};
   if(typeof module==='object'&&module.exports)module.exports=api;else root.MapScreen=api;

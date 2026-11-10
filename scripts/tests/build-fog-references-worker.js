@@ -1,4 +1,6 @@
-/* Offline extraction from user-labelled screenshots; never run by the app. */
+/* Offline extraction of start-room terrain from initial-fog views; never run by the app.
+   Uses the runtime's start-room window (windowFeatures) so stored descriptors and
+   live frames are described the same way. */
 importScripts('../../app/vendor/opencv.js','../../app/recognition-core.js','../../app/recognition-vision.js','../../app/recognition-portals.js');
 self.onmessage=async({data})=>{
   const portals=new MapPortals.Detector();
@@ -11,16 +13,22 @@ self.onmessage=async({data})=>{
         const big=crop(bitmap,[0,0,1,1]),uiScale=Math.min(bitmap.width/1920,bitmap.height/1080)*big.ratio;
         const observed=portals.detect(big.pixels,uiScale,true);
         if(!observed?.exit)throw Error('No reliable side door for '+sample.id);
-        query=features(big.pixels);
         const g=MapPortals.geometry(sample.map),scale=1/(sample.pixelsPerMapPixel1080*2*uiScale);
         const model={a:scale,b:0,tx:g.exit[0]-scale*observed.exit[0],ty:g.exit[1]-scale*observed.exit[1]};
-        const entrance=[(g.entrance[0]-model.tx)/scale/big.ratio,(g.entrance[1]-model.ty)/scale/big.ratio];
+        const entranceBig=[(g.entrance[0]-model.tx)/scale,(g.entrance[1]-model.ty)/scale];
+        const entrance=entranceBig.map(v=>v/big.ratio),screen=Math.min(bitmap.width/1920,bitmap.height/1080);
+        // Region and exclusions in source pixels: 120 px of start room at 1080p,
+        // minus the player arrow and front door at the centre.
+        const half=(sample.half??120)*screen,region=sample.region||[entrance[0]-half,entrance[1]-half,entrance[0]+half,entrance[1]+half];
+        const exclude=sample.exclude||[[entrance[0],entrance[1],(sample.excludeRadius??50)*screen]];
+        query=windowFeatures(big.pixels,entranceBig,START_ROOM_WINDOW_1080*uiScale);
+        if(!query)throw Error('Start room outside the frame for '+sample.id);
         const points=[],descriptors=[],sourcePoints=[],occupied=new Set();
         for(let i=0;i<query.points.length;i++){
-          const [x,y]=query.points[i],sx=x/big.ratio,sy=y/big.ratio,[left,top,right,bottom]=sample.region;
+          const [x,y]=query.points[i],sx=x/big.ratio,sy=y/big.ratio,[left,top,right,bottom]=region;
           // Reserve a full ORB descriptor patch around player/door/team labels,
           // popup edges and fog boundaries. Only stable terrain enters the file.
-          if(sx<left||sx>right||sy<top||sy>bottom||sample.exclude.some(([cx,cy,r])=>Math.hypot(sx-cx,sy-cy)<r))continue;
+          if(sx<left||sx>right||sy<top||sy>bottom||exclude.some(([cx,cy,r])=>Math.hypot(sx-cx,sy-cy)<r))continue;
           const at=(Math.round(y)*big.width+Math.round(x))*4,p=big.pixels.data;
           if(p[at+2]>p[at]+5)continue; // Blue fog/background is shared between maps.
           const cell=Math.floor(sx/5)+','+Math.floor(sy/5);if(occupied.has(cell))continue;occupied.add(cell);
@@ -29,7 +37,7 @@ self.onmessage=async({data})=>{
           if(points.length===128)break;
         }
         if(points.length<8||points.length>160)throw Error('Unexpected terrain feature count '+sample.id+': '+points.length);
-        samples.push({id:sample.id,size:[bitmap.width,bitmap.height],points,descriptors,sourcePoints,entrance,exit:observed.exit.map(v=>v/big.ratio),model});
+        samples.push({id:sample.id,size:[bitmap.width,bitmap.height],points,descriptors,sourcePoints,entrance,exit:observed.exit.map(v=>v/big.ratio),model,region,exclude});
       }finally{query?.descriptors.delete();bitmap.close();}
     }
     postMessage({samples});

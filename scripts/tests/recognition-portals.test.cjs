@@ -2,7 +2,7 @@ const {test}=require('node:test');
 const assert=require('node:assert/strict');
 const fs=require('node:fs');
 const path=require('node:path');
-const {geometry,shortlist,defaultShortlist,agrees}=require('../../app/recognition-portals.js');
+const {geometry,shortlist,defaultShortlist,agrees,doorHypotheses,vectorSeparation,vectorTolerance}=require('../../app/recognition-portals.js');
 const {transform}=require('../../app/recognition-core.js');
 const report=JSON.parse(fs.readFileSync(path.join(__dirname,'../../exports/recognition-fixtures/portal-geometry.json'),'utf8'));
 const references=report.maps.map(m=>({id:m.id,portals:geometry({size:m.size,portalGeometry:m})}));
@@ -91,4 +91,48 @@ test('similar door geometry in an unscored map prevents early confirmation',()=>
   assert.equal(agrees(score,ref,seen,[ref,other]),false);
   assert.equal(agrees(score,ref,seen,[ref]),true);
   assert.equal(agrees({...score,error:4},ref,seen,[ref]),false);
+});
+
+// Current pool, straight from the exported map pins (same rule as analyze_portal_geometry.py).
+const PIXELS_PER_MAP_PIXEL_1080=.63158;
+const pool=JSON.parse(fs.readFileSync(path.join(__dirname,'../../exports/grab-eggs-data/map-pool.json'),'utf8')).mapIds.map(id=>{
+  const map=JSON.parse(fs.readFileSync(path.join(__dirname,`../../exports/grab-eggs-data/maps/${id}.json`),'utf8'));
+  const pin=kind=>map.pins.find(p=>p.category===kind&&p.provenance==='scene_reference').pixel;
+  const entrance=pin('entrance'),exit=pin('exit'),distance=Math.hypot(exit[0]-entrance[0],exit[1]-entrance[1]);
+  return {id,portals:geometry({size:map.size,portalGeometry:{entrance,exit,defaultDistance1080:distance*PIXELS_PER_MAP_PIXEL_1080}})};
+});
+const screenDoors=(ref,uiScale,offset=[0,0],error=[0,0])=>{
+  const [vx,vy]=ref.portals.vector1080,entrance=[600*uiScale+offset[0],500*uiScale+offset[1]];
+  return {entrance:[entrance[0]+error[0],entrance[1]+error[1]],exit:[entrance[0]+vx*uiScale,entrance[1]+vy*uiScale]};
+};
+
+test('door vectors of the current pool are far apart compared with the tolerance',()=>{
+  assert.equal(pool.length,12);
+  const tolerance=Math.max(...pool.map(r=>vectorTolerance(r.portals.vector1080)));
+  // Closest pair (20032/20033) differs by ~103 px at 1080p; icons are found to a few pixels.
+  assert.ok(vectorSeparation(pool)>=3*tolerance,`separation ${vectorSeparation(pool)} vs tolerance ${tolerance}`);
+});
+
+test('both doors select exactly one dungeon at any resolution, pan and icon error',()=>{
+  for(const ref of pool)for(const uiScale of [.333,.5,.625,1,1.333,2])for(const error of [[0,0],[5,-4],[-6,6]]){
+    const doors=screenDoors(ref,uiScale,[uiScale*37,-uiScale*23],error.map(v=>v*uiScale/.625));
+    const result=doorHypotheses(pool,doors,uiScale);
+    assert.ok(result.matched,`${ref.id} at ${uiScale}`);
+    assert.deepEqual(result.items.map(h=>h.id),[ref.id],`${ref.id} at ${uiScale} with ${error}`);
+    const [x,y]=result.items[0].entrance;
+    assert.ok(Math.hypot(x-doors.entrance[0],y-doors.entrance[1])<=12*uiScale/.625);
+  }
+});
+
+test('a missing or inconsistent front door falls back to one hypothesis per dungeon',()=>{
+  const ref=pool[0],doors=screenDoors(ref,.625);
+  for(const observed of [{exit:doors.exit},{exit:doors.exit,entrance:[doors.entrance[0]+80,doors.entrance[1]-60]}]){
+    const result=doorHypotheses(pool,observed,.625);
+    assert.equal(result.matched,false);assert.equal(result.items.length,pool.length);
+    const own=result.items.find(h=>h.id===ref.id);
+    assert.ok(Math.hypot(own.entrance[0]-doors.entrance[0],own.entrance[1]-doors.entrance[1])<1e-6);
+  }
+  assert.deepEqual(doorHypotheses(pool,null,.625).items,[]);
+  assert.deepEqual(doorHypotheses(pool,{entrance:doors.entrance},.625).items,[]);
+  assert.deepEqual(doorHypotheses(pool,doors,0).items,[]);
 });

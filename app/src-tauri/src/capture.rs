@@ -1,7 +1,7 @@
 //! Window-only capture. No game memory, input hooks, or automatic key presses.
 use std::{path::Path, sync::{Arc, Mutex, atomic::{AtomicBool, AtomicU64, Ordering}}, time::{Duration, SystemTime, UNIX_EPOCH}, thread::{self, JoinHandle}};
 use base64::{Engine, engine::general_purpose::STANDARD};
-use crate::capture_timing::{MapKeyTrigger, BURST_MS, CAPTURE_GAP_MS, KEY_POLL_MS};
+use crate::capture_timing::{capture_gap, MapKeyTrigger, BURST_MS, CAPTURE_GAP_MS, KEY_POLL_MS};
 use crate::capture_region::{crop_bounds, valid_region, TRACKING_GAP_MS};
 use image::{DynamicImage, RgbaImage, codecs::jpeg::JpegEncoder};
 use serde::Serialize;
@@ -28,7 +28,8 @@ impl GraphicsCaptureApiHandler for Handler {
     fn new(ctx: Context<Self::Flags>) -> Result<Self, String> { Ok(Self { shared: ctx.flags, sequence: 0, last_capture: 0 }) }
     fn on_frame_arrived(&mut self, frame: &mut Frame<'_>, control: InternalCaptureControl) -> Result<(), String> {
         let now = now_ms();
-        let gap = if self.shared.fast.load(Ordering::Relaxed) { TRACKING_GAP_MS } else { CAPTURE_GAP_MS };
+        let normal = if self.shared.fast.load(Ordering::Relaxed) { TRACKING_GAP_MS } else { CAPTURE_GAP_MS };
+        let gap = capture_gap(now, self.shared.burst_until.load(Ordering::Relaxed), normal);
         if now.saturating_sub(self.last_capture) < gap { return Ok(()); }
         let requested = self.shared.requested.swap(false, Ordering::Relaxed);
         if !requested && now >= self.shared.burst_until.load(Ordering::Relaxed) { return Ok(()); }
