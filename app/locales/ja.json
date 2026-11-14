@@ -237,5 +237,16 @@
   "manual.terrainHint": "地形と入口・出口を比べて選択。",
   "manual.nearby": "隣接方向",
   "manual.nearer": "近い",
-  "manual.farther": "遠い"
+  "manual.farther": "遠い",
+  "evac.title": "脱出通知",
+  "evac.start": "このラウンドの通知を開始",
+  "evac.running": "判定中…（押すと中止）",
+  "evac.cancel": "このラウンドの通知を中止",
+  "evac.idle": "繁体字中国語のゲーム画面に対応。2 秒ごとに確認し、達成時に一度鳴って停止します。",
+  "evac.watching": "安全な脱出の目標表示を待っています。もう一度押すと中止します。",
+  "evac.confirming": "目標達成を検出しました。再確認中…",
+  "evac.paused": "ゲームが最小化されています。元に戻すと再開します。",
+  "evac.completed": "目標達成を通知しました。次のラウンドで再び開始してください。",
+  "evac.error": "通知を停止しました：{error}",
+  "evac.audioFailed": "目標達成。音声を再生できませんでした。音声デバイスを確認してください。"
 }

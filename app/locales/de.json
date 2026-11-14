@@ -237,5 +237,16 @@
   "manual.terrainHint": "Gelände und Portale vergleichen, dann Karte wählen.",
   "manual.nearby": "Benachbarte Richtung",
   "manual.nearer": "Näher",
-  "manual.farther": "Weiter"
+  "manual.farther": "Weiter",
+  "evac.title": "Extraktionshinweis",
+  "evac.start": "Hinweis für diese Runde starten",
+  "evac.running": "Prüfung… (zum Abbrechen klicken)",
+  "evac.cancel": "Hinweis für diese Runde abbrechen",
+  "evac.idle": "Nur für die Spieloberfläche in traditionellem Chinesisch. Prüft alle 2 s; ein Ton, dann Stopp.",
+  "evac.watching": "Wartet auf das Ziel zur sicheren Extraktion. Erneut klicken zum Abbrechen.",
+  "evac.confirming": "Ziel erreicht; wird erneut bestätigt…",
+  "evac.paused": "Spiel minimiert. Zum Fortsetzen wiederherstellen.",
+  "evac.completed": "Ziel erreicht und Ton abgespielt. Nächste Runde erneut starten.",
+  "evac.error": "Hinweis gestoppt: {error}",
+  "evac.audioFailed": "Ziel erreicht, aber kein Ton. Bitte Audiogerät prüfen."
 }

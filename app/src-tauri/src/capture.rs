@@ -99,7 +99,7 @@ fn is_game_surface(handle: usize) -> bool {
 
 // PROCESS_QUERY_LIMITED_INFORMATION suffices to identify the owning executable.
 // Do not use the library's process_name(), which unnecessarily requests VM_READ.
-fn is_game(window: &Window) -> bool {
+pub(crate) fn is_game(window: &Window) -> bool {
     // Aniimo.exe also owns Qt windows. Only the Unity surface contains gameplay;
     // window titles are localized and enumeration order is not a priority order.
     if !is_game_surface(window.as_raw_hwnd() as usize) { return false; }

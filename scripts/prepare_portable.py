@@ -66,6 +66,8 @@ for name in ('viewer.js', 'viewer.css', 'i18n.js', 'i18n.css', 'loot-ranking.js'
 for name in ('desktop.js', 'overlay.js', 'desktop.css', 'update.js', 'update.css', 'manual-map.js', 'manual-map-core.js', 'manual-map.css', 'tracking.js', 'recognition.js', 'recognition-worker.js', 'recognition-portals.js', 'recognition-search.js', 'recognition-fog.js', 'fog-references.json', 'recognition.css', 'recognition-core.js', 'recognition-vision.js', 'tracking-core.js', 'tracking-flow.js', 'tracking-worker.js', 'map-header.js', 'recognition-screen.js'):
     shutil.copyfile(ROOT/'app'/name, OUTPUT/name)
 shutil.copytree(ROOT/'app/vendor', OUTPUT/'vendor', dirs_exist_ok=True)
+for name in ('evacuation.js', 'evacuation.css'):
+    shutil.copyfile(ROOT/'app'/name, OUTPUT/name)
 html = (ROOT/'scripts/data_viewer/index.html').read_text(encoding='utf8')
 html = html.replace('<title>搶蛋地圖 · 點位解析</title>', '<title>伊莫地城地圖</title>')
 html = html.replace('<body>', '<body class="desktop-app">')
@@ -102,6 +104,10 @@ main_html = main_html.replace('<button id="zoom-out" aria-label="縮小地圖">�
 main_html = main_html.replace('<button id="zoom-in" aria-label="放大地圖">＋</button>', '', 1)
 main_html = main_html.replace('<div class="sidebar-guides">', (ROOT/'app/recognition.html').read_text(encoding='utf8')+'<div class="sidebar-guides">', 1)
 main_html = main_html.replace('<script src="tracking.js"></script>', '<script src="tracking.js"></script><script src="recognition.js"></script>')
+main_html = main_html.replace('<div class="route-setting">', (ROOT/'app/evacuation.html').read_text(encoding='utf8')+'<div class="route-setting">', 1)
+main_html = main_html.replace('</body>', '<script src="evacuation.js"></script></body>', 1)
+main_html = main_html.replace('<link rel="stylesheet" href="desktop.css">', '<link rel="stylesheet" href="desktop.css"><link rel="stylesheet" href="evacuation.css">', 1)
+assert main_html.count('id="evacuation-button"') == 1 and 'evacuation.js' not in overlay_html
 (OUTPUT/'index.html').write_text(main_html, encoding='utf8')
 (OUTPUT/'overlay.html').write_text(overlay_html, encoding='utf8')
 

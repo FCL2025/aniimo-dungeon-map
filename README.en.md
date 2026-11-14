@@ -39,6 +39,8 @@ Screenshots 2 and 3 show an older interface. Buttons and messages may differ in 
 
 To track your position, select a map, turn on **Track**, then close the game's M-map and return to gameplay.
 
+In PVE, **Start this round’s alert** checks the left-side extraction objective about every 2 seconds. After two consecutive confirmations of the safe-extraction objective, it plays the embedded sound once and stops. Click again to cancel, or start it manually for the next round. Detection currently supports the **Traditional Chinese game interface** and works independently of map recognition and player tracking.
+
 Set **Game resolution** in the sidebar to 1920×1080 for 16:9 (including 2560×1440), or 3440×1440 for 21:9. The setting is saved; changing it resets tracking. At 1440p, the overlay defaults to about 790×790.
 
 ## Common controls

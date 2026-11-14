@@ -237,5 +237,16 @@
   "manual.terrainHint": "Compare terrain and portals, then choose a map.",
   "manual.nearby": "Nearby direction",
   "manual.nearer": "Nearer",
-  "manual.farther": "Farther"
+  "manual.farther": "Farther",
+  "evac.title": "Extraction alert",
+  "evac.start": "Start this round’s alert",
+  "evac.running": "Checking… (click to cancel)",
+  "evac.cancel": "Cancel this round’s alert",
+  "evac.idle": "Traditional Chinese game UI only. Checks every 2 s; sounds once, then stops.",
+  "evac.watching": "Waiting for the safe-extraction objective. Click again to cancel.",
+  "evac.confirming": "Objective complete; confirming again…",
+  "evac.paused": "Game minimized. Restore it to resume checking.",
+  "evac.completed": "Target reached and alert played. Start again next round.",
+  "evac.error": "Alert stopped: {error}",
+  "evac.audioFailed": "Target reached, but sound failed. Check your audio device."
 }

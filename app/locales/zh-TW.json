@@ -237,5 +237,16 @@
   "manual.terrainHint": "比對地形與門位，再點選地圖。",
   "manual.nearby": "相鄰方向",
   "manual.nearer": "較近",
-  "manual.farther": "較遠"
+  "manual.farther": "較遠",
+  "evac.title": "撤離提醒",
+  "evac.start": "開始本局撤離提醒",
+  "evac.running": "判斷中…（按下取消）",
+  "evac.cancel": "取消本局撤離提醒",
+  "evac.idle": "支援繁中遊戲介面。每 2 秒檢查，達標後響一次並停止。",
+  "evac.watching": "等待「搭乘蛋船安全撤離」。再次按下按鈕可取消。",
+  "evac.confirming": "已看到撤離條件完成，正在再次確認…",
+  "evac.paused": "遊戲已最小化，還原視窗後繼續判斷。",
+  "evac.completed": "本局已達標，已播放提醒！下一局請再按按鈕。",
+  "evac.error": "提醒已停止：{error}",
+  "evac.audioFailed": "本局已達標，但音效播放失敗，請檢查音訊裝置。"
 }

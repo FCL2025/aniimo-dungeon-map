@@ -237,5 +237,16 @@
   "manual.terrainHint": "Compara terreno y portales, luego elige un mapa.",
   "manual.nearby": "Dirección cercana",
   "manual.nearer": "Más cerca",
-  "manual.farther": "Más lejos"
+  "manual.farther": "Más lejos",
+  "evac.title": "Aviso de extracción",
+  "evac.start": "Iniciar aviso de esta partida",
+  "evac.running": "Comprobando… (pulsa para cancelar)",
+  "evac.cancel": "Cancelar aviso de esta partida",
+  "evac.idle": "Solo para la interfaz del juego en chino tradicional. Comprueba cada 2 s; suena una vez y se detiene.",
+  "evac.watching": "Esperando el objetivo de extracción segura. Pulsa de nuevo para cancelar.",
+  "evac.confirming": "Objetivo alcanzado; confirmando de nuevo…",
+  "evac.paused": "Juego minimizado. Restaura la ventana para continuar.",
+  "evac.completed": "Objetivo alcanzado y aviso reproducido. Reinicia en la próxima partida.",
+  "evac.error": "Aviso detenido: {error}",
+  "evac.audioFailed": "Objetivo alcanzado, pero falló el sonido. Revisa el dispositivo de audio."
 }

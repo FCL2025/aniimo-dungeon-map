@@ -237,5 +237,16 @@
   "manual.terrainHint": "지형과 입구·출구를 비교한 뒤 선택하세요.",
   "manual.nearby": "인접 방향",
   "manual.nearer": "가까움",
-  "manual.farther": "멀음"
+  "manual.farther": "멀음",
+  "evac.title": "탈출 알림",
+  "evac.start": "이번 라운드 알림 시작",
+  "evac.running": "확인 중… (클릭하여 취소)",
+  "evac.cancel": "이번 라운드 알림 취소",
+  "evac.idle": "중국어 번체 게임 화면을 지원합니다. 2초마다 확인하며 달성 시 한 번 울린 후 종료합니다.",
+  "evac.watching": "안전 탈출 목표를 기다립니다. 다시 클릭하면 취소합니다.",
+  "evac.confirming": "목표 달성 감지. 다시 확인 중…",
+  "evac.paused": "게임이 최소화되었습니다. 복원하면 확인을 재개합니다.",
+  "evac.completed": "목표 달성 알림을 재생했습니다. 다음 라운드에 다시 시작하세요.",
+  "evac.error": "알림 중지: {error}",
+  "evac.audioFailed": "목표를 달성했지만 소리를 재생하지 못했습니다. 오디오 장치를 확인하세요."
 }

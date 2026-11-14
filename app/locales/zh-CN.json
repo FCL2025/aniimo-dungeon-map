@@ -237,5 +237,16 @@
   "manual.terrainHint": "对照地形与门位，再选择地图。",
   "manual.nearby": "相邻方向",
   "manual.nearer": "较近",
-  "manual.farther": "较远"
+  "manual.farther": "较远",
+  "evac.title": "撤离提醒",
+  "evac.start": "开始本局撤离提醒",
+  "evac.running": "判断中…（点击取消）",
+  "evac.cancel": "取消本局撤离提醒",
+  "evac.idle": "支持繁体中文游戏界面。每 2 秒检查，达标后响一次并停止。",
+  "evac.watching": "等待出现安全撤离提示。再次点击按钮可取消。",
+  "evac.confirming": "已看到撤离条件完成，正在再次确认…",
+  "evac.paused": "游戏已最小化，还原窗口后继续判断。",
+  "evac.completed": "本局已达标，已播放提醒！下一局请再次点击按钮。",
+  "evac.error": "提醒已停止：{error}",
+  "evac.audioFailed": "本局已达标，但音效播放失败，请检查音频设备。"
 }

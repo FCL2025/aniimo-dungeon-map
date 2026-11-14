@@ -1,0 +1,11 @@
+#evacuation-panel{margin:8px 0 0;padding:12px 0 0;border-top:1px solid var(--line)}
+#evacuation-button{width:100%;display:flex;align-items:center;justify-content:center;gap:8px;min-height:38px;line-height:1.5}
+#evacuation-button[data-active=true]{border-color:var(--accent);color:var(--accent)}
+#evacuation-status{margin:8px 0 0;line-height:1.6}
+#evacuation-panel[data-state=completed] #evacuation-status{color:var(--accent)}
+#evacuation-panel[data-state=error] #evacuation-status{color:var(--gold)}
+.evacuation-spinner{display:none;width:12px;height:12px;flex:0 0 12px;border:2px solid currentColor;border-right-color:transparent;border-radius:50%}
+#evacuation-button[data-active=true] .evacuation-spinner{display:block;animation:evacuation-spin 1s linear infinite}
+.desktop-app.mode-pvp #evacuation-panel,#evacuation-panel[hidden]{display:none}
+@keyframes evacuation-spin{to{transform:rotate(360deg)}}
+@media(prefers-reduced-motion:reduce){#evacuation-button[data-active=true] .evacuation-spinner{animation:none}}

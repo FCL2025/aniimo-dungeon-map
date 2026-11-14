@@ -68,6 +68,8 @@ Defender 檢查要求 Normal 模式與 48 小時內的安全性情報，結果�
 
 收到回報時先區分 SmartScreen 信譽、Smart App Control 與 Defender 惡意程式偵測。取得完整警告或威脅名稱、SHA-256、下載來源及安全性情報版本；若屬病毒或 PUA 偵測，核對檔案與程式行為後再向 [Microsoft Security Intelligence](https://www.microsoft.com/en-us/wdsi/filesubmission) 以 Software developer 身分提交原始被擋 EXE，附原始碼網址與視窗擷取／快捷鍵用途說明。不要先改名、重新壓縮或關閉防護來宣稱誤報已解決；未知下載信譽也不能宣稱可透過送審保證解除。
 
+v0.2.52 新增 PVE 單局撤離提醒：獨立擷取左側條件區域，約每 2 秒判斷一次，連續確認繁中「搭乘蛋船安全撤離」後播放內嵌 `伊莫_SuperLucky.wav` 並停止。按同一按鈕取消或開始下一局；不改變地圖辨識與追蹤的擷取。原生實作、範本與驗證方式見 [撤離提醒](../docs/撤離提醒.md)。
+
 v0.2.51 以遊戲資源合成 12 張地宮的初始迷霧畫面並重建迷霧參考（`docs/迷霧合成.md`），辨識改為「門向量 → 起始房間小窗格地形確認」，按 M 後擷取改為約 15 fps。正式 EXE 中 Worker 就緒由約 1.4 秒降為約 0.28 秒，剛進場畫面每張約 24～34 ms，原本無法鎖定的 20031／20033／20038／20061／20062 也能鎖定（`docs/辨識加速.md`）。重建參考：`scripts\build_fog_views.py --fixtures` → `prepare_portable.py` → `node scripts\build_fog_references.cjs` → `package_fog_references.py`。
 
 v0.2.50 恢復 12 張 PVE 地宮辨識、截圖匯入、擷取設定與覆蓋視窗開關。`tracking.js` 統一管理原生擷取，`recognition.js` 只管理地圖辨識；鎖圖後釋放辨識 Worker，啟用的追蹤繼續運作並恢復小地圖裁切。新增 20031、20033、20038、20061、20062 與原 7 張同列第一輪搜尋；保留原 7 張初始迷霧參考，新 5 張目前以地形及門位比對。

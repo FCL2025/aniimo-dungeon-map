@@ -237,5 +237,16 @@
   "manual.terrainHint": "Bandingkan medan dan portal, lalu pilih peta.",
   "manual.nearby": "Arah terdekat",
   "manual.nearer": "Lebih dekat",
-  "manual.farther": "Lebih jauh"
+  "manual.farther": "Lebih jauh",
+  "evac.title": "Pengingat evakuasi",
+  "evac.start": "Mulai pengingat ronde ini",
+  "evac.running": "Memeriksa… (klik untuk batal)",
+  "evac.cancel": "Batalkan pengingat ronde ini",
+  "evac.idle": "Hanya untuk UI gim Mandarin Tradisional. Memeriksa tiap 2 dtk; berbunyi sekali lalu berhenti.",
+  "evac.watching": "Menunggu tujuan evakuasi aman. Klik lagi untuk membatalkan.",
+  "evac.confirming": "Tujuan tercapai; mengonfirmasi lagi…",
+  "evac.paused": "Gim diminimalkan. Pulihkan jendela untuk melanjutkan.",
+  "evac.completed": "Tujuan tercapai dan suara diputar. Mulai lagi pada ronde berikutnya.",
+  "evac.error": "Pengingat dihentikan: {error}",
+  "evac.audioFailed": "Tujuan tercapai, tetapi suara gagal. Periksa perangkat audio."
 }

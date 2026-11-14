@@ -1,6 +1,6 @@
 [package]
 name = "aniimo-dungeon-map"
-version = "0.2.51"
+version = "0.2.52"
 description = "Portable Aniimo dungeon map companion"
 edition = "2021"
 
@@ -11,7 +11,7 @@ tauri-build = { version = "=2.5.6", features = [] }
 tauri = { version = "=2.10.3", features = [] }
 serde = { version = "1", features = ["derive"] }
 serde_json = "1"
-windows-sys = { version = "0.61", features = ["Win32_UI_Shell", "Win32_UI_WindowsAndMessaging", "Win32_System_Threading", "Win32_UI_Input_KeyboardAndMouse", "Win32_Graphics_Gdi"] }
+windows-sys = { version = "0.61", features = ["Win32_UI_Shell", "Win32_UI_WindowsAndMessaging", "Win32_System_Threading", "Win32_UI_Input_KeyboardAndMouse", "Win32_Graphics_Gdi", "Win32_Media_Audio"] }
 windows-capture = "=2.0.1"
 image = { version = "=0.25.10", default-features = false, features = ["jpeg"] }
 base64 = "=0.22.1"

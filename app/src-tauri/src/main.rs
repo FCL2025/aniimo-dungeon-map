@@ -9,6 +9,8 @@ mod overlay;
 mod updater;
 mod tracking_log;
 mod recognition_log;
+mod evacuation;
+mod evacuation_vision;
 
 #[tauri::command]
 fn set_topmost(window: WebviewWindow, enabled: bool) -> Result<bool, String> {
@@ -19,12 +21,14 @@ fn set_topmost(window: WebviewWindow, enabled: bool) -> Result<bool, String> {
 fn main() {
     let result = tauri::Builder::default()
         .manage(capture::CaptureState::default())
+        .manage(evacuation::EvacuationState::default())
         .manage(overlay::FollowState::default())
         .on_window_event(|window, event| {
             if window.label() == "main" && matches!(event, tauri::WindowEvent::CloseRequested { .. }) {
                 window.state::<overlay::FollowState>().stop();
                 if let Some(overlay) = window.app_handle().get_webview_window("map-overlay") { let _ = overlay.close(); }
                 window.state::<capture::CaptureState>().shutdown();
+                window.state::<evacuation::EvacuationState>().shutdown();
             }
             if window.label() == "map-overlay" && matches!(event, tauri::WindowEvent::Destroyed) {
                 window.state::<overlay::FollowState>().stop();
@@ -33,6 +37,7 @@ fn main() {
         })
         .invoke_handler(tauri::generate_handler![set_topmost, recognition_log::append_recognition_log, overlay::set_map_overlay, overlay::set_overlay_scale, overlay::drag_window, capture::game_windows,
             capture::start_capture, capture::stop_capture, capture::configure_capture, capture::capture_frame,
+            evacuation::start_evacuation, evacuation::stop_evacuation, evacuation::evacuation_status,
             updater::check_for_update, updater::open_portable_download, tracking_log::append_tracking_log])
         .setup(|app| {
             let exe = std::env::current_exe()?;

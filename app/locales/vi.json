@@ -237,5 +237,16 @@
   "manual.terrainHint": "So sánh địa hình và cổng, rồi chọn bản đồ.",
   "manual.nearby": "Hướng lân cận",
   "manual.nearer": "Gần hơn",
-  "manual.farther": "Xa hơn"
+  "manual.farther": "Xa hơn",
+  "evac.title": "Báo rút lui",
+  "evac.start": "Bắt đầu báo cho ván này",
+  "evac.running": "Đang kiểm tra… (nhấn để hủy)",
+  "evac.cancel": "Hủy báo cho ván này",
+  "evac.idle": "Chỉ hỗ trợ giao diện game tiếng Trung phồn thể. Kiểm tra mỗi 2 giây; kêu một lần rồi dừng.",
+  "evac.watching": "Đang chờ mục tiêu rút lui an toàn. Nhấn lần nữa để hủy.",
+  "evac.confirming": "Đã đạt mục tiêu; đang xác nhận lại…",
+  "evac.paused": "Game đang thu nhỏ. Mở lại cửa sổ để tiếp tục.",
+  "evac.completed": "Đã đạt mục tiêu và phát âm báo. Hãy bắt đầu lại ở ván sau.",
+  "evac.error": "Đã dừng báo: {error}",
+  "evac.audioFailed": "Đã đạt mục tiêu nhưng không phát được âm thanh. Kiểm tra thiết bị âm thanh."
 }
